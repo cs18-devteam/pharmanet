@@ -1,0 +1,35 @@
+{
+  "name": "pharmanet",
+  "version": "1.0.0",
+  "description": "PharmaNet is a learning project developed as a 2nd year group project. The project aims to provide hands-on experience with modern web technologies including Sass, CSS, HTML, JavaScript, and Node.js.",
+  "keywords": [
+    "chathurapriyashan",
+    "chamaniniroshani",
+    "kasunfernando",
+    "noorulhmdha"
+  ],
+  "homepage": "https://github.com/cs18-devteam/pharmanet#readme",
+  "bugs": {
+    "url": "https://github.com/cs18-devteam/pharmanet/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cs18-devteam/pharmanet.git"
+  },
+  "license": "ISC",
+  "author": "chathurapriyashan,chamaniniroshani,kasunfernando,noorulhmdha",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "dev-server": "live-server",
+    "compile-sass": "sass ./sass/main.scss ./css/style.css -w",
+    "compile-sass-final": "sass --style=compressed ./sass/main.scss ./css/style.css",
+    "dev": "npm-run-all --parallel dev-server compile-sass",
+    "build": "npm-run-all compile-sass-final"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.89.2"
+  }
+}

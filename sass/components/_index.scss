@@ -1,0 +1,155 @@
+
+$primary-color: #083851;
+$accent-color: #f9a550;
+$white: #ffffff;
+
+html {
+  font-size: 62.5%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 1.8rem;
+  font-family: sans-serif;
+}
+
+header {
+  margin: 2rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+//logo section
+.logo {
+  display: flex;
+  align-items: center;
+
+  .logopic {
+    height: 4rem;
+    margin-right: 1rem;
+  }
+
+  .logoname {
+    font-weight: bold;
+    color: $primary-color;
+  }
+}
+
+.search {
+  display: flex;
+  align-items: center;
+
+  input[type="search"] {
+    padding: 1rem 1rem;
+    border: 0.3rem solid $primary-color;
+    border-radius: 1rem 0 0 1rem;
+    font-size: 2rem;
+  }
+
+  input[type="submit"] {
+    padding: 1rem 2rem;
+    border-radius: 0 1rem 1rem 0;
+    background-color: $primary-color;
+    color: $white;
+    cursor: pointer;
+    border: 0.3rem solid $primary-color;
+    font-size: 2rem;
+
+    &:hover {
+      background-color: $accent-color;
+      color: $primary-color;
+      border: 0.3rem solid $accent-color;
+      transition: all 0.2s ease-out;
+    }
+  }
+}
+
+// Dropdown menu
+.dropdown {
+  position: relative;
+  display: inline-block;
+
+  > a {
+    text-decoration: none;
+    color: $primary-color;
+    font-size: 1.8rem;
+    padding: 1rem;
+    display: inline-block;
+
+    &:hover {
+      color: $accent-color;
+    }
+  }
+
+  .navbar {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: $primary-color;
+    padding: 1rem 0;
+    min-width: 150px;
+    list-style: none;
+    border-radius: 0.5rem;
+    z-index: 10;
+
+    li {
+      padding: 0.5rem 2rem;
+
+      a {
+        text-decoration: none;
+        color: $white;
+        display: block;
+
+        &:hover {
+          color: $accent-color;
+        }
+      }
+    }
+  }
+
+  &:hover .navbar {
+    display: block;
+  }
+}
+
+// Profile section
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .profileName {
+    text-align: left;
+    font-size: 0.9em;
+  }
+
+  .profilePic {
+    img {
+      height: 4rem;
+      width: 4rem;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: $primary-color;
+    transition: all 0.2s ease-out;
+
+    &:hover {
+      color: $accent-color;
+    }
+  }
+}

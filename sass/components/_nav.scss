@@ -31,29 +31,34 @@ nav {
 
 //logo section
 .logo {
+  font-family: var(--secondary-font);
   display: flex;
   align-items: center;
 
   .logopic {
-    height: 4rem;
+    height: 4.6rem;
     margin-right: 1rem;
   }
 
   .logoname {
     font-weight: bold;
     color: $primary-color;
+    font-size: 1.6rem;
   }
 }
 
 .search {
+  font-family: var(--secondory-font);
   display: flex;
   align-items: center;
 
   input[type="search"] {
     padding: 1rem 1rem;
-    border: 0.3rem solid $primary-color;
+    border: 0.2rem solid $primary-color;
     border-radius: 1rem 0 0 1rem;
     font-size: 2rem;
+    width: 34.6rem;
+    height: 5rem;
   }
 
   input[type="submit"] {
@@ -62,8 +67,10 @@ nav {
     background-color: $primary-color;
     color: $white;
     cursor: pointer;
-    border: 0.3rem solid $primary-color;
+    border: 0.2rem solid $primary-color;
     font-size: 2rem;
+    width: 11.6rem;
+    height: 5rem;
 
     &:hover {
       background-color: $accent-color;
@@ -76,8 +83,12 @@ nav {
 
 // Dropdown menu
 .dropdown {
+  font-family: var(--primary-font);
   position: relative;
   display: inline-block;
+  font-weight:bold;
+  width:7.4rem;
+  height:2.4rem;
   
   > a {
     text-decoration: none;
@@ -127,19 +138,24 @@ nav {
 
 // Profile section
 .profile {
+  font-family: var(--primary-font);
   display: flex;
   align-items: center;
   gap: 10px;
 
   .profileName {
     text-align: left;
-    font-size: 0.9em;
+    font-size: 1.6rem;
+    .welcome{
+      font-size: 1.4rem;
+      color:#707070;
+    }
   }
 
   .profilePic {
     img {
-      height: 4rem;
-      width: 4rem;
+      height: 5rem;
+      width: 5rem;
       border-radius: 50%;
       object-fit: cover;
     }
@@ -147,7 +163,7 @@ nav {
 
   a {
     text-decoration: none;
-    color: $primary-color;
+    color:black;
     transition: all 0.2s ease-out;
 
     &:hover {

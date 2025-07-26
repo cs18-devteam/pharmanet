@@ -19,6 +19,138 @@ body {
   font-size: 1.6rem;
 }
 
+html {
+  font-size: 62.5%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 1.8rem;
+  font-family: sans-serif;
+}
+
+header {
+  margin: 2rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo .logopic {
+  height: 4rem;
+  margin-right: 1rem;
+}
+.logo .logoname {
+  font-weight: bold;
+  color: #083851;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+}
+.search input[type=search] {
+  padding: 1rem 1rem;
+  border: 0.3rem solid #083851;
+  border-radius: 1rem 0 0 1rem;
+  font-size: 2rem;
+}
+.search input[type=submit] {
+  padding: 1rem 2rem;
+  border-radius: 0 1rem 1rem 0;
+  background-color: #083851;
+  color: #ffffff;
+  cursor: pointer;
+  border: 0.3rem solid #083851;
+  font-size: 2rem;
+}
+.search input[type=submit]:hover {
+  background-color: #f9a550;
+  color: #083851;
+  border: 0.3rem solid #f9a550;
+  transition: all 0.2s ease-out;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown > a {
+  text-decoration: none;
+  color: #083851;
+  font-size: 1.8rem;
+  padding: 1rem;
+  display: inline-block;
+  transition: all 0.2s ease-out;
+}
+.dropdown > a:hover {
+  color: #f9a550;
+}
+.dropdown .navbar {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #083851;
+  padding: 1rem 0;
+  min-width: 150px;
+  list-style: none;
+  border-radius: 0.5rem;
+  z-index: 10;
+}
+.dropdown .navbar li {
+  padding: 0.5rem 2rem;
+}
+.dropdown .navbar li a {
+  text-decoration: none;
+  color: #ffffff;
+  display: block;
+  transition: all 0.2s ease-out;
+}
+.dropdown .navbar li a:hover {
+  color: #f9a550;
+}
+.dropdown:hover .navbar {
+  display: block;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.profile .profileName {
+  text-align: left;
+  font-size: 0.9em;
+}
+.profile .profilePic img {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.profile a {
+  text-decoration: none;
+  color: #083851;
+  transition: all 0.2s ease-out;
+}
+.profile a:hover {
+  color: #f9a550;
+}
+
 @font-face {
   font-family: "red hat display";
   font-weight: 100;

@@ -21,16 +21,6 @@ body {
   font-size: 1.6rem;
 }
 
-html {
-  font-size: 62.5%;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
   font-size: 1.8rem;
   font-family: sans-serif;
@@ -62,20 +52,21 @@ nav {
   font-size: 1.6rem;
 }
 
-.search {
+.search form {
+  display: flex;
   font-family: var(--secondory-font);
   display: flex;
   align-items: center;
 }
-.search input[type=search] {
+.search form input[type=search] {
   padding: 1rem 1rem;
   border: 0.2rem solid #083851;
   border-radius: 1rem 0 0 1rem;
   font-size: 2rem;
-  width: 34.6rem;
+  width: 100%;
   height: 5rem;
 }
-.search input[type=submit] {
+.search form input[type=submit] {
   padding: 1rem 2rem;
   border-radius: 0 1rem 1rem 0;
   background-color: #083851;
@@ -86,7 +77,7 @@ nav {
   width: 11.6rem;
   height: 5rem;
 }
-.search input[type=submit]:hover {
+.search form input[type=submit]:hover {
   background-color: #f9a550;
   color: #083851;
   border: 0.3rem solid #f9a550;

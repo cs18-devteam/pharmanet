@@ -1,0 +1,167 @@
+
+$primary-color: #083851;
+$accent-color: #f9a550;
+$white: #ffffff;
+
+body {
+  font-size: 1.8rem;
+  font-family: sans-serif;
+}
+
+header {
+  margin: 2rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+//logo section
+.logo {
+  font-family: var(--secondary-font);
+  display: flex;
+  align-items: center;
+
+  .logopic {
+    height: 4.6rem;
+    margin-right: 1rem;
+  }
+
+  .logoname {
+    font-weight: bold;
+    color: $primary-color;
+    font-size: 1.6rem;
+  }
+}
+
+.search {
+  form{
+    display: flex;
+
+
+    font-family: var(--secondory-font);
+    display: flex;
+    align-items: center;
+
+    input[type="search"] {
+      padding: 1rem 1rem;
+      border: 0.2rem solid $primary-color;
+      border-radius: 1rem 0 0 1rem;
+      font-size: 2rem;
+      width: 100%;
+      height: 5rem;
+    }
+
+    input[type="submit"] {
+      padding: 1rem 2rem;
+      border-radius: 0 1rem 1rem 0;
+      background-color: $primary-color;
+      color: $white;
+      cursor: pointer;
+      border: 0.2rem solid $primary-color;
+      font-size: 2rem;
+      width: 11.6rem;
+      height: 5rem;
+
+      &:hover {
+        background-color: $accent-color;
+        color: $primary-color;
+        border: 0.3rem solid $accent-color;
+        transition: all 0.2s ease-out;
+      }
+    }
+  }
+}
+// Dropdown menu
+.dropdown {
+  font-family: var(--primary-font);
+  position: relative;
+  display: inline-block;
+  font-weight:bold;
+  width:7.4rem;
+  height:2.4rem;
+  
+  > a {
+    text-decoration: none;
+    color: $primary-color;
+    font-size: 1.8rem;
+    padding: 1rem;
+    display: inline-block;
+    transition: all 0.2s ease-out;
+
+    &:hover {
+      color: $accent-color;
+    }
+  }
+
+  .navbar {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: $primary-color;
+    padding: 1rem 0;
+    min-width: 150px;
+    list-style: none;
+    border-radius: 0.5rem;
+    z-index: 10;
+
+    li {
+      padding: 0.5rem 2rem;
+
+      a {
+        text-decoration: none;
+        color: $white;
+        display: block;
+        transition: all 0.2s ease-out;
+
+        &:hover {
+          color: $accent-color;
+        }
+      }
+    }
+  }
+
+  &:hover .navbar {
+    display: block;
+  }
+}
+
+// Profile section
+.profile {
+  font-family: var(--primary-font);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .profileName {
+    text-align: left;
+    font-size: 1.6rem;
+    .welcome{
+      font-size: 1.4rem;
+      color:#707070;
+    }
+  }
+
+  .profilePic {
+    img {
+      height: 5rem;
+      width: 5rem;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color:black;
+    transition: all 0.2s ease-out;
+
+    &:hover {
+      color: $accent-color;
+    }
+  }
+}

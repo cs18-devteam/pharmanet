@@ -1,10 +1,16 @@
 :root {
-  --primary-color:" ";
+  --primary-color:green;
   --secondary-color:" ";
   --tertiary-color: "";
   --color-scheme: light ;
   --primary-font:"red hat display", san-serif;
   --secondary-font:"Poppins" , sans-serif;
+  --color-scheme: light;
+  color-scheme: light;
+  --bg-color: white;
+  --text-color: black;
+  --toggle-bg: lightgray;
+  --slider-color: black;
 }
 
 * {
@@ -19,6 +25,11 @@ html {
 
 body {
   font-size: 1.6rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: sans-serif;
+  padding: 2rem;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 body {
@@ -158,6 +169,63 @@ nav {
 }
 .profile a:hover {
   color: #f9a550;
+}
+
+.toggle-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 2rem;
+}
+
+.toggle-switch {
+  width: 6rem;
+  height: 3rem;
+  background-color: white;
+  border-radius: 3rem;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.6rem;
+  box-sizing: border-box;
+  border: 1px solid black;
+}
+
+.toggle-switch .icon {
+  pointer-events: none;
+  z-index: 3;
+  position: absolute;
+  color: black;
+}
+
+.toggle-switch .slider {
+  position: absolute;
+  top: 0.2rem;
+  left: 0.3rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  background-color: var(--slider-color);
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+input[type=checkbox]:checked + .toggle-switch .slider {
+  transform: translateX(3rem);
+}
+
+body.dark {
+  --color-scheme: dark;
+  color-scheme: dark;
+  --bg-color: black;
+  --text-color: white;
+  --toggle-bg: darkgray;
+  --slider-color: white;
 }
 
 @font-face {

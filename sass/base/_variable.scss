@@ -1,5 +1,5 @@
 :root{
-    --primary-color:" ";
+    --primary-color:green;
     --secondary-color:" ";
     --tertiary-color: "";
     
@@ -7,4 +7,14 @@
     --color-scheme: light ;
     --primary-font:"red hat display", san-serif;
     --secondary-font:"Poppins" , sans-serif;
+
+     --color-scheme: light;
+    color-scheme: light;
+
+    ///////////
+    /// hamdha variable space
+  --bg-color: white;
+  --text-color: black;
+  --toggle-bg: lightgray;
+  --slider-color: black;
 }

@@ -1,0 +1,43 @@
+#form {
+    font-family: 'Red Hat', sans-serif;
+    font-weight: 600;
+    font-style: semibold;
+    width: 100%;
+    line-height: 2rem;
+    
+}
+
+#email, #idNumber, #userName, #Date {
+  border: 2px solid #787676;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  font-family: 'Red Hat', sans-serif;
+  font-size: 1em;
+  outline: none;
+  width: fit-content;
+}
+
+#email.valid, #idNumber.valid, #userName.valid, #Date.valid {
+  border-color: #28a745;
+}
+
+#email.invalid, #idNumber.invalid, #userName.invalid, #Date.invalid {
+  border-color: #dc3545;
+}
+
+#feedbackEmail, #feedbackId, #feedbackUsername, #feedbackDate {
+  margin-left: 0.5rem;
+  display: block;
+  font-size: 0.95em;
+}
+
+#feedbackEmail.error, #feedbackId.error,#feedbackUsername.error, #feedbackDate.error {
+  color: #dc3545;
+}
+
+#feedbackEmail.success, #feedbackId.success,#feedbackUsername.success, #feedbackDate.success {
+  color: #28a745;
+  position: absolute;
+  left: 0rem;
+  padding-left: 0%;
+}

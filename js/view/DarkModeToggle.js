@@ -25,8 +25,8 @@ export default class DarkModeToggle {
       <div class="toggle-container">
         <input type="checkbox" id="${this.toggleId}" />
         <label for="${this.toggleId}" class="toggle-switch">
-          <img class="iconSun" src="/public/darkmodetoggleicons/light_mode_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg" alt="Light Mode" width="18" height="18" />
-          <img class="iconMoon" src="/public/darkmodetoggleicons/dark_mode_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg" alt="Dark Mode" width="18" height="18" />
+          <img class="toggle-icon iconSun" src="/public/darkmodetoggleicons/light_mode_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg" alt="Light Mode" width="18" height="18" />
+          <img class="toggle-icon iconMoon" src="/public/darkmodetoggleicons/dark_mode_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg" alt="Dark Mode" width="18" height="18" />
           <span class="slider"></span>
         </label>
       </div>

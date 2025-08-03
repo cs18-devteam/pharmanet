@@ -180,7 +180,7 @@ nav {
 .toggle-switch {
   width: 6rem;
   height: 3rem;
-  background-color: white;
+  background-color: transparent;
   border-radius: 3rem;
   position: relative;
   cursor: pointer;
@@ -192,10 +192,10 @@ nav {
   border: 1px solid black;
 }
 
-.toggle-switch .icon {
+.toggle-switch .toggle-icon {
   pointer-events: none;
   z-index: 3;
-  position: absolute;
+  position: relative;
   color: black;
 }
 
@@ -216,7 +216,7 @@ input[type=checkbox] {
 }
 
 input[type=checkbox]:checked + .toggle-switch .slider {
-  transform: translateX(3rem);
+  transform: translateX(2.8rem);
 }
 
 body.dark {
@@ -226,6 +226,14 @@ body.dark {
   --text-color: white;
   --toggle-bg: darkgray;
   --slider-color: white;
+}
+
+body.dark .iconMoon {
+  filter: brightness(0);
+}
+
+body.dark .toggle-switch {
+  border: 0.1rem solid white;
 }
 
 @font-face {

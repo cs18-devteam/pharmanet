@@ -20,6 +20,9 @@
   "author": "chathurapriyashan,chamaniniroshani,kasunfernando,noorulhmdha",
   "type": "commonjs",
   "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
   "scripts": {
     "dev-server": "live-server",
     "compile-sass": "sass ./sass/main.scss ./css/style.css -w",

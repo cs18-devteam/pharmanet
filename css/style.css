@@ -407,5 +407,176 @@ body.dark {
   font-style: italic;
   src: url(/fonts/Poppins/Poppins-BlackItalic.ttf) format("TrueType");
 }
+* {
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.8rem;
+  font-family: sans-serif;
+}
+
+header {
+  margin: 2rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+nav .logo {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  align-items: center;
+}
+nav .logo .logopic {
+  height: 4.6rem;
+  margin-right: 1rem;
+}
+nav .logo .logoname {
+  font-weight: bold;
+  color: #083851;
+  font-size: 1.6rem;
+}
+
+.signupImage {
+  position: relative;
+}
+.signupImage img {
+  position: absolute;
+  width: 70.2rem;
+  height: 84rem;
+  top: 1.4rem;
+  left: 4.6rem;
+  border-radius: 3rem;
+  background-image: url("/images/signupImage.png");
+  background-size: cover;
+  background-position: center;
+  filter: brightness(70%);
+  clip-path: path("M0 30C0 13.4315 13.4315 0 30 0H596.954C613.522 0 626.954 13.4315 626.954 30V119.292C626.954 122.13 626.551 124.954 625.758 127.679L609.23 184.44C607.473 190.474 607.656 196.907 609.752 202.832L625.236 246.603C626.373 249.816 626.954 253.2 626.954 256.608V285.206C626.954 287.877 627.311 290.536 628.015 293.113L694.69 537.138C698.817 552.241 690.634 567.978 675.9 573.276L653.847 581.204C638.788 586.618 630.629 602.899 635.307 618.203L643.659 645.531C646.573 655.069 644.006 665.438 636.977 672.513L636.16 673.335C625.434 684.132 626.235 701.793 637.895 711.573C644.465 717.084 647.895 725.481 647.062 734.016L629.598 912.915C628.098 928.281 615.18 940 599.74 940H30.0001C13.4315 940 0 926.569 0 910V30Z");
+}
+.signupImage .signupText {
+  position: absolute;
+  top: 51%;
+  left: 29%;
+  width: 66.2rem;
+  height: 0.2rem;
+  color: white;
+  font-size: 4.6rem;
+  font-weight: bold;
+  padding: 9rem;
+  margin-left: 1rem;
+}
+
+.container {
+  display: flex;
+}
+
+.signupForm {
+  display: flex;
+  position: absolute;
+  width: 50rem;
+  height: 94rem;
+  overflow: auto;
+  top: 12.4rem;
+  left: 90.7rem;
+  border: none;
+}
+.signupForm #form {
+  font-family: "Red Hat Display", sans-serif;
+  font-weight: 400;
+  font-style: semibold;
+  color: #083851;
+  width: 100%;
+  line-height: 2rem;
+}
+.signupForm #form .signupTitle,
+.signupForm #form .signupMoto {
+  font-family: "Red Hat Display", sans-serif;
+  padding: 0.5rem;
+}
+.signupForm #form .signupMoto {
+  font-weight: 600;
+  font-style: ExtraBold;
+  font-size: 1.5rem;
+  opacity: 45%;
+  color: #000;
+}
+.signupForm #form .nameFields {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 0.5rem;
+}
+.signupForm #form .nameFields div {
+  flex: 1;
+  width: fit-content;
+}
+.signupForm #form input {
+  border: 2px solid #787676;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 1em;
+  outline: none;
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+.signupForm #form #submitButton {
+  font-family: "Red Hat Display", sans-serif;
+  font-weight: 500;
+  font-size: 2rem;
+  border: none;
+  color: #fff;
+  background-image: linear-gradient(to right, #18978D, #083851);
+  line-height: 2rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  outline: none;
+  width: 100%;
+}
+.signupForm #form #forgetPassword {
+  font-family: "Red Hat Display", sans-serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-align: left;
+  border: none;
+  color: #127EB5;
+  background-color: #fff;
+  line-height: 5.4rem;
+}
+.signupForm #form .haveAcc {
+  font-family: "Red Hat Display", sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  opacity: 45%;
+  color: #000;
+}
+.signupForm #form .logInButton {
+  width: 7rem;
+  height: 3rem;
+  border-radius: 6rem;
+  border: 0.2rem solid #FB8F21;
+  background-color: rgba(249, 165, 80, 0.14);
+  font-family: "Red Hat Display", sans-serif;
+  font-weight: 600;
+  font-size: 1.3rem;
+  line-height: 100%;
+  align-items: center;
+  color: #FB8F21;
+}
+.signupForm #form .logInButton:hover {
+  background-color: #FB8F21;
+  color: #fff;
+  transition: all 0.2s ease-out;
+}
 
 /*# sourceMappingURL=style.css.map */

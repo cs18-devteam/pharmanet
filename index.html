@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+
+    <!--nav bar for all page-->
     <header>
     <nav>
         <div class="logo">
@@ -52,29 +54,32 @@
         <div class="container">
             <div class="header-content">
                 <h1 class="header-title">Smarter Access to Pharmacies and <br> Medicines. <span class="highlight">Anytime</span>. <span class="highlight">Anywhere</span>.</h1>
-                <p class="header-discription">Easily search for nearby pharmacies, check medicine availability, and <br>get the care you need - all in one place.</p>
-                <div class="upload-section">
-                    <div class="pill">
-
-                        <div class="pills">
-                            <img src="/public/logo/pils.svg" alt="pills">
-                        </div>
+                <div class="header-discription">Easily search for nearby pharmacies, check medicine availability, and <br>get the care you need - all in one place.
+                    <div class="header-background"></div>
+                    <div class="fb-call-msg">
+                        <img src="public/images/fb-call-msg.svg" alt="fb-call-msg">
+                    </div>
+                
+                    <div class="pills">
+                        <img src="/public/logo/pils.svg" alt="pills">
+                    </div>
                         
-                        <div class="pillBW">
-                            <img src="/public/logo/pillBW.svg" alt="pillBW">
-                        </div>
+                    <div class="pillBW">
+                        <img src="/public/logo/pillBW.svg" alt="pillBW">
+                    </div>
 
-                        <div class="pillwhite">
-                            <img src="/public/logo/pillwhite.svg" alt="pillwhite">
-                        </div>
+                    <div class="pillwhite">
+                        <img src="/public/logo/pillwhite.svg" alt="pillwhite">
+                    </div>
 
-                        <div class="pillblue"> 
-                            <img src="/public/logo/pillblue.svg" alt="pillblue">
-                        </div>
+                    <div class="pillblue"> 
+                        <img src="/public/logo/pillblue.svg" alt="pillblue">
+                    </div>
 
-
-                    </div>        
-
+                    <div class="side-words">
+                        <p>Healthcare   |    Ecosystem</p>
+                    </div>
+     
                     <div class="upload-container">
                             <input type="file,jpg,png,svg" id="fileUpload" hidden/>
                             <lable for="fileUpload" class="upload-box">
@@ -96,23 +101,17 @@
 
             <div class="advantages-grid">
                 <div class="advantage-card">
-                    <div class="advantage-icon">
-                    </div>
-                    <h3 class="advantage-title">End-to-End Privacy</h3>
+                    <h3 class="advantage-title"><img src="public/images/lock.svg" alt="end-to-encript">End-to-End Privacy</h3>
                     <p class="advantage-disc">From the moment you connect to the moment you log out, your data is encrypted, secure, and invisible to everyone but you. No middlemen, no leaks — just total control over your information.</p>
                 </div>
 
                 <div class="advantage-card">
-                    <div class="advantage-icon">
-                    </div>
-                    <h3 class="advantage-title">Discover Medicines</h3>
+                    <h3 class="advantage-title"><img src="public/images/database.svg">Discover Medicines</h3>
                     <p class="advantage-disc">Effortlessly explore a wide range of medicines with accurate details, availability, and alternatives — all in one place, just a tap away.</p>
                 </div>
 
                 <div class="advantage-card">
-                    <div class="advantage-icon">
-                    </div>
-                    <h3 class="advantage-title">Connect with Pharmacies</h3>
+                    <h3 class="advantage-title"><img src="public/images/Location city.svg">Connect with Pharmacies</h3>
                     <p class="advantage-disc">Easily reach out to nearby or trusted pharmacies for inquiries, orders, or support — all within one seamless platform.</p>
                 </div>
             </div>
@@ -120,35 +119,38 @@
             <h1 class="mid-title">
                 You will find any medicine here
             </h1>
+            </div>
 
             <div class="stats-container">
-
-                
-                <div class="section-title">
-                    <i class="lock-icon"></i>
-                    <h3 class="section-first-title">What we provide</h3>
-                    <p class="section-second-title">why should you trust us?</p>
                     
                     <div class="stat-orange">
                         <div class="arc"></div>
+                        <div class="text-wrapper">
                         <div class="progress-text">
                             <div class="value">5,879</div>
                             <div class="label">NMRA Registered<br />Medicines</div>
                         </div>
+                        </div>
+                    </div>
+
+                    <div class="section-title">
+                        <div class="lock-icon">
+                            <img src="public/images/lockicon.svg"></img>
+                        </div>
+                        <h3 class="section-first-title">What we provide</h3>
+                        <p class="section-second-title">why should you trust us?</p>
                     </div>
                     
                     <div class="stat-blue">
                         <div class="arc"></div>
+                        <div class="text-wrapper">
                         <div class="progress-text">
                             <div class="value">1,234</div>
                             <div class="label">Verified Pharmacies</div>
                         </div>
+                        </div>
                     </div>
-
-                 </div>
-               
-                    
-            </div>
+      
             </div>
         </section>
     
@@ -232,6 +234,8 @@
        </div>         
     </section>
 
+<!-- Regidtrstion Section -->
+
     <div class="joinus">
         <h1 class="header-title">Join to Us !</h1>
         <p class="header-discription">Become a Partner Pharmacy</p>
@@ -245,8 +249,10 @@
         </div>
     </div>
 
+    <!-- footer Section -->
+
     <section class="footer">
-        <div class="footer main">
+        <div class="main">
 
              <div class="logo">
                 <img class="logopic" src="public/logo/logo.svg" alt="logo">
@@ -264,19 +270,20 @@
             </div>
 
             <div class="footer-discription">
-                <p>This is created for university 2nd year learning project by chathura priyashan , kasun nirmal , chamani niroshani , noorul hamdha</p>
+                <h4 class="foot-title">Description</h4>
+                <p>This is created for university 2nd year<br>learning project by chathura priyashan , <br>kasun nirmal , chamani niroshani , <br>noorul hamdha</p>
             </div>
 
         </div>
-        <div class="footer bottom">
+        <div class="bottom">
+            <nav class="footerlinks">
                 <span>Alright Reserved ©Pharmanet 2025</span>
-                <nav class="footer__links">
                 <a href="#">About</a>
                 <a href="#">Contacts</a>
                 <a href="#">Linked in</a>
                 <a href="#">Facebook</a>
                 <a href="#">Teams & Conditions</a>
-                </nav>
+            </nav>
         </div>
     </section>
 

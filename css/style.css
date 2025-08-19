@@ -3,6 +3,8 @@
   --secondary-color:#f9a550;
   --tertiary-color: #006395;
   --white:#ffffff;
+  --font-linear-primary-color:#08374F;
+  --font-linear-secondary-color:#127EB5;
   --color-scheme: light ;
   --primary-font:"red hat display", sans-serif;
   --secondary-font:"Poppins" , sans-serif;
@@ -34,14 +36,14 @@ body {
 }
 
 header {
-  margin: 2rem;
+  margin: 1rem;
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 0rem 2rem;
 }
 
 .logo {
@@ -93,6 +95,7 @@ nav {
 .dropdown {
   font-family: var(--primary-font);
   position: relative;
+  bottom: 1rem;
   display: inline-block;
   font-weight: bold;
   width: 7.4rem;
@@ -135,6 +138,11 @@ nav {
 }
 .dropdown:hover .navbar {
   display: block;
+}
+
+#toggle-placeholder {
+  position: relative;
+  top: 1rem;
 }
 
 .profile {
@@ -406,7 +414,6 @@ body.dark {
 .hedder-content {
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
   padding: 0 20px;
 }
 
@@ -415,6 +422,7 @@ body.dark {
   font-size: 6.4rem;
   color: var(--primary-color);
   line-height: 1.2;
+  margin-top: 5rem;
 }
 
 .highlight {
@@ -422,61 +430,82 @@ body.dark {
 }
 
 .header-discription {
+  position: relative;
   line-height: 3.5rem;
   text-align: center;
-  font-size: 2.4rem;
+  font-size: 2.6rem;
   color: var(--primary-color);
   font-weight: 400;
-  position: relative;
   top: 1rem;
 }
 
-.pill {
-  position: relative;
+.header-background {
+  background: radial-gradient(#00BAAC, #083851);
+  height: 42rem;
+  margin-top: 2rem;
+  margin-left: 16rem;
+  margin-right: 16rem;
+  clip-path: polygon(0% 15%, 80% 15%, 80% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.fb-call-msg {
+  position: absolute;
+  top: 21rem;
+  left: 7rem;
 }
 
 .pills {
-  position: relative;
-  top: -2rem;
-  left: 50%;
-  margin-bottom: 30rem;
-  align-items: center;
+  position: absolute;
+  top: 7%;
+  right: 38%;
+  z-index: 10;
 }
 
 .pillBW {
   position: absolute;
-  left: 34rem;
-  bottom: -7rem;
+  top: 30%;
+  left: 25%;
+  z-index: 10;
 }
 
 .pillwhite {
   position: absolute;
-  top: 13rem;
-  left: 83rem;
+  top: 17rem;
+  right: 27rem;
+  z-index: 10;
 }
 
 .pillblue {
   position: absolute;
-  left: 32rem;
-  bottom: -18rem;
+  left: 23%;
+  bottom: -1.68%;
+  z-index: 10;
+}
+
+.side-words {
+  position: absolute;
+  top: 60%;
+  right: -5%;
+  rotate: -90deg;
+  letter-spacing: 0.7rem;
+  font-size: 1.6rem;
 }
 
 .upload-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 50px;
+  position: absolute;
+  bottom: -30%;
+  right: 39%;
+  z-index: 10;
 }
 .upload-container .upload-box {
   width: 33rem;
   height: 33rem;
   border-radius: 50%;
   background: #127eb5;
-  color: white;
+  color: var(--white);
   font-family: var(--primary-font);
   text-align: center;
   cursor: pointer;
-  border: 4px solid #fff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   transition: all 0.3s ease;
   border: 1.7rem solid var(--tertiary-color);
@@ -497,6 +526,11 @@ body.dark {
   transform: scale(1.05);
 }
 
+.advantages-section {
+  margin-top: 22rem;
+  margin-bottom: 15rem;
+}
+
 .section-title {
   margin: 4rem;
   text-align: center;
@@ -505,13 +539,13 @@ body.dark {
 }
 .section-title .section-first-title {
   font-size: 3.2rem;
-  background: linear-gradient(to right, var(--primary-color), #127eb5);
+  background: linear-gradient(to right, var(--font-linear-primary-color), var(--font-linear-secondary-color));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 .section-title .section-second-title {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 500;
   color: #127eb5;
 }
@@ -531,6 +565,7 @@ body.dark {
 }
 
 .advantage-title {
+  display: flex;
   color: var(--tertiary-color);
   font-size: 2rem;
   margin: 0 0 2rem 0;
@@ -549,17 +584,72 @@ body.dark {
   text-transform: capitalize;
 }
 
-.stat-container {
-  margin: 2rem;
+.stats-container {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
 }
-.stat-container .section-title {
+.stats-container .section-title {
   position: relative;
+  top: 8rem;
 }
-.stat-container .stat-orange {
-  position: absolute;
+.stats-container .stat-orange,
+.stats-container .stat-blue {
+  position: relative;
+  top: -10rem;
+  width: 30rem;
+  height: 30rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.stat-container .stat-blue {
+.stats-container .stat-orange .arc::before,
+.stats-container .stat-blue .arc::before {
+  content: " ";
+  height: 100%;
+  width: 100%;
+  background-color: var(--secondary-color);
   position: absolute;
+  border-radius: 50%;
+}
+.stats-container .stat-orange .arc::after,
+.stats-container .stat-blue .arc::after {
+  content: " ";
+  height: 91%;
+  width: 81%;
+  rotate: -30deg;
+  background-color: white;
+  position: absolute;
+  border-radius: 50%;
+  transform: translate(13%, 23%);
+}
+.stats-container .stat-orange .progress-text,
+.stats-container .stat-blue .progress-text {
+  position: relative;
+  top: 15rem;
+  left: 7rem;
+  text-align: center;
+  font-family: var(--primary-font);
+  color: var(--primary-color);
+}
+.stats-container .stat-orange .progress-text .value,
+.stats-container .stat-blue .progress-text .value {
+  font-size: 6.4rem;
+  font-weight: bold;
+}
+.stats-container .stat-orange .progress-text .label,
+.stats-container .stat-blue .progress-text .label {
+  font-size: 2.4rem;
+  font-weight: 500;
+}
+.stats-container .stat-orange .progress-text .section-title,
+.stats-container .stat-blue .progress-text .section-title {
+  position: absolute;
+  bottom: 30rem;
+}
+.stats-container .stat-blue .arc::before {
+  background-color: var(--tertiary-color);
 }
 
 .top-pharmacies {
@@ -656,20 +746,67 @@ body.dark {
   color: var(--white);
   font-family: var(--primary-font);
   padding: 3rem;
+  height: 57.9rem;
   clip-path: polygon(0% 0%, 100% 20%, 100% 100%, 0% 100%);
 }
-.footer.main {
-  padding: 2rem 3rem;
-  flex-wrap: wrap;
+.footer .main {
+  padding: 8rem 3rem;
   color: #cfd8dc;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 0;
-  justify-items: center;
-}
-.footer .bottum {
-  flex-wrap: wrap;
   display: flex;
+  justify-content: space-between;
+  align-items: self-start;
+  color: var(--white);
+  font-size: 2.4rem;
+}
+.footer .logo {
+  font-family: var(--secondary-font);
+  display: flex;
+  align-items: center;
+}
+.footer .logo .logopic {
+  height: 4.6rem;
+  margin-right: 1rem;
+}
+.footer .logo .logoname {
+  font-weight: bold;
+  color: var(--white);
+  font-size: 1.6rem;
+}
+.footer .site-map li {
+  list-style: none;
+}
+.footer .site-map a {
+  color: #bdc6cb;
+  line-height: 5rem;
+  text-decoration: none;
+  color: #bdc6cb;
+  font-size: 2.4rem;
+  font-family: var(--primary-font);
+}
+.footer .footer-title {
+  color: var(--white);
+  margin: 5rem 0;
+}
+.footer .footer-discription p {
+  color: #bdc6cb;
+  margin: 2rem 0;
+}
+.footer .bottom {
+  margin: 10rem 0 2rem 0;
+}
+.footer .bottom nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  color: #75a6cd;
+  font-size: 2.4rem;
+}
+.footer .bottom nav > a {
+  text-decoration: none;
+  color: var(--white);
+  font-size: 2.4rem;
+  font-family: var(--primary-font);
 }
 
 /*# sourceMappingURL=style.css.map */

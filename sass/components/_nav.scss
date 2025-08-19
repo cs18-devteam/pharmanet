@@ -1,13 +1,13 @@
 
 header {
-  margin: 2rem;
+  margin: 1rem;
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 0rem 2rem;
 }
 
 //logo section
@@ -69,6 +69,7 @@ nav {
 .dropdown {
   font-family: var(--primary-font);
   position: relative;
+  bottom:1rem;
   display: inline-block;
   font-weight:bold;
   width:7.4rem;
@@ -118,6 +119,11 @@ nav {
   &:hover .navbar {
     display: block;
   }
+}
+
+#toggle-placeholder{
+  position: relative;
+  top:1rem;
 }
 
 // Profile section

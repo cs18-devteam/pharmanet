@@ -1,6 +1,7 @@
 :root {
   --white:#ffffff;
   --color-green-01: #18978D;
+  --color-green-02: #08374F;
   --color-blue-01: #083851;
   --color-blue-02: #006395;
   --color-yellow-01: #FB8F21;
@@ -37,10 +38,6 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
-header {
-  margin: 1rem;
-}
-
 nav {
   display: flex;
   justify-content: space-between;
@@ -59,7 +56,7 @@ nav {
 }
 .logo .logoname {
   font-weight: bold;
-  color: var(--primary-color);
+  color: var(--color-green-02);
   font-size: 1.6rem;
 }
 
@@ -70,7 +67,7 @@ nav {
 }
 .search form input[type=search] {
   padding: 1rem 1rem;
-  border: 0.2rem solid var(--primary-color);
+  border: 0.2rem solid var(--color-green-02);
   border-radius: 1rem 0 0 1rem;
   font-size: 2rem;
   width: 100%;
@@ -79,18 +76,18 @@ nav {
 .search form input[type=submit] {
   padding: 1rem 2rem;
   border-radius: 0 1rem 1rem 0;
-  background-color: var(--primary-color);
+  background-color: var(--color-green-02);
   color: var(--white);
   cursor: pointer;
-  border: 0.2rem solid var(--primary-color);
+  border: 0.2rem solid var(--color-green-02);
   font-size: 2rem;
   width: 11.6rem;
   height: 5rem;
 }
 .search form input[type=submit]:hover {
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
-  border: 0.3rem solid var(--secondary-color);
+  background-color: var(--color-yellow-01);
+  color: var(--color-green-02);
+  border: 0.3rem solid var(--color-yellow-01);
   transition: all 0.2s ease-out;
 }
 
@@ -105,21 +102,21 @@ nav {
 }
 .dropdown > a {
   text-decoration: none;
-  color: var(--primary-color);
+  color: var(--color-green-02);
   font-size: 1.8rem;
   padding: 1rem;
   display: inline-block;
   transition: all 0.2s ease-out;
 }
 .dropdown > a:hover {
-  color: var(--secondary-color);
+  color: var(--color-yellow-01);
 }
 .dropdown .navbar {
   display: none;
   position: absolute;
   top: 150%;
   left: 0;
-  background-color: var(--primary-color);
+  background-color: var(--color-green-02);
   padding: 1rem 0;
   min-width: 150px;
   list-style: none;
@@ -136,7 +133,7 @@ nav {
   transition: all 0.2s ease-out;
 }
 .dropdown .navbar li a:hover {
-  color: var(--secondary-color);
+  color: var(--color-yellow-01);
 }
 .dropdown:hover .navbar {
   display: block;
@@ -173,7 +170,7 @@ nav {
   transition: all 0.2s ease-out;
 }
 .profile a:hover {
-  color: var(--secondary-color);
+  color: var(--color-yellow-01);
 }
 
 .toggle-container {
@@ -421,14 +418,10 @@ body.dark .toggle-switch {
   font-style: italic;
   src: url(/fonts/Poppins/Poppins-BlackItalic.ttf) format("TrueType");
 }
-header {
-  margin: 2rem;
-}
-
-.signupImage {
+.signup .signupImage {
   position: relative;
 }
-.signupImage img {
+.signup .signupImage img {
   position: absolute;
   width: 70.2rem;
   height: 84rem;
@@ -441,7 +434,7 @@ header {
   filter: brightness(70%);
   clip-path: path("M0 30C0 13.4315 13.4315 0 30 0H596.954C613.522 0 626.954 13.4315 626.954 30V119.292C626.954 122.13 626.551 124.954 625.758 127.679L609.23 184.44C607.473 190.474 607.656 196.907 609.752 202.832L625.236 246.603C626.373 249.816 626.954 253.2 626.954 256.608V285.206C626.954 287.877 627.311 290.536 628.015 293.113L694.69 537.138C698.817 552.241 690.634 567.978 675.9 573.276L653.847 581.204C638.788 586.618 630.629 602.899 635.307 618.203L643.659 645.531C646.573 655.069 644.006 665.438 636.977 672.513L636.16 673.335C625.434 684.132 626.235 701.793 637.895 711.573C644.465 717.084 647.895 725.481 647.062 734.016L629.598 912.915C628.098 928.281 615.18 940 599.74 940H30.0001C13.4315 940 0 926.569 0 910V30Z");
 }
-.signupImage .signupText {
+.signup .signupImage .signupText {
   position: absolute;
   top: 51%;
   left: 29%;
@@ -453,12 +446,10 @@ header {
   padding: 9rem;
   margin-left: 1rem;
 }
-
-.container {
+.signup .container {
   display: flex;
 }
-
-.signupForm {
+.signup .signupForm {
   display: flex;
   position: absolute;
   width: 50rem;
@@ -468,7 +459,7 @@ header {
   left: 90.7rem;
   border: none;
 }
-.signupForm #form {
+.signup .signupForm #form {
   font-family: var(--primary-font);
   font-weight: 400;
   font-style: semibold;
@@ -476,29 +467,29 @@ header {
   width: 100%;
   line-height: 2rem;
 }
-.signupForm #form .signupTitle,
-.signupForm #form .signupMoto {
+.signup .signupForm #form .signupTitle,
+.signup .signupForm #form .signupMoto {
   font-family: var(--primary-font);
   padding: 0.5rem;
 }
-.signupForm #form .signupMoto {
+.signup .signupForm #form .signupMoto {
   font-weight: 600;
   font-style: ExtraBold;
   font-size: 1.5rem;
   opacity: 45%;
   color: #000;
 }
-.signupForm #form .nameFields {
+.signup .signupForm #form .nameFields {
   display: flex;
   justify-content: space-between;
   gap: 2rem;
   padding: 0.5rem;
 }
-.signupForm #form .nameFields div {
+.signup .signupForm #form .nameFields div {
   flex: 1;
   width: fit-content;
 }
-.signupForm #form input {
+.signup .signupForm #form input {
   border: 2px solid #787676;
   border-radius: 0.5rem;
   padding: 0.5rem;
@@ -509,7 +500,7 @@ header {
   margin-top: 1rem;
   margin-bottom: 2rem;
 }
-.signupForm #form #submitButton {
+.signup .signupForm #form #submitButton {
   font-family: var(--primary-font);
   font-weight: 500;
   font-size: 2rem;
@@ -522,7 +513,7 @@ header {
   outline: none;
   width: 100%;
 }
-.signupForm #form #forgetPassword {
+.signup .signupForm #form #forgetPassword {
   font-family: var(--primary-font);
   font-weight: 700;
   font-size: 1.8rem;
@@ -532,14 +523,14 @@ header {
   background-color: #fff;
   line-height: 5.4rem;
 }
-.signupForm #form .haveAcc {
+.signup .signupForm #form .haveAcc {
   font-family: var(--primary-font);
   font-weight: 600;
   font-size: 1.5rem;
   opacity: 45%;
   color: #000;
 }
-.signupForm #form .logInButton {
+.signup .signupForm #form .logInButton {
   width: 7rem;
   height: 3rem;
   border-radius: 6rem;
@@ -552,57 +543,10 @@ header {
   align-items: center;
   color: var(--color-yellow-01);
 }
-.signupForm #form .logInButton:hover {
+.signup .signupForm #form .logInButton:hover {
   background-color: var(--color-yellow-01);
   color: #fff;
   transition: all 0.2s ease-out;
-}
-
-header {
-  margin: -1rem;
-}
-
-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 3rem;
-  padding: 2rem 2rem;
-}
-
-.dropdown {
-  margin-right: 2rem;
-}
-.dropdown a {
-  display: inline-block;
-  width: 20rem;
-  text-align: center;
-}
-
-.logo {
-  display: block;
-  position: absolute;
-  left: 1rem;
-  font-family: var(--secondary-font);
-  display: flex;
-  align-items: center;
-}
-
-.logo .logopic {
-  height: 4.6rem;
-  margin-right: 1rem;
-}
-
-.logo .logoname {
-  font-weight: bold;
-  color: #083851;
-  font-size: 1.6rem;
-}
-
-.nav-item {
-  display: flex;
-  align-items: center;
-  margin-right: 2rem;
 }
 
 .page-container {
@@ -765,25 +709,22 @@ nav {
   left: 6rem;
 }
 
-.hedder-content {
+.landing .hedder-content {
   width: 100%;
   max-width: 1200px;
   padding: 0 20px;
 }
-
-.header-title {
+.landing .header-title {
   text-align: center;
   font-size: 6.4rem;
   color: var(--primary-color);
   line-height: 1.2;
   margin-top: 5rem;
 }
-
-.highlight {
-  color: var(--secondary-color);
+.landing .highlight {
+  color: var(--color-yellow-01);
 }
-
-.header-discription {
+.landing .header-discription {
   position: relative;
   line-height: 3.5rem;
   text-align: center;
@@ -792,8 +733,7 @@ nav {
   font-weight: 400;
   top: 1rem;
 }
-
-.header-background {
+.landing .header-background {
   background: radial-gradient(#00BAAC, #083851);
   height: 42rem;
   margin-top: 2rem;
@@ -801,42 +741,36 @@ nav {
   margin-right: 16rem;
   clip-path: polygon(0% 15%, 80% 15%, 80% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
-
-.fb-call-msg {
+.landing .fb-call-msg {
   position: absolute;
   top: 21rem;
   left: 7rem;
 }
-
-.pills {
+.landing .pills {
   position: absolute;
   top: 7%;
   right: 38%;
   z-index: 10;
 }
-
-.pillBW {
+.landing .pillBW {
   position: absolute;
   top: 30%;
   left: 25%;
   z-index: 10;
 }
-
-.pillwhite {
+.landing .pillwhite {
   position: absolute;
   top: 17rem;
   right: 27rem;
   z-index: 10;
 }
-
-.pillblue {
+.landing .pillblue {
   position: absolute;
   left: 23%;
   bottom: -1.68%;
   z-index: 10;
 }
-
-.side-words {
+.landing .side-words {
   position: absolute;
   top: 60%;
   right: -5%;
@@ -844,14 +778,13 @@ nav {
   letter-spacing: 0.7rem;
   font-size: 1.6rem;
 }
-
-.upload-container {
+.landing .upload-container {
   position: absolute;
   bottom: -30%;
   right: 39%;
   z-index: 10;
 }
-.upload-container .upload-box {
+.landing .upload-container .upload-box {
   width: 33rem;
   height: 33rem;
   border-radius: 50%;
@@ -868,43 +801,40 @@ nav {
   justify-content: center;
   align-items: center;
 }
-.upload-container .upload-box .icon {
+.landing .upload-container .upload-box .icon {
   margin-bottom: 1.2rem;
 }
-.upload-container .upload-box p {
+.landing .upload-container .upload-box p {
   font-size: 2.4rem;
   font-weight: bold;
   margin: 0;
 }
-.upload-container .upload-box:hover {
+.landing .upload-container .upload-box:hover {
   transform: scale(1.05);
 }
-
-.advantages-section {
+.landing .advantages-section {
   margin-top: 22rem;
   margin-bottom: 15rem;
 }
-
-.section-title {
+.landing .section-title {
   margin: 4rem;
   text-align: center;
   color: var(--primary-color);
   text-transform: capitalize;
 }
-.section-title .section-first-title {
+.landing .section-title .section-first-title {
   font-size: 3.2rem;
   background: linear-gradient(to right, var(--font-linear-primary-color), var(--font-linear-secondary-color));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
-.section-title .section-second-title {
+.landing .section-title .section-second-title {
   font-size: 1.6rem;
   font-weight: 500;
   color: #127eb5;
 }
-
-.advantages-grid {
+.landing .advantages-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 40px;
@@ -913,43 +843,38 @@ nav {
   padding: 0 20px;
   color: var(--primary-color);
 }
-
-.advantage-card {
+.landing .advantage-card {
   padding: 0 3.2rem;
 }
-
-.advantage-title {
+.landing .advantage-title {
   display: flex;
   color: var(--tertiary-color);
   font-size: 2rem;
   margin: 0 0 2rem 0;
 }
-
-.advantage-disc {
+.landing .advantage-disc {
   font-size: 1.6rem;
   line-height: 150%;
 }
-
-.mid-title {
+.landing .mid-title {
   font-size: 8.4rem;
   color: #e6e6e6;
   text-align: center;
   font-family: var(--primary-font);
   text-transform: capitalize;
 }
-
-.stats-container {
+.landing .stats-container {
   display: flex;
   justify-content: center;
   gap: 50px;
   flex-wrap: wrap;
 }
-.stats-container .section-title {
+.landing .stats-container .section-title {
   position: relative;
   top: 8rem;
 }
-.stats-container .stat-orange,
-.stats-container .stat-blue {
+.landing .stats-container .stat-orange,
+.landing .stats-container .stat-blue {
   position: relative;
   top: -10rem;
   width: 30rem;
@@ -958,17 +883,17 @@ nav {
   justify-content: center;
   align-items: center;
 }
-.stats-container .stat-orange .arc::before,
-.stats-container .stat-blue .arc::before {
+.landing .stats-container .stat-orange .arc::before,
+.landing .stats-container .stat-blue .arc::before {
   content: " ";
   height: 100%;
   width: 100%;
-  background-color: var(--secondary-color);
+  background-color: var(--color-yellow-01);
   position: absolute;
   border-radius: 50%;
 }
-.stats-container .stat-orange .arc::after,
-.stats-container .stat-blue .arc::after {
+.landing .stats-container .stat-orange .arc::after,
+.landing .stats-container .stat-blue .arc::after {
   content: " ";
   height: 91%;
   width: 81%;
@@ -978,8 +903,8 @@ nav {
   border-radius: 50%;
   transform: translate(13%, 23%);
 }
-.stats-container .stat-orange .progress-text,
-.stats-container .stat-blue .progress-text {
+.landing .stats-container .stat-orange .progress-text,
+.landing .stats-container .stat-blue .progress-text {
   position: relative;
   top: 15rem;
   left: 7rem;
@@ -987,37 +912,34 @@ nav {
   font-family: var(--primary-font);
   color: var(--primary-color);
 }
-.stats-container .stat-orange .progress-text .value,
-.stats-container .stat-blue .progress-text .value {
+.landing .stats-container .stat-orange .progress-text .value,
+.landing .stats-container .stat-blue .progress-text .value {
   font-size: 6.4rem;
   font-weight: bold;
 }
-.stats-container .stat-orange .progress-text .label,
-.stats-container .stat-blue .progress-text .label {
+.landing .stats-container .stat-orange .progress-text .label,
+.landing .stats-container .stat-blue .progress-text .label {
   font-size: 2.4rem;
   font-weight: 500;
 }
-.stats-container .stat-orange .progress-text .section-title,
-.stats-container .stat-blue .progress-text .section-title {
+.landing .stats-container .stat-orange .progress-text .section-title,
+.landing .stats-container .stat-blue .progress-text .section-title {
   position: absolute;
   bottom: 30rem;
 }
-.stats-container .stat-blue .arc::before {
+.landing .stats-container .stat-blue .arc::before {
   background-color: var(--tertiary-color);
 }
-
-.top-pharmacies {
+.landing .top-pharmacies {
   padding: 8rem 0;
 }
-
-.pharmacies-grid {
+.landing .pharmacies-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 0;
   justify-items: center;
 }
-
-.pharmacy-card {
+.landing .pharmacy-card {
   background-color: white;
   border-radius: 1.6rem;
   width: 100%;
@@ -1026,84 +948,82 @@ nav {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
-.pharmacy-card:hover {
+.landing .pharmacy-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
-.pharmacy-card .pharmacy-img {
+.landing .pharmacy-card .pharmacy-img {
   width: 100%;
   height: auto;
   object-fit: cover;
 }
-.pharmacy-card .pharmacy-info {
+.landing .pharmacy-card .pharmacy-info {
   padding: 1.2rem;
   text-align: left;
 }
-.pharmacy-card .pharmacy-name {
+.landing .pharmacy-card .pharmacy-name {
   font-size: 2rem;
   color: var(--primary-color);
   font-weight: 600;
   font-size: 2rem;
 }
-.pharmacy-card .pharmacy-rating {
+.landing .pharmacy-card .pharmacy-rating {
   display: flex;
   align-items: center;
   gap: 5px;
   margin-bottom: 10px;
 }
-.pharmacy-card .pharmacy-address {
+.landing .pharmacy-card .pharmacy-address {
   color: var(--primary-color);
   font-size: 1.4rem;
 }
-
-.joinus {
+.landing .joinus {
   margin: 8rem;
   padding: 2rem;
 }
-.joinus .header-title {
+.landing .joinus .header-title {
   color: var(--secondary-color);
 }
-.joinus .header-discription {
+.landing .joinus .header-discription {
   color: var(--tertiary-color);
 }
-.joinus .button-group {
+.landing .joinus .button-group {
   display: flex;
   justify-content: center;
   gap: 1rem;
   margin: 4rem;
 }
-.joinus .button-group .btn {
+.landing .joinus .button-group .btn {
   font-weight: bold;
   font-size: 2.4rem;
   align-items: center;
   justify-content: center;
   padding: 1.2rem 2rem;
   border-radius: 0.6rem;
-  border: 0.2rem solid var(--secondary-color);
+  border: 0.2rem solid var(--color-yellow-01);
   display: flex;
   gap: 0.5rem;
   cursor: pointer;
   transition: all 0.3s ease;
   width: 40rem;
 }
-.joinus .button-group .btn.demo {
+.landing .joinus .button-group .btn.demo {
   background-color: transparent;
-  color: var(--secondary-color);
+  color: var(--color-yellow-01);
 }
-.joinus .button-group .btn.reg {
-  background-color: var(--secondary-color);
+.landing .joinus .button-group .btn.reg {
+  background-color: var(--color-yellow-01);
   color: var(--white);
 }
-
-.footer {
-  background-color: var(--primary-color);
+.landing .footer {
+  background-color: var(--color-green-02);
   color: var(--white);
   font-family: var(--primary-font);
   padding: 3rem;
   height: 57.9rem;
   clip-path: polygon(0% 0%, 100% 20%, 100% 100%, 0% 100%);
 }
-.footer .main {
+.landing .footer .main {
   padding: 8rem 3rem;
   color: #cfd8dc;
   display: flex;
@@ -1112,24 +1032,24 @@ nav {
   color: var(--white);
   font-size: 2.4rem;
 }
-.footer .logo {
+.landing .footer .logo {
   font-family: var(--secondary-font);
   display: flex;
   align-items: center;
 }
-.footer .logo .logopic {
+.landing .footer .logo .logopic {
   height: 4.6rem;
   margin-right: 1rem;
 }
-.footer .logo .logoname {
+.landing .footer .logo .logoname {
   font-weight: bold;
   color: var(--white);
   font-size: 1.6rem;
 }
-.footer .site-map li {
+.landing .footer .site-map li {
   list-style: none;
 }
-.footer .site-map a {
+.landing .footer .site-map a {
   color: #bdc6cb;
   line-height: 5rem;
   text-decoration: none;
@@ -1137,18 +1057,18 @@ nav {
   font-size: 2.4rem;
   font-family: var(--primary-font);
 }
-.footer .footer-title {
+.landing .footer .footer-title {
   color: var(--white);
   margin: 5rem 0;
 }
-.footer .footer-discription p {
+.landing .footer .footer-discription p {
   color: #bdc6cb;
   margin: 2rem 0;
 }
-.footer .bottom {
+.landing .footer .bottom {
   margin: 10rem 0 2rem 0;
 }
-.footer .bottom nav {
+.landing .footer .bottom nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1156,43 +1076,41 @@ nav {
   color: #75a6cd;
   font-size: 2.4rem;
 }
-.footer .bottom nav > a {
+.landing .footer .bottom nav > a {
   text-decoration: none;
   color: var(--white);
   font-size: 2.4rem;
   font-family: var(--primary-font);
 }
 
-.wrapper {
+.verify_email {
+  /* Verification Card */
+}
+.verify_email .wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-/* Verification Card */
-.verify-email-container {
+.verify_email .verify-email-container {
   text-transform: capitalize;
   border: none;
   width: 50.6rem;
   height: 38.5rem;
   font-family: var(--primary-font);
 }
-
-.title {
+.verify_email .title {
   margin-top: 4rem;
   margin-bottom: 0.5rem;
   font-size: 3.6rem;
   color: var(--primary-color);
   font-weight: 500;
 }
-
-.discription {
+.verify_email .discription {
   font-size: 1.8rem;
   line-height: 2.5rem;
   color: #707070;
 }
-
-.second-title {
+.verify_email .second-title {
   display: block;
   margin-top: 2rem;
   margin-bottom: 1.5rem;
@@ -1200,8 +1118,7 @@ nav {
   color: var(--primary-color);
   font-weight: 500;
 }
-
-.verify-email-container input {
+.verify_email .verify-email-container input {
   width: 100%;
   height: 5.5rem;
   padding: 0.8rem;
@@ -1212,8 +1129,7 @@ nav {
   text-align: left;
   letter-spacing: 0.3rem;
 }
-
-.verify-button {
+.verify_email .verify-button {
   height: 5.5rem;
   width: 100%;
   padding: 0.9rem;
@@ -1227,12 +1143,10 @@ nav {
   margin-bottom: 1rem;
   transition: opacity 0.2s ease;
 }
-
-.verify-button:hover {
+.verify_email .verify-button:hover {
   opacity: 0.9;
 }
-
-.change-email {
+.verify_email .change-email {
   display: block;
   text-align: left;
   font-size: 1.8rem;
@@ -1240,35 +1154,33 @@ nav {
   color: #127EB5;
 }
 
-.wrapper {
+.verify_number {
+  /* Verification Card */
+}
+.verify_number .wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-/* Verification Card */
-.verify-mobile-number-container {
+.verify_number .verify-mobile-number-container {
   border: none;
   width: 51rem;
   height: 38.5rem;
   font-family: var(--primary-font);
 }
-
-.title {
+.verify_number .title {
   margin-top: 4rem;
   margin-bottom: 0.5rem;
   font-size: 3.6rem;
   color: var(--primary-color);
   font-weight: 500;
 }
-
-.discription {
+.verify_number .discription {
   font-size: 1.8rem;
   line-height: 2.5rem;
   color: #707070;
 }
-
-.second-title {
+.verify_number .second-title {
   display: block;
   margin-top: 2rem;
   margin-bottom: 1.5rem;
@@ -1276,8 +1188,7 @@ nav {
   color: var(--primary-color);
   font-weight: 500;
 }
-
-.verify-mobile-number-container input {
+.verify_number .verify-mobile-number-container input {
   width: 100%;
   height: 5.5rem;
   padding: 0.8rem;
@@ -1288,8 +1199,7 @@ nav {
   text-align: left;
   letter-spacing: 0.3rem;
 }
-
-.verify-button {
+.verify_number .verify-button {
   height: 5.5rem;
   width: 100%;
   padding: 0.9rem;
@@ -1303,12 +1213,10 @@ nav {
   margin-bottom: 1rem;
   transition: opacity 0.2s ease;
 }
-
-.verify-button:hover {
+.verify_number .verify-button:hover {
   opacity: 0.9;
 }
-
-.change-phone-number {
+.verify_number .change-phone-number {
   display: block;
   text-align: left;
   font-size: 1.8rem;

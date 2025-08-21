@@ -9,5 +9,6 @@ Recommended structure:
 /public/images/      # For general images
 /public/icons/       # For icon files (SVG, PNG, etc.)
 /public/videos/      # For video files
+/public/pharmacy picture # forpharmacy pictures
 
 Organize files according to their type for better maintainability.

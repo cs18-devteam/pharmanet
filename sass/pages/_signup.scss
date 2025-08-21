@@ -1,51 +1,7 @@
-// 🎨 Sass variables (instead of CSS custom properties)
-$primary-color: #18978D;
-$secondary-color: #083851;
-$tertiary-color: #FB8F21;
-$primary-font: 'Red Hat Display', sans-serif;
-$secondary-font: 'Poppins', sans-serif;
-
-* {
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  font-size: 62.5%;
-}
-
-body {
-  font-size: 1.8rem;
-  font-family: sans-serif;
-}
-
 header {
   margin: 2rem;
 }
 
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-
-  .logo {
-    font-family: $secondary-font;
-    display: flex;
-    align-items: center;
-
-    .logopic {
-      height: 4.6rem;
-      margin-right: 1rem;
-    }
-
-    .logoname {
-      font-weight: bold;
-      color: $secondary-color;
-      font-size: 1.6rem;
-    }
-  }
-}
 
 .signupImage {
   position: relative;
@@ -97,16 +53,16 @@ nav {
   border: none;
 
   #form {
-    font-family: $primary-font;
+    font-family: var(--primary-font);
     font-weight: 400;
     font-style: semibold;
-    color: $secondary-color;
+    color: var(--color-blue-01);
     width: 100%;
     line-height: 2rem;
 
     .signupTitle,
     .signupMoto {
-      font-family: $primary-font;
+      font-family: var(--primary-font);
       padding: 0.5rem;
     }
 
@@ -134,7 +90,7 @@ nav {
       border: 2px solid #787676;
       border-radius: 0.5rem;
       padding: 0.5rem;
-      font-family: $primary-font;
+      font-family: var(--primary-font);
       font-size: 1em;
       outline: none;
       width: 100%;
@@ -143,12 +99,12 @@ nav {
     }
 
     #submitButton {
-      font-family: $primary-font;
+      font-family: var(--primary-font);
       font-weight: 500;
       font-size: 2rem;
       border: none;
       color: #fff;
-      background-image: linear-gradient(to right, $primary-color, $secondary-color);
+      background-image: linear-gradient(to right, var(--color-green-01), var(--color-blue-01));
       line-height: 2rem;
       padding: 1rem;
       border-radius: 0.5rem;
@@ -157,7 +113,7 @@ nav {
     }
 
     #forgetPassword {
-      font-family: $primary-font;
+      font-family: var(--primary-font);
       font-weight: 700;
       font-size: 1.8rem;
       text-align: left;
@@ -168,7 +124,7 @@ nav {
     }
 
     .haveAcc {
-      font-family: $primary-font;
+      font-family: var(--primary-font);
       font-weight: 600;
       font-size: 1.5rem;
       opacity: 45%;
@@ -179,17 +135,17 @@ nav {
       width: 7rem;
       height: 3rem;
       border-radius: 6rem;
-      border: 0.2rem solid $tertiary-color;
+      border: 0.2rem solid var(--color-yellow-01);
       background-color: rgba(249, 165, 80, 0.14);
-      font-family: $primary-font;
+      font-family: var(--primary-font);
       font-weight: 600;
       font-size: 1.3rem;
       line-height: 100%;
       align-items: center;
-      color: $tertiary-color;
+      color: var(--color-yellow-01);
 
       &:hover {
-        background-color: $tertiary-color;
+        background-color: var(--color-yellow-01);
         color: #fff;
         transition: all 0.2s ease-out;
       }

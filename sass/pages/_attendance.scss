@@ -1,17 +1,3 @@
-$primary-color: #083851;
-$accent-color: #f9a550;
-
-
-
-* {
-  font-family: "Red Hat", sans-serif;
-}
-
-body {
-  font-size: 1.8rem;
-  font-family: sans-serif;
-}
-
 header {
   margin: -1rem;
 }
@@ -80,12 +66,12 @@ nav {
 
 
     h5{
-        color: $accent-color;
+        color: var(--color-yellow-02);
         margin: 2rem 0rem 1rem 0rem;
         
         &::before{
             content: "-";
-            color: $accent-color;
+            color: var(--color-yellow-02);
             margin-right: 0.5rem;
             font-weight: 600;
             font-size: large;
@@ -102,7 +88,7 @@ nav {
      
     }
     ul li a{
-        color: $primary-color;
+        color: var(--color-gray);
         font-size: 1.8rem;
         font-weight: 400;
         text-decoration: none;
@@ -123,7 +109,7 @@ nav {
         
   h5{
     height: 2rem;
-    color: $primary-color;
+    color: var(--color-gray);
   }
 
   .progress-container {
@@ -143,7 +129,7 @@ nav {
     top: 1rem;
     left: 1rem;
     font-size: 1.6rem;
-    color: $primary-color;
+    color: var(--color-gray);
   }
 
   .daily-attendance {
@@ -151,7 +137,7 @@ nav {
     top: 20rem;
     left: 53rem;
     font-size: 2.8rem;
-    color: $primary-color;
+    color: var(--color-gray);
   }
 
   .circle{
@@ -159,10 +145,10 @@ nav {
     left: 2rem;
     width: 10rem;
     height: 10rem;
-    background-color: $accent-color;
+    background-color: var(--color-yellow-02);
     border-radius: 50%;
     margin-top: 2rem;
-    background-image: conic-gradient( $accent-color 74%, white 0%);
+    background-image: conic-gradient( var(--color-yellow-02) 74%, white 0%);
 
   }
 
@@ -208,7 +194,7 @@ nav {
     position :absolute;
     top: 10rem;
     left: 122rem;
-    background-color: $accent-color;
+    background-color: var(--color-yellow-02);
     color: white;
     padding: 1rem 0rem;
     border: none;
@@ -229,7 +215,7 @@ nav {
     
         th{
         background-color: #00000033;
-        color: $primary-color;
+        color: var(--color-gray);
         padding: 2rem;
         }
         td{

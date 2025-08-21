@@ -1,10 +1,12 @@
 :root {
-  --primary-color:#083851;
-  --secondary-color:#f9a550;
-  --tertiary-color: #006395;
   --white:#ffffff;
-  --font-linear-primary-color:#08374F;
+  --color-green-01: #18978D;
+  --color-blue-01: #083851;
+  --color-blue-02: #006395;
+  --color-yellow-01: #FB8F21;
+  --color-yellow-02:#f9a550;
   --font-linear-secondary-color:#127EB5;
+  --font-linear-primary-color:#08374F;
   --color-scheme: light ;
   --primary-font:"red hat display", sans-serif;
   --secondary-font:"Poppins" , sans-serif;
@@ -419,6 +421,350 @@ body.dark .toggle-switch {
   font-style: italic;
   src: url(/fonts/Poppins/Poppins-BlackItalic.ttf) format("TrueType");
 }
+header {
+  margin: 2rem;
+}
+
+.signupImage {
+  position: relative;
+}
+.signupImage img {
+  position: absolute;
+  width: 70.2rem;
+  height: 84rem;
+  top: 1.4rem;
+  left: 4.6rem;
+  border-radius: 3rem;
+  background-image: url("/images/signupImage.png");
+  background-size: cover;
+  background-position: center;
+  filter: brightness(70%);
+  clip-path: path("M0 30C0 13.4315 13.4315 0 30 0H596.954C613.522 0 626.954 13.4315 626.954 30V119.292C626.954 122.13 626.551 124.954 625.758 127.679L609.23 184.44C607.473 190.474 607.656 196.907 609.752 202.832L625.236 246.603C626.373 249.816 626.954 253.2 626.954 256.608V285.206C626.954 287.877 627.311 290.536 628.015 293.113L694.69 537.138C698.817 552.241 690.634 567.978 675.9 573.276L653.847 581.204C638.788 586.618 630.629 602.899 635.307 618.203L643.659 645.531C646.573 655.069 644.006 665.438 636.977 672.513L636.16 673.335C625.434 684.132 626.235 701.793 637.895 711.573C644.465 717.084 647.895 725.481 647.062 734.016L629.598 912.915C628.098 928.281 615.18 940 599.74 940H30.0001C13.4315 940 0 926.569 0 910V30Z");
+}
+.signupImage .signupText {
+  position: absolute;
+  top: 51%;
+  left: 29%;
+  width: 66.2rem;
+  height: 0.2rem;
+  color: white;
+  font-size: 4.6rem;
+  font-weight: bold;
+  padding: 9rem;
+  margin-left: 1rem;
+}
+
+.container {
+  display: flex;
+}
+
+.signupForm {
+  display: flex;
+  position: absolute;
+  width: 50rem;
+  height: 94rem;
+  overflow: auto;
+  top: 12.4rem;
+  left: 90.7rem;
+  border: none;
+}
+.signupForm #form {
+  font-family: var(--primary-font);
+  font-weight: 400;
+  font-style: semibold;
+  color: var(--color-blue-01);
+  width: 100%;
+  line-height: 2rem;
+}
+.signupForm #form .signupTitle,
+.signupForm #form .signupMoto {
+  font-family: var(--primary-font);
+  padding: 0.5rem;
+}
+.signupForm #form .signupMoto {
+  font-weight: 600;
+  font-style: ExtraBold;
+  font-size: 1.5rem;
+  opacity: 45%;
+  color: #000;
+}
+.signupForm #form .nameFields {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 0.5rem;
+}
+.signupForm #form .nameFields div {
+  flex: 1;
+  width: fit-content;
+}
+.signupForm #form input {
+  border: 2px solid #787676;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  font-family: var(--primary-font);
+  font-size: 1em;
+  outline: none;
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+.signupForm #form #submitButton {
+  font-family: var(--primary-font);
+  font-weight: 500;
+  font-size: 2rem;
+  border: none;
+  color: #fff;
+  background-image: linear-gradient(to right, var(--color-green-01), var(--color-blue-01));
+  line-height: 2rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  outline: none;
+  width: 100%;
+}
+.signupForm #form #forgetPassword {
+  font-family: var(--primary-font);
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-align: left;
+  border: none;
+  color: #127EB5;
+  background-color: #fff;
+  line-height: 5.4rem;
+}
+.signupForm #form .haveAcc {
+  font-family: var(--primary-font);
+  font-weight: 600;
+  font-size: 1.5rem;
+  opacity: 45%;
+  color: #000;
+}
+.signupForm #form .logInButton {
+  width: 7rem;
+  height: 3rem;
+  border-radius: 6rem;
+  border: 0.2rem solid var(--color-yellow-01);
+  background-color: rgba(249, 165, 80, 0.14);
+  font-family: var(--primary-font);
+  font-weight: 600;
+  font-size: 1.3rem;
+  line-height: 100%;
+  align-items: center;
+  color: var(--color-yellow-01);
+}
+.signupForm #form .logInButton:hover {
+  background-color: var(--color-yellow-01);
+  color: #fff;
+  transition: all 0.2s ease-out;
+}
+
+header {
+  margin: -1rem;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  padding: 2rem 2rem;
+}
+
+.dropdown {
+  margin-right: 2rem;
+}
+.dropdown a {
+  display: inline-block;
+  width: 20rem;
+  text-align: center;
+}
+
+.logo {
+  display: block;
+  position: absolute;
+  left: 1rem;
+  font-family: var(--secondary-font);
+  display: flex;
+  align-items: center;
+}
+
+.logo .logopic {
+  height: 4.6rem;
+  margin-right: 1rem;
+}
+
+.logo .logoname {
+  font-weight: bold;
+  color: #083851;
+  font-size: 1.6rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+}
+
+.page-container {
+  display: flex;
+  gap: 2rem;
+  flex-direction: row;
+  height: 100vh;
+  margin-top: 2rem;
+}
+.page-container .col1-sidebar {
+  flex: 1;
+  background-color: #F7F7F7;
+  height: 75rem;
+  padding: 2rem 3rem;
+  align-items: flex-start;
+  gap: 2.2rem;
+  border-radius: 0 1rem 0 0;
+  max-width: 33.4rem;
+  flex-shrink: 0;
+  margin-left: -2rem;
+}
+.page-container .col1-sidebar h5 {
+  color: var(--color-yellow-02);
+  margin: 2rem 0rem 1rem 0rem;
+}
+.page-container .col1-sidebar h5::before {
+  content: "-";
+  color: var(--color-yellow-02);
+  margin-right: 0.5rem;
+  font-weight: 600;
+  font-size: large;
+}
+.page-container .col1-sidebar .barcode-container {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  align-items: center;
+  padding: 1rem 2rem;
+  border: 1px solid rgba(8, 55, 79, 0.2);
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+.page-container .col1-sidebar ul li a {
+  color: var(--color-gray);
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-decoration: none;
+  line-height: 2;
+  padding: 1rem 0rem;
+}
+.page-container .col2-content {
+  flex: 3;
+  padding: 2rem 3rem;
+  height: 75rem;
+  overflow-y: auto;
+  border-radius: 0 0 1rem 0;
+}
+.page-container .col2-content h5 {
+  height: 2rem;
+  color: var(--color-gray);
+}
+.page-container .col2-content .progress-container {
+  flex: 1;
+  width: 25.3rem;
+  height: 15.3rem;
+  background-color: #FFFFFF;
+  border-radius: 0.5rem;
+  position: relative;
+  margin-top: 2rem;
+  padding: 1rem 3rem 1rem 3rem;
+  border: 0.1rem solid rgba(0, 0, 0, 0.2);
+}
+.page-container .col2-content .progress-text {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 1.6rem;
+  color: var(--color-gray);
+}
+.page-container .col2-content .daily-attendance {
+  position: absolute;
+  top: 20rem;
+  left: 53rem;
+  font-size: 2.8rem;
+  color: var(--color-gray);
+}
+.page-container .col2-content .circle {
+  position: absolute;
+  left: 2rem;
+  width: 10rem;
+  height: 10rem;
+  background-color: var(--color-yellow-02);
+  border-radius: 50%;
+  margin-top: 2rem;
+  background-image: conic-gradient(var(--color-yellow-02) 74%, white 0%);
+}
+.page-container .col2-content .circle::after {
+  position: absolute;
+  background-color: white;
+  display: inline-block;
+  width: 8rem;
+  top: 12%;
+  left: 9.8%;
+  height: 8rem;
+  content: "74%";
+  text-align: center;
+  line-height: 8rem;
+  border-radius: 50%;
+}
+.page-container .col2-content .staff-management-button {
+  flex: 2;
+  flex-direction: row;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+.page-container .col2-content .create {
+  position: absolute;
+  background: var(--green-gradient, linear-gradient(91deg, #18978D 0%, #083851 100%));
+  top: 10rem;
+  left: 104rem;
+  color: white;
+  padding: 1rem 0rem;
+  border: none;
+  border-radius: 1rem;
+  width: 18.4rem;
+  height: 4.3rem;
+  cursor: pointer;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.page-container .col2-content .attend {
+  position: absolute;
+  top: 10rem;
+  left: 122rem;
+  background-color: var(--color-yellow-02);
+  color: white;
+  padding: 1rem 0rem;
+  border: none;
+  border-radius: 1rem;
+  width: 18.4rem;
+  height: 4.3rem;
+  cursor: pointer;
+  font-size: 1.6rem;
+  margin-left: 1rem;
+}
+.page-container .col2-content table {
+  position: absolute;
+  border: 0.1rem solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+  width: 75%;
+  left: 35rem;
+}
+.page-container .col2-content table th {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: var(--color-gray);
+  padding: 2rem;
+}
+.page-container .col2-content table td {
+  position: relative;
+  padding: 2rem;
+  left: 6rem;
+}
+
 .hedder-content {
   width: 100%;
   max-width: 1200px;
@@ -968,221 +1314,6 @@ body.dark .toggle-switch {
   font-size: 1.8rem;
   text-decoration: none;
   color: #127EB5;
-}
-* {
-  font-family: "Red Hat", sans-serif;
-}
-
-body {
-  font-size: 1.8rem;
-  font-family: sans-serif;
-}
-
-header {
-  margin: -1rem;
-}
-
-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 3rem;
-  padding: 2rem 2rem;
-}
-
-.dropdown {
-  margin-right: 2rem;
-}
-.dropdown a {
-  display: inline-block;
-  width: 20rem;
-  text-align: center;
-}
-
-.logo {
-  display: block;
-  position: absolute;
-  left: 1rem;
-  font-family: var(--secondary-font);
-  display: flex;
-  align-items: center;
-}
-
-.logo .logopic {
-  height: 4.6rem;
-  margin-right: 1rem;
-}
-
-.logo .logoname {
-  font-weight: bold;
-  color: #083851;
-  font-size: 1.6rem;
-}
-
-.nav-item {
-  display: flex;
-  align-items: center;
-  margin-right: 2rem;
-}
-
-.page-container {
-  display: flex;
-  gap: 2rem;
-  flex-direction: row;
-  height: 100vh;
-  margin-top: 2rem;
-}
-.page-container .col1-sidebar {
-  flex: 1;
-  background-color: #F7F7F7;
-  height: 75rem;
-  padding: 2rem 3rem;
-  align-items: flex-start;
-  gap: 2.2rem;
-  border-radius: 0 1rem 0 0;
-  max-width: 33.4rem;
-  flex-shrink: 0;
-  margin-left: -2rem;
-}
-.page-container .col1-sidebar h5 {
-  color: #f9a550;
-  margin: 2rem 0rem 1rem 0rem;
-}
-.page-container .col1-sidebar h5::before {
-  content: "-";
-  color: #f9a550;
-  margin-right: 0.5rem;
-  font-weight: 600;
-  font-size: large;
-}
-.page-container .col1-sidebar .barcode-container {
-  display: grid;
-  grid-template-columns: 20% 80%;
-  align-items: center;
-  padding: 1rem 2rem;
-  border: 1px solid rgba(8, 55, 79, 0.2);
-  border-radius: 1rem;
-  margin-bottom: 1rem;
-}
-.page-container .col1-sidebar ul li a {
-  color: #083851;
-  font-size: 1.8rem;
-  font-weight: 400;
-  text-decoration: none;
-  line-height: 2;
-  padding: 1rem 0rem;
-}
-.page-container .col2-content {
-  flex: 3;
-  padding: 2rem 3rem;
-  height: 75rem;
-  overflow-y: auto;
-  border-radius: 0 0 1rem 0;
-}
-.page-container .col2-content h5 {
-  height: 2rem;
-  color: #083851;
-}
-.page-container .col2-content .progress-container {
-  flex: 1;
-  width: 25.3rem;
-  height: 15.3rem;
-  background-color: #FFFFFF;
-  border-radius: 0.5rem;
-  position: relative;
-  margin-top: 2rem;
-  padding: 1rem 3rem 1rem 3rem;
-  border: 0.1rem solid rgba(0, 0, 0, 0.2);
-}
-.page-container .col2-content .progress-text {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  font-size: 1.6rem;
-  color: #083851;
-}
-.page-container .col2-content .daily-attendance {
-  position: absolute;
-  top: 20rem;
-  left: 53rem;
-  font-size: 2.8rem;
-  color: #083851;
-}
-.page-container .col2-content .circle {
-  position: absolute;
-  left: 2rem;
-  width: 10rem;
-  height: 10rem;
-  background-color: #f9a550;
-  border-radius: 50%;
-  margin-top: 2rem;
-  background-image: conic-gradient(#f9a550 74%, white 0%);
-}
-.page-container .col2-content .circle::after {
-  position: absolute;
-  background-color: white;
-  display: inline-block;
-  width: 8rem;
-  top: 12%;
-  left: 9.8%;
-  height: 8rem;
-  content: "74%";
-  text-align: center;
-  line-height: 8rem;
-  border-radius: 50%;
-}
-.page-container .col2-content .staff-management-button {
-  flex: 2;
-  flex-direction: row;
-  margin-top: 2rem;
-  gap: 1rem;
-}
-.page-container .col2-content .create {
-  position: absolute;
-  background: var(--green-gradient, linear-gradient(91deg, #18978D 0%, #083851 100%));
-  top: 10rem;
-  left: 104rem;
-  color: white;
-  padding: 1rem 0rem;
-  border: none;
-  border-radius: 1rem;
-  width: 18.4rem;
-  height: 4.3rem;
-  cursor: pointer;
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-.page-container .col2-content .attend {
-  position: absolute;
-  top: 10rem;
-  left: 122rem;
-  background-color: #f9a550;
-  color: white;
-  padding: 1rem 0rem;
-  border: none;
-  border-radius: 1rem;
-  width: 18.4rem;
-  height: 4.3rem;
-  cursor: pointer;
-  font-size: 1.6rem;
-  margin-left: 1rem;
-}
-.page-container .col2-content table {
-  position: absolute;
-  border: 0.1rem solid rgba(0, 0, 0, 0.2);
-  border-radius: 0.5rem;
-  width: 75%;
-  left: 35rem;
-}
-.page-container .col2-content table th {
-  background-color: rgba(0, 0, 0, 0.2);
-  color: #083851;
-  padding: 2rem;
-}
-.page-container .col2-content table td {
-  position: relative;
-  padding: 2rem;
-  left: 6rem;
 }
 
 /*# sourceMappingURL=style.css.map */

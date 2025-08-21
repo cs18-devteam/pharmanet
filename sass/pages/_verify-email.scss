@@ -1,11 +1,3 @@
-/* General Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-
 .wrapper{
   display: flex;
   justify-content: center;
@@ -13,9 +5,10 @@
 }
 
 /* Verification Card */
-.verify-mobile-number-container {
+.verify-email-container {
+  text-transform: capitalize;
   border:none;
-  width:51rem ;
+  width:50.6rem ;
   height:38.5rem;
   font-family: var(--primary-font);
 
@@ -45,7 +38,7 @@
   font-weight: 500;
 }
 
-.verify-mobile-number-container input {
+.verify-email-container input {
   width: 100%;
   height: 5.5rem;
   padding: 0.8rem;
@@ -76,7 +69,7 @@
   opacity: 0.9;
 }
 
-.change-phone-number {
+.change-email {
   display: block;
   text-align: left;
   font-size: 1.8rem;

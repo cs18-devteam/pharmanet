@@ -416,70 +416,17 @@ body.dark .toggle-switch {
   font-style: italic;
   src: url(/fonts/Poppins/Poppins-BlackItalic.ttf) format("TrueType");
 }
-* {
-  font-family: "Red Hat", sans-serif;
+.staffMember {
+  /* -------------------- MEDIA QUERIES -------------------- */
 }
-
-body {
-  font-size: 1.8rem;
-  font-family: sans-serif;
-}
-
-header {
-  margin: 2rem;
-}
-
-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 3rem;
-  padding: 2rem 2rem;
-}
-
-.dropdown {
-  margin-right: 2rem;
-}
-.dropdown a {
-  display: inline-block;
-  width: 20rem;
-  text-align: center;
-}
-
-.logo {
-  display: block;
-  position: absolute;
-  left: 1rem;
-  font-family: var(--secondary-font);
-  display: flex;
-  align-items: center;
-}
-
-.logo .logopic {
-  height: 4.6rem;
-  margin-right: 1rem;
-}
-
-.logo .logoname {
-  font-weight: bold;
-  color: #083851;
-  font-size: 1.6rem;
-}
-
-.nav-item {
-  display: flex;
-  align-items: center;
-  margin-right: 2rem;
-}
-
-.page-container {
+.staffMember .page-container {
   display: flex;
   gap: 2rem;
   flex-direction: row;
   height: 100vh;
   margin-top: 2rem;
 }
-.page-container .column1 {
+.staffMember .page-container .column1 {
   flex: 1;
   background-color: #F7F7F7;
   height: 75rem;
@@ -490,18 +437,18 @@ nav {
   max-width: 33.4rem;
   flex-shrink: 0;
 }
-.page-container .column1 h5 {
+.staffMember .page-container .column1 h5 {
   color: #f9a550;
   margin: 2rem 0rem 1rem 0rem;
 }
-.page-container .column1 h5::before {
+.staffMember .page-container .column1 h5::before {
   content: "-";
   color: #f9a550;
   margin-right: 0.5rem;
   font-weight: 600;
   font-size: large;
 }
-.page-container .column1 .barcode-container {
+.staffMember .page-container .column1 .barcode-container {
   display: grid;
   grid-template-columns: 20% 80%;
   align-items: center;
@@ -510,7 +457,7 @@ nav {
   border-radius: 1rem;
   margin-bottom: 1rem;
 }
-.page-container .column1 ul li a {
+.staffMember .page-container .column1 ul li a {
   color: #083851;
   font-size: 1.8rem;
   font-weight: 400;
@@ -518,7 +465,7 @@ nav {
   line-height: 2;
   padding: 1rem 0rem;
 }
-.page-container .memberName {
+.staffMember .page-container .memberName {
   display: block;
   color: #083851;
   font-size: 2.8rem;
@@ -528,7 +475,7 @@ nav {
   margin-left: 2rem;
   margin-top: 1rem;
 }
-.page-container .memberJoinedDate {
+.staffMember .page-container .memberJoinedDate {
   display: block;
   color: #083851;
   font-size: 1.618rem;
@@ -539,7 +486,7 @@ nav {
   margin-left: 0.4rem;
   margin-top: 1rem;
 }
-.page-container .more-btn {
+.staffMember .page-container .more-btn {
   position: absolute;
   left: 102rem;
   top: 9rem;
@@ -556,7 +503,7 @@ nav {
   line-height: normal;
   text-transform: capitalize;
 }
-.page-container .print-btn {
+.staffMember .page-container .print-btn {
   position: absolute;
   left: 114rem;
   top: 9rem;
@@ -573,7 +520,7 @@ nav {
   line-height: normal;
   text-transform: capitalize;
 }
-.page-container .update-btn {
+.staffMember .page-container .update-btn {
   position: absolute;
   left: 125rem;
   top: 9rem;
@@ -592,12 +539,12 @@ nav {
   line-height: normal;
   text-transform: capitalize;
 }
-.page-container .column2 {
+.staffMember .page-container .column2 {
   flex: 2;
   max-width: 75.3rem;
   padding: 2rem 1rem;
 }
-.page-container .column2 .info-row {
+.staffMember .page-container .column2 .info-row {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2rem;
@@ -608,22 +555,22 @@ nav {
   font-size: 1.4rem;
   width: 100%;
 }
-.page-container .column2 .info-row .info-box {
+.staffMember .page-container .column2 .info-row .info-box {
   padding: 0 1rem;
 }
-.page-container .column2 .info-row .info-box .section-title {
+.staffMember .page-container .column2 .info-row .info-box .section-title {
   font-size: 1.3rem;
   font-weight: 600;
   color: #083851;
   margin-bottom: 0.8rem;
   position: relative;
 }
-.page-container .column2 .info-row .info-box .section-title::before {
+.staffMember .page-container .column2 .info-row .info-box .section-title::before {
   content: "— ";
   color: #083851;
   font-weight: bold;
 }
-.page-container .column2 .info-row .info-box .value {
+.staffMember .page-container .column2 .info-row .info-box .value {
   font-size: 1.4rem;
   color: #000;
   font-weight: 500;
@@ -633,7 +580,7 @@ nav {
   display: inline-block;
   background: #fafafa;
 }
-.page-container .column2 .info-card {
+.staffMember .page-container .column2 .info-card {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
@@ -646,10 +593,10 @@ nav {
   line-height: 1.6;
   margin-top: 1rem;
 }
-.page-container .column2 .info-card .section {
+.staffMember .page-container .column2 .info-card .section {
   margin-bottom: 2rem;
 }
-.page-container .column2 .info-card .section .section-title {
+.staffMember .page-container .column2 .info-card .section .section-title {
   font-size: 1.4rem;
   font-weight: 600;
   color: #f9a550;
@@ -658,12 +605,12 @@ nav {
   margin-bottom: 1rem;
   position: relative;
 }
-.page-container .column2 .info-card .section .section-title::before {
+.staffMember .page-container .column2 .info-card .section .section-title::before {
   content: "— ";
   color: #f9a550;
   font-weight: bold;
 }
-.page-container .column2 .info-card .section p {
+.staffMember .page-container .column2 .info-card .section p {
   margin: 0 0 1.2rem 0;
   color: #000;
   font-weight: 500;
@@ -671,33 +618,33 @@ nav {
   font-style: normal;
   font-size: 1.8rem;
 }
-.page-container .column2 .info-card .section p strong {
+.staffMember .page-container .column2 .info-card .section p strong {
   opacity: 0.6;
   margin-bottom: 0.3rem;
 }
-.page-container .column2 .info-card .section .left-column,
-.page-container .column2 .info-card .section .right-column {
+.staffMember .page-container .column2 .info-card .section .left-column,
+.staffMember .page-container .column2 .info-card .section .right-column {
   padding: 1rem;
 }
-.page-container .column2 .content-row {
+.staffMember .page-container .column2 .content-row {
   display: flex;
   gap: 2rem;
   width: 110%;
   height: 52.5rem;
 }
-.page-container .column3 {
+.staffMember .page-container .column3 {
   flex: 1;
   max-width: 20rem;
   padding: 1rem;
   border-radius: 1rem;
   width: 100%;
 }
-.page-container .column3 .attendance-card {
+.staffMember .page-container .column3 .attendance-card {
   background: #fff;
   padding: 1.5rem;
   font-size: 1.4rem;
 }
-.page-container .column3 .attendance-card .calendar {
+.staffMember .page-container .column3 .attendance-card .calendar {
   position: absolute;
   top: 15rem;
   text-align: center;
@@ -708,22 +655,22 @@ nav {
   padding: 1rem;
   width: 29.4rem;
 }
-.page-container .column3 .attendance-card .calendar h3 {
+.staffMember .page-container .column3 .attendance-card .calendar h3 {
   font-size: 1.8rem;
   font-weight: 600;
   margin: 2rem;
 }
-.page-container .column3 .attendance-card .calendar .subtitle {
+.staffMember .page-container .column3 .attendance-card .calendar .subtitle {
   font-size: 1.2rem;
   color: #555;
   margin-bottom: 2rem;
 }
-.page-container .column3 .attendance-card .calendar .days {
+.staffMember .page-container .column3 .attendance-card .calendar .days {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 0.6rem;
 }
-.page-container .column3 .attendance-card .calendar .days .day {
+.staffMember .page-container .column3 .attendance-card .calendar .days .day {
   width: 3rem;
   height: 3rem;
   display: flex;
@@ -734,12 +681,12 @@ nav {
   color: #555;
   font-size: 1.3rem;
 }
-.page-container .column3 .attendance-card .calendar .days .day.present {
+.staffMember .page-container .column3 .attendance-card .calendar .days .day.present {
   background: #00bfa6;
   color: #fff;
   font-weight: bold;
 }
-.page-container .column3 .attendance-card .documents {
+.staffMember .page-container .column3 .attendance-card .documents {
   position: absolute;
   top: 42rem;
   border-radius: 10px;
@@ -748,84 +695,82 @@ nav {
   width: 29.4rem;
   padding: 1.5rem;
 }
-.page-container .column3 .attendance-card .documents .section-title {
+.staffMember .page-container .column3 .attendance-card .documents .section-title {
   font-size: 1.3rem;
   font-weight: 600;
   color: #f57c00;
   margin-bottom: 1rem;
   position: relative;
 }
-.page-container .column3 .attendance-card .documents .section-title::before {
+.staffMember .page-container .column3 .attendance-card .documents .section-title::before {
   content: "— ";
   color: #f57c00;
   font-weight: bold;
 }
-.page-container .column3 .attendance-card .documents ul {
+.staffMember .page-container .column3 .attendance-card .documents ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-.page-container .column3 .attendance-card .documents ul li {
+.staffMember .page-container .column3 .attendance-card .documents ul li {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.6rem 0;
   border-bottom: 1px solid #eee;
 }
-.page-container .column3 .attendance-card .documents ul li span {
+.staffMember .page-container .column3 .attendance-card .documents ul li span {
   font-size: 1.3rem;
   color: #333;
 }
-.page-container .column3 .attendance-card .documents ul li .download {
+.staffMember .page-container .column3 .attendance-card .documents ul li .download {
   color: #f57c00;
   font-size: 1.6rem;
   text-decoration: none;
   transition: 0.2s;
 }
-.page-container .column3 .attendance-card .documents ul li .download:hover {
+.staffMember .page-container .column3 .attendance-card .documents ul li .download:hover {
   color: #d85a00;
 }
-
-/* -------------------- MEDIA QUERIES -------------------- */
 @media (max-width: 768px) {
-  .page-container {
+  .staffMember .page-container {
     flex-direction: column;
     height: auto;
   }
-  .column1, .column2, .column3 {
+  .staffMember .column1, .staffMember .column2, .staffMember .column3 {
     max-width: 100%;
     width: 100%;
     height: auto;
     margin-bottom: 2rem;
   }
-  .more-btn,
-  .print-btn,
-  .update-btn {
+  .staffMember .more-btn,
+  .staffMember .print-btn,
+  .staffMember .update-btn {
     position: static;
     display: block;
     margin: 1rem auto;
     width: 80%;
   }
-  .column2 .info-row {
+  .staffMember .column2 .info-row {
     grid-template-columns: 1fr;
   }
-  .column2 .info-card {
+  .staffMember .column2 .info-card {
     grid-template-columns: 1fr;
   }
 }
 @media (max-width: 576px) {
-  nav {
+  .staffMember nav {
     flex-direction: column;
     gap: 1rem;
     padding: 1rem;
   }
-  .logo {
+  .staffMember .logo {
     position: static;
     justify-content: center;
     margin-bottom: 1rem;
   }
-  .attendance-card .calendar,
-  .attendance-card .documents {
+  .staffMember .attendance-card .calendar,
+  .staffMember .attendance-card .documents {
     position: static;
     width: 100%;
     margin-bottom: 2rem;

@@ -1,0 +1,243 @@
+$primary-color: #083851;
+$accent-color: #f9a550;
+
+
+
+* {
+  font-family: "Red Hat", sans-serif;
+}
+
+body {
+  font-size: 1.8rem;
+  font-family: sans-serif;
+}
+
+header {
+  margin: -1rem;
+}
+
+//navibation bar
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  padding: 2rem 2rem;
+}
+
+.dropdown{
+  margin-right: 2rem;
+
+  a{
+    display: inline-block;
+    width: 20rem;
+    text-align: center;
+  }
+}
+.logo {
+  display: block;
+  position: absolute;
+  left: 1rem;
+  font-family: var(--secondary-font);
+  display: flex;
+  align-items: center;
+}
+.logo .logopic {
+  height: 4.6rem;
+  margin-right: 1rem;
+}
+.logo .logoname {
+  font-weight: bold;
+  color: #083851;
+  font-size: 1.6rem;
+}
+.nav-item{
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+}  //end of navigation bar
+
+
+.page-container{
+    display: flex;
+    gap: 2rem;
+    flex-direction: row;
+    height: 100vh;
+    margin-top: 2rem;
+
+    .col1-sidebar{
+        flex: 1;
+        background-color: #F7F7F7;
+        // width: 33rem;
+        height: 75rem;
+        padding: 2rem 3rem;
+        align-items: flex-start;
+        gap: 2.2rem;
+        border-radius: 0 1rem 0 0;
+        max-width: 33.4rem;
+        flex-shrink: 0;
+        margin-left: -2rem;
+
+
+    h5{
+        color: $accent-color;
+        margin: 2rem 0rem 1rem 0rem;
+        
+        &::before{
+            content: "-";
+            color: $accent-color;
+            margin-right: 0.5rem;
+            font-weight: 600;
+            font-size: large;
+        }
+    }
+    .barcode-container{
+        display: grid;
+        grid-template-columns: 20% 80%;
+        align-items: center;
+        padding: 1rem 2rem;
+        border: 1px solid rgba(8, 55, 79, 0.20);
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+     
+    }
+    ul li a{
+        color: $primary-color;
+        font-size: 1.8rem;
+        font-weight: 400;
+        text-decoration: none;
+        line-height: 2;
+        padding: 1rem 0rem;
+
+    }
+   }
+
+   .col2-content{
+        flex: 3;
+        padding: 2rem 3rem;
+        height: 75rem;
+        overflow-y: auto;
+        border-radius: 0 0 1rem 0;
+    
+
+        
+  h5{
+    height: 2rem;
+    color: $primary-color;
+  }
+
+  .progress-container {
+    flex: 1;
+    width: 25.3rem;
+    height: 15.3rem;
+    background-color: #FFFFFF;
+    border-radius: 0.5rem;
+    position: relative;
+    margin-top: 2rem;
+    padding: 1rem 3rem 1rem 3rem;
+    border: 0.1rem solid #00000033;
+  }
+
+  .progress-text {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 1.6rem;
+    color: $primary-color;
+  }
+
+  .daily-attendance {
+    position: absolute;
+    top: 20rem;
+    left: 53rem;
+    font-size: 2.8rem;
+    color: $primary-color;
+  }
+
+  .circle{
+    position: absolute;
+    left: 2rem;
+    width: 10rem;
+    height: 10rem;
+    background-color: $accent-color;
+    border-radius: 50%;
+    margin-top: 2rem;
+    background-image: conic-gradient( $accent-color 74%, white 0%);
+
+  }
+
+  .circle::after{
+    position: absolute;
+    background-color: white;
+    display: inline-block;
+    width: 8rem;
+    top: 12%;
+    left: 9.8%;
+    height: 8rem;
+    content: "74%";
+    text-align: center;
+    line-height: 8rem;
+    border-radius: 50%
+  }
+
+  .staff-management-button{
+    flex: 2;
+    flex-direction: row;
+    margin-top: 2rem;
+    gap: 1rem;
+  }
+  
+
+  .create {
+    position: absolute;
+    background: var(--green-gradient, linear-gradient(91deg, #18978D 0%, #083851 100%));
+    top: 10rem;
+    left: 104rem;
+    color: white;
+    padding: 1rem 0rem;
+    border: none;
+    border-radius: 1rem;
+    width: 18.4rem;
+    height: 4.3rem;
+    cursor: pointer;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .attend {
+    position :absolute;
+    top: 10rem;
+    left: 122rem;
+    background-color: $accent-color;
+    color: white;
+    padding: 1rem 0rem;
+    border: none;
+    border-radius: 1rem;
+    width: 18.4rem;
+    height: 4.3rem;
+    cursor: pointer;
+    font-size: 1.6rem;
+    margin-left: 1rem;
+  }
+
+        table{
+            position: absolute;
+            border: 0.1rem solid #00000033;
+            border-radius: 0.5rem;
+            width: 75%;
+            left: 35rem;
+    
+        th{
+        background-color: #00000033;
+        color: $primary-color;
+        padding: 2rem;
+        }
+        td{
+        position: relative;
+        padding: 2rem;
+        left: 6rem;
+    }
+  }
+
+    }
+}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PharmaNet</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+
+    <!--header section-->
+  <header class="top-bar">
+    <nav>
+        <div class="logo">
+            <img class="logopic" src="/public/logo/logo.svg" alt="logo">
+            <p class="logoname">PharmaNet</p>
+        </div>
+
+
+        <div class="search">
+            <form action="POST">
+                <input type="search" placeholder="paracetamol........">
+                <input type="submit" value="Find">
+            </form>
+        </div>
+        <div class="dropdown">
+            <a href="#">Services</a>
+                <ul class="navbar">
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+        </div>
+
+        <div id="toggle-placeholder"></div>
+        
+       <div class="profile">
+            <div class="profileName">
+               <a href="">Chamani Niroshani</a>
+                <div class="welcome">Welcome</div>
+            </div>
+            
+            <div class="profilePic"><a href="#"><img src="/public/logo/profile_pic.jpg"></a>
+            </div>
+        </div>
+
+
+    </nav>
+  </header>
+
+  <!--main content-->
+
+  <main class="main-container">
+
+    <!--left panel-->
+    <section class="left-panel">
+      <div class="tabs">
+        <span class="active">Pharmacies</span>
+        <span>Medicines</span>
+      </div>
+      <p class="results-count">46 Results</p>
+      <div class="results-list">
+        <!-- Sample Result -->
+        <div class="result-card">
+          <div>
+            <h4>Aspirin <span class="pill-tag">Prescription</span></h4>
+            <p>Healthguard<br/>Darmapala mawatha</p>
+          </div>
+          <div class="status">
+            <span class="open-dot"></span> Open
+            <button class="message-btn">Message</button>
+          </div>
+        </div>
+
+         <div class="result-card">
+          <div>
+            <h4>Aspirin <span class="pill-tag">Prescription</span></h4>
+            <p>Healthguard<br/>Darmapala mawatha</p>
+          </div>
+          <div class="status">
+            <span class="open-dot"></span> Open
+            <button class="message-btn">Message</button>
+          </div>
+        </div>
+
+         <div class="result-card">
+          <div>
+            <h4>Aspirin <span class="pill-tag">Prescription</span></h4>
+            <p>Healthguard<br/>Darmapala mawatha</p>
+          </div>
+          <div class="status">
+            <span class="open-dot"></span> Open
+            <button class="message-btn">Message</button>
+          </div>
+        </div>
+
+         <div class="result-card">
+          <div>
+            <h4>Aspirin <span class="pill-tag">Prescription</span></h4>
+            <p>Healthguard<br/>Darmapala mawatha</p>
+          </div>
+          <div class="status">
+            <span class="open-dot"></span> Open
+            <button class="message-btn">Message</button>
+          </div>
+        </div>
+
+         <div class="result-card">
+          <div>
+            <h4>Aspirin <span class="pill-tag">Prescription</span></h4>
+            <p>Healthguard<br/>Darmapala mawatha</p>
+          </div>
+          <div class="status">
+            <span class="open-dot"></span> Open
+            <button class="message-btn">Message</button>
+          </div>
+        </div>
+
+        
+      </div>
+    </section>
+
+
+
+    <section class="right-panel">
+      <div class="map-container">
+        <iframe
+          src="https://maps.google.com/maps?q=Colombo&z=13&output=embed"
+          width="100%"
+          height="300"
+          frameborder="0"
+          style="border:0;"
+          allowfullscreen=""
+        ></iframe>
+        <button class="radius-btn">Search in 3Km Radius</button>
+      </div>
+
+      <div class="availability-info">
+        <h3>Check Availability on the Map</h3>
+        <p>Easily locate nearby pharmacies that have your required medicine in stock.</p>
+      </div>
+
+      <div class="similar-medicines">
+        <h4>Similar Medicines</h4>
+        <div class="medicine-card">Aspirin C <span class="pill-tag">Prescription</span><br/><small>Union Chemists, Union Place</small></div>
+        <div class="medicine-card">Aspirin-Glycin<br/><small>Union Chemists, Union Place</small></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+

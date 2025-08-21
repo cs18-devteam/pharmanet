@@ -419,9 +419,14 @@ body.dark .toggle-switch {
   font-style: italic;
   src: url(/fonts/Poppins/Poppins-BlackItalic.ttf) format("TrueType");
 }
-.hedder-content {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header-content {
   width: 100%;
-  max-width: 1200px;
   padding: 0 20px;
 }
 
@@ -534,9 +539,14 @@ body.dark .toggle-switch {
   transform: scale(1.05);
 }
 
+.advantages-container {
+  width: 100%;
+}
+
 .advantages-section {
   margin-top: 22rem;
-  margin-bottom: 15rem;
+  margin-bottom: 10rem;
+  text-align: center;
 }
 
 .section-title {
@@ -544,6 +554,7 @@ body.dark .toggle-switch {
   text-align: center;
   color: var(--primary-color);
   text-transform: capitalize;
+  margin-bottom: 5rem;
 }
 .section-title .section-first-title {
   font-size: 3.2rem;
@@ -551,6 +562,7 @@ body.dark .toggle-switch {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  margin-bottom: 1rem;
 }
 .section-title .section-second-title {
   font-size: 1.6rem;
@@ -561,35 +573,39 @@ body.dark .toggle-switch {
 .advantages-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 40px;
+  gap: 4rem;
   max-width: 1200px;
-  margin: 60px auto;
+  margin: 6rem auto;
   padding: 0 20px;
+}
+.advantages-grid .advantage-card {
+  padding: 0 3.2rem;
+  text-align: center;
   color: var(--primary-color);
 }
-
-.advantage-card {
-  padding: 0 3.2rem;
-}
-
-.advantage-title {
+.advantages-grid .advantage-card .advantage-title {
   display: flex;
   color: var(--tertiary-color);
   font-size: 2rem;
   margin: 0 0 2rem 0;
+  gap: 1rem;
 }
-
-.advantage-disc {
+.advantages-grid .advantage-card .advantage-disc {
   font-size: 1.6rem;
   line-height: 150%;
+  text-align: left;
 }
 
 .mid-title {
   font-size: 8.4rem;
   color: #e6e6e6;
-  text-align: center;
   font-family: var(--primary-font);
   text-transform: capitalize;
+}
+
+.statical-container {
+  margin-top: 1rem;
+  margin-bottom: 10rem;
 }
 
 .stats-container {
@@ -660,8 +676,12 @@ body.dark .toggle-switch {
   background-color: var(--tertiary-color);
 }
 
-.top-pharmacies {
-  padding: 8rem 0;
+.top-pharmacies-container {
+  width: 100%;
+}
+
+.top-pharmacy {
+  text-align: center;
 }
 
 .pharmacies-grid {
@@ -670,8 +690,7 @@ body.dark .toggle-switch {
   gap: 0;
   justify-items: center;
 }
-
-.pharmacy-card {
+.pharmacies-grid .pharmacy-card {
   background-color: white;
   border-radius: 1.6rem;
   width: 100%;
@@ -680,32 +699,32 @@ body.dark .toggle-switch {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
-.pharmacy-card:hover {
+.pharmacies-grid .pharmacy-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
-.pharmacy-card .pharmacy-img {
+.pharmacies-grid .pharmacy-card .pharmacy-img {
   width: 100%;
   height: auto;
   object-fit: cover;
 }
-.pharmacy-card .pharmacy-info {
+.pharmacies-grid .pharmacy-card .pharmacy-info {
   padding: 1.2rem;
   text-align: left;
 }
-.pharmacy-card .pharmacy-name {
+.pharmacies-grid .pharmacy-card .pharmacy-name {
   font-size: 2rem;
   color: var(--primary-color);
   font-weight: 600;
   font-size: 2rem;
 }
-.pharmacy-card .pharmacy-rating {
+.pharmacies-grid .pharmacy-card .pharmacy-rating {
   display: flex;
   align-items: center;
   gap: 5px;
   margin-bottom: 10px;
 }
-.pharmacy-card .pharmacy-address {
+.pharmacies-grid .pharmacy-card .pharmacy-address {
   color: var(--primary-color);
   font-size: 1.4rem;
 }
@@ -989,16 +1008,122 @@ nav .logo .logoname {
   transition: all 0.2s ease-out;
 }
 
-/* General Reset */
-.wrapper {
+.main-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 2rem;
-  box-sizing: border-box;
+  padding: 1rem 2rem;
 }
 
+.result-list {
+  display: block;
+}
+.result-list .result-card {
+  border: 0.5rem solid #eeeeee;
+  border-radius: 10%;
+}
+
+.left-panel {
+  flex: 1;
+  padding-right: 1rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 1rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.tabs span.active {
+  border-bottom: 2px solid #004e89;
+  padding-bottom: 5px;
+}
+
+.results-count {
+  margin-bottom: 1rem;
+}
+
+.results-list .result-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pill-tag {
+  background-color: #ffe8cc;
+  color: #d35400;
+  padding: 2px 8px;
+  font-size: 0.7rem;
+  border-radius: 10px;
+  margin-left: 8px;
+}
+
+.status {
+  text-align: right;
+}
+
+.open-dot {
+  height: 10px;
+  width: 10px;
+  background-color: #2ecc71;
+  display: inline-block;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+
+.message-btn {
+  margin-top: 5px;
+  padding: 0.3rem 0.6rem;
+  background-color: #eaf2ff;
+  color: #004e89;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.right-panel {
+  flex: 1;
+  padding-left: 1rem;
+}
+
+.map-container {
+  position: relative;
+  height: 300px;
+  margin-bottom: 1rem;
+}
+
+.radius-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: white;
+  border: 1px solid #004e89;
+  color: #004e89;
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.availability-info h3 {
+  margin-bottom: 0.2rem;
+}
+
+.similar-medicines {
+  margin-top: 1rem;
+}
+
+.medicine-card {
+  background-color: white;
+  padding: 0.8rem;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+}
+
+/* General Reset */
 /* Verification Card */
 .verify-email-container {
   text-transform: capitalize;
@@ -1079,6 +1204,7 @@ nav .logo .logoname {
   min-height: 100vh;
   padding: 2rem;
   box-sizing: border-box;
+  margin-top: -13rem;
 }
 
 /* Verification Card */
@@ -1101,6 +1227,7 @@ nav .logo .logoname {
   font-size: 1.8rem;
   line-height: 2.5rem;
   color: #707070;
+  text-transform: capitalize;
 }
 
 .second-title {
@@ -1149,6 +1276,7 @@ nav .logo .logoname {
   font-size: 1.8rem;
   text-decoration: none;
   color: #127EB5;
+  text-transform: capitalize;
 }
 
 /*# sourceMappingURL=style.css.map */

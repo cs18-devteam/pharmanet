@@ -1,14 +1,7 @@
 /* General Reset */
 
 
-.wrapper{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; // ensures it fills viewport height even without touching body
-  padding: 2rem;     // add some spacing for smaller screens
-  box-sizing: border-box;
-}
+
 
 /* Verification Card */
 .verify-email-container {
@@ -24,9 +17,9 @@
 .title {
     margin-top: 4rem;
     margin-bottom: 0.5rem;
-  font-size: 3.6rem;
-  color:var(--primary-color);
-  font-weight: 500;
+    font-size: 3.6rem;
+    color:var(--primary-color);
+    font-weight: 500;
 }
 
 .discription {

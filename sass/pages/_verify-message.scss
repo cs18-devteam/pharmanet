@@ -8,6 +8,7 @@
   min-height: 100vh; // ensures it fills viewport height even without touching body
   padding: 2rem;     // add some spacing for smaller screens
   box-sizing: border-box;
+  margin-top: -13rem;
 }
 
 /* Verification Card */
@@ -31,6 +32,7 @@
   font-size: 1.8rem;
   line-height: 2.5rem;
   color:#707070;
+  text-transform: capitalize;
 
 }
 
@@ -80,4 +82,5 @@
   font-size: 1.8rem;
   text-decoration: none;
   color: #127EB5;
+  text-transform: capitalize;
 }

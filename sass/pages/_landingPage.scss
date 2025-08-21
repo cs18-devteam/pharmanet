@@ -1,8 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 //header
 
-.hedder-content{
-    width: 100%;
-    max-width: 1200px;        
+.header-content{
+    width: 100%;       
     padding: 0 20px;
 }
 
@@ -126,9 +130,16 @@
 
 //advantages 
 
+.advantages-container{
+    width:100%;
+}
+
 .advantages-section{
     margin-top: 22rem;
-    margin-bottom: 15rem;
+    margin-bottom: 10rem;
+    //padding:10rem 2rem;
+    text-align:center;
+
 }
 
 .section-title{
@@ -136,6 +147,7 @@
     text-align: center;
     color:var(--primary-color);
     text-transform: capitalize;
+    margin-bottom: 5rem;
     
     .section-first-title{
         font-size: 3.2rem;
@@ -143,6 +155,7 @@
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
+        margin-bottom: 1rem;
     }
     .section-second-title{
         font-size: 1.6rem;
@@ -154,39 +167,50 @@
 .advantages-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
+    gap: 4rem;
     max-width: 1200px;
-    margin: 60px auto;
+    margin: 6rem auto;
     padding: 0 20px;
-    color:var(--primary-color);
+    
+    .advantage-card{
+        padding: 0 3.2rem;
+        text-align: center;
+        color:var(--primary-color);
+
+        .advantage-title{
+            display: flex;
+            color: var(--tertiary-color);
+            font-size: 2rem;
+            margin: 0 0 2rem 0;
+            gap:1rem;
+        }
+
+        .advantage-disc{
+            font-size: 1.6rem;
+            line-height:150%;
+            text-align: left;
+
+        }
+    }
 }
 
-.advantage-card{
-    padding: 0 3.2rem;
-}
 
-.advantage-title{
-    display: flex;
-    color: var(--tertiary-color);
-    font-size: 2rem;
-    margin: 0 0 2rem 0;
-}
-
-.advantage-disc{
-    font-size: 1.6rem;
-    line-height:150%;
-}
 
 .mid-title{
     font-size: 8.4rem;
     color: #e6e6e6;
-    text-align: center;
     font-family: var(--primary-font);
     text-transform: capitalize;
 }
 
 
 //status
+
+.statical-container{
+    margin-top:1rem;
+    margin-bottom: 10rem;
+}
+
 .stats-container {
     display: flex;
     justify-content: center;
@@ -267,67 +291,76 @@
   }
 }
 
+//top parmacies
 
-
-     .top-pharmacies {
-            padding: 8rem 0;
+     .top-pharmacies-container {
+            //padding: 8rem 0;
+            width:100%;
         }
+
+    .top-pharmacy{
+        text-align: center;
+    }
 
         .pharmacies-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
             gap: 0;
-        justify-items: center;
+            justify-items: center;
+
+                .pharmacy-card {
+                //position:relative;
+                background-color: white;
+                border-radius: 1.6rem;
+                width:100%;
+                max-width: 24rem;
+                overflow: hidden;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease;
+
+
+                &:hover{
+                transform: translateY(-5px);
+                box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .pharmacy-img {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
+
+            .pharmacy-info {
+            // position:absolute;
+                padding: 1.2rem;
+                text-align: left;
+            }
+    
+            .pharmacy-name {
+                font-size: 2rem;
+                //margin-bottom: 10px;
+                color:var(--primary-color) ;
+                font-weight: 600;
+                font-size: 2rem;
+            }
+            .pharmacy-rating {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                margin-bottom: 10px;
+            }
+
+            .pharmacy-address {
+                color: var(--primary-color);
+                font-size: 1.4rem;
+            }
+
+            }
         }
 
-        .pharmacy-card {
-            //position:relative;
-            background-color: white;
-            border-radius: 1.6rem;
-            width:100%;
-            max-width: 24rem;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+       
 
-
-            &:hover{
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .pharmacy-img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-        }
-
-        .pharmacy-info {
-           // position:absolute;
-            padding: 1.2rem;
-            text-align: left;
-        }
- 
-        .pharmacy-name {
-            font-size: 2rem;
-            //margin-bottom: 10px;
-            color:var(--primary-color) ;
-            font-weight: 600;
-            font-size: 2rem;
-        }
-        .pharmacy-rating {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            margin-bottom: 10px;
-        }
-
-        .pharmacy-address {
-            color: var(--primary-color);
-            font-size: 1.4rem;
-        }
-
-        }
+//join
 
 .joinus{
     margin: 8rem;

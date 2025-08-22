@@ -10,7 +10,7 @@
     .header-title{
         text-align: center;
         font-size: 6.4rem;
-        color: var(--primary-color);
+        color: var(--color-green-02);
         line-height: 1.2;
         margin-top: 5rem;
     }
@@ -24,7 +24,7 @@
         line-height:3.5rem ;
         text-align: center;
         font-size: 2.6rem;
-        color: var(--primary-color);
+        color: var(--color-green-02);
         font-weight: 400;
         top: 1rem;
     }
@@ -135,7 +135,7 @@
     .section-title{
         margin: 4rem;
         text-align: center;
-        color:var(--primary-color);
+        color:var(--color-green-02);
         text-transform: capitalize;
         
         .section-first-title{
@@ -159,7 +159,7 @@
         max-width: 1200px;
         margin: 60px auto;
         padding: 0 20px;
-        color:var(--primary-color);
+        color:var(--color-green-02);
     }
 
     .advantage-card{
@@ -241,7 +241,7 @@
         left:7rem;
         text-align: center;
         font-family: var(--primary-font);
-        color:var(--primary-color);
+        color:var(--color-green-02);
         
         .value {
             font-size: 6.4rem;
@@ -263,7 +263,7 @@
 
     .stat-blue {
         .arc::before {
-        background-color:var(--tertiary-color); // blue instead of orange
+        background-color:var(--color-blue-01); // blue instead of orange
         }
     }
     }
@@ -312,7 +312,7 @@
             .pharmacy-name {
                 font-size: 2rem;
                 //margin-bottom: 10px;
-                color:var(--primary-color) ;
+                color:var(--color-green-02) ;
                 font-weight: 600;
                 font-size: 2rem;
             }
@@ -324,7 +324,7 @@
             }
 
             .pharmacy-address {
-                color: var(--primary-color);
+                color: var(--color-green-02);
                 font-size: 1.4rem;
             }
 

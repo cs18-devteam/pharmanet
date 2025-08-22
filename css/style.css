@@ -718,7 +718,7 @@ body.dark .toggle-switch {
 .landing .header-title {
   text-align: center;
   font-size: 6.4rem;
-  color: var(--primary-color);
+  color: var(--color-green-02);
   line-height: 1.2;
   margin-top: 5rem;
 }
@@ -730,7 +730,7 @@ body.dark .toggle-switch {
   line-height: 3.5rem;
   text-align: center;
   font-size: 2.6rem;
-  color: var(--primary-color);
+  color: var(--color-green-02);
   font-weight: 400;
   top: 1rem;
 }
@@ -820,7 +820,7 @@ body.dark .toggle-switch {
 .landing .section-title {
   margin: 4rem;
   text-align: center;
-  color: var(--primary-color);
+  color: var(--color-green-02);
   text-transform: capitalize;
 }
 .landing .section-title .section-first-title {
@@ -842,7 +842,7 @@ body.dark .toggle-switch {
   max-width: 1200px;
   margin: 60px auto;
   padding: 0 20px;
-  color: var(--primary-color);
+  color: var(--color-green-02);
 }
 .landing .advantage-card {
   padding: 0 3.2rem;
@@ -911,7 +911,7 @@ body.dark .toggle-switch {
   left: 7rem;
   text-align: center;
   font-family: var(--primary-font);
-  color: var(--primary-color);
+  color: var(--color-green-02);
 }
 .landing .stats-container .stat-orange .progress-text .value,
 .landing .stats-container .stat-blue .progress-text .value {
@@ -929,7 +929,7 @@ body.dark .toggle-switch {
   bottom: 30rem;
 }
 .landing .stats-container .stat-blue .arc::before {
-  background-color: var(--tertiary-color);
+  background-color: var(--color-blue-01);
 }
 .landing .top-pharmacies {
   padding: 8rem 0;
@@ -964,7 +964,7 @@ body.dark .toggle-switch {
 }
 .landing .pharmacy-card .pharmacy-name {
   font-size: 2rem;
-  color: var(--primary-color);
+  color: var(--color-green-02);
   font-weight: 600;
   font-size: 2rem;
 }
@@ -975,7 +975,7 @@ body.dark .toggle-switch {
   margin-bottom: 10px;
 }
 .landing .pharmacy-card .pharmacy-address {
-  color: var(--primary-color);
+  color: var(--color-green-02);
   font-size: 1.4rem;
 }
 .landing .joinus {

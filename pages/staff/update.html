@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href = "/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <header>
+    <nav>
+        <div class="logo">
+            <img class="logopic" src="/public/logo/logo.svg" alt="logo">
+            <p class="logoname">PharmaNet</p>
+        </div>
+        
+        </nav>
+    <h1 class="fheader">
+    <span class="fWord"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="35" viewBox="0 0 34 35" fill="none">
+  <g clip-path="url(#clip0_207_763)">
+    <path d="M17 21.7498C22.4768 21.7498 26.9167 17.31 26.9167 11.8332C26.9167 6.35635 22.4768 1.9165 17 1.9165C11.5232 1.9165 7.08334 6.35635 7.08334 11.8332C7.08334 17.31 11.5232 21.7498 17 21.7498Z" stroke="#00BAAC" stroke-width="2.83333" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M11.6308 20.1773L9.91666 33.0831L17 28.8331L24.0833 33.0831L22.3692 20.1631" stroke="#00BAAC" stroke-width="2.83333" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_207_763">
+      <rect width="34" height="34" fill="white" transform="translate(0 0.5)"/>
+    </clipPath>
+  </defs>
+</svg> Staff Member</span><span class="sWord">Update Form</span>
+    </h1>
+    </header>
+<div class="container">
+    <div class="basicInfo">
+       
+        <form action="submit_form.php" method="post">
+             <h5><svg xmlns="http://www.w3.org/2000/svg" width="21" height="6" viewBox="0 0 21 6" fill="none">
+  <path d="M3 3H18.3065" stroke="#F9A550" stroke-width="4.83363" stroke-linecap="round"/>
+</svg> Basic Info</h5>
+            <div class="nameFields">
+            <div>
+            <label for="fName" >First Name</label><br>
+            <input type="text" class="fname" name="name" placeholder="Saman" required>
+            </div>
+
+            <div>
+            <label for="lName">Last Name</label><br>
+            <input type="text" class="lname" name="name" placeholder="Kumara" required><br>
+            </div>
+            </div>
+
+            <label for="fullName">Full Name</label><br>
+            <input type="text" class="fullName" name="name" placeholder="Gamage Arachchige Saman Kumara" required><br>
+
+            <label for="email">Email</label><br>
+            <input type="email" class="email" name="email" placeholder="Xxxxx@gmail.com" required><br>
+
+            <div class="sectionNIC">
+
+            <div>
+            <label for="idNumber">National Identity Card IdNumber</label><br>
+            <input type="text" class="idNumber" name="idNumber" placeholder="12345678909V" required>
+            </div>
+
+            <div>
+            <label for="myFile">National Identity Card Proof</label><br>
+            <button class="uploadBtn" aria-label="Upload">
+                <i class="fas fa-upload"></i>
+            </button>
+            <button class="deleteBtn" aria-label="Delete">
+                <i class="fa fa-trash"></i>
+            </button>
+              
+            <button class="viewBtn" aria-label="view">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                    <g clip-path="url(#clip0_1345_2016)">
+                        <path d="M1.90326 12.7002C1.90326 12.7002 5.90326 4.7002 12.9033 4.7002C19.9033 4.7002 23.9033 12.7002 23.9033 12.7002C23.9033 12.7002 19.9033 20.7002 12.9033 20.7002C5.90326 20.7002 1.90326 12.7002 1.90326 12.7002Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12.9033 15.7002C14.5601 15.7002 15.9033 14.357 15.9033 12.7002C15.9033 11.0433 14.5601 9.7002 12.9033 9.7002C11.2464 9.7002 9.90326 11.0433 9.90326 12.7002C9.90326 14.357 11.2464 15.7002 12.9033 15.7002Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_1345_2016">
+                        <rect width="24" height="35" fill="white" transform="translate(0.903259 0.700195)"/>
+                        </clipPath>
+                    </defs>
+                    </svg>
+            </button>
+
+            </div>
+            </div>
+            
+            <div class = "container1">
+            <div>
+            <label for="Contact">Contact</label><br>
+            <input type="tel" class="contact" name="contact" placeholder="07X XXX XXXX" required><br>
+            <input type="tel" class="contact" name="contact" placeholder="07X XXX XXXX" required><br>
+            <input type="tel" class="contact" name="contact" placeholder="07X XXX XXXX" required>
+            </div>
+
+            <div>
+            <label for="epfNo">EPF Number</label><br>
+            <input type="text" class="epfNo" name="epfNo" placeholder="XXXXXX" required><br>
+            
+            <label for="gender">Gender</label><br>
+            <select class="gender" name="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select><br>
+            </div>
+            </div>
+        </form>
+    </div>
+    
+
+<!--Location Info division-->
+<div class="locationInfo">
+    <h5><svg xmlns="http://www.w3.org/2000/svg" width="21" height="6" viewBox="0 0 21 6" fill="none">
+  <path d="M3 3H18.3065" stroke="#F9A550" stroke-width="4.83363" stroke-linecap="round"/>
+</svg> Location Info</h5>
+    <form action="submit_location.php" method="post">
+        <label for="address">Address</label><br>
+        <input type="text" class="address" name="address" placeholder="No" required><br>
+        <input type="text" class="address" name="address" placeholder="Street" required><br>
+        <input type="text" class="address" name="address" placeholder="Town"><br>
+        <input type="text" class="address" name="address" placeholder="Province"><br>
+        <input type="text" class="address" name="address" placeholder="Postal Code"><br>
+
+        <h5><svg xmlns="http://www.w3.org/2000/svg" width="21" height="6" viewBox="0 0 21 6" fill="none">
+  <path d="M3 3H18.3065" stroke="#F9A550" stroke-width="4.83363" stroke-linecap="round"/>
+</svg> System Logins</h5>
+        <label for="userName">User Name</label><br>
+        <input type="text" class="userName" name="userName" placeholder="Kumara1234" required><br>
+
+        <label for="password">Password</label><br>
+        <input type="text" class="password" name="password" placeholder="********"><br>
+        
+        <button type="reset" class="resetBtn">Reset
+            <i class = "fa fa-recycle"></i>
+        </button>
+    </form>
+</div>
+
+<!--Banking Info division-->
+<div class="bankingInfo">
+    <h5><svg xmlns="http://www.w3.org/2000/svg" width="21" height="6" viewBox="0 0 21 6" fill="none">
+  <path d="M3 3H18.3065" stroke="#F9A550" stroke-width="4.83363" stroke-linecap="round"/>
+</svg> Banking Info</h5>
+    <form action="" method="post">
+        <label for="bank_details">Bank Details</label>
+        <input type="text" class="bankName" name="bank_Name" placeholder="Bank Name" required><br>
+        <input type="text" class="accNo" name="accNo" placeholder="Account No" required><br>
+        <input type="text" class="bankBranch" name="bank_Branch" placeholder="Bank Branch"><br>
+
+        <label for="detailsProof">Bank Details Proof</label>
+            <button class="uploadBtn" aria-label="Upload">
+                <i class="fas fa-upload"></i>
+            </button>
+            <button class="deleteBtn" aria-label="Delete">
+                <i class="fa fa-trash"></i>
+            </button>
+            <button class="viewBtn" aria-label="view">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                    <g clip-path="url(#clip0_1345_2016)">
+                        <path d="M1.90326 12.7002C1.90326 12.7002 5.90326 4.7002 12.9033 4.7002C19.9033 4.7002 23.9033 12.7002 23.9033 12.7002C23.9033 12.7002 19.9033 20.7002 12.9033 20.7002C5.90326 20.7002 1.90326 12.7002 1.90326 12.7002Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12.9033 15.7002C14.5601 15.7002 15.9033 14.357 15.9033 12.7002C15.9033 11.0433 14.5601 9.7002 12.9033 9.7002C11.2464 9.7002 9.90326 11.0433 9.90326 12.7002C9.90326 14.357 11.2464 15.7002 12.9033 15.7002Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_1345_2016">
+                        <rect width="24" height="35" fill="white" transform="translate(0.903259 0.700195)"/>
+                        </clipPath>
+                    </defs>
+                    </svg>
+            </button>
+        
+        <h5><svg xmlns="http://www.w3.org/2000/svg" width="21" height="6" viewBox="0 0 21 6" fill="none">
+  <path d="M3 3H18.3065" stroke="#F9A550" stroke-width="4.83363" stroke-linecap="round"/>
+</svg> Assign Roles</h5>
+         <label for="role">Role</label>
+        <input type="text" class="role" name="role" placeholder="Manager" required><br>
+
+
+        <button type="submit" class="updateBtn">Update Member</button>
+    </form>
+</div>
+</div>
+
+</body>
+</html>

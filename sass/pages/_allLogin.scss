@@ -1,0 +1,122 @@
+.login-container {
+  display: flex;
+  height: 100vh;
+}
+
+.left-panel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: --white;
+  padding: 2rem;
+}
+
+.image-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.image-wrapper img:first-child {
+  width: 5rem;
+  height: auto;
+}
+
+.image-wrapper img:nth-child(2) {
+  width: 23rem;
+  height: auto;
+}
+
+.quote {
+  position: absolute;
+  top: 20%;
+  left: 2rem;
+  right: 2rem;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: --white;
+  text-align: left;
+}
+
+.right-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: --white;
+  padding: 2rem;
+}
+
+.logo img {
+  height: 2rem;
+}
+
+h3 {
+  margin: 0rem 0 1rem 0;
+  text-align: center;
+}
+
+form {
+  width: 100%;
+  max-width: 35rem;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 0.2rem;
+  font-weight: 500;
+}
+
+input {
+  margin-bottom: 1rem;
+  padding: 0.4rem;
+  border: 0.1rem solid lightgray;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+button {
+  background:  linear-gradient(to right, --color-green-01, --color-green-02);;
+  color: --white;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.links {
+  margin-top: 0.8rem;
+  text-align: left;
+  font-size: 0.8rem;
+}
+
+.links a {
+  color: --font-linear-secondary-color;
+  text-decoration: none;
+}
+
+.signup-btn {
+  background: lightyellow;
+  border: 1px solid --color-yellow-01;
+  color: --color-yellow-01;
+  padding: 0.3rem 0.8rem;
+  border-radius: 1.2rem;
+  margin-left: 0.2rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.footer {
+  margin-top: 2.5rem;
+  display: flex;
+  gap: 1.2rem;
+  font-size: 0.8rem;
+  color: gray;
+  justify-content: center;
+}

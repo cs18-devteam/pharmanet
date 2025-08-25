@@ -1584,21 +1584,19 @@ body.dark .toggle-switch {
   }
 }
 
-.main-container {
+.SearchMedi .main-container {
   display: flex;
   padding: 1rem 2rem;
   font-family: var(--secondary-font);
 }
-
-.left-panel {
+.SearchMedi .left-panel {
   flex: 1;
   padding-right: 1rem;
   border-right: 0.1rem solid #eeeeee;
   border-top: 0.1rem solid #eeeeee;
   padding: 2rem;
 }
-
-.tab-1 {
+.SearchMedi .tab-1 {
   display: flex;
   gap: 2rem;
   font-weight: 400;
@@ -1606,10 +1604,10 @@ body.dark .toggle-switch {
   margin: 2rem 4rem;
   color: var(--color-blue-02);
 }
-.tab-1 .active {
+.SearchMedi .tab-1 .active {
   color: black;
 }
-.tab-1 .medicine-available-dot {
+.SearchMedi .tab-1 .medicine-available-dot {
   position: relative;
   top: 0.7rem;
   left: 1.5rem;
@@ -1620,31 +1618,26 @@ body.dark .toggle-switch {
   border-radius: 50%;
   margin-right: 0.2rem;
 }
-
-.tab-2 {
+.SearchMedi .tab-2 {
   display: flex;
   justify-content: space-between;
   font-size: 2rem;
   margin: 2rem 2rem 0rem 0rem;
 }
-.tab-2 .results-count {
+.SearchMedi .tab-2 .results-count {
   font-weight: 400;
 }
-
-.tabs span.active {
+.SearchMedi .tabs span.active {
   border-bottom: 2px solid #004e89;
   padding-bottom: 5px;
 }
-
-.results-count {
+.SearchMedi .results-count {
   margin-bottom: 1rem;
 }
-
-.result-list {
+.SearchMedi .result-list {
   display: block;
 }
-
-.results-list .result-card {
+.SearchMedi .results-list .result-card {
   background-color: white;
   border-radius: 1rem;
   padding: 1rem;
@@ -1654,27 +1647,26 @@ body.dark .toggle-switch {
   align-items: center;
   border: 0.2rem solid #eeeeee;
 }
-.results-list .result-card .message-btn {
+.SearchMedi .results-list .result-card .message-btn {
   font-size: 1.4rem;
   position: relative;
   background-color: #eeeeee;
 }
-.results-list .result-card .message-btn .img {
+.SearchMedi .results-list .result-card .message-btn .img {
   position: absolute;
   top: 1rem;
   left: 1rem;
 }
-.results-list .result-card .drug-name {
+.SearchMedi .results-list .result-card .drug-name {
   font-size: 2rem;
   color: var(--color-blue-01);
   font-weight: 500;
 }
-.results-list .result-card .pill-tag, .results-list .result-card p {
+.SearchMedi .results-list .result-card .pill-tag, .SearchMedi .results-list .result-card p {
   font-size: 1.4rem;
   display: flex;
 }
-
-.pill-tag {
+.SearchMedi .pill-tag {
   color: orange;
   padding: 2px 8px;
   border-radius: 10px;
@@ -1683,12 +1675,10 @@ body.dark .toggle-switch {
   font-weight: 400;
   border: 0.1rem solid orange;
 }
-
-.status {
+.SearchMedi .status {
   text-align: right;
 }
-
-.open-dot {
+.SearchMedi .open-dot {
   height: 10px;
   width: 10px;
   background-color: #2ecc71;
@@ -1696,8 +1686,7 @@ body.dark .toggle-switch {
   border-radius: 50%;
   margin-right: 4px;
 }
-
-.message-btn {
+.SearchMedi .message-btn {
   margin-top: 5px;
   padding: 0.3rem 0.6rem;
   background-color: #eaf2ff;
@@ -1707,22 +1696,19 @@ body.dark .toggle-switch {
   font-size: 0.8rem;
   cursor: pointer;
 }
-
-.right-panel {
+.SearchMedi .right-panel {
   flex: 1;
   padding: 2rem;
 }
-
-.map-container {
+.SearchMedi .map-container {
   position: relative;
   height: 300px;
 }
-.map-container .iframe {
+.SearchMedi .map-container .iframe {
   border-radius: 10%;
   margin-top: 0.5rem;
 }
-
-.radius-btn {
+.SearchMedi .radius-btn {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -1732,35 +1718,32 @@ body.dark .toggle-switch {
   border-radius: 1rem;
   cursor: pointer;
 }
-
-.availability-informations {
+.SearchMedi .availability-informations {
   display: flex;
   justify-content: space-between;
 }
-.availability-informations .availabilities-discription {
+.SearchMedi .availability-informations .availabilities-discription {
   width: 45rem;
 }
-.availability-informations .availabilities-discription .h3 {
+.SearchMedi .availability-informations .availabilities-discription .h3 {
   margin: 0.2rem;
   background: linear-gradient(to right, var(--font-linear-primary-color), var(--font-linear-secondary-color));
   background-clip: text;
   -webkit-background-clip: text;
 }
-.availability-informations .availabilities-discription .p {
+.SearchMedi .availability-informations .availabilities-discription .p {
   font-size: 1.6rem;
   margin: 1rem;
 }
-.availability-informations .result-count-location {
+.SearchMedi .availability-informations .result-count-location {
   font-size: 1.6rem;
 }
-
-.similar-medicines {
+.SearchMedi .similar-medicines {
   display: flex;
   margin-top: 1rem;
   gap: 2rem;
 }
-
-.similar-medicine-card {
+.SearchMedi .similar-medicine-card {
   background-color: white;
   border-radius: 1rem;
   padding: 1rem;
@@ -1770,12 +1753,198 @@ body.dark .toggle-switch {
   align-items: center;
   border: 0.2rem solid #eeeeee;
 }
-.similar-medicine-card .drug-name {
+.SearchMedi .similar-medicine-card .drug-name {
   font-size: 2rem;
   color: var(--color-blue-01);
   font-weight: 500;
 }
-.similar-medicine-card .pill-tag, .similar-medicine-card p {
+.SearchMedi .similar-medicine-card .pill-tag, .SearchMedi .similar-medicine-card p {
+  font-size: 1.4rem;
+  display: flex;
+}
+
+.SearchPharmacy .main-container {
+  display: flex;
+  padding: 1rem 2rem;
+  font-family: var(--secondary-font);
+}
+.SearchPharmacy .left-panel {
+  flex: 1;
+  padding-right: 1rem;
+  border-right: 0.1rem solid #eeeeee;
+  border-top: 0.1rem solid #eeeeee;
+  padding: 2rem;
+}
+.SearchPharmacy .tab-1 {
+  display: flex;
+  gap: 2rem;
+  font-weight: 400;
+  font-size: 2rem;
+  margin: 2rem 4rem;
+  color: black;
+}
+.SearchPharmacy .tab-1 .active {
+  color: var(--color-blue-02);
+}
+.SearchPharmacy .tab-1 .medicine-available-dot {
+  position: relative;
+  left: -1rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  background-color: orange;
+  display: inline-block;
+  border-radius: 50%;
+  margin-right: 0.2rem;
+}
+.SearchPharmacy .tab-2 {
+  display: flex;
+  justify-content: space-between;
+  font-size: 2rem;
+  margin: 2rem 2rem 0rem 0rem;
+}
+.SearchPharmacy .tab-2 .results-count {
+  font-weight: 400;
+}
+.SearchPharmacy .tabs span.active {
+  border-bottom: 2px solid #004e89;
+  padding-bottom: 5px;
+}
+.SearchPharmacy .results-count {
+  margin-bottom: 1rem;
+}
+.SearchPharmacy .result-list {
+  display: block;
+}
+.SearchPharmacy .results-list .result-card {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 0.2rem solid #eeeeee;
+}
+.SearchPharmacy .results-list .result-card .message-btn {
+  font-size: 1.4rem;
+  position: relative;
+  background-color: #eeeeee;
+}
+.SearchPharmacy .results-list .result-card .message-btn .img {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+.SearchPharmacy .results-list .result-card .pharmacy-name {
+  font-size: 2rem;
+  color: var(--color-blue-01);
+  font-weight: 500;
+}
+.SearchPharmacy .results-list .result-card .pill-tag, .SearchPharmacy .results-list .result-card p {
+  font-size: 1.4rem;
+  display: flex;
+}
+.SearchPharmacy .pill-tag {
+  color: orange;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 8px;
+  font-size: 1.4rem;
+  font-weight: 400;
+  border: 0.1rem solid orange;
+}
+.SearchPharmacy .status {
+  text-align: right;
+}
+.SearchPharmacy .open-dot {
+  height: 10px;
+  width: 10px;
+  background-color: #2ecc71;
+  display: inline-block;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+.SearchPharmacy .status .close-dot {
+  height: 10px;
+  width: 10px;
+  background-color: red;
+  display: inline-block;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+.SearchPharmacy .message-btn {
+  margin-top: 5px;
+  padding: 0.3rem 0.6rem;
+  background-color: #eaf2ff;
+  color: #004e89;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.SearchPharmacy .right-panel {
+  flex: 1;
+  padding: 2rem;
+}
+.SearchPharmacy .map-container {
+  position: relative;
+  height: 300px;
+}
+.SearchPharmacy .map-container .iframe {
+  border-radius: 10%;
+  margin-top: 0.5rem;
+}
+.SearchPharmacy .radius-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: white;
+  border: 1px solid #eeeeee;
+  padding: 0.4rem 0.8rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+.SearchPharmacy .availability-informations {
+  display: flex;
+  justify-content: space-between;
+}
+.SearchPharmacy .availability-informations .availabilities-discription {
+  width: 45rem;
+}
+.SearchPharmacy .availability-informations .availabilities-discription .h3 {
+  margin: 0.2rem;
+  background: linear-gradient(to right, var(--font-linear-primary-color), var(--font-linear-secondary-color));
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+.SearchPharmacy .availability-informations .availabilities-discription .p {
+  font-size: 1.6rem;
+  margin: 1rem;
+}
+.SearchPharmacy .availability-informations .result-count-location {
+  font-size: 1.6rem;
+}
+.SearchPharmacy .similar-medicines {
+  display: flex;
+  margin-top: 1rem;
+  gap: 2rem;
+}
+.SearchPharmacy .similar-medicine-card {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 0.2rem solid #eeeeee;
+}
+.SearchPharmacy .similar-medicine-card .drug-name {
+  font-size: 2rem;
+  color: var(--color-blue-01);
+  font-weight: 500;
+}
+.SearchPharmacy .similar-medicine-card .pill-tag, .SearchPharmacy .similar-medicine-card p {
   font-size: 1.4rem;
   display: flex;
 }

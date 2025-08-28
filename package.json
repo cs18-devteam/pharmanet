@@ -25,7 +25,7 @@
   },
   "scripts": {
     "dev-server": "live-server",
-    "compile-sass": "sass ./sass/main.scss ./css/style.css -w",
+    "compile-sass": "sass ./sass/main.scss ./frontend/css/style.css -w",
     "compile-sass-final": "sass --style=compressed ./sass/main.scss ./css/style.css",
     "dev": "npm-run-all --parallel dev-server compile-sass",
     "build": "npm-run-all  compile-sass-final"

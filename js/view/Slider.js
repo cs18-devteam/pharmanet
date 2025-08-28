@@ -1,0 +1,11 @@
+class Slider{
+    constructor(){
+
+    }
+
+    init(){
+        
+    }
+
+}
+

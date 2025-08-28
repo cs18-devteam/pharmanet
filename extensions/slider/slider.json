@@ -1,0 +1,31 @@
+{
+    "version": 1.1,
+    "tags": [
+        {
+            "name": "slide-container",
+            "description": "Slider root. Contains <slide-set> and optional <slide-next>/<slide-previous> controls.",
+            "attributes": [
+                {
+                    "name": "active",
+                    "description": "Optional. Zero-based index of the initially active slide. Defaults to 0."
+                }
+            ]
+        },
+        {
+            "name": "slide-set",
+            "description": "Wrapper for one or more <slide-window> items."
+        },
+        {
+            "name": "slide-window",
+            "description": "A single slide pane. Any HTML content can go here."
+        },
+        {
+            "name": "slide-next",
+            "description": "Moves the slider to the next slide."
+        },
+        {
+            "name": "slide-previous",
+            "description": "Moves the slider to the previous slide."
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "pharmanet-popup",
+  "displayName": "Custom Web Components HTML Data",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "chathura priyashan",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "contributes": {
+    "html": {
+      "customData": [
+        "./popup.json"
+      ]
+    }
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.6.0"
+  }
+}

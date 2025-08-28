@@ -1,0 +1,28 @@
+{
+    "Popup Window": {
+        "prefix": "popup-window",
+        "body": [
+            "<popup-open for=\"${1:popup}\">open</popup-open>",
+            "",
+            "<popup-window id=\"${1:popup}\" status=\"${2|open,closed|}\">",
+            "  <popup-close for=\"${1:popup}\" class=\"btn-close\">close ×</popup-close>",
+            "  ${3:<!-- content -->}",
+            "</popup-window>"
+        ],
+        "description": "Insert a popup open trigger + window + close."
+    },
+    "Slide Container": {
+        "prefix": "slide-container",
+        "body": [
+            "<slide-container active=\"${1:0}\">",
+            "  <slide-set>",
+            "    <slide-window>${2:Slide 1}</slide-window>",
+            "    <slide-window>${3:Slide 2}</slide-window>",
+            "  </slide-set>",
+            "  <slide-next>Next</slide-next>",
+            "  <slide-previous>Previous</slide-previous>",
+            "</slide-container>"
+        ],
+        "description": "Insert a basic slide container skeleton."
+    }
+}

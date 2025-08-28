@@ -1972,4 +1972,262 @@ body.dark .toggle-switch {
   background: linear-gradient(to right, var(--color-yellow-01), var(--color-yellow-02));
 }
 
+.userProfile .borderContainer {
+  padding: 1.6rem 3.2rem;
+  height: 150vh;
+  width: 100vw;
+}
+.userProfile .borderContainer .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.userProfile .borderContainer .header .logo img {
+  height: 5rem;
+}
+.userProfile .borderContainer .header .search-bar {
+  height: 3.5rem;
+  display: flex;
+  border: 0.1rem solid var(--color-blue-01);
+  border-radius: 0.5rem;
+  align-items: center;
+  overflow: hidden;
+}
+.userProfile .borderContainer .header .search-bar img {
+  height: 2rem;
+  width: 2rem;
+  margin: 0 0.8rem;
+}
+.userProfile .borderContainer .header .search-bar input {
+  height: 3.5rem;
+  height: 100%;
+  flex: 1;
+  border: none;
+}
+.userProfile .borderContainer .header .search-bar button {
+  height: 100%;
+  background-color: var(--color-blue-01);
+  color: var(--white);
+  cursor: pointer;
+  border: none;
+  padding: 0 2rem;
+}
+.userProfile .borderContainer .header .services {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.userProfile .borderContainer .header .services h4 {
+  margin: 0;
+}
+.userProfile .borderContainer .header .services img {
+  height: 2rem;
+  width: 2rem;
+}
+.userProfile .borderContainer .header .user-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.userProfile .borderContainer .header .user-profile .user {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.userProfile .borderContainer .header .user-profile .user span {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+.userProfile .borderContainer .header .user-profile .user p {
+  font-size: 1.2rem;
+  color: gray;
+}
+.userProfile .borderContainer .header .user-profile .profile img {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+}
+.userProfile .profile-container {
+  width: 100%;
+  margin: 2rem auto;
+  background: var(--white);
+}
+.userProfile .profile-container .header-banner {
+  width: 100%;
+  height: 12rem;
+  background: linear-gradient(90deg, var(--color-green-01), var(--color-green-02));
+  position: relative;
+  border-radius: 1rem;
+  z-index: 1;
+}
+.userProfile .profile-container .header-banner .change-photo {
+  position: absolute;
+  top: 6.8rem;
+  right: 2.2rem;
+  color: var(--white);
+  background: none;
+  border-color: var(--white);
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  font-size: 1.6rem;
+}
+.userProfile .profile-container .header-banner .change-photo:hover {
+  background: var(--color-blue-01);
+}
+.userProfile .profile-container .profile-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  margin-top: -3rem;
+  z-index: 2;
+  position: relative;
+}
+.userProfile .profile-container .profile-section .profile-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 5rem;
+}
+.userProfile .profile-container .profile-section .profile-left .profile-pic {
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 3;
+  position: relative;
+}
+.userProfile .profile-container .profile-section .profile-left .user-info .username {
+  margin: 0 auto;
+  font-size: 2.8rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--color-green-01), var(--color-green-02));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+.userProfile .profile-container .profile-section .profile-left .user-info .uid {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: gray;
+}
+.userProfile .profile-container .profile-section .orders-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-blue-01);
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+.userProfile .profile-container .profile-section .orders-link:hover {
+  text-decoration: underline;
+}
+.userProfile .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+}
+.userProfile .card1, .userProfile .card2 {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 0.1rem solid lightgray;
+  display: flex;
+  flex-direction: column;
+}
+.userProfile .card1 h3, .userProfile .card2 h3 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: var(--color-yellow-01);
+}
+.userProfile .card1 p, .userProfile .card2 p {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0.2rem 0;
+}
+.userProfile .card1 label, .userProfile .card2 label {
+  display: block;
+  margin: 0.5rem 0 0.2rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+.userProfile .card1 input, .userProfile .card2 input {
+  width: 100%;
+  font-size: 1.5rem;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  border: 0.1rem solid lightgray;
+  border-radius: 0.5rem;
+  background-color: rgb(238, 236, 236);
+}
+.userProfile .card1 a, .userProfile .card2 a {
+  text-decoration: none;
+  color: #1A73E8;
+  margin-top: 2rem;
+  margin-bottom: 0;
+}
+.userProfile .card1 a:hover, .userProfile .card2 a:hover {
+  text-decoration: underline;
+}
+.userProfile .card1 button, .userProfile .card2 button {
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  align-self: flex-end;
+  width: max-content;
+}
+.userProfile .card1 button img, .userProfile .card2 button img {
+  width: 1.7rem;
+  height: 1.7rem;
+  margin-left: 0.5rem;
+}
+.userProfile .card1 .edit-button, .userProfile .card2 .edit-button {
+  margin-top: 2rem;
+  background-color: var(--color-green-01);
+  padding: 1rem 4rem;
+}
+.userProfile .card1 .changePassword-button, .userProfile .card2 .changePassword-button {
+  background-color: var(--color-yellow-01);
+  padding: 1rem 1.5rem;
+  margin-top: 0;
+}
+.userProfile .card1 .delete-button, .userProfile .card2 .delete-button {
+  margin-top: 2rem;
+  background-color: #FB2C21;
+  padding: 1rem 2rem;
+}
+.userProfile .card1 .warning, .userProfile .card2 .warning {
+  background: rgba(249, 80, 80, 0.2);
+  border: 1px solid #d90429;
+  color: #d90429;
+  padding: 0.8rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+}
+.userProfile .card2:last-child {
+  grid-column: 2;
+}
+.userProfile .card1 .name-row {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+.userProfile .card1 .name-row .field {
+  flex: 1;
+}
+.userProfile .card1 .name-row .field input {
+  width: 100%;
+}
+
 /*# sourceMappingURL=style.css.map */

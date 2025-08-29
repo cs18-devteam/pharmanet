@@ -1,18 +1,14 @@
-const Database = require('./database/Database'); 
-const App = require("./app");
-const userRouter = require('./services/user-service/routes/userRoutes');
-
-// add environment variables from .env file
+const App = require("./App");
+const Database = require("./database/Database");
 const env = require('./common/middlewares/env');
-env();
+const userRouter= require("./services/user-service/routes/userRouter");
 
-// get database connection
 const db = Database.getInstance();
 const app = App.getInstance();
+env();
 
-//set public as frontend directory
-app.public("./frontend");
+app.public('./frontend');
 
-app.route("/users" , userRouter);
+app.route('/users' , userRouter);
 
 app.run();

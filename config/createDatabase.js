@@ -1,8 +1,8 @@
 const db = require("../database/Database");
-db.query("create database chathura" , (error)=>{
+db.query(`create database ${process.env.DATABASE_NAME}` , (error)=>{
     if(error){
         console.log(error);
     }else{
-        console.log("chathura : database created successfully");
+        console.log(`${process.env.DATABASE_NAME} : database created successfully`);
     }
 });

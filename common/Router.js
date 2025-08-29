@@ -1,7 +1,5 @@
 module.exports = class Router{
-    constructor(path){
-
-    }
+    constructor(){}
 
     #call(callback){
         callback(req , res);
@@ -17,7 +15,6 @@ module.exports = class Router{
 
     patch(callback){
         this.patchHandler = callback;
-
     }
 
     delete(callback){

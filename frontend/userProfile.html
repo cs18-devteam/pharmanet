@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="userProfile">
+    <div class="borderContainer">
+        <div class="header">
+            <div class="logo">
+                <img src="/public/userProfile/logo.svg" alt="logo">
+            </div>
+            <div class="search-bar">
+                <img src="/public/userProfile/search.svg" alt="seach">
+                <input type="text" placeholder="Aspirin">
+                <button>Find</button>
+            </div>
+            <div class="services">
+                <h4>Services</h4>
+                <img src="/public/userProfile/Keyboard arrow down.svg" alt="arrow">
+            </div>
+            <div id = "toggle-placeholder"> 
+            </div>
+            <div id = "toggle-placeholder"></div>
+            <div class ="user-profile">
+                <div class="user">
+                    <span>Chathura Priyashan</span>
+                    <p>Welcome</p>
+                 </div>
+                <div class="profile">
+                    <img src="/public/userProfile/Ellipse 42.svg" alt="profile">
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-container">
+            <div class="header-banner">
+                <button class="change-photo"><img src="/public/userProfile/upload.svg" alt="upload">Change Photo</button>
+            </div>
+            <div class="profile-section">
+                <div class="profile-left">
+                    <img src="/public/userProfile/Ellipse 42.svg" alt="Profile" class="profile-pic">
+                    <div class="user-info">
+                        <h2 class="username">Chathura Priyashan</h2>
+                        <p class="uid">UID 2234567879</p>
+
+                    </div>
+                </div>
+                <a href="#" class="orders-link"><img src="/public/userProfile/shopping-bag.svg" alt="shopping">My Orders</a>
+            </div>
+        </div>
+        
+        <div class="container">
+
+            <div class="card1">
+                <h3>Your Profile Info</h3>
+                <div class="name-row">
+                    <div class="field">
+                        <label>First Name</label>
+                        <input type="text" placeholder="Chathura" disabled>
+                    </div>
+                    <div class="field">
+                        <label>Last Name</label>
+                        <input type="text" placeholder="Priyashan" disabled>
+                    </div>
+                </div>
+                <label>Email</label>
+                <input type="email" placeholder="Chathurapriyashan.Personal@gmail.com" disabled>
+                <label>Birthday</label>
+                <input type="text" placeholder="2003 July 11" disabled>
+                <button class="edit-button">Edit</button>
+            </div>
+
+            <div class="card2">
+                <h3>Change Password</h3>
+                <label>Current Password</label>
+                <input type="password" placeholder="XXXXXXXX">
+                <label>New Password</label>
+                <input type="password" placeholder="........">
+                <label>Confirm Password</label>
+                <input type="password">
+                <a href="#">Forgot Password?</a>
+                <button class="changePassword-button">Change Password</button>
+            </div>
+
+            <div class="card2 full-width">
+                <h3 class="delete-heading">Delete Your Account</h3>
+                <div class="warning">
+                    <p>Deleting Your Account Is Permanent And Cannot Be Undone.</p>
+                    <p>All Related Data May Be Lost Or Become Inaccessible.</p>
+                    <p>Please Make Sure You Really Want To Proceed.</p>
+                </div>
+                <label>Password</label>
+                <input type="password" placeholder="XXXXXXXX">
+                <button class="delete-button">Delete<img src="/public/userProfile/trash-2.svg" alt="delete"></button>
+            </div>
+        </div>
+    <div>
+</body>
+</html>

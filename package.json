@@ -24,15 +24,26 @@
     "test": "test"
   },
   "scripts": {
-    "dev-server": "live-server",
-    "compile-sass": "sass ./sass/main.scss ./css/style.css -w",
+    "dev-server": "live-server ./frontend/",
+    "node-server": "nodemon server.js",
+    "compile-sass": "sass ./sass/main.scss ./frontend/css/style.css -w",
     "compile-sass-final": "sass --style=compressed ./sass/main.scss ./css/style.css",
-    "dev": "npm-run-all --parallel dev-server compile-sass",
-    "build": "npm-run-all compile-sass-final"
+    "preview": "npm-run-all --parallel dev-server compile-sass",
+    "dev": "npm-run-all --parallel node-server",
+    "build": "npm-run-all  compile-sass-final",
+    "prod" : "node --NODE_ENV=production ./server.js",
+
+    "create-database" : "node ./config/createDatabase.js",
+    "drop-database" : "node ./config/dropDatabase.js",
+    "create-medidata" : "node ./config/data/createMediData.js"
   },
   "devDependencies": {
     "live-server": "^1.2.2",
+    "nodemon": "^3.1.10",
     "npm-run-all": "^4.1.5",
     "sass": "^1.90.0"
+  },
+  "dependencies": {
+    "mysql2": "^3.14.3"
   }
 }

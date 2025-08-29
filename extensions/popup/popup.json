@@ -1,0 +1,43 @@
+{
+    "version": 1.1,
+    "tags": [
+        {
+            "name": "popup-open",
+            "description": "Trigger element that opens a target <popup-window> by id.",
+            "attributes": [
+                {
+                    "name": "for",
+                    "description": "ID of the target <popup-window> to open."
+                }
+            ]
+        },
+        {
+            "name": "popup-window",
+            "description": "create popup window",
+            "attributes": [
+                {
+                    "name": "for",
+                    "description": "ID of the target <popup-window> to close."
+                },
+                {
+                    "name": "class",
+                    "description": "Optional class for styling."
+                }
+            ]
+        },
+        {
+            "name": "popup-close",
+            "description": "Control to close a target <popup-window> by id.",
+            "attributes": [
+                {
+                    "name": "for",
+                    "description": "ID of the target <popup-window> to close."
+                },
+                {
+                    "name": "class",
+                    "description": "Optional class for styling."
+                }
+            ]
+        }
+    ]
+}

@@ -1,16 +1,15 @@
 .verify_number{
-  .wrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
+  
   /* Verification Card */
   .verify-mobile-number-container {
     border:none;
     width:51rem ;
     height:38.5rem;
     font-family: var(--primary-font);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
   }
 

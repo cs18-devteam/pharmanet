@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Search Pharmacies</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body class="SearchPharmacy">
+
+    <!--header section-->
+  <header class="top-bar">
+    <nav>
+        <div class="logo">
+            <img class="logopic" src="/public/logo/logo.svg" alt="logo">
+            <p class="logoname">PharmaNet</p>
+        </div>
+
+
+        <div class="search">
+            <form action="POST">
+                <input type="search" placeholder="Amanya Pharmacy">
+                <input type="submit" value="Find">
+            </form>
+        </div>
+        <div class="dropdown">
+            <a href="#">Services</a>
+                <ul class="navbar">
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+        </div>
+
+        <div id="toggle-placeholder"></div>
+        
+       <div class="profile">
+            <div class="profileName">
+               <a href="">Chamani Niroshani</a>
+                <div class="welcome">Welcome</div>
+            </div>
+            
+            <div class="profilePic"><a href="#"><img src="/public/logo/profile_pic.jpg"></a>
+            </div>
+        </div>
+
+
+    </nav>
+  </header>
+
+  <!--main content-->
+
+  <main class="main-container">
+
+    <!--left panel-->
+    <section class="left-panel">
+      <div class="tab-1">
+        <span class="active"><span class="medicine-available-dot"> </span>Pharmacies</span>
+        <span>Medicines</span>
+      </div>
+      <div class="tab-2">
+        <span class="results-count">46 Results</span>
+        <span class="filter-icon"><img src="/public/images/filter.svg">
+        Open</span>
+      </div>
+      
+      <div class="results-list">
+        <!-- Result cards -->
+        <div class="result-card">
+          <img src="/public/pharmacy picture/search-pharmacy-1.svg">
+          <div>
+            <p class="pharmacy-name">Amanya Pharmacy Center</p>
+            <p>Healthguard<br/>Darmapala mawatha</p>
+          </div>
+          <div class="status">
+            <span class="open-dot"></span> Open
+          </div>
+              <button class="message-btn">Message<img src="/public/images/message.svg"></button>
+        </div>
+
+         <div class="result-card">
+            <img src="/public/pharmacy picture/search-pharmacy-2.svg">
+          <div>
+            <p class="pharmacy-name">Amanya Pharmacy Center</p>
+            <p>Dharmapala Mawatha</p>
+          </div>
+          <div class="status">
+            <span class="open-dot"></span> Open
+          </div>
+              <button class="message-btn">Message<img src="/public/images/message.svg"></button>
+        </div>
+
+         <div class="result-card">
+            <img src="/public/pharmacy picture/search-pharmacy-3.svg">
+          <div>
+            <p class="pharmacy-name">Amanya Pharmacy Center</p>
+            <p>Dharmapala Mawatha, Colombo</p>
+          </div>
+          <div class="status">
+            <span class="open-dot"></span> Open
+          </div>
+              <button class="message-btn">Message<img src="/public/images/message.svg"></button>
+        </div>
+
+         <div class="result-card">
+            <img src="/public/pharmacy picture/search-pharmacy-4.svg">
+          <div>
+            <p class="pharmacy-name">Amanya Pharmacy Center</p>
+            <p>Dharmapala Mawatha</p>
+          </div>
+          <div class="status">
+            <span class="open-dot"></span> Open
+          </div>
+              <button class="message-btn">Message<img src="/public/images/message.svg"></button>
+        </div>
+
+         <div class="result-card">
+            <img src="/public/pharmacy picture/search-pharmcy-5.svg">
+          <div>
+            <p class="pharmacy-name">Amanya Pharmacy Center</p>
+            <p>Colombo</p>
+          </div>
+          <div class="status">
+            <span class="close-dot"></span> closed
+          </div>
+            <button class="message-btn">Message<img src="/public/images/message.svg"></button>
+        </div>
+
+        
+      </div>
+    </section>
+
+
+
+    <section class="right-panel">
+      <div class="map-container">
+        <iframe
+          src="https://maps.google.com/maps?q=Colombo&z=13&output=embed"
+          width="100%"
+          height="300"
+          frameborder="0"
+          style="border:0;"
+          allowfullscreen=""
+        ></iframe>
+        <button class="radius-btn">Search in 3Km Radius</button>
+      </div>
+
+      <div class="availability-informations">
+        <div class="availabilities-discription">
+        <h3>Check Availability on the Map</h3>
+        <p>Easily locate nearby pharmacies that have your required medicine in stock.</p>
+      </div>
+        <div class="result-count-location">46 <span>location</span></div>
+      </div>
+       <h4>Similar Medicines</h4>
+      <div class="similar-medicines">
+
+        <div class="similar-medicine-card">
+          <img src="/public/images/result-med-image.svg">
+          <div>
+            <p class="drug-name">Aspirin C<span class="pill-tag">Prescription</span></p>
+            <p>Union Chemistis</p><p>Union Place</p>
+          </div>
+        </div>
+
+        <div class="similar-medicine-card">
+          <img src="/public/images/result-med-image.svg">
+          <div>
+            <p class="drug-name">Aspirin C<span class="pill-tag">Prescription</span></p>
+            <p>Union Chemistis</p><p>Union Place</p>
+          </div>
+        </div>
+  
+      </div>
+    </section>
+  </main>
+</body>
+</html>

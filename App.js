@@ -1,9 +1,12 @@
 const http = require('node:http');
+const path = require('path');
+const fs = require('fs');
 
 
 module.exports = class App{
     static #app = {};
     static server = undefined;
+    #files = [];
 
     constructor({
         port = "8080",
@@ -30,13 +33,26 @@ module.exports = class App{
         })
     }
 
+    public(directory){
+        const directoryPath = path.join(__dirname , directory);
+        const fileNames = fs.readdirSync(directoryPath , {encoding:'utf-8' , recursive: true});
+        fileNames.forEach(file=>{
+            this.#files.push(path.join(directory  , file));
+        });   
+        console.log(this.#files);     
+
+    }
+
+
+
+
     static createApp({port , hostname}){
         App.#app = new App({port , hostname});
     }
 
 
-    static routes(){
-
+    router(){
+        return new Router()
     }
 
 

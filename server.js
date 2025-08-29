@@ -1,6 +1,6 @@
 const http = require('node:http');
 const Database = require('./database/Database'); 
-const App = require("./App");
+const App = require("./app");
 const env = require('./common/middlewares/env');
 
 // add environment variables from .env file
@@ -16,5 +16,8 @@ App.createApp({
 })
 
 const app = App.getInstance();
+
+app.public("./frontend");
+
 
 app.run();

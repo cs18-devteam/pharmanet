@@ -1,23 +1,18 @@
-const http = require('node:http');
 const Database = require('./database/Database'); 
 const App = require("./app");
-const env = require('./common/middlewares/env');
+const userRouter = require('./services/user-service/routes/userRoutes');
 
 // add environment variables from .env file
+const env = require('./common/middlewares/env');
 env();
 
 // get database connection
 const db = Database.getInstance();
-
-//create app
-App.createApp({
-    port:process.env.APP_PORT,
-    hostname: process.env.DEVELOPMENT_HOSTNAME,
-})
-
 const app = App.getInstance();
 
+//set public as frontend directory
 app.public("./frontend");
 
+app.route("/users" , userRouter);
 
 app.run();

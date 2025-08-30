@@ -2,12 +2,11 @@ const DB = require('../../../database/Database');
 const db = DB.getInstance();
 
 
-exports.getAllUsers = (req, res)=>{
+exports.getAllUsers =async (req, res)=>{
+    
 
-    //step 1
-    res.writeHead(200 , {"Content-Type":"text/html"} );
-    res.write("<h1>users</h1>");
-    res.end();
+
+
     return;
 
 }

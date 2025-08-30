@@ -1,23 +1,28 @@
 module.exports = class Router{
     constructor(){}
 
-    #call(callback){
-        callback(req , res);
+    #call(callback = (req,res)=>{}){
+        try{
+            callback(req , res);
+
+        }catch(error){
+            console.log(error);
+        }
     }
 
-    get(callback){
+    get(callback = (req,res)=>{}){
         this.getHandler = callback;
     }
 
-    post(callback){
+    post(callback =  (req,res)=>{}){
         this.postHandler = callback;
     }
 
-    patch(callback){
+    patch(callback = (req, res)=>{}){
         this.patchHandler = callback;
     }
 
-    delete(callback){
+    delete(callback = (req, res)=>{}){
         this.deleteHandler = callback;
 
     }

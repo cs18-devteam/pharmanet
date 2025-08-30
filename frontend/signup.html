@@ -6,32 +6,18 @@
     <title>Document</title>
     <link rel="stylesheet" href = "/css/style.css">
 </head>
-<body class="signup">
+<body>
     <header>
-
-        <nav>
+    <nav>
         <div class="logo">
             <img class="logopic" src="/public/logo/logo.svg" alt="logo">
             <p class="logoname">PharmaNet</p>
         </div>
 
 
-        <div id="toggle-placeholder"></div>
         
-        <div class="profile">
-            <div class="profileName">
-                <a href="">Chamani Niroshani</a>
-                <div class="welcome">Welcome</div>
-            </div>
-            
-            <div class="profilePic"><a href="#"><img src="/public/logo/profile_pic.jpg"></a>
-            </div>
-        </div>
 
-
-        </nav>
-
-
+    </nav>
     <div class = "container">
     <div class = "signupImage">
         <img src="/public/signup/signup.png" alt="signup image">
@@ -47,11 +33,13 @@
     <div>
     <label for="fName">First Name</label><br>
     <input type="text" id="fName" name="fName" placeholder="Chathura"/><br>
+    <span id="feedbackname"></span><br>
     </div>
 
     <div>
     <label for="lName">Last Name</label><br>
     <input type="text" id="lName" name="lName" placeholder="Priyashan"/><br>
+    <span id="feedbackname"></span><br>
     </div>     
 
     </div>
@@ -66,9 +54,11 @@
     
     <label for="password">Password</label><br>
     <input type="password" id="password" name="Input" placeholder="********"/><br>
+    <span id="feedbackPassword"></span><br>
 
     <label for="confirmPassword">Confirm Password</label><br>
     <input type="password" id="confirmPassword" name="Input" placeholder="********"/><br>
+    <span id="feedbackPassword"></span><br>
     
     <button type="submit" id="submitButton">Create Account</button>
     <button type="submit" id="forgetPassword">Do you need any help ?</button><br>

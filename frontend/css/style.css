@@ -2065,12 +2065,18 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   padding: 5rem;
   margin: 2rem;
 }
+.RegPharmacy .container .LeftPanel {
+  margin-left: 4rem;
+}
 .RegPharmacy .container .LeftPanel .header {
   font-size: 4.5rem;
   color: white;
   font-weight: 700;
   background-image: url(/public/images/login\ Image.svg);
   text-align: center;
+}
+.RegPharmacy .container .LeftPanel ul {
+  list-style-type: none;
 }
 .RegPharmacy .container .LeftPanel .main-title {
   color: #597989;
@@ -2082,7 +2088,10 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   font-size: 2.4rem;
   font-weight: 700;
   color: var(--font-linear-primary-color);
-  margin: 2rem;
+  margin-top: 4rem;
+}
+.RegPharmacy .container .LeftPanel .instruction-card .title img {
+  padding-right: 1rem;
 }
 .RegPharmacy .container .LeftPanel .instruction-card ul {
   list-style-image: url(/public/images/check-circle.svg);
@@ -2091,8 +2100,13 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   font-size: 1.7rem;
   margin: 2rem;
 }
-.RegPharmacy .container .LeftPanel .instruction-card ul li ul {
+.RegPharmacy .container .LeftPanel .instruction-card ul li > ul {
+  list-style-image: none;
   list-style-type: disc;
+}
+.RegPharmacy .container .LeftPanel .instruction-card .Need-list {
+  list-style-image: none;
+  list-style-type: none;
 }
 .RegPharmacy .container .RightPanel .rightSideTitle {
   font-size: 3.6rem;
@@ -2113,12 +2127,16 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .RegPharmacy .container .FormGroup .title {
   color: var(--color-yellow-01);
   font-weight: 600;
+  padding: 1rem;
 }
 .RegPharmacy .container .FormGroup .title .line {
-  width: 1.9rem;
-  height: 0rem;
+  display: inline-block;
+  width: 2.4rem;
+  height: 0.6rem;
   background-color: var(--color-yellow-01);
-  border-radius: 10%;
+  border-radius: 0.3rem;
+  margin-right: 1rem;
+  vertical-align: middle;
 }
 .RegPharmacy .container .FormGroup label {
   font-size: 2.4rem;
@@ -2129,10 +2147,14 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   font-size: 2.4rem;
   width: 100%;
   height: 5rem;
+  padding: 2rem;
   border-radius: 1rem;
   margin: 1rem 0rem;
   font-weight: 400;
-  border: 0.1rem solid #707070;
+  border: 0.1rem solid #ccc;
+}
+.RegPharmacy .container .FormGroup input:hover {
+  border-color: #007bff;
 }
 .RegPharmacy .container .FormGroup .info-label {
   background-color: rgba(249, 165, 80, 0.062745098);
@@ -2161,10 +2183,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .RegPharmacy .container .FormGroup .UploadSection .custom-upload .upload-btn {
   display: block;
   width: 100%;
-  padding: 12px;
-  background-color: #f9f9f9;
-  border: 2px solid #ccc;
-  border-radius: 10px;
+  padding: 1.2rem;
+  border: 0.1rem solid #ccc;
+  border-radius: 1rem;
   text-align: center;
   color: #999;
   cursor: pointer;
@@ -2172,6 +2193,169 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .RegPharmacy .container .FormGroup .UploadSection .custom-upload .upload-btn:hover {
   border-color: #007bff;
+}
+.RegPharmacy .container .CreateAccount {
+  background: linear-gradient(to right, #00BAAC, #083851);
+  color: #fff;
+  width: 100%;
+  padding: 2rem;
+  margin: 4rem 4rem 4rem 2rem;
+  border: none;
+  border-radius: 1rem;
+  font-size: 2.4rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.RegPharmacy .container .CreateAccount:hover {
+  background: linear-gradient(to right, #083851, #00BAAC);
+  transform: scale(1.05);
+}
+.RegPharmacy .container .helpLink a {
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #127EB5;
+  margin: 2rem;
+}
+.RegPharmacy .container .footer {
+  text-align: center;
+  color: #707070;
+  text-align: center;
+  font-weight: 600;
+  margin: 4rem;
+}
+.RegPharmacy .container .footer a {
+  text-decoration: none;
+  color: var(--color-yellow-01);
+  background-color: rgba(249, 165, 80, 0.062745098);
+  border: 0.1rem solid var(--color-yellow-01);
+  border-radius: 3rem;
+  padding: 0.5rem 2rem;
+}
+
+.PharmacyMemberIntro .slide-container {
+  font-family: var(--primary-font);
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: absolute !important;
+  min-width: 0;
+}
+.PharmacyMemberIntro .slideset {
+  display: flex;
+}
+.PharmacyMemberIntro .open-button {
+  color: #027f80;
+  font-size: 4.8rem;
+}
+.PharmacyMemberIntro .head-section {
+  display: flex;
+  justify-content: space-between;
+}
+.PharmacyMemberIntro .head-section .title {
+  font-size: 4rem;
+  color: #027F80;
+  font-weight: 700;
+  margin: 2rem;
+}
+.PharmacyMemberIntro .head-section p {
+  font-size: 1.8rem;
+  color: #707070;
+}
+.PharmacyMemberIntro .head-section .close-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.PharmacyMemberIntro .head-section .close-icon:hover {
+  opacity: 0.7;
+}
+.PharmacyMemberIntro .buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.PharmacyMemberIntro .new-member-button {
+  cursor: pointer;
+  margin: 2rem;
+  padding: 2rem;
+  width: 15rem;
+  border-radius: 4rem;
+  border: 0.1rem solid #707070;
+  color: #707070;
+  font-size: 1.8rem;
+  transition: all 0.3s ease-in-out;
+}
+.PharmacyMemberIntro .new-member-button:hover {
+  background-color: #027f80;
+  color: white;
+  border-color: #027f80;
+}
+.PharmacyMemberIntro .title2 {
+  display: flex;
+  flex-direction: column;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-green-01);
+}
+.PharmacyMemberIntro .title2 span {
+  color: #707070;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+.PharmacyMemberIntro .form-row {
+  display: flex;
+  gap: 2rem;
+}
+.PharmacyMemberIntro .form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0rem;
+}
+.PharmacyMemberIntro .form-group label {
+  font-size: 1.8rem;
+  color: #707070;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.PharmacyMemberIntro .form-group input, .PharmacyMemberIntro .form-group select {
+  width: 100%;
+  font-size: 1.8rem;
+  color: #707070;
+  opacity: 50%;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 0.1rem solid #707070;
+  background-color: none;
+  height: 5rem;
+}
+.PharmacyMemberIntro .footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 5rem 1rem;
+  color: #707070;
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+.PharmacyMemberIntro .footer .previous-button, .PharmacyMemberIntro .footer .next-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.PharmacyMemberIntro .progress-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+.PharmacyMemberIntro .dot {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: #707070;
+}
+.PharmacyMemberIntro .dot-active {
+  background-color: #027F80;
 }
 
 /*# sourceMappingURL=style.css.map */

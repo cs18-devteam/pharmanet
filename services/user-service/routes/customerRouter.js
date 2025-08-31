@@ -1,12 +1,13 @@
 const Router = require('../../../common/Router');
-const userController = require("./../controllers/userController");
+const customerController = require("../controllers/customerController");
 
-const userRouter = new Router();
-
-userRouter.get(userController.getAllUsers);
-userRouter.post(userController.createUser);
-userRouter.delete(userController.deleteUser);
-userRouter.patch(userController.updateUser);
+const customerRouter = new Router();
 
 
-module.exports = userRouter;
+customerRouter.post(customerController.createCustomer);
+customerRouter.get(customerController.getCustomer);
+customerRouter.patch(customerController.updateCustomer);
+customerRouter.delete(customerController.deleteCustomer);
+
+
+module.exports = customerRouter;

@@ -29,6 +29,5 @@ app.route('/users/system/pharmacymanager' , systemPharmacyManagerRouter)
 app.route('/users/system/admin' , systemAdminRouter );
 
 
-UserFactory.createUser(UserTypes.ADMIN);
 
 app.run();

@@ -4,10 +4,10 @@ const CustomerModel = require("./customerModel");
 const PharmacistModel = require("./pharmacistModel");
 const SystemAdminModel = require("./systemAdminModel");
 const UserModel = require("./UserModel");
-const SystemStockManager = require("./systemStockManagerModel");
 const pharmacyOwnerModel = require("./pharmacyOwnerModel");
 const pharmacyStockManagerModel = require("./pharmacyStockManagerModel");
 const SystemPharmacyManagerModel = require("./systemPhamarcyManagerModel");
+const SystemStockManagerModel = require("./systemStockManagerModel");
 
 const Users = new UserModel();
 
@@ -17,13 +17,12 @@ const Customers = new CustomerModel();
 const Pharmacists = new PharmacistModel();
 const PharmacyOwners = new pharmacyOwnerModel();
 const PharmacyStockManagers = new pharmacyStockManagerModel();
-const SystemStockManagers = new SystemStockManager();
+const SystemStockManagers = new SystemStockManagerModel();
 const SystemPharmacyManagers = new SystemPharmacyManagerModel();
 
 
 
 // --this is only executes only once for creating tables
-
 Users.createTable();
 Cashiers.createTable();
 Customers.createTable();
@@ -33,6 +32,7 @@ PharmacyOwners.createTable();
 PharmacyStockManagers.createTable();
 SystemStockManagers.createTable();
 SystemPharmacyManagers.createTable();
+SystemStockManagers.createTable();
 
 
 
@@ -42,28 +42,28 @@ class UserFactory{
     static createUser(user=" " , data){
         switch (user){
             case UserTypes.ADMIN:
-                return Users.save();
+                return Users.save(data);
 
             case UserTypes.CASHIER:
-                return Cashiers.save();
+                return Cashiers.save(data);
 
             case UserTypes.CUSTOMER:
-                return Customers.save();
+                return Customers.save(data);
 
             case UserTypes.PHARMACIST:
-                return;
+                return Pharmacists.save(data);
             
             case UserTypes.PHARMACY_OWNER:
-                return;
+                return PharmacyOwners.save(data);
 
             case UserTypes.STOCK_MANAGER:
-                return;
+                return PharmacyStockManagers.save(data);
             
             case UserTypes.SYSTEM_PHARMACY_MANAGER:
-                return;
+                return SystemPharmacyManagers.save(data);
 
             case UserTypes.SYSTEM_STOCK_MANAGER:
-                return;
+                return SystemStockManagers.save();
 
             default:
                 throw new Error(`invalid user type : ${user}`);

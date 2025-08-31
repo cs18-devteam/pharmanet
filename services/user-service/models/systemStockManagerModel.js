@@ -1,6 +1,6 @@
 const Model = require("../../../common/Model");
 
-class SystemStockManager extends Model{
+class SystemStockManagerModel extends Model{
     constructor(){
         super();
 
@@ -11,4 +11,4 @@ class SystemStockManager extends Model{
     }
 }
 
-module.exports = SystemStockManager;
+module.exports = SystemStockManagerModel;

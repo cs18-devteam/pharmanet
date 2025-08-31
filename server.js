@@ -13,6 +13,7 @@ app.public('./frontend');
 
 app.route('/users' , userRouter);
 app.route('/attendance' , attendanceRouter);
+app.route('/arrival')
 
 
 app.run();

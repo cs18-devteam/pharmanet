@@ -4,5 +4,6 @@
         "pharmanet",
         "stockmanager",
         "usermodel"
-    ]
+    ],
+    "postman.settings.dotenv-detection-notification-visibility": false
 }

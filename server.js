@@ -9,6 +9,8 @@ const pharmacyStockManagerRouter = require("./services/user-service/routes/pharm
 const systemStockManagerRouter = require("./services/user-service/routes/systemStockManagerRouter");
 const systemPharmacyManagerRouter = require("./services/user-service/routes/systemPharmacyManagerRouter");
 const systemAdminRouter = require("./services/user-service/routes/systemAdminRouter");
+const SignUpRouter = require('./services/auth-service/routes/SignUpRouter');
+const LogInRouter = require('./services/auth-service/routes/LogInRouter');
 
 env();
 const app = App.getInstance();
@@ -17,6 +19,8 @@ app.public('./frontend');
 
 
 // handle user Routes
+app.route('/login' , LogInRouter)
+app.route('/signup' , SignUpRouter);
 app.route('/users/customers' , customerRouter);
 app.route('/users/pharmacy/owners' , pharmacyOwnerRouter);
 app.route('/users/pharmacy/pharmacists' , pharmacistRouter);

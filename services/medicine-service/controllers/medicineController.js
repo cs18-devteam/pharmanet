@@ -15,7 +15,7 @@ const medicineModel = require("../models/medicineModel");
 
 const medicines = new medicineModel();
 
-exports.gettAllMedicines = async (req, res) => {
+exports.getAllMedicines = async (req, res) => {
     try{
         const medicines= await medicines.getAll(); 
         res.status(200).json(medicines);

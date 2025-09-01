@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order</title>
+</head>
+<body class="order">
+    <div class="order Container">
+        <div class="navigation-bar">
+            <img src="/public/userProfile/div.svg" alt="logo"/>
+            <h1>Pharmanet Order Management</h1>
+            <img src="/public/userProfile/img.svg" alt="profile"/>
+        </div>
+        <div class="sidebar">
+            <h4>Order Form</h4>
+            <img src="/public/userProfile/recy-button.svg" alt="recycle"/>
+            <form>
+                <lable>Patient Name</lable>
+                <input type="text" placeholder="Enter patient Name"/>
+                
+                <lable>Doctor</lable>
+                <input type="text" placeholder="Prescribing doctor"/>
+
+                <lable>Order Date</lable>
+                <input type="date"/>
+
+                <lable>Priority</lable>
+                <select>
+                    <option>High</option>
+                    <option>Normal</option>
+                </select>
+
+                <lable>Medicines</lable>
+                <div class="medicine-group">
+                    <div class="two-input">
+                        <input type="text" placeholder="Medicine Name"/>
+                        <input type="text" placeholder="Qty"/>
+                    </div>
+                    <input type="text" placeholder="Dosage instructions"/>
+                </div>
+
+                <button class="remove"> <img src="/public/userProfile/button-2.svg" alt="delete"/>Remove</button>
+                
+                <div class="form-actions">
+                    <button type="submit" class="save-order">Save Order</button>
+                    <button type="reset" class="cancel">Cancel</button>
+                </div>
+            </form>
+        </div>
+        <div class="orders">
+            <div class="order-header">
+                <h3>Orders</h3>
+                <div class="search-orders">
+                    <input type="text" placeholder="Search Orders">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

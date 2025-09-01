@@ -11,6 +11,9 @@ const medicineRouter = require("./services/medicine-service/routes/medicineRoute
 =======
 const medicineRouter = require("./services/medicine-service/routes/medicineRouter");
 >>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
+=======
+const orderRouter = require("./services/leave-service/routes/leaveRoutes");
+=======
 
 const db = Database.getInstance();
 const app = App.getInstance();
@@ -29,5 +32,7 @@ app.route('/medicine' , medicineRouter);
 =======
 app.route('/medicine' , medicineRouter);
 >>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
+
+app.route('/leave', leaveRouter);
 
 app.run();

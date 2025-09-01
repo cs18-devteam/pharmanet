@@ -8,195 +8,6 @@ class Model{
         this.#table = (this.#createTableName(this.constructor.name));   
     }
 
-    #createTableName(name){
-        //create table name
-        // ex : UserModel -to lower-> usermodel -replace last model-> user_table
-        return name.toLowerCase().replace(/model$/ , "_table");
-    }
-
-
-    //save model to database (create table)
-    createTable(){
-        const createTableQuery = this.#buildCreateTableQuery();
-        const useQueryHandler = (error , data , field)=>{
-            if(error){
-                console.log(error);
-                return;
-            }
-            db.query(createTableQuery , createTableHandler);
-        }
-        
-        const createTableHandler = (error , data ,field)=>{
-            if(error){
-                console.log(error);
-                return;
-            }
-        }
-        db.query(`use ${process.env.DATABASE_NAME}` , useQueryHandler);
-        
-    }
-
-    save(data){
-
-        let query = "INSERT INTO %%TABLE_NAME%%( %%COLUMNS%% ) VALUES( %%VALUES%% )";
-
-        //add table name
-        query = query.replace("%%TABLE_NAME%%" , this.#table);
-
-
-        let columnsArray = [];
-        let valuesArray = [];
-        for(const [columnName] of Object.entries(this)){
-            
-            if(columnName == "id") continue;
-
-            const value = data?.[columnName];
-
-            if(!value) continue;
-
-            if(typeof value == "string"){
-                valuesArray.push(`"${value}"`);
-            }else{
-                valuesArray.push(value);
-            }
-
-            columnsArray.push(columnName);
-
-        }
-
-        query = query.replace("%%COLUMNS%%" , columnsArray.join(","));
-        query = query.replace("%%VALUES%%" , valuesArray.join(','));
-
-        db.query(query , (error , data , fields)=>{
-            console.log(error);
-        })
-
-        console.log(data , query);
-    }
-
-
-    update(data){
-
-        let query = "UPDATE %%TABLE_NAME%%( %%COLUMNS%% ) VALUES( %%VALUES%% where id=%%U_ID%% )";
-
-        //add table name
-        query = query.replace("%%TABLE_NAME%%" , this.#table);
-        query = query.replace("%%U_ID%%" , data.id);
-
-
-        let columnsArray = [];
-        let valuesArray = [];
-        for(const [columnName] of Object.entries(this)){
-
-            if(columnName == "id") continue;
-
-            const value = data?.[columnName];
-
-            if(!value) continue;
-
-            if(typeof value == "string"){
-                valuesArray.push(`"${value}"`);
-            }else{
-                valuesArray.push(value);
-            }
-
-            columnsArray.push(columnName);
-
-        }
-
-        query = query.replace("%%COLUMNS%%" , columnsArray.join(","));
-        query = query.replace("%%VALUES%%" , valuesArray.join(','));
-
-
-        db.query(query , (error , data , fields)=>{
-            console.log(error);
-        })
-
-        console.log(data , query);
-    }
-
-    
-    //get using id
-    getById(id){
-        const query = `SELECT * FROM ${this.#table} WHERE id=${id}`;
-        // return data get from database as object
-        const queryHandler = (error , data , fields)=>{
-            if(error){
-                console.log(error );
-                throw error;
-            }
-            console.log(data , fields)
-            return data;
-        }
-
-        db.query(query , queryHandler);
-    }
-
-
-    //delete using id
-    deleteById(id){
-        const query = `DELETE FROM ${this.#table} WHERE id=${id}`;
-        // return data get from database as object
-        const queryHandler = (error , data , fields)=>{
-            if(error){
-                console.log(error );
-                throw error;
-            }
-            console.log(data , fields)
-            return data;
-        }
-
-        db.query(query , queryHandler);
-        // return deleted data from database
-    }
-
-    //update using id
-    updateById(id , data){
-        const query = `DELETE FROM ${this.#table} WHERE id=${id}`;
-        // return data get from database as object
-        const queryHandler = (error , data , fields)=>{
-            if(error){
-                console.log(error );
-                throw error;
-            }
-            console.log(data , fields)
-            return data;
-        }
-
-        db.query(query , queryHandler);
-        // return update and return updated row as object
-    }
-
-
-    //get data from database
-    get(callback){
-        // return set of object that callback is matching
-    }
-
-    //delete data from database
-    delete(callback){
-        // return set of deleted objects(rows) that match callback
-
-    }
-
-    drop(){
-        const query = `drop table ${this.#table}`;
-        // return data get from database as object
-        const queryHandler = (error , data , fields)=>{
-            if(error){
-                console.log(error );
-                throw error;
-            }
-            console.log(data , fields)
-            return data;
-        }
-
-        db.query(query , queryHandler);
-        
-    }
-
-
-
     #buildCreateTableQuery(){
         try{
             // build create table query
@@ -261,6 +72,169 @@ class Model{
             throw error;
         }
     }
+
+    #createTableName(name){
+        //create table name
+        // ex : UserModel -to lower-> usermodel -replace last model-> user_table
+        return name.toLowerCase().replace(/model$/ , "_table");
+    }
+
+
+    //save model to database (create table)
+    createTable(){
+        const createTableQuery = this.#buildCreateTableQuery();
+        const useQueryHandler = (error , data , field)=>{
+            if(error){
+                console.log(error);
+                return;
+            }
+            db.query(createTableQuery , createTableHandler);
+        }
+        
+        const createTableHandler = (error , data ,field)=>{
+            if(error){
+                console.log(error);
+                return;
+            }
+        }
+        db.query(`use ${process.env.DATABASE_NAME}` , useQueryHandler);
+        
+    }
+
+    async save(data){
+
+        let query = "INSERT INTO %%TABLE_NAME%%( %%COLUMNS%% ) VALUES( %%VALUES%% )";
+
+        //add table name
+        query = query.replace("%%TABLE_NAME%%" , this.#table);
+
+
+        let columnsArray = [];
+        let valuesArray = [];
+        for(const [columnName] of Object.entries(this)){
+            
+            if(columnName == "id") continue;
+
+            const value = data?.[columnName];
+
+            if(!value) continue;
+
+            if(typeof value == "string"){
+                valuesArray.push(`"${value}"`);
+            }else{
+                valuesArray.push(value);
+            }
+
+            columnsArray.push(columnName);
+
+        }
+
+        query = query.replace("%%COLUMNS%%" , columnsArray.join(","));
+        query = query.replace("%%VALUES%%" , valuesArray.join(','));
+
+        const results =await db.query(query);
+
+        if(!results) return null;
+
+        const createdUser = await db.query(`select * from ${this.#table} where id=${results.insertId}`);
+
+        return createdUser;
+        
+    }
+
+
+    async update(data){
+        const id = data.id;
+
+        if(!id) throw new Error("no id in request body");
+
+        let query = "UPDATE %%TABLE_NAME%% SET %%COLUMNS%%  WHERE id=%%U_ID%%";
+
+        //add table name
+        query = query.replace("%%TABLE_NAME%%" , this.#table);
+        query = query.replace("%%U_ID%%" , id);
+
+
+        const dataArray = [];
+        for(const [columnName] of Object.entries(this)){
+
+            if(columnName == "id") continue;
+
+            const value = data?.[columnName];
+
+            if(!value) continue;
+
+            if(typeof value == "string"){
+                dataArray.push(`${columnName}="${value}"`);
+            }else{
+                dataArray.push(`${columnName}= ${value}`);
+            }
+        }
+
+        query = query.replace("%%COLUMNS%%" , dataArray.join(","));
+        data =await db.query(query);
+
+        if(data){
+            data = await this.getById(id);
+        }
+        return data;
+
+
+    }
+    
+    //get using id
+    async getById(id){
+        const query = `SELECT * FROM ${this.#table} WHERE id=${id}`;
+        const customer =await db.query(query);
+        return customer;
+    }
+
+
+    //delete using id
+    async deleteById(id){
+        const results =await db.query(`DELETE FROM ${this.#table} WHERE id=${id}`);
+        console.log({deletedLog : results});
+        return results;
+    }
+
+    //get data from database
+    async get(data){
+        let query = `select * from  ${this.#table}`;
+
+        if(data) query += " where ";
+
+        if(data){
+            let filters = [];
+    
+            for(const [column , value] of Object.entries(data)){
+                filters.push(`${column}=${value}`);
+            }
+            query += filters.join(" AND ");
+        }
+
+        const results = await db.query(query);        
+        return results;
+    }
+
+    drop(){
+        const query = `drop table ${this.#table}`;
+        // return data get from database as object
+        const queryHandler = (error , data , fields)=>{
+            if(error){
+                console.log(error );
+                throw error;
+            }
+            console.log(data , fields)
+            return data;
+        }
+
+        db.query(query , queryHandler);
+        
+    }
+
+
+
+
 }
 
 

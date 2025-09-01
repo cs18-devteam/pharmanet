@@ -8,8 +8,13 @@ class Database{
         this.createConnection();
     }
 
-    query(queryString , clb){
-        this.connection.query(queryString , clb);
+    query(queryString){
+        return new Promise((resolve , reject)=>{
+            this.connection.query(queryString , (error , data , fields)=>{
+                if(error) throw error;
+                resolve(data , fields);
+            });
+        })
     }
 
     execute(queryString , clb){

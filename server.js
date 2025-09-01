@@ -9,8 +9,6 @@ const pharmacyStockManagerRouter = require("./services/user-service/routes/pharm
 const systemStockManagerRouter = require("./services/user-service/routes/systemStockManagerRouter");
 const systemPharmacyManagerRouter = require("./services/user-service/routes/systemPharmacyManagerRouter");
 const systemAdminRouter = require("./services/user-service/routes/systemAdminRouter");
-const UserFactory = require("./services/user-service/models/UserFactory");
-const UserTypes = require('./services/user-service/helpers/UserTypes');
 
 env();
 const app = App.getInstance();
@@ -27,7 +25,5 @@ app.route('/users/pharmacy/stockmanager' , pharmacyStockManagerRouter);
 app.route('/users/system/stockmanager' , systemStockManagerRouter)
 app.route('/users/system/pharmacymanager' , systemPharmacyManagerRouter)
 app.route('/users/system/admin' , systemAdminRouter );
-
-
 
 app.run();

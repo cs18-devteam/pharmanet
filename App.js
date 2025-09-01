@@ -54,6 +54,10 @@ module.exports = class App{
     async findFile(req , res){
         const [file] = this.#files.filter(file=>file.url == req.pathname);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        
+>>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
 =======
         
 >>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
@@ -121,7 +125,10 @@ module.exports = class App{
     run(){
         App.server?.listen(this.port , this.hostname , ()=>{
 <<<<<<< HEAD
+<<<<<<< HEAD
             
+=======
+>>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
 =======
 >>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
             if(process.env.NODE_ENV == "development"){

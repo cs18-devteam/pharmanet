@@ -9,7 +9,10 @@ class Database{
             host:"localhost",
             user:"root",
 <<<<<<< HEAD
+<<<<<<< HEAD
             password: "Ham#2003"
+=======
+>>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
 =======
 >>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
         }

@@ -31,25 +31,11 @@
     "preview": "npm-run-all --parallel dev-server compile-sass",
     "dev": "npm-run-all --parallel node-server",
     "build": "npm-run-all  compile-sass-final",
-<<<<<<< HEAD
-<<<<<<< HEAD
     "prod" : "node --NODE_ENV=production ./server.js",
 
     "create-database" : "node ./config/createDatabase.js",
     "drop-database" : "node ./config/dropDatabase.js",
     "create-medidata" : "node ./config/data/createMediData.js"
-=======
-=======
->>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
-    "prod": "node --NODE_ENV=production ./server.js",
-    "test": "node ./test/stress.test.js",
-    "create-database": "node ./config/createDatabase.js",
-    "drop-database": "node ./config/dropDatabase.js",
-    "create-medidata": "node ./config/data/createMediData.js"
-<<<<<<< HEAD
->>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
-=======
->>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
   },
   "devDependencies": {
     "autocannon": "^8.0.0",

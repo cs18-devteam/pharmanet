@@ -1,6 +1,6 @@
 const router = require('./../../../common/Router');
 const leaveController = require('./../controller/leaveController');
-const LeaveRouter = new router();
+const leaveRouter = new router();
 leaveRouter.get(leaveController.GetLeave);
 leaveRouter.patch(leaveController.UpdateLeave);
 leaveRouter.delete(leaveController.DeleteLeave);

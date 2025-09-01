@@ -1,0 +1,220 @@
+body.order {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(248, 243, 243);
+  color: black;
+}
+
+.order-Container {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+
+  .navigation-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    color: #fff;
+    z-index: 1000;
+
+    img {
+      height: 40px;
+      cursor: pointer;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 600;
+      color: black;
+    }
+  }
+
+  .sidebar {
+    margin-top: 8rem;
+    margin-bottom: 10rem;
+    width: 30rem;
+    background-color: #fff;
+    padding: 2rem 2rem 2rem 2rem; 
+    border-right: 0.1rem solid #e0e0e0;
+    border-bottom: 0.1rem solid #e0e0e0;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+
+    h4 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: black;
+    }
+
+    img {
+      display: block;
+      margin-bottom: 1rem;
+      width: 30px;
+      cursor: pointer;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      label, lable {
+        font-weight: 500;
+        margin-bottom: 0.3rem;
+        margin-top: 0.5rem;
+      }
+
+      input[type="text"],
+      input[type="date"],
+      select {
+        padding: 0.7rem;
+        margin-bottom: 0.8rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1.2rem;
+      }
+
+      .medicine-group {
+        .two-input {
+          display: flex;
+          gap: 0.5rem;
+          width: 100%;
+
+          input {
+            flex: 1 1 0;
+            min-width: 0;
+          }
+        }
+
+        input[type="text"] {
+          margin-top: 0.5rem;
+        }
+      }
+
+      .remove {
+        color: red;
+        border: none;
+        padding: 0.5rem;
+        margin-top: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        border-radius: 5px;
+        cursor: pointer;
+
+        img {
+          width: 16px;
+        }
+
+        &:hover {
+          background-color: #e0435c;
+        }
+      }
+
+      .form-actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1rem;
+
+        button {
+          padding: 0.6rem 1rem;
+          border: none;
+          border-radius: 5px;
+          font-weight: 600;
+          cursor: pointer;
+        }
+
+        .save-order {
+          background-color: #059669;
+          color: #fff;
+
+          &:hover {
+            background-color: #048159;
+          }
+        }
+
+        .cancel {
+          background-color: #D1D5DB;
+
+          &:hover {
+            background-color: #c0c2c5;
+          }
+        }
+      }
+    }
+  }
+
+  .orders {
+    flex: 1;
+    padding: 8rem 2rem 2rem 2rem;
+    overflow-x: auto;
+
+    .order-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+
+      h3 {
+        font-size: 1.5rem;
+      }
+
+      .search-orders {
+        display: flex;
+        gap: 0.5rem;
+
+        input {
+          padding: 0.7rem;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #fff;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      box-shadow: 0 0.2rem 0.5rem rgba(0,0,0,0.1);
+      font-size: 1.5rem;
+
+      th, td {
+        padding: 1rem 1rem;
+        text-align: center;
+        border-bottom: 0.1rem solid #eee;
+      }
+
+      th {
+        background-color: #E5E7EB;
+        color: #6B7280;
+        font-weight: 700;
+        font-size: 1.5rem;
+      }
+
+      .Status-pending {
+        color: #854D0E;
+        background-color: #FEF9C3;
+        border-radius: 1rem;
+        padding: 0.5rem;
+        font-weight: 600;
+      }
+
+      .actions {
+        display: flex;
+        gap: 0.5rem;
+
+        img {
+          width: 20px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

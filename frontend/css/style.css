@@ -1684,6 +1684,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   }
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD:css/style.css
 .login .login-container {
   display: flex;
@@ -2328,6 +2329,8 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .userProfile .card1 .name-row .field input {
   width: 100%;
 =======
+=======
+>>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
 .SearchMedi .main-container {
   display: flex;
   padding: 1rem 2rem;
@@ -2815,7 +2818,10 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .RegPharmacy .container .FormGroup .UploadSection .custom-upload .upload-btn:hover {
   border-color: #007bff;
+<<<<<<< HEAD
 >>>>>>> 0242b0c9ca2cdefd93a6450cce1d4a5119f600cd:frontend/css/style.css
+=======
+>>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
 }
 
 /*# sourceMappingURL=style.css.map */

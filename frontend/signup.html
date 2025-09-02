@@ -18,16 +18,6 @@
 
         <div id="toggle-placeholder"></div>
         
-        <div class="profile">
-            <div class="profileName">
-                <a href="">Chamani Niroshani</a>
-                <div class="welcome">Welcome</div>
-            </div>
-            
-            <div class="profilePic"><a href="#"><img src="/public/logo/profile_pic.jpg"></a>
-            </div>
-        </div>
-
 
         </nav>
 
@@ -38,7 +28,7 @@
         <div class="signupText">"Take Control of Your Medication Journey"</div>
     </div>
     <div class = "signupForm">
-    <form id="form" autocomplete="off" action="" method="post">
+    <form id="form" autocomplete="off" action="/signup" method="post">
      
     <h1 class="signupTitle">Get Start Now</h1>
     <p class="signupMoto" >Your Digital Journey To Seamless Prescriptions, Smarter Inventory, And Happier Patients Begins Here.</p>
@@ -46,12 +36,12 @@
     
     <div>
     <label for="fName">First Name</label><br>
-    <input type="text" id="fName" name="fName" placeholder="Chathura"/><br>
+    <input type="text" id="fName" name="firstname" placeholder="Chathura"/><br>
     </div>
 
     <div>
     <label for="lName">Last Name</label><br>
-    <input type="text" id="lName" name="lName" placeholder="Priyashan"/><br>
+    <input type="text" id="lName" name="lastname" placeholder="Priyashan"/><br>
     </div>     
 
     </div>
@@ -65,17 +55,17 @@
     <span id="feedbackBirthDay"></span><br>
     
     <label for="password">Password</label><br>
-    <input type="password" id="password" name="Input" placeholder="********"/><br>
+    <input type="password" id="password" name="password" placeholder="********"/><br>
 
     <label for="confirmPassword">Confirm Password</label><br>
-    <input type="password" id="confirmPassword" name="Input" placeholder="********"/><br>
+    <input type="password" id="confirmPassword" name="confirmpassword" placeholder="********"/><br>
     
     <button type="submit" id="submitButton">Create Account</button>
-    <button type="submit" id="forgetPassword">Do you need any help ?</button><br>
+    <a type="submit" id="forgetPassword">Do you need any help ?</a><br>
     
     <div style="text-align: center;">
     <p class="haveAcc" style="display: inline-block; margin-right: 10px;">I Have An Account</p>
-    <button type="submit" class="logInButton" style="display: inline-block;">Log In</button>
+    <a href="/login.html"  class="logInButton" style="display: inline-block;">Log In</a>
     </div>
 
 

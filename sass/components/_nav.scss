@@ -5,6 +5,25 @@ nav {
   padding: 0rem 2rem;
 }
 
+.auth-btns{
+  a{
+    padding: 1rem 2rem;
+    border: 2px solid var(--color-yellow-01);
+    color: var(--color-yellow-01);
+    text-decoration: none;
+    text-transform: capitalize;
+    font-weight: 600;
+    margin-left: 1rem;
+
+    &.signup{
+      background-color: var(--color-yellow-01);
+      color: white;  
+    }
+  }
+
+  
+}
+
 //logo section
 .logo {
   font-family: var(--secondary-font);

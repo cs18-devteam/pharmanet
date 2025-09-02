@@ -31,7 +31,7 @@ module.exports = class App{
             //parse url
             const url = new URL(req.url , `http://${req.headers.host}`);
             req.params = url.searchParams;
-            req.pathname = url.pathname;
+            req.pathname = url.pathname.replace(/%20/g , ' ').replace(/\\/g , "/");
             req.protocol = url.protocol;
 
             // for development cases

@@ -2,6 +2,7 @@ const decodeMultipartFormData = require("../../../common/middlewares/decodeMulti
 const UserTypes = require("../../user-service/helpers/UserTypes");
 const UserFactory = require("../../user-service/models/UserFactory");
 const crypto = require("node:crypto");
+const AuthModel = require("../models/AuthModel");
 
 exports.signup = async (req , res)=>{
     let data = "";
@@ -16,21 +17,21 @@ exports.signup = async (req , res)=>{
         })
 
         const newUser =await UserFactory.createUser(UserTypes.CUSTOMER , formData);
-        console.log(formData);
         
+        const token = AuthModel.CreateCookieToken({
+            id: newUser.id,
+            userName : newUser.userName,
+        })
         
+        res.setHeader("Set-Cookie" , [
+            `Token= ${token}`,
+            `userId= ${newUser.id}; Max-Age=${Number(process.env.LOGIN_PERIOD_IN_MILLISECONDS)}`,
+        ])
 
-        //create cookies
-        const cookie = `uid=${newUser.id},userName=${newUser.userName}`; 
-        const hash = crypto.createHash('sha256');
-        const encryptedCookie = hash.update(cookie).digest('hex');
-
-        const token = `${encryptedCookie}; expires=${(new Date(Date.now() + 1000 * 60 * 60 * 24 * 3).toUTCString())} UTC; HttpOnly; path=/`;
         res.writeHead(301,{
             "Authorization": `Bearer ${token}` ,
             "Content-Type":"application/json",
-            "Set-Cookie":`Token= ${token}`,
-            "Location": `/index.html`
+            "Location": `/index.html`,
         })
         newUser.token = token;
 

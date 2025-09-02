@@ -39,6 +39,24 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
+a {
+  text-decoration: none;
+}
+
+input {
+  border-radius: 3px;
+  border: 1px solid #ccc !important;
+  padding: 1rem !important;
+}
+
+button {
+  padding: 1rem;
+}
+
+img {
+  object-fit: cover;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -83,14 +101,23 @@ nav {
 .search form input[type=search] {
   padding: 1rem 1rem;
   border: 0.2rem solid var(--color-green-02);
-  border-radius: 1rem 0 0 1rem;
+  border-top: 1px solid #aaa;
+  border-left: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+  border-radius: 0.5rem 0 0 0.5rem;
   font-size: 2rem;
   width: 100%;
   height: 5rem;
 }
+.search form input[type=search]::placeholder {
+  font-family: var(--primary-font);
+  font-size: 1.8rem;
+  color: #888;
+  font-weight: 100;
+}
 .search form input[type=submit] {
   padding: 1rem 2rem;
-  border-radius: 0 1rem 1rem 0;
+  border-radius: 0 0.5rem 0.5rem 0;
   background-color: var(--color-green-02);
   color: var(--white);
   cursor: pointer;
@@ -534,6 +561,15 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   font-style: italic;
   src: url(/fonts/Poppins/Poppins-BlackItalic.ttf) format("TrueType");
 }
+.utility-hidden {
+  transform: translateY(10rem);
+  opacity: 0;
+}
+
+.utility-transition {
+  transition: all 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
 .signup .signupImage {
   position: relative;
 }
@@ -624,7 +660,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   color: #fff;
   background-image: linear-gradient(to right, var(--color-green-01), var(--color-blue-01));
   line-height: 2rem;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 0.5rem;
   outline: none;
   width: 100%;
@@ -2186,6 +2222,68 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .RegPharmacy .container .FormGroup .UploadSection .custom-upload .upload-btn:hover {
   border-color: #007bff;
+}
+
+.contact-us .container {
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  width: 100%;
+  margin-top: 5rem;
+}
+.contact-us .container h1 {
+  background-image: linear-gradient(to bottom right, var(--color-green-01), var(--color-green-02));
+  color: transparent;
+  background-clip: text;
+}
+.contact-us .container form {
+  max-width: 60rem;
+  flex-grow: 1;
+  width: 100%;
+}
+.contact-us .container form div {
+  margin: 1.5rem 0;
+}
+.contact-us .container form div label {
+  color: var(--color-green-02);
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+.contact-us .container form div input, .contact-us .container form div textarea {
+  font-size: 1.8rem;
+  margin-top: 0.6rem;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  color: #444;
+  font-weight: 400;
+  font-family: inherit;
+  min-width: max-content;
+}
+.contact-us .container form div input::first-letter, .contact-us .container form div textarea::first-letter {
+  text-transform: capitalize;
+}
+.contact-us .container form div input:focus, .contact-us .container form div textarea:focus {
+  outline: 2px solid var(--color-green-01);
+  border-radius: 3px;
+  border: none;
+}
+.contact-us .container form div textarea {
+  height: 15rem;
+  min-width: max-content;
+}
+.contact-us .container form button {
+  width: 100%;
+  background-color: var(--color-green-01);
+  border: none;
+  outline: none;
+  padding: 1.5rem 2rem;
+  font-size: large;
+  color: white;
+  border-radius: 3px;
+  background-image: linear-gradient(to right, var(--color-green-01), var(--color-green-02));
+  font-family: inherit;
 }
 
 /*# sourceMappingURL=style.css.map */

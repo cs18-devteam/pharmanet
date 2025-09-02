@@ -1,6 +1,6 @@
 const Model = require("../../../common/Model");
 
-class pharmacyStockManagerModel extends Model{
+class PharmacyStockManagerModel extends Model{
     constructor(){
         super();
 
@@ -12,4 +12,5 @@ class pharmacyStockManagerModel extends Model{
 }
 
 
-module.exports  = pharmacyStockManagerModel;
+const PharmacyStockManagers = new PharmacyStockManagerModel();
+module.exports  =  PharmacyStockManagers;

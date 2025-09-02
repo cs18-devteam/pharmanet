@@ -1,10 +1,8 @@
 const decodeMultipartFormData = require("../../../common/middlewares/decodeMultipartFormData");
 const UserTypes = require("../helpers/UserTypes");
-const CustomerModel = require("../models/customerModel");
 const UserFactory = require("../models/UserFactory");
-const UserModel = require("../models/UserModel");
-const Customers = new CustomerModel();
-const Users = new UserModel();
+const Customers = require("../models/customerModel");
+const Users = require("../models/UserModel");
 
 
 exports.createCustomer = async (req , res)=>{

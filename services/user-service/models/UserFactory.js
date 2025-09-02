@@ -1,43 +1,15 @@
 const UserTypes = require("../helpers/UserTypes");
-const CashierModel = require("./cashierModel");
-const CustomerModel = require("./customerModel");
-const PharmacistModel = require("./pharmacistModel");
-const SystemAdminModel = require("./systemAdminModel");
-const UserModel = require("./UserModel");
-const pharmacyOwnerModel = require("./pharmacyOwnerModel");
-const pharmacyStockManagerModel = require("./pharmacyStockManagerModel");
-const SystemPharmacyManagerModel = require("./systemPhamarcyManagerModel");
-const SystemStockManagerModel = require("./systemStockManagerModel");
-
-const Users = new UserModel();
-
-const Admins = new SystemAdminModel();
-const Cashiers = new CashierModel();
-const Customers = new CustomerModel();
-const Pharmacists = new PharmacistModel();
-const PharmacyOwners = new pharmacyOwnerModel();
-const PharmacyStockManagers = new pharmacyStockManagerModel();
-const SystemStockManagers = new SystemStockManagerModel();
-const SystemPharmacyManagers = new SystemPharmacyManagerModel();
+const Users = require("./UserModel");
+const Customers = require("./customerModel");
 
 
 
-// --this is only executes only once for creating tables
-Users.createTable();
-Cashiers.createTable();
-Customers.createTable();
-Admins.createTable();
-Pharmacists.createTable();
-PharmacyOwners.createTable();
-PharmacyStockManagers.createTable();
-SystemStockManagers.createTable();
-SystemPharmacyManagers.createTable();
-SystemStockManagers.createTable();
 
 
 
 class UserFactory{
-    constructor(){}
+    constructor(){
+    }
 
     static async createUser(user=" " , data){
 
@@ -77,7 +49,10 @@ class UserFactory{
             bankingBranch
         });
 
+        
+
         data.uid = newUser.id;
+
 
         switch (user){
             case UserTypes.ADMIN:

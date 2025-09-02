@@ -12,4 +12,5 @@ class PharmacistModel extends Model{
 }
 
 
-module.exports = PharmacistModel;
+const Pharmacists = new PharmacistModel();
+module.exports = Pharmacists;

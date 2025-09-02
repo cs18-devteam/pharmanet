@@ -1,10 +1,9 @@
 const decodeMultipartFormData = require("../../../common/middlewares/decodeMultipartFormData");
 const UserTypes = require("../helpers/UserTypes");
-const CashierModel = require("../models/cashierModel");
 const UserFactory = require("../models/UserFactory");
-const UserModel = require("../models/UserModel");
-const Users = new UserModel();
-const Cashiers = new CashierModel();
+const Users = require("../models/UserModel");
+const Cashiers = require("../models/cashierModel");
+
 
 exports.createCashier = async (req , res)=>{
     let data ;

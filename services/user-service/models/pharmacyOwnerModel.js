@@ -12,4 +12,5 @@ class PharmacyOwnerModel extends Model{
     }
 }
 
-module.exports = PharmacyOwnerModel;
+const PharmacyOwners = new PharmacyOwnerModel();
+module.exports = PharmacyOwners;

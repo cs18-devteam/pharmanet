@@ -12,4 +12,5 @@ class SystemPharmacyManagerModel extends Model{
 }
 
 
-module.exports = SystemPharmacyManagerModel;
+const SystemPharmacyManagers = new SystemPharmacyManagerModel();
+module.exports = SystemPharmacyManagers;

@@ -1,12 +1,9 @@
 const decodeMultipartFormData = require("../../../common/middlewares/decodeMultipartFormData");
 const UserTypes = require("../helpers/UserTypes");
 const SystemAdminModel = require("../models/systemAdminModel");
-const SystemPharmacyManagerModel = require("../models/systemPhamarcyManagerModel");
-const SystemStockManagerModel = require("../models/systemStockManagerModel");
+const SystemStockManagers = require("../models/systemStockManagerModel");
 const UserFactory = require("../models/UserFactory");
-const UserModel = require("../models/UserModel");
-const Users = new UserModel();
-const SystemStockManagers = new SystemStockManagerModel();
+const Users = require("../models/UserModel");
 
 exports.createSystemStockManager = async (req , res)=>{
     let data ;

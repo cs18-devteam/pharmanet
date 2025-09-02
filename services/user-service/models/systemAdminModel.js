@@ -11,5 +11,6 @@ class SystemAdminModel extends Model{
     }
 }
 
+const Admins = new SystemAdminModel();
 
-module.exports = SystemAdminModel;
+module.exports = Admins;

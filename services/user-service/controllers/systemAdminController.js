@@ -1,10 +1,8 @@
 const decodeMultipartFormData = require("../../../common/middlewares/decodeMultipartFormData");
 const UserTypes = require("../helpers/UserTypes");
-const SystemAdminModel = require("../models/systemAdminModel");
 const UserFactory = require("../models/UserFactory");
-const UserModel = require("../models/UserModel");
-const Users = new UserModel();
-const SystemAdmins = new SystemAdminModel();
+const Users = require("../models/UserModel");
+const SystemAdmins = require("../models/systemAdminModel");
 
 exports.createSystemAdmin = async (req , res)=>{
     let data ;

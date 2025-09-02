@@ -1,8 +1,8 @@
 const decodeMultipartFormData = require("../../../common/middlewares/decodeMultipartFormData");
 const UserTypes = require("../../user-service/helpers/UserTypes");
 const UserFactory = require("../../user-service/models/UserFactory");
-const crypto = require("node:crypto");
 const AuthModel = require("../models/AuthModel");
+const Users = require("../../user-service/models/UserModel");
 
 exports.signup = async (req , res)=>{
     let data = "";
@@ -16,16 +16,24 @@ exports.signup = async (req , res)=>{
             formData[name] = value;
         })
 
+
         const newUser =await UserFactory.createUser(UserTypes.CUSTOMER , formData);
         
         const token = AuthModel.CreateCookieToken({
             id: newUser.id,
             userName : newUser.userName,
         })
+
+        await Users.update({
+            id: newUser.id,
+            publicKey : token.publicKey,
+            privateKey : token.privateKey,
+        })
         
         res.setHeader("Set-Cookie" , [
             `Token= ${token}`,
-            `userId= ${newUser.id}; Max-Age=${Number(process.env.LOGIN_PERIOD_IN_MILLISECONDS)}`,
+            `UserId= ${newUser.id}; Max-Age=${Number(process.env.LOGIN_PERIOD_IN_MILLISECONDS)}`,
+            `key= ${token.publicKey}`
         ])
 
         res.writeHead(301,{

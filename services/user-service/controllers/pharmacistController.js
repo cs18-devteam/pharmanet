@@ -1,10 +1,8 @@
 const decodeMultipartFormData = require("../../../common/middlewares/decodeMultipartFormData");
 const UserTypes = require("../helpers/UserTypes");
-const PharmacistModel = require("../models/pharmacistModel");
 const UserFactory = require("../models/UserFactory");
-const UserModel = require("../models/UserModel");
-const Users = new UserModel();
-const Pharmacists = new PharmacistModel();
+const Users = require("../models/UserModel");
+const Pharmacists = require("../models/pharmacistModel");
 
 exports.createPharmacist = async (req , res)=>{
     let data ;

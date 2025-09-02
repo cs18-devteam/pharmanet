@@ -76,4 +76,6 @@ class UserModel extends Model{
     }
 }
 
-module.exports = UserModel;
+
+const Users = new UserModel();
+module.exports = Users;

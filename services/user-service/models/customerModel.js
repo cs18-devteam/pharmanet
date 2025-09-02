@@ -12,5 +12,5 @@ class CustomerModel extends Model{
 
 }
 
-
-module.exports = CustomerModel;
+const Customers = new CustomerModel();
+module.exports = Customers;

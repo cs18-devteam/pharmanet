@@ -1,11 +1,10 @@
 const decodeMultipartFormData = require("../../../common/middlewares/decodeMultipartFormData");
 const UserTypes = require("../helpers/UserTypes");
-const SystemAdminModel = require("../models/systemAdminModel");
-const SystemPharmacyManagerModel = require("../models/systemPhamarcyManagerModel");
+const pharmacyManagers = require("../models/systemPhamarcyManagerModel");
 const UserFactory = require("../models/UserFactory");
-const UserModel = require("../models/UserModel");
-const Users = new UserModel();
-const SystemPharmacyManagers = new SystemPharmacyManagerModel();
+const Users = require("../models/UserModel");
+
+
 
 exports.createSystemPharmacyManager = async (req , res)=>{
     let data ;

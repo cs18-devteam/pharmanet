@@ -13,4 +13,6 @@ class CashierModel extends Model{
 
 } 
 
-module.exports = CashierModel;
+const Cashiers = new CashierModel()
+
+module.exports = Cashiers;

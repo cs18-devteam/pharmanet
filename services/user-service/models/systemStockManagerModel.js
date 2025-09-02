@@ -11,4 +11,5 @@ class SystemStockManagerModel extends Model{
     }
 }
 
-module.exports = SystemStockManagerModel;
+const SystemStockManagers = new SystemStockManagerModel();
+module.exports = SystemStockManagers;

@@ -3,16 +3,22 @@ const AuthModel = require("../models/AuthModel");
 exports.login = async (req , res)=>{
     const header = req.headers;
     const cookies = {
-        token:undefined,
-        userid : undefined
+        Token:undefined,
+        UserId : undefined,
+        publicKey : undefined,
     }
     header.cookie.split("; ").forEach(el=>{
         const [name , value] = el.split('=');
-        cookies[name.toLowerCase()] = value;
+        cookies[name] = value;
     });
-    console.log(cookies.token , cookies.userid);
+    console.log(cookies.Token , cookies.UserId);
 
-    AuthModel.verifyCookieToken(cookies.userid , cookies.token);
+    AuthModel.verifyCookieToken({
+        id : cookies.UserId , 
+        key : cookies.publicKey , 
+        token : cookies.Token,
+        
+    });
 
     res.end()
 }

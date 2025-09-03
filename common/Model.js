@@ -81,24 +81,13 @@ class Model{
 
 
     //save model to database (create table)
-    createTable(){
+    async createTable(){
         const createTableQuery = this.#buildCreateTableQuery();
-        const useQueryHandler = (error , data , field)=>{
-            if(error){
-                console.log(error);
-                return;
-            }
-            db.query(createTableQuery , createTableHandler);
+        await db.query(`use ${process.env.DATABASE_NAME}`);
+        await db.query(createTableQuery);
+        if(process.env.NODE_ENV == "development"){
+            console.log(`${this.#table} created`);
         }
-        
-        const createTableHandler = (error , data ,field)=>{
-            if(error){
-                console.log(error);
-                return;
-            }
-        }
-        db.query(`use ${process.env.DATABASE_NAME}` , useQueryHandler);
-        
     }
 
     async save(data){

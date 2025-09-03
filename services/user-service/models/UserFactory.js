@@ -1,11 +1,13 @@
 const UserTypes = require("../helpers/UserTypes");
 const Users = require("./UserModel");
+const Cashiers = require("./cashierModel");
 const Customers = require("./customerModel");
-
-
-
-
-
+const Pharmacists = require("./pharmacistModel");
+const PharmacyOwners = require("./pharmacyOwnerModel");
+const PharmacyStockManagers = require("./pharmacyStockManagerModel");
+const Admins = require("./systemAdminModel");
+const SystemPharmacyManagers = require("./systemPhamarcyManagerModel");
+const SystemStockManagers = require("./systemStockManagerModel");
 
 class UserFactory{
     constructor(){

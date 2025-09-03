@@ -17,12 +17,14 @@ exports.signup = async (req , res)=>{
         })
 
 
-        const newUser =await UserFactory.createUser(UserTypes.CUSTOMER , formData);
+        const newUser = await UserFactory.createUser(UserTypes.CUSTOMER , formData);
         
         const token = AuthModel.CreateCookieToken({
             id: newUser.id,
             userName : newUser.userName,
         })
+
+        console.log(token.publicKey.length);
 
         await Users.update({
             id: newUser.id,
@@ -31,10 +33,12 @@ exports.signup = async (req , res)=>{
         })
         
         res.setHeader("Set-Cookie" , [
-            `Token= ${token}`,
-            `UserId= ${newUser.id}; Max-Age=${Number(process.env.LOGIN_PERIOD_IN_MILLISECONDS)}`,
-            `key= ${token.publicKey}`
+            `Token= ${token} path=/`,
+            `UserId= ${newUser.id}; Max-Age=${Number(process.env.LOGIN_PERIOD_IN_MILLISECONDS)} path=/`,
+            `key= ${token.publicKey} httpOnly; path=/`
         ])
+
+        console.log(res);
 
         res.writeHead(301,{
             "Authorization": `Bearer ${token}` ,
@@ -47,3 +51,7 @@ exports.signup = async (req , res)=>{
     })
     
 }
+
+const results = AuthModel.encrypt("hello i am chathura");
+const data = AuthModel.decrypt(results)
+console.log({results , data});

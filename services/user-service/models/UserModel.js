@@ -73,6 +73,14 @@ class UserModel extends Model{
             type : "VARCHAR(30)",
         }; 
 
+        this.publicKey = {
+            type : "TEXT"
+        }
+
+        this.privateKey = {
+            type : "TEXT"
+        }
+
     }
 }
 

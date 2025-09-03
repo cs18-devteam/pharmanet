@@ -1,5 +1,5 @@
-const DB = require('../../../database/Database');
-const db = DB.getInstance();
+const Database = require("../../../database/Database");
+const db = Database.getInstance();
 
 
 exports.getAllUsers =async (req, res)=>{

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Medicine</title>
+  <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body class="AddMedi">
+
+    <!--header section-->
+  <header class="top-bar">
+    <nav>
+        <div class="logo">
+            <img class="logopic" src="/public/logo/logo.svg" alt="logo">
+            <p class="logoname">PharmaNet</p>
+        </div>
+
+        <div id="toggle-placeholder"></div>
+
+
+    </nav>
+  </header>
+
+    <div class="container">
+        <!-- Medicine Details Form -->
+        <div class="medicine-details">
+            <h2>Medicine Details</h2>
+            <form>
+                <div class="col">
+                    <label>Medicine Name</label>
+                    <input type="text" placeholder="Enter medicine name">
+                </div>
+                
+
+                <div class="row">
+                    <div class="col">
+                        <label>Category</label>
+                        <select>
+                            <option>Select category</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>Type</label>
+                        <select>
+                            <option>Select type</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label>Price ($)</label>
+                        <input type="number" value="0.00">
+                    </div>
+                    <div class="col">
+                        <label>Stock Quantity</label>
+                        <input type="number" value="0">
+                    </div>
+                </div>
+
+                <div class="col">
+                    <label>Manufacturer</label>
+                    <input type="text" placeholder="Enter manufacturer name">
+                </div>
+                
+
+                <div class="row">
+                    <div class="col">
+                        <label>Expiry Date</label>
+                        <input type="date">
+                    </div>
+                    <div class="col">
+                        <label>Batch Number</label>
+                        <input type="text" placeholder="Batch #">
+                    </div>
+                </div>
+                <div class="col">
+                    <label>Description</label>
+                    <textarea placeholder="Enter medicine description"></textarea>
+                </div>
+                
+
+                <button type="submit">+ Add Medicine</button>
+            </form>
+        </div>
+
+        <!-- Medicine Inventory -->
+        <div class="medicine-inventory">
+            <div class="inventory-header">
+                <span>Total: 0 medicines</span>
+                <input type="text" class="searchBar" placeholder="Search medicines">
+                <select>
+                    <option>All Categories</option>
+                </select>
+            </div>
+            <div class="inventory-body">
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+  

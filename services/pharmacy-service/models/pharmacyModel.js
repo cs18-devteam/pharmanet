@@ -1,5 +1,5 @@
-const db = require("../../db");
-
+const Database = require("../../../database/Database"); // import class
+const db = Database.getInstance();
 class PharmacyModel {
     // Create table if it doesn't exist
     createTable() {
@@ -8,9 +8,9 @@ class PharmacyModel {
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 name VARCHAR(100),
                 licenseNumber VARCHAR(100) UNIQUE,
-                email VARCHAR UNIQUE(100),
-                contactNumber1 TEXT UNIQUE(10),
-                contactNumber2 TEXT UNIQUE(10),
+                email VARCHAR(100) UNIQUE,
+                contactNumber1 VARCHAR(10) UNIQUE,
+                contactNumber2 VARCHAR(10) UNIQUE,
                 password VARCHAR(255),
                 location VARCHAR(255),
                 googleLink TEXT,
@@ -18,10 +18,14 @@ class PharmacyModel {
                 longitude VARCHAR(50)
             )
         `;
+        return new Promise((resolve,reject) => {
         db.query(sql, (err) => {
-            if (err) throw err;
+            if (err) return reject (err);
             console.log("Pharmacy table ensured.");
+            resolve();
         });
+    });
+
     }
 
     // Insert new pharmacy

@@ -22,7 +22,7 @@ module.exports = class App{
     #files = [];
     static #routes = [];
 
-    constructor({port = "8080", hostname = "localhost"}={}){
+    constructor({port = "8000", hostname = "localhost"}={}){
         this.port = port;
         this.hostname = hostname;
 

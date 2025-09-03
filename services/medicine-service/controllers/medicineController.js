@@ -11,14 +11,14 @@
     //res.end();
 
 //}
-const medicineModel = require("../models/medicineModel");
+const MedicineModel = require("../models/medicineModel");
 
-const medicines = new medicineModel();
+const medicineInstance = new MedicineModel();
 
-exports.gettAllMedicines = async (req, res) => {
+exports.getAllMedicines = async (req, res) => {
     try{
-        const medicines= await medicines.getAll(); 
-        res.status(200).json(medicines);
+        const allMedicines= await medicineInstance.getAll(); 
+        res.status(200).json(allMedicines);
     }
     catch (err) {
         console.error(err);
@@ -29,7 +29,7 @@ exports.gettAllMedicines = async (req, res) => {
 exports.createMedicines = async (req, res) => {
     try {
         const data = req.body;     
-        const result = await medicines.save(data);    
+        const result = await medicineInstance.save(data);    
         res.status(201).json({ message: "Medicine add", id: result.insertId });
     } 
     catch (err) {
@@ -42,7 +42,10 @@ exports.updateMedicines = async (req, res) => {
     try {
         const { id } = req.params; 
         const data = req.body; 
-        const result = await medicines.update(id, data); 
+        const result = await medicineInstance.update(id, data); 
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: "Medicine not found" });
+        }
         res.status(200).json({ message: "Medicine updated", affected: result.affectedRows });  
     } 
     catch (err) {
@@ -54,7 +57,10 @@ exports.updateMedicines = async (req, res) => {
 exports.deleteMedicines= async (req, res) => {
     try {
         const { id } = req.params; 
-        const result = await medicines.delete(id); 
+        const result = await medicineInstance.delete(id); 
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: "Medicine not found" });
+        }
         res.status(200).json({ message: "Medicine deleted", affected: result.affectedRows });
     } 
     catch (err) {

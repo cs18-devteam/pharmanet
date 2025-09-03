@@ -35,11 +35,12 @@
     "test": "node ./test/stress.test.js",
     "create-database": "node ./config/createDatabase.js",
     "drop-database": "node ./config/dropDatabase.js",
-    "create-medidata": "node ./config/data/createMediData.js"
+    "create-medidata": "node ./config/data/createMediData.js",
+    "start": "node server.js"
   },
   "devDependencies": {
     "autocannon": "^8.0.0",
-    "live-server": "^1.2.2",
+    "live-server": "^1.2.0",
     "nodemon": "^3.1.10",
     "npm-run-all": "^4.1.5",
     "sass": "^1.90.0"

@@ -3,6 +3,7 @@ const UserTypes = require("../helpers/UserTypes");
 const UserFactory = require("../models/UserFactory");
 const Customers = require("../models/customerModel");
 const Users = require("../models/UserModel");
+const customerView  = require("../view/customerView");
 
 
 exports.createCustomer = async (req , res)=>{
@@ -16,9 +17,7 @@ exports.createCustomer = async (req , res)=>{
         const formData =  decodeMultipartFormData(req, data);
         const newUser =await UserFactory.createUser(UserTypes.CUSTOMER , formData);
 
-        res.writeHead(201 ,{ "Content-Type" : "application/json"});
-        res.write(JSON.stringify(newUser));
-        res.end();
+        customerView.renderCustomerView(req, res);
     })
 
 }
@@ -37,10 +36,19 @@ exports.getCustomer = async (req , res)=>{
         const customer = await Customers.getById(id);
         data = await Users.getById(customer[0].uid)
     }
+
+    console.log(req.params);
+
+    const view = req.params.get('view')
+    if(view){
+        switch(view){
+            case "update":
+                return customerView.renderCustomerUpdateView(req , res);
+        }
+    }
     
-    res.writeHead(200 , {"content-type":"application/json"});
-    res.write(JSON.stringify(data));
-    res.end();
+    return customerView.renderCustomerView(req, res);
+
 }
 
 exports.updateCustomer = async (req , res)=>{

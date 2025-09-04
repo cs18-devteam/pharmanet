@@ -3,6 +3,6 @@ const userControllers = require("../controllers/userController");
 
 const usersReDirectRouter = new Router()
 
-usersReDirectRouter.get(userControllers.getIndexPage ,userControllers.getIndexPage);
+usersReDirectRouter.get(userControllers.redirectUsers);
 
 module.exports = usersReDirectRouter;

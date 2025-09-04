@@ -2414,4 +2414,192 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   justify-content: center;
 }
 
+.user-update button {
+  margin: 1rem 0rem;
+}
+.user-update body {
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  background: #fff;
+  color: #333;
+}
+.user-update .header {
+  background: #000;
+}
+.user-update .header .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+.user-update .header .navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+.user-update .header .navbar ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+}
+.user-update .header .navbar ul li.active {
+  background: #fff;
+  border-radius: 20px;
+}
+.user-update .header .navbar ul li.active a {
+  color: #000;
+}
+.user-update .header .navbar .profile {
+  display: flex;
+  align-items: center;
+}
+.user-update .header .navbar .profile img {
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.user-update .header .navbar .profile span {
+  color: #fff;
+}
+.user-update .header .navbar .profile span small {
+  display: block;
+  font-size: 0.8rem;
+}
+.user-update .account-settings {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+.user-update .account-settings .back-btn {
+  display: inline-block;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: #008080;
+}
+.user-update .account-settings .user-photo {
+  text-align: center;
+  margin: 2rem 0;
+}
+.user-update .account-settings .user-photo img {
+  border-radius: 50%;
+}
+.user-update .account-settings .form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+.user-update .account-settings .form-grid .card {
+  padding: 1.5rem;
+}
+.user-update .account-settings .form-grid .card h2 {
+  font-size: 1.8rem;
+  color: var(--color-green-01);
+}
+.user-update .account-settings .form-grid .card p {
+  font-size: 1.6rem;
+  font-weight: 100;
+  color: #888;
+  margin-bottom: 2rem;
+}
+.user-update .account-settings .form-grid .card .form-btns {
+  display: flex;
+  justify-content: flex-end;
+}
+.user-update .account-settings .form-grid .card .form-btns button {
+  margin-left: 1rem;
+  font-size: 1.8rem;
+  font-family: var(--primary-font);
+  text-transform: capitalize;
+  border-radius: 3px;
+}
+.user-update .account-settings .form-grid .card .form-btns button[type=submit] {
+  background-color: var(--color-green-01);
+  color: white;
+  border: none;
+  outline: none;
+  font-family: 400;
+}
+.user-update .account-settings .form-grid .card .form-btns button[type=reset] {
+  background-color: white;
+  color: #555;
+  border: 1px solid var(--color-green-02);
+}
+.user-update .account-settings .form-grid .card .fields-container {
+  display: flex;
+  margin: 1rem;
+}
+.user-update .account-settings .form-grid .card .fields-container div {
+  width: 100%;
+}
+.user-update .account-settings .form-grid .card .fields-container div:nth-child(1), .user-update .account-settings .form-grid .card .fields-container div:nth-child(2) {
+  margin-right: 1rem;
+}
+.user-update .account-settings .form-grid .card .location-contact {
+  display: flex;
+}
+.user-update .account-settings .form-grid .card .location-contact div {
+  width: 100%;
+}
+.user-update .account-settings .form-grid .card .location-contact div:nth-child(1) {
+  margin-right: 1rem;
+}
+.user-update .account-settings .form-grid .card input, .user-update .account-settings .form-grid .card select {
+  height: 5rem;
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+.user-update .account-settings .form-grid .card .warning {
+  background: #fff3cd;
+  padding: 0.5rem;
+  border: 1px solid #ffeeba;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+}
+.user-update .account-settings .actions {
+  display: flex;
+  justify-content: flex-end;
+  margin: 2rem 0;
+  gap: 1rem;
+}
+.user-update .account-settings .delete-box {
+  background: #fdecea;
+  border: 1px solid #e74c3c;
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+.user-update .account-settings .delete-box h2 {
+  color: #e74c3c;
+}
+.user-update .account-settings .delete-box p {
+  margin: 0.5rem 0 1rem;
+}
+.user-update .btn {
+  background: #008080;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.user-update .btn.danger {
+  background: #e74c3c;
+  padding: 2rem;
+  font-size: 1.8rem;
+}
+.user-update .btn.clear {
+  background: #ccc;
+  color: #000;
+}
+.user-update .btn.save {
+  background: #008080;
+}
+.user-update .btn.upload {
+  background: transparent;
+  color: #008080;
+  border: 1px solid #008080;
+}
+
 /*# sourceMappingURL=style.css.map */

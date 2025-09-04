@@ -20,9 +20,8 @@ const app = App.getInstance();
 const db = Database.getInstance();
 app.public('./frontend');
 
-
 // handle user Routes
-app.route('/',authenticate , usersReDirectRouter);
+app.route('/', authenticate , usersReDirectRouter);
 app.route('/login' , LogInRouter)
 app.route('/signup' , SignUpRouter);
 app.route('/users/customers' , customerRouter);

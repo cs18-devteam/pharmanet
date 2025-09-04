@@ -17,6 +17,7 @@ exports.signup = async (req , res)=>{
         })
 
 
+
         const newUser = await UserFactory.createUser(UserTypes.CUSTOMER , formData);
         
         const token = AuthModel.CreateCookieToken({

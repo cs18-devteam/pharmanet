@@ -1,4 +1,7 @@
-exports.authenticate = (req , res , next)=>{
-    req.user = "customer"
-    
+const UserTypes = require("../../user-service/helpers/UserTypes")
+
+
+
+exports.authenticate = (req , res)=>{
+    req.userType = UserTypes.CUSTOMER;
 }   

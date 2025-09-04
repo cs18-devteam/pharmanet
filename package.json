@@ -36,7 +36,8 @@
     "create-database": "node ./config/createDatabase.js",
     "drop-database": "node ./config/dropDatabase.js",
     "create-medidata": "node ./config/data/createMediData.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "create-tables": "node ./config/tables/createTables.js"
   },
   "devDependencies": {
     "autocannon": "^8.0.0",
@@ -46,6 +47,7 @@
     "sass": "^1.90.0"
   },
   "dependencies": {
-    "mysql2": "^3.14.3"
+    "mysql2": "^3.14.3",
+    "nodemailer": "^7.0.6"
   }
 }

@@ -1,6 +1,7 @@
 const http = require('node:http');
 const path = require('path');
 const fs = require('fs');
+const Router = require('./common/Router');
 
 const mimeMap = {
     ".html": "text/html",
@@ -31,7 +32,7 @@ module.exports = class App{
             //parse url
             const url = new URL(req.url , `http://${req.headers.host}`);
             req.params = url.searchParams;
-            req.pathname = url.pathname;
+            req.pathname = url.pathname.replace(/%20/g , ' ').replace(/\\/g , "/");
             req.protocol = url.protocol;
 
             // for development cases
@@ -39,20 +40,24 @@ module.exports = class App{
                 console.log(`${req.method} ${req.pathname}`)
             }
 
-            //handle special case
-            if(req.pathname == "/"){
-                req.pathname = '/index.html';
-            };
 
 
-            const isFound = await this.findFile(req,res);
-            if(!isFound) this.findRoute(req , res);
+
+            const isFound = await this.findFile(req , res);
+
+            
+            if(!isFound) this.findRoute(req,res);
         });
 
     }
 
     async findFile(req , res){
         const [file] = this.#files.filter(file=>file.url == req.pathname);
+
+        // //handle special case
+        // if(req.pathname == "/"){
+        //     req.pathname = '/index.html';
+        // };
         
 
         if(file){
@@ -75,40 +80,66 @@ module.exports = class App{
         return false;
     }
 
-    async findRoute(req , res){
-        try{
-            App.#routes.forEach(async (route)=>{
+    #next(req , res , func){
+        if(typeof func == "function"){
+            return func(req , res);
+        }
+        if(func instanceof Array){
+            if(func.length == 0) return;
+            func.forEach(f=>this.#next(req , res , f));
+            return;
+        }
 
+        if(func instanceof Router){
+            const method = req.method;
+            switch(method){
+                case "GET":
+                    console.log(func);
+                    this.#execute(req , res ,func.getHandler);
+                    return;
+                case "POST":
+                    this.#execute( req , res ,func.postHandler);
+                    return;
+                case "PATCH":
+                    this.#execute(req , res ,func.patchHandler);
+                    return;
+                case "DELETE":
+                    this.#execute(req , res ,func.deleteHandler);
+                    break;
+            }
+        }
+
+    }
+
+
+    #execute(req , res , handlers = []){
+        this.#next(req , res , handlers);
+    }
+
+
+    async findRoute(req ,res){
+        try{
+            let isRouteFound = false;
+
+
+            App.#routes.forEach((route)=>{
                 if(route.path == req.pathname ){
-                    const method = req.method;
-                    switch(method){
-                        case "GET":
-                            route.router.getHandler(req, res);
-                            break;
-                        case "POST":
-                            route.router.postHandler(req,res);
-                            break;
-                        case "PATCH":
-                            route.router.patchHandler(req , res);
-                            break;
-                        case "DELETE":
-                            route.router.deleteHandler(req , res);
-                            break;
-                    }
+                    this.#execute( req , res,route.router);
                 }
-                return;
 
             })
 
+            return isRouteFound;
+
         }catch(error){
-            console.log("error : find Route method");
+            console.log("error : find Route method" , error);
         }
     }
 
-    route(path , router){
+    route(path , ...handlers){
         const routeObj = {
             path ,
-            router ,
+            router : handlers,
         };
 
         App.#routes.push(routeObj);

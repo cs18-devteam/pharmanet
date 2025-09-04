@@ -314,7 +314,7 @@ body {
       transition: background 0.2s;
 
       &:hover {
-        background: darken($primary, 10%);
+        background: $primary;
       }
     }
 

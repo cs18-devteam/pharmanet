@@ -16,6 +16,7 @@ class Slider{
     #setActive(number){
         this.active =  number <= this.numberOfSlides ? number : this.numberOfSlides;
         this.active = 0 < this.active ? this.active : 1;
+        this.active = 3;
         this.slideContainer.setAttribute('active' , this.active);
         this.slideContainer.style.setProperty("--active-slide" , this.active);
         return 0;

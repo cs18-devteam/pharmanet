@@ -1,4 +1,11 @@
 module.exports = class Router{
+
+    getHandler = []
+    postHandler = []
+    deleteHandler = []
+    updateHandler = []
+
+
     constructor(){}
 
     #call(callback = (req,res)=>{}){
@@ -10,20 +17,21 @@ module.exports = class Router{
         }
     }
 
-    get(callback = (req,res)=>{}){
-        this.getHandler = callback;
+    get(...callback){
+        callback.forEach(clb=>this.getHandler.push(clb));
+        
     }
-
-    post(callback =  (req,res)=>{}){
-        this.postHandler = callback;
+    
+    post(...callback){
+        callback.forEach(clb=>this.postHandler.push(clb));
     }
-
-    patch(callback = (req, res)=>{}){
-        this.patchHandler = callback;
+    
+    patch(...callback){
+        callback.forEach(clb=>this.postHandler.push(clb));
     }
-
-    delete(callback = (req, res)=>{}){
-        this.deleteHandler = callback;
+    
+    delete(...callback){
+        callback.forEach(clb=>this.deleteHandler.push(clb));
 
     }
 }

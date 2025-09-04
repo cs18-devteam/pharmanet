@@ -1,19 +1,21 @@
 const Database = require("../../../database/Database"); // import class
 const db = Database.getInstance();
 class MedicineModel {
+
+    //create table
     createTable() {
         const sql = `
             CREATE TABLE IF NOT EXISTS medicines (
                 id INT AUTO_INCREMENT PRIMARY KEY,
-                registrationNumber VARCHAR(100),
-                schedule VARCHAR(50),
-                serialNumber VARCHAR(100),
-                countryCode VARCHAR(10),
-                genericName VARCHAR(255),
-                dosageCode VARCHAR(100),
-                packType VARCHAR(100),
-                agentCode VARCHAR(100),
-                manuType VARCHAR(100)
+                name VARCHAR(100),
+                category_id VARCHAR(50),
+                type_id VARCHAR(100),
+                price CHAR(10),
+                stock INT(255),
+                manufacturer VARCHAR(100),
+                expiry_date VARCHAR(100),
+                batch_number VARCHAR(100),
+                description VARCHAR(100)
             )
         `;
         return new Promise((resolve,reject) => {
@@ -24,30 +26,32 @@ class MedicineModel {
     });
     }
 
+    //save data
     save(data) {
         const {
-            registrationNumber,
-            schedule,
-            serialNumber,
-            countryCode,
-            genericName,
-            dosageCode,
-            packType,
-            agentCode,
-            manuType
+            name,
+            categoryId,
+            typeId,
+            price,
+            stock,
+            manufacturer,
+            expiryDate,
+            batchNumber,
+            description
         } = data;
 
         const sql = `
             INSERT INTO medicines (
-                registrationNumber, schedule, serialNumber, countryCode,
-                genericName, dosageCode, packType, agentCode, manuType
+                name, categoryId, typeId, price,
+                stock, manufacturer, expiryDate, batchNumber, description
             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
         `;
 
+
         return new Promise((resolve, reject) => {
             db.query(sql, [
-                registrationNumber, schedule, serialNumber, countryCode,
-                genericName, dosageCode, packType, agentCode, manuType
+                name, categoryId, typeId, price,
+                stock, manufacturer, expiryDate, batchNumber, description
             ], (err, result) => {
                 if (err) return reject(err);
                 resolve(result);
@@ -55,6 +59,8 @@ class MedicineModel {
         });
     }
 
+
+    //get all data
     getAll() {
         return new Promise((resolve, reject) => {
             db.query("SELECT * FROM medicines", (err, results) => {
@@ -66,30 +72,29 @@ class MedicineModel {
 
     update(id, data) {
         const {
-            registrationNumber,
-            schedule,
-            serialNumber,
-            countryCode,
-            genericName,
-            dosageCode,
-            packType,
-            agentCode,
-            manuType
+            name,
+            categoryId,
+            typeId,
+            price,
+            stock,
+            manufacturer,
+            expiryDate,
+            batchNumber,
+            description
         } = data;
+
 
         const sql = `
             UPDATE medicines SET
-                registrationNumber = ?, schedule = ?, serialNumber = ?,
-                countryCode = ?, genericName = ?, dosageCode = ?,
-                packType = ?, agentCode = ?, manuType = ?
+                name = ?, categoryId = ?, typeId = ?, price = ?,
+                stock = ?, manufacturer = ?, expiryDate = ?, batchNumber = ?, description = ?
             WHERE id = ?
         `;
 
         return new Promise((resolve, reject) => {
             db.query(sql, [
-                registrationNumber, schedule, serialNumber,
-                countryCode, genericName, dosageCode,
-                packType, agentCode, manuType, id
+                name, categoryId, typeId, price,
+                stock, manufacturer, expiryDate, batchNumber, description, id
             ], (err, result) => {
                 if (err) return reject(err);
                 resolve(result);
@@ -97,6 +102,8 @@ class MedicineModel {
         });
     }
 
+
+    //delete all data
     delete(id) {
         return new Promise((resolve, reject) => {
             db.query("DELETE FROM medicines WHERE id = ?", [id], (err, result) => {

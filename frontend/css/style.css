@@ -39,11 +39,43 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
+a {
+  text-decoration: none;
+}
+
+input {
+  border-radius: 3px;
+  border: 1px solid #ccc !important;
+  padding: 1rem !important;
+}
+
+button {
+  padding: 1rem;
+}
+
+img {
+  object-fit: cover;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0rem 2rem;
+}
+
+.auth-btns a {
+  padding: 1rem 2rem;
+  border: 2px solid var(--color-yellow-01);
+  color: var(--color-yellow-01);
+  text-decoration: none;
+  text-transform: capitalize;
+  font-weight: 600;
+  margin-left: 1rem;
+}
+.auth-btns a.signup {
+  background-color: var(--color-yellow-01);
+  color: white;
 }
 
 .logo {
@@ -69,14 +101,23 @@ nav {
 .search form input[type=search] {
   padding: 1rem 1rem;
   border: 0.2rem solid var(--color-green-02);
-  border-radius: 1rem 0 0 1rem;
+  border-top: 1px solid #aaa;
+  border-left: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+  border-radius: 0.5rem 0 0 0.5rem;
   font-size: 2rem;
   width: 100%;
   height: 5rem;
 }
+.search form input[type=search]::placeholder {
+  font-family: var(--primary-font);
+  font-size: 1.8rem;
+  color: #888;
+  font-weight: 100;
+}
 .search form input[type=submit] {
   padding: 1rem 2rem;
-  border-radius: 0 1rem 1rem 0;
+  border-radius: 0 0.5rem 0.5rem 0;
   background-color: var(--color-green-02);
   color: var(--white);
   cursor: pointer;
@@ -520,6 +561,15 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   font-style: italic;
   src: url(/fonts/Poppins/Poppins-BlackItalic.ttf) format("TrueType");
 }
+.utility-hidden {
+  transform: translateY(10rem);
+  opacity: 0;
+}
+
+.utility-transition {
+  transition: all 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
 .signup .signupImage {
   position: relative;
 }
@@ -610,7 +660,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   color: #fff;
   background-image: linear-gradient(to right, var(--color-green-01), var(--color-blue-01));
   line-height: 2rem;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 0.5rem;
   outline: none;
   width: 100%;
@@ -2451,6 +2501,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .AddMedi .container .medicine-inventory .inventory-body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
@@ -2468,6 +2519,249 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .AddMedi .container .medicine-inventory .inventory-body .empty-state p {
   color: #666;
+}
+.AddMedi .container .medicine-inventory .inventory-body .medicine-card {
+  display: flex;
+  flex-direction: row;
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: left;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.AddMedi .container .medicine-inventory .inventory-body:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.AddMedi .container .medicine-inventory .inventory-body h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.6rem;
+  color: #333;
+}
+.AddMedi .container .medicine-inventory .inventory-body p {
+  margin: 0.3rem 0;
+  font-size: 1.3rem;
+  color: #555;
+}
+.AddMedi .container .medicine-inventory .inventory-body .actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.AddMedi .container .medicine-inventory .inventory-body .actions button {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.8rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.AddMedi .container .medicine-inventory .inventory-body .actions button.update-btn {
+  background: #007bff;
+  color: #fff;
+}
+.AddMedi .container .medicine-inventory .inventory-body .actions button.update-btn:hover {
+  background: #0056b3;
+}
+.AddMedi .container .medicine-inventory .inventory-body .actions button.delete-btn {
+  background: #dc3545;
+  color: #fff;
+}
+.AddMedi .container .medicine-inventory .inventory-body .actions button.delete-btn:hover {
+  background: #a71d2a;
+}
+
+.contact-us .container {
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  width: 100%;
+  margin-top: 5rem;
+}
+.contact-us .container h1 {
+  background-image: linear-gradient(to bottom right, var(--color-green-01), var(--color-green-02));
+  color: transparent;
+  background-clip: text;
+}
+.contact-us .container form {
+  max-width: 60rem;
+  flex-grow: 1;
+  width: 100%;
+}
+.contact-us .container form div {
+  margin: 1.5rem 0;
+}
+.contact-us .container form div label {
+  color: var(--color-green-02);
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+.contact-us .container form div input, .contact-us .container form div textarea {
+  font-size: 1.8rem;
+  margin-top: 0.6rem;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  color: #444;
+  font-weight: 400;
+  font-family: inherit;
+  min-width: max-content;
+}
+.contact-us .container form div input::first-letter, .contact-us .container form div textarea::first-letter {
+  text-transform: capitalize;
+}
+.contact-us .container form div input:focus, .contact-us .container form div textarea:focus {
+  outline: 2px solid var(--color-green-01);
+  border-radius: 3px;
+  border: none;
+}
+.contact-us .container form div textarea {
+  height: 15rem;
+  min-width: max-content;
+}
+.contact-us .container form button {
+  width: 100%;
+  background-color: var(--color-green-01);
+  border: none;
+  outline: none;
+  padding: 1.5rem 2rem;
+  font-size: large;
+  color: white;
+  border-radius: 3px;
+  background-image: linear-gradient(to right, var(--color-green-01), var(--color-green-02));
+  font-family: inherit;
+}
+
+.login .login-container {
+  display: flex;
+  height: 100vh;
+  width: 80vw;
+  max-width: 114rem;
+  margin: 0 auto;
+}
+.login .left-panel {
+  width: 50vw;
+  height: 100vh;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: --white;
+  padding: 2rem;
+}
+.login .image-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.login .image-wrapper img:first-child {
+  width: 12rem;
+  height: auto;
+}
+.login .image-wrapper img:nth-child(2) {
+  width: 58rem;
+  height: auto;
+}
+.login .quote {
+  position: absolute;
+  text-align: center;
+  top: 20%;
+  left: 5rem;
+  right: 5rem;
+  transform: translateY(-50%);
+  font-size: 4rem;
+  font-weight: bold;
+  color: var(--white);
+  text-align: left;
+}
+.login .right-panel {
+  width: 50vw;
+  height: 100vh;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--white);
+  padding: 2rem;
+}
+.login .logo img {
+  height: 5rem;
+}
+.login h1 {
+  font-weight: 800;
+  font-size: 5rem;
+  margin: 0rem 0 2rem 0;
+  text-align: center;
+}
+.login form {
+  width: 100%;
+  max-width: 45vw;
+  display: flex;
+  flex-direction: column;
+}
+.login label {
+  margin-bottom: 0.8rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+.login input {
+  margin-bottom: 2rem;
+  padding: 0.8rem;
+  border: 0.1rem solid lightgray;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+}
+.login button {
+  background: linear-gradient(to right, var(--color-green-01), var(--color-green-02));
+  color: var(--white);
+  border: none;
+  padding: 1rem;
+  border-radius: 0.3rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.login .links {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 45vw;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+.login .links a {
+  color: var(--font-linear-secondary-color);
+  text-decoration: none;
+  margin-bottom: 5rem;
+}
+.login .links p {
+  text-align: center;
+  width: 100%;
+}
+.login .signup-btn {
+  background: lightyellow;
+  border: 1px solid var(--color-yellow-01);
+  color: var(--color-yellow-01);
+  padding: 0.5rem 1rem;
+  border-radius: 1.2rem;
+  margin-left: 0.2rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+.login .footer {
+  margin-top: 5rem;
+  display: flex;
+  gap: 5rem;
+  font-size: 1.8rem;
+  color: #757575;
+  justify-content: center;
 }
 
 /*# sourceMappingURL=style.css.map */

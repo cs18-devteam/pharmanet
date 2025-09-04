@@ -1,0 +1,888 @@
+.landingPage{
+  margin-right: 0%;
+
+$primary: #0a8f8f;
+$secondary: #ff8c42;
+$dark: #222;
+$light: #fff;
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f9f9f9;
+  color: $dark;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: $light;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+
+    a {
+      text-decoration: none;
+      color: $dark;
+      font-weight: bold;
+
+      &.active {
+        border-bottom: 2px solid $primary;
+      }
+    }
+  }
+}
+
+/* Header */
+.header {
+    margin: 1rem ;
+    position: relative;
+    
+    .header-content{
+    width: 100%;
+    height: 34.5rem;
+    border-radius: 1rem;
+    border: 0.1rem solid rgba(255, 255, 255, 0.21);
+    background: url(/public/images/pharmarcyLandingPage.png) lightgray 50% / cover no-repeat;
+    padding: 2rem 2rem;
+
+    h1{
+    display: flex;
+    color: #FFF;
+    font-family: "Red Hat Display";
+    font-size: 4.8rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal; 
+    justify-content: center; 
+    }
+
+    p{
+        color: #FFF;
+        font-family: "Red Hat Display";
+        font-style: normal;
+        line-height: normal;
+        font-size: 1.8rem;
+        font-weight: 600;
+
+        strong{
+            opacity: 0.5;
+            font-size: 2.8rem;
+            font-weight: 700;
+            
+        }
+    }
+
+}
+
+   
+
+  .btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0.3rem;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    background: $primary;
+    color: $light;
+    align-items: center;
+    cursor: pointer;
+
+    &.secondary {
+      background: $light;
+      color: $primary;
+    }
+  }
+
+  .contact-card {
+    position: absolute;
+    right: 2rem;
+    top: 23rem;
+    color: $light;
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid #000;
+    background: #121212;
+    width: 25.2rem;
+    height: 23.2rem;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+
+    span{
+        color: #FFF;
+        font-family: "Red Hat Display";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    h3{
+        color: #F9A550;
+        font-family: "Red Hat Display";
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 700;
+        margin-top: -1rem;
+    }
+
+    p{
+        color: #FFF;
+        font-family: "Red Hat Display";
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+    
+
+    .btn {
+      display: flex;
+      margin-top: 2rem;
+      background: $light;
+      color: $dark;
+      height: 3.8rem;
+      width: 15rem;
+      border-radius: 30px;
+      border: 2px solid #FFF;
+      background: #FFF;
+      justify-content: center;
+
+      svg{
+        margin-left: 0.4rem;
+      }
+    }
+  }
+}
+
+/* Store */
+.store {
+  padding: 2rem;
+
+  h2 {
+    display: flex;
+    color: #000;
+    background: linear-gradient(98deg, rgba(255, 255, 255, 0.00) 83.19%, #faf9f9 80.48%), linear-gradient(82deg, #F9A550 83.19%, rgba(249, 165, 80, 0.00) 83.48%);
+    height: 3.6rem;
+    width: 12.9rem;
+    padding: 1rem;
+    align-items: center;
+    justify-content: left;
+    gap: 1rem;
+    
+}
+  p{
+    color: #004848;
+    font-family: "Red Hat Display";
+    font-size: 3.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 4rem; 
+    letter-spacing: -0.036rem;
+    width: 70.2rem;
+    height: 8rem;
+  }
+
+  .search-bar {
+    margin: 1rem 0;
+    input {
+      display: flex;
+      width: 64rem;
+      height: 4rem;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      border-radius: 1rem;
+      border: 0.1rem solid #ccc;
+    }
+  }
+
+  .products {
+  display: flex;
+  gap: 3.5rem;
+  flex-wrap: nowrap;
+  width: 100%;
+  margin-top: 4rem;
+}
+
+.product-card {
+  background: $light;
+  border-radius: 1rem;
+  border: 0.1rem solid #EEE;
+  padding: 1rem;
+  width: 25.4rem;
+  gap: 2rem;
+  height: 39rem;
+  text-align: left;
+  align-items: flex-start;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  .img-container {
+    position: relative;
+    width: 100%;
+    height: 24.4rem;
+    gap: 2rem;
+
+
+    img {
+      width: 100%;
+      border-radius: 8px;
+      height: 23rem;
+    
+    }
+
+    .price-badge {
+      position: absolute;
+      bottom: 2rem;
+      right: 0.8rem;
+      background: $light;
+      border-radius: 8px;
+      padding: 1rem;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      line-height: normal;
+      font-style: normal;
+      font-weight: 500;
+      border-radius: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+  }
+
+  h3 {
+    margin: 0.8rem 0;
+    font-family: "Red Hat Display";
+    font-style: normal;
+    line-height: normal;
+    font-size: 2rem;
+    font-weight: 500;
+  }
+
+  /* Sizes */
+  .sizes {
+    display: flex;
+    justify-content: left;
+    gap: 0.5rem;
+    margin: 0.8rem 0rem;
+
+    button {
+      background: none;
+      border: 1px solid $dark;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      font-weight: bold;
+
+      &:hover {
+        background: $primary;
+        color: $light;
+        border-color: $primary;
+      }
+    }
+  }
+
+  /* Quantity */
+  .quantity {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 4.5rem;
+
+    button {
+      background: $primary;
+      color: $light;
+      border: none;
+      border-radius: 6px;
+      width: 32px;
+      height: 32px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background 0.2s;
+
+      &:hover {
+        background: darken($primary, 10%);
+      }
+    }
+
+    .count {
+      font-size: 1rem;
+      font-weight: bold;
+    }
+  }
+}
+
+.contactBtn{
+    display: flex;
+    position: absolute;
+    width: 21rem;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    top: 150%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 5rem;
+    border: 0.1rem solid #1E1E1E;
+    button{
+        display: flex;
+        justify-content: center;
+        color: #1E1E1E;
+        font-family: "Red Hat Display";
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 4rem; 
+        letter-spacing: -0.018rem;
+        border: none;
+
+
+        svg{
+            margin-top: 0.4rem;
+        }
+    }
+}
+}
+
+// /* Footer */
+// .footer {
+//   text-align: center;
+//   padding: 2rem;
+
+//   .btn {
+//     background: $primary;
+//     color: $light;
+//     font-size: 1rem;
+//   }
+// }
+
+
+//feedback section
+.feedback{
+    margin-top: 15rem;
+    .feedbackHeading{
+        color: #000;
+        font-family: "Red Hat Display";
+        font-size: 3rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-align: center;
+        text-transform: capitalize;
+    }
+    .feedbackCards{
+       display: flex;
+       position: absolute;
+       top: 180%;
+       left: 12%;
+       flex-direction: row;
+       align-items: center;
+       justify-content: center;
+       gap: 1rem;
+       width: 118.6rem;
+       height: 37.8rem;
+       background: #FFE5CA;
+
+        .cardOne{
+        position :relative;
+        padding: 2rem;
+        align-items: center;
+        width: 25rem;
+        height: 31.3535rem;
+        border-radius: 1.7236rem;
+        background: #004848;
+        
+            .stars{
+                display: flex;
+                flex-direction: row;
+                gap: 0.4rem;
+               
+                div{
+                width: 2rem;
+                height: 2rem;
+                border-radius: 50%;
+                }
+                
+                .active{
+                   background-color: #F9A550;
+                }
+                .inactive{
+                    background-color: #1E1E1E;
+                }
+            }
+            p{
+                color: #FFF;
+                width: 21.2869rem;
+                height: 9.8247rem;
+                font-family: "Red Hat Display";
+                font-size: 1.723rem;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                margin-top: 1.5rem;
+                padding: 1rem 1rem 1rem 0rem;
+            }
+
+            .fSemiColon{
+                display: flex;
+                position: absolute;
+                top: -5%;
+                left: 0%;
+                color : #fff;
+                font-size: 22.6227rem;
+                font-weight: 400;
+                line-height: normal;
+                opacity: 0.2;
+            }
+            .sSemiColon{
+                display: flex;
+                position: absolute;
+                top: 0%;
+                left: 60%;
+                color : #fff;
+                font-size: 22.6227rem;
+                font-weight: 400;
+                line-height: normal;
+                opacity: 0.2;
+                transform: rotate(180deg);
+            }
+
+            .cardFooter{
+                display:flex;
+                position: absolute;
+                top: 90%;
+                left: 48%;
+                color: #FFF;
+                font-family: "Red Hat Display";
+                font-size: 15.513px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                text-transform: capitalize;
+
+                .fWord{
+                    opacity: 0.34;
+                    margin-right: 1rem;
+                }
+                .lWord{
+                    opacity: 0.7;
+                    
+                }
+            }
+        }
+
+        .cardTwo{
+        position :relative;
+        padding: 2rem;
+        align-items: center;
+        width: 25rem;
+        height: 31.3535rem;
+        border-radius: 1.7236rem;
+        background: #000;
+        
+            .stars{
+                display: flex;
+                flex-direction: row;
+                gap: 0.4rem;
+               
+                div{
+                width: 2rem;
+                height: 2rem;
+                border-radius: 50%;
+                }
+                
+                .active{
+                   background-color: #F9A550;
+                }
+                .inactive{
+                    background-color: #1E1E1E;
+                }
+            }
+            p{
+                color: #FFF;
+                width: 21.2869rem;
+                height: 9.8247rem;
+                font-family: "Red Hat Display";
+                font-size: 1.723rem;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                margin-top: 1.5rem;
+                padding: 1rem 1rem 1rem 0rem;
+            }
+
+            .fSemiColon{
+                display: flex;
+                position: absolute;
+                top: -5%;
+                left: 0%;
+                color : #fff;
+                font-size: 22.6227rem;
+                font-weight: 400;
+                line-height: normal;
+                opacity: 0.2;
+            }
+            .sSemiColon{
+                display: flex;
+                position: absolute;
+                top: 0%;
+                left: 60%;
+                color : #fff;
+                font-size: 22.6227rem;
+                font-weight: 400;
+                line-height: normal;
+                opacity: 0.2;
+                transform: rotate(180deg);
+            }
+
+            .cardFooter{
+                display:flex;
+                position: absolute;
+                top: 90%;
+                left: 48%;
+                color: #FFF;
+                font-family: "Red Hat Display";
+                font-size: 15.513px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                text-transform: capitalize;
+
+                .fWord{
+                    opacity: 0.34;
+                    margin-right: 1rem;
+                }
+                .lWord{
+                    opacity: 0.7;
+                    
+                }
+            }
+        }
+
+        .cardThree{
+        position :relative;
+        padding: 2rem;
+        align-items: center;
+        width: 25rem;
+        height: 31.3535rem;
+        border-radius: 1.7236rem;
+        background: #000;
+        
+            .stars{
+                display: flex;
+                flex-direction: row;
+                gap: 0.4rem;
+               
+                div{
+                width: 2rem;
+                height: 2rem;
+                border-radius: 50%;
+                }
+                
+                .active{
+                   background-color: #F9A550;
+                }
+                .inactive{
+                    background-color: #1E1E1E;
+                }
+            }
+            p{
+                color: #FFF;
+                width: 21.2869rem;
+                height: 9.8247rem;
+                font-family: "Red Hat Display";
+                font-size: 1.723rem;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                margin-top: 1.5rem;
+                padding: 1rem 1rem 1rem 0rem;
+            }
+
+            .fSemiColon{
+                display: flex;
+                position: absolute;
+                top: -5%;
+                left: 0%;
+                color : #fff;
+                font-size: 22.6227rem;
+                font-weight: 400;
+                line-height: normal;
+                opacity: 0.2;
+            }
+            .sSemiColon{
+                display: flex;
+                position: absolute;
+                top: 0%;
+                left: 60%;
+                color : #fff;
+                font-size: 22.6227rem;
+                font-weight: 400;
+                line-height: normal;
+                opacity: 0.2;
+                transform: rotate(180deg);
+            }
+
+            .cardFooter{
+                display:flex;
+                position: absolute;
+                top: 90%;
+                left: 48%;
+                color: #FFF;
+                font-family: "Red Hat Display";
+                font-size: 15.513px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                text-transform: capitalize;
+
+                .fWord{
+                    opacity: 0.34;
+                    margin-right: 1rem;
+                }
+                .lWord{
+                    opacity: 0.7;
+                    
+                }
+            }
+        }
+
+        .cardFour{
+        position :relative;
+        padding: 2rem;
+        align-items: center;
+        width: 25rem;
+        height: 31.3535rem;
+        border-radius: 1.7236rem;
+        background: #004848;
+        
+            .stars{
+                display: flex;
+                flex-direction: row;
+                gap: 0.4rem;
+               
+                div{
+                width: 2rem;
+                height: 2rem;
+                border-radius: 50%;
+                }
+                
+                .active{
+                   background-color: #F9A550;
+                }
+                .inactive{
+                    background-color: #1E1E1E;
+                }
+            }
+            p{
+                color: #FFF;
+                width: 21.2869rem;
+                height: 9.8247rem;
+                font-family: "Red Hat Display";
+                font-size: 1.723rem;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                margin-top: 1.5rem;
+                padding: 1rem 1rem 1rem 0rem;
+            }
+
+            .fSemiColon{
+                display: flex;
+                position: absolute;
+                top: -5%;
+                left: 0%;
+                color : #fff;
+                font-size: 22.6227rem;
+                font-weight: 400;
+                line-height: normal;
+                opacity: 0.2;
+            }
+            .sSemiColon{
+                display: flex;
+                position: absolute;
+                top: 0%;
+                left: 60%;
+                color : #fff;
+                font-size: 22.6227rem;
+                font-weight: 400;
+                line-height: normal;
+                opacity: 0.2;
+                transform: rotate(180deg);
+            }
+
+            .cardFooter{
+                display:flex;
+                position: absolute;
+                top: 90%;
+                left: 48%;
+                color: #FFF;
+                font-family: "Red Hat Display";
+                font-size: 15.513px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                text-transform: capitalize;
+
+                .fWord{
+                    opacity: 0.34;
+                    margin-right: 1rem;
+                }
+                .lWord{
+                    opacity: 0.7;
+                    
+                }
+            }
+        }
+        
+    }
+
+}
+
+//footer section
+.footer {
+  position : absolute;
+  top: 240%;
+  width: 100%;
+  height: 30rem;
+  background: #08374F;
+  color: #fff;
+  padding: 5rem 7rem 0rem 7rem;
+
+  margin: -3%;
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 5rem;
+
+    .footer-logo {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      img {
+        width: 50px;
+        margin-bottom: 0.5rem;
+      }
+
+      h3 {
+        margin: 0;
+        font-size: 1.2rem;
+      }
+    }
+
+    .footer-links {
+      h4 {
+        margin-bottom: 0.5rem;
+        color: #FFF;
+        width: 23.8rem;
+        height: 2.6rem;
+        font-family: "Red Hat Display";
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          margin: 0.3rem 0;
+
+          a {
+            color: #FFF;
+            font-family: "Red Hat Display";
+            font-size: 1.8rem;
+            font-style: normal;
+            text-decoration: none;
+            font-weight: 200;
+            line-height: 3rem;
+            opacity: 0.78;
+
+            &:hover {
+              color: #00c3ff;
+            }
+          }
+        }
+      }
+    }
+
+    .footer-description {
+      max-width: 25rem;
+
+      h4 {
+        margin-bottom: 0.5rem;
+        color: #FFF;
+        font-family: "Red Hat Display";
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        height: 2.6rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        color: #FFF;
+        font-family: "Red Hat Display";
+        font-size: 1.5rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        height: 12.8rem;
+        opacity: 0.78;
+      }
+    }
+  }
+
+  .footer-bottom {
+    border-top: 1px solid #4c6a84;
+    padding-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+      margin: 0;
+      font-size: 0.85rem;
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+
+      a {
+        font-size: 0.85rem;
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s;
+
+        &:hover {
+          color: #00c3ff;
+        }
+      }
+    }
+  }
+}
+}

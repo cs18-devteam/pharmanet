@@ -811,6 +811,773 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   left: 6rem;
 }
 
+.landingPage {
+  margin-right: 0%;
+  /* Navbar */
+  /* Header */
+  /* Store */
+}
+.landingPage body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f9f9f9;
+  color: #222;
+}
+.landingPage .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+.landingPage .navbar .nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+.landingPage .navbar .nav-links a {
+  text-decoration: none;
+  color: #222;
+  font-weight: bold;
+}
+.landingPage .navbar .nav-links a.active {
+  border-bottom: 2px solid #0a8f8f;
+}
+.landingPage .header {
+  margin: 1rem;
+  position: relative;
+}
+.landingPage .header .header-content {
+  width: 100%;
+  height: 34.5rem;
+  border-radius: 1rem;
+  border: 0.1rem solid rgba(255, 255, 255, 0.21);
+  background: url(/public/images/pharmarcyLandingPage.png) lightgray 50%/cover no-repeat;
+  padding: 2rem 2rem;
+}
+.landingPage .header .header-content h1 {
+  display: flex;
+  color: #FFF;
+  font-family: "Red Hat Display";
+  font-size: 4.8rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  justify-content: center;
+}
+.landingPage .header .header-content p {
+  color: #FFF;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  line-height: normal;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+.landingPage .header .header-content p strong {
+  opacity: 0.5;
+  font-size: 2.8rem;
+  font-weight: 700;
+}
+.landingPage .header .btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0.3rem;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: #0a8f8f;
+  color: #fff;
+  align-items: center;
+  cursor: pointer;
+}
+.landingPage .header .btn.secondary {
+  background: #fff;
+  color: #0a8f8f;
+}
+.landingPage .header .contact-card {
+  position: absolute;
+  right: 2rem;
+  top: 23rem;
+  color: #fff;
+  padding: 2.5rem;
+  border-radius: 20px;
+  border: 1px solid #000;
+  background: #121212;
+  width: 25.2rem;
+  height: 23.2rem;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.landingPage .header .contact-card span {
+  color: #FFF;
+  font-family: "Red Hat Display";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.landingPage .header .contact-card h3 {
+  color: #F9A550;
+  font-family: "Red Hat Display";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  margin-top: -1rem;
+}
+.landingPage .header .contact-card p {
+  color: #FFF;
+  font-family: "Red Hat Display";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.landingPage .header .contact-card .btn {
+  display: flex;
+  margin-top: 2rem;
+  background: #fff;
+  color: #222;
+  height: 3.8rem;
+  width: 15rem;
+  border-radius: 30px;
+  border: 2px solid #FFF;
+  background: #FFF;
+  justify-content: center;
+}
+.landingPage .header .contact-card .btn svg {
+  margin-left: 0.4rem;
+}
+.landingPage .store {
+  padding: 2rem;
+}
+.landingPage .store h2 {
+  display: flex;
+  color: #000;
+  background: linear-gradient(98deg, rgba(255, 255, 255, 0) 83.19%, #faf9f9 80.48%), linear-gradient(82deg, #F9A550 83.19%, rgba(249, 165, 80, 0) 83.48%);
+  height: 3.6rem;
+  width: 12.9rem;
+  padding: 1rem;
+  align-items: center;
+  justify-content: left;
+  gap: 1rem;
+}
+.landingPage .store p {
+  color: #004848;
+  font-family: "Red Hat Display";
+  font-size: 3.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 4rem;
+  letter-spacing: -0.036rem;
+  width: 70.2rem;
+  height: 8rem;
+}
+.landingPage .store .search-bar {
+  margin: 1rem 0;
+}
+.landingPage .store .search-bar input {
+  display: flex;
+  width: 64rem;
+  height: 4rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  border: 0.1rem solid #ccc;
+}
+.landingPage .store .products {
+  display: flex;
+  gap: 3.5rem;
+  flex-wrap: nowrap;
+  width: 100%;
+  margin-top: 4rem;
+}
+.landingPage .store .product-card {
+  background: #fff;
+  border-radius: 1rem;
+  border: 0.1rem solid #EEE;
+  padding: 1rem;
+  width: 25.4rem;
+  gap: 2rem;
+  height: 39rem;
+  text-align: left;
+  align-items: flex-start;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
+  /* Sizes */
+  /* Quantity */
+}
+.landingPage .store .product-card:hover {
+  transform: translateY(-4px);
+}
+.landingPage .store .product-card .img-container {
+  position: relative;
+  width: 100%;
+  height: 24.4rem;
+  gap: 2rem;
+}
+.landingPage .store .product-card .img-container img {
+  width: 100%;
+  border-radius: 8px;
+  height: 23rem;
+}
+.landingPage .store .product-card .img-container .price-badge {
+  position: absolute;
+  bottom: 2rem;
+  right: 0.8rem;
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  line-height: normal;
+  font-style: normal;
+  font-weight: 500;
+  border-radius: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+.landingPage .store .product-card h3 {
+  margin: 0.8rem 0;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  line-height: normal;
+  font-size: 2rem;
+  font-weight: 500;
+}
+.landingPage .store .product-card .sizes {
+  display: flex;
+  justify-content: left;
+  gap: 0.5rem;
+  margin: 0.8rem 0rem;
+}
+.landingPage .store .product-card .sizes button {
+  background: none;
+  border: 1px solid #222;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.landingPage .store .product-card .sizes button:hover {
+  background: #0a8f8f;
+  color: #fff;
+  border-color: #0a8f8f;
+}
+.landingPage .store .product-card .quantity {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 4.5rem;
+}
+.landingPage .store .product-card .quantity button {
+  background: #0a8f8f;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.landingPage .store .product-card .quantity button:hover {
+  background: rgb(6.6666666667, 95.3333333333, 95.3333333333);
+}
+.landingPage .store .product-card .quantity .count {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.landingPage .store .contactBtn {
+  display: flex;
+  position: absolute;
+  width: 21rem;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  top: 150%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5rem;
+  border: 0.1rem solid #1E1E1E;
+}
+.landingPage .store .contactBtn button {
+  display: flex;
+  justify-content: center;
+  color: #1E1E1E;
+  font-family: "Red Hat Display";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 4rem;
+  letter-spacing: -0.018rem;
+  border: none;
+}
+.landingPage .store .contactBtn button svg {
+  margin-top: 0.4rem;
+}
+.landingPage .feedback {
+  margin-top: 15rem;
+}
+.landingPage .feedback .feedbackHeading {
+  color: #000;
+  font-family: "Red Hat Display";
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
+  text-transform: capitalize;
+}
+.landingPage .feedback .feedbackCards {
+  display: flex;
+  position: absolute;
+  top: 180%;
+  left: 12%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 118.6rem;
+  height: 37.8rem;
+  background: #FFE5CA;
+}
+.landingPage .feedback .feedbackCards .cardOne {
+  position: relative;
+  padding: 2rem;
+  align-items: center;
+  width: 25rem;
+  height: 31.3535rem;
+  border-radius: 1.7236rem;
+  background: #004848;
+}
+.landingPage .feedback .feedbackCards .cardOne .stars {
+  display: flex;
+  flex-direction: row;
+  gap: 0.4rem;
+}
+.landingPage .feedback .feedbackCards .cardOne .stars div {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+.landingPage .feedback .feedbackCards .cardOne .stars .active {
+  background-color: #F9A550;
+}
+.landingPage .feedback .feedbackCards .cardOne .stars .inactive {
+  background-color: #1E1E1E;
+}
+.landingPage .feedback .feedbackCards .cardOne p {
+  color: #FFF;
+  width: 21.2869rem;
+  height: 9.8247rem;
+  font-family: "Red Hat Display";
+  font-size: 1.723rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 1.5rem;
+  padding: 1rem 1rem 1rem 0rem;
+}
+.landingPage .feedback .feedbackCards .cardOne .fSemiColon {
+  display: flex;
+  position: absolute;
+  top: -5%;
+  left: 0%;
+  color: #fff;
+  font-size: 22.6227rem;
+  font-weight: 400;
+  line-height: normal;
+  opacity: 0.2;
+}
+.landingPage .feedback .feedbackCards .cardOne .sSemiColon {
+  display: flex;
+  position: absolute;
+  top: 0%;
+  left: 60%;
+  color: #fff;
+  font-size: 22.6227rem;
+  font-weight: 400;
+  line-height: normal;
+  opacity: 0.2;
+  transform: rotate(180deg);
+}
+.landingPage .feedback .feedbackCards .cardOne .cardFooter {
+  display: flex;
+  position: absolute;
+  top: 90%;
+  left: 48%;
+  color: #FFF;
+  font-family: "Red Hat Display";
+  font-size: 15.513px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+}
+.landingPage .feedback .feedbackCards .cardOne .cardFooter .fWord {
+  opacity: 0.34;
+  margin-right: 1rem;
+}
+.landingPage .feedback .feedbackCards .cardOne .cardFooter .lWord {
+  opacity: 0.7;
+}
+.landingPage .feedback .feedbackCards .cardTwo {
+  position: relative;
+  padding: 2rem;
+  align-items: center;
+  width: 25rem;
+  height: 31.3535rem;
+  border-radius: 1.7236rem;
+  background: #000;
+}
+.landingPage .feedback .feedbackCards .cardTwo .stars {
+  display: flex;
+  flex-direction: row;
+  gap: 0.4rem;
+}
+.landingPage .feedback .feedbackCards .cardTwo .stars div {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+.landingPage .feedback .feedbackCards .cardTwo .stars .active {
+  background-color: #F9A550;
+}
+.landingPage .feedback .feedbackCards .cardTwo .stars .inactive {
+  background-color: #1E1E1E;
+}
+.landingPage .feedback .feedbackCards .cardTwo p {
+  color: #FFF;
+  width: 21.2869rem;
+  height: 9.8247rem;
+  font-family: "Red Hat Display";
+  font-size: 1.723rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 1.5rem;
+  padding: 1rem 1rem 1rem 0rem;
+}
+.landingPage .feedback .feedbackCards .cardTwo .fSemiColon {
+  display: flex;
+  position: absolute;
+  top: -5%;
+  left: 0%;
+  color: #fff;
+  font-size: 22.6227rem;
+  font-weight: 400;
+  line-height: normal;
+  opacity: 0.2;
+}
+.landingPage .feedback .feedbackCards .cardTwo .sSemiColon {
+  display: flex;
+  position: absolute;
+  top: 0%;
+  left: 60%;
+  color: #fff;
+  font-size: 22.6227rem;
+  font-weight: 400;
+  line-height: normal;
+  opacity: 0.2;
+  transform: rotate(180deg);
+}
+.landingPage .feedback .feedbackCards .cardTwo .cardFooter {
+  display: flex;
+  position: absolute;
+  top: 90%;
+  left: 48%;
+  color: #FFF;
+  font-family: "Red Hat Display";
+  font-size: 15.513px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+}
+.landingPage .feedback .feedbackCards .cardTwo .cardFooter .fWord {
+  opacity: 0.34;
+  margin-right: 1rem;
+}
+.landingPage .feedback .feedbackCards .cardTwo .cardFooter .lWord {
+  opacity: 0.7;
+}
+.landingPage .feedback .feedbackCards .cardThree {
+  position: relative;
+  padding: 2rem;
+  align-items: center;
+  width: 25rem;
+  height: 31.3535rem;
+  border-radius: 1.7236rem;
+  background: #000;
+}
+.landingPage .feedback .feedbackCards .cardThree .stars {
+  display: flex;
+  flex-direction: row;
+  gap: 0.4rem;
+}
+.landingPage .feedback .feedbackCards .cardThree .stars div {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+.landingPage .feedback .feedbackCards .cardThree .stars .active {
+  background-color: #F9A550;
+}
+.landingPage .feedback .feedbackCards .cardThree .stars .inactive {
+  background-color: #1E1E1E;
+}
+.landingPage .feedback .feedbackCards .cardThree p {
+  color: #FFF;
+  width: 21.2869rem;
+  height: 9.8247rem;
+  font-family: "Red Hat Display";
+  font-size: 1.723rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 1.5rem;
+  padding: 1rem 1rem 1rem 0rem;
+}
+.landingPage .feedback .feedbackCards .cardThree .fSemiColon {
+  display: flex;
+  position: absolute;
+  top: -5%;
+  left: 0%;
+  color: #fff;
+  font-size: 22.6227rem;
+  font-weight: 400;
+  line-height: normal;
+  opacity: 0.2;
+}
+.landingPage .feedback .feedbackCards .cardThree .sSemiColon {
+  display: flex;
+  position: absolute;
+  top: 0%;
+  left: 60%;
+  color: #fff;
+  font-size: 22.6227rem;
+  font-weight: 400;
+  line-height: normal;
+  opacity: 0.2;
+  transform: rotate(180deg);
+}
+.landingPage .feedback .feedbackCards .cardThree .cardFooter {
+  display: flex;
+  position: absolute;
+  top: 90%;
+  left: 48%;
+  color: #FFF;
+  font-family: "Red Hat Display";
+  font-size: 15.513px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+}
+.landingPage .feedback .feedbackCards .cardThree .cardFooter .fWord {
+  opacity: 0.34;
+  margin-right: 1rem;
+}
+.landingPage .feedback .feedbackCards .cardThree .cardFooter .lWord {
+  opacity: 0.7;
+}
+.landingPage .feedback .feedbackCards .cardFour {
+  position: relative;
+  padding: 2rem;
+  align-items: center;
+  width: 25rem;
+  height: 31.3535rem;
+  border-radius: 1.7236rem;
+  background: #004848;
+}
+.landingPage .feedback .feedbackCards .cardFour .stars {
+  display: flex;
+  flex-direction: row;
+  gap: 0.4rem;
+}
+.landingPage .feedback .feedbackCards .cardFour .stars div {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+.landingPage .feedback .feedbackCards .cardFour .stars .active {
+  background-color: #F9A550;
+}
+.landingPage .feedback .feedbackCards .cardFour .stars .inactive {
+  background-color: #1E1E1E;
+}
+.landingPage .feedback .feedbackCards .cardFour p {
+  color: #FFF;
+  width: 21.2869rem;
+  height: 9.8247rem;
+  font-family: "Red Hat Display";
+  font-size: 1.723rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 1.5rem;
+  padding: 1rem 1rem 1rem 0rem;
+}
+.landingPage .feedback .feedbackCards .cardFour .fSemiColon {
+  display: flex;
+  position: absolute;
+  top: -5%;
+  left: 0%;
+  color: #fff;
+  font-size: 22.6227rem;
+  font-weight: 400;
+  line-height: normal;
+  opacity: 0.2;
+}
+.landingPage .feedback .feedbackCards .cardFour .sSemiColon {
+  display: flex;
+  position: absolute;
+  top: 0%;
+  left: 60%;
+  color: #fff;
+  font-size: 22.6227rem;
+  font-weight: 400;
+  line-height: normal;
+  opacity: 0.2;
+  transform: rotate(180deg);
+}
+.landingPage .feedback .feedbackCards .cardFour .cardFooter {
+  display: flex;
+  position: absolute;
+  top: 90%;
+  left: 48%;
+  color: #FFF;
+  font-family: "Red Hat Display";
+  font-size: 15.513px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+}
+.landingPage .feedback .feedbackCards .cardFour .cardFooter .fWord {
+  opacity: 0.34;
+  margin-right: 1rem;
+}
+.landingPage .feedback .feedbackCards .cardFour .cardFooter .lWord {
+  opacity: 0.7;
+}
+.landingPage .footer {
+  position: absolute;
+  top: 240%;
+  width: 100%;
+  height: 30rem;
+  background: #08374F;
+  color: #fff;
+  padding: 5rem 7rem 0rem 7rem;
+  margin: -3%;
+}
+.landingPage .footer .footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 5rem;
+}
+.landingPage .footer .footer-content .footer-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.landingPage .footer .footer-content .footer-logo img {
+  width: 50px;
+  margin-bottom: 0.5rem;
+}
+.landingPage .footer .footer-content .footer-logo h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+.landingPage .footer .footer-content .footer-links h4 {
+  margin-bottom: 0.5rem;
+  color: #FFF;
+  width: 23.8rem;
+  height: 2.6rem;
+  font-family: "Red Hat Display";
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.landingPage .footer .footer-content .footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+.landingPage .footer .footer-content .footer-links ul li {
+  margin: 0.3rem 0;
+}
+.landingPage .footer .footer-content .footer-links ul li a {
+  color: #FFF;
+  font-family: "Red Hat Display";
+  font-size: 1.8rem;
+  font-style: normal;
+  text-decoration: none;
+  font-weight: 200;
+  line-height: 3rem;
+  opacity: 0.78;
+}
+.landingPage .footer .footer-content .footer-links ul li a:hover {
+  color: #00c3ff;
+}
+.landingPage .footer .footer-content .footer-description {
+  max-width: 25rem;
+}
+.landingPage .footer .footer-content .footer-description h4 {
+  margin-bottom: 0.5rem;
+  color: #FFF;
+  font-family: "Red Hat Display";
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  height: 2.6rem;
+}
+.landingPage .footer .footer-content .footer-description p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #FFF;
+  font-family: "Red Hat Display";
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  height: 12.8rem;
+  opacity: 0.78;
+}
+.landingPage .footer .footer-bottom {
+  border-top: 1px solid #4c6a84;
+  padding-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.landingPage .footer .footer-bottom p {
+  margin: 0;
+  font-size: 0.85rem;
+}
+.landingPage .footer .footer-bottom .footer-nav {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.landingPage .footer .footer-bottom .footer-nav a {
+  font-size: 0.85rem;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.landingPage .footer .footer-bottom .footer-nav a:hover {
+  color: #00c3ff;
+}
+
 .landing .hedder-content {
   width: 100%;
   max-width: 1200px;
@@ -2818,6 +3585,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   border-color: #007bff;
 }
 
+<<<<<<< HEAD
 body.order {
   margin: 0;
   padding: 0;
@@ -3037,5 +3805,212 @@ body.order {
   color: black;
   font-weight: 500;
 }
+=======
+.productManagement {
+  padding: 0rem;
+}
+.productManagement body {
+  padding: 0rem;
+}
+.productManagement nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2rem;
+}
+.productManagement nav .navHeading {
+  width: 11.7rem;
+  height: 2.8rem;
+  color: #111827;
+  font-family: Roboto;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2.8rem;
+}
+.productManagement nav .navSubHeading {
+  width: 19.4rem;
+  height: 2rem;
+  color: #6B7280;
+  font-family: Roboto;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1rem;
+}
+.productManagement .bodyContent {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  background: #e8ecec;
+  padding: 2rem;
+}
+.productManagement .bodyContent .addProduct {
+  flex: 1;
+  display: flex;
+  width: 448px;
+  height: 501px;
+  padding: 2rem;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border-radius: 12px;
+  border: 1px solid #E5E7EB;
+  background: #FFF;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+.productManagement .bodyContent .addProduct h2 {
+  width: 18rem;
+  height: 2.8rem;
+  color: #111827;
+  font-family: "Red Hat Display";
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 2rem;
+}
+.productManagement .bodyContent .addProduct label {
+  width: 9.5rem;
+  height: 2rem;
+  color: #374151;
+  font-family: Roboto;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.productManagement .bodyContent .addProduct #productName {
+  display: flex;
+  width: 39rem;
+  height: 4.5rem;
+  padding-left: 1.6rem;
+  justify-content: flex-end;
+  align-items: center;
+  border-radius: 0.8rem;
+  border: 0.1rem solid #D1D5DB;
+  background: #FFF;
+}
+.productManagement .bodyContent .addProduct #brand {
+  display: flex;
+  width: 39rem;
+  height: 9.6rem;
+  padding: 1.6rem 0 0 1.6rem;
+  justify-content: flex-end;
+  align-items: center;
+  border-radius: 0.8rem;
+  border: 0.1rem solid #D1D5DB;
+  background: #FFF;
+}
+.productManagement .bodyContent .addProduct #price {
+  display: inline-flex;
+  height: 4.5rem;
+  width: 39rem;
+  padding-left: 1.6rem;
+  justify-content: flex-end;
+  align-items: center;
+  border-radius: 0.8rem;
+  border: 0.1rem solid #D1D5DB;
+  background: #FFF;
+}
+.productManagement .bodyContent .addProduct .btn-save {
+  display: flex;
+  width: 39.4rem;
+  height: 3.5rem;
+  padding: 1.4rem 13.5469rem 1rem 14.0531rem;
+  margin-top: 2rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  border-radius: 0.8rem;
+  border: 0 solid #E5E7EB;
+  background: #0a8f8f;
+  color: #FFF;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: normal;
+  font-family: Roboto;
+  text-align: center;
+}
+.productManagement .bodyContent .productSection {
+  flex: 2;
+  margin-left: 2rem;
+  margin-right: 4rem;
+}
+.productManagement .bodyContent .productSection .header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0rem;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+}
+.productManagement .bodyContent .productSection .header h2 {
+  color: #111827;
+  font-family: "Red Hat Display";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.productManagement .bodyContent .productSection .header input {
+  height: 3rem;
+  weight: 24.2rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid #D1D5DB;
+  background: #FFF;
+}
+.productManagement .bodyContent .productSection .productCard {
+  display: flex;
+  padding: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 1rem;
+  border: 0.1rem solid #D1D5DB;
+  background: #FFF;
+  margin-bottom: 1rem;
+  height: 12.6rem;
+}
+.productManagement .bodyContent .productSection .productCard .productInfo .productName {
+  color: #111827;
+  font-family: Roboto;
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 2.8rem;
+  height: 3.5rem;
+  align-self: stretch;
+}
+.productManagement .bodyContent .productSection .productCard .productInfo .productDesc {
+  color: #4B5563;
+  font-family: Roboto;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 3.5rem;
+  height: 2.4rem;
+  align-self: stretch;
+}
+.productManagement .bodyContent .productSection .productCard .productInfo .productPrice {
+  color: #027F80;
+  font-family: Roboto;
+  font-size: 2.4rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 5.5rem;
+  height: 3.2rem;
+  align-self: stretch;
+}
+.productManagement .bodyContent .productSection .productCard .productActions button {
+  border: none;
+  outline: none;
+  background: none;
+  margin: 1rem;
+  cursor: pointer;
+}
+>>>>>>> a26acf01652afc5fc72a5617b1c7bbafaf6195b2
 
 /*# sourceMappingURL=style.css.map */

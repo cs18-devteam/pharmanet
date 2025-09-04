@@ -1,5 +1,6 @@
 @forward "signup";
 @forward "attendance";
+@forward "./pharmarcyLandingPage";
 @forward "./landingPage";
 @forward "./verify-email";
 @forward "./verify-number";
@@ -11,4 +12,8 @@
 @forward "./search-medicine";
 @forward "./search-pharmacy";
 @forward "./pharmacy-registration";
+<<<<<<< HEAD
 @forward "./order";
+=======
+@forward "./productManagement";
+>>>>>>> a26acf01652afc5fc72a5617b1c7bbafaf6195b2

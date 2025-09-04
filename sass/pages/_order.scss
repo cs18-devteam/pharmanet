@@ -15,7 +15,7 @@ body.order {
         top: 1rem;
         left: 0;
         width: 100%;
-        height: 60px;
+        height: 7rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -35,7 +35,7 @@ body.order {
         }
 
         .logo-heading h1 {
-            font-size: 3rem;
+            font-size: 10rem;
             margin: 0;
             color:black;
         }
@@ -142,7 +142,7 @@ body.order {
 
                 button {
                     border: none;
-                    border-radius: 5px;
+                    border-radius: 0.5rem;
                     cursor: pointer;
                     font-weight: 500;
                 }
@@ -185,17 +185,60 @@ body.order {
                 font-size: 1.5rem;
             }
 
-            .search-orders {
+            .order-header {
                 display: flex;
-                gap: 0.5rem;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 1rem;
 
-                input {
-                    padding: 1rem;
-                    border-radius: 5px;
-                    border: 1px solid #ccc;
-                    font-size: 1.5rem;
+                h3 {
+                    font-size: 3rem;
+                    font-weight: 600;
+                }
+
+                .search-orders {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+
+                    .search-input-wrapper {
+                        display: flex;
+                        align-items: center;
+                        background: #f5f5f5;
+                        padding: 0.4rem 0.8rem;
+                        border-radius: 0.8rem;
+                        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+                        .search-icon {
+                            width: 1.8rem;
+                            height: 1.8rem;
+                            margin-right: 0.5rem;
+                        }
+
+                        input {
+                            border: none;
+                            outline: none;
+                            background: transparent;
+                            font-size: 0.95rem;
+                            color: #333;
+
+                            &::placeholder {
+                            color: #999;
+                            }
+                        }
+                    }
+
+                    select {
+                    padding: 0.5rem 0.8rem;
+                    border: 1px solid #ddd;
+                    border-radius: 0.8rem;
+                    background: #fff;
+                    font-size: 0.95rem;
+                    cursor: pointer;
+                    }
                 }
             }
+
         }
 
         table {

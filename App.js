@@ -16,7 +16,6 @@ const mimeMap = {
     ".ico":"image/icon"
 };
 
-
 module.exports = class App{
     static #app = undefined;
     static server = undefined;
@@ -169,10 +168,9 @@ module.exports = class App{
             const filePath = path.join(directory , file);
             const fileUrl = "/"+ path.relative(directory , filePath);
 
-            
             this.#files.push({
-                file: filePath , 
-                url : fileUrl,
+                file: filePath.replace(/%20/g , ' ').replace(/\\/g , "/") , 
+                url : fileUrl.replace(/%20/g , ' ').replace(/\\/g , "/"),
             });
         });   
 

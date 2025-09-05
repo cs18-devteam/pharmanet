@@ -24,13 +24,16 @@ const PharmacyModel = require("./services/pharmacy-service/models/pharmacyModel"
 
 
 const db = Database.getInstance();
-const medicineInstance = new MedicineModel();
-const pharmacyInstance = new PharmacyModel();
+ const medicineInstance = new MedicineModel();
+ const pharmacyInstance = new PharmacyModel();
 
-medicineInstance.createTable().catch(console.error);
-pharmacyInstance.createTable().catch(console.error);
+
+
+ medicineInstance.createTable().catch(console.error);
+ pharmacyInstance.createTable().catch(console.error);
 
 const app = App.getInstance();
+
 env();
 
 app.public('./frontend');
@@ -39,7 +42,7 @@ app.route('/medicine' , medicineRouter);
 app.route('/pharmacies' , pharmacyRouter);
 
 // handle user Routes
-app.route('/',authenticate , usersReDirectRouter);
+//app.route('/',authenticate , usersReDirectRouter);
 app.route('/login' , LogInRouter)
 app.route('/signup' , SignUpRouter);
 app.route('/users/customers' , customerRouter);

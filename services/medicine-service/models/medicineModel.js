@@ -3,7 +3,7 @@ const db = Database.getInstance();
 class MedicineModel {
 
     //create table
-    createTable() {
+    async createTable() {
         const sql = `
             CREATE TABLE IF NOT EXISTS medicines (
                 id INT AUTO_INCREMENT PRIMARY KEY,
@@ -18,16 +18,19 @@ class MedicineModel {
                 description VARCHAR(100)
             )
         `;
-        return new Promise((resolve,reject) => {
-        db.query(sql, (err) => {
-            if (err) return reject (err);
-            console.log("Medicine table ensured.");
-        });
+        const medicines = await new Promise((resolve, reject) => {
+    db.query("SELECT * FROM medicines", (err, results) => {
+        if (err) return reject(err);
+        resolve(results);
     });
+});
+
+console.log(medicines); // this will log all rows
+
     }
 
     //save data
-    save(data) {
+    async save(data) {
         const {
             name,
             categoryId,
@@ -44,19 +47,12 @@ class MedicineModel {
             INSERT INTO medicines (
                 name, categoryId, typeId, price,
                 stock, manufacturer, expiryDate, batchNumber, description
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ) VALUES (${name}, ${categoryId},${typeId}, ${price}, ${stock}, ${manufacturer}, ${expiryDate}, ${batchNumber}, ${description})
         `;
 
 
-        return new Promise((resolve, reject) => {
-            db.query(sql, [
-                name, categoryId, typeId, price,
-                stock, manufacturer, expiryDate, batchNumber, description
-            ], (err, result) => {
-                if (err) return reject(err);
-                resolve(result);
-            });
-        });
+        return await db.query(sql);
+    
     }
 
 

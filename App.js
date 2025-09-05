@@ -142,9 +142,10 @@ module.exports = class App{
     }
 
     run(){
-        App.server?.listen(this.port , this.hostname , ()=>{
-            if(process.env.NODE_ENV == "development"){
-                console.log(`app is running on http://${this.hostname}:${this.port}`);
+        App.server?.listen(this.port.replace('\r', ''), this.hostname , ()=>{
+            console.log(process.env.NODE_ENV)
+            console.log(`app is running on http://${this.hostname}:${this.port}`);
+            if(String(process.env.NODE_ENV) == "development"){
 
             }
         })
@@ -160,9 +161,11 @@ module.exports = class App{
 
             
             this.#files.push({
-                file: filePath , 
-                url : fileUrl,
+                file: filePath.replaceAll('\\','/') , 
+                url : fileUrl.replaceAll('\\','/'),
             });
+
+
         });   
 
     }

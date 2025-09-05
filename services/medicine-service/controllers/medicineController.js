@@ -1,3 +1,4 @@
+const { render } = require("sass");
 const MedicineModel = require("../models/medicineModel");
 //const db = DB.getInstance();
 const medicineInstance = new MedicineModel();
@@ -8,23 +9,26 @@ const  productView = require('../view/addMedicineView');
 
 exports.getAllMedicines = async (req, res) => {
     try{
+        
         //fetch all medicine from db
-        const allMedicines= await medicineInstance.getAll(); 
+        //const allMedicines= await medicineInstance.getAll(); 
 
         // return them as json --> tells the client/browser that the data being returned is in JSON format.
-        res.writeHead(200,{"Content-Type" : "application/json"})
+        //res.writeHead(200,{"Content-Type" : "text/html"})
+        productView.renderAllMedicines(req , res);
 
-        res.write(JSON.stringify(allMedicines));  
+        //console.log({allMedicines})
+        //res.write("get all medicine");  
         //res.write -> only accepts string and buffer 
         // (sends that string to the client.)
         // JSON.stringify() → turns JS object/array → JSON string.
 
-        res.end();
+        //res.end();
     }
     catch (err) {
         //Haddle error
         console.error(err);
-        res.status(500,{"content-type" : "application/json"});
+        res.writeHead(500,{"content-type" : "text/html"});
         res.write(JSON.stringify({ error: "Failed to fetch medicine" }));
         res.end();
     }
@@ -37,7 +41,7 @@ exports.getAllMedicines = async (req, res) => {
 
 
 exports.createMedicines = async (req, res) => {
-    
+        console.log("create medi")
         //it will store incomming request body data in chunk
         let body = "";
 
@@ -47,10 +51,11 @@ exports.createMedicines = async (req, res) => {
             //apprnd each chunk to data string
             body += chunk;
         });
+
         
         //when all data has been received
         req.on("end" , async() => {
-            try{
+            try{console.log(body)
                 //it is used because when a form submits with multipart/form-data, 
                 // the raw body is not JSON — you need to decode it into a 
                 // usable object.
@@ -72,7 +77,7 @@ exports.createMedicines = async (req, res) => {
 
                 const result = await medicineInstance.save(medicine); 
                 
-                res.writeHead(201, {"content-Type" : "application/json"});
+                res.writeHead(201, {"content-Type" : "text/html"});
                 res.write(JSON.stringify({message: "medicine added", id: result.insertId }));
                 res.end();
 
@@ -118,19 +123,19 @@ exports.updateMedicines = async (req, res) => {
                     const result = await medicineInstance.update(id, medicine);
 
                     if (result.affectedRows === 0) {
-                        res.writeHead(404, { "Content-Type": "application/json" });
+                        res.writeHead(404, { "Content-Type": "text/html" });
                         res.write(JSON.stringify({ message: "Medicine not found" }));
                         res.end();
                         return;
                     }
 
-                    res.writeHead(200, { "Content-Type": "application/json" });
+                    res.writeHead(200, { "Content-Type": "text/html" });
                     res.write(JSON.stringify({ message: "Medicine updated", affected: result.affectedRows }));
                     res.end();
                 }
                  catch (err) {
                     console.error(err);
-                    res.writeHead(500, { "Content-Type": "application/json" });
+                    res.writeHead(500, { "Content-Type":"text/html"});
                     res.write(JSON.stringify({ error: "Failed to update medicine" }));
                     res.end();
                 }
@@ -152,18 +157,18 @@ exports.deleteMedicines = async (req, res) => {
 
             // If no rows were deleted → medicine not found
             if (result.affectedRows === 0) {
-                res.writeHead(404, { "Content-Type": "application/json" });
+                res.writeHead(404, { "Content-Type": "text/html" });
                 res.write(JSON.stringify({ message: "Medicine not found" }));
                 res.end();
                 return;
             }
 
-            res.writeHead(200, { "Content-Type": "application/json" });
+            res.writeHead(200, { "Content-Type": "text/html" });
             res.write(JSON.stringify({ message: "Medicine deleted", affected: result.affectedRows }));
             res.end();
         } catch (err) {
             console.error(err);
-            res.writeHead(500, { "Content-Type": "application/json" });
+            res.writeHead(500, { "Content-Type": "text/html" });
             res.write(JSON.stringify({ error: "Failed to delete medicine" }));
             res.end();
         }

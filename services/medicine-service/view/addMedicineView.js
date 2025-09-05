@@ -12,20 +12,20 @@ exports.renderAllMedicines  = (req, res)=>{
 
     let MedicineCards = [];
 
-    req.results.forEach(data=>{
-
+    req.results?.forEach(data=>{
+        if(!data)return
        MedicineCards.push(medicineCardTemplate
 
-            .replace("%%MEDICINE-NAME%%", data.name)
-            .replace("%%CATEGORY%%", data.categoryId)
-            .replace("%%TYPE%%", data.typeId)
-            .replace("%%PRICE%%", data.price)
-            .replace("%%STOCK%%", data.stock)
-            .replace("%%MANUFACTURE%%", data.manufacture)
-            .replace("%%DATE%%", data.expiryDate))
+            .replace("%%MEDICINE-NAME%%", data?.name)
+            .replace("%%CATEGORY%%", data?.categoryId)
+            .replace("%%TYPE%%", data?.typeId)
+            .replace("%%PRICE%%", data?.price)
+            .replace("%%STOCK%%", data?.stock)
+            .replace("%%MANUFACTURE%%", data?.manufacture)
+            .replace("%%DATE%%", data?.expiryDate))
 
     })
-
+ console.log("render all medi")
    res.write(getAllMedicine.replace('%%ADD-MEDICINE%%' , MedicineCards.join(' ')));
     res.end();
 }

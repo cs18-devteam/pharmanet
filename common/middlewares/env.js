@@ -7,7 +7,7 @@ class Env{
 
         envFileContent.split('\n').forEach(value=> {
             value = value.split('=');
-            process.env[value[0]] =  value[1];
+            process.env[value[0]] =  value[1].replace("\r",'');
         });
 
         return ()=>{

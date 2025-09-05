@@ -22,6 +22,7 @@ const pharmacyRouter = require("./services/pharmacy-service/routes/pharmacyRoute
 
 
 const app = App.getInstance();
+env();
 // handle user Routes
 app.route('/', usersReDirectRouter);
 app.route('/login' , LogInRouter)

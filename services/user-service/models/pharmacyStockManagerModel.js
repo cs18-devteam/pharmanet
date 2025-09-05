@@ -8,6 +8,12 @@ class PharmacyStockManagerModel extends Model{
             type: 'INT',
             foreignKey: 'UserModel'
         }
+
+
+        this.pharmacyId = {
+            type:"INT",
+            foreignKey:'PharmacyModel'
+        }
     }
 }
 

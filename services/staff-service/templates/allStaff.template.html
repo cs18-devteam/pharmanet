@@ -80,10 +80,7 @@
                     </div>
 
                     <div class="buttons">
-                        <popup-close       
-                        for="new-staff-member-window"
-                        class="popup-close"
-                        >
+                        <popup-close for="new-staff-member-window" class="new-member-button">
                             back
                         </popup-close>
                         <slide-next class="new-member-button">
@@ -101,7 +98,7 @@
                             Let’s give them a proper intro—share the basics of your staff member.
                         </span>
                     </div>
-                    <div name="primary-details">
+                    <form name="primary-details" action="" method="POST">
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="fname">First Name</label>
@@ -143,7 +140,7 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
+                    </form>
 
                     <div class="footer">
                         <slide-previous class="previous-button">
@@ -151,10 +148,7 @@
                         </slide-previous>
 
                         <div class="progress-dots">
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
+                            <span class="dot-active"></span>
                             <span class="dot"></span>
                             <span class="dot"></span>
                             <span class="dot"></span>
@@ -174,7 +168,7 @@
                             Drop the location and contact info so we know where to find Your Member
                         </span>
                     </div>
-                    <div class="contact-location" name="primary-details">
+                    <form name="primary-details" action="" method="POST">
                         <div class="left-grid">
 
                             <div class="form-group">
@@ -198,7 +192,7 @@
                             </div>
 
                         </div>
-                    </div>
+                    </form>
 
                     <div class="footer">
                         <slide-previous class="previous-button">
@@ -206,11 +200,8 @@
                         </slide-previous>
 
                         <div class="progress-dots">
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
+                            <span class="dot-active"></span>
+                            <span class="dot-active"></span>
                             <span class="dot"></span>
                             <span class="dot"></span>
                         </div>
@@ -221,33 +212,6 @@
                     </div>
 
                 </slide-window>
-
-                <slide-window class="window-4">
-
-                  <div class="footer">
-                        <slide-previous class="previous-button">
-                            Previous
-                        </slide-previous>
-
-                        <div class="progress-dots">
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                        </div>
-
-                        <slide-next class="next-button finished">
-                            finish :)
-                        </slide-next>
-                    </div>
-
-
-                </slide-window>
-
-
             </slide-set>
 
         </slide-container>

@@ -16,7 +16,6 @@ class Slider{
     #setActive(number){
         this.active =  number <= this.numberOfSlides ? number : this.numberOfSlides;
         this.active = 0 < this.active ? this.active : 1;
-        this.active = 3;
         this.slideContainer.setAttribute('active' , this.active);
         this.slideContainer.style.setProperty("--active-slide" , this.active);
         return 0;
@@ -32,21 +31,21 @@ class Slider{
     }
 
     activateBtns(){
-        console.log(this.nextBtn);
-        if(this.nextBtn){
-            this.nextBtn.addEventListener('click' ,()=>{
+        if(this.nextBtns?.length){
+            this.nextBtns?.forEach(nextBtn=>{
+                nextBtn.addEventListener('click' ,()=>{
                 this.next();
-                console.log("clicked next");
-            });
-        }
-
-        console.log(this.previousBtn)
-        if(this.previousBtn){
-            this.previousBtn.addEventListener('click' , ()=> {
-                this.previous()
-                console.log("clicked previous");
-
             })
+        });
+    }
+    
+
+    if(this.previousBtns?.length){
+        this.previousBtns?.forEach(previousBtn=>{
+            previousBtn.addEventListener('click' , ()=>{
+                this.previous();
+            })
+            });
         }
     }
 
@@ -83,12 +82,22 @@ class Slider{
             });
             
             //replace next and previous btns
-            const nextTag = this.slideContainer.querySelector('slide-next');
-            const previousTag = this.slideContainer.querySelector('slide-previous');
-            nextTag.dataset.role="slide-next";
-            previousTag.dataset.role="slide-previous";
-            this.nextBtn = Utilities.replaceTag(nextTag , 'button');
-            this.previousBtn = Utilities.replaceTag(previousTag , 'button');   
+            const nextTags = this.slideContainer.querySelectorAll('slide-next');
+            const previousTags = this.slideContainer.querySelectorAll('slide-previous');
+
+
+            this.nextBtns = [];
+            nextTags.forEach(nextTag=>{
+                nextTag.dataset.role="slide-next"
+                this.nextBtns.push(Utilities.replaceTag(nextTag , 'button'));
+            });
+            
+            this.previousBtns = []
+            previousTags.forEach(previousTag=>{
+                previousTag.dataset.role="slide-previous"
+                this.previousBtns.push(Utilities.replaceTag(previousTag , 'button'));   
+            });
+
             
         }catch(error){
             console.log(error);

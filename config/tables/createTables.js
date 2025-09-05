@@ -13,14 +13,16 @@ const Users = require("../../services/user-service/models/UserModel");
 Env();
 const Database = require("../../database/Database");
 const LoyaltyPoints = require("../../services/loyaltypoints-service/models/LoyaltyPointsModel");
+const Pharmacies = require("../../services/pharmacy-service/model/PharmacyModel");
 const db = Database.getInstance();
 
 
 // --this is only executes only once for creating tables
 Users.createTable();
-Cashiers.createTable();
-Customers.createTable();
 Admins.createTable();
+Customers.createTable();
+Pharmacies.createTable();
+Cashiers.createTable();
 Pharmacists.createTable();
 PharmacyOwners.createTable();
 PharmacyStockManagers.createTable();

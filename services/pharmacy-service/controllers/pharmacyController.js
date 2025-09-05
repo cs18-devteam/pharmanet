@@ -1,10 +1,10 @@
 const pharmacyModel = require("../models/pharmacyModel");
 
-const Pharmacies = new pharmacyModel();
+const pharmacyInstance = new pharmacyModel();
 
-exports.gettAllPharmacies = async (req, res) => {
+exports.getAllPharmacies = async (req, res) => {
     try{
-        const Pharmacies= await Pharmacies.getAll(); //fetch from database
+        const pharmacies= await pharmacyInstance.getAll(); //fetch from database
         res.status(200).json(pharmacies);
     }
     catch (err) {
@@ -16,7 +16,7 @@ exports.gettAllPharmacies = async (req, res) => {
 exports.createPharmacies = async (req, res) => {
     try {
         const data = req.body;     // Get form data from client
-        const result = await Pharmacies.save(data);    // Insert into DB
+        const result = await pharmacyInstance.save(data);    // Insert into DB
         res.status(201).json({ message: "Pharmacy created", id: result.insertId });
     } 
     catch (err) {
@@ -29,7 +29,10 @@ exports.updatePharmacies = async (req, res) => {
     try {
         const { id } = req.params; // Extract ID from URL
         const data = req.body; // New updated data
-        const result = await Pharmacies.update(id, data); // Update in DB
+        const result = await pharmacyInstance.update(id, data); // Update in DB
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: "Pharmacy not found" });
+        }
         res.status(200).json({ message: "Pharmacy updated", affected: result.affectedRows });  // affectedRows = How many rows were inserted/changed
     } 
     catch (err) {
@@ -41,7 +44,10 @@ exports.updatePharmacies = async (req, res) => {
 exports.deletePharmacies= async (req, res) => {
     try {
         const { id } = req.params; // Get pharmacy ID
-        const result = await Pharmacies.delete(id); // Delete from DB
+        const result = await pharmacyInstance.delete(id); // Delete from DB
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: "Pharmacy not found" });
+        }
         res.status(200).json({ message: "Pharmacy deleted", affected: result.affectedRows });
     } 
     catch (err) {

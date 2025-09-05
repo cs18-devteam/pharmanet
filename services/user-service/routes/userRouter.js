@@ -1,12 +1,9 @@
-const Router = require('../../../common/Router');
-const userController = require("./../controllers/userController");
 
-const userRouter = new Router();
+const Router = require("../../../common/Router");
+const userControllers = require("../controllers/userController");
 
-userRouter.get(userController.getAllUsers);
-userRouter.post(userController.createUser);
-userRouter.delete(userController.deleteUser);
-userRouter.patch(userController.updateUser);
+const usersReDirectRouter = new Router()
 
+usersReDirectRouter.get(userControllers.getIndexPage ,userControllers.getIndexPage);
 
-module.exports = userRouter;
+module.exports = usersReDirectRouter;

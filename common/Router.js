@@ -27,7 +27,7 @@ module.exports = class Router{
     }
     
     patch(...callback){
-        callback.forEach(clb=>this.postHandler.push(clb));
+        callback.forEach(clb=>this.updateHandler.push(clb));
     }
     
     delete(...callback){

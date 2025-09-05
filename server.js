@@ -21,6 +21,7 @@ const leaveRouter = require('./services/leave-service/routes/leaveRouter');
 
 
 const app = App.getInstance();
+env();
 // handle user Routes
 app.route('/', usersReDirectRouter);
 app.route('/login' , LogInRouter)

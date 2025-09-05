@@ -103,7 +103,7 @@ module.exports = class App{
                     this.#execute( req , res ,func.postHandler);
                     return;
                 case "PATCH":
-                    console.log(func.patchHandler);
+                    console.log(func.updateHandler);
                     this.#execute(req , res ,func.updateHandler);
                     return;
                 case "DELETE":

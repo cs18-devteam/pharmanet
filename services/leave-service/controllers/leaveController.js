@@ -19,9 +19,8 @@ exports.getLeaves = async (req , res)=>{
 
 
 exports.updateLeaves = async (req , res)=>{
-    console.log(req)
     const updatedLeave = await Leaves.update({
-        id:1,
+        id:2,
         name:"others leave"
     })
     console.log(updatedLeave);

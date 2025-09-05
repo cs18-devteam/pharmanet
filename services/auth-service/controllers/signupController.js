@@ -55,4 +55,3 @@ exports.signup = async (req , res)=>{
 
 const results = AuthModel.encrypt("hello i am chathura");
 const data = AuthModel.decrypt(results)
-console.log({results , data});

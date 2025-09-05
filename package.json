@@ -35,6 +35,7 @@
     "test": "node ./test/stress.test.js",
     "create-database": "node ./config/createDatabase.js",
     "drop-database": "node ./config/dropDatabase.js",
+
     "create-medidata": "node ./config/data/createMediData.js",
     "start": "node server.js",
     "create-tables": "node ./config/tables/createTables.js"

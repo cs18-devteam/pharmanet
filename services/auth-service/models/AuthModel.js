@@ -57,7 +57,6 @@ class AuthModel {
 
         const verified = verify.verify(publicKey , token , 'hex' );
         
-        console.log({ token , publicKey ,verified} );
         return verified;
         
     }
@@ -95,7 +94,6 @@ class AuthModel {
 
     static async verifyCookieToken({id , key , token}){
         const isVerified = await this.#verifyHash({id , key , token});
-        console.log({isVerified});
 
         return 
     }

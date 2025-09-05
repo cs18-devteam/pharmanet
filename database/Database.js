@@ -23,10 +23,19 @@ class Database{
     
     createConnection(){
         this.connection = mysql.createConnection({
+<<<<<<< HEAD
             host: process.env.HOSTNAME || "localhost",
             user: process.env.DATABASE_USERNAME || "root",
             password: process.env.DATABASE_PASSWORD 
         });
+=======
+            host:"localhost",
+            user:"root",
+            // password: '',
+            database : "Pharmanet"
+        }
+        );
+>>>>>>> Chamani/medicinPharmacy/crud
 
         
         this.connection.connect((error)=>{

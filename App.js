@@ -22,7 +22,8 @@ module.exports = class App{
     #files = [];
     static #routes = [];
 
-    constructor({port = "8080", hostname = "localhost"}={}){
+    constructor({port = "8000", hostname = "localhost"}={}){
+
         this.port = port;
         this.hostname = hostname;
 
@@ -31,6 +32,7 @@ module.exports = class App{
             //parse url
             const url = new URL(req.url , `http://${req.headers.host}`);
             req.params = url.searchParams;
+
             req.pathname = url.pathname.replace(/%20/g , ' ').replace(/\\/g , "/");
             req.protocol = url.protocol;
 
@@ -39,6 +41,7 @@ module.exports = class App{
                 console.log(`${req.method} ${req.pathname}`)
             }
 
+<<<<<<< HEAD
 
             res.send = (html)=>{
                 res.writeHead(200 , {"content-type":"text/html"});
@@ -48,6 +51,8 @@ module.exports = class App{
 
 
 
+=======
+>>>>>>> Chamani/medicinPharmacy/crud
             const isFound = await this.findFile(req , res);
 
             
@@ -59,11 +64,7 @@ module.exports = class App{
     async findFile(req , res){
         const [file] = this.#files.filter(file=>file.url == req.pathname);
 
-        // //handle special case
-        // if(req.pathname == "/"){
-        //     req.pathname = '/index.html';
-        // };
-        
+
 
         if(file){
             const fileExt = path.extname(file.url);
@@ -179,7 +180,7 @@ module.exports = class App{
         if(!App.#app){
             App.#app = new App({
                 port:process.env.APP_PORT,
-                hostname: process.env.DEVELOPMENT_HOSTNAME,
+                hostname: "localhost",
             });
             console.log("app created.");
             return App.#app;

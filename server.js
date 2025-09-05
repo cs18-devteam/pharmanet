@@ -19,10 +19,9 @@ const userRouter= require("./services/user-service/routes/userRouter");
 const attendanceRouter= require("./services/attendence-service/routes/attendancerouter");
 
 
-env();
-const app = App.getInstance();
-const db = Database.getInstance();
-app.public('./frontend');
+const userRouter= require("./services/user-service/routes/userRouter");
+const medicineRouter = require("./services/medicine-service/routes/medicineRouter");
+const pharmacyRouter = require("./services/pharmacy-service/routes/pharmacyRouter");
 
 // handle user Routes
 app.route('/', usersReDirectRouter);

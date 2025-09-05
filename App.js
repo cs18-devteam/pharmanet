@@ -41,7 +41,6 @@ module.exports = class App{
                 console.log(`${req.method} ${req.pathname}`)
             }
 
-<<<<<<< HEAD
 
             res.send = (html)=>{
                 res.writeHead(200 , {"content-type":"text/html"});
@@ -51,8 +50,6 @@ module.exports = class App{
 
 
 
-=======
->>>>>>> Chamani/medicinPharmacy/crud
             const isFound = await this.findFile(req , res);
 
             

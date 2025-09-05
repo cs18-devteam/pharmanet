@@ -17,12 +17,11 @@ const { authenticate } = require('./services/auth-service/middlewares/authentica
 const staffRouter = require('./services/staff-service/routes/staffRouter');
 const userRouter= require("./services/user-service/routes/userRouter");
 const attendanceRouter= require("./services/attendence-service/routes/attendancerouter");
-
-
-const userRouter= require("./services/user-service/routes/userRouter");
 const medicineRouter = require("./services/medicine-service/routes/medicineRouter");
 const pharmacyRouter = require("./services/pharmacy-service/routes/pharmacyRouter");
 
+
+const app = App.getInstance();
 // handle user Routes
 app.route('/', usersReDirectRouter);
 app.route('/login' , LogInRouter)

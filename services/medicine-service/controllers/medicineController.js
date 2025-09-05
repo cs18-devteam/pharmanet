@@ -1,6 +1,7 @@
 const MedicineModel = require("../models/medicineModel");
-
+//const db = DB.getInstance();
 const medicineInstance = new MedicineModel();
+const  productView = require('../view/addMedicineView');
 
 //=================================
 //Get All Medicine

@@ -9,6 +9,7 @@ class Popup{
     constructor(tag){
         this.tag = tag;
         this.init();
+        this.#activatePopupButtons();
         return this.popupContainer;
 
     }
@@ -18,8 +19,6 @@ class Popup{
 
             this.popUpBtns = document.querySelectorAll(`popup-${type}[for=${this.id}]`);
             if(this.popUpBtns.length == 0) return;
-
-            console.log(this.popUpBtns);
             
             this.popUpBtns.forEach((btn=>{
                 let popupBtn = document.createElement('button');
@@ -28,21 +27,24 @@ class Popup{
                 popupBtn.dataset.role=`popup-${type}`;
                 popupBtn.innerHTML = btn.innerHTML;
 
-                console.log(btn , popupBtn);
                 btn.replaceWith(popupBtn);
-
-                popupBtn.addEventListener('click' , ()=>{
-                    if(this.status == "open"){
-                        this.popupClose();
-                    }else{
-                        this.popupOpen();
-                    }
-
-                    console.log(this.status);
-                })
+                
             }))
         })
 
+    }
+
+    #activatePopupButtons(){
+        document.addEventListener('click' , (e)=>{
+            const target = e.target;
+            const popupOpenBtn = target.closest(`button[for=${this.id}]`);
+
+            if(popupOpenBtn?.dataset.role=="popup-open"){
+                this.popupOpen();
+            }else if(popupOpenBtn?.dataset.role=="popup-close"){
+                this.popupClose();
+            }
+        })
     }
 
 

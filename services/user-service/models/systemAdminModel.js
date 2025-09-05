@@ -8,6 +8,7 @@ class SystemAdminModel extends Model{
             type: 'INT',
             foreignKey: 'UserModel'
         }
+
     }
 }
 

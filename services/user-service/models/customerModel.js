@@ -8,6 +8,7 @@ class CustomerModel extends Model{
             type:'INT',
             null: false,
         }
+        
     }
 
 }

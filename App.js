@@ -41,6 +41,12 @@ module.exports = class App{
             }
 
 
+            res.send = (html)=>{
+                res.writeHead(200 , {"content-type":"text/html"});
+                res.write(html);
+                res.end();
+            }
+
 
 
             const isFound = await this.findFile(req , res);

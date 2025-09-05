@@ -9,6 +9,12 @@ class PharmacyOwnerModel extends Model{
             foreignKey: 'UserModel'
         }
 
+
+        this.pharmacyId = {
+            type:"INT",
+            foreignKey:'PharmacyModel'
+        }
+
     }
 }
 

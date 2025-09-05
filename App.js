@@ -99,7 +99,6 @@ module.exports = class App{
             const method = req.method;
             switch(method){
                 case "GET":
-                    console.log(func);
                     this.#execute(req , res ,func.getHandler);
                     return;
                 case "POST":

@@ -15,6 +15,9 @@ const loyaltyPointsRouter = require('./services/loyaltypoints-service/routes/loy
 const usersReDirectRouter = require('./services/user-service/routes/userRouter');
 const { authenticate } = require('./services/auth-service/middlewares/authenticate');
 const staffRouter = require('./services/staff-service/routes/staffRouter');
+const userRouter= require("./services/user-service/routes/userRouter");
+const attendanceRouter= require("./services/attendence-service/routes/attendancerouter");
+
 
 env();
 const app = App.getInstance();
@@ -22,7 +25,7 @@ const db = Database.getInstance();
 app.public('./frontend');
 
 // handle user Routes
-app.route('/', authenticate , usersReDirectRouter);
+app.route('/', usersReDirectRouter);
 app.route('/login' , LogInRouter)
 app.route('/signup' , SignUpRouter);
 app.route('/users/customers' , customerRouter);
@@ -35,5 +38,9 @@ app.route('/users/system/pharmacymanager' , systemPharmacyManagerRouter)
 app.route('/users/system/admin' , systemAdminRouter );
 app.route('/customers/loyalty' ,  loyaltyPointsRouter);
 app.route('/pharmacy/staff' ,staffRouter);
+app.route('/users' , userRouter);
+app.route('/attendance' , attendanceRouter);
+app.route('/arrival')
+
 
 app.run();

@@ -617,6 +617,29 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   transition: all 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
+.signup header {
+  margin: 2rem;
+}
+.signup nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+.signup nav .logo {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  align-items: center;
+}
+.signup nav .logo .logopic {
+  height: 4.6rem;
+  margin-right: 1rem;
+}
+.signup nav .logo .logoname {
+  font-weight: bold;
+  color: #083851;
+  font-size: 1.6rem;
+}
 .signup .signupImage {
   position: relative;
 }
@@ -654,21 +677,21 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   width: 50rem;
   height: 94rem;
   overflow: auto;
-  top: 12.4rem;
+  top: 16.4rem;
   left: 90.7rem;
   border: none;
 }
 .signup .signupForm #form {
-  font-family: var(--primary-font);
+  font-family: "Red Hat Display", sans-serif;
   font-weight: 400;
   font-style: semibold;
-  color: var(--color-blue-01);
+  color: #083851;
   width: 100%;
   line-height: 2rem;
 }
 .signup .signupForm #form .signupTitle,
 .signup .signupForm #form .signupMoto {
-  font-family: var(--primary-font);
+  font-family: "Red Hat Display", sans-serif;
   padding: 0.5rem;
 }
 .signup .signupForm #form .signupMoto {
@@ -682,7 +705,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   display: flex;
   justify-content: space-between;
   gap: 2rem;
-  padding: 0.5rem;
+  padding: -0.5rem;
 }
 .signup .signupForm #form .nameFields div {
   flex: 1;
@@ -692,7 +715,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   border: 2px solid #787676;
   border-radius: 0.5rem;
   padding: 0.5rem;
-  font-family: var(--primary-font);
+  font-family: "Red Hat Display", sans-serif;
   font-size: 1em;
   outline: none;
   width: 100%;
@@ -700,20 +723,21 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   margin-bottom: 2rem;
 }
 .signup .signupForm #form #submitButton {
-  font-family: var(--primary-font);
+  font-family: "Red Hat Display", sans-serif;
   font-weight: 500;
   font-size: 2rem;
   border: none;
   color: #fff;
-  background-image: linear-gradient(to right, var(--color-green-01), var(--color-blue-01));
+  background-image: linear-gradient(to right, #18978D, #083851);
   line-height: 2rem;
   padding: 2rem;
   border-radius: 0.5rem;
   outline: none;
   width: 100%;
+  margin-top: 2rem;
 }
 .signup .signupForm #form #forgetPassword {
-  font-family: var(--primary-font);
+  font-family: "Red Hat Display", sans-serif;
   font-weight: 700;
   font-size: 1.8rem;
   text-align: left;
@@ -723,7 +747,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   line-height: 5.4rem;
 }
 .signup .signupForm #form .haveAcc {
-  font-family: var(--primary-font);
+  font-family: "Red Hat Display", sans-serif;
   font-weight: 600;
   font-size: 1.5rem;
   opacity: 45%;
@@ -733,17 +757,17 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   width: 7rem;
   height: 3rem;
   border-radius: 6rem;
-  border: 0.2rem solid var(--color-yellow-01);
+  border: 0.2rem solid #FB8F21;
   background-color: rgba(249, 165, 80, 0.14);
-  font-family: var(--primary-font);
+  font-family: "Red Hat Display", sans-serif;
   font-weight: 600;
   font-size: 1.3rem;
   line-height: 100%;
   align-items: center;
-  color: var(--color-yellow-01);
+  color: #FB8F21;
 }
 .signup .signupForm #form .logInButton:hover {
-  background-color: var(--color-yellow-01);
+  background-color: #FB8F21;
   color: #fff;
   transition: all 0.2s ease-out;
 }

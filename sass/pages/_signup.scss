@@ -1,180 +1,215 @@
+// 🎨 Sass variables (instead of CSS custom properties)
+$primary-color: #18978D;
+$secondary-color: #083851;
+$tertiary-color: #FB8F21;
+$primary-font: 'Red Hat Display', sans-serif;
+$secondary-font: 'Poppins', sans-serif;
 .signup{
-  
-  .signupImage {
-  position: relative;
 
-  img {
-    position: absolute;
-    width: 70.2rem;
-    height: 84rem;
-    top: 1.4rem;
-    left: 4.6rem;
-    border-radius: 3rem;
-    background-image: url('/images/signupImage.png');
-    background-size: cover;
-    background-position: center;
-    filter: brightness(70%);
-    clip-path: path("M0 30C0 13.4315 13.4315 0 30 0H596.954C613.522 0 626.954 13.4315 626.954 30V119.292C626.954 122.13 626.551 124.954 625.758 127.679L609.23 184.44C607.473 190.474 607.656 196.907 609.752 202.832L625.236 246.603C626.373 249.816 626.954 253.2 626.954 256.608V285.206C626.954 287.877 627.311 290.536 628.015 293.113L694.69 537.138C698.817 552.241 690.634 567.978 675.9 573.276L653.847 581.204C638.788 586.618 630.629 602.899 635.307 618.203L643.659 645.531C646.573 655.069 644.006 665.438 636.977 672.513L636.16 673.335C625.434 684.132 626.235 701.793 637.895 711.573C644.465 717.084 647.895 725.481 647.062 734.016L629.598 912.915C628.098 928.281 615.18 940 599.74 940H30.0001C13.4315 940 0 926.569 0 910V30Z");
+  header {
+    margin: 2rem;
   }
 
-  .signupText {
-  position: absolute;
-  top: 51%;            
-  left: 29%;   
-  width: 66.2rem;
-  height: 0.2rem;
-  color: white;         
-  font-size: 4.6rem;
-  font-weight: bold;
-  padding: 9rem;
-  margin-left: 1rem;
-  
-}
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
 
-  
-}
-
-
-.container {
-  display: flex;
-}
-
-.signupForm {
-  display: flex;
-  position: absolute;
-  width: 50rem;
-  height: 94rem;
-  overflow: auto;
-  top: 12.4rem;
-  left: 90.7rem;
-  border: none;
-
-  #form {
-    font-family: var(--primary-font);
-    font-weight: 400;
-    font-style: semibold;
-    color: var(--color-blue-01);
-    width: 100%;
-    line-height: 2rem;
-
-    .signupTitle,
-    .signupMoto {
-      font-family: var(--primary-font);
-      padding: 0.5rem;
-    }
-
-    .signupMoto {
-      font-weight: 600;
-      font-style: ExtraBold;
-      font-size: 1.5rem;
-      opacity: 45%;
-      color: #000;
-    }
-
-    .nameFields {
+    .logo {
+      font-family: $secondary-font;
       display: flex;
-      justify-content: space-between;
-      gap: 2rem;
-      padding: 0.5rem;
-
-      div {
-        flex: 1;
-        width: fit-content;
-      }
-    }
-
-    input {
-      border: 2px solid #787676;
-      border-radius: 0.5rem;
-      padding: 0.5rem;
-      font-family: var(--primary-font);
-      font-size: 1em;
-      outline: none;
-      width: 100%;
-      margin-top: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    #submitButton {
-      font-family: var(--primary-font);
-      font-weight: 500;
-      font-size: 2rem;
-      border: none;
-      color: #fff;
-      background-image: linear-gradient(to right, var(--color-green-01), var(--color-blue-01));
-      line-height: 2rem;
-      padding: 2rem;
-      border-radius: 0.5rem;
-      outline: none;
-      width: 100%;
-    }
-
-    #forgetPassword {
-      font-family: var(--primary-font);
-      font-weight: 700;
-      font-size: 1.8rem;
-      text-align: left;
-      border: none;
-      color: #127EB5;
-      background-color: #fff;
-      line-height: 5.4rem;
-    }
-
-    .haveAcc {
-      font-family: var(--primary-font);
-      font-weight: 600;
-      font-size: 1.5rem;
-      opacity: 45%;
-      color: #000;
-    }
-
-    .logInButton {
-      width: 7rem;
-      height: 3rem;
-      border-radius: 6rem;
-      border: 0.2rem solid var(--color-yellow-01);
-      background-color: rgba(249, 165, 80, 0.14);
-      font-family: var(--primary-font);
-      font-weight: 600;
-      font-size: 1.3rem;
-      line-height: 100%;
       align-items: center;
-      color: var(--color-yellow-01);
 
-      &:hover {
-        background-color: var(--color-yellow-01);
-        color: #fff;
-        transition: all 0.2s ease-out;
+      .logopic {
+        height: 4.6rem;
+        margin-right: 1rem;
+      }
+
+      .logoname {
+        font-weight: bold;
+        color: $secondary-color;
+        font-size: 1.6rem;
       }
     }
   }
-}
 
-// #email.valid, #idNumber.valid, #userName.valid, #birthDay.valid {
-//   border-color: #28a745;
-// }
+  .signupImage {
+    position: relative;
 
-// #email.invalid, #idNumber.invalid, #userName.invalid, #birthDay.invalid {
-//   border-color: #dc3545;
-// }
+    img {
+      position: absolute;
+      width: 70.2rem;
+      height: 84rem;
+      top: 1.4rem;
+      left: 4.6rem;
+      border-radius: 3rem;
+      background-image: url('/images/signupImage.png');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(70%);
+      clip-path: path("M0 30C0 13.4315 13.4315 0 30 0H596.954C613.522 0 626.954 13.4315 626.954 30V119.292C626.954 122.13 626.551 124.954 625.758 127.679L609.23 184.44C607.473 190.474 607.656 196.907 609.752 202.832L625.236 246.603C626.373 249.816 626.954 253.2 626.954 256.608V285.206C626.954 287.877 627.311 290.536 628.015 293.113L694.69 537.138C698.817 552.241 690.634 567.978 675.9 573.276L653.847 581.204C638.788 586.618 630.629 602.899 635.307 618.203L643.659 645.531C646.573 655.069 644.006 665.438 636.977 672.513L636.16 673.335C625.434 684.132 626.235 701.793 637.895 711.573C644.465 717.084 647.895 725.481 647.062 734.016L629.598 912.915C628.098 928.281 615.18 940 599.74 940H30.0001C13.4315 940 0 926.569 0 910V30Z");
+    }
 
-// #feedbackEmail, #feedbackId, #feedbackUsername, #feedbackBirthDay {
-//   margin-left: 0.2rem;
-//   margin-top: 0%;
-//   display: block;
-//   font-size: 0.95em;
-// }
+    .signupText {
+    position: absolute;
+    top: 51%;            
+    left: 29%;   
+    width: 66.2rem;
+    height: 0.2rem;
+    color: white;         
+    font-size: 4.6rem;
+    font-weight: bold;
+    padding: 9rem;
+    margin-left: 1rem;
+    
+  }
 
-// #feedbackEmail.error, #feedbackId.error,#feedbackUsername.error, #feedbackBirthDay.error {
-//   color: #dc3545;
-// }
+    
+  }
 
-// #feedbackEmail.success, #feedbackId.success,#feedbackUsername.success, #feedbackBirthDay.success {
-//   color: #28a745;
-//   position: absolute;
-//   left: 0rem;
-//   padding-left: 0%;
-// }
+
+  .container {
+    display: flex;
+  }
+
+  .signupForm {
+    display: flex;
+    position: absolute;
+    width: 50rem;
+    height: 94rem;
+    overflow: auto;
+    top: 16.4rem;
+    left: 90.7rem;
+    border: none;
+
+    #form {
+      font-family: $primary-font;
+      font-weight: 400;
+      font-style: semibold;
+      color: $secondary-color;
+      width: 100%;
+      line-height: 2rem;
+
+      .signupTitle,
+      .signupMoto {
+        font-family: $primary-font;
+        padding: 0.5rem;
+      }
+
+      .signupMoto {
+        font-weight: 600;
+        font-style: ExtraBold;
+        font-size: 1.5rem;
+        opacity: 45%;
+        color: #000;
+      }
+
+      .nameFields {
+        display: flex;
+        justify-content: space-between;
+        gap: 2rem;
+        padding: -0.5rem;
+
+        div {
+          flex: 1;
+          width: fit-content;
+        }
+      }
+
+      input {
+        border: 2px solid #787676;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        font-family: $primary-font;
+        font-size: 1em;
+        outline: none;
+        width: 100%;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      #submitButton {
+        font-family: $primary-font;
+        font-weight: 500;
+        font-size: 2rem;
+        border: none;
+        color: #fff;
+        background-image: linear-gradient(to right, $primary-color, $secondary-color);
+        line-height: 2rem;
+        padding: 2rem;
+        border-radius: 0.5rem;
+        outline: none;
+        width: 100%;
+        margin-top: 2rem;
+      }
+
+      #forgetPassword {
+        font-family: $primary-font;
+        font-weight: 700;
+        font-size: 1.8rem;
+        text-align: left;
+        border: none;
+        color: #127EB5;
+        background-color: #fff;
+        line-height: 5.4rem;
+      }
+
+      .haveAcc {
+        font-family: $primary-font;
+        font-weight: 600;
+        font-size: 1.5rem;
+        opacity: 45%;
+        color: #000;
+      }
+
+      .logInButton {
+        width: 7rem;
+        height: 3rem;
+        border-radius: 6rem;
+        border: 0.2rem solid $tertiary-color;
+        background-color: rgba(249, 165, 80, 0.14);
+        font-family: $primary-font;
+        font-weight: 600;
+        font-size: 1.3rem;
+        line-height: 100%;
+        align-items: center;
+        color: $tertiary-color;
+
+        &:hover {
+          background-color: $tertiary-color;
+          color: #fff;
+          transition: all 0.2s ease-out;
+        }
+      }
+    }
+  }
+
+  // #email.valid, #idNumber.valid, #userName.valid, #birthDay.valid {
+  //   border-color: #28a745;
+  // }
+
+  // #email.invalid, #idNumber.invalid, #userName.invalid, #birthDay.invalid {
+  //   border-color: #dc3545;
+  // }
+
+  // #feedbackEmail, #feedbackId, #feedbackUsername, #feedbackBirthDay {
+  //   margin-left: 0.2rem;
+  //   margin-top: 0%;
+  //   display: block;
+  //   font-size: 0.95em;
+  // }
+
+  // #feedbackEmail.error, #feedbackId.error,#feedbackUsername.error, #feedbackBirthDay.error {
+  //   color: #dc3545;
+  // }
+
+  // #feedbackEmail.success, #feedbackId.success,#feedbackUsername.success, #feedbackBirthDay.success {
+  //   color: #28a745;
+  //   position: absolute;
+  //   left: 0rem;
+  //   padding-left: 0%;
+  // }
 
 
 

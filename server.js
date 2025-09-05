@@ -35,7 +35,7 @@ env();
 
 app.public('./frontend');
 app.route('/users' , userRouter);
-app.route('/medicine' , medicineRouter);
+app.route('/medicines' , medicineRouter);
 app.route('/pharmacies' , pharmacyRouter);
 
 // handle user Routes

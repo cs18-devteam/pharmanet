@@ -3,10 +3,10 @@ const Router = require("../../../common/Router");
 
 const medicineRouter = new Router();
 
-medicineRouter.get("/", medicineController.getAllMedicines);
-medicineRouter.post("/", medicineController.createMedicines);
-medicineRouter.patch("/:id", medicineController.updateMedicines);
-medicineRouter.delete("/:id", medicineController.deleteMedicines);
+medicineRouter.get( medicineController.getAllMedicines);
+medicineRouter.post( medicineController.createMedicines);
+medicineRouter.patch( medicineController.updateMedicines);
+medicineRouter.delete( medicineController.deleteMedicines);
 
 
 

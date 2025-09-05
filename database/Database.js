@@ -24,9 +24,9 @@ class Database{
     createConnection(){
         this.connection = mysql.createConnection({
             host:"localhost",
-            user:"chamani",
+            user:"root",
             // password: '',
-            database : "new_pharmanet"
+            database : "Pharmanet"
         }
         );
 

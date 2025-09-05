@@ -3328,172 +3328,6 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   cursor: pointer;
 }
 
-.AddMedi .container {
-  display: flex;
-  gap: 2rem;
-  font-family: var(--primary-font);
-}
-.AddMedi .container .medicine-details,
-.AddMedi .container .medicine-inventory {
-  background: #fff;
-  padding: 2rem;
-  margin: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-.AddMedi .container .medicine-details {
-  flex: 1;
-}
-.AddMedi .container .medicine-details h2 {
-  margin-bottom: 1rem;
-}
-.AddMedi .container .medicine-details form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-.AddMedi .container .medicine-details form label {
-  font-weight: 500;
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-}
-.AddMedi .container .medicine-details form input, .AddMedi .container .medicine-details form select, .AddMedi .container .medicine-details form textarea {
-  width: 100%;
-  padding: 0.5rem;
-  border: 0.1rem solid #ccc;
-  border-radius: 1rem;
-  outline: none;
-  color: #707070;
-}
-.AddMedi .container .medicine-details form input:hover, .AddMedi .container .medicine-details form select:hover, .AddMedi .container .medicine-details form textarea:hover {
-  border-color: blue;
-}
-.AddMedi .container .medicine-details form textarea {
-  resize: vertical;
-  min-height: 80px;
-}
-.AddMedi .container .medicine-details form .row {
-  display: flex;
-  gap: 1rem;
-}
-.AddMedi .container .medicine-details form .row .col {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-.AddMedi .container .medicine-details form .col {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  border-bottom: 1rem;
-}
-.AddMedi .container .medicine-details form button {
-  background: orange;
-  color: #fff;
-  border: none;
-  padding: 0.75rem;
-  border-radius: 1rem;
-  cursor: pointer;
-  font-size: 1.8rem;
-}
-.AddMedi .container .medicine-details form button:hover {
-  background: #707070;
-}
-.AddMedi .container .medicine-inventory {
-  flex: 2;
-}
-.AddMedi .container .medicine-inventory .inventory-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  font-weight: 500;
-}
-.AddMedi .container .medicine-inventory .inventory-header .searchBar {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 1rem;
-}
-.AddMedi .container .medicine-inventory .inventory-header select {
-  padding: 0.5rem;
-  border-radius: 1rem;
-  border: 1px solid #ccc;
-}
-.AddMedi .container .medicine-inventory .inventory-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  min-height: 300px;
-  text-align: center;
-  color: white;
-}
-.AddMedi .container .medicine-inventory .inventory-body .empty-state .icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: orange;
-}
-.AddMedi .container .medicine-inventory .inventory-body .empty-state h3 {
-  margin-bottom: 0.5rem;
-}
-.AddMedi .container .medicine-inventory .inventory-body .empty-state p {
-  color: #666;
-}
-.AddMedi .container .medicine-inventory .inventory-body .medicine-card {
-  display: flex;
-  flex-direction: row;
-  background: #f9f9f9;
-  border: 1px solid #e0e0e0;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  text-align: left;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.AddMedi .container .medicine-inventory .inventory-body:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-.AddMedi .container .medicine-inventory .inventory-body h3 {
-  margin-bottom: 0.5rem;
-  font-size: 1.6rem;
-  color: #333;
-}
-.AddMedi .container .medicine-inventory .inventory-body p {
-  margin: 0.3rem 0;
-  font-size: 1.3rem;
-  color: #555;
-}
-.AddMedi .container .medicine-inventory .inventory-body .actions {
-  margin-top: 1rem;
-  display: flex;
-  gap: 0.5rem;
-}
-.AddMedi .container .medicine-inventory .inventory-body .actions button {
-  flex: 1;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 0.8rem;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-.AddMedi .container .medicine-inventory .inventory-body .actions button.update-btn {
-  background: #007bff;
-  color: #fff;
-}
-.AddMedi .container .medicine-inventory .inventory-body .actions button.update-btn:hover {
-  background: #0056b3;
-}
-.AddMedi .container .medicine-inventory .inventory-body .actions button.delete-btn {
-  background: #dc3545;
-  color: #fff;
-}
-.AddMedi .container .medicine-inventory .inventory-body .actions button.delete-btn:hover {
-  background: #a71d2a;
-}
-
 .contact-us .container {
   flex-direction: column;
   align-items: center;
@@ -4279,6 +4113,172 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   display: inline-block;
   margin: 0.2rem;
   border: 1px solid #eee;
+}
+
+.AddMedi .container {
+  display: flex;
+  gap: 2rem;
+  font-family: var(--primary-font);
+}
+.AddMedi .container .medicine-details,
+.AddMedi .container .medicine-inventory {
+  background: #fff;
+  padding: 2rem;
+  margin: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.AddMedi .container .medicine-details {
+  flex: 1;
+}
+.AddMedi .container .medicine-details h2 {
+  margin-bottom: 1rem;
+}
+.AddMedi .container .medicine-details form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.AddMedi .container .medicine-details form label {
+  font-weight: 500;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+.AddMedi .container .medicine-details form input, .AddMedi .container .medicine-details form select, .AddMedi .container .medicine-details form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 0.1rem solid #ccc;
+  border-radius: 1rem;
+  outline: none;
+  color: #707070;
+}
+.AddMedi .container .medicine-details form input:hover, .AddMedi .container .medicine-details form select:hover, .AddMedi .container .medicine-details form textarea:hover {
+  border-color: blue;
+}
+.AddMedi .container .medicine-details form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+.AddMedi .container .medicine-details form .row {
+  display: flex;
+  gap: 1rem;
+}
+.AddMedi .container .medicine-details form .row .col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.AddMedi .container .medicine-details form .col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1rem;
+}
+.AddMedi .container .medicine-details form button {
+  background: orange;
+  color: #fff;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-size: 1.8rem;
+}
+.AddMedi .container .medicine-details form button:hover {
+  background: #707070;
+}
+.AddMedi .container .medicine-inventory {
+  flex: 2;
+}
+.AddMedi .container .medicine-inventory .inventory-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+.AddMedi .container .medicine-inventory .inventory-header .searchBar {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+}
+.AddMedi .container .medicine-inventory .inventory-header select {
+  padding: 0.5rem;
+  border-radius: 1rem;
+  border: 1px solid #ccc;
+}
+.AddMedi .container .medicine-inventory .inventory-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 300px;
+  text-align: center;
+  color: white;
+}
+.AddMedi .container .medicine-inventory .inventory-body .empty-state .icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: orange;
+}
+.AddMedi .container .medicine-inventory .inventory-body .empty-state h3 {
+  margin-bottom: 0.5rem;
+}
+.AddMedi .container .medicine-inventory .inventory-body .empty-state p {
+  color: #666;
+}
+.AddMedi .container .medicine-inventory .inventory-body .medicine-card {
+  display: flex;
+  flex-direction: row;
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: left;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.AddMedi .container .medicine-inventory .inventory-body:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.AddMedi .container .medicine-inventory .inventory-body h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.6rem;
+  color: #333;
+}
+.AddMedi .container .medicine-inventory .inventory-body p {
+  margin: 0.3rem 0;
+  font-size: 1.3rem;
+  color: #555;
+}
+.AddMedi .container .medicine-inventory .inventory-body .actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.AddMedi .container .medicine-inventory .inventory-body .actions button {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.8rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.AddMedi .container .medicine-inventory .inventory-body .actions button.update-btn {
+  background: #007bff;
+  color: #fff;
+}
+.AddMedi .container .medicine-inventory .inventory-body .actions button.update-btn:hover {
+  background: #0056b3;
+}
+.AddMedi .container .medicine-inventory .inventory-body .actions button.delete-btn {
+  background: #dc3545;
+  color: #fff;
+}
+.AddMedi .container .medicine-inventory .inventory-body .actions button.delete-btn:hover {
+  background: #a71d2a;
 }
 
 /*# sourceMappingURL=style.css.map */

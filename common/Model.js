@@ -161,6 +161,7 @@ class Model{
         }
 
         query = query.replace("%%COLUMNS%%" , dataArray.join(","));
+        console.log(query);
         data =await db.query(query);
 
         if(data){

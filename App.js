@@ -103,7 +103,8 @@ module.exports = class App{
                     this.#execute( req , res ,func.postHandler);
                     return;
                 case "PATCH":
-                    this.#execute(req , res ,func.patchHandler);
+                    console.log(func.patchHandler);
+                    this.#execute(req , res ,func.updateHandler);
                     return;
                 case "DELETE":
                     this.#execute(req , res ,func.deleteHandler);

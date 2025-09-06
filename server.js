@@ -21,10 +21,27 @@ const leaveRouter = require('./services/leave-service/routes/leaveRouter');
 const medicineRouter = require('./services/medicine-service/routes/medicineRouter');
 
 
+const MedicineModel = require("./services/medicine-service/models/medicineModel");
+const PharmacyModel = require("./services/pharmacy-service/models/pharmacyModel");
+
+
+const db = Database.getInstance();
+ const medicineInstance = new MedicineModel();
+ const pharmacyInstance = new PharmacyModel();
+
+
+
+ medicineInstance.createTable().catch(console.error);
+ pharmacyInstance.createTable().catch(console.error);
+
+
 const app = App.getInstance();
+
 env();
 // handle user Routes
-app.route('/', usersReDirectRouter);
+
+//app.route('/',authenticate , usersReDirectRouter);
+
 app.route('/login' , LogInRouter)
 app.route('/signup' , SignUpRouter);
 app.route('/users/customers' , customerRouter);

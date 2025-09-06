@@ -8,6 +8,7 @@ const Admins = require("../../services/user-service/models/systemAdminModel");
 const SystemPharmacyManagers = require("../../services/user-service/models/systemPhamarcyManagerModel");
 const SystemStockManagers = require("../../services/user-service/models/systemStockManagerModel");
 const Users = require("../../services/user-service/models/UserModel");
+const Products = require("../../services/product-service/model/productModel");
 
 
 Env();
@@ -32,3 +33,4 @@ SystemPharmacyManagers.createTable();
 SystemStockManagers.createTable();
 LoyaltyPoints.createTable();
 Leaves.createTable();
+Products.createTable();

@@ -18,6 +18,7 @@ const staffRouter = require('./services/staff-service/routes/staffRouter');
 const userRouter= require("./services/user-service/routes/userRouter");
 const attendanceRouter= require("./services/attendence-service/routes/attendancerouter");
 const leaveRouter = require('./services/leave-service/routes/leaveRouter');
+const medicineRouter = require('./services/medicine-service/routes/medicineRouter');
 
 
 const app = App.getInstance();
@@ -37,8 +38,8 @@ app.route('/users/system/admin' , systemAdminRouter );
 app.route('/customers/loyalty' ,  loyaltyPointsRouter);
 app.route('/pharmacy/staff' ,staffRouter);
 app.route('/users' , userRouter);
-app.route('/attendance' , attendanceRouter);
+//app.route('/attendance' , attendanceRouter);
 app.route('/leaves' , leaveRouter);
-
+app.route('/Medicines', medicineRouter);
 
 app.run();

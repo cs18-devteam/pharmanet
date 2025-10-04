@@ -1,0 +1,117 @@
+
+div[data-role="popup-container"]{
+    --popup-stoke-width : 2px;
+
+    position: fixed;
+    display: flex;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    // align-items: center;
+    justify-content: center;
+    overflow-y: scroll;
+    padding: 3rem;
+
+    &[status="open"] {
+        z-index: 100;
+    
+    }
+
+    &[status="close"]{
+        display: none;
+        z-index: -100;
+
+        div{
+            transform: translateY(-100%);
+        }
+
+    }
+
+ 
+    div[data-role="popup-window"]{
+        max-width: 78rem ;
+        min-height: 20rem;
+        background-color: white;
+        position: relative;
+        width: 100%;
+        border-radius: 2rem;
+        padding: 2rem;
+        z-index: 10;
+        margin-top: 3rem;
+        overflow: hidden;
+        animation: load .8s ease;
+        
+
+        > *{
+            z-index: 10;
+            position: relative;
+        }
+
+        &::before{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            content: ' ';
+            z-index: 0;
+            border-radius: inherit;
+            background-image: linear-gradient(100deg , 
+                #eee 0%,
+                #29292900 37%,
+                #53535300 79%,
+                #EEEEEE 100%,
+
+            );
+        }
+
+        &::after{
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            width: calc(100% - var(--popup-stoke-width) * 2);
+            height: calc(100% - var(--popup-stoke-width) * 2);
+            content: ' ';
+            background-color:white;
+            border-radius: inherit;
+            margin: var(--popup-stoke-width);
+        }
+        
+    }
+
+    #pointer{
+        width: 25rem;
+        height: 25rem;
+        // background-color: red;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        transform: translate(-50% , -50%);
+        border-radius: 50%;
+        opacity: .5;
+        background-image: 
+            radial-gradient(circle at 50% 50%,#fff 20% , #ffffff00 10%),
+            radial-gradient(circle at 50% 0%,#028080 0% , #027F8000 70%),
+            radial-gradient(circle at 70% 40%, #f6912d 0% , #F9A55000 70%),
+            radial-gradient(circle at 30% 70%, #127fb5 14% , #127EB500 70%)
+        ;
+
+        filter: blur(45px);
+    }
+    
+}
+
+
+
+
+@keyframes load {
+    0%{
+        opacity: 0;
+        transform: translateY(100%);
+    }
+}

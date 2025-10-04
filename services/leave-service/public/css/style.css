@@ -1,0 +1,827 @@
+:root {
+  --white:#ffffff;
+  --color-green-01: #18978D;
+  --color-green-02: #08374F;
+  --color-blue-01: #083851;
+  --color-blue-02: #006395;
+  --color-yellow-01: #FB8F21;
+  --color-yellow-02:#f9a550;
+  --font-linear-secondary-color:#127EB5;
+  --font-linear-primary-color:#08374F;
+  --color-scheme: light ;
+  --primary-font:"red hat display", sans-serif;
+  --secondary-font:"Poppins" , sans-serif;
+  --color-scheme: light;
+  color-scheme: light;
+  --bg-color: white;
+  --text-color: black;
+  --toggle-bg: lightgray;
+  --slider-color: black;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--primary-font);
+  padding: 2rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+a {
+  text-decoration: none;
+}
+
+input {
+  border-radius: 3px;
+  border: 1px solid #ccc !important;
+  padding: 1rem !important;
+}
+
+button {
+  padding: 1rem;
+}
+
+img {
+  object-fit: cover;
+}
+
+.warning {
+  background-color: rgb(255, 255, 141);
+  color: rgb(33, 33, 2);
+}
+
+.error, .danger {
+  background-color: var(--color-yellow-02);
+  color: #222;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 2rem;
+}
+
+.auth-btns a {
+  padding: 1rem 2rem;
+  border: 2px solid var(--color-yellow-01);
+  color: var(--color-yellow-01);
+  text-decoration: none;
+  text-transform: capitalize;
+  font-weight: 600;
+  margin-left: 1rem;
+}
+.auth-btns a.signup {
+  background-color: var(--color-yellow-01);
+  color: white;
+}
+
+.logo {
+  font-family: var(--secondary-font);
+  display: flex;
+  align-items: center;
+}
+.logo .logopic {
+  height: 4.6rem;
+  margin-right: 1rem;
+}
+.logo .logoname {
+  font-weight: bold;
+  color: var(--color-green-02);
+  font-size: 1.6rem;
+}
+
+.search form {
+  display: flex;
+  font-family: var(--secondory-font);
+  align-items: center;
+}
+.search form input[type=search] {
+  padding: 1rem 1rem;
+  border: 0.2rem solid var(--color-green-02);
+  border-top: 1px solid #aaa;
+  border-left: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+  border-radius: 0.5rem 0 0 0.5rem;
+  font-size: 2rem;
+  width: 100%;
+  height: 5rem;
+}
+.search form input[type=search]::placeholder {
+  font-family: var(--primary-font);
+  font-size: 1.8rem;
+  color: #888;
+  font-weight: 100;
+}
+.search form input[type=submit] {
+  padding: 1rem 2rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  background-color: var(--color-green-02);
+  color: var(--white);
+  cursor: pointer;
+  border: 0.2rem solid var(--color-green-02);
+  font-size: 2rem;
+  width: 11.6rem;
+  height: 5rem;
+}
+.search form input[type=submit]:hover {
+  background-color: var(--color-yellow-01);
+  color: var(--color-green-02);
+  border: 0.3rem solid var(--color-yellow-01);
+  transition: all 0.2s ease-out;
+}
+
+.dropdown {
+  font-family: var(--primary-font);
+  position: relative;
+  bottom: 1rem;
+  display: inline-block;
+  font-weight: bold;
+  width: 7.4rem;
+  height: 2.4rem;
+}
+.dropdown > a {
+  text-decoration: none;
+  color: var(--color-green-02);
+  font-size: 1.8rem;
+  padding: 1rem;
+  display: inline-block;
+  transition: all 0.2s ease-out;
+}
+.dropdown > a:hover {
+  color: var(--color-yellow-01);
+}
+.dropdown .navbar {
+  display: none;
+  position: absolute;
+  top: 150%;
+  left: 0;
+  background-color: var(--color-green-02);
+  padding: 1rem 0;
+  min-width: 150px;
+  list-style: none;
+  border-radius: 0.5rem;
+  z-index: 10;
+}
+.dropdown .navbar li {
+  padding: 0.5rem 2rem;
+}
+.dropdown .navbar li a {
+  text-decoration: none;
+  color: var(--white);
+  display: block;
+  transition: all 0.2s ease-out;
+}
+.dropdown .navbar li a:hover {
+  color: var(--color-yellow-01);
+}
+.dropdown:hover .navbar {
+  display: block;
+}
+
+#toggle-placeholder {
+  position: relative;
+  top: 1rem;
+}
+
+.profile {
+  font-family: var(--primary-font);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.profile .profileName {
+  text-align: left;
+  font-size: 1.6rem;
+}
+.profile .profileName .welcome {
+  font-size: 1.4rem;
+  color: #707070;
+}
+.profile .profilePic img {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.profile a {
+  text-decoration: none;
+  color: black;
+  transition: all 0.2s ease-out;
+}
+.profile a:hover {
+  color: var(--color-yellow-01);
+}
+
+.toggle-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 2rem;
+}
+
+.toggle-switch {
+  width: 6rem;
+  height: 3rem;
+  background-color: transparent;
+  border-radius: 3rem;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.6rem;
+  box-sizing: border-box;
+  border: 1px solid black;
+}
+
+.toggle-switch .toggle-icon {
+  pointer-events: none;
+  z-index: 3;
+  position: relative;
+  color: black;
+}
+
+.toggle-switch .slider {
+  position: absolute;
+  top: 0.2rem;
+  left: 0.3rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  background-color: var(--slider-color);
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+input[type=checkbox]:checked + .toggle-switch .slider {
+  transform: translateX(2.8rem);
+}
+
+body.dark {
+  --color-scheme: dark;
+  color-scheme: dark;
+  --bg-color: black;
+  --text-color: white;
+  --toggle-bg: darkgray;
+  --slider-color: white;
+}
+
+body.dark .iconMoon {
+  filter: brightness(0);
+}
+
+body.dark .toggle-switch {
+  border: 0.1rem solid white;
+}
+
+div[data-role=popup-container] {
+  --popup-stoke-width: 2px;
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(10px);
+  justify-content: center;
+  overflow-y: scroll;
+  padding: 3rem;
+}
+div[data-role=popup-container][status=open] {
+  z-index: 100;
+}
+div[data-role=popup-container][status=close] {
+  display: none;
+  z-index: -100;
+}
+div[data-role=popup-container][status=close] div {
+  transform: translateY(-100%);
+}
+div[data-role=popup-container] div[data-role=popup-window] {
+  max-width: 78rem;
+  min-height: 20rem;
+  background-color: white;
+  position: relative;
+  width: 100%;
+  border-radius: 2rem;
+  padding: 2rem;
+  z-index: 10;
+  margin-top: 3rem;
+  overflow: hidden;
+  animation: load 0.8s ease;
+}
+div[data-role=popup-container] div[data-role=popup-window] > * {
+  z-index: 10;
+  position: relative;
+}
+div[data-role=popup-container] div[data-role=popup-window]::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: " ";
+  z-index: 0;
+  border-radius: inherit;
+  background-image: linear-gradient(100deg, #eee 0%, rgba(41, 41, 41, 0) 37%, rgba(83, 83, 83, 0) 79%, #EEEEEE 100%);
+}
+div[data-role=popup-container] div[data-role=popup-window]::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: calc(100% - var(--popup-stoke-width) * 2);
+  height: calc(100% - var(--popup-stoke-width) * 2);
+  content: " ";
+  background-color: white;
+  border-radius: inherit;
+  margin: var(--popup-stoke-width);
+}
+div[data-role=popup-container] #pointer {
+  width: 25rem;
+  height: 25rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  opacity: 0.5;
+  background-image: radial-gradient(circle at 50% 50%, #fff 20%, rgba(255, 255, 255, 0) 10%), radial-gradient(circle at 50% 0%, #028080 0%, rgba(2, 127, 128, 0) 70%), radial-gradient(circle at 70% 40%, #f6912d 0%, rgba(249, 165, 80, 0) 70%), radial-gradient(circle at 30% 70%, #127fb5 14%, rgba(18, 126, 181, 0) 70%);
+  filter: blur(45px);
+}
+
+@keyframes load {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+div[data-role=slide-container] {
+  position: relative;
+  --active-slide: 1;
+  max-width: 114rem;
+  min-width: max-content;
+}
+div[data-role=slide-container] div[data-role=slide-set] {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
+  width: 100%;
+  flex-shrink: 0;
+  transform: translateX(calc(-100% * (var(--active-slide) - 1)));
+  transition: all 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.member {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 100rem;
+  margin: 1rem 0rem;
+}
+.member > div {
+  display: flex;
+}
+.member > div img {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+}
+.member > div > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 1rem;
+}
+.member > div > div .member_name {
+  font-size: 1.8rem;
+  color: #888;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+.member > div > div .role {
+  font-size: 1.4rem;
+  color: #666;
+  text-transform: capitalize;
+}
+.member .check-in {
+  display: flex;
+  align-items: center;
+}
+.member .check-in * {
+  margin: 1rem;
+}
+.member .check-in button {
+  border-radius: 3px;
+  border: 1px solid #aaa;
+  background-color: #fff;
+  text-transform: capitalize;
+  color: #888;
+}
+
+.productManagement {
+  padding: 0rem;
+}
+.productManagement body {
+  padding: 0rem;
+}
+.productManagement nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2rem;
+}
+.productManagement nav .navHeading {
+  width: 11.7rem;
+  height: 2.8rem;
+  color: #111827;
+  font-family: Roboto;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2.8rem;
+}
+.productManagement nav .navSubHeading {
+  width: 19.4rem;
+  height: 2rem;
+  color: #6B7280;
+  font-family: Roboto;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1rem;
+}
+.productManagement .bodyContent {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  background: #e8ecec;
+  padding: 2rem;
+}
+.productManagement .bodyContent .addProduct {
+  flex: 1;
+  display: flex;
+  width: 448px;
+  height: 501px;
+  padding: 2rem;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border-radius: 12px;
+  border: 1px solid #E5E7EB;
+  background: #FFF;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+.productManagement .bodyContent .addProduct h2 {
+  width: 18rem;
+  height: 2.8rem;
+  color: #111827;
+  font-family: "Red Hat Display";
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 2rem;
+}
+.productManagement .bodyContent .addProduct label {
+  width: 9.5rem;
+  height: 2rem;
+  color: #374151;
+  font-family: Roboto;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.productManagement .bodyContent .addProduct #productName {
+  display: flex;
+  width: 39rem;
+  height: 4.5rem;
+  padding-left: 1.6rem;
+  justify-content: flex-end;
+  align-items: center;
+  border-radius: 0.8rem;
+  border: 0.1rem solid #D1D5DB;
+  background: #FFF;
+}
+.productManagement .bodyContent .addProduct #brand {
+  display: flex;
+  width: 39rem;
+  height: 9.6rem;
+  padding: 1.6rem 0 0 1.6rem;
+  justify-content: flex-end;
+  align-items: center;
+  border-radius: 0.8rem;
+  border: 0.1rem solid #D1D5DB;
+  background: #FFF;
+}
+.productManagement .bodyContent .addProduct #price {
+  display: inline-flex;
+  height: 4.5rem;
+  width: 39rem;
+  padding-left: 1.6rem;
+  justify-content: flex-end;
+  align-items: center;
+  border-radius: 0.8rem;
+  border: 0.1rem solid #D1D5DB;
+  background: #FFF;
+}
+.productManagement .bodyContent .addProduct .btn-save {
+  display: flex;
+  width: 39.4rem;
+  height: 3.5rem;
+  padding: 1.4rem 13.5469rem 1rem 14.0531rem;
+  margin-top: 2rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  border-radius: 0.8rem;
+  border: 0 solid #E5E7EB;
+  background: #0a8f8f;
+  color: #FFF;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: normal;
+  font-family: Roboto;
+  text-align: center;
+}
+.productManagement .bodyContent .productSection {
+  flex: 2;
+  margin-left: 2rem;
+  margin-right: 4rem;
+}
+.productManagement .bodyContent .productSection .header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0rem;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+}
+.productManagement .bodyContent .productSection .header h2 {
+  color: #111827;
+  font-family: "Red Hat Display";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.productManagement .bodyContent .productSection .header input {
+  height: 3rem;
+  weight: 24.2rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid #D1D5DB;
+  background: #FFF;
+}
+.productManagement .bodyContent .productSection .productCard {
+  display: flex;
+  padding: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 1rem;
+  border: 0.1rem solid #D1D5DB;
+  background: #FFF;
+  margin-bottom: 1rem;
+  height: 12.6rem;
+}
+.productManagement .bodyContent .productSection .productCard .productInfo .productName {
+  color: #111827;
+  font-family: Roboto;
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 2.8rem;
+  height: 3.5rem;
+  align-self: stretch;
+}
+.productManagement .bodyContent .productSection .productCard .productInfo .productDesc {
+  color: #4B5563;
+  font-family: Roboto;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 3.5rem;
+  height: 2.4rem;
+  align-self: stretch;
+}
+.productManagement .bodyContent .productSection .productCard .productInfo .productPrice {
+  color: #027F80;
+  font-family: Roboto;
+  font-size: 2.4rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 5.5rem;
+  height: 3.2rem;
+  align-self: stretch;
+}
+.productManagement .bodyContent .productSection .productCard .productActions button {
+  border: none;
+  outline: none;
+  background: none;
+  margin: 1rem;
+  cursor: pointer;
+}
+
+@font-face {
+  font-family: "red hat display";
+  font-weight: 100;
+  font-style: normal;
+  src: url(/fonts/Red_Hat_Display/static/RedHatDisplay-Light.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "red hat display";
+  font-weight: 100;
+  font-style: italic;
+  src: url(/fonts/Red_Hat_Display/static/RedHatDisplay-LightItalic.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "red hat display";
+  font-weight: 200;
+  font-style: normal;
+  src: url(/fonts/Red_Hat_Display/static/RedHatDisplay-Light.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "red hat display";
+  font-weight: 200;
+  font-style: italic;
+  src: url(/fonts/Red_Hat_Display/static/RedHatDisplay-LightItalic.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "red hat display";
+  font-weight: 300;
+  font-style: normal;
+  src: url(/fonts/Red_Hat_Display/static/RedHatDisplay-Medium.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "red hat display";
+  font-weight: 300;
+  font-style: italic;
+  src: url(/fonts/Red_Hat_Display/static/RedHatDisplay-MediumItalic.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "red hat display";
+  font-weight: 400;
+  font-style: normal;
+  src: url(/fonts/Red_Hat_Display/static/RedHatDisplay-Regular.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "red hat display";
+  font-weight: 500;
+  font-style: normal;
+  src: url(/fonts/Red_Hat_Display/static/RedHatDisplay-SemiBold.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "red hat display";
+  font-weight: 500;
+  font-style: italic;
+  src: url(/fonts/Red_Hat_Display/static/RedHatDisplay-SemiBoldItalic.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "red hat display";
+  font-weight: 600;
+  font-style: normal;
+  src: url(/fonts/Red_Hat_Display/static/RedHatDisplay-Bold.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "red hat display";
+  font-weight: 600;
+  font-style: normal;
+  src: url(/fonts/Red_Hat_Display/static/RedHatDisplay-Bold.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "red hat display";
+  font-weight: 700;
+  font-style: normal;
+  src: url(/fonts/Red_Hat_Display/static/RedHatDisplay-ExtraBold.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "red hat display";
+  font-weight: 700;
+  font-style: italic;
+  src: url(/fonts/Red_Hat_Display/static/RedHatDisplay-ExtraBoldItalic.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "red hat display";
+  font-weight: 700;
+  font-style: normal;
+  src: url(/fonts/Red_Hat_Display/static/RedHatDisplay-ExtraBold.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "red hat display";
+  font-weight: 700;
+  font-style: italic;
+  src: url(/fonts/Red_Hat_Display/static/RedHatDisplay-ExtraBoldItalic.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "Poppins";
+  font-weight: 100;
+  font-style: normal;
+  src: url(/public/fonts/Poppins//Poppins-ExtraLight.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "Poppins";
+  font-weight: 100;
+  font-style: italic;
+  src: url(/public/fonts/Poppins/Poppins-ExtraLightItalic.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "Poppins";
+  font-weight: 200;
+  font-style: normal;
+  src: url(/public/fonts/Poppins/Poppins-Light.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "Poppins";
+  font-weight: 200;
+  font-style: italic;
+  src: url(/public/fonts/Poppins/Poppins-LightItalic.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "Poppins";
+  font-weight: 300;
+  font-style: normal;
+  src: url(/public/fonts/Poppins/Poppins-Medium.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "Poppins";
+  font-weight: 300;
+  font-style: italic;
+  src: url(/public/fonts/Poppins/Poppins-MediumItalic.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "Poppins";
+  font-weight: 400;
+  font-style: normal;
+  src: url(/public/fonts/Poppins/Poppins-Regular.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "Poppins";
+  font-weight: 500;
+  font-style: normal;
+  src: url(/public/fonts/Poppins/Poppins-SemiBold.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "Poppins";
+  font-weight: 500;
+  font-style: italic;
+  src: url(/public/fonts/Poppins/Poppins-SemiBoldItalic.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "Poppins";
+  font-weight: 600;
+  font-style: normal;
+  src: url(/public/fonts/Poppins/Poppins-Bold.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "Poppins";
+  font-weight: 600;
+  font-style: normal;
+  src: url(/public/fonts/Poppins/Poppins-BoldItalic.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "Poppins";
+  font-weight: 700;
+  font-style: normal;
+  src: url(/public/fonts/Poppins/Poppins-ExtraBold.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "Poppins";
+  font-weight: 700;
+  font-style: italic;
+  src: url(/public/fonts/Poppins/Poppins-ExtraBoldItalic.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "Poppins";
+  font-weight: 800;
+  font-style: normal;
+  src: url(/public/fonts/Poppins/Poppins-Black.ttf) format("TrueType");
+}
+@font-face {
+  font-family: "Poppins";
+  font-weight: 800;
+  font-style: italic;
+  src: url(/public/fonts/Poppins/Poppins-BlackItalic.ttf) format("TrueType");
+}
+
+/*# sourceMappingURL=style.css.map */

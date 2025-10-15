@@ -1,6 +1,10 @@
 const http = require('node:http');
 const path = require('path');
 const fs = require('fs');
+<<<<<<< HEAD
+=======
+const Router = require('./common/Router');
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
 
 const mimeMap = {
     ".html": "text/html",
@@ -15,14 +19,22 @@ const mimeMap = {
     ".ico":"image/icon"
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
 module.exports = class App{
     static #app = undefined;
     static server = undefined;
     #files = [];
     static #routes = [];
 
+<<<<<<< HEAD
     constructor({port = "8080", hostname = "localhost"}={}){
+=======
+    constructor({port = "8000", hostname = "localhost"}={}){
+
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
         this.port = port;
         this.hostname = hostname;
 
@@ -31,7 +43,12 @@ module.exports = class App{
             //parse url
             const url = new URL(req.url , `http://${req.headers.host}`);
             req.params = url.searchParams;
+<<<<<<< HEAD
             req.pathname = url.pathname;
+=======
+
+            req.pathname = url.pathname.replace(/%20/g , ' ').replace(/\\/g , "/");
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
             req.protocol = url.protocol;
 
             // for development cases
@@ -39,6 +56,7 @@ module.exports = class App{
                 console.log(`${req.method} ${req.pathname}`)
             }
 
+<<<<<<< HEAD
             //handle special case
             if(req.pathname == "/"){
                 req.pathname = '/index.html';
@@ -47,6 +65,21 @@ module.exports = class App{
 
             const isFound = await this.findFile(req,res);
             if(!isFound) this.findRoute(req , res);
+=======
+
+            res.send = (html)=>{
+                res.writeHead(200 , {"content-type":"text/html"});
+                res.write(html);
+                res.end();
+            }
+
+
+
+            const isFound = await this.findFile(req , res);
+
+            
+            if(!isFound) this.findRoute(req,res);
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
         });
 
     }
@@ -54,6 +87,11 @@ module.exports = class App{
     async findFile(req , res){
         const [file] = this.#files.filter(file=>file.url == req.pathname);
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
         if(file){
             const fileExt = path.extname(file.url);
             fs.readFile(file.file , (error , data)=>{
@@ -74,6 +112,7 @@ module.exports = class App{
         return false;
     }
 
+<<<<<<< HEAD
     async findRoute(req , res){
         try{
             App.#routes.forEach(async (route)=>{
@@ -108,6 +147,68 @@ module.exports = class App{
         const routeObj = {
             path ,
             router ,
+=======
+    #next(req , res , func){
+        if(typeof func == "function"){
+            return func(req , res);
+        }
+        if(func instanceof Array){
+            if(func.length == 0) return;
+            func.forEach(f=>this.#next(req , res , f));
+            return;
+        }
+
+        if(func instanceof Router){
+            const method = req.method;
+            switch(method){
+                case "GET":
+                    this.#execute(req , res ,func.getHandler);
+                    return;
+                case "POST":
+                    this.#execute( req , res ,func.postHandler);
+                    return;
+                case "PATCH":
+                    console.log(func.updateHandler);
+                    this.#execute(req , res ,func.updateHandler);
+                    return;
+                case "DELETE":
+                    this.#execute(req , res ,func.deleteHandler);
+                    break;
+            }
+        }
+
+    }
+
+
+    #execute(req , res , handlers = []){
+        this.#next(req , res , handlers);
+    }
+
+
+    async findRoute(req ,res){
+        try{
+            let isRouteFound = false;
+
+
+            App.#routes.forEach((route)=>{
+                if(route.path == req.pathname ){
+                    this.#execute( req , res,route.router);
+                }
+
+            })
+
+            return isRouteFound;
+
+        }catch(error){
+            console.log("error : find Route method" , error);
+        }
+    }
+
+    route(path , ...handlers){
+        const routeObj = {
+            path ,
+            router : handlers,
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
         };
 
         App.#routes.push(routeObj);
@@ -116,7 +217,10 @@ module.exports = class App{
 
     run(){
         App.server?.listen(this.port , this.hostname , ()=>{
+<<<<<<< HEAD
             
+=======
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
             if(process.env.NODE_ENV == "development"){
                 console.log(`app is running on http://${this.hostname}:${this.port}`);
 
@@ -132,10 +236,16 @@ module.exports = class App{
             const filePath = path.join(directory , file);
             const fileUrl = "/"+ path.relative(directory , filePath);
 
+<<<<<<< HEAD
             
             this.#files.push({
                 file: filePath , 
                 url : fileUrl,
+=======
+            this.#files.push({
+                file: filePath.replace(/%20/g , ' ').replace(/\\/g , "/") , 
+                url : fileUrl.replace(/%20/g , ' ').replace(/\\/g , "/"),
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
             });
         });   
 
@@ -145,7 +255,11 @@ module.exports = class App{
         if(!App.#app){
             App.#app = new App({
                 port:process.env.APP_PORT,
+<<<<<<< HEAD
                 hostname: process.env.DEVELOPMENT_HOSTNAME,
+=======
+                hostname: "localhost",
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
             });
             console.log("app created.");
             return App.#app;

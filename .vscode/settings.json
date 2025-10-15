@@ -1,5 +1,15 @@
 {
     "cSpell.words": [
+<<<<<<< HEAD
         "pharmanet"
     ]
+=======
+        "Chathura",
+        "pharmacymanager",
+        "pharmanet",
+        "stockmanager",
+        "usermodel"
+    ],
+    "postman.settings.dotenv-detection-notification-visibility": false
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
 }

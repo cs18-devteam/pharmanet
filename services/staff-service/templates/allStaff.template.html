@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Member Registration</title>
+  <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body class="PharmacyMemberIntro">
+
+    <!--header section-->
+  <header class="top-bar">
+    <nav>
+        <div class="logo">
+            <img class="logopic" src="/public/logo/logo.svg" alt="logo">
+            <p class="logoname">PharmaNet</p>
+        </div>
+
+        <div id="toggle-placeholder"></div>
+
+    </nav>
+  </header>
+
+
+
+
+
+  <section class="all-staff">
+    <div class="menu"></div>
+    <div class="members">
+      <h2>All Staff Members</h2>
+      <p>Keep track of your staff, add new members, and ensure all important details are in one place. A well-organized team is a thriving team!</p>
+
+      <div class="members-container">
+        <div>
+          <div class="member">
+            <div>
+              <img src="/public/users/1.jpg" alt="user">
+              <div>
+                <div class="member_name">chathura priyashan</div>
+                <div class="role">cashier</div>
+              </div>
+            </div>
+
+
+              <div class="check-in">
+                <button>check-in</button>
+                <time datetime="5.00 a.m">5.00 A.M</time>
+              </div>
+
+        </div>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="reminders">
+      <div class="create-member">
+        <img src="/public/placeholders/Pharmacy/StaffMembers/Profile-Pharmasist.jpg" alt="">
+          <popup-open for="new-staff-member-window" class="add-new-staff">    
+            new staff member +
+          </popup-open>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="container">
+ 
+    
+    <popup-window id="new-staff-member-window" status="close">
+        <slide-container class="slide-container">
+            <slide-set class="slideset">
+                <slide-window class="window-1">
+                    <div class="head-section">
+
+                        <div class="title">
+                            New Staff Member<p>Do you need to add new Staff member ?</p>
+                        </div>
+                    </div>
+
+                    <div class="buttons">
+                        <popup-close for="new-staff-member-window" class="new-member-button">
+                            back
+                        </popup-close>
+                        <slide-next class="new-member-button">
+                            New Member
+                        </slide-next>
+                    </div>
+
+                   
+                </slide-window >
+
+                <slide-window class="window-2">
+                    <div class="title2">
+                        Primary Details
+                        <span>
+                            Let’s give them a proper intro—share the basics of your staff member.
+                        </span>
+                    </div>
+                    <form name="primary-details" action="" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fname">First Name</label>
+                                <input type="text" id="fname" name="m-first-name" placeholder="Chathura">
+                            </div>
+                            <div class="form-group">
+                                <label for="lname">Last Name</label>
+                                <input type="text" id="lname" name="m-last-name" placeholder="Priyashan">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="fullName" >Full Name</label>
+                            <input type="text" id="fullName" name="m-full-name" placeholder="Chathura Priyashan Senavirathna">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="m-email" placeholder="chathurapriyashan@gmail.com">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nic">NIC</label>
+                                <input type="text" id="nic" name="m-nic" placeholder="123456789123">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="DOB">Date Of Birth</label>
+                                <input type="date" id="DOB" name="m-bate-of-birth" placeholder="11 july 2003">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <select name="gender" id="gender">
+                                    <option name="male">Male</option>
+                                    <option name="female">Female</option>
+                                    <option name="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="footer">
+                        <slide-previous class="previous-button">
+                            Previous
+                        </slide-previous>
+
+                        <div class="progress-dots">
+                            <span class="dot-active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+
+                        <slide-next class="next-button">
+                            Next
+                        </slide-next>
+                    </div>
+
+                </slide-window>
+
+                <slide-window class="window-3">
+                    <div class="title2">
+                        Contact and Location Info
+                        <span>
+                            Drop the location and contact info so we know where to find Your Member
+                        </span>
+                    </div>
+                    <form name="primary-details" action="" method="POST">
+                        <div class="left-grid">
+
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input type="text" id="address" name="m-address-no" placeholder="No">
+                                <input type="text" id="address" name="m-address-sreet" placeholder="Street">
+                                <input type="text" id="address" name="m-address-town" placeholder="Twon">
+                                <input type="text" id="address" name="m-address-Province" placeholder="Province">
+                                <input type="text" id="address" name="m-address-postal-code" placeholder="Postal Code">
+
+                            </div>
+    
+                        </div>
+                        
+                        <div class="right-grid">
+
+                            <div class="form-group">
+                                <label for="contact-number">NIC</label>
+                                <input type="text" id="contact-number" name="m-contact-numb-01" placeholder="076 XXX XXXX">
+                                <input type="text" id="contact-number" name="m-contact-numb-02" placeholder="071 XXX XXXX">
+                            </div>
+
+                        </div>
+                    </form>
+
+                    <div class="footer">
+                        <slide-previous class="previous-button">
+                            Previous
+                        </slide-previous>
+
+                        <div class="progress-dots">
+                            <span class="dot-active"></span>
+                            <span class="dot-active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+
+                        <slide-next class="next-button">
+                            Next
+                        </slide-next>
+                    </div>
+
+                </slide-window>
+            </slide-set>
+
+        </slide-container>
+    </popup-window>
+  </section>
+ <script type="module" src="/js/controller/controller.js"></script>
+
+</body>
+</html>

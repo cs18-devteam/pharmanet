@@ -31,6 +31,7 @@ class Slider{
     }
 
     activateBtns(){
+<<<<<<< HEAD
         console.log(this.nextBtn);
         if(this.nextBtn){
             this.nextBtn.addEventListener('click' ,()=>{
@@ -46,6 +47,23 @@ class Slider{
                 console.log("clicked previous");
 
             })
+=======
+        if(this.nextBtns?.length){
+            this.nextBtns?.forEach(nextBtn=>{
+                nextBtn.addEventListener('click' ,()=>{
+                this.next();
+            })
+        });
+    }
+    
+
+    if(this.previousBtns?.length){
+        this.previousBtns?.forEach(previousBtn=>{
+            previousBtn.addEventListener('click' , ()=>{
+                this.previous();
+            })
+            });
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
         }
     }
 
@@ -82,12 +100,31 @@ class Slider{
             });
             
             //replace next and previous btns
+<<<<<<< HEAD
             const nextTag = this.slideContainer.querySelector('slide-next');
             const previousTag = this.slideContainer.querySelector('slide-previous');
             nextTag.dataset.role="slide-next";
             previousTag.dataset.role="slide-previous";
             this.nextBtn = Utilities.replaceTag(nextTag , 'button');
             this.previousBtn = Utilities.replaceTag(previousTag , 'button');   
+=======
+            const nextTags = this.slideContainer.querySelectorAll('slide-next');
+            const previousTags = this.slideContainer.querySelectorAll('slide-previous');
+
+
+            this.nextBtns = [];
+            nextTags.forEach(nextTag=>{
+                nextTag.dataset.role="slide-next"
+                this.nextBtns.push(Utilities.replaceTag(nextTag , 'button'));
+            });
+            
+            this.previousBtns = []
+            previousTags.forEach(previousTag=>{
+                previousTag.dataset.role="slide-previous"
+                this.previousBtns.push(Utilities.replaceTag(previousTag , 'button'));   
+            });
+
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
             
         }catch(error){
             console.log(error);

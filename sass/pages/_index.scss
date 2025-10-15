@@ -1,9 +1,11 @@
 @forward "signup";
 @forward "attendance";
+@forward "./pharmarcyLandingPage";
 @forward "./landingPage";
 @forward "./verify-email";
 @forward "./verify-number";
 @forward "./staffMember";
+<<<<<<< HEAD
 <<<<<<< HEAD
 @forward "./login";
 @forward "./medCreate";
@@ -14,3 +16,16 @@
 @forward "./search-pharmacy";
 @forward "./pharmacy-registration";
 >>>>>>> 0242b0c9ca2cdefd93a6450cce1d4a5119f600cd
+=======
+@forward "./search-medicine";
+@forward "./search-pharmacy";
+@forward "./pharmacy-registration";
+@forward "./productManagement";
+@forward "./contactUs";
+@forward "./login";
+@forward "./userUpdate";
+@forward "./pharmacy-member-intro";
+@forward "./allStaff";
+@forward "./memberDetails";
+@forward "./medicineAdd";
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf

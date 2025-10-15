@@ -934,15 +934,15 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 
 .landingPage {
   margin-right: 0%;
-  /* Navbar */
-  /* Header */
-  /* Store */
 }
 .landingPage body {
   font-family: Arial, sans-serif;
   margin: 0;
   background: #f9f9f9;
   color: #222;
+}
+.landingPage {
+  /* Navbar */
 }
 .landingPage .navbar {
   display: flex;
@@ -964,6 +964,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .landingPage .navbar .nav-links a.active {
   border-bottom: 2px solid #0a8f8f;
+}
+.landingPage {
+  /* Header */
 }
 .landingPage .header {
   margin: 1rem;
@@ -1070,6 +1073,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .landingPage .header .contact-card .btn svg {
   margin-left: 0.4rem;
 }
+.landingPage {
+  /* Store */
+}
 .landingPage .store {
   padding: 2rem;
 }
@@ -1127,8 +1133,6 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   align-items: flex-start;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s;
-  /* Sizes */
-  /* Quantity */
 }
 .landingPage .store .product-card:hover {
   transform: translateY(-4px);
@@ -1168,6 +1172,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   font-size: 2rem;
   font-weight: 500;
 }
+.landingPage .store .product-card {
+  /* Sizes */
+}
 .landingPage .store .product-card .sizes {
   display: flex;
   justify-content: left;
@@ -1187,6 +1194,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   background: #0a8f8f;
   color: #fff;
   border-color: #0a8f8f;
+}
+.landingPage .store .product-card {
+  /* Quantity */
 }
 .landingPage .store .product-card .quantity {
   display: flex;
@@ -2212,9 +2222,6 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   color: #127EB5;
 }
 
-.staffMember {
-  /* -------------------- MEDIA QUERIES -------------------- */
-}
 .staffMember .page-container {
   display: flex;
   gap: 2rem;
@@ -2527,6 +2534,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .staffMember .page-container .column3 .attendance-card .documents ul li .download:hover {
   color: #d85a00;
+}
+.staffMember {
+  /* -------------------- MEDIA QUERIES -------------------- */
 }
 @media (max-width: 768px) {
   .staffMember .page-container {
@@ -4128,11 +4138,11 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   border-radius: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-.AddMedi .container .medicine-details {
-  flex: 1;
-}
 .AddMedi .container .medicine-details h2 {
   margin-bottom: 1rem;
+}
+.AddMedi .container .medicine-details {
+  flex: 1;
 }
 .AddMedi .container .medicine-details form {
   display: flex;
@@ -4279,6 +4289,545 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .AddMedi .container .medicine-inventory .inventory-body .actions button.delete-btn:hover {
   background: #a71d2a;
+}
+
+.adminDashboard .container {
+  display: flex;
+  flex-direction: row;
+}
+.adminDashboard .container .container-1 {
+  flex: -2;
+  margin-right: 0rem;
+  align-items: stretch;
+  min-height: 95vh;
+  background: #F7F7F7;
+  border-radius: 1rem;
+}
+.adminDashboard .container .container-1 .sideBar {
+  width: 26rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.adminDashboard .container .container-1 .sideBar .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.adminDashboard .container .container-1 .sideBar .logo .logopic {
+  font-size: 2.4rem;
+}
+.adminDashboard .container .container-1 .sideBar .logo div h3 {
+  font-size: 1.8rem;
+  margin-bottom: -0.5rem;
+  color: #08374F;
+}
+.adminDashboard .container .container-1 .sideBar .logo div p {
+  font-size: 1.2rem;
+  color: #9ca3af;
+}
+.adminDashboard .container .menu {
+  flex: 2;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4rem;
+}
+.adminDashboard .container .menu a {
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #9ca3af;
+  transition: all 0.3s;
+}
+.adminDashboard .container .menu a:active, .adminDashboard .container .menu a:hover {
+  background: #768190;
+  color: #FB8F21;
+}
+.adminDashboard .container-2 {
+  flex: 3;
+}
+.adminDashboard .container-2 .main {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+}
+.adminDashboard .container-2 .main header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  justify-content: space-around;
+}
+.adminDashboard .container-2 .main header input {
+  background: white;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  width: 50%;
+  color: #9ca3af;
+  border-radius: 8px;
+}
+.adminDashboard .container-2 .main header .user-section {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.adminDashboard .container-2 .main header .user-section .bell {
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: relative;
+}
+.adminDashboard .container-2 .main header .user-section .bell::before {
+  content: "🔔";
+}
+.adminDashboard .container-2 .main header .user-section .bell::after {
+  content: "3";
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  background: red;
+  color: white;
+  font-size: 0.7rem;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+}
+.adminDashboard .container-2 .main header .user-section .admin {
+  width: 3.5rem;
+  height: 3.5rem;
+  background: #FB8F21;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fff;
+}
+.adminDashboard .container-2 .main .dashboard h1 {
+  font-size: 3.2rem;
+  margin-bottom: 0.8rem;
+  color: #08374F;
+  margin-bottom: -0.5rem;
+}
+.adminDashboard .container-2 .main .dashboard p {
+  color: #9ca3af;
+  margin-bottom: 3rem;
+}
+.adminDashboard .container-2 .main .dashboard .cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 2rem;
+}
+.adminDashboard .container-2 .main .dashboard .cards .card {
+  background: #F7F7F7;
+  padding: 2rem;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 0.2rem 0.8ren rgba(0, 0, 0, 0.4);
+}
+.adminDashboard .container-2 .main .dashboard .cards .card .icon {
+  font-size: 2.6rem;
+  color: #FB8F21;
+}
+.adminDashboard .container-2 .main .dashboard .cards .card .icon.pharmarcy::before {
+  content: "🏢";
+}
+.adminDashboard .container-2 .main .dashboard .cards .card .icon.stock::before {
+  content: "🔗";
+}
+.adminDashboard .container-2 .main .dashboard .cards .card .icon.users::before {
+  content: "👥";
+}
+.adminDashboard .container-2 .main .dashboard .cards .card .icon.revenue::before {
+  content: "📈";
+}
+.adminDashboard .container-2 .main .dashboard .cards .card h3 {
+  font-size: 1.6rem;
+  color: #9ca3af;
+}
+.adminDashboard .container-2 .main .dashboard .cards .card h1 {
+  font-size: 2.8rem;
+}
+.adminDashboard .container-2 .main .dashboard .cards .card .change {
+  color: #FB8F21;
+  font-size: 1.4rem;
+}
+.adminDashboard .container-2 .analyticCards {
+  display: flex;
+  flex-direction: row;
+  margin: 0rem 4rem 0rem 4rem;
+  gap: 2rem;
+}
+.adminDashboard .container-2 .analyticCards .analyticCard1, .adminDashboard .container-2 .analyticCards .analyticCard2 {
+  background-color: #F7F7F7;
+  border-radius: 12px;
+  padding: 1.5rem;
+  flex: 1 1 45%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.adminDashboard .container-2 .analyticCards .analyticCard1 h2, .adminDashboard .container-2 .analyticCards .analyticCard2 h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0rem;
+  color: #08374F;
+}
+.adminDashboard .container-2 .analyticCards .analyticCard1 p, .adminDashboard .container-2 .analyticCards .analyticCard2 p {
+  font-size: 1.2rem;
+  color: #bbb;
+  margin-bottom: 1rem;
+}
+.adminDashboard .container-2 .analyticCards .analyticCard1 canvas, .adminDashboard .container-2 .analyticCards .analyticCard2 canvas {
+  width: 100%;
+  height: 30rem;
+}
+.adminDashboard .container-2 .activity-card {
+  background-color: #F7F7F7;
+  padding: 1.5rem;
+  border-radius: 1.2rem;
+  margin: 2rem 4rem 0rem 4rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.adminDashboard .container-2 .activity-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0rem;
+}
+.adminDashboard .container-2 .activity-card .subtitle {
+  color: #bbb;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+.adminDashboard .container-2 .activity-card .activity-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.adminDashboard .container-2 .activity-card .activity-list .activity-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+.adminDashboard .container-2 .activity-card .activity-list .activity-item .avatar {
+  background-color: #003c2f;
+  color: #b7f5d5;
+  font-weight: 600;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  font-size: 0.9rem;
+}
+.adminDashboard .container-2 .activity-card .activity-list .activity-item .details {
+  flex: 1;
+}
+.adminDashboard .container-2 .activity-card .activity-list .activity-item .details .info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+.adminDashboard .container-2 .activity-card .activity-list .activity-item .details .info strong {
+  font-weight: 600;
+}
+.adminDashboard .container-2 .activity-card .activity-list .activity-item .details p {
+  margin: 0.2rem 0;
+}
+.adminDashboard .container-2 .activity-card .activity-list .activity-item .details .time {
+  font-size: 0.8rem;
+  color: #888;
+}
+.adminDashboard .container-2 .tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  background-color: #333;
+  color: #fff;
+}
+.adminDashboard .container-2 .tag.medicine {
+  background-color: #2e7d32;
+}
+.adminDashboard .container-2 .tag.pharmacy {
+  background-color: #0277bd;
+}
+.adminDashboard .container-2 .tag.user {
+  background-color: #6a1b9a;
+}
+.adminDashboard .container-2 .tag.prescription {
+  background-color: #c62828;
+}
+.adminDashboard .container-2 .tag.inventory {
+  background-color: #ef6c00;
+}
+
+.pharmarcy .container {
+  display: flex;
+  flex-direction: row;
+}
+.pharmarcy .container .container-1 {
+  flex: -2;
+  margin-right: 0rem;
+  align-items: stretch;
+  min-height: 95vh;
+  background: #F7F7F7;
+  border-radius: 1rem;
+}
+.pharmarcy .container .container-1 .sideBar {
+  width: 26rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.pharmarcy .container .container-1 .sideBar .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.pharmarcy .container .container-1 .sideBar .logo .logopic {
+  font-size: 2.4rem;
+}
+.pharmarcy .container .container-1 .sideBar .logo div h3 {
+  font-size: 1.8rem;
+  margin-bottom: -0.5rem;
+  color: #08374F;
+}
+.pharmarcy .container .container-1 .sideBar .logo div p {
+  font-size: 1.2rem;
+  color: #9ca3af;
+}
+.pharmarcy .container .menu {
+  flex: 2;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4rem;
+}
+.pharmarcy .container .menu a {
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #9ca3af;
+  transition: all 0.3s;
+}
+.pharmarcy .container .menu a.active, .pharmarcy .container .menu a:hover {
+  background: #768190;
+  color: #FB8F21;
+}
+.pharmarcy .container .menu .menuItem {
+  display: flex;
+}
+.pharmarcy .container .menu .menuItem .text1 {
+  font-size: 1rem;
+}
+.pharmarcy .container .menu .menuItem .text1::before {
+  content: "⚙";
+}
+.pharmarcy .container .menu .menuItem .text2 {
+  font-size: 1rem;
+}
+.pharmarcy .container .menu .menuItem .text2::before {
+  content: "⎋";
+}
+.pharmarcy .container-2 {
+  flex: 2;
+}
+.pharmarcy .container-2 .main {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+}
+.pharmarcy .container-2 .main header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  justify-content: space-around;
+}
+.pharmarcy .container-2 .main header input {
+  background: white;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  width: 50%;
+  color: #9ca3af;
+  border-radius: 8px;
+}
+.pharmarcy .container-2 .main header .user-section {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.pharmarcy .container-2 .main header .user-section .bell {
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: relative;
+}
+.pharmarcy .container-2 .main header .user-section .bell::before {
+  content: "🔔";
+}
+.pharmarcy .container-2 .main header .user-section .bell::after {
+  content: "3";
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  background: red;
+  color: white;
+  font-size: 0.7rem;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+}
+.pharmarcy .container-2 .main header .user-section .admin {
+  width: 3.5rem;
+  height: 3.5rem;
+  background: #FB8F21;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fff;
+}
+.pharmarcy .container-2 .main .dashboard .sectionHeading {
+  display: flex;
+  justify-content: space-between;
+}
+.pharmarcy .container-2 .main .dashboard .sectionHeading .addBtn {
+  background: linear-gradient(to right, #18978D, #083851);
+  color: white;
+  font-size: 1.4rem;
+  border-radius: 1rem;
+  border: 1rem #FB8F21;
+  align-items: baseline;
+  padding: 1.5rem;
+}
+.pharmarcy .container-2 .main .dashboard .sectionHeading .addBtn::before {
+  content: "+ ";
+}
+.pharmarcy .container-2 .main .dashboard h1 {
+  font-size: 3.2rem;
+  margin-bottom: 0.8rem;
+  color: #08374F;
+  margin-bottom: -0.5rem;
+}
+.pharmarcy .container-2 .main .dashboard p {
+  color: #9ca3af;
+  margin-bottom: 3rem;
+}
+.pharmarcy .container-2 .main .dashboard .pharmacy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(45rem, 1fr));
+  gap: 1.5rem;
+  min-height: 90vh;
+  align-items: stretch;
+}
+.pharmarcy .container-2 .main .dashboard .pharmacy-card {
+  display: grid;
+  background-color: #F7F7F7;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+  position: relative;
+  align-items: stretch;
+}
+.pharmarcy .container-2 .main .dashboard .pharmacy-card .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pharmarcy .container-2 .main .dashboard .pharmacy-card .header h3 {
+  font-size: 1.5rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #08374F;
+}
+.pharmarcy .container-2 .main .dashboard .pharmacy-card .header .menu-btn {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.pharmarcy .container-2 .main .dashboard .pharmacy-card p {
+  margin: 0.75rem 0 0.5rem;
+  color: #08374F;
+}
+.pharmarcy .container-2 .main .dashboard .pharmacy-card .details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.pharmarcy .container-2 .main .dashboard .pharmacy-card .details li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+  font-size: 1.2rem;
+  color: #FB8F21;
+}
+.pharmarcy .container-2 .main .dashboard .pharmacy-card .details li span {
+  font-size: 1.5rem;
+}
+.pharmarcy .container-2 .main .dashboard .pharmacy-card .details li span.address::before {
+  content: "📍";
+}
+.pharmarcy .container-2 .main .dashboard .pharmacy-card .details li span.telephoneNo::before {
+  content: "📞 ";
+}
+.pharmarcy .container-2 .main .dashboard .pharmacy-card .details li span.email::before {
+  content: "✉️ ";
+}
+.pharmarcy .container-2 .main .dashboard .pharmacy-card .footer {
+  margin-top: 1.2rem;
+  border-top: 1px solid #222;
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pharmarcy .container-2 .main .dashboard .pharmacy-card .footer p {
+  font-size: 0.95rem;
+  color: #aaa;
+}
+.pharmarcy .container-2 .main .dashboard .pharmacy-card .footer p strong {
+  color: #08374F;
+}
+.pharmarcy .container-2 .main .dashboard .pharmacy-card .footer .details-btn {
+  background: linear-gradient(to right, #18978D, #083851);
+  border: 1px solid #08374F;
+  color: #fff;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+.pharmarcy .container-2 .main .dashboard .pharmacy-card .footer .details-btn:hover {
+  background-color: #1e1e1e;
+}
+.pharmarcy .container-2 .main .dashboard .status {
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.pharmarcy .container-2 .main .dashboard .status.active {
+  background-color: #00c853;
+  color: #fff;
+}
+.pharmarcy .container-2 .main .dashboard .status.inactive {
+  background-color: #424242;
+  color: #ccc;
 }
 
 /*# sourceMappingURL=style.css.map */

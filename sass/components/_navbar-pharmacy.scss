@@ -1,15 +1,4 @@
-.navbar-pharmacy{
-
-    nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0rem 2rem;
-        font-family: var(--primary-font);
-        }
-    
-
-    .nav-links {
+ .nav-links {
         display: flex;
         background-color: black;
         border-radius: 1.5rem;
@@ -38,5 +27,4 @@
         border-radius: 1.2rem;
         }
     }
-}
 }

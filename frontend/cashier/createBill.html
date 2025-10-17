@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cashier Dashboard</title>
+  <title>Create Bill</title>
   <link rel="stylesheet" href="/css/style.css" />
 </head>
 
-<body class="cashier-dashboard">
+<body class="cashier-create-bill">
   <!-- ---------------- Header ---------------- -->
   <header>
     <nav>
@@ -73,12 +73,14 @@
     <!-- Right Side Content -->
     <div class="right-side">
       <main class="content">
-        
-        <!-- Top Bar -->
+
+          <!-- Top Bar -->
         <header class="top-bar">
           <div class="search-bar">
             <form action="" method="post">
-              <label for="category">
+
+              <div class="row">
+                <label for="category">
                 <span>Category:</span>
                 <select name="category" id="category" class="selector">
                   <option value="Antibiotics">Antibiotics</option>
@@ -102,158 +104,160 @@
                 </select>
               </label>
 
-              <label for="Search">
-                <input type="search" class="searchmedi" id="Search" placeholder="Search by name, description or brand" />
-              </label>
-
               <label for="filter">
                 <button type="submit" class="searchButton" name="filter">Filter</button>
               </label>
 
-              <label for="createBill">
-                <button type="button" class="createBill">Create Bill</button>
+            </div>
+
+            <div class="row">
+
+              <label for="Search">
+                <input type="search" class="searchmedi" id="Search" placeholder="Search by name, description or brand" />
               </label>
+
+            </div>
+
             </form>
           </div>
         </header>
 
-        <!-- Sales Results Section -->
-        <section class="sales-results">
-          <h2>Pharmacy Sales Results</h2>
+        <!-- Recent Sales Table -->
+        <div class="recentSale">
+         <div class="search-result">
+            <table class="recent-sales-table">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Available</th>
+                <th>Ex.Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>001</td>
+                <td>Amoxicillin</td>
+                <td>GlaxoSmithKline</td>
+                <td>Antibiotics</td>
+                <td>120.00</td>
+                <td>50</td>
+                <td>2026-05-15</td>
+              </tr>
 
-          <div class="cards">
-            <!-- Card 1 -->
-            <div class="card green">
-              <div class="card-header">
-                <i class="icon"></i>
-                <button class="more">⋮</button>
-              </div>
-              <h3>Today’s Sales</h3>
-              <p class="value">$00.00</p>
-              <p class="change">+0.0% This Month</p>
-            </div>
+              <tr>
+                <td>002</td>
+                <td>Paracetamol</td>
+                <td>Pfizer</td>
+                <td>Antipyretics (Fever Medicines)</td>
+                <td>45.00</td>
+                <td>200</td>
+                <td>2027-01-20</td>
+              </tr>
+            </tbody>
+          </table>
 
-            <!-- Card 2 -->
-            <div class="card yellow">
-              <div class="card-header">
-                <i class="icon"></i>
-                <button class="more">⋮</button>
-              </div>
-              <h3>Available Categories</h3>
-              <p class="value">0.00%</p>
-              <p class="change">+0.0% This Month</p>
-            </div>
+          <!-- Pagination -->
+          <div class="pagination">
+            <button class="page-btn">Prev</button>
+            <button class="page-btn">1</button>
+            <button class="page-btn active">2</button>
+            <button class="page-btn">...</button>
+            <button class="page-btn">9</button>
+            <button class="page-btn">Next</button>
 
-            <!-- Card 3 -->
-            <div class="card red">
-              <div class="card-header">
-                <i class="icon"></i>
-                <button class="more">⋮</button>
-              </div>
-              <h3>Expired Medicines</h3>
-              <p class="value">0.00%</p>
-              <p class="change">+0.0% This Month</p>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="card ash">
-              <div class="card-header">
-                <i class="icon"></i>
-                <button class="more">⋮</button>
-              </div>
-              <h3>System Users</h3>
-              <p class="value">0</p>
-              <p class="change">+0.0% This Month</p>
-            </div>
+            <div class="entries">Showing of 20 Entries</div>
+            <select class="show-count">
+              <option>Show 3</option>
+              <option>Show 5</option>
+              <option>Show 10</option>
+            </select>
           </div>
-        </section>
+          </div>
+        </div>
+        
       </main>
 
-      <!-- Recent Sales Table -->
-      <div class="recentSale">
-        <table class="recent-sales-table">
-          <thead>
-            <tr>
-              <th>Customer</th>
-              <th>Order Id</th>
-              <th>Items</th>
-              <th>Total</th>
-              <th>Discount</th>
-              <th>Time</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><img src="/frontend/public/users/1.jpg" alt="Customer" /></td>
-              <td>68e251016c109</td>
-              <td>
-                2 × Amoxicillin 500mg (pack) 2×1200=2400<br />
-                5 × Paracetamol 500mg (strip) 5×150=750
-              </td>
-              <td>LKR 3050</td>
-              <td>LKR 100</td>
-              <td>10:36 PM</td>
-              <td>15/10/2025</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <!-- Pagination -->
-        <div class="pagination">
-          <button class="page-btn">Prev</button>
-          <button class="page-btn">1</button>
-          <button class="page-btn active">2</button>
-          <button class="page-btn">...</button>
-          <button class="page-btn">9</button>
-          <button class="page-btn">Next</button>
-
-          <div class="entries">Showing of 20 Entries</div>
-          <select class="show-count">
-            <option>Show 3</option>
-            <option>Show 5</option>
-            <option>Show 10</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Charts Section (Optional) -->
-      <!-- 
-      <div class="chart-row">
-        <div class="card graph-report">
-          <h3>Graph Report</h3>
-          <div class="donut">
-            <div class="center">
-              <p>Total</p>
-              <h2>755K</h2>
-            </div>
-          </div>
-          <div class="legend">
-            <span class="item purchases">Purchases</span>
-            <span class="item suppliers">Suppliers</span>
-            <span class="item sales">Sales</span>
-            <span class="item no-sales">No Sales</span>
-          </div>
-        </div>
-
-        <div class="card total-sales">
-          <h3>Total Sales Overview</h3>
-          <div class="bars">
-            <div class="bar mon"><div class="fill"></div><p>Mon</p></div>
-            <div class="bar tue"><div class="fill"></div><p>Tue</p></div>
-            <div class="bar wed active"><div class="fill"></div><p>Wed</p></div>
-            <div class="bar thu"><div class="fill"></div><p>Thu</p></div>
-            <div class="bar fri"><div class="fill"></div><p>Fri</p></div>
-            <div class="bar sat"><div class="fill"></div><p>Sat</p></div>
-          </div>
-          <div class="tooltip">
-            <p>Apr, 2025</p>
-            <h4>$298.00K</h4>
-          </div>
-        </div>
-      </div>
-      -->
     </div>
+
+  <!-- Create Bill-->
+
+  <div class="order-container">
+    <div class="order-header">
+      <h2>Current Order</h2>
+      <p>Date: Monday, 10.00 AM 15/10/25</p>
+      <p>Code: 68e251016c109</p>
+    </div>
+
+    <div class="food-list">
+      <div class="food-item">
+        <div class="food-info">
+          <h3>Tuna Sushi</h3>
+          <p>Combination of tuna pieces with rice</p>
+          <span class="price">$13.3</span>
+        </div>
+        <div class="qty-control">
+          <button>-</button>
+          <span>1</span>
+          <button>+</button>
+        </div>
+      </div>
+
+      <div class="food-item">
+        <div class="food-info">
+          <h3>Tamago & Sashimi</h3>
+          <p>Combination tamago sushi and sashimi</p>
+          <span class="price">$12.5</span>
+        </div>
+        <div class="qty-control">
+          <button>-</button>
+          <span>2</span>
+          <button>+</button>
+        </div>
+      </div>
+
+      <div class="food-item">
+        <div class="food-info">
+          <h3>Mushroom Soup</h3>
+          <p>Special mushroom soup with herbs</p>
+          <span class="price">$11.2</span>
+        </div>
+        <div class="qty-control">
+          <button>-</button>
+          <span>1</span>
+          <button>+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="order-summary">
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <span>$54.2</span>
+      </div>
+      <div class="summary-row">
+        <span>Tax 10%</span>
+        <span>$5.42</span>
+      </div>
+      <div class="summary-row">
+        <span>Discount</span>
+        <span>-$6.00</span>
+      </div>
+      <div class="summary-total">
+        <span>Total</span>
+        <span>$65.62</span>
+      </div>
+    </div>
+
+    <button class="payment-btn">Continue to Payment</button>
+  </div>
+
+</html>
+
+
   </div>
 </body>
 </html>

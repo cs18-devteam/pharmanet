@@ -4317,11 +4317,17 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   background: #a71d2a;
 }
 
-.cashier-dashboard {
+.cashier-create-bill {
   background: linear-gradient(180deg, #f8fbfb, #e8f0f0);
+  /* ---------------- Dashboard Layout ---------------- */
+}
+.cashier-create-bill .dashboard {
+  display: flex;
+}
+.cashier-create-bill {
   /* ---------------- Sidebar ---------------- */
 }
-.cashier-dashboard .sidebar {
+.cashier-create-bill .sidebar {
   width: 22rem;
   padding: 2rem;
   display: flex;
@@ -4329,21 +4335,18 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   gap: 2rem;
   font-family: var(--primary-font);
 }
-.cashier-dashboard .dashboard {
-  display: flex;
-}
-.cashier-dashboard .section-title {
+.cashier-create-bill .section-title {
   font-size: 1.6rem;
   color: var(--color-green-02);
   margin-bottom: 1rem;
   font-weight: 600;
 }
-.cashier-dashboard ul {
+.cashier-create-bill ul {
   list-style: none;
   font-size: 1.8rem;
   font-weight: 600;
 }
-.cashier-dashboard li {
+.cashier-create-bill li {
   display: flex;
   align-items: center;
   gap: 1.2rem;
@@ -4353,52 +4356,54 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   cursor: pointer;
   transition: all 0.3s ease;
 }
-.cashier-dashboard li:hover {
+.cashier-create-bill li:hover {
   background-color: #dce8e8;
 }
-.cashier-dashboard li.active {
+.cashier-create-bill li.active {
   background-color: var(--color-green-01);
   color: white;
 }
-.cashier-dashboard li .icon {
+.cashier-create-bill li .icon {
   font-size: 16px;
 }
-.cashier-dashboard {
+.cashier-create-bill {
   /* ---------------- Right Side ---------------- */
 }
-.cashier-dashboard .right-side {
+.cashier-create-bill .right-side {
   flex: 1;
-  padding: 30px 40px;
+  padding: 3rem 1rem;
   font-family: var(--primary-font);
 }
-.cashier-dashboard {
+.cashier-create-bill {
   /* ---------------- Top Bar ---------------- */
 }
-.cashier-dashboard .top-bar {
+.cashier-create-bill .top-bar {
+  background-color: white;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  border-radius: 2rem;
+  margin: 1rem;
+  padding: 1rem;
+}
+.cashier-create-bill .top-bar .row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1rem;
-  font-family: var(--primary-font);
-  border-radius: 2rem;
-  background-color: white;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
 }
-.cashier-dashboard .top-bar span {
+.cashier-create-bill .top-bar span {
   font-weight: 600;
-  padding-left: 2rem;
+  padding: 1rem;
 }
-.cashier-dashboard .top-bar .searchmedi {
+.cashier-create-bill .top-bar .searchmedi {
   margin: 1rem;
   padding: 1rem;
   border: 0.2rem solid #aaa;
   border-radius: 1rem;
   font-size: 1.5rem;
-  width: 40rem;
-  height: 5rem;
+  height: 4rem;
   cursor: pointer;
+  width: 65rem;
 }
-.cashier-dashboard .top-bar .selector {
+.cashier-create-bill .top-bar .selector {
   margin: 1rem;
   cursor: pointer;
   padding: 1rem;
@@ -4406,148 +4411,57 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   border-radius: 1rem;
   font-size: 1.5rem;
   width: 30rem;
-  height: 5rem;
+  height: 4rem;
 }
-.cashier-dashboard .top-bar .searchButton {
+.cashier-create-bill .top-bar .searchButton {
   border-radius: 1rem;
   border: 0.2rem solid #aaa;
   width: 10rem;
-  height: 5rem;
+  height: 4rem;
   background-color: white;
   font-size: 1.5rem;
   font-weight: 500;
   cursor: pointer;
-}
-.cashier-dashboard .top-bar .createBill {
   margin: 1rem;
-  cursor: pointer;
-  padding: 1rem;
-  background-color: #ea4335;
-  border-radius: 1rem;
-  border-color: #ea4335;
-  font-size: 1.5rem;
-  width: 15rem;
-  height: 5rem;
-  color: white;
-  font-weight: 500;
 }
-.cashier-dashboard {
-  /* ---------------- Sales Results ---------------- */
-}
-.cashier-dashboard .sales-results {
-  color: #1d2d2d;
-  background-color: white;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
-  border-radius: 2rem;
-  margin: 1rem;
-  padding: 2rem;
-}
-.cashier-dashboard .sales-results h2 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  font-weight: 600;
-  color: var(--color-green-02);
-}
-.cashier-dashboard .sales-results .cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 20px;
-}
-.cashier-dashboard .sales-results .card {
-  background-color: white;
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  color: white;
-}
-.cashier-dashboard .sales-results .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-}
-.cashier-dashboard .sales-results .card .card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-.cashier-dashboard .sales-results .card .card-header .icon {
-  font-size: 22px;
-}
-.cashier-dashboard .sales-results .card .card-header .more {
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-  color: #333;
-}
-.cashier-dashboard .sales-results .card h3 {
-  font-size: 16px;
-  margin: 0 0 10px;
-}
-.cashier-dashboard .sales-results .card .value {
-  font-size: 26px;
-  font-weight: 600;
-  margin: 0;
-}
-.cashier-dashboard .sales-results .card .change {
-  font-size: 13px;
-  margin-top: 5px;
-}
-.cashier-dashboard .sales-results .card.green {
-  background-color: var(--color-green-01);
-}
-.cashier-dashboard .sales-results .card.yellow {
-  background-color: #fb8f21;
-}
-.cashier-dashboard .sales-results .card.red {
-  background-color: #ea4335;
-}
-.cashier-dashboard .sales-results .card.ash {
-  background-color: #aaa;
-}
-.cashier-dashboard {
+.cashier-create-bill {
   /* ---------------- Recent Sales ---------------- */
 }
-.cashier-dashboard .recentSale {
+.cashier-create-bill .recentSale {
   background-color: white;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
   border-radius: 2rem;
   margin: 1rem;
-  padding: 2rem;
+  padding: 1rem;
 }
-.cashier-dashboard .recent-sales-table {
+.cashier-create-bill .recent-sales-table {
   width: 100%;
   border-collapse: collapse;
 }
-.cashier-dashboard .recent-sales-table thead {
+.cashier-create-bill .recent-sales-table thead {
   padding: 2rem;
   color: var(--color-green-02);
   font-weight: 500;
 }
-.cashier-dashboard .recent-sales-table thead th {
+.cashier-create-bill .recent-sales-table thead th {
   padding: 12px 10px;
   text-align: left;
   font-weight: 600;
 }
-.cashier-dashboard .recent-sales-table tbody tr {
+.cashier-create-bill .recent-sales-table tbody tr {
   border-bottom: 1px solid #e0e0e0;
 }
-.cashier-dashboard .recent-sales-table tbody tr:hover {
+.cashier-create-bill .recent-sales-table tbody tr:hover {
   background-color: #f8f8f8;
 }
-.cashier-dashboard .recent-sales-table tbody tr td {
+.cashier-create-bill .recent-sales-table tbody tr td {
   padding: 14px 10px;
   vertical-align: middle;
 }
-.cashier-dashboard {
+.cashier-create-bill {
   /* ---------------- Pagination ---------------- */
 }
-.cashier-dashboard .pagination {
+.cashier-create-bill .pagination {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -4555,16 +4469,144 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   margin-top: 2rem;
   gap: 1rem;
 }
-.cashier-dashboard .pagination .page-btn {
+.cashier-create-bill .pagination .page-btn {
   padding: 8px 12px;
   border: none;
   border-radius: 50%;
   background: #f0f0f0;
   cursor: pointer;
 }
-.cashier-dashboard .pagination .page-btn.active {
+.cashier-create-bill .pagination .page-btn.active {
   background: #003344;
   color: white;
+}
+.cashier-create-bill .pagination .entries {
+  font-size: 1.4rem;
+}
+.cashier-create-bill .pagination .show-count {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+.cashier-create-bill {
+  /* ---------------- Create Bill Popup ---------------- */
+}
+.cashier-create-bill .order-container {
+  width: 400px;
+  background: #fff;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  margin: 4rem 0rem;
+  font-family: var(--primary-font);
+}
+.cashier-create-bill .order-container .order-header {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+.cashier-create-bill .order-container .order-header h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.cashier-create-bill .order-container .order-header p {
+  color: #888;
+  font-size: 0.9rem;
+  margin: 0.2rem 0;
+}
+.cashier-create-bill .order-container .food-list .food-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fafafa;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  transition: 0.2s ease;
+}
+.cashier-create-bill .order-container .food-list .food-item:hover {
+  background: #f0f0f0;
+}
+.cashier-create-bill .order-container .food-list .food-item img {
+  width: 60px;
+  height: 60px;
+  border-radius: 0.8rem;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+.cashier-create-bill .order-container .food-list .food-item .food-info {
+  flex: 1;
+}
+.cashier-create-bill .order-container .food-list .food-item .food-info h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.cashier-create-bill .order-container .food-list .food-item .food-info p {
+  font-size: 0.85rem;
+  color: #777;
+}
+.cashier-create-bill .order-container .food-list .food-item .food-info .price {
+  color: #e63946;
+  font-weight: 600;
+}
+.cashier-create-bill .order-container .food-list .food-item .qty-control {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.cashier-create-bill .order-container .food-list .food-item .qty-control button {
+  border: none;
+  background: #e63946;
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.cashier-create-bill .order-container .food-list .food-item .qty-control button:hover {
+  background: #d62839;
+}
+.cashier-create-bill .order-container .food-list .food-item .qty-control span {
+  margin: 0 0.5rem;
+  font-weight: 500;
+}
+.cashier-create-bill .order-container .order-summary {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+}
+.cashier-create-bill .order-container .order-summary .summary-row,
+.cashier-create-bill .order-container .order-summary .summary-total {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.4rem 0;
+}
+.cashier-create-bill .order-container .order-summary .summary-total {
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-top: 1px solid #ddd;
+  padding-top: 0.5rem;
+}
+.cashier-create-bill .order-container .payment-btn {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: #b5179e;
+  color: #fff;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.cashier-create-bill .order-container .payment-btn:hover {
+  background: #9d1488;
 }
 
 .cashier-dashboard {

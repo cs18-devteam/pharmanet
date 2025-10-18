@@ -40,47 +40,15 @@
   <!-- ---------------- Dashboard Layout ---------------- -->
   <div class="dashboard">
 
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <div class="menu-section">
-        <h4 class="section-title">MAIN MENU</h4>
-        <ul>
-          <li class="active"><i class="icon"></i><span>Dashboard</span></li>
-          <li><i class="icon"></i><span>Products</span></li>
-          <li><i class="icon"></i><span>Categories</span></li>
-        </ul>
-      </div>
-
-      <div class="menu-section">
-        <h4 class="section-title">LEADS</h4>
-        <ul>
-          <li><i class="icon"></i><span>Orders</span></li>
-          <li><i class="icon"></i><span>Sales</span></li>
-          <li><i class="icon"></i><span>Customers</span></li>
-        </ul>
-      </div>
-
-      <div class="menu-section">
-        <h4 class="section-title">COMMS</h4>
-        <ul>
-          <li><i class="icon"></i><span>Payments</span></li>
-          <li><i class="icon"></i><span>Reports</span></li>
-          <li><i class="icon"></i><span>Settings</span></li>
-        </ul>
-      </div>
-    </aside>
-
-    <!-- Right Side Content -->
-    <div class="right-side">
+    <!-- ---------------- left side ---------------- -->
+    <div class="left-side">
       <main class="content">
 
-          <!-- Top Bar -->
+        <!-- Top Bar -->
         <header class="top-bar">
           <div class="search-bar">
             <form action="" method="post">
-
-              <div class="row">
-                <label for="category">
+              <label for="category">
                 <span>Category:</span>
                 <select name="category" id="category" class="selector">
                   <option value="Antibiotics">Antibiotics</option>
@@ -104,28 +72,25 @@
                 </select>
               </label>
 
-              <label for="filter">
-                <button type="submit" class="searchButton" name="filter">Filter</button>
-              </label>
-
-            </div>
-
-            <div class="row">
-
               <label for="Search">
                 <input type="search" class="searchmedi" id="Search" placeholder="Search by name, description or brand" />
               </label>
 
-            </div>
+              <label for="filter">
+                <button type="submit" class="searchButton" name="filter">Filter</button>
+              </label>
 
+              <label for="createBill">
+                <button type="button" class="createBill">Creating Bill</button>
+              </label>
             </form>
           </div>
         </header>
 
-        <!-- Recent Sales Table -->
-        <div class="recentSale">
+        <!-- Search result Table -->
+        <div class="Search-list">
          <div class="search-result">
-            <table class="recent-sales-table">
+            <table class="search-result-table">
             <thead>
               <tr>
                 <th>Id</th>
@@ -135,27 +100,30 @@
                 <th>Price</th>
                 <th>Available</th>
                 <th>Ex.Date</th>
+                <th>Add To Bill</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>001</td>
-                <td>Amoxicillin</td>
+                <td>Amoxicillin(500 mg)</td>
                 <td>GlaxoSmithKline</td>
                 <td>Antibiotics</td>
-                <td>120.00</td>
+                <td>1200.00</td>
                 <td>50</td>
                 <td>2026-05-15</td>
+                <td><img src="/frontend/public/images/new-invoice_17167472.png" alt="Add"></td>
               </tr>
 
               <tr>
                 <td>002</td>
-                <td>Paracetamol</td>
+                <td>Paracetamol(500 mg)</td>
                 <td>Pfizer</td>
                 <td>Antipyretics (Fever Medicines)</td>
-                <td>45.00</td>
+                <td>150.00</td>
                 <td>200</td>
                 <td>2027-01-20</td>
+                <td></td>
               </tr>
             </tbody>
           </table>
@@ -183,35 +151,24 @@
 
     </div>
 
-  <!-- Create Bill-->
+   <!-- ---------------- Right side - Create Bill ---------------- -->
 
   <div class="order-container">
     <div class="order-header">
       <h2>Current Order</h2>
       <p>Date: Monday, 10.00 AM 15/10/25</p>
-      <p>Code: 68e251016c109</p>
+      <p>Order Id: 68e251016c109</p>
     </div>
 
-    <div class="food-list">
-      <div class="food-item">
-        <div class="food-info">
-          <h3>Tuna Sushi</h3>
-          <p>Combination of tuna pieces with rice</p>
-          <span class="price">$13.3</span>
+    <div class="item-list">
+      <div class="item-row">
+        <div class="item-info">
+            <h3>Amoxicillin(500 mg)</h3>
+            <h3>Rs 1200</h3>
+          <p>Driscription of medicine</p>
+          <span class="price">Rs 2400</span>
         </div>
-        <div class="qty-control">
-          <button>-</button>
-          <span>1</span>
-          <button>+</button>
-        </div>
-      </div>
 
-      <div class="food-item">
-        <div class="food-info">
-          <h3>Tamago & Sashimi</h3>
-          <p>Combination tamago sushi and sashimi</p>
-          <span class="price">$12.5</span>
-        </div>
         <div class="qty-control">
           <button>-</button>
           <span>2</span>
@@ -219,43 +176,45 @@
         </div>
       </div>
 
-      <div class="food-item">
-        <div class="food-info">
-          <h3>Mushroom Soup</h3>
-          <p>Special mushroom soup with herbs</p>
-          <span class="price">$11.2</span>
+      <div class="item-row">
+        <div class="item-info">
+            <h3>Paracetamol(500 mg)</h3>
+            <h3>Rs 150</h3>
+          <p>Driscription of medicine</p>
+          <span class="price">Rs 750</span>
         </div>
         <div class="qty-control">
           <button>-</button>
-          <span>1</span>
+          <span>5</span>
           <button>+</button>
         </div>
       </div>
-    </div>
+
 
     <div class="order-summary">
       <div class="summary-row">
         <span>Subtotal</span>
-        <span>$54.2</span>
-      </div>
-      <div class="summary-row">
-        <span>Tax 10%</span>
-        <span>$5.42</span>
+        <span>Rs 3150</span>
       </div>
       <div class="summary-row">
         <span>Discount</span>
-        <span>-$6.00</span>
+        <span>Rs 150</span>
       </div>
       <div class="summary-total">
         <span>Total</span>
-        <span>$65.62</span>
+        <span>Rs 3000</span>
       </div>
     </div>
 
-    <button class="payment-btn">Continue to Payment</button>
+    <div class="down-row">
+      <button type="cancel" class="cancel-btn">Cancel</button>
+      <button type="submit" class="payment-btn">Continue to Payment</button>
+    </div>
+    
+  </div>
   </div>
 
-</html>
+
 
 
   </div>

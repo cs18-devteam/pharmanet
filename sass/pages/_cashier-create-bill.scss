@@ -1,59 +1,14 @@
-.cashier-dashboard {
+.cashier-create-bill {
   background: linear-gradient(180deg, #f8fbfb, #e8f0f0);
 
-  /* ---------------- Sidebar ---------------- */
-  .sidebar {
-    width: 22rem;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    font-family: var(--primary-font);
-  }
-
+  /* ---------------- Dashboard Layout ---------------- */
   .dashboard {
     display: flex;
   }
 
-  .section-title {
-    font-size: 1.6rem;
-    color:var(--color-green-02);
-    margin-bottom: 1rem;
-    font-weight: 600;
-  }
+  /* ---------------- Left side ---------------- */
 
-  ul {
-    list-style: none;
-    font-size: 1.8rem;
-    font-weight: 600;
-  }
-
-  li {
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-    padding: 1rem 1.4rem;
-    border-radius: 2rem;
-    color: #2b3a3a;
-    cursor: pointer;
-    transition: all 0.3s ease;
-
-    &:hover {
-      background-color: #dce8e8;
-    }
-
-    &.active {
-      background-color: var(--color-green-01);
-      color: white;
-    }
-
-    .icon {
-      font-size: 16px;
-    }
-  }
-
-  /* ---------------- Right Side ---------------- */
-  .right-side {
+  .left-side {
     flex: 1;
     padding: 30px 40px;
     font-family: var(--primary-font);
@@ -72,19 +27,26 @@
 
     span {
       font-weight: 600;
-      padding-left: 2rem;
+      padding-left: 1rem;
+      font-size: 2rem;
+      color: var(--color-green-01);
 
     }
 
     .searchmedi {
       margin: 1rem;
       padding: 1rem;
-      border: 0.2rem solid #aaa;
+      border: 0.2rem solid #777;
       border-radius: 1rem;
       font-size: 1.5rem;
-      width: 40rem;
+      width: 30rem;
       height: 5rem;
       cursor: pointer;
+      transition: 0.2s ease;
+
+      &:hover{
+        background-color: #f0f0f0;
+      }
     }
 
     .selector {
@@ -94,8 +56,13 @@
       border: 0.2rem solid #aaa;
       border-radius: 1rem;
       font-size: 1.5rem;
-      width: 30rem;
+      width: 25rem;
       height: 5rem;
+      transition: 0.2s ease;
+
+      &:hover{
+        background-color: #f0f0f0;
+      }
     }
 
     .searchButton {
@@ -107,6 +74,11 @@
       font-size: 1.5rem;
       font-weight: 500;
       cursor: pointer;
+      transition: 0.2s ease;
+
+      &:hover{
+        background-color: #f0f0f0;
+      }
     }
 
     .createBill{
@@ -114,6 +86,7 @@
       cursor: pointer;
       padding: 1rem;
       background-color: #ea4335;
+      border: none;
       border-radius: 1rem;
       border-color:#ea4335;
       font-size: 1.5rem;
@@ -121,134 +94,57 @@
       height: 5rem;
       color: white;
       font-weight: 500;
+      transition: 0.2s ease;
+
+      &:hover{
+        background-color: #d62839;
+      }
     }
+
   }
 
-  /* ---------------- Sales Results ---------------- */
-  .sales-results {
-    color: #1d2d2d;
+  /* ---------------- Search Result ---------------- */
+  .Search-list {
     background-color: white;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
     border-radius: 2rem;
     margin: 1rem;
-    padding: 2rem;
-
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      font-weight: 600;
-      color: var(--color-green-02);
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background-color: white;
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      color: white;
-
-      &:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-      }
-
-      .card-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 15px;
-
-        .icon {
-          font-size: 22px;
-        }
-
-        .more {
-          background: none;
-          border: none;
-          font-size: 20px;
-          cursor: pointer;
-          color: #333;
-        }
-      }
-
-      h3 {
-        font-size: 16px;
-        margin: 0 0 10px;
-      }
-
-      .value {
-        font-size: 26px;
-        font-weight: 600;
-        margin: 0;
-      }
-
-      .change {
-        font-size: 13px;
-        margin-top: 5px;
-      }
-
-      &.green {
-        background-color: var(--color-green-01);
-      }
-      &.yellow {
-        background-color: #fb8f21;
-      }
-      &.red {
-        background-color: #ea4335;
-      }
-      &.ash {
-        background-color: #aaa;
-      }
-    }
+    padding: 1rem;
   }
 
-  /* ---------------- Recent Sales ---------------- */
-  .recentSale {
-    background-color: white;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
-    border-radius: 2rem;
-    margin: 1rem;
-    padding: 2rem;
-  }
-
-  .recent-sales-table {
+  .search-result-table {
     width: 100%;
     border-collapse: collapse;
 
     thead {
-      padding:2rem;
+      padding: 2rem;
       color: var(--color-green-02);
       font-weight: 500;
 
       th {
-        padding: 12px 10px;
+        padding: 1.2rem 1rem;
         text-align: left;
         font-weight: 600;
       }
     }
 
     tbody tr {
-      border-bottom: 1px solid #e0e0e0;
+      border-bottom: 0.1rem solid #e0e0e0;
 
       &:hover {
         background-color: #f8f8f8;
       }
 
       td {
-        padding: 14px 10px;
+        padding: 1.4rem 1rem;
         vertical-align: middle;
+        font-size: 1.3rem;
       }
+    }
+
+    .add-icon{
+      width:3rem;
+      height:3rem;
     }
   }
 
@@ -273,5 +169,164 @@
         color: white;
       }
     }
+
+    .entries {
+      font-size: 1.4rem;
+    }
+
+    .show-count {
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      padding: 0.4rem 0.8rem;
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
   }
+
+  /* ---------------- Create Bill ---------------- */
+ 
+.order-container {
+  width: 400px;
+  padding: 2rem;
+  margin: 4rem 0rem;
+  font-family: var(--primary-font);
+  background-color: white;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  border-radius: 2rem;
+    
+  
+
+  .order-header {
+    text-align: left;
+    margin-bottom: 1.5rem;
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: var(--color-green-01);
+    }
+    p {
+      color: #888;
+      font-size: 1.5rem;
+      margin: 0.2rem 0;
+    }
+  }
+
+  .item-list {
+    .item-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fafafa;
+      border-radius: 1rem;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      transition: 0.2s ease;
+
+      &:hover {
+        background: #f0f0f0;
+      }
+
+      .item-info {
+        flex: 1;
+        
+          h3 {
+          margin: 0;
+          font-size: 1.5rem;
+          font-weight: 600;
+          color: var(--color-green-02);
+        }
+        
+        p {
+          font-size: 1.5rem;
+          color: #777;
+        }
+        .price {
+          color: #e63946;
+          font-weight: 600;
+        }
+      }
+
+      .qty-control {
+        display: flex;
+        align-items: center;
+        background: #fff;
+        border-radius: 1rem;
+        box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        button {
+          border: none;
+          background: #EA4335;
+          color: #fff;
+          font-size: 1rem;
+          border-radius: 50%;
+          width: 25px;
+          height: 25px;
+          cursor: pointer;
+          transition: 0.2s;
+
+          &:hover {
+            background: #d62839;
+          }
+        }
+        span {
+          margin: 0 0.5rem;
+          padding: 0 1rem 0 1rem;
+          font-weight: 500;
+          
+        }
+      }
+    }
+  }
+
+  .order-summary {
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+
+    .summary-row,
+    .summary-total {
+      display: flex;
+      justify-content: space-between;
+      margin: 0.4rem 0;
+    }
+
+    .summary-total {
+      font-weight: 700;
+      border-top: 1px solid #ddd;
+      padding-top: 0.5rem;
+    }
+  }
+
+  .down-row{
+    display: flex;
+    justify-content: space-between;
+    gap:1rem;
+     .payment-btn, .cancel-btn{
+      width: 100%;
+      margin-top: 1.5rem;
+      padding: 1rem;
+      color: #fff;
+      border: none;
+      border-radius: 1rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        background: #18978D;
+      }
+
+      
+    }
+    .payment-btn{
+        background: #FB8F21;
+      }
+
+      .cancel-btn{
+        background: #EA4335;
+      }
+  }
+ 
+}
+
 }

@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Create Bill</title>
+  <title>Cashier product</title>
   <link rel="stylesheet" href="/css/style.css" />
 </head>
 
-<body class="cashier-create-bill">
+<body class="product">
   <!-- ---------------- Header ---------------- -->
   <header>
     <nav>
@@ -40,10 +40,40 @@
   <!-- ---------------- Dashboard Layout ---------------- -->
   <div class="dashboard">
 
-    <!-- ---------------- left side ---------------- -->
-    <div class="left-side">
-      <main class="content">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="menu-section">
+        <h4 class="section-title">MAIN MENU</h4>
+        <ul>
+          <li><i class="icon"></i><span>Dashboard</span></li>
+          <li class="active"><i class="icon"></i><span>Products</span></li>
+          <li><i class="icon"></i><span>Categories</span></li>
+        </ul>
+      </div>
 
+      <div class="menu-section">
+        <h4 class="section-title">LEADS</h4>
+        <ul>
+          <li><i class="icon"></i><span>Orders</span></li>
+          <li><i class="icon"></i><span>Sales</span></li>
+          <li><i class="icon"></i><span>Customers</span></li>
+        </ul>
+      </div>
+
+      <div class="menu-section">
+        <h4 class="section-title">COMMS</h4>
+        <ul>
+          <li><i class="icon"></i><span>Payments</span></li>
+          <li><i class="icon"></i><span>Reports</span></li>
+          <li><i class="icon"></i><span>Settings</span></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Right Side Content -->
+    <div class="right-side">
+      <main class="content">
+        
         <!-- Top Bar -->
         <header class="top-bar">
           <div class="search-bar">
@@ -81,16 +111,18 @@
               </label>
 
               <label for="createBill">
-                <button type="button" class="createBill">Creating Bill</button>
+                <button type="button" class="createBill">Create Bill</button>
               </label>
             </form>
           </div>
         </header>
 
-        <!-- Search result Table -->
-        <div class="Search-list">
-         <div class="search-result">
-            <table class="search-result-table">
+      </main>
+
+      <!-- All product Table -->
+        <div class="product-list">
+         <div class="product-result">
+            <table class="product-result-table">
             <thead>
               <tr>
                 <th>Id</th>
@@ -100,7 +132,7 @@
                 <th>Price</th>
                 <th>Available</th>
                 <th>Ex.Date</th>
-                <th>Add To Bill</th>
+                <td>Action</td>
               </tr>
             </thead>
             <tbody>
@@ -112,7 +144,10 @@
                 <td>1200.00</td>
                 <td>50</td>
                 <td>2026-05-15</td>
-                <td><img src="/frontend/public/images/new-invoice_17167472.png" class="add-icon" alt="Add"></td>
+                <td>
+                    <button class="remove-btn">Remove</button>
+                    <button class="Edit-btn">Edit</button>
+                </td>
               </tr>
 
               <tr>
@@ -123,7 +158,10 @@
                 <td>150.00</td>
                 <td>200</td>
                 <td>2027-01-20</td>
-                <td></td>
+                <td>
+                    <button class="remove-btn">Remove</button>
+                    <button class="Edit-btn">Edit</button>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -146,77 +184,8 @@
           </div>
           </div>
         </div>
-        
-      </main>
-
-    </div>
-
-   <!-- ---------------- Right side - Create Bill ---------------- -->
-
-  <div class="order-container">
-    <div class="order-header">
-      <h2>Current Order</h2>
-      <p>Date: Monday, 10.00 AM 15/10/25</p>
-      <p>Order Id: 68e251016c109</p>
-    </div>
-
-    <div class="item-list">
-      <div class="item-row">
-        <div class="item-info">
-            <h3>Amoxicillin(500 mg)</h3>
-            <h3>Rs 1200</h3>
-          <p>Driscription of medicine</p>
-          <span class="price">Rs 2400</span>
-        </div>
-
-        <div class="qty-control">
-          <button>-</button>
-          <span>2</span>
-          <button>+</button>
-        </div>
-      </div>
-
-      <div class="item-row">
-        <div class="item-info">
-            <h3>Paracetamol(500 mg)</h3>
-            <h3>Rs 150</h3>
-          <p>Driscription of medicine</p>
-          <span class="price">Rs 750</span>
-        </div>
-        <div class="qty-control">
-          <button>-</button>
-          <span>5</span>
-          <button>+</button>
-        </div>
-      </div>
-
-
-    <div class="order-summary">
-      <div class="summary-row">
-        <span>Subtotal</span>
-        <span>Rs 3150</span>
-      </div>
-      <div class="summary-row">
-        <span>Discount</span>
-        <span>Rs 150</span>
-      </div>
-      <div class="summary-total">
-        <span>Total</span>
-        <span>Rs 3000</span>
-      </div>
-    </div>
-
-    <div class="down-row">
-      <button type="cancel" class="cancel-btn">Cancel</button>
-      <button type="submit" class="payment-btn">Continue to Payment</button>
-    </div>
-    
-  </div>
-  </div>
-
-
-
-
+      
+</div>
   </div>
 </body>
 </html>

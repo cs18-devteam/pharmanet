@@ -1,4 +1,4 @@
-.cashier-dashboard {
+.product {
   background: linear-gradient(180deg, #f8fbfb, #e8f0f0);
 
   /* ---------------- Sidebar ---------------- */
@@ -144,133 +144,85 @@
     }
   }
 
-  /* ---------------- Sales Results ---------------- */
-  .sales-results {
-    color: #1d2d2d;
+  /* ---------------- All product table ---------------- */
+
+  .product-list {
     background-color: white;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
     border-radius: 2rem;
     margin: 1rem;
-    padding: 2rem;
-
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      font-weight: 600;
-      color: var(--color-green-02);
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background-color: white;
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      color: white;
-
-      &:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-      }
-
-      .card-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 15px;
-
-        .icon {
-          font-size: 22px;
-        }
-
-        .more {
-          background: none;
-          border: none;
-          font-size: 20px;
-          cursor: pointer;
-          color: #333;
-        }
-      }
-
-      h3 {
-        font-size: 16px;
-        margin: 0 0 10px;
-      }
-
-      .value {
-        font-size: 26px;
-        font-weight: 600;
-        margin: 0;
-      }
-
-      .change {
-        font-size: 13px;
-        margin-top: 5px;
-      }
-
-      &.green {
-        background-color: var(--color-green-01);
-      }
-      &.yellow {
-        background-color: #fb8f21;
-      }
-      &.red {
-        background-color: #ea4335;
-      }
-      &.ash {
-        background-color: #aaa;
-      }
-    }
+    padding: 1rem;
   }
 
-  /* ---------------- Recent Sales ---------------- */
-  .recentSale {
-    background-color: white;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
-    border-radius: 2rem;
-    margin: 1rem;
-    padding: 2rem;
-  }
-
-  .recent-sales-table {
+  .product-result-table {
     width: 100%;
     border-collapse: collapse;
 
     thead {
-      padding:2rem;
+      padding: 2rem;
       color: var(--color-green-02);
       font-weight: 500;
 
       th {
-        padding: 12px 10px;
+        padding: 1.2rem 1rem;
         text-align: left;
         font-weight: 600;
       }
     }
 
     tbody tr {
-      border-bottom: 1px solid #e0e0e0;
+      border-bottom: 0.1rem solid #e0e0e0;
 
       &:hover {
         background-color: #f8f8f8;
       }
 
       td {
-        padding: 14px 10px;
+        padding: 1.4rem 1rem;
         vertical-align: middle;
+        font-size: 1.3rem;
+            
+
+            .remove-btn{
+                border-radius: 1rem;
+                border:none;
+                padding: 0.5rem;
+                height: 3rem;
+                font-size: 1.5rem;
+                font-weight: 500;
+                cursor: pointer;
+                transition: 0.2s ease;
+                color: white;
+                background-color: #FB8F21;
+                &:hover{
+                    background-color: #ce8133;
+                }
+            }
+            .Edit-btn{
+                border-radius: 1rem;
+                border:none;
+                padding: 0.5rem;
+                height: 3rem;
+                font-size: 1.5rem;
+                font-weight: 500;
+                cursor: pointer;
+                transition: 0.2s ease;
+                color: white;
+                background-color: #18978D;
+                &:hover{
+                    background-color:#14887e ;
+                }
+            }
+        
       }
     }
+
+    .add-icon{
+      width:3rem;
+      height:3rem;
+    }
   }
+
 
   /* ---------------- Pagination ---------------- */
   .pagination {

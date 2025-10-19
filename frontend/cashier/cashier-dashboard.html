@@ -62,7 +62,6 @@
       <div class="menu-section">
         <h4 class="section-title">COMMS</h4>
         <ul>
-          <li><i class="icon"></i><span>Payments</span></li>
           <li><i class="icon"></i><span>Reports</span></li>
           <li><i class="icon"></i><span>Settings</span></li>
         </ul>
@@ -122,7 +121,7 @@
 
           <div class="cards">
             <!-- Card 1 -->
-            <div class="card green">
+            <div class="card green" onclick="window.location.href='cashier-sales.html'">
               <div class="card-header">
                 <i class="icon"></i>
                 <button class="more">⋮</button>
@@ -133,7 +132,7 @@
             </div>
 
             <!-- Card 2 -->
-            <div class="card yellow">
+            <div class="card yellow" id="availableCategoriesCard">
               <div class="card-header">
                 <i class="icon"></i>
                 <button class="more">⋮</button>
@@ -144,7 +143,7 @@
             </div>
 
             <!-- Card 3 -->
-            <div class="card red">
+            <div class="card red" id="Expired-card">
               <div class="card-header">
                 <i class="icon"></i>
                 <button class="more">⋮</button>
@@ -157,12 +156,85 @@
             <!-- Card 4 -->
             <div class="card ash">
               <div class="card-header">
-                <i class="icon"></i>
+                🔒
                 <button class="more">⋮</button>
               </div>
               <h3>System Users</h3>
               <p class="value">0</p>
               <p class="change">+0.0% This Month</p>
+            </div>
+
+            <!-- Popup for Available Items -->
+            <div class="popup" id="availablePopup">
+              <div class="popup-content">
+                <span class="close" id="closePopup">&times;</span>
+                <h3>Available Pharmacy Items</h3>
+                <div class="product-list">
+                <div class="product-result">
+                    <table class="product-result-table">
+                    <thead>
+                      <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Brand</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Available</th>
+                        <th>Ex.Date</th>
+                        <td>Action</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>001</td>
+                        <td>Amoxicillin(500 mg)</td>
+                        <td>GlaxoSmithKline</td>
+                        <td>Antibiotics</td>
+                        <td>1200.00</td>
+                        <td>50</td>
+                        <td>2026-05-15</td>
+                        <td>
+                            <button class="remove-btn">Remove</button>
+                            <button class="Edit-btn">Edit</button>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>002</td>
+                        <td>Paracetamol(500 mg)</td>
+                        <td>Pfizer</td>
+                        <td>Antipyretics (Fever Medicines)</td>
+                        <td>150.00</td>
+                        <td>200</td>
+                        <td>2027-01-20</td>
+                        <td>
+                            <button class="remove-btn">Remove</button>
+                            <button class="Edit-btn">Edit</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <!-- Pagination -->
+                  <div class="pagination">
+                    <button class="page-btn">Prev</button>
+                    <button class="page-btn">1</button>
+                    <button class="page-btn active">2</button>
+                    <button class="page-btn">...</button>
+                    <button class="page-btn">9</button>
+                    <button class="page-btn">Next</button>
+
+                    <div class="entries">Showing of 20 Entries</div>
+                    <select class="show-count">
+                      <option>Show 3</option>
+                      <option>Show 5</option>
+                      <option>Show 10</option>
+                    </select>
+                  </div>
+                  </div>
+              </div>
+      
+              </div>
             </div>
           </div>
         </section>
@@ -215,43 +287,28 @@
           </select>
         </div>
       </div>
+      <script>
+        const openBtn = document.getElementById('availableCategoriesCard');
+        const popup = document.getElementById('availablePopup');
+        const closeBtn = document.getElementById('closePopup');
 
-      <!-- Charts Section (Optional) -->
-      <!-- 
-      <div class="chart-row">
-        <div class="card graph-report">
-          <h3>Graph Report</h3>
-          <div class="donut">
-            <div class="center">
-              <p>Total</p>
-              <h2>755K</h2>
-            </div>
-          </div>
-          <div class="legend">
-            <span class="item purchases">Purchases</span>
-            <span class="item suppliers">Suppliers</span>
-            <span class="item sales">Sales</span>
-            <span class="item no-sales">No Sales</span>
-          </div>
-        </div>
+        openBtn.addEventListener('click', () => {
+          popup.classList.add('show');
+        });
 
-        <div class="card total-sales">
-          <h3>Total Sales Overview</h3>
-          <div class="bars">
-            <div class="bar mon"><div class="fill"></div><p>Mon</p></div>
-            <div class="bar tue"><div class="fill"></div><p>Tue</p></div>
-            <div class="bar wed active"><div class="fill"></div><p>Wed</p></div>
-            <div class="bar thu"><div class="fill"></div><p>Thu</p></div>
-            <div class="bar fri"><div class="fill"></div><p>Fri</p></div>
-            <div class="bar sat"><div class="fill"></div><p>Sat</p></div>
-          </div>
-          <div class="tooltip">
-            <p>Apr, 2025</p>
-            <h4>$298.00K</h4>
-          </div>
-        </div>
-      </div>
-      -->
+        closeBtn.addEventListener('click', () => {
+          popup.classList.remove('show');
+        });
+
+        // Optional: Close when clicking outside popup
+        window.addEventListener('click', (e) => {
+          if (e.target === popup) {
+            popup.classList.remove('show');
+          }
+        });
+      </script>
+
+
     </div>
   </div>
 </body>

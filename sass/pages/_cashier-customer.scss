@@ -246,7 +246,9 @@
   
   .popup-section{
     font-family: var(--primary-font);
-    
+    background-color: rgba(0, 0, 0, 0.5); // dim background
+
+ 
   .profile-popup {
     position: fixed;
     top: 50%;
@@ -396,6 +398,15 @@
     transform: translate(-50%, -50%);  
   }
   }
+
+  @keyframes popupFadeIn {
+  0% {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
 
   }
   

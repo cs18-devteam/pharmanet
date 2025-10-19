@@ -294,4 +294,119 @@
       }
     }
   }
+
+  /*-------------------customer view-------------------*/
+  .popup {
+  display: none; // Hide by default
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+
+  &.show {
+    display: flex;
+  }
+
+  .popup-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    width:80%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+
+    .product-list {
+    background-color: white;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+    border-radius: 2rem;
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .product-result-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    thead {
+      padding: 2rem;
+      color: var(--color-green-02);
+      font-weight: 500;
+
+      th {
+        padding: 1.2rem 1rem;
+        text-align: left;
+        font-weight: 600;
+      }
+    }
+
+    tbody tr {
+      border-bottom: 0.1rem solid #e0e0e0;
+
+      &:hover {
+        background-color: #f8f8f8;
+      }
+
+      td {
+        padding: 1.4rem 1rem;
+        vertical-align: middle;
+        font-size: 1.4rem;
+            
+
+            .remove-btn{
+                border-radius: 1rem;
+                border:none;
+                padding: 0.5rem;
+                height: 3rem;
+                font-size: 1.5rem;
+                font-weight: 500;
+                cursor: pointer;
+                transition: 0.2s ease;
+                color: white;
+                background-color: #FB8F21;
+                &:hover{
+                    background-color: #ce8133;
+                }
+            }
+            .Edit-btn{
+                border-radius: 1rem;
+                border:none;
+                padding: 0.5rem;
+                height: 3rem;
+                font-size: 1.5rem;
+                font-weight: 500;
+                cursor: pointer;
+                transition: 0.2s ease;
+                color: white;
+                background-color: #18978D;
+                &:hover{
+                    background-color:#14887e ;
+                }
+            }
+        
+      }
+    }
+
+    .add-icon{
+      width:3rem;
+      height:3rem;
+    }
+  }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+}
+
+  
 }

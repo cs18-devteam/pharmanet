@@ -208,15 +208,52 @@
 
     <div class="down-row">
       <a href="javascript:history.back()"><button type="cancel" class="cancel-btn" >Cancel</button></a>
-      <button type="submit" class="payment-btn">Continue to Payment</button>
+      <button type="submit" class="payment-btn" >Continue to Payment</button>
     </div>
     
   </div>
+
+  <!-- Payment Popup -->
+<div class="payment-popup" id="paymentPopup">
+  <div class="popup-content">
+    <span class="close-btn" id="closePopup">&times;</span>
+    <h2>Select Payment Method</h2>
+
+    <div class="payment-options">
+      <button id="cash" onclick="window.location.href='cashier-payment-cash.html' "> Cash</button>
+      <button id="credit-debit" onclick="window.location.href='cashier-payment-card.html' "> Credit/Debit Card</button>
+      <button id="qrpayment" onclick="window.location.href='cashier-payment-QR.html'"> Mobile Payment (QR)</button>
+    </div>
+
   </div>
+</div>
+<script>
+  const paymentBtn = document.querySelector(".payment-btn");
+  const paymentPopup = document.getElementById("paymentPopup");
+  const closePopup = document.getElementById("closePopup");
 
+  paymentBtn.addEventListener("click", () => {
+    paymentPopup.classList.add("active");
+  });
 
+  closePopup.addEventListener("click", () => {
+    paymentPopup.classList.remove("active");
+  });
+
+  // Optional: Close when clicking outside popup
+  window.addEventListener("click", (e) => {
+    if (e.target === paymentPopup) {
+      paymentPopup.classList.remove("active");
+    }
+  });
+
+  
+</script>
 
 
   </div>
+</div>
+
+
 </body>
 </html>

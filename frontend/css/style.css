@@ -4582,6 +4582,108 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   background: #003344;
   color: white;
 }
+.cashier-dashboard {
+  /*-------------------customer view-------------------*/
+}
+.cashier-dashboard .popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+}
+.cashier-dashboard .popup.show {
+  display: flex;
+}
+.cashier-dashboard .popup .popup-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 80%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.cashier-dashboard .popup .popup-content .product-list {
+  background-color: white;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  border-radius: 2rem;
+  margin: 1rem;
+  padding: 1rem;
+}
+.cashier-dashboard .popup .popup-content .product-result-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.cashier-dashboard .popup .popup-content .product-result-table thead {
+  padding: 2rem;
+  color: var(--color-green-02);
+  font-weight: 500;
+}
+.cashier-dashboard .popup .popup-content .product-result-table thead th {
+  padding: 1.2rem 1rem;
+  text-align: left;
+  font-weight: 600;
+}
+.cashier-dashboard .popup .popup-content .product-result-table tbody tr {
+  border-bottom: 0.1rem solid #e0e0e0;
+}
+.cashier-dashboard .popup .popup-content .product-result-table tbody tr:hover {
+  background-color: #f8f8f8;
+}
+.cashier-dashboard .popup .popup-content .product-result-table tbody tr td {
+  padding: 1.4rem 1rem;
+  vertical-align: middle;
+  font-size: 1.4rem;
+}
+.cashier-dashboard .popup .popup-content .product-result-table tbody tr td .remove-btn {
+  border-radius: 1rem;
+  border: none;
+  padding: 0.5rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+  color: white;
+  background-color: #FB8F21;
+}
+.cashier-dashboard .popup .popup-content .product-result-table tbody tr td .remove-btn:hover {
+  background-color: #ce8133;
+}
+.cashier-dashboard .popup .popup-content .product-result-table tbody tr td .Edit-btn {
+  border-radius: 1rem;
+  border: none;
+  padding: 0.5rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+  color: white;
+  background-color: #18978D;
+}
+.cashier-dashboard .popup .popup-content .product-result-table tbody tr td .Edit-btn:hover {
+  background-color: #14887e;
+}
+.cashier-dashboard .popup .popup-content .product-result-table .add-icon {
+  width: 3rem;
+  height: 3rem;
+}
+.cashier-dashboard .popup .popup-content .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
 
 .cashier-create-bill {
   background: linear-gradient(180deg, #f8fbfb, #e8f0f0);
@@ -4866,6 +4968,104 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .cashier-create-bill .order-container .down-row .cancel-btn {
   background: #EA4335;
+}
+.cashier-create-bill .order-container .payment-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.cashier-create-bill .order-container .payment-popup.active {
+  display: flex;
+  animation: popupFadeIn 0.3s ease forwards;
+}
+.cashier-create-bill .order-container .payment-popup .popup-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  width: 380px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-50px);
+  opacity: 0;
+  animation: popupSlideIn 0.4s ease forwards;
+}
+.cashier-create-bill .order-container .payment-popup .popup-content h2 {
+  margin-bottom: 1.5rem;
+  margin-top: 3rem;
+  color: #ffa62b;
+}
+.cashier-create-bill .order-container .payment-popup .popup-content .payment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+.cashier-create-bill .order-container .payment-popup .popup-content .payment-options button {
+  background-image: linear-gradient(to right, var(--color-green-01), var(--color-green-02));
+  color: white;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 3rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  font-size: 1.5rem;
+}
+.cashier-create-bill .order-container .payment-popup .popup-content .payment-options button:hover {
+  background-image: linear-gradient(to right, var(--color-green-02), var(--color-green-02));
+}
+.cashier-create-bill .order-container .payment-popup .popup-content .payment-options button input {
+  margin-right: 0.5rem;
+}
+.cashier-create-bill .order-container .payment-popup .popup-content .close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.8rem;
+  font-size: 3rem;
+  color: white;
+  padding: 0 1rem 0 1rem;
+  font-weight: 600;
+  background-color: #ccc;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.cashier-create-bill .order-container .payment-popup .popup-content .close-btn:hover {
+  color: red;
+}
+.cashier-create-bill .order-container {
+  /* 🔹 Animation for popup appearing */
+}
+@keyframes popupSlideIn {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.cashier-create-bill .order-container {
+  /* 🔹 Smooth fade-in background */
+}
+@keyframes popupFadeIn {
+  0% {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
 }
 
 .product {
@@ -5561,6 +5761,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .cashier-customer .popup-section {
   font-family: var(--primary-font);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 .cashier-customer .popup-section .profile-popup {
   position: fixed;
@@ -5695,6 +5896,278 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
     opacity: 1;
     transform: translate(-50%, -50%);
   }
+}
+@keyframes popupFadeIn {
+  0% {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.cashier-payment-cash {
+  background: linear-gradient(180deg, #f8fbfb, #e8f0f0);
+  /* ---------------- Dashboard Layout ---------------- */
+}
+.cashier-payment-cash .dashboard {
+  display: flex;
+}
+.cashier-payment-cash .payment-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.cashier-payment-cash .payment-popup.active {
+  display: flex;
+  animation: popupFadeIn 0.3s ease forwards;
+}
+.cashier-payment-cash .payment-popup .popup-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  width: 380px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-50px);
+  opacity: 0;
+  animation: popupSlideIn 0.4s ease forwards;
+}
+.cashier-payment-cash .payment-popup .popup-content h2 {
+  margin-bottom: 1.5rem;
+  margin-top: 3rem;
+  color: #ffa62b;
+}
+.cashier-payment-cash .payment-popup .popup-content h3 {
+  margin-top: 2rem;
+  color: var(--color-green-02);
+}
+.cashier-payment-cash .payment-popup .popup-content input {
+  border-radius: 2rem;
+}
+.cashier-payment-cash .payment-popup .popup-content .payment-action {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+.cashier-payment-cash .payment-popup .popup-content .payment-action button {
+  background-image: linear-gradient(to right, var(--color-green-01), var(--color-green-02));
+  color: white;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 3rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  font-size: 1.5rem;
+}
+.cashier-payment-cash .payment-popup .popup-content .payment-action button:hover {
+  background-image: linear-gradient(to right, var(--color-green-02), var(--color-green-02));
+}
+.cashier-payment-cash .payment-popup .popup-content .payment-action button input {
+  margin-right: 0.5rem;
+}
+.cashier-payment-cash .payment-popup .popup-content .close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.8rem;
+  font-size: 3rem;
+  color: white;
+  padding: 0 1rem 0 1rem;
+  font-weight: 600;
+  background-color: #ccc;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.cashier-payment-cash .payment-popup .popup-content .close-btn:hover {
+  color: red;
+}
+
+.cashier-payment-card {
+  background: linear-gradient(180deg, #f8fbfb, #e8f0f0);
+  /* ---------------- Dashboard Layout ---------------- */
+}
+.cashier-payment-card .dashboard {
+  display: flex;
+}
+.cashier-payment-card .payment-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.cashier-payment-card .payment-popup.active {
+  display: flex;
+  animation: popupFadeIn 0.3s ease forwards;
+}
+.cashier-payment-card .payment-popup .popup-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  width: 380px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-50px);
+  opacity: 0;
+  animation: popupSlideIn 0.4s ease forwards;
+}
+.cashier-payment-card .payment-popup .popup-content h2 {
+  margin-bottom: 1.5rem;
+  margin-top: 3rem;
+  color: #ffa62b;
+}
+.cashier-payment-card .payment-popup .popup-content h3 {
+  margin-top: 2rem;
+  color: var(--color-green-02);
+}
+.cashier-payment-card .payment-popup .popup-content input {
+  border-radius: 2rem;
+}
+.cashier-payment-card .payment-popup .popup-content .payment-action {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+.cashier-payment-card .payment-popup .popup-content .payment-action button {
+  background-image: linear-gradient(to right, var(--color-green-01), var(--color-green-02));
+  color: white;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 3rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  font-size: 1.5rem;
+}
+.cashier-payment-card .payment-popup .popup-content .payment-action button:hover {
+  background-image: linear-gradient(to right, var(--color-green-02), var(--color-green-02));
+}
+.cashier-payment-card .payment-popup .popup-content .payment-action button input {
+  margin-right: 0.5rem;
+}
+.cashier-payment-card .payment-popup .popup-content .close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.8rem;
+  font-size: 3rem;
+  color: white;
+  padding: 0 1rem 0 1rem;
+  font-weight: 600;
+  background-color: #ccc;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.cashier-payment-card .payment-popup .popup-content .close-btn:hover {
+  color: red;
+}
+
+.cashier-payment-qr {
+  background: linear-gradient(180deg, #f8fbfb, #e8f0f0);
+  /* ---------------- Dashboard Layout ---------------- */
+}
+.cashier-payment-qr .dashboard {
+  display: flex;
+}
+.cashier-payment-qr .payment-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.cashier-payment-qr .payment-popup.active {
+  display: flex;
+  animation: popupFadeIn 0.3s ease forwards;
+}
+.cashier-payment-qr .payment-popup .popup-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  width: 380px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-50px);
+  opacity: 0;
+  animation: popupSlideIn 0.4s ease forwards;
+}
+.cashier-payment-qr .payment-popup .popup-content h2 {
+  margin-bottom: 1.5rem;
+  margin-top: 3rem;
+  color: #ffa62b;
+}
+.cashier-payment-qr .payment-popup .popup-content h3 {
+  margin-top: 2rem;
+  color: var(--color-green-02);
+}
+.cashier-payment-qr .payment-popup .popup-content input {
+  border-radius: 2rem;
+}
+.cashier-payment-qr .payment-popup .popup-content .payment-action {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+.cashier-payment-qr .payment-popup .popup-content .payment-action button {
+  background-image: linear-gradient(to right, var(--color-green-01), var(--color-green-02));
+  color: white;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 3rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  font-size: 1.5rem;
+}
+.cashier-payment-qr .payment-popup .popup-content .payment-action button:hover {
+  background-image: linear-gradient(to right, var(--color-green-02), var(--color-green-02));
+}
+.cashier-payment-qr .payment-popup .popup-content .payment-action button input {
+  margin-right: 0.5rem;
+}
+.cashier-payment-qr .payment-popup .popup-content .close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.8rem;
+  font-size: 3rem;
+  color: white;
+  padding: 0 1rem 0 1rem;
+  font-weight: 600;
+  background-color: #ccc;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.cashier-payment-qr .payment-popup .popup-content .close-btn:hover {
+  color: red;
 }
 
 /*# sourceMappingURL=style.css.map */

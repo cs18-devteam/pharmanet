@@ -22,3 +22,6 @@
 @forward "./cashier-order";
 @forward "./cashier-sales";
 @forward "./cashier-customer";
+@forward "./cashier-payment-cash";
+@forward "./cashier-payment-card";
+@forward "./cashier-payment-qr";

@@ -21,18 +21,23 @@
     <ul class="menu">
       <a href="/systemAdmin/adminDashboard.html">Dashboard</a>
       <a href="/systemAdmin/pharmacy.html">Pharmacies</a>
-      <a href="">Medicines</a>
-      <a href="">Users</a>
+      <a href="/systemAdmin/medicines.html">Medicines</a>
+      <a href="/systemAdmin/users.html">Users</a>
       <a href="">Analytics</a>
-      <a href="">Data Assets</a>
+      <a href="/systemAdmin/dataAssets.html">Data Assets</a>
     </ul>
+
+    <div class="menuItem">
+        <button class="text setting"> Settings</button>
+        <button class="text signOut"> Sign Out</button>
+    </div>
   </div>
   </div>
 
   <div class="container-2">
   <div class="main">
     <header>
-      <input type="text" placeholder="Search pharmacies..." />
+      <input type="text" id="searchInput" placeholder="Search pharmacies..." />
       <div class="user-section">
         <span class="bell"></span>
         <div class="admin">AD</div>
@@ -46,7 +51,7 @@
       <p>Manage All pharmarcy locations and their details.</p>
       </div>
       <div>
-      <button class="addBtn">Add Pharmarcy</button>
+      <a href="addPharmarcy01.html" class="addBtn">Add Pharmarcy</a>
       </div>
       </div>
     
@@ -124,6 +129,23 @@
     </section>
   </div>
   </div>
+
+  <script>
+       //Search filter
+    document.getElementById('searchInput').addEventListener('keyup', function () {
+  const filter = this.value.toLowerCase(); // what user types
+  const rows = document.querySelectorAll('.pharmacy-card');
+
+  rows.forEach(row => {
+    const text = row.textContent.toLowerCase();
+    if (text.includes(filter)) {
+      row.style.display = ''; // show row
+    } else {
+      row.style.display = 'none'; // hide row
+    }
+  });
+});
+  </script>
     
 </body>
 </html>

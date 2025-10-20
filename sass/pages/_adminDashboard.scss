@@ -23,6 +23,7 @@
         display: flex;
         flex-direction: column;
         gap: 2rem;
+        position: relative;
        
         
         
@@ -72,7 +73,38 @@
       }
     }
   }
+    .menuItem{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: -2rem;
+        padding: 2rem;
+        width: 26rem;
+        background-color: $primary;
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+        position: absolute;
+        top: 108.5rem;
+
+       
+        .text{
+            border: none;
+            font-size: 1.5rem;
+            background: none;
+            color: white;
+            cursor: pointer;
+
+            &:hover{color: $accent;}
+
+            &.setting{
+              &::before{content: "⚙";}
+            }
+            &.signOut{
+              &::before{content: "⎋";}
+            }
+  }
 }
+
 
 .container-2{
     flex: 3;
@@ -325,4 +357,4 @@
 }
 }
 }
-
+}

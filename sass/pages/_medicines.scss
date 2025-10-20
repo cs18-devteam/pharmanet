@@ -1,9 +1,11 @@
-.pharmarcy{
-     $text-muted: #9ca3af;
+.medicines{
+    $text-muted: #9ca3af;
     $element-bg: #F7F7F7;
     $primary: #08374F;
     $accent: #FB8F21;
-
+    $danger-red: #ff4444;
+    $accent-green: #00a676;
+   
     .container{
         display: flex;
         flex-direction: row;
@@ -72,27 +74,6 @@
     }
   }
 
-    .menuItem{
-        display: flex;
-        border-radius: 0.5rem;
-        .text1{
-            font-size: 1rem;
-            text-decoration: none;
-            border: none;
-            
-
-            &::before{
-                content: "⚙";
-            }
-        }
-        .text2{
-            font-size: 1rem;
-            
-            &::before{
-                content: "⎋";
-            } 
-        }
-    }
   .menuItem{
         display: flex;
         flex-direction: column;
@@ -104,7 +85,7 @@
         border-bottom-left-radius: 1rem;
         border-bottom-right-radius: 1rem;
         position: absolute;
-        top: 75rem;
+        top: 59rem;
 
        
         .text{
@@ -207,6 +188,7 @@
             border: 1rem $accent;
             align-items: baseline;
             padding: 1.5rem;
+            cursor: pointer;
 
             &::before{
                 content: "+ ";
@@ -224,136 +206,140 @@
       color: $text-muted;
       margin-bottom: 3rem;
     }
-    
-.pharmacy-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(45rem, 1fr));
-  gap: 1.5rem;
-  min-height: 90vh;
-  align-items: stretch;
+
+}
+}
 }
 
-.pharmacy-card {
-  display: grid;
-  background-color: $element-bg;
+.table-container {
+  width:100%;
+  background: $element-bg;
   border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 0 1rem rgba(0,0,0,0.5);
-  position: relative;
-  align-items: stretch;
-  max-width: 60rem;
-  max-height: 50vh;
+  padding: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
 
+.medicine-table {
+  width: 100%;
+  border-collapse: collapse;
 
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  th, td {
+    text-align: left;
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid black;
+    
+  }
 
-    h3 {
-      font-size: 1.5rem;
-      margin: 0;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: $primary;
+  th {
+    color: #aaa;
+    font-size: 1.5rem;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  td small {
+    color: $text-muted;
+    font-size: 1rem;
+    margin-top: -1rem;
+  }
+}
+
+.tag {
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  color: #fff;
+  background: $text-muted;
+
+  &.antibiotics { background: #007bff; }
+  &.pain-relief { background: #ff9800; }
+  &.diabetes { background: #9c27b0; }
+  &.cardiac { background: #673ab7; }
+  &.gastric { background: #00bcd4; }
+}
+
+.status {
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: white;
+
+  &.in-stock { background: $accent-green; }
+  &.low-stock { background: $accent-green }
+  &.critical { background: $danger-red; }
+}
+
+.critical {
+  // color: $danger-red;
+  font-weight: 600;
+}
+
+.actions{
+  text-align: right;
+  
+  .dropdownMenu{
+    position: relative;
+    overflow: visible;
+
+    .dropdown{
+      display: none;
+      list-style: none;
+      position: absolute;
+      top: 10%;
+      right: 0%;
+      background-color: $element-bg;
+      border-radius: 0.8rem;
+      width: 13rem;
+      overflow: visible;
+      z-index: 10;
+      height: fit-content;
+      box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.4);
+
+      a{
+        padding: 1rem 1.5rem;
+        color: $primary;
+        cursor: pointer;
+        font-size: 1.4rem;
+
+        &:hover{
+          background-color: $accent;
+          border-radius: 0.5rem;
+        }
+
+        &.danger{
+          color: $danger-red;
+        }
+      }
+
+      &.show{
+        display: block;
+      }
     }
-
-    .menu-btn {
+    .dots{
       background: none;
       border: none;
-      color: #aaa;
-      font-size: 1.2rem;
+      color: black;
+      font-size: 1.8rem;
       cursor: pointer;
-    }
-  }
+      padding: 0.5rem;
 
-  p {
-    margin: 0.75rem 0 0.5rem;
-    color: $primary;
-  }
-
-  .details {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-
-    li {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.25rem;
-      font-size: 1.2rem;
-      color: $accent;
-
-      span {
-        font-size: 1.5rem;
-        &.address{
-        &::before{content: "📍";}
-        }
-        &.telephoneNo{
-        &::before{content: "📞 ";}
-        }
-        &.email{
-        &::before{content: "✉️ ";}
-        }
-        }
-    }
-  }
-
-  .footer {
-    margin-top: 1.2rem;
-    border-top: 1px solid #222;
-    padding-top: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    p {
-      font-size: 0.95rem;
-      color: #aaa;
-
-      strong {
-        color: $primary;
+      &:hover{
+        color: $text-muted;
       }
     }
 
-    .details-btn {
-      background: linear-gradient(to right, #18978D, #083851);
-      border: 1px solid $primary;
-      color: #fff;
-      padding: 0.4rem 0.75rem;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 1.2rem;
-    
-      &:hover {
-        background-color: #1e1e1e;
-      }
+    .dropdown.open-up{
+      top: auto;
+      bottom: 100%;
+      margin-top: 0;
+      margin-bottom: 0.6rem;
+      box-shadow: 0 -0.4rem 1rem rgba(0, 0, 0, 0.4);
     }
   }
 }
 
-// Status badge styles
-.status {
-  padding: 0.2rem 0.5rem;
-  border-radius: 6px;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  font-weight: 500;
-
-  &.active {
-    background-color: #00c853;
-    color: #fff;
-  }
-
-  &.inactive {
-    background-color: #424242;
-    color: #ccc;
-  }
 }
 }
-}
-}
-}
-}   

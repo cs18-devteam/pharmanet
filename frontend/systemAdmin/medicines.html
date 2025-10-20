@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="styleSheet" href="/css/style.css">
+    <title>Document</title>
+</head>
+<body class="medicines">
+    <div class="container">
+    <div class="container-1">
+    <div class="sideBar">
+    <div class="logo">
+      <img class="logopic" src="/public/logo/logo.svg" alt="logo">
+      <div>
+        <h3>System Admin</h3>
+        <p>Management System</p>
+      </div>
+    </div>
+
+    <ul class="menu">
+      <a href="/systemAdmin/adminDashboard.html">Dashboard</a>
+      <a href="/systemAdmin/pharmacy.html">Pharmacies</a>
+      <a href="/systemAdmin/medicines.html">Medicines</a>
+      <a href="/systemAdmin/users.html">Users</a>
+      <a href="">Analytics</a>
+      <a href="/systemAdmin/dataAssets.html">Data Assets</a>
+    </ul>
+
+    <div class="menuItem">
+        <button class="text setting"> Settings</button>
+        <button class="text signOut"> Sign Out</button>
+    </div>
+  </div>
+  </div>
+
+  <div class="container-2">
+  <div class="main">
+    <header>
+      <input type="text" id="searchInput" placeholder="Search medicines..." />
+      <div class="user-section">
+        <span class="bell"></span>
+        <div class="admin">AD</div>
+      </div>
+    </header>
+
+    <section class="dashboard">
+     <div class="sectionHeading">
+    <div>
+      <h1>Medicines</h1>
+      <p>Manage medicine inventory across all pharmacies.</p>
+      </div>
+      <div>
+      <button class="addBtn">Add Users</button>
+      </div>
+      </div>
+</section>
+
+ <div class="table-container">
+    <table class="medicine-table">
+      <thead>
+        <tr>
+          <th>Medicine</th>
+          <th>Category</th>
+          <th>Manufacturer</th>
+          <th>Stock</th>
+          <th>Price</th>
+          <th>Expiry Date</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Amoxicillin<br><small>500mg</small></td>
+          <td><span class="tag antibiotics">Antibiotics</span></td>
+          <td>PharmaCorp</td>
+          <td>847</td>
+          <td>$12.99</td>
+          <td>2025-08-15</td>
+          <td><span class="status in-stock">In Stock</span></td>
+          <td class="actions">
+            <div class="dropdownMenu">
+              <button class="dots">⋮</button>
+              <ul class="dropdown">
+                <a href="">View Details</a>
+                <a href="">Edit</a>
+                <a href="">Update Stock</a>
+                <a href="" class="danger">Delete</a>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Ibuprofen<br><small>400mg</small></td>
+          <td><span class="tag pain-relief">Pain Relief</span></td>
+          <td>MediLife</td>
+          <td>1203</td>
+          <td>$8.49</td>
+          <td>2025-12-20</td>
+          <td><span class="status in-stock">In Stock</span></td>
+          <td class="actions">
+            <div class="dropdownMenu">
+              <button class="dots">⋮</button>
+              <ul class="dropdown">
+                <a href="">View Details</a>
+                <a href="">Edit</a>
+                <a href="">Update Stock</a>
+                <a href="" class="danger">Delete</a>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Metformin<br><small>850mg</small></td>
+          <td><span class="tag diabetes">Diabetes</span></td>
+          <td>HealthPlus</td>
+          <td>45</td>
+          <td>$15.99</td>
+          <td>2024-11-30</td>
+          <td><span class="status low-stock">Low Stock</span></td>
+          <td class="actions">
+            <div class="dropdownMenu">
+              <button class="dots">⋮</button>
+              <ul class="dropdown">
+                <a href="">View Details</a>
+                <a href="">Edit</a>
+                <a href="">Update Stock</a>
+                <a href="" class="danger">Delete</a>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Lisinopril<br><small>10mg</small></td>
+          <td><span class="tag cardiac">Cardiac</span></td>
+          <td>CardioMed</td>
+          <td>654</td>
+          <td>$18.99</td>
+          <td>2025-06-10</td>
+          <td><span class="status in-stock">In Stock</span></td>
+          <td class="actions">
+            <div class="dropdownMenu">
+              <button class="dots">⋮</button>
+              <ul class="dropdown">
+                <a href="">View Details</a>
+                <a href="">Edit</a>
+                <a href="">Update Stock</a>
+                <a href="" class="danger">Delete</a>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Atorvastatin<br><small>20mg</small></td>
+          <td><span class="tag cardiac">Cardiac</span></td>
+          <td>CardioMed</td>
+          <td><span class="critical">⚠️ 8</span></td>
+          <td>$22.49</td>
+          <td>2024-10-25</td>
+          <td><span class="status critical">Critical</span></td>
+          <td class="actions">
+            <div class="dropdownMenu">
+              <button class="dots">⋮</button>
+              <ul class="dropdown">
+                <a href="">View Details</a>
+                <a href="">Edit</a>
+                <a href="">Update Stock</a>
+                <a href="" class="danger">Delete</a>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Omeprazole<br><small>20mg</small></td>
+          <td><span class="tag gastric">Gastric</span></td>
+          <td>DigestCare</td>
+          <td>423</td>
+          <td>$11.99</td>
+          <td>2025-09-18</td>
+          <td><span class="status in-stock">In Stock</span></td>
+          <td class="actions">
+            <div class="dropdownMenu">
+              <button class="dots">⋮</button>
+              <ul class="dropdown">
+                <a href="">View Details</a>
+                <a href="">Edit</a>
+                <a href="">Update Stock</a>
+                <a href="" class="danger">Delete</a>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <script>
+    //Search filter
+    document.getElementById('searchInput').addEventListener('keyup', function () {
+  const filter = this.value.toLowerCase(); // what user types
+  const rows = document.querySelectorAll('.medicine-table tr');
+
+  rows.forEach(row => {
+    const text = row.textContent.toLowerCase();
+    if (text.includes(filter)) {
+      row.style.display = ''; // show row
+    } else {
+      row.style.display = 'none'; // hide row
+    }
+  });
+});
+
+    // Toggle dropdown menu
+    document.querySelectorAll('.dots').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        document.querySelectorAll('.dropdown').forEach(dropdownMenu => dropdownMenu.classList.remove('show'));
+        const dropdownMenu = btn.nextElementSibling;
+        dropdownMenu.classList.toggle('show');
+      });
+    });
+
+    // Hide dropdown when clicking outside
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.dropdown').forEach(dropdownMenu => dropdownMenu.classList.remove('show'));
+    });
+
+    
+    
+  </script>
+  </div>
+  </div>
+</body>
+</html>

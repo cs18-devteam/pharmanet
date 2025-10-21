@@ -3,7 +3,7 @@ const { responseJson } = require("../common/response");
 const Medicines = require("../model/MedicineModel");
 
 
-exports.getOrders =async (req , res)=>{
+exports.getMedicines =async (req , res)=>{
     const filter = {};
     if(req.params.get('id')) filter.id = req.params.get('id')
     if(req.params.get('serialNumber')) filter.serialNumber = req.params.get('serialNumber')
@@ -32,7 +32,7 @@ exports.getOrders =async (req , res)=>{
 }
 
 
-exports.deleteOrder =async (req , res)=>{
+exports.deleteMedicine =async (req , res)=>{
     const {id} = JSON.parse(await getRequestData(req));
     const results = await Medicines.deleteById(id);
     
@@ -44,7 +44,7 @@ exports.deleteOrder =async (req , res)=>{
 
 
 
-exports.updateOrder = async (req , res)=>{
+exports.updateMedicine = async (req , res)=>{
     const {serialNumber , countryCode , geneticName , schedule , registrationNo , agentCode , menuCode , packType , dosageCode} = JSON.parse(await getRequestData(req));
     const results = await Medicines.update({
         serialNumber , countryCode , geneticName , schedule , registrationNo , agentCode , menuCode , packType , dosageCode
@@ -57,7 +57,7 @@ exports.updateOrder = async (req , res)=>{
 }
 
 
-exports.createOrder = async (req , res)=>{
+exports.createMedicine = async (req , res)=>{
     const {serialNumber , countryCode , geneticName , schedule , registrationNo , agentCode , menuCode , packType , dosageCode} = JSON.parse(await getRequestData(req));
     const newLeaveRequest = await Medicines.save({
         serialNumber , countryCode , geneticName , schedule , registrationNo , agentCode , menuCode , packType , dosageCode

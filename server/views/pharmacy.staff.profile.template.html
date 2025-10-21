@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Contact Us || Pharmanet </title>
+    <!-- <script src="https://kit.fontawesome.com/7e64af2f82.js" crossorigin="anonymous"></script> -->
+</head>
+<body class="details">
+     <header>
+    <nav>
+        <div class="logo">
+            <img class="logopic" src="/public/logo/logo.svg" alt="logo">
+            <p class="logoname">PharmaNet</p>
+        </div>
+
+
+        <div class="search">
+            <form action="POST">
+                <input type="search" placeholder="Search anything...">
+                <input type="submit" value="Find">
+            </form>
+        </div>
+        <div class="dropdown">
+            <a href="#">Services</a>
+                <ul class="navbar">
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+        </div>
+
+        <div class="dropdown">
+            <a href="#">Menu</a>
+                <ul class="navbar">
+                    <li><a href="/pharmacy/staff?id=1">Staff Management</a></li>
+                    <li><a href="/pharmacy/orders">Order Management</a></li>
+                    <li><a href="/pharmacy/products">Product Management</a></li>
+                </ul>
+        </div>
+
+        <div id="toggle-placeholder"></div>
+
+
+        <!-- <div class="auth-btns">
+            <a href="/login.html" class="login">login</a>
+            <a href="/signup.html" class="signup">signup</a>
+        </div> -->
+        
+    <div class="profile">
+            <div class="profileName">
+                <a href="">Chamani Niroshani</a>
+                <div class="welcome">Welcome</div>
+            </div>
+            
+            <div class="profilePic"><a href="/signup.html"><img src="/public/logo/profile_pic.jpg"></a>
+            </div>
+    </div>
+
+
+    </nav>
+        
+
+    </header>
+
+    <div class="details__container">
+        <div class="content">
+            <div class="profile">
+                <div class="profile__photo__container">
+                    <img src="/public/users/1.jpg" alt="" class="profile__photo">
+                    <div class="gender"><i class="fa fa-%%GENDER%%" aria-hidden="true"></i>
+                    </div>
+                </div>
+    
+                <div class="profile__details">
+                    <div class="role">{role}</div>
+                    <div class="name">{firstName} {lastName}</div>
+                    <div class="full_name">{fullName}</div>
+                    <div class="nic">
+                        {nic}</div>
+                    <div>
+                        <div class="mobile_numbers">
+                            <i class="fa fa-mobile" aria-hidden="true"></i>
+                            {mobileNumber}</div>
+                        <div class="email">
+                            <!-- <i class="fa fa-envelope-o" aria-hidden="true"></i> -->
+                            {email}</div>
+                    </div>
+                    <div class="address">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        {addressNo} , {street} , {town} , {province}</div>
+    
+                </div>
+
+                
+            </div>
+            <a href="/pharmacy/staff?view=update" class="edit">
+                <i class="fa fa-cog" aria-hidden="true"></i>
+
+            </a>
+        </div>
+
+
+        <div class="banking_info">
+            <h2>
+                <i class="fa fa-credit-card" aria-hidden="true"></i>
+                banking info
+            </h2>
+            <table>
+
+                <tbody>
+                    <tr>
+                        <td>bank</td>
+                        <td>-</td>
+                        <td>{bank}</td>
+                    </tr>
+                    <tr>
+                        <td>account number</td>
+                        <td>-</td>
+                        <td>{accountNo}</td>
+                    </tr>
+                    <tr>
+                        <td>branch</td>
+                        <td>-</td>
+                        <td>{bankBranch}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="time_and_attendence">
+            <h2>
+                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                time & attendance
+            </h2>
+
+            <!-- <div class="period">
+                <span>period</span>
+                <input type="date" name="" placeholder="2025-01-01" id="">
+                <span>to</span>
+                <input type="date" name="" placeholder="2025-01-31" id="">
+            </div> -->
+
+            <div>
+                Mark attendance
+            </div>
+            
+            <div class="dates-container">
+                
+                %%DAYS%%
+                
+            </div>
+            
+        </div>
+
+    </div>
+
+    <script type="module" src="/js/controller/controller.js"></script>
+</body>
+</html>

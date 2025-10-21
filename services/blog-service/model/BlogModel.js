@@ -1,6 +1,6 @@
 const Model = require("../common/Model");
 
-class LeaveModel extends Model{
+class BlogModel extends Model{
     constructor(){
         super();
         this.user = {
@@ -8,25 +8,17 @@ class LeaveModel extends Model{
             null: false,
         }
 
-        this.requestedDate = {
+        this.publishedDate = {
             type:"DATE",
             null : false,
         }
 
-        this.acceptedDate = {
-            type:"DATE",
+        this.title = {
+            type:"VARCHAR(100)",
         }
 
-        this.datefrom = {
-            type:"DATE",
-        }
-
-        this.dateTo = {
-            type:"DATE",
-        }
-
-        this.reason = {
-            type:"VARCHAR(100)"
+        this.content = {
+            type : "VARCHAR(100)"
         }
 
         this.acceptedBy = {
@@ -36,9 +28,9 @@ class LeaveModel extends Model{
     }
 }
 
-const Leaves = new LeaveModel();
-Leaves.createTable().catch(e=>{
+const Blogs = new BlogModel();
+Blogs.createTable().catch(e=>{
     console.log(e);
     console.log("error in product model");
 });
-module.exports = Leaves;
+module.exports = Blogs;

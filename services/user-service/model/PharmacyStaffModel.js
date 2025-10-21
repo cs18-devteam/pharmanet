@@ -22,4 +22,5 @@ PharmacyStaff.createTable().catch(e=>{
     console.log("pharmacy staff table not created");
 })
 
+
 module.exports = PharmacyStaff;

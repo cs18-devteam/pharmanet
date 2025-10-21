@@ -2,7 +2,7 @@ const notfound = require("../common/notfound");
 const apiStaffMemberController = require("../controllers/apiStaffMemberController");
 
 
-module.exports = function transactionApiRouter (req , res){
+module.exports = function apiStaffMemberRouter (req , res){
     switch(req.method){
         case 'GET':
             return apiStaffMemberController.getStaffMembers(req , res);

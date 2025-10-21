@@ -4,6 +4,7 @@ const { requestFile } = require('./fileServer');
 const response = require('./common/response');
 const notfound = require('./common/notfound');
 const transactionApiRouter = require('./routes/transactionApiRouter');
+const statusRouter = require('./routes/statusRouter');
 
 
 const server = http.createServer((req , res)=>{
@@ -35,6 +36,8 @@ const server = http.createServer((req , res)=>{
             return transactionApiRouter(req , res);
         }else if(path == "/api/transactions"){ 
             return transactionApiRouter(req , res);
+        }else if(path == "/api/transactions/status"){ 
+            return statusRouter(req , res);
         }else{
             return notfound(req ,res);
         }

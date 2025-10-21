@@ -1,0 +1,78 @@
+.verify_number{
+  
+  /* Verification Card */
+  .verify-mobile-number-container {
+    border:none;
+    width:51rem ;
+    height:38.5rem;
+    font-family: var(--primary-font);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+  }
+
+  .title {
+      margin-top: 4rem;
+      margin-bottom: 0.5rem;
+    font-size: 3.6rem;
+    color:var(--primary-color);
+    font-weight: 500;
+  }
+
+  .discription {
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+    color:#707070;
+
+  }
+
+  .second-title {
+    display: block;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    font-size: 2.4rem;
+    color: var(--primary-color);
+    font-weight: 500;
+  }
+
+  .verify-mobile-number-container input {
+    width: 100%;
+    height: 5.5rem;
+    padding: 0.8rem;
+    border: 0.2rem solid #707070;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    font-size: 2.4rem;
+    text-align: left;
+    letter-spacing: 0.3rem;
+  }
+
+  .verify-button {
+      height: 5.5rem;
+    width: 100%;
+    padding: 0.9rem;
+    border: none;
+    border-radius: 1rem;
+    background: linear-gradient(90deg, #18978D, #083851);
+    color: #ffffff;
+    font-size: 2.4rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: opacity 0.2s ease;
+  }
+
+  .verify-button:hover {
+    opacity: 0.9;
+  }
+
+  .change-phone-number {
+    display: block;
+    text-align: left;
+    font-size: 1.8rem;
+    text-decoration: none;
+    color: #127EB5;
+  }
+}

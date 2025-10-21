@@ -30,7 +30,7 @@ exports.getPharmacy =async (req , res)=>{
 }
 
 
-exports.deleteLeave =async (req , res)=>{
+exports.deletePharmacy =async (req , res)=>{
     const {id} = JSON.parse(await getRequestData(req));
     const results = await Pharmacy.deleteById(id);
     
@@ -41,7 +41,7 @@ exports.deleteLeave =async (req , res)=>{
 }
 
 
-exports.updateLeave = async (req , res)=>{
+exports.updatePharmacy = async (req , res)=>{
     const {user , requestedDate , acceptedDate , dateFrom , dateTo , reason , acceptedBy} = JSON.parse(await getRequestData(req));
     const results = await Pharmacy.update({
         user , requestedDate , acceptedDate , dateFrom , dateTo , reason , acceptedBy
@@ -54,7 +54,7 @@ exports.updateLeave = async (req , res)=>{
 }
 
 
-exports.createLeave = async (req , res)=>{
+exports.createPharmacy = async (req , res)=>{
     const {user , requestedDate , acceptedDate , dateFrom , dateTo , reason , acceptedBy} = JSON.parse(await getRequestData(req));
     const newLeaveRequest = await Pharmacy.save({
         user , requestedDate , acceptedDate , dateFrom , dateTo , reason , acceptedBy

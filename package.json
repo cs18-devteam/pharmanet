@@ -15,7 +15,16 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npm-run-all --parallel blog-service leave-service medicine-service order-service pharmacy-service product-service transaction-service user-service server",
+    "blog-service" : "cd ./services/blog-service && npm run dev",
+    "leave-service" : "cd ./services/leave-service && npm run dev",
+    "medicine-service" : "cd ./services/medicine-service && npm run dev",
+    "order-service" : "cd ./services/order-service && npm run dev",
+    "pharmacy-service" : "cd ./services/pharmacy-service && npm run dev",
+    "product-service" : "cd ./services/product-service && npm run dev",
+    "transaction-service" : "cd ./services/transaction-service && npm run dev",
+    "user-service" : "cd ./services/user-service && npm run dev",
+    "server" : "cd ./server && npm run dev"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.5"

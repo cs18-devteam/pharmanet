@@ -4,6 +4,7 @@ const { requestFile } = require('./fileServer');
 const {response} = require('./common/response');
 const notfound = require('./common/notfound');
 const apiMedicineRouter = require('./routes/apiMedicineRouter');
+const statusRouter = require('./routes/statusRouter');
 
 
 const server = http.createServer((req , res)=>{
@@ -35,6 +36,8 @@ const server = http.createServer((req , res)=>{
             return apiMedicineRouter(req , res);
         }else if(path == "/api/medicines"){ 
             return apiMedicineRouter(req , res);
+        }else if(path == "/api/medicines/status"){ 
+            return statusRouter(req , res);
         }else{
             return notfound(req ,res);
         }

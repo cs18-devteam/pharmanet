@@ -4,6 +4,7 @@ const { requestFile } = require('./fileServer');
 const response = require('./common/response');
 const notfound = require('./common/notfound');
 const apiLeaveRouter = require('./routes/apiLeaveRouter');
+const status = require('./routes/status');
 
 
 const server = http.createServer((req , res)=>{
@@ -31,10 +32,12 @@ const server = http.createServer((req , res)=>{
         }
     
         // product routes
-        if (path == '/leaves'){
+        if (path == '/blogs'){
             return apiLeaveRouter(req , res);
-        }else if(path == "/api/leaves"){ 
+        }else if(path == "/api/blogs"){ 
             return apiLeaveRouter(req , res);
+        }else if(path == "/api/blogs/status"){
+            return status(req , res);
         }else{
             return notfound(req ,res);
         }

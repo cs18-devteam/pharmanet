@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PharmaNet Login</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="login">
+  <div class="login-container">
+      <div class="left-panel">
+        <div class="image-wrapper">
+          <img src="/logo/logo-default.png" alt="PharmaNet Logo">
+          <img src="/images/login Image.png" alt="Medicine Illustration">
+          <div class="quote">“ Take Control of Your Medication Journey ”</div>
+        </div>
+      </div>
+
+      <div class="right-panel">
+        <div id = "toggle-placeholder"> </div>
+        <div class="logo">
+          <img src="/images/Rectangle.svg" alt="PharmaNet Logo">
+        </div>
+        <h1>Welcome Back To<br/>Pharmanet</h1>
+
+        <form id="loginForm" method="post" action="/login">
+          <label>Email</label>
+          <input type="email" placeholder="Example@Gmail.Com" required>
+          <label>Password</label>
+          <input type="password" placeholder="**********" required>
+          <button type="submit">Log In</button>
+        </form>
+
+        <div class="links">
+          <a href="#">Forgot password ?</a>
+          <p>Don't You Have An Account ?
+            <a href="/signup" class="signup-btn">Sign Up</a>
+          </p>
+        </div>
+
+        <div class="footer">
+          <span>Help</span>
+          <span>Support</span>
+          <span>Contacts</span>
+        </div>
+      </div>
+    </div>
+
+</body>
+</html>

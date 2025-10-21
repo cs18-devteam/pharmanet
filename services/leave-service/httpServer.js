@@ -1,9 +1,9 @@
 const http = require('http');
 const fs = require('fs');
 const { requestFile } = require('./fileServer');
-const response = require('./common/response');
 const notfound = require('./common/notfound');
 const apiLeaveRouter = require('./routes/apiLeaveRouter');
+const statusRouter = require('./routes/statusRouter');
 
 
 const server = http.createServer((req , res)=>{
@@ -35,6 +35,9 @@ const server = http.createServer((req , res)=>{
             return apiLeaveRouter(req , res);
         }else if(path == "/api/leaves"){ 
             return apiLeaveRouter(req , res);
+        }if(path == "api/leaves/status"){
+            return statusRouter(req , res);
+        
         }else{
             return notfound(req ,res);
         }

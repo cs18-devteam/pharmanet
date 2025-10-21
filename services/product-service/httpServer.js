@@ -6,6 +6,7 @@ const response = require('./common/response');
 const notfound = require('./common/notfound');
 const StaffProductRouter = require('./routes/StaffProductRouter');
 const productsApiRouter = require('./routes/productsApiRouter');
+const statusRouter = require('./routes/statusRouter');
 
 
 const server = http.createServer((req , res)=>{
@@ -37,6 +38,8 @@ const server = http.createServer((req , res)=>{
             return StaffProductRouter(req , res);
         }else if(path == "/api/products"){ 
             return productsApiRouter(req , res);
+        }else if(path == "/api/products/status"){ 
+            return statusRouter(req , res);
         }else{
             return notfound(req ,res);
         }

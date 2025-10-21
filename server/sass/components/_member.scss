@@ -1,0 +1,55 @@
+.member{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 100rem;
+    margin: 1rem 0rem;
+
+    > a{
+        display: flex;
+
+        img{
+            width: 7rem;
+            height: 7rem;
+            border-radius: 50%;
+        }
+
+        > div{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin: 1rem;
+
+            .member_name{
+                font-size: 1.8rem;
+                color : #888;
+                font-weight: 400;
+                text-transform: capitalize;
+            }
+
+            .role{
+                font-size: 1.4rem;
+                color: #666;
+                text-transform: capitalize;
+            }
+        }
+
+    }
+
+    .check-in{
+        display: flex;
+        align-items: center;
+
+        *{
+            margin: 1rem;
+        }
+
+        button{
+            border-radius: 3px;
+            border: 1px solid #aaa;
+            background-color: #fff;
+            text-transform: capitalize;
+            color: #888;
+        }
+    }
+}

@@ -5,6 +5,7 @@ const response = require('./common/response');
 const notfound = require('./common/notfound');
 const apiCustomerRouter = require('./routes/apiCustomerRouter');
 const apiStaffMemberRouter = require('./routes/apiStaffMemberRouter');
+const statusRouter = require('./routes/statusRouter');
 
 
 const server = http.createServer((req , res)=>{
@@ -38,6 +39,8 @@ const server = http.createServer((req , res)=>{
             return apiCustomerRouter(req , res);
         }else if(path == "/api/users/staff"){ 
             return apiStaffMemberRouter(req , res);
+        }else if(path == "/api/users/status"){ 
+            return statusRouter(req , res);
         }else{
             return notfound(req ,res);
         }

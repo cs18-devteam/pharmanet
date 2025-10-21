@@ -3,7 +3,7 @@ const fs = require('fs');
 const { requestFile } = require('./fileServer');
 const response = require('./common/response');
 const notfound = require('./common/notfound');
-const apiLeaveRouter = require('./routes/apiLeaveRouter');
+const apiPharmacyRouter = require("./routes/apiPharmacyRouter");
 
 
 const server = http.createServer((req , res)=>{
@@ -31,10 +31,10 @@ const server = http.createServer((req , res)=>{
         }
     
         // product routes
-        if (path == '/leaves'){
-            return apiLeaveRouter(req , res);
-        }else if(path == "/api/leaves"){ 
-            return apiLeaveRouter(req , res);
+        if (path == '/pharmacies'){
+            return apiPharmacyRouter(req , res);
+        }else if(path == "/api/pharmacies"){ 
+            return apiPharmacyRouter(req , res);
         }else{
             return notfound(req ,res);
         }

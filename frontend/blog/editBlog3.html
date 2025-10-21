@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PharmaCare Blog</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="editBlog">
+  <header class="navbar">
+    <div class="logo">
+      <img class="logopic" src="/public/logo/logo.svg" alt="logo">
+      <span>PharmaNet</span>
+    </div>
+    <div class="nav-buttons">
+      <a href="blogView.html"><button class="btn btn-filled">All Blogs</button></a>
+      <a href="blogManage.html"><button class="btn btn-icon"><i class="settings-icon">⚙</i> Manage</button></a>
+    </div>
+  </header>
+
+  <div class="edit-container">
+    <div class="edit-card">
+      <h2>Edit Blog</h2>
+
+      <form class="edit-form">
+        <!-- Title -->
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" id="title" value="Vitamin Supplements: Do You Really Need Them?" />
+        </div>
+
+        <!-- Category and Author -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category">
+              <option>Diseases</option>
+              <option>Medicines</option>
+              <option>Nutrition</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="author">Author</label>
+            <input type="text" id="author" value="Dr. Emily Rodriguez" />
+          </div>
+        </div>
+
+        <!-- Excerpt -->
+        <div class="form-group">
+          <label for="excerpt">Excerpt</label>
+          <textarea id="excerpt" rows="2">
+Explore the causes of high blood pressure and discover lifestyle changes and medications
+        that can help manage it.
+          </textarea>
+        </div>
+
+        <!-- Content -->
+        <div class="form-group">
+          <label for="content">Content</label>
+          <textarea id="content" rows="6">Hypertension, or high blood pressure, affects millions of people worldwide. Understanding its causes and treatment options is essential for prevention and management.
+
+What is Hypertension?
+Blood pressure is the force of blood pushing against artery walls. Hypertension occurs when this pressure is consistently too high (140/90 mmHg or higher).
+
+Risk Factors
+Several factors increase the risk of developing hypertension:
+
+Age (risk increases with age)
+Family history
+Obesity
+High sodium diet
+Excessive alcohol consumption
+Sedentary lifestyle
+Chronic stress
+Lifestyle Changes
+Before medication, lifestyle modifications can significantly reduce blood pressure:
+
+**Reduce Sodium**: Limit to less than 2,300mg per day.
+**Exercise Regularly**: Aim for 150 minutes of moderate activity weekly.
+**Maintain Healthy Weight**: Even small weight loss can help.
+**Limit Alcohol**: No more than 1-2 drinks per day.
+**Manage Stress**: Practice meditation, yoga, or deep breathing.
+**Eat Heart-Healthy Foods**: Focus on fruits, vegetables, and whole grains.
+Medications
+If lifestyle changes aren't enough, several medication classes can help:
+
+ACE inhibitors
+Beta-blockers
+Calcium channel blockers
+Diuretics
+Combination medications
+Regular monitoring and working with your healthcare provider is key to managing hypertension effectively.</textarea>
+        </div>
+
+        <!-- Buttons -->
+        <div class="form-actions">
+          <a href="blogManage.html"><button type="button" class="btn-cancel">Cancel</button></a>
+          <button type="submit" class="btn-save"> Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  </body>
+</html>

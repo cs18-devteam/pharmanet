@@ -1,0 +1,184 @@
+.editBlog{
+   background: #F7F7F7;
+
+    $text-muted: #9ca3af;
+    $element-bg: #F7F7F7;
+    $primary: #08374F;
+    $accent: #FB8F21;
+    $danger-red: #ff4444;
+    $accent-green: #00a676;
+    $radius: 1rem;
+    
+
+
+  .navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-weight: 600;
+    font-size: 3rem;
+
+    img {
+      width: 4rem;
+      height: 4rem;
+    }
+
+    span{
+        color: $primary;
+        font-size: 2rem;
+    }
+  }
+
+  .nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .btn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 1.5rem;
+
+      &.btn-filled {
+        
+        color: $primary;
+        border: 0.2rem solid $primary;
+      }
+
+      &.btn-icon {
+        background: linear-gradient(to right, #18978D, #083851);
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        border: 0.2rem solid $primary;
+      }
+
+      &:hover{
+        background: $accent;
+      }
+    }
+  }
+}
+
+.edit-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3rem 1rem;
+}
+
+.edit-card {
+  background: white;
+  border: 1px solid $text-muted;
+  border-radius: $radius;
+  max-width: 700px;
+  width: 100%;
+  padding: 2rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+
+  h2 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: $primary;
+  }
+
+  .edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .form-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .form-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+
+      label {
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+        color: $primary;
+      }
+
+      input, select, textarea {
+        padding: 0.6rem 0.8rem;
+        border: 1px solid $text-muted;
+        border-radius: $radius;
+        font-size: 1.2rem;
+        font-family: inherit;
+        background: #f9f9f9;
+        transition: border 0.2s ease;
+
+        &:focus {
+          border-color: $primary;
+          outline: none;
+          background: #fff;
+        }
+      }
+
+      textarea {
+        resize: vertical;
+      }
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+
+      .btn-cancel {
+        background: transparent;
+        border: none;
+        color: #555;
+        font-weight: 500;
+        cursor: pointer;
+        transition: 0.2s;
+
+        &:hover {
+          color: #000;
+        }
+      }
+
+      .btn-save {
+        background: $primary;
+        color: #fff;
+        border: none;
+        border-radius: $radius;
+        padding: 0.7rem 1.5rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        transition: background 0.3s ease;
+
+
+        &:hover {
+          background: darken($primary, 8%);
+        }
+      }
+    }
+  }
+}
+
+
+}

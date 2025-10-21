@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PharmaCare Blog</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="blogManage">
+  <header class="navbar">
+    <div class="logo">
+      <img class="logopic" src="/public/logo/logo.svg" alt="logo">
+      <span>PharmaNet</span>
+    </div>
+    <div class="nav-buttons">
+      <a href="blogView.html"><button class="btn btn-filled">All Blogs</button></a>
+      <a href="blogManage.html"><button class="btn btn-icon"><i class="settings-icon">⚙</i> Manage</button></a>
+    </div>
+  </header>
+
+
+  <div class="container">
+    <header>
+      <h1>Manage Blogs</h1>
+      <p>View, edit, and manage all blog posts</p>
+      <button class="btn-create">+ Create New Blog</button>
+    </header>
+
+    <section class="blog-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Author</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong>Understanding Diabetes: Types and Management</strong>
+              <p>A comprehensive guide to understanding diabetes, its types, and effective management...</p>
+            </td>
+            <td><span class="tag tag-green">Diseases</span></td>
+            <td>Dr. Sarah Johnson</td>
+            <td>10/15/2024</td>
+            <td class="actions">
+              <a href="#" class="edit"> Edit</a>
+              <a href="#" class="delete"> Delete</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Antibiotics: When and How to Use Them Safely</strong>
+              <p>Learn about antibiotic resistance and the proper usage guidelines...</p>
+            </td>
+            <td><span class="tag tag-blue">Medicines</span></td>
+            <td>Dr. Michael Chen</td>
+            <td>10/12/2024</td>
+            <td class="actions">
+              <a href="#" class="edit"> Edit</a>
+              <a href="#" class="delete"> Delete</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Hypertension: Prevention and Treatment Options</strong>
+              <p>Explore the causes of high blood pressure and discover lifestyle changes...</p>
+            </td>
+            <td><span class="tag tag-green">Diseases</span></td>
+            <td>Dr. Emily Rodriguez</td>
+            <td>10/10/2024</td>
+            <td class="actions">
+              <a href="editBlog3.html" class="edit"> Edit</a>
+              <a href="#" class="delete"> Delete</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Vitamin Supplements: Do You Really Need Them?</strong>
+              <p>An evidence-based look at vitamin supplements and their necessity...</p>
+            </td>
+            <td><span class="tag tag-blue">Medicines</span></td>
+            <td>Dr. James Wilson</td>
+            <td>10/08/2024</td>
+            <td class="actions">
+              <a href="editBlog4.html" class="edit"> Edit</a>
+              <a href="#" class="delete"> Delete</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="summary">
+      <div class="card">
+        <h3>Total Blogs</h3>
+        <p>4</p>
+      </div>
+      <div class="card">
+        <h3>Diseases</h3>
+        <p>2</p>
+      </div>
+      <div class="card">
+        <h3>Medicines</h3>
+        <p>2</p>
+      </div>
+    </section>
+  </div>
+
+  </body>
+</html>

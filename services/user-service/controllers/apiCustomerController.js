@@ -5,13 +5,11 @@ const Customers = require("../model/CustomerModel");
 exports.getCustomers =async (req , res)=>{
     const filter = {};
     if(req.params.get('id')) filter.id = req.params.get('id')
-    if(req.params.get('user')) filter.user = req.params.get('user')
-    if(req.params.get('reason')) filter.reason = req.params.get('reason')
-    if(req.params.get('requestedDate')) filter.requestedDate = req.params.get('requestedDate')
-    if(req.params.get('acceptedDate')) filter.acceptedDate = req.params.get('acceptedDate')
-    if(req.params.get('dateFrom')) filter.from = req.params.get('dateFrom')
-    if(req.params.get('dateTo')) filter.to = req.params.get('dateTo')
-    if(req.params.get('acceptedBy')) filter.acceptedBy = req.params.get('acceptedBy')
+    if(req.params.get('email')) filter.email = req.params.get('email')
+    if(req.params.get('password')) filter.password = req.params.get('password')
+    if(req.params.get('birthDay')) filter.birthDay = req.params.get('birthDay')
+    if(req.params.get('firstName')) filter.firstName = req.params.get('firstName')
+    if(req.params.get('lastName')) filter.lastName = req.params.get('lastName')
 
     let content =  ''
     if(Object.entries(filter).length > 0){
@@ -41,9 +39,9 @@ exports.deleteCustomer =async (req , res)=>{
 
 
 exports.updateCustomer = async (req , res)=>{
-    const {user , requestedDate , acceptedDate , dateFrom , dateTo , reason , acceptedBy} = JSON.parse(await getRequestData(req));
+    const {firstName , lastName , email , password , birthDay } = JSON.parse(await getRequestData(req));
     const results = await Customers.update({
-        user , requestedDate , acceptedDate , dateFrom , dateTo , reason , acceptedBy
+        firstName , lastName , email , password , birthDay 
     });
     
     return responseJson(res , 200 , {
@@ -54,9 +52,9 @@ exports.updateCustomer = async (req , res)=>{
 
 
 exports.createCustomer = async (req , res)=>{
-    const {user , requestedDate , acceptedDate , dateFrom , dateTo , reason , acceptedBy} = JSON.parse(await getRequestData(req));
+    const {firstName , lastName , email , password , birthDay } = JSON.parse(await getRequestData(req));
     const newLeaveRequest = await Customers.save({
-        user , requestedDate , acceptedDate , dateFrom , dateTo , reason , acceptedBy
+        firstName , lastName , email , password , birthDay 
     });
     
     return responseJson(res , 201 , {

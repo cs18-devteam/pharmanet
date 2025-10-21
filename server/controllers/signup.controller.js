@@ -41,6 +41,7 @@
 
 // --- Authenticate user (Login) ---
 const Bridge = require("../common/Bridge");
+const customerFetch = require("../common/controllers/customerFetch");
 const { getRequestData } = require("../common/getRequestData");
 const { response } = require("../common/response");
 const view = require("../common/view");
@@ -50,10 +51,6 @@ const users = [];
 
 function hashPassword(password) {
     return crypto.createHash("sha256").update(password).digest("hex");
-}
-
-function findUserByEmail(email) {
-    return users.find(u => u.email === email);
 }
 
 exports.renderSignup = async (req, res) => {
@@ -69,55 +66,36 @@ exports.createUser = async (req, res) => {
         .connect(Bridge.registry.CUSTOMER_SERVICE, {
             method: "POST",
         })
-        .request(async (req) => {
+        .request(async (req , res) => {
             const userData = await getRequestData(req);
-            const { firstName, lastName, email, password } = JSON.parse(userData);
-
-            if (!firstName || !lastName || !email || !password) {
-                return JSON.stringify({ status: "error", message: "Missing required fields" });
-            }
-
-            if (findUserByEmail(email)) {
-                return JSON.stringify({ status: "error", message: "User already exists" });
-            }
-
+            const { firstName, lastName, email, password , birthDay } = JSON.parse(userData);
             const hashed = hashPassword(password);
-            const newUser = {
-                id: users.length + 1,
-                firstName,
-                lastName,
-                email,
-                password: hashed,
-            };
-            users.push(newUser);
+            
 
             return JSON.stringify({
-                status: "success",
-                message: "User created successfully",
-                data: newUser,
+                firstName , 
+                lastName , 
+                email , 
+                password : hashed , 
+                birthDay,
             });
         })
         .json()
         .resend((data) => {
-            if (data && data.data) {
-                const user = data.data;
-                return view(
-                    "customer.home",
-                    {
-                        navbar: view("components/navbar", {
-                            id: user.id,
-                            name: `${user.firstName} ${user.lastName}`,
-                        }),
-                    },
-                    { id: user.id }
-                );
-            }
+            const customer = data.data[0];
+
+            console.log(customer);
+            if(!customer) return view('404');
 
             return JSON.stringify({
-                status: "error",
-                message: "Invalid details",
-            });
-        });
+                status:"success",
+                data : customer,
+                count : 1,
+            })
+
+        }).catch(e=>{
+            console.log(e);
+        })
 };
 
 exports.loginUser = async (req, res) => {

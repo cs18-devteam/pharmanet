@@ -1,0 +1,35 @@
+<nav>
+        <a href="/" class="logo">
+            <img class="logopic" src="/logo/logo.svg" alt="logo">
+            <p class="logoname">PharmaNet</p>
+        </a>
+
+
+        <div class="search">
+            <form method="GET" action="/customers/{id}/medicines">
+                <input type="search" placeholder="Search anything...">
+                <input type="submit" value="Find">
+            </form>
+        </div>
+        <div class="dropdown">
+            <a href="#">Services</a>
+                <ul class="navbar">
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+        </div>
+
+        <div id="toggle-placeholder"></div>
+
+        <div class="profile">
+            <div class="profileName">
+                <a href="">{name}</a>
+                <div class="welcome">Welcome</div>
+            </div>
+            
+            <div class="profilePic"><a href="/customers"><img src="/users/{chamani}.jpg"></a>
+            </div>
+        </div>        
+
+    </nav>

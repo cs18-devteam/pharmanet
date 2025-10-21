@@ -6,6 +6,17 @@ const notfound = require('./common/notfound');
 const transactionApiRouter = require('./routes/transactionApiRouter');
 const statusRouter = require('./routes/statusRouter');
 
+const { spawn } = require('child_process');
+
+function restartServer() {
+  console.log('Restarting server...');
+  // spawn a new instance of this same script
+  spawn(process.argv[0], process.argv.slice(1), {
+    stdio: 'inherit'
+  });
+  process.exit(); // exit the current instance
+}
+
 
 const server = http.createServer((req , res)=>{
     try{

@@ -212,10 +212,15 @@ nav {
 .profile .profileName {
   text-align: left;
   font-size: 1.6rem;
+  color: #666;
+  text-decoration: none;
 }
 .profile .profileName .welcome {
   font-size: 1.4rem;
   color: #707070;
+}
+.profile .profileName > a {
+  color: var(--color-green-02);
 }
 .profile .profilePic img {
   height: 5rem;

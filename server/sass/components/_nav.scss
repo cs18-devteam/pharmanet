@@ -160,9 +160,15 @@ nav {
   .profileName {
     text-align: left;
     font-size: 1.6rem;
+    color: #666;
+    text-decoration: none;
     .welcome{
       font-size: 1.4rem;
       color:#707070;
+    }
+
+    > a{
+      color: var(--color-green-02);
     }
   }
 

@@ -3,7 +3,6 @@ const { getRequestData } = require("../common/getRequestData");
 const { response } = require("../common/response");
 const view = require("../common/view");
 
-// ✅ Render admin product management page
 exports.renderAdminProductPage = async (req, res) => {
     Bridge.pipe(req, res)
         .connect(Bridge.registry.PRODUCT_SERVICE, {
@@ -20,7 +19,6 @@ exports.renderAdminProductPage = async (req, res) => {
         }, 200);
 };
 
-// ✅ Create new product
 exports.createProduct = async (req, res) => {
     Bridge.pipe(req, res)
         .connect(Bridge.registry.PRODUCT_SERVICE, {
@@ -39,7 +37,6 @@ exports.createProduct = async (req, res) => {
         }, 200);
 };
 
-// ✅ Update product details
 exports.updateProduct = async (req, res) => {
     Bridge.pipe(req, res)
         .connect(Bridge.registry.PRODUCT_SERVICE, {

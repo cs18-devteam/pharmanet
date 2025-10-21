@@ -18,6 +18,27 @@ const customerController = require('./controllers/customer.controller');
 const customerProfileController = require('./controllers/customer.profile.controller');
 const customerPharmacyController = require('./controllers/customer.pharmacies.controller');
 const adminMedicineController = require('./controllers/admin.medicines.controller');
+const { renderPharamcyStaffAttendance } = require('./controllers/pharmacy.staff.attendance.controller');
+const { renderPharmacyStaffLeave } = require('./controllers/pharmacy.staff.leave.controller');
+const { renderMedicines } = require('./controllers/medicines.controller');
+const { renderMedicinesProfile } = require('./controllers/medicines.profile.controller');
+const { renderAdminNotification } = require('./controllers/admin.notification.controller');
+const { renderAdminNotificationProfile } = require('./controllers/admin.notification.profile.controller');
+const { renderAdminTransactions } = require("./controllers/admin.transactions.controller");
+const { renderAdminBlogs } = require("./controllers/admin.blogs.controller");
+const { renderAdminCustomers } = require("./controllers/admin.customers.controller");
+const { renderAdminCustomerDetails } = require("./controllers/admin.customers.customer.controller");
+const { renderBlogs } = require("./controllers/blogs.controller");
+const { renderBlogDetails } = require("./controllers/blog.details.controller");
+const { renderBlogCreate } = require("./controllers/blog.create.controller");
+const { renderCustomerPharmacyDetails } = require("./controllers/customer.pharmacy.details.controller");
+const { renderCustomerHistory } = require("./controllers/customer.history.controller");
+const { renderCustomerTransactions } = require("./controllers/customer.transactions.controller");
+const { renderCustomerOrders } = require("./controllers/customer.orders.controller");
+const { renderCustomerOrderDetails } = require("./controllers/customer.orders.order.controller");
+const { renderProducts } = require("./controllers/product.controller");
+const { renderCustomerMedicines } = require('./controllers/customer.medicines.controller');
+
 
 const server = http.createServer((req , res)=>{
     try{
@@ -96,21 +117,28 @@ const server = http.createServer((req , res)=>{
         AppRouter.pipe(req ,res).route("/pharmacies/:pharmacyId/staff/:staffId")
             ?.get(pharmacyStaffController.renderPharmacyStaffProfile);
         
-        AppRouter.pipe(req ,res).route("/pharmacies/:pharmacyId/staff/:staffId/leaves");
-        AppRouter.pipe(req ,res).route("/pharmacies/:pharmacyId/staff/:staffId/attendance");
-        AppRouter.pipe(req ,res).route("/pharmacies/:pharmacyId/staff/:staffId/attendance");
-        AppRouter.pipe(req ,res).route("/pharmacies/:pharmacyId/staff/:staffId/leaves");
-        AppRouter.pipe(req ,res).route("/pharmacies/:pharmacyId/staff/:staffId/leaves/:leaveId");
+        AppRouter.pipe(req ,res).route("/pharmacies/:pharmacyId/staff/:staffId/leaves")
+        ?.get(renderPharmacyStaffLeave);
+        AppRouter.pipe(req ,res).route("/pharmacies/:pharmacyId/staff/:staffId/attendance")
+        ?.get(renderPharmacyStaffAttendance);
+        
+        AppRouter.pipe(req ,res).route("/pharmacies/:pharmacyId/staff/:staffId/leaves/:leaveId")
+        ?.get(renderPharmacyStaffLeaveProfile);
 
 
 
         //:: MEDICINES ROUTES
-        AppRouter.pipe(req ,res).route("/medicines");
-        AppRouter.pipe(req ,res).route("/medicines/:medicineId");
+        AppRouter.pipe(req ,res).route("/medicines")
+        ?.get(renderMedicines);
+        AppRouter.pipe(req ,res).route("/medicines/:medicineId")
+        ?.get(renderMedicinesProfile);
+
 
         //:: PRODUCT ROUTES
-        AppRouter.pipe(req ,res).route("/products");
-        AppRouter.pipe(req ,res).route("/products/:productId");
+        AppRouter.pipe(req ,res).route("/products")
+        ?.get(renderProducts);
+        AppRouter.pipe(req ,res).route("/products/:productId")
+        ?.get(renderProductsProfile);
 
         //:: ADMIN ROUTES
         AppRouter.pipe(req , res).route("/admin")
@@ -119,12 +147,16 @@ const server = http.createServer((req , res)=>{
             ?.get(adminController.renderAdminDashboard);
 
         // -- NOTIFICATION MANAGEMENTS
-        AppRouter.pipe(req , res).route("/admin/:adminId/notifications");
-        AppRouter.pipe(req , res).route("/admin/:adminId/notifications/:notificationId");
+        AppRouter.pipe(req , res).route("/admin/:adminId/notifications")
+        ?.get(renderAdminNotification);
+        AppRouter.pipe(req , res).route("/admin/:adminId/notifications/:notificationId")
+        ?.get(renderAdminNotificationProfile);
 
         // -- TRANSACTIONS MANAGEMENTS
-        AppRouter.pipe(req , res).route("/admin/:adminId/transactions");
-        AppRouter.pipe(req , res).route("/admin/:adminId/blogs");
+        AppRouter.pipe(req , res).route("/admin/:adminId/transactions")
+        ?.get(renderAdminTransactions);
+        AppRouter.pipe(req , res).route("/admin/:adminId/blogs")
+        ?.get(renderAdminBlogs);
         
         // -- MEDICINES MANAGEMENTS
         AppRouter.pipe(req , res).route("/admin/:adminId/medicines")
@@ -141,9 +173,10 @@ const server = http.createServer((req , res)=>{
 
 
         // -- CUSTOMERS MANAGEMENTS
-        AppRouter.pipe(req , res).route("/admin/:adminId/customers");
-        AppRouter.pipe(req , res).route("/admin/:adminId/customers/:customerId");
-        
+        AppRouter.pipe(req , res).route("/admin/:adminId/customers")
+        ?.get(renderAdminCustomers);
+        AppRouter.pipe(req , res).route("/admin/:adminId/customers/:customerId")
+        ?.get(renderAdminCustomerDetails);
 
 
         // -- PHARMACIES MANAGEMENTS
@@ -155,9 +188,12 @@ const server = http.createServer((req , res)=>{
 
         
         //:: BLOGS ROUTES
-        AppRouter.pipe(req ,res).route("/blogs");
-        AppRouter.pipe(req ,res).route("/blogs/:blogId");
+        AppRouter.pipe(req ,res).route("/blogs")
+        ?.get(renderBlogs);
+        AppRouter.pipe(req ,res).route("/blogs/:blogId")
+        ?.get(renderBlogDetails);
         AppRouter.pipe(req , res).route("/blogs/create")
+        ?.get(renderBlogCreate);
 
 
         //:: USER ROUTES
@@ -165,7 +201,9 @@ const server = http.createServer((req , res)=>{
 
         //:: CUSTOMERS ROUTES
         AppRouter.pipe(req ,res).route("/customers/:customerId")
-            ?.get(customerController.renderCustomerHome);
+        ?.get(customerController.renderCustomerHome);
+        AppRouter.pipe(req ,res).route("/customers/:customerId/medicines")
+            ?.get(renderCustomerMedicines);
 
         AppRouter.pipe(req ,res).route("/customers/:customerId/profile")
             ?.get(customerProfileController.renderCustomerProfile);
@@ -175,15 +213,20 @@ const server = http.createServer((req , res)=>{
         AppRouter.pipe(req ,res).route("/customers/:customerId/pharmacies")
             ?.get(customerPharmacyController.renderCustomerPharmacies);
 
-        AppRouter.pipe(req ,res).route("/customers/:customerId/pharmacies/:pharmacyId");
+        AppRouter.pipe(req ,res).route("/customers/:customerId/pharmacies/:pharmacyId")
+        ?.get(renderCustomerPharmacyDetails);
 
-        AppRouter.pipe(req ,res).route("/customers/:customerId/history");
+        AppRouter.pipe(req ,res).route("/customers/:customerId/history")
+        ?.get(renderCustomerHistory);
 
-        AppRouter.pipe(req ,res).route("/customers/:customerId/transaction");
+        AppRouter.pipe(req ,res).route("/customers/:customerId/transaction")  ///not working
+        ?.get(renderCustomerTransactions);
 
-        AppRouter.pipe(req ,res).route("/customers/:customerId/orders");
+        AppRouter.pipe(req ,res).route("/customers/:customerId/orders")
+        ?.get(renderCustomerOrders);
 
-        AppRouter.pipe(req ,res).route("/customers/:customerId/orders/:orderId");
+        AppRouter.pipe(req ,res).route("/customers/:customerId/orders/:orderId")
+        ?.get(renderCustomerOrderDetails);
 
         
         AppRouter.pipe(req , res).end();
@@ -218,6 +261,9 @@ const server = http.createServer((req , res)=>{
 
 
 })
+
+
+/// line 135 & 137
 
 
 

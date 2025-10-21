@@ -1,13 +1,13 @@
 <nav>
-        <div class="logo">
+        <a href="/" class="logo">
             <img class="logopic" src="/logo/logo.svg" alt="logo">
             <p class="logoname">PharmaNet</p>
-        </div>
+        </a>
 
 
         <div class="search">
-            <form method="GET" action="/customers/{id}/medicines">
-                <input type="search" placeholder="Search anything...">
+            <form class="search-bar" method="GET" action="/customers/{id}/medicines">
+                <input type="search" name="search" placeholder="Try searching ...">
                 <input type="submit" value="Find">
             </form>
         </div>
@@ -22,14 +22,16 @@
 
         <div id="toggle-placeholder"></div>
 
-        <div class="profile">
+        <div  class="profile">
             <div class="profileName">
-                <a href="">{name}</a>
+                <a href="/customers/{id}/profile">{name}</a>
                 <div class="welcome">Welcome</div>
             </div>
-            
-            <div class="profilePic"><a href="/customers"><img src="/users/{chamani}.jpg"></a>
             </div>
         </div>        
 
     </nav>
+
+    <script>
+        const search = document.querySelector('.search-bar');
+    </script>

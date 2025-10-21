@@ -3,7 +3,9 @@ const view = require("../common/view");
 
 
 exports.renderIndexPage =async ( req , res)=>{
-    response(res , view('index') , 200);
+    response(res , view('index' , {
+        navbar : view('components/navbar.user'),
+    }) , 200);
 }
 
 

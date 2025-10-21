@@ -1,1 +1,203 @@
-This page under construction
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Pharmacy Verification</title>
+<style>
+  :root {
+    --green: #16a34a;
+    --yellow: #f59e0b;
+    --orange: #fb923c;
+    --light: #fefce8;
+  }
+
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--light);
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+
+  header {
+    background: linear-gradient(90deg, var(--green), var(--yellow), var(--orange));
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+  }
+
+  main {
+    max-width: 900px;
+    margin: 2rem auto;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 2rem;
+  }
+
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  input[type="text"] {
+    padding: 0.6rem 1rem;
+    border: 2px solid var(--yellow);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    flex: 1;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+  }
+
+  th, td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  th {
+    background: var(--yellow);
+    color: white;
+  }
+
+  tr:hover {
+    background: #fff7ed;
+  }
+
+  button {
+    border: none;
+    border-radius: 0.4rem;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .accept {
+    background: var(--green);
+    color: white;
+  }
+
+  .accept:hover { background: #15803d; }
+
+  .reject {
+    background: #dc2626;
+    color: white;
+  }
+
+  .reject:hover { background: #b91c1c; }
+
+  .status {
+    padding: 0.3rem 0.7rem;
+    border-radius: 0.4rem;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+
+  .status.pending { background: #fef08a; color: #92400e; }
+  .status.approved { background: #bbf7d0; color: #065f46; }
+  .status.rejected { background: #fecaca; color: #991b1b; }
+
+  @media (max-width: 600px) {
+    .top-bar { flex-direction: column; align-items: stretch; }
+    input[type='text'] { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<header>Admin Pharmacy Verification</header>
+
+<main>
+  <div class="top-bar">
+    <input type="text" id="search" placeholder="Search pharmacies...">
+  </div>
+
+  <table id="pharmacyTable">
+    <thead>
+      <tr>
+        <th>Pharmacy Name</th>
+        <th>Owner</th>
+        <th>Location</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</main>
+
+<script>
+  let pharmacies = [
+    { id: 1, name: "City Health Pharmacy", owner: "Nimal Perera", location: "Colombo", status: "pending" },
+    { id: 2, name: "Green Leaf Drugs", owner: "Kavisha Fernando", location: "Kandy", status: "pending" },
+    { id: 3, name: "Sunrise Medicals", owner: "Pasan Silva", location: "Galle", status: "approved" },
+    { id: 4, name: "CurePlus Pharmacy", owner: "Tharindu Wijesinghe", location: "Matara", status: "rejected" }
+  ];
+
+  const search = document.getElementById("search");
+  const tableBody = document.querySelector("#pharmacyTable tbody");
+
+  function renderTable() {
+    const q = search.value.toLowerCase();
+    tableBody.innerHTML = "";
+
+    pharmacies
+      .filter(p => p.name.toLowerCase().includes(q) || p.owner.toLowerCase().includes(q) || p.location.toLowerCase().includes(q))
+      .forEach(p => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${p.name}</td>
+          <td>${p.owner}</td>
+          <td>${p.location}</td>
+          <td><span class="status ${p.status}">${p.status}</span></td>
+          <td>
+            ${p.status === "pending" ? `
+              <button class="accept" onclick="acceptPharmacy(${p.id})">Accept</button>
+              <button class="reject" onclick="rejectPharmacy(${p.id})">Reject</button>
+            ` : "-"}
+          </td>
+        `;
+        tableBody.appendChild(tr);
+      });
+  }
+
+  function acceptPharmacy(id) {
+    const p = pharmacies.find(x => x.id === id);
+    if (p && p.status === "pending") {
+      p.status = "approved";
+      alert(`${p.name} has been approved ✅`);
+      renderTable();
+    }
+  }
+
+  function rejectPharmacy(id) {
+    const p = pharmacies.find(x => x.id === id);
+    if (p && p.status === "pending") {
+      if (confirm(`Are you sure you want to reject ${p.name}?`)) {
+        p.status = "rejected";
+        alert(`${p.name} has been rejected ❌`);
+        renderTable();
+      }
+    }
+  }
+
+  search.addEventListener("input", renderTable);
+  renderTable();
+</script>
+
+</body>
+</html>

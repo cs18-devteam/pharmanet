@@ -50,23 +50,8 @@ class AppRouter{
     }
 
     route(path){
-        // const urlParams = [];
-        // let urlPath = path.split('/');
-        // let regText = new RegExp(urlPath.map((value , index) => {
-        //     if(value.startsWith(":")){
-        //         urlParams.push({index :index ,value: value.slice(1 , value.length)});
-        //         return ".";
-        //     }
-        //     return value;
-        // }).join('\\/') , "yg");
 
-        
-        // if(regText.test(this.req.path)){
-        //     urlParams.forEach(param=> this.req[param.value] = this.req.path.split("/")[param.index]);
-        //     return new Router(this.req , this.res);
-        // }
-
-
+        if (this.req.completed) return null;
 
         const pathDestructure = path.split('/').slice(1);
         const urlDestructure = this.req.path.split('/').slice(1);

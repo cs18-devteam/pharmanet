@@ -1,5 +1,6 @@
+import Application from "../application/Application";
 
-class User{
+class User extends Application.Model{
     #firstName ;
     #lastName ;
     #email ;
@@ -18,7 +19,7 @@ class User{
     #mobileNumber;
     #road ;
     #id ;
-    #role ;
+    #role = 'customer';
     #profile;
 
 
@@ -120,6 +121,50 @@ class User{
         this.#postalCode = postalCode;
         this.#email = email;
     }
+
+
+    static all = async () => Application.Model.all(Application.registry.URL_USERS , {
+        adminId:1,
+    });
+
+
+
+    create = async () => {
+        const respond =await Application.Model.create(Application.registry.URL_USERS , this.get());
+        const body = await respond.json();
+        this.#id = body.id;
+        return body;
+
+    }
+    
+    static deleteById = async (id) => Application.Model.deleteById(Application.registry.URL_USERS , {
+        id , 
+    })
+
+    static getById = async (id)=>{
+    const respond = await Application.server.get({
+        url : Application.registry.DynamicURL(Application.registry.URL_USERS , {
+            id , 
+
+        }),
+    });
+    const body = await respond.json();
+    const data = body.data[0];
+    const medicine = new Medicine(data);
+    return medicine;
+    
 }
+
+
+    delete = async () => Model.delete(Application.registry.URL_USER_AUTH , {
+        id: this.#id,
+    })
+
+    update = async ()=> Model.update(Application.registry.URL_USER_AUTH , {
+        id : this.#id,
+    } , this.get());
+
+}
+
 
 export default User;

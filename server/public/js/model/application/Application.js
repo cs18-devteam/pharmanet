@@ -1,5 +1,6 @@
 import Utilities from "../../view/application/Utilities.js";
 import Dom from "./Dom.js";
+import Model from "./Model.js";
 import Navigator from "./Navigator.js";
 import Registry from "./Registry.js";
 import Server from "./Server.js";
@@ -14,6 +15,7 @@ class Application{
     static dom = Dom;
     static utilities = Utilities;
     static navigator = Navigator;
+    static Model = Model;
     static STATE_LOADING = "loading";
     static STATE_NORMAL = "idle";
     static STATE_PROCESSING = "processing";

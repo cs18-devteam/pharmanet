@@ -1,7 +1,7 @@
 const { getRequestData } = require("../common/getRequestData");
 const { responseJson } = require("../common/response");
 const Transactions = require("../model/TransactionModel");
-const { sendMail } = require("./mailController");
+
 
 
 exports.getTransactions =async (req , res)=>{
@@ -55,35 +55,6 @@ exports.createTransaction = async (req , res)=>{
     const newTransaction = await Transactions.save({
         name , value , description
     });
-
-
-    if(newTransaction){
-        const email = "chathura15592priyashan@gmail.com";
-        sendMail({
-            to: email , 
-            subject:`Pharmanet Transaction #${newTransaction.id}`,
-            html :`
-                <p><strong>Pharmanet Transaction</strong></p>
-                <p>A new transaction has been completed successfully.</p>
-                <p>
-                    <strong>Transaction ID:</strong> ${newTransaction.id}<br>
-                    <strong>Transaction Value:</strong> ${newTransaction.value}
-                </p>
-                
-                <i>Thank For your Support ! </i>
-                `,
-            text : `
-                Pharmanet Transaction
-
-                A new transaction has been completed successfully.
-
-                Transaction ID: ${newTransaction.id}
-                Transaction Value : ${newTransaction.value}
-
-                Thank For your Support !
-            `
-        })
-    }
     
     return responseJson(res , 201 , {
         status: 'success',

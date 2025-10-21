@@ -17,4 +17,13 @@ export default class Dom{
         htmlEl.appendChild(childNode);
         return htmlEl;
     }
+
+    static setValue(entries = []){
+        if(entries.length == 0)return ;
+        entries.forEach(([selector , value])=>{
+            document.querySelector(selector).value = value;
+        })
+
+
+    }
 }

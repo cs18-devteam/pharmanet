@@ -1,4 +1,4 @@
-const response = require("./response");
+const {response} = require("./response");
 const view = require("./view");
 
 module.exports = function notFound(req , res){

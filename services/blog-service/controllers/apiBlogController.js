@@ -1,24 +1,20 @@
 const { getRequestData } = require("../common/getRequestData");
 const { responseJson } = require("../common/response");
-const Leaves = require("../model/LeaveModel");
+const Blogs = require("../model/BlogModel");
 
 
-exports.getLeaves =async (req , res)=>{
+exports.getBlogs =async (req , res)=>{
     const filter = {};
     if(req.params.get('id')) filter.id = req.params.get('id')
     if(req.params.get('user')) filter.user = req.params.get('user')
-    if(req.params.get('reason')) filter.reason = req.params.get('reason')
-    if(req.params.get('requestedDate')) filter.requestedDate = req.params.get('requestedDate')
-    if(req.params.get('acceptedDate')) filter.acceptedDate = req.params.get('acceptedDate')
-    if(req.params.get('dateFrom')) filter.from = req.params.get('dateFrom')
-    if(req.params.get('dateTo')) filter.to = req.params.get('dateTo')
-    if(req.params.get('acceptedBy')) filter.acceptedBy = req.params.get('acceptedBy')
+    if(req.params.get('content')) filter.reason = req.params.get('content')
+    if(req.params.get('title')) filter.requestedDate = req.params.get('title')
 
     let content =  ''
     if(Object.entries(filter).length > 0){
-        content = await Leaves.get(filter);
+        content = await Blogs.get(filter);
     }else{
-        content = await Leaves.get();
+        content = await Blogs.get();
     }
 
     responseJson(res , 200 , {
@@ -26,13 +22,12 @@ exports.getLeaves =async (req , res)=>{
         data : content,
         count : content.length,
     })
-    
 }
 
 
-exports.deleteLeave =async (req , res)=>{
+exports.deleteBlog =async (req , res)=>{
     const {id} = JSON.parse(await getRequestData(req));
-    const results = await Leaves.deleteById(id);
+    const results = await Blogs.deleteById(id);
     
     return responseJson(res , 204 , {
         status: 'success',
@@ -41,10 +36,10 @@ exports.deleteLeave =async (req , res)=>{
 }
 
 
-exports.updateLeave = async (req , res)=>{
-    const {user , requestedDate , acceptedDate , dateFrom , dateTo , reason , acceptedBy} = JSON.parse(await getRequestData(req));
-    const results = await Leaves.update({
-        user , requestedDate , acceptedDate , dateFrom , dateTo , reason , acceptedBy
+exports.updateBlogs = async (req , res)=>{
+    const {user , title ,content , date} = JSON.parse(await getRequestData(req));
+    const results = await Blogs.update({
+        user , title ,content , date
     });
     
     return responseJson(res , 200 , {
@@ -54,15 +49,15 @@ exports.updateLeave = async (req , res)=>{
 }
 
 
-exports.createLeave = async (req , res)=>{
-    const {user , requestedDate , acceptedDate , dateFrom , dateTo , reason , acceptedBy} = JSON.parse(await getRequestData(req));
-    const newLeaveRequest = await Leaves.save({
-        user , requestedDate , acceptedDate , dateFrom , dateTo , reason , acceptedBy
+exports.createBlog = async (req , res)=>{
+    const {user , title ,content , date} = JSON.parse(await getRequestData(req));
+    const newBlog = await Blogs.save({
+        user , title ,content , date
     });
     
     return responseJson(res , 201 , {
         status: 'success',
-        data: newLeaveRequest,
-        count : newLeaveRequest.length,
+        data: newBlog,
+        count : newBlog.length,
     });
 }

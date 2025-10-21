@@ -1,20 +1,20 @@
 const notfound = require("../common/notfound");
-const apiLeaveController = require("../controllers/apiLeaveController");
+const apiBlogController = require("../controllers/apiBlogController");
 
 
-module.exports = function transactionApiRouter (req , res){
+module.exports = function apiBlogRouter(req , res){
     switch(req.method){
         case 'GET':
-            return apiLeaveController.getLeaves(req , res);
+            return apiBlogController.getBlogs(req , res);
 
         case 'POST':
-            return apiLeaveController.createLeave(req , res);
+            return apiBlogController.createBlog(req , res);
 
         case 'PATCH':
-            return apiLeaveController.updateLeave(req , res);
+            return apiBlogController.updateBlogs(req , res);
 
         case 'DELETE':
-            return apiLeaveController.deleteLeave(req , res);
+            return apiBlogController.deleteBlog(req , res);
         default:
             return notfound(req , res);
     }

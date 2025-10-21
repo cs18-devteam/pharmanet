@@ -9,6 +9,7 @@ class Registry{
     static TRANSACTION_SERVICE = "http://localhost:3007/api/transactions";
     static CUSTOMER_SERVICE = "http://localhost:3008/api/users/customers";
     static STAFF_SERVICE = "http://localhost:3008/api/users/staff"
+    static USER_SERVICE = "http://localhost:3003/api/users";
 
     static Health = {};
     

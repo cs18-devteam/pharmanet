@@ -1,1 +1,186 @@
-This page under construction
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1"/>
+	<title>Pharmanet — Read Article</title>
+	<style>
+		:root{
+			--green:#27ae60; --green-2:#2ecc71; --yellow:#f1c40f; --orange:#e67e22;
+			--bg:linear-gradient(180deg,#fbfdf9 0%, #ffffff 100%); --card:#fff; --text:#222; --muted:#f6f7f8; --radius:12px;
+			font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+		}
+		html,body{height:100%;margin:0;background:var(--bg);color:var(--text)}
+		.page{max-width:900px;margin:28px auto;padding:18px;display:flex;flex-direction:column;gap:14px}
+		.top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+		.brand{display:flex;align-items:center;gap:12px}
+		.logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--green),var(--orange));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800}
+		.title{font-size:24px;margin:0}
+		.meta{color:#666;font-size:14px}
+		.controls{display:flex;gap:8px;align-items:center}
+		.btn{padding:8px 10px;border-radius:8px;border:0;cursor:pointer;font-weight:700;background:transparent}
+		.btn.primary{background:linear-gradient(90deg,var(--green),var(--green-2));color:#fff}
+		.card{background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:0 10px 30px rgba(20,30,40,0.06)}
+		.content{line-height:1.7;color:#333;font-size:16px}
+		.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+		.tag{padding:6px 10px;border-radius:999px;font-weight:700;font-size:13px;background:var(--yellow);color:#222}
+		.related{margin-top:16px;display:flex;flex-direction:column;gap:8px}
+		.related a{color:var(--green);text-decoration:none;font-weight:700}
+		.empty{padding:28px;text-align:center;color:#666}
+		@media (max-width:760px){ .title{font-size:20px} .page{padding:12px} }
+	</style>
+</head>
+<body>
+	<div class="page">
+		<div class="top">
+			<div class="brand">
+				<div class="logo">PN</div>
+				<div>
+					<div style="font-weight:800">Pharmanet Blog</div>
+					<div class="meta">Read trusted health articles</div>
+				</div>
+			</div>
+
+			<div class="controls">
+				<button id="back" class="btn">Back</button>
+				<button id="inc-font" class="btn">A+</button>
+				<button id="dec-font" class="btn">A-</button>
+				<button id="print" class="btn">Print</button>
+				<button id="share" class="btn primary">Share</button>
+			</div>
+		</div>
+
+		<article id="post-card" class="card" aria-live="polite">
+			<header>
+				<h1 id="post-title" class="title">Loading…</h1>
+				<div id="post-meta" class="meta" style="margin-top:6px">—</div>
+			</header>
+
+			<section id="post-body" class="content" style="margin-top:14px">
+				<div class="empty">Loading post…</div>
+			</section>
+
+			<footer>
+				<div class="tags" id="post-tags" aria-hidden="false"></div>
+				<div class="related" id="related-posts"></div>
+			</footer>
+		</article>
+	</div>
+
+	<script>
+		(() => {
+			// helpers & elements
+			const elTitle = document.getElementById('post-title');
+			const elMeta = document.getElementById('post-meta');
+			const elBody = document.getElementById('post-body');
+			const elTags = document.getElementById('post-tags');
+			const relatedWrap = document.getElementById('related-posts');
+			const backBtn = document.getElementById('back');
+			const incFont = document.getElementById('inc-font');
+			const decFont = document.getElementById('dec-font');
+			const printBtn = document.getElementById('print');
+			const shareBtn = document.getElementById('share');
+
+			const STORAGE_KEY = 'pharm_blog_posts';
+			let posts = loadPosts();
+			let current = null;
+
+			function loadPosts(){
+				try {
+					const raw = localStorage.getItem(STORAGE_KEY);
+					if(raw) return JSON.parse(raw);
+				} catch(e){}
+				// fallback seed (kept short)
+				return [
+					{ id:'b1', title:'Managing fever at home', category:'Health Tips', date:'2025-03-01', author:'Pharmanet', tags:['fever','children'], excerpt:'Simple steps to manage fever safely at home.', body:'Fever can often be managed with rest, fluids, and paracetamol when necessary. Monitor temperature and seek care if symptoms worsen. Avoid aspirin in children.'},
+					{ id:'b2', title:'How antibiotics work', category:'Medicines', date:'2025-02-20', author:'Dr. Stevens', tags:['antibiotic','safety'], excerpt:'Understanding when antibiotics are needed.', body:'Antibiotics target bacteria and are ineffective against viruses. Use only as prescribed, complete the full course, and never share antibiotics.'},
+					{ id:'b3', title:'Sun protection guide', category:'Guides', date:'2025-02-05', author:'Pharmanet', tags:['skin','sun'], excerpt:'Choosing the right sunscreen.', body:'Apply broad-spectrum sunscreen SPF30+ and reapply every two hours. Wear protective clothing and seek shade during peak sun.'}
+				];
+			}
+
+			function findPostById(id){
+				return posts.find(p => p.id === id);
+			}
+
+			function renderPost(p){
+				if(!p){
+					elTitle.textContent = 'Post not found';
+					elMeta.textContent = '';
+					elBody.innerHTML = '<div class="empty">The requested article could not be found.</div>';
+					elTags.innerHTML = '';
+					relatedWrap.innerHTML = '';
+					return;
+				}
+				current = p;
+				elTitle.textContent = p.title;
+				elMeta.textContent = `${p.category} • ${p.date} • ${p.author || 'Author'}`;
+				elBody.textContent = p.body;
+				elTags.innerHTML = (p.tags || []).map(t => `<div class="tag">${escape(t)}</div>`).join('');
+				// related posts (same category)
+				const related = posts.filter(x => x.id !== p.id && x.category === p.category).slice(0,4);
+				relatedWrap.innerHTML = '';
+				if(related.length){
+					const h = document.createElement('div'); h.style.fontWeight = '700'; h.style.marginTop = '8px'; h.textContent = 'Related articles';
+					relatedWrap.appendChild(h);
+					related.forEach(r => {
+						const a = document.createElement('a');
+						a.href = '#post:' + r.id;
+						a.textContent = r.title + ' — ' + r.date;
+						a.style.display = 'block';
+						a.style.marginTop = '6px';
+						relatedWrap.appendChild(a);
+					});
+				}
+			}
+
+			function escape(s=''){ return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+
+			// routing: support #post:ID or ?id=ID
+			function getRequestedId(){
+				const h = (location.hash || '');
+				if(h.startsWith('#post:')) return h.split(':')[1];
+				const params = new URLSearchParams(location.search);
+				if(params.has('id')) return params.get('id');
+				// no id -> show first post
+				return posts.length ? posts[0].id : null;
+			}
+
+			// events
+			backBtn.addEventListener('click', ()=> {
+				if(document.referrer) history.back();
+				else location.href = '/customer.blogs.template.html';
+			});
+			printBtn.addEventListener('click', ()=> window.print());
+			incFont.addEventListener('click', ()=> adjustFont(1));
+			decFont.addEventListener('click', ()=> adjustFont(-1));
+			shareBtn.addEventListener('click', async () => {
+				const url = location.href;
+				if(navigator.share){ try { await navigator.share({ title: current?.title || 'Article', url }); } catch(e){} }
+				else { prompt('Share this link', url); }
+			});
+
+			function adjustFont(delta){
+				const el = elBody;
+				const style = window.getComputedStyle(el);
+				const size = parseFloat(style.fontSize || 16);
+				const next = Math.max(12, Math.min(24, size + delta));
+				el.style.fontSize = next + 'px';
+			}
+
+			// allow hash navigation to open another post
+			window.addEventListener('hashchange', () => {
+				const id = getRequestedId();
+				renderPost(findPostById(id));
+			});
+
+			// initial render
+			const rid = getRequestedId();
+			renderPost(findPostById(rid));
+
+			// expose for debug
+			window.__pharm_blog_view = { posts, renderPost };
+		})();
+	</script>
+</body>
+</html>
+

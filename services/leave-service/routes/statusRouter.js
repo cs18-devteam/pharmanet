@@ -6,4 +6,4 @@ const statusRouter = async  (req , res)=>{
         statusRouter:"running",
     })
 }
-module.exports = status; 
+module.exports = statusRouter; 

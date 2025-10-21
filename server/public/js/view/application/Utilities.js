@@ -13,7 +13,8 @@ export default class Utilities{
         this.#window.innerHTML = " ";
 
     }
-}
 
+
+}
 
 Utilities.init();

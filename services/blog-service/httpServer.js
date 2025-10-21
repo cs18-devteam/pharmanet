@@ -1,9 +1,8 @@
 const http = require('http');
 const fs = require('fs');
 const { requestFile } = require('./fileServer');
-const response = require('./common/response');
 const notfound = require('./common/notfound');
-const apiLeaveRouter = require('./routes/apiLeaveRouter');
+const apiBlogRouter = require('./routes/apiBlogRouter');
 const status = require('./routes/status');
 
 
@@ -33,9 +32,9 @@ const server = http.createServer((req , res)=>{
     
         // product routes
         if (path == '/blogs'){
-            return apiLeaveRouter(req , res);
+            return apiBlogRouter(req , res);
         }else if(path == "/api/blogs"){ 
-            return apiLeaveRouter(req , res);
+            return apiBlogRouter(req , res);
         }else if(path == "/api/blogs/status"){
             return status(req , res);
         }else{

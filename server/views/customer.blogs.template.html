@@ -1,1 +1,276 @@
-This page under construction
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Pharmanet — Blog</title>
+	<style>
+		:root{
+			--green:#27ae60; --green-2:#2ecc71; --yellow:#f1c40f; --orange:#e67e22;
+			--bg:linear-gradient(180deg,#fbfdf9 0%, #ffffff 100%);
+			--card:#fff; --text:#233; --muted:#f6f7f8; --radius:12px;
+			font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+		}
+		html,body{height:100%;margin:0;background:var(--bg);color:var(--text)}
+		.wrap{max-width:1100px;margin:28px auto;padding:18px;display:flex;flex-direction:column;gap:16px}
+		.header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+		.brand{display:flex;gap:12px;align-items:center}
+		.logo{width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,var(--green),var(--orange));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800}
+		h1{margin:0;font-size:20px}
+		.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+		.search{display:flex;gap:8px;align-items:center;flex:1}
+		.search input{flex:1;padding:12px;border-radius:12px;border:1px solid #eee;font-size:15px}
+		.chips{display:flex;gap:8px;flex-wrap:wrap}
+		.chip{padding:8px 12px;border-radius:999px;border:1px solid #eee;background:transparent;cursor:pointer;font-weight:700}
+		.chip.active{background:linear-gradient(90deg,var(--yellow),#f39c12);border:0;color:#222}
+		.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+		.card{background:var(--card);border-radius:12px;padding:14px;border:1px solid #f2f2f2;box-shadow:0 8px 20px rgba(20,30,40,0.04);display:flex;flex-direction:column;gap:10px}
+		.card .meta{font-size:13px;color:#666}
+		.card .title{font-weight:800}
+		.card .excerpt{color:#444;font-size:14px}
+		.tag{display:inline-block;padding:6px 8px;border-radius:999px;font-weight:700;font-size:12px;color:#fff}
+		.tag-green{background:var(--green)}
+		.tag-yellow{background:var(--yellow);color:#222}
+		.tag-orange{background:var(--orange)}
+		.pager{display:flex;gap:8px;align-items:center;justify-content:center;margin-top:12px}
+		.btn{padding:8px 12px;border-radius:10px;border:0;cursor:pointer;font-weight:700;background:transparent}
+		.btn.primary{background:linear-gradient(90deg,var(--green),var(--green-2));color:#fff}
+		.empty{padding:36px;text-align:center;color:#666;border-radius:10px;background:#fff;border:1px dashed #eee}
+		.overlay{position:fixed;inset:0;background:rgba(10,12,14,0.55);display:none;align-items:center;justify-content:center;z-index:80}
+		.overlay.open{display:flex}
+		.modal{background:var(--card);border-radius:12px;padding:18px;max-width:900px;width:96%;box-shadow:0 20px 48px rgba(10,12,14,0.3);max-height:90vh;overflow:auto}
+		.modal .meta{color:#666;font-size:13px;margin-bottom:8px}
+		.tags-row{display:flex;gap:8px;flex-wrap:wrap}
+		@media (max-width:760px){ .grid{grid-template-columns:1fr} .search input{min-width:120px} }
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="header">
+			<div class="brand">
+				<div class="logo">PN</div>
+				<div>
+					<h1>Pharmanet Blog</h1>
+					<div style="font-size:13px;color:#666">Search articles, health tips and product guides</div>
+				</div>
+			</div>
+			<div style="display:flex;gap:10px;align-items:center">
+				<div id="result-count" style="font-size:14px;color:#666">—</div>
+			</div>
+		</div>
+
+		<div class="controls card">
+			<div class="search">
+				<input id="search" placeholder="Search title, content or tags…" />
+				<button id="clear-search" class="btn">Clear</button>
+			</div>
+
+			<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+				<div class="chips" id="category-chips" aria-label="Categories">
+					<button class="chip active" data-cat="">All</button>
+					<button class="chip" data-cat="Health Tips">Health Tips</button>
+					<button class="chip" data-cat="Medicines">Medicines</button>
+					<button class="chip" data-cat="Guides">Guides</button>
+					<button class="chip" data-cat="Wellness">Wellness</button>
+				</div>
+				<div style="flex:1"></div>
+				<select id="sort" style="padding:8px 10px;border-radius:10px;border:1px solid #eee">
+					<option value="new">Newest</option>
+					<option value="old">Oldest</option>
+				</select>
+			</div>
+		</div>
+
+		<section>
+			<div id="grid" class="grid" aria-live="polite"></div>
+			<div id="empty" class="empty" style="display:none">No articles found. Try different search or filters.</div>
+			<div class="pager">
+				<button id="prev" class="btn">Prev</button>
+				<div id="page-info" style="min-width:120px;text-align:center;color:#666"></div>
+				<button id="next" class="btn">Next</button>
+			</div>
+		</section>
+	</div>
+
+	<!-- detail overlay -->
+	<div id="overlay" class="overlay" aria-hidden="true">
+		<div class="modal" role="dialog" aria-modal="true">
+			<div style="display:flex;justify-content:space-between;align-items:start;gap:12px">
+				<div>
+					<div id="post-title" style="font-size:20px;font-weight:800"></div>
+					<div id="post-meta" class="meta"></div>
+				</div>
+				<div style="display:flex;gap:8px;">
+					<button id="close" class="btn">Close</button>
+				</div>
+			</div>
+			<hr style="border:none;border-top:1px solid #f3f3f3;margin:12px 0" />
+			<div id="post-body" style="line-height:1.6;color:#333"></div>
+			<div style="margin-top:12px">
+				<div class="meta" style="margin-bottom:6px"><strong>Tags</strong></div>
+				<div id="post-tags" class="tags-row"></div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		(() => {
+			// elements
+			const grid = document.getElementById('grid');
+			const empty = document.getElementById('empty');
+			const search = document.getElementById('search');
+			const clearSearch = document.getElementById('clear-search');
+			const chips = Array.from(document.querySelectorAll('#category-chips .chip'));
+			const sortEl = document.getElementById('sort');
+			const resultCount = document.getElementById('result-count');
+			const prevBtn = document.getElementById('prev');
+			const nextBtn = document.getElementById('next');
+			const pageInfo = document.getElementById('page-info');
+
+			const overlay = document.getElementById('overlay');
+			const postTitle = document.getElementById('post-title');
+			const postMeta = document.getElementById('post-meta');
+			const postBody = document.getElementById('post-body');
+			const postTags = document.getElementById('post-tags');
+			const closeBtn = document.getElementById('close');
+
+			// sample posts (persisting optional)
+			const STORAGE_KEY = 'pharm_blog_posts';
+			let posts = loadPosts();
+			let filtered = [];
+			let page = 1;
+			const perPage = 6;
+
+			function loadPosts(){
+				try {
+					const raw = localStorage.getItem(STORAGE_KEY);
+					if(raw) return JSON.parse(raw);
+				} catch(e){}
+				// sample seed
+				return [
+					{ id:'b1', title:'Managing fever at home', category:'Health Tips', date:'2025-03-01', tags:['fever','children'], excerpt:'Simple steps to manage fever safely at home.', body:'Fever can often be managed with rest, fluids, and paracetamol when necessary. Monitor temperature and seek care if...'},
+					{ id:'b2', title:'How antibiotics work', category:'Medicines', date:'2025-02-20', tags:['antibiotic','safety'], excerpt:'Understanding when antibiotics are needed and when they are not.', body:'Antibiotics target bacteria and are ineffective against viruses. Do not use without prescription...'},
+					{ id:'b3', title:'Sun protection guide', category:'Guides', date:'2025-02-05', tags:['skin','sun'], excerpt:'Choosing the right sunscreen and protecting your skin.', body:'Apply broad-spectrum sunscreen SPF30+, reapply every 2 hours, wear protective clothing...'},
+					{ id:'b4', title:'Supplements: Do you need them?', category:'Wellness', date:'2025-01-25', tags:['vitamins','supplements'], excerpt:'A quick look at common supplements and who may benefit.', body:'Supplements can help address deficiencies; consider lab testing and professional advice...'},
+					{ id:'b5', title:'Pain relief basics', category:'Medicines', date:'2025-01-15', tags:['pain','ibuprofen'], excerpt:'When to use paracetamol vs ibuprofen safely.', body:'Paracetamol is generally safer for most people; ibuprofen is anti-inflammatory but avoid if...'},
+					{ id:'b6', title:'Caring for your skin in winter', category:'Health Tips', date:'2024-12-18', tags:['skin','winter'], excerpt:'Prevent dry skin and irritation during cold months.', body:'Use gentle cleansers, moisturize immediately after bathing, and avoid hot showers...'},
+					{ id:'b7', title:'Storing medicines safely', category:'Guides', date:'2024-11-08', tags:['safety','storage'], excerpt:'Tips to store medicines away from children and heat.', body:'Keep in original containers, out of reach of children, and avoid high humidity areas like bathrooms...'}
+				];
+			}
+
+			function savePosts(){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(posts)); }catch(e){} }
+
+			function escape(s=''){ return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+
+			function applyFilters(){
+				const q = (search.value || '').trim().toLowerCase();
+				const activeCat = chips.find(c=>c.classList.contains('active')).dataset.cat;
+				const sort = sortEl.value;
+				filtered = posts.filter(p => {
+					if(activeCat && activeCat !== '' && p.category !== activeCat) return false;
+					if(!q) return true;
+					const hay = (p.title + ' ' + p.excerpt + ' ' + (p.tags||[]).join(' ')).toLowerCase();
+					return hay.includes(q);
+				});
+				filtered.sort((a,b) => sort === 'new' ? (b.date.localeCompare(a.date)) : (a.date.localeCompare(b.date)));
+				page = 1;
+				render();
+			}
+
+			function render(){
+				grid.innerHTML = '';
+				const total = filtered.length;
+				resultCount.textContent = `${total} article${total === 1 ? '' : 's'}`;
+				if(total === 0){ empty.style.display = 'block'; pageInfo.textContent = ''; prevBtn.disabled = true; nextBtn.disabled = true; return; }
+				empty.style.display = 'none';
+				const start = (page-1)*perPage;
+				const end = Math.min(start + perPage, total);
+				const pageItems = filtered.slice(start,end);
+				pageInfo.textContent = `Page ${page} • ${start+1}-${end} of ${total}`;
+				prevBtn.disabled = page <= 1;
+				nextBtn.disabled = end >= total;
+
+				pageItems.forEach(p => {
+					const el = document.createElement('div');
+					el.className = 'card';
+					el.innerHTML = `
+						<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+							<div>
+								<div class="title">${escape(p.title)}</div>
+								<div class="meta">${escape(p.category)} • ${escape(p.date)}</div>
+							</div>
+							<div style="text-align:right">
+								<div style="font-weight:800;color:var(--green)">${p.tags.map(t=>`<span class="tag tag-yellow" style="margin-left:6px">${escape(t)}</span>`).join('')}</div>
+							</div>
+						</div>
+						<div class="excerpt">${escape(p.excerpt)}</div>
+						<div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+							<button class="btn primary" data-id="${p.id}">Read more</button>
+							<div class="meta">${escape(p.tags.join(', '))}</div>
+						</div>
+					`;
+					grid.appendChild(el);
+				});
+			}
+
+			// events
+			search.addEventListener('input', () => applyFilters());
+			clearSearch.addEventListener('click', ()=>{ search.value=''; applyFilters(); });
+			chips.forEach(c => c.addEventListener('click', (e) => {
+				chips.forEach(x=>x.classList.remove('active'));
+				e.currentTarget.classList.add('active');
+				applyFilters();
+			}));
+			sortEl.addEventListener('change', applyFilters);
+
+			// pagination
+			prevBtn.addEventListener('click', ()=> { if(page>1){ page--; render(); } });
+			nextBtn.addEventListener('click', ()=> { const max = Math.ceil(filtered.length / perPage); if(page < max){ page++; render(); } });
+
+			// delegation: read more
+			grid.addEventListener('click', (e) => {
+				const btn = e.target.closest('button[data-id]');
+				if(!btn) return;
+				const id = btn.dataset.id;
+				openPost(id);
+			});
+
+			function openPost(id){
+				const p = posts.find(x=>x.id===id); if(!p) return;
+				postTitle.textContent = p.title;
+				postMeta.textContent = `${p.category} • ${p.date}`;
+				postBody.textContent = p.body;
+				postTags.innerHTML = p.tags.map(t => `<span class="tag tag-green" style="margin-right:6px">${escape(t)}</span>`).join('');
+				overlay.classList.add('open'); overlay.setAttribute('aria-hidden','false');
+				// set hash for deep linking
+				location.hash = '#post:' + id;
+			}
+
+			closeBtn.addEventListener('click', closeOverlay);
+			overlay.addEventListener('click', (e) => { if(e.target === overlay) closeOverlay(); });
+			document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeOverlay(); });
+
+			// hash routing
+			window.addEventListener('hashchange', ()=> {
+				const h = location.hash || '';
+				if(h.startsWith('#post:')) {
+					const id = h.split(':')[1]; openPost(id);
+				} else {
+					closeOverlay();
+				}
+			});
+
+			function closeOverlay(){
+				overlay.classList.remove('open'); overlay.setAttribute('aria-hidden','true');
+				if(location.hash.startsWith('#post:')) history.replaceState(null,'',location.pathname + location.search);
+			}
+
+			// initial
+			applyFilters();
+
+			// expose for debug
+			window.__pharm_blog = { posts, applyFilters, render, openPost, savePosts };
+		})();
+	</script>
+</body>
+</html>

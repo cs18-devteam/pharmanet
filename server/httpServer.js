@@ -51,10 +51,12 @@ const server = http.createServer((req , res)=>{
 
         //:: USER ROUTES
         AppRouter.pipe(req , res).route('/login')
-            ?.get(loginController.renderLogin);
+            ?.get(loginController.renderLogin)
+            ?.post(loginController.login);
 
         AppRouter.pipe(req , res).route('/signup')
-            ?.get(signupController.renderSignup);
+            ?.get(signupController.renderSignup)
+            ?.post(signupController.createUser);
 
         AppRouter.pipe(req , res).route('/verify/email')
             ?.get(verifyEmailController.renderVerifyEmail);
@@ -141,6 +143,7 @@ const server = http.createServer((req , res)=>{
         // -- CUSTOMERS MANAGEMENTS
         AppRouter.pipe(req , res).route("/admin/:adminId/customers");
         AppRouter.pipe(req , res).route("/admin/:adminId/customers/:customerId");
+        
 
 
         // -- PHARMACIES MANAGEMENTS
@@ -155,6 +158,10 @@ const server = http.createServer((req , res)=>{
         AppRouter.pipe(req ,res).route("/blogs");
         AppRouter.pipe(req ,res).route("/blogs/:blogId");
         AppRouter.pipe(req , res).route("/blogs/create")
+
+
+        //:: USER ROUTES
+        
 
         //:: CUSTOMERS ROUTES
         AppRouter.pipe(req ,res).route("/customers/:customerId")

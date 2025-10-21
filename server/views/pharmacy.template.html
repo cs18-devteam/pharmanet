@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Pharmanet — Available Medicines</title>
+	<style>
+		:root{
+			--green:#27ae60;
+			--green-2:#2ecc71;
+			--yellow:#f1c40f;
+			--orange:#e67e22;
+			--muted:#f6f7f8;
+			--card:#ffffff;
+			--text:#222;
+			--radius:10px;
+			font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+		}
+		html,body{height:100%;margin:0;background:linear-gradient(180deg,#fbfdf9 0%, #ffffff 100%);color:var(--text)}
+		header{padding:28px 20px;max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
+		.brand{display:flex;align-items:center;gap:12px}
+		.logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--green),var(--orange));display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:18px}
+		.site-title{font-size:18px;font-weight:700}
+		.hero{max-width:1200px;margin:0 auto;padding:10px 20px 28px;display:flex;flex-direction:column;gap:18px}
+		.hero-card{background:var(--card);border-radius:var(--radius);padding:22px;box-shadow:0 8px 28px rgba(30,40,50,0.06);display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+		.hero-left{flex:1;min-width:240px}
+		.hero-title{font-size:22px;margin:0 0 6px}
+		.hero-sub{color:#555;margin:0 0 12px}
+		.search-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+		.search-input{flex:1;min-width:220px;padding:12px;border-radius:10px;border:1px solid #eee}
+		.cta{background:linear-gradient(90deg,var(--green),var(--green-2));color:white;padding:10px 14px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
+		.hero-right{min-width:220px}
+		.stock-summary{background:linear-gradient(180deg,#fff 0,#fbfff7 100%);padding:12px;border-radius:10px;border:1px solid #f0f6f2;text-align:center}
+		.main{max-width:1200px;margin:18px auto;padding:0 20px}
+		.controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+		.chips{display:flex;gap:8px;flex-wrap:wrap}
+		.chip{padding:8px 12px;border-radius:999px;background:transparent;border:1px solid #eee;cursor:pointer;font-weight:600}
+		.chip.active{background:linear-gradient(90deg,var(--yellow),#f39c12);border:0;color:#222}
+		.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+		.card{background:var(--card);border-radius:12px;padding:14px;border:1px solid #f2f2f2;box-shadow:0 8px 18px rgba(30,40,50,0.04);display:flex;flex-direction:column;gap:10px}
+		.card .title{font-weight:700}
+		.card .meta{color:#666;font-size:13px}
+		.price{font-weight:800;color:var(--green)}
+		.actions{display:flex;gap:8px;margin-top:auto}
+		.btn{padding:8px 10px;border-radius:8px;border:0;cursor:pointer;font-weight:700}
+		.btn-buy{background:linear-gradient(90deg,var(--green),var(--green-2));color:white}
+		.btn-view{background:transparent;border:1px solid #eee}
+		.tag{padding:6px 8px;border-radius:999px;font-weight:700;color:white;font-size:12px}
+		.tag-green{background:var(--green)}
+		.tag-yellow{background:var(--yellow);color:#222}
+		.tag-orange{background:var(--orange)}
+		.empty{padding:30px;text-align:center;color:#666;border-radius:10px;background:#fff;border:1px dashed #f0f0f0}
+		.footer{max-width:1200px;margin:28px auto;padding:14px 20px;color:#666;font-size:13px}
+
+		@media (max-width:760px){
+			.hero-card{flex-direction:column;align-items:stretch}
+			.header-actions{display:none}
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="brand">
+			<div class="logo">PN</div>
+			<div>
+				<div class="site-title">Pharmanet</div>
+				<div style="font-size:13px;color:#666">Trusted medicines, delivered</div>
+			</div>
+		</div>
+		<nav class="header-actions" aria-label="Primary">
+			<button class="chip" onclick="location='#products'">Products</button>
+			<button class="chip" onclick="location='#contact'">Contact</button>
+		</nav>
+	</header>
+
+	<section class="hero">
+		<div class="hero-card">
+			<div class="hero-left">
+				<h1 class="hero-title">Find your medicines quickly</h1>
+				<p class="hero-sub">Browse available products, check stock & pricing. Filter by category or search by name / SKU.</p>
+
+				<div class="search-row" role="search">
+					<input id="hp-search" class="search-input" placeholder="Search medicines, e.g. 'Paracetamol' or 'AMOX-250'">
+					<button id="hp-clear" class="btn btn-view">Clear</button>
+					<button class="cta" onclick="document.getElementById('hp-search').focus()">Explore</button>
+				</div>
+			</div>
+
+			<div class="hero-right">
+				<div class="stock-summary">
+					<div style="font-size:20px;font-weight:800">In stock: <span id="total-stock">0</span></div>
+					<div style="color:#666;margin-top:6px">Across all categories</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<main id="products" class="main">
+		<div class="controls">
+			<div class="chips" id="category-chips" aria-label="Filter by category">
+				<button class="chip active" data-cat="">All</button>
+				<button class="chip" data-cat="Analgesic">Analgesics</button>
+				<button class="chip" data-cat="Antibiotic">Antibiotics</button>
+				<button class="chip" data-cat="Dermatology">Dermatology</button>
+				<button class="chip" data-cat="Supplements">Supplements</button>
+				<button class="chip" data-cat="Other">Other</button>
+			</div>
+			<div style="flex:1"></div>
+			<div style="font-size:13px;color:#666">Showing <span id="count">0</span> items</div>
+		</div>
+
+		<div id="grid" class="grid" aria-live="polite"></div>
+		<div id="empty" class="empty" style="display:none">No products found. Try clearing filters or search.</div>
+	</main>
+
+	<footer class="footer" id="contact">
+		<div>Pharmanet — local pharmacy catalog. For demo purposes only.</div>
+	</footer>
+
+	<script>
+		// ...existing code...
+		(() => {
+			const products = [
+				{ id:'p1', name:'Paracetamol 500mg', sku:'PARA-500', category:'Analgesic', price:2.5, qty:120, status:'active' },
+				{ id:'p2', name:'Amoxicillin 250mg', sku:'AMOX-250', category:'Antibiotic', price:4.75, qty:30, status:'low' },
+				{ id:'p3', name:'Hydrocortisone Cream 1%', sku:'HYDRO-1', category:'Dermatology', price:6.5, qty:55, status:'active' },
+				{ id:'p4', name:'Vitamin D 1000IU', sku:'VITD-1000', category:'Supplements', price:8.0, qty:200, status:'active' },
+				{ id:'p5', name:'Ibuprofen 200mg', sku:'IBU-200', category:'Analgesic', price:3.25, qty:10, status:'low' },
+				{ id:'p6', name:'Azithromycin 500mg', sku:'AZI-500', category:'Antibiotic', price:12.5, qty:0, status:'discontinued' },
+				{ id:'p7', name:'Zinc Ointment', sku:'ZINC-01', category:'Dermatology', price:5.0, qty:44, status:'active' },
+				{ id:'p8', name:'Multivitamin Adult', sku:'MULTI-A', category:'Supplements', price:9.99, qty:75, status:'active' }
+			];
+
+			const grid = document.getElementById('grid');
+			const search = document.getElementById('hp-search');
+			const clear = document.getElementById('hp-clear');
+			const chips = Array.from(document.querySelectorAll('#category-chips .chip'));
+			const totalStock = document.getElementById('total-stock');
+			const countEl = document.getElementById('count');
+			const empty = document.getElementById('empty');
+
+			function statusTag(s){
+				if(s === 'active') return '<span class="tag tag-green">In stock</span>';
+				if(s === 'low') return '<span class="tag tag-yellow">Low</span>';
+				return '<span class="tag tag-orange">Out</span>';
+			}
+
+			function render(list){
+				grid.innerHTML = '';
+				if(list.length === 0){
+					empty.style.display = 'block';
+					countEl.textContent = '0';
+					return;
+				}
+				empty.style.display = 'none';
+				countEl.textContent = String(list.length);
+				list.forEach(p => {
+					const el = document.createElement('div');
+					el.className = 'card';
+					el.innerHTML = `
+						<div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
+							<div>
+								<div class="title">${escape(p.name)}</div>
+								<div class="meta">${escape(p.sku)} • ${escape(p.category)}</div>
+							</div>
+							<div style="text-align:right">
+								<div class="price">$${(p.price||0).toFixed(2)}</div>
+								<div style="margin-top:6px">${statusTag(p.status)}</div>
+							</div>
+						</div>
+						<div class="meta">Qty: ${p.qty}</div>
+						<div class="actions">
+							<button class="btn btn-view" data-id="${p.id}" aria-label="View ${escape(p.name)}">View</button>
+							<button class="btn btn-buy" data-id="${p.id}" ${p.qty===0 ? 'disabled' : ''}>Buy</button>
+						</div>
+					`;
+					grid.appendChild(el);
+				});
+			}
+
+			function escape(s=''){ return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+
+			function filterAndRender(){
+				const q = search.value.trim().toLowerCase();
+				const activeCat = chips.find(c=>c.classList.contains('active'))?.getAttribute('data-cat') || '';
+				let list = products.filter(p => {
+					if(activeCat && p.category !== activeCat) return false;
+					if(!q) return true;
+					return (p.name + ' ' + p.sku + ' ' + (p.category||'')).toLowerCase().includes(q);
+				});
+				render(list);
+			}
+
+			// compute stock
+			function computeStock(){
+				const total = products.reduce((s,p)=>s + (Number(p.qty)||0),0);
+				totalStock.textContent = String(total);
+			}
+
+			// events
+			search.addEventListener('input', () => filterAndRender());
+			clear.addEventListener('click', ()=>{ search.value=''; filterAndRender(); });
+			chips.forEach(c => c.addEventListener('click', (e)=>{
+				chips.forEach(x=>x.classList.remove('active'));
+				e.currentTarget.classList.add('active');
+				filterAndRender();
+			}));
+
+			// basic delegation for card buttons
+			grid.addEventListener('click', (e) => {
+				const btn = e.target.closest('button');
+				if(!btn) return;
+				const id = btn.getAttribute('data-id');
+				const p = products.find(x=>x.id===id);
+				if(!p) return;
+				if(btn.classList.contains('btn-buy')){
+					alert('Buy flow not implemented in demo. Selected: ' + p.name);
+				} else {
+					alert('View details for: ' + p.name + '\\nSKU: ' + p.sku + '\\nPrice: $' + p.price.toFixed(2));
+				}
+			});
+
+			// initial
+			computeStock();
+			filterAndRender();
+
+			// expose for testing
+			window.__pharm = { products, filterAndRender, computeStock };
+		})();
+	</script>
+</body>
+</html>

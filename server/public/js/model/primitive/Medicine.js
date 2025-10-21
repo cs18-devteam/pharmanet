@@ -1,63 +1,9 @@
 import Application from "../application/Application.js";
 
-class Model{
-
-    static create = async (url , params , data) => {
-        const respond = await Application.server.save({
-            url : Application.registry.DynamicURL(url , params
-            ),
-            data,
-        })
-
-        return respond;
-    }
-
-    static getById = async (url ,params)=>{
-        const respond = await Application.server.get({
-            url : Application.registry.DynamicURL(url , params)
-        });
-    }
-
-    static all = async (url = "" , params = {}) =>{
-        const respond = await Application.server.get({
-            url : Application.registry.DynamicURL( url , params),
-        });
-
-        return respond;
-    }
-
-    static delete = async (url , params)=>{
-        const respond = await Application.server.delete({
-            url : Application.registry.DynamicURL(url , params),
-        });
-        const results =  await respond.json();
-        return results;
-
-    }
-
-    static update = async (url , params , data)=>{
-        const respond = await Application.server.update({
-            url : Application.registry.DynamicURL(url , params),
-            data ,
-        });
-        const results =  await respond.json();
-        return results;
-    }
-
-
-    delete(){}
-    get(){}
-    create(){}
-    update(){}
 
 
 
-}
-
-
-
-
-class Medicine extends Model{
+class Medicine extends Application.Model{
     #id;
     #serialNumber;
     #countryCode;
@@ -83,21 +29,6 @@ class Medicine extends Model{
         this.#dosageCode = dosageCode;
     }
 
-    static getById = async (id)=>{
-        const respond = await Application.server.get({
-            url : Application.registry.DynamicURL(Application.registry.URL_ADMIN_MEDICINES_MEDICINE , {
-                id , 
-                adminId : 1,
-
-            }),
-        });
-        const body = await respond.json();
-        const data = body.data[0];
-        console.log(data);
-        const medicine = new Medicine(data);
-        return medicine;
-        
-    }
 
     get(){
         const medicine = {
@@ -116,14 +47,14 @@ class Medicine extends Model{
         return medicine;
     }
 
-    static all = async () => Model.all(Application.registry.URL_ADMIN_MEDICINES , {
+    static all = async () => Application.Model.all(Application.registry.URL_ADMIN_MEDICINES , {
         adminId:1,
     });
 
 
 
     create = async () => {
-        const respond =await Model.create(Application.registry.URL_ADMIN_MEDICINES_CREATE , {
+        const respond =await Application.Model.create(Application.registry.URL_ADMIN_MEDICINES_CREATE , {
             adminId:1,
         } , this.get());
         const body = await respond.json();
@@ -131,8 +62,26 @@ class Medicine extends Model{
         return body;
 
     }
-
     
+    static deleteById = async (id) => Application.Model.deleteById(Application.registry.URL_ADMIN_MEDICINES_MEDICINE , {
+        medicineId : id , 
+        adminId : 1,
+    })
+
+    static getById = async (id)=>{
+    const respond = await Application.server.get({
+        url : Application.registry.DynamicURL(Application.registry.URL_ADMIN_MEDICINES_MEDICINE , {
+            medicineId : id , 
+            adminId : 1,
+
+        }),
+    });
+    const body = await respond.json();
+    const data = body.data[0];
+    const medicine = new Medicine(data);
+    return medicine;
+    
+}
 
 
     delete = async () => Model.delete(Application.registry.URL_ADMIN_MEDICINES_MEDICINE , {

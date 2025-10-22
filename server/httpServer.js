@@ -251,6 +251,8 @@ const server = http.createServer((req , res)=>{
         ?.delete(pharmacyProductController.deleteProduct);
 
         ///* --- PHARMACY CASHIERS
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:cashierId')
+        ?.get()
 
         AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:cashierId/api/orders')
         ?.get(cashierOrdersController.getOrders)

@@ -36,8 +36,8 @@ const refreshCache = (filePath)=>{
         const fileObj =  {
             ...file , 
             type : MIME_TYPES[file.name.split('.').slice(-1)] || 'text/plain',
-            name : path.relative(filePath , path.join(file.parentPath , file.name)),
-            path : path.join(__dirname , file.parentPath , file.name),
+            name : path.relative(filePath , path.join(file.parentPath , file.name)).replaceAll("\\" , "/"),
+            path : path.join(__dirname , file.parentPath , file.name).replaceAll('\\' , "/"),
 
         }
 

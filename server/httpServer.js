@@ -40,6 +40,7 @@ const  {renderProducts, deleteProduct } = require("./controllers/product.control
 const { renderCustomerMedicines } = require('./controllers/customer.medicines.controller');
 const pharmacyProductController = require("./controllers/pharmacy.products.controller");
 const cashierOrdersController = require("./controllers/cashier.order.controller");
+const cashierController = require('./controllers/pharmacy/cashiers/cashier.controller');
 
 
 const server = http.createServer((req , res)=>{
@@ -249,10 +250,9 @@ const server = http.createServer((req , res)=>{
         ?.get(pharmacyProductController.getProduct)
         ?.update(pharmacyProductController.updateProduct)
         ?.delete(pharmacyProductController.deleteProduct);
+        
 
         ///* --- PHARMACY CASHIERS
-        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:cashierId')
-        ?.get()
 
         AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:cashierId/api/orders')
         ?.get(cashierOrdersController.getOrders)
@@ -261,6 +261,36 @@ const server = http.createServer((req , res)=>{
         ?.get(cashierOrdersController.getOrder)
         ?.update(cashierOrdersController.updateOrder)
         ?.delete(cashierOrdersController.deleteOrder);
+
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:casheirId')
+        ?.get(cashierController.renderCashierDashboard);
+
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:casheirId/bills')
+        ?.get(cashierController.renderCashierCreateBill);
+
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:casheirId/customers')
+        ?.get(cashierController.renderCashierCustomer);
+
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:casheirId/orders')
+        ?.get(cashierController.renderCashierOrder);
+
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:casheirId/orders')
+        ?.get(cashierController.renderCashierOrder);
+
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:casheirId/payment/qr')
+        ?.get(cashierController.renderCashierPaymentQR);
+
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:casheirId/payment/card')
+        ?.get(cashierController.renderCashierPaymentCard);
+
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:casheirId/payment/cash')
+        ?.get(cashierController.renderCashierPaymentCash);
+
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:casheirId/product')
+        ?.get(cashierController.renderCashierProduct);
+
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:casheirId/sales')
+        ?.get(cashierController.renderCashierSales);
 
     
 

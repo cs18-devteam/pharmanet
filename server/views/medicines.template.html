@@ -359,7 +359,6 @@
                     <option value="XK">Kosovo</option>
                 </select>
 
-
 				<div class="form-actions">
 					<input type="submit" id="save-btn" class="btn btn-ghost" type="button" value="Save"/>
                     <input type="reset" value="Cancel" id="cancel-btn" class="btn btn-ghost">
@@ -430,10 +429,10 @@
           const results = await respond.json();
           popup.classList.add('visible');
 
-          if(results.status == "success"){
-           const popup =  document.querySelector('.popup');
-           popup.textContent = "Medicine Added Successfully";
-           popup.classList.add('success');
+        if(results.status == "success"){
+            const popup =  document.querySelector('.popup');
+            popup.textContent = "Medicine Added Successfully";
+            popup.classList.add('success');
             setTimeout(()=>{
                 window.location.href = "/users/medicines";
             } , 2000);

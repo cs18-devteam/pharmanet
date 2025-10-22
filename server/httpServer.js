@@ -72,6 +72,14 @@ const server = http.createServer((req , res)=>{
         AppRouter.pipe(req ,res).route('/')
             ?.get(indexController.renderIndexPage);
 
+
+        //:: BLOG ROUTES
+        AppRouter.pipe(req ,res).route('/users/blogs')
+        
+        AppRouter.pipe(req ,res).route('/users/blogs')
+        AppRouter.pipe(req ,res).route('/users/blogs')
+
+
         //:: USER ROUTES
         AppRouter.pipe(req , res).route('/login')
             ?.get(loginController.renderLogin)
@@ -129,36 +137,32 @@ const server = http.createServer((req , res)=>{
 
 
 
-        //:: MEDICINES ROUTES
-        AppRouter.pipe(req ,res).route("/medicines/:medicineId")
-        ?.get(renderMedicinesProfile);
+ 
 
 
-        //:: PRODUCT ROUTES
-        AppRouter.pipe(req ,res).route("/products")
-        ?.get(renderProducts);
-        AppRouter.pipe(req ,res).route("/products/:productId")
-        ?.get(renderProductsProfile);
 
+        //:: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //:: ~~~~~~~~~~~~~~~ SYSTEM STAFF ~~~~~~~~~~~~~~~~~~~~~~~~~~
+        
         //:: ADMIN ROUTES
         AppRouter.pipe(req , res).route("/admin")
             ?.get(adminController.renderAdminDashboard);
         AppRouter.pipe(req , res).route("/admin/:adminId")
             ?.get(adminController.renderAdminDashboard);
 
-        // -- NOTIFICATION MANAGEMENTS
+        // -- ADMIN NOTIFICATION MANAGEMENTS
         AppRouter.pipe(req , res).route("/admin/:adminId/notifications")
         ?.get(renderAdminNotification);
         AppRouter.pipe(req , res).route("/admin/:adminId/notifications/:notificationId")
         ?.get(renderAdminNotificationProfile);
 
-        // -- TRANSACTIONS MANAGEMENTS
+        // -- ADMIN TRANSACTIONS MANAGEMENTS
         AppRouter.pipe(req , res).route("/admin/:adminId/transactions")
         ?.get(renderAdminTransactions);
         AppRouter.pipe(req , res).route("/admin/:adminId/blogs")
         ?.get(renderAdminBlogs);
         
-        // -- MEDICINES MANAGEMENTS
+        // --ADMIN MEDICINES MANAGEMENTS
         AppRouter.pipe(req , res).route("/admin/:adminId/medicines")
         ?.get(adminMedicineController.getAllMedicines);
         
@@ -172,14 +176,14 @@ const server = http.createServer((req , res)=>{
         ?.get(adminMedicineController.getMedicineById);
 
 
-        // -- CUSTOMERS MANAGEMENTS
+        // --ADMIN CUSTOMERS MANAGEMENTS
         AppRouter.pipe(req , res).route("/admin/:adminId/customers")
         ?.get(renderAdminCustomers);
         AppRouter.pipe(req , res).route("/admin/:adminId/customers/:customerId")
         ?.get(renderAdminCustomerDetails);
 
 
-        // -- PHARMACIES MANAGEMENTS
+        // --ADMIN PHARMACIES MANAGEMENTS
         AppRouter.pipe(req , res).route("/admin/:adminId/pharmacies")
         ?.get(adminPharmacyController.renderAdminPharmacyPage);
         AppRouter.pipe(req , res).route("/admin/:adminId/pharmacies/:pharmacyId")
@@ -187,19 +191,32 @@ const server = http.createServer((req , res)=>{
         AppRouter.pipe(req , res).route("/admin/:adminId/pharmacy/:pharmacyId/verify")
             ?.get(adminPharmacyVerifyController.renderAdminPharmacyVerify);
 
+        //:: SYSTEM STOCK MANAGERS
+        AppRouter.pipe(req , res).route("/system/stockmanagers/:stockManagerId")
+        ?.get(medicineController.renderMedicineManagement);
         
         //:: BLOGS ROUTES
-        AppRouter.pipe(req ,res).route("/blogs")
+        AppRouter.pipe(req ,res).route("/users/blogs")
         ?.get(renderBlogs);
         AppRouter.pipe(req ,res).route("/blogs/:blogId")
         ?.get(renderBlogDetails);
         AppRouter.pipe(req , res).route("/blogs/create")
         ?.get(renderBlogCreate);
 
+        //:: PRODUCT ROUTES
+        AppRouter.pipe(req ,res).route("/users/products")
+        ?.get(renderProducts);
+        AppRouter.pipe(req ,res).route("/products/:productId")
+        ?.get(renderProductsProfile);
+
 
         //::MEDICINES ROUTES
         AppRouter.pipe(req , res).route('/users/medicines')
         ?.get(medicineController.renderMedicineManagement)
+
+        //:: MEDICINES ROUTES
+        AppRouter.pipe(req ,res).route("/medicines/:medicineId")
+        ?.get(renderMedicinesProfile);
         
         AppRouter.pipe(req , res).route('/medicines')
         ?.post(medicineController.createMedicine)
@@ -212,18 +229,29 @@ const server = http.createServer((req , res)=>{
         .update(medicineController.updateMedicine);
 
 
-        //:: USER ROUTES
+        //:: PHARMACIES ROUTES
+        ///* ---   PHARMACY OWNERS ---
         AppRouter.pipe(req,res).route('/pharmacies/:pharmacyId/owners/:OwnerId')
         ?.get(pharmacyController.renderPharmacyDashboard);
+        
         AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/owners/:OwnerId/api/medicines')
         ?.get(pharmacyProductApi.getProducts)
         ?.post(pharmacyProductApi.createProduct)
         ?.update(pharmacyProductApi.updateProduct)
         ?.delete(pharmacyProductApi.deleteProduct);
+
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/owners/:OwnerId/products')
+        ?.get(pharmacyProductsController.renderPharmacyProducts);
+
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/owners/:OwnerId/staff')
+
         AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/owners/:OwnerId/api/products/:productId')
         ?.get(pharmacyProductController.getProduct)
         ?.update(pharmacyProductController.updateProduct)
         ?.delete(pharmacyProductController.deleteProduct);
+
+        ///* --- PHARMACY CASHIERS
+
         AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:cashierId/api/orders')
         ?.get(cashierOrdersController.getOrders)
         ?.post(cashierOrdersController.createOrder);
@@ -232,13 +260,7 @@ const server = http.createServer((req , res)=>{
         ?.update(cashierOrdersController.updateOrder)
         ?.delete(cashierOrdersController.deleteOrder);
 
-
-
-        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/owners/:OwnerId/products')
-        ?.get(pharmacyProductsController.renderPharmacyProducts);
-
-
-        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/owners/:OwnerId/staff')
+    
 
         //:: CUSTOMERS ROUTES
         AppRouter.pipe(req ,res).route("/customers/:customerId")

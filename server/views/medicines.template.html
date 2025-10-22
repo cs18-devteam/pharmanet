@@ -434,10 +434,10 @@
            const popup =  document.querySelector('.popup');
            popup.textContent = "Medicine Added Successfully";
            popup.classList.add('success');
-           
-           setTimeout(()=>{
-               window.location.href = "/users/medicines";
+            setTimeout(()=>{
+                window.location.href = "/users/medicines";
             } , 2000);
+     
         }else{
             popup.classList.add('error');
             popup.textContent = "Medicine not added";

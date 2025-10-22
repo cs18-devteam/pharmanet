@@ -116,16 +116,24 @@
       color: white;
       border: none;
       border-radius: 8px;
-      padding: 8px 16px;
+      padding: 1rem 1.6rem;
       cursor: pointer;
       display: flex;
-      align-items: center;
+      align-items: space-between;
       gap: 6px;
       font-weight: 500;
       transition: background-color 0.3s;
 
+      a{
+        color: white;
+      
+        &:hover {
+        color: $accent;
+      }
+    }
+
       &:hover {
-        background-color: $primary;
+        color: $accent;
       }
     }
   }

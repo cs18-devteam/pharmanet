@@ -173,7 +173,7 @@
 
 
         &:hover {
-          background: darken($primary, 8%);
+          background: ($primary, 8%);
         }
       }
     }

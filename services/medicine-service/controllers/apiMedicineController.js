@@ -15,6 +15,8 @@ exports.getMedicines =async (req , res)=>{
     if(req.params.get('menuCode')) filter.menuCode = req.params.get('menuCode')
     if(req.params.get('packType')) filter.packType = req.params.get('packType')
     if(req.params.get('dosageCode')) filter.dosageCode = req.params.get('dosageCode')
+    if(req.params.get('search')) filter.search = req.params.get('search');
+
 
     let content =  ''
     if(Object.entries(filter).length > 0){

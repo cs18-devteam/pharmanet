@@ -205,23 +205,19 @@
     <div class="container">
       <!-- left: form -->
       <section class="card" aria-labelledby="form-title">
+        <h2 class="topic">Create Leave</h2>
         <form id="product-form" onsubmit="return false;">
           <input type="hidden" id="product-id" value="" />
           <div class="form-group">
-            <label for="name">Product name</label>
-            <input
+            <label for="reason">reason</label>
+            <textarea
               id="name"
-              type="text"
-              name="name"
-              placeholder="e.g. Paracetamol 500mg"
+              name="reason"
+              placeholder="have a parent's meeting in sun's school"
               required
-            />
+            ></textarea>
           </div>
 
-          <div class="form-group">
-            <label for="sku">SKU / Code</label>
-            <input id="sku" type="text" placeholder="e.g. PARA-500" />
-          </div>
 
           <div style="display: flex; gap: 10px">
             <div class="form-group" style="flex: 1">
@@ -330,7 +326,7 @@
           }); 
 
           const results = await respond.json();
-          document.querySelector('.popup').classList.add('visible')
+          console.log(results);
         })
 
 

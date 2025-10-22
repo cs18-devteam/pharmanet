@@ -3,13 +3,13 @@ class Registry{
     static BLOG_SERVICE = "http://localhost:3001/api/blogs" ;
     static LEAVE_SERVICE = "http://localhost:3002/api/leaves";
     static MEDICINE_SERVICE = "http://localhost:3003/api/medicines";
-    static ORDER_SERVICE = "http://localhost:3004/api/users";
+    static ORDER_SERVICE = "http://localhost:3004/api/orders";
     static PHARMACY_SERVICE = "http://localhost:3005/api/pharmacies";
     static PRODUCT_SERVICE = "http://localhost:3006/api/products";
     static TRANSACTION_SERVICE = "http://localhost:3007/api/transactions";
     static CUSTOMER_SERVICE = "http://localhost:3008/api/users/customers";
     static STAFF_SERVICE = "http://localhost:3008/api/users/staff"
-    static USER_SERVICE = "http://localhost:3003/api/users";
+    static USER_SERVICE = "http://localhost:3008/api/users";
 
     static Health = {};
     

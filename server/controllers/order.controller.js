@@ -1,5 +1,3 @@
-
-
 const Bridge = require("../common/Bridge");
 const { getRequestData } = require("../common/getRequestData");
 const { response, responseJson } = require("../common/response");
@@ -7,7 +5,9 @@ const view = require("../common/view");
 
 
 
-exports.createBlog = async (req , res)=>{
+
+
+exports.createOrder = async (req , res)=>{
     const body = await getRequestData(req);
 
     const response = await fetch(Bridge.registry.ORDER_SERVICE , {
@@ -21,7 +21,9 @@ exports.createBlog = async (req , res)=>{
     })
     
 }
-exports.updateBlog = async (req , res)=>{
+
+
+exports.updateOrder = async (req , res)=>{
     const body = JSON.parse(await getRequestData(req));
 
     const response = await fetch(Bridge.registry.ORDER_SERVICE , {
@@ -35,7 +37,9 @@ exports.updateBlog = async (req , res)=>{
     })
     
 }
-exports.deleteBlog = async (req , res)=>{
+
+
+exports.deleteOrder = async (req , res)=>{
 
     const response = await fetch(Bridge.registry.ORDER_SERVICE , {
         method:"DELETE", 
@@ -51,14 +55,16 @@ exports.deleteBlog = async (req , res)=>{
 }
 
 
-exports.updateBlog = async (req , res)=>{
+exports.getOrder = async (req , res)=>{
     const response = await fetch(`${Bridge.registry.PRODUCT_SERVICE}?id=${req.productId}`);
     const json = await response.json();
     return responseJson(res , 200 , json);
     
 }
 
-exports.getBlogs = async (req , res)=>{
+
+
+exports.getOrders = async (req , res)=>{
     const response = await fetch(Bridge.registry.ORDER_SERVICE);
     console.log(response);
     const json = await response.json();

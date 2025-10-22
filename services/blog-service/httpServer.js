@@ -28,6 +28,7 @@ const server = http.createServer((req , res)=>{
         req.path = path;
         req.params = params;
 
+
         //set public folder 
         const file = requestFile(path);
         if(file){

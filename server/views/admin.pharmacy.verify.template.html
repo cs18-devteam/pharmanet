@@ -1,11 +1,13 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Pharmacy Verification</title>
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Admin verify pharmacies</title>
+    <style>
   :root {
     --green: #16a34a;
     --yellow: #f59e0b;
@@ -117,28 +119,77 @@
   }
 </style>
 </head>
-<body>
+<body class="adminDashboard">
+<div class="container">
+    <div class="container-1">
+    <div class="sideBar">
+    <div class="logo">
+      <img class="logopic" src="/logo/logo.svg" alt="logo">
+      <div>
+        <h3>System Admin</h3>
+        <p>Management System</p>
+      </div>
+    </div>
 
-<header>Admin Pharmacy Verification</header>
+    <ul class="menu">
+      <a href="/admin/" >Dashboard</a>
+      <a href="/admin/{adminId}/pharmacies">Pharmacies</a>
+      <a href="/admin/{adminId}/medicines">Medicines</a>
+      <a href="/admin/{adminId}/customers">Customers</a>
+      <a href="/admin/{adminId}/products">Products</a>
+      <a href="/admin/{adminId}/transactions">Transactions</a>
+      <a href="/admin/{adminId}/notifications">Notifications</a>
+      <a href="/admin/{adminId}/analytics">Analytics</a>
+    </ul>
 
-<main>
-  <div class="top-bar">
-    <input type="text" id="search" placeholder="Search pharmacies...">
+    <div class="menuItem">
+        <span class="text1">Settings</span><br>
+        <span class="text2">Sign Out</span>
+    </div>
+  </div>
   </div>
 
-  <table id="pharmacyTable">
-    <thead>
-      <tr>
-        <th>Pharmacy Name</th>
-        <th>Owner</th>
-        <th>Location</th>
-        <th>Status</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-</main>
+  <div class="container-2">
+  <div class="main">
+    <header>
+      <input type="text" placeholder="Search medicines, pharmacies, users..." />
+      <div class="user-section">
+        <span class="bell"></span>
+        <div class="admin">AD</div>
+      </div>
+    </header>
+
+    <section class="dashboard">
+      <h1>Dashboard</h1>
+      <p>Welcome back! Here's your system overview.</p>
+
+
+      <header>Admin Pharmacy Verification</header>
+
+      <main>
+        <div class="top-bar">
+          <input type="text" id="search" placeholder="Search pharmacies...">
+        </div>
+
+        <table id="pharmacyTable">
+          <thead>
+            <tr>
+              <th>Pharmacy Name</th>
+              <th>Owner</th>
+              <th>Location</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </main>
+    </section>
+  </div>
+  
+
+  </div>
+  </div>   
 
 <script>
   let pharmacies = [
@@ -198,6 +249,7 @@
   search.addEventListener("input", renderTable);
   renderTable();
 </script>
-
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/js/controller/admin/admin.dashboard.client.controller.js"></script>
 </body>
 </html>

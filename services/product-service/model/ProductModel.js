@@ -17,6 +17,13 @@ class ProductModel extends Model{
             type:"VARCHAR(500)",
         }
 
+        this.stock = {
+            type:"INT",
+        }
+        this.pharmacyId = {
+            type:"INT",
+        }
+
     }
 }
 

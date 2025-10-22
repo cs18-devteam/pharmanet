@@ -9,6 +9,7 @@ const statusRouter = require('./routes/statusRouter');
 
 
 const { spawn } = require('child_process');
+const apiUsersRouter = require('./routes/apiUserService');
 
 function restartServer() {
   console.log('Restarting server...');
@@ -45,12 +46,12 @@ const server = http.createServer((req , res)=>{
         }
     
         // product routes
-        if (path == '/users'){
-            return apiCustomerRouter(req , res);
-        }else if(path == "/api/users/customers"){ 
+        if (path == "/api/users/customers"){
             return apiCustomerRouter(req , res);
         }else if(path == "/api/users/staff"){ 
             return apiStaffMemberRouter(req , res);
+        }else if(path == '/api/users' ){ 
+            return apiUsersRouter(req , res);
         }else if(path == "/api/users/status"){ 
             return statusRouter(req , res);
         }else{

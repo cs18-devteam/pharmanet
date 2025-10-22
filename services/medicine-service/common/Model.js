@@ -197,6 +197,15 @@ class Model{
             let filters = [];
     
             for(const [column , value] of Object.entries(data)){
+                if(value.includes("%")){
+                    filters.push(`${column} like "${value}"`);
+                    continue;
+                }
+
+                if(typeof value == "string"){
+                    filters.push(`${column}="${value}"`);
+                    continue;
+                }
                 filters.push(`${column}=${value}`);
             }
             query += filters.join(" AND ");

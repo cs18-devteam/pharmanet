@@ -23,7 +23,7 @@
         font-size: 4.5rem;
         color:white;
         font-weight:700;
-        background-image:url(/public/images/login\ Image.svg);
+        background-image:url("/images/login Image.svg");
         text-align: center;
        
         }
@@ -53,7 +53,7 @@
 
         ul{
             //padding-left:3rem;
-            list-style-image: url(/public/images/check-circle.svg);
+            list-style-image: url("/images/check-circle.svg");
             li{
                 font-size: 1.7rem; 
                 margin: 2rem;

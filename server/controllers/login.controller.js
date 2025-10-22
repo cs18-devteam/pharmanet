@@ -1,5 +1,6 @@
 
 const Bridge = require("../common/Bridge");
+const { encrypt, createToken } = require("../common/encrypt");
 const { getRequestData } = require("../common/getRequestData");
 const { response } = require("../common/response");
 const view = require("../common/view");
@@ -19,33 +20,50 @@ exports.renderLogin = async (req, res) => {
 exports.login = async (req, res) => {
     try {
         // Get credentials from request body
-        const credentials = await getRequestData(req);
+        const credentials = JSON.parse(await getRequestData(req));
 
         if (!credentials.email || !credentials.password) {
-            return response(res, { status: "error", message: "Email and password are required" }, 400);
+            return response(res, JSON.stringify({ status: "error", message: "Email and password are required" }), 400);
         }
 
-        // Call Auth Service via Bridge
-        Bridge.pipe(req, res)
-            .connect(Bridge.registry.AUTH_SERVICE, { method: "POST" })
-            .request(async (req, res) => {
-                return credentials; // Send { email, password } to auth service
-            })
-            .json()
-            .resend((data) => {
-                if (data && data.token) {
-                    // Successful login
-                    return response(res, {
-                        status: "success",
-                        message: "Login successful",
-                        user: data.user,    // user info from auth service
-                        token: data.token,  // JWT or session token
-                    }, 200);
-                }
+        console.log(`${Bridge.registry.CUSTOMER_SERVICE}?email=${credentials.email}`);
 
-                // Invalid credentials
-                return response(res, { status: "error", message: "Invalid email or password" }, 401);
+        const customerRespond = await fetch(`${Bridge.registry.CUSTOMER_SERVICE}?email=${credentials.email}`);
+        const staffRespond = await fetch(`${Bridge.registry.STAFF_SERVICE}?email=${credentials.email} `);
+
+        const customerJson = await customerRespond.json();
+        const staffMemberJson = await staffRespond.json();
+
+        if(!customerJson || !staffMemberJson) return response(res , JSON.stringify({
+            status:"error",
+            message:"internal server error",
+        }));
+
+        const customer = customerJson.data[0];
+        const staffMember = staffMemberJson.data[0];
+
+        if(!customer && !staffMember) return response(res , JSON.stringify({
+            status:"error",
+            message :"Wrong email or password",
+        }));
+
+        if(customer){
+            const token = createToken(customer);
+            
+            return response(res  , 
+                JSON.stringify({
+                status:"success",
+                data: customer,
+                message:"Welcome to pharmanet"
+            }) , 200 , {
+                "Authentication" : token,
+                "Set-Cookie" : `token=${token};path=/;expires=${Date.now()/1000+60}`
             });
+        
+
+        }
+
+        
 
     } catch (err) {
         console.error("Login error:", err);

@@ -55,7 +55,6 @@ exports.updateProduct = async (req, res) => {
         }, 200);
 };
 
-// ✅ Delete a product
 exports.deleteProduct = async (req, res) => {
     Bridge.pipe(req, res)
         .connect(Bridge.registry.PRODUCT_SERVICE, {
@@ -73,7 +72,6 @@ exports.deleteProduct = async (req, res) => {
         }, 200);
 };
 
-// ✅ Optional: Search products
 exports.searchProducts = async (req, res) => {
     Bridge.pipe(req, res)
         .connect(Bridge.registry.PRODUCT_SERVICE, {

@@ -20,8 +20,10 @@ exports.renderCustomerHome = async (req , res)=>{
         navbar : view('components/navbar.customer' , {
                 name : `${customer.firstName} ${customer.lastName}`,  
                 id : customer.id,
-            })
+            }) , 
+            id : customer.id
         })
 
     })
 }
+

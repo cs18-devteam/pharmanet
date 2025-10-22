@@ -115,3 +115,47 @@ div[data-role="popup-container"]{
         transform: translateY(100%);
     }
 }
+
+
+
+.popup{
+    position: fixed;
+    top:50%;
+    left: 50%;
+    width: 60rem;
+    height: 40rem;
+    border-radius: 1rem;
+    background-color: #fff;
+    box-shadow: 1px 0px 5px #00000025; 
+    transform: translate(-50% , 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    overflow: auto;
+    z-index: -10;
+    opacity: 0;
+    transition: all 1s ease;
+
+
+    > div{
+        z-index: 10;
+    }
+}
+
+
+
+.visible{
+    opacity: 1;
+    z-index: 10;
+    transform: translate(-50% , -50%);
+}
+
+.success{
+    background-color: #028080;
+    color: white;
+}
+
+.error{
+    background-color: #f6912d;
+    color : black;
+}

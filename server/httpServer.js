@@ -20,7 +20,7 @@ const customerPharmacyController = require('./controllers/customer.pharmacies.co
 const adminMedicineController = require('./controllers/admin.medicines.controller');
 const { renderPharamcyStaffAttendance } = require('./controllers/pharmacy.staff.attendance.controller');
 const { renderPharmacyStaffLeave } = require('./controllers/pharmacy.staff.leave.controller');
-const { renderMedicines } = require('./controllers/medicines.controller');
+const medicineController = require('./controllers/medicines.controller');
 const { renderMedicinesProfile } = require('./controllers/medicines.profile.controller');
 const { renderAdminNotification } = require('./controllers/admin.notification.controller');
 const { renderAdminNotificationProfile } = require('./controllers/admin.notification.profile.controller');
@@ -36,8 +36,10 @@ const { renderCustomerHistory } = require("./controllers/customer.history.contro
 const { renderCustomerTransactions } = require("./controllers/customer.transactions.controller");
 const { renderCustomerOrders } = require("./controllers/customer.orders.controller");
 const { renderCustomerOrderDetails } = require("./controllers/customer.orders.order.controller");
-const { renderProducts } = require("./controllers/product.controller");
+const  {renderProducts, deleteProduct } = require("./controllers/product.controller");
 const { renderCustomerMedicines } = require('./controllers/customer.medicines.controller');
+const pharmacyProductController = require("./controllers/pharmacy.products.controller");
+const cashierOrdersController = require("./controllers/cashier.order.controller");
 
 
 const server = http.createServer((req , res)=>{
@@ -128,8 +130,6 @@ const server = http.createServer((req , res)=>{
 
 
         //:: MEDICINES ROUTES
-        AppRouter.pipe(req ,res).route("/medicines")
-        ?.get(renderMedicines);
         AppRouter.pipe(req ,res).route("/medicines/:medicineId")
         ?.get(renderMedicinesProfile);
 
@@ -181,8 +181,9 @@ const server = http.createServer((req , res)=>{
 
         // -- PHARMACIES MANAGEMENTS
         AppRouter.pipe(req , res).route("/admin/:adminId/pharmacies")
+        ?.get(adminPharmacyController.renderAdminPharmacyPage);
         AppRouter.pipe(req , res).route("/admin/:adminId/pharmacies/:pharmacyId")
-            ?.get(adminPharmacyController.renderAdminPharmacies);
+            ?.get(adminPharmacyVerifyController.renderAdminPharmacyVerify);
         AppRouter.pipe(req , res).route("/admin/:adminId/pharmacy/:pharmacyId/verify")
             ?.get(adminPharmacyVerifyController.renderAdminPharmacyVerify);
 
@@ -196,11 +197,52 @@ const server = http.createServer((req , res)=>{
         ?.get(renderBlogCreate);
 
 
-        //:: USER ROUTES
+        //::MEDICINES ROUTES
+        AppRouter.pipe(req , res).route('/users/medicines')
+        ?.get(medicineController.renderMedicineManagement)
         
+        AppRouter.pipe(req , res).route('/medicines')
+        ?.post(medicineController.createMedicine)
+        ?.get(medicineController.getMedicines)
+
+        AppRouter.pipe(req , res).route('/medicines/:medicineId')
+        ?.get(medicineController.getMedicine)
+        ?.post(medicineController.createMedicine)
+        ?.delete(medicineController.deleteMedicine)
+        .update(medicineController.updateMedicine);
+
+
+        //:: USER ROUTES
+        AppRouter.pipe(req,res).route('/pharmacies/:pharmacyId/owners/:OwnerId')
+        ?.get(pharmacyController.renderPharmacyDashboard);
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/owners/:OwnerId/api/medicines')
+        ?.get(pharmacyProductApi.getProducts)
+        ?.post(pharmacyProductApi.createProduct)
+        ?.update(pharmacyProductApi.updateProduct)
+        ?.delete(pharmacyProductApi.deleteProduct);
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/owners/:OwnerId/api/products/:productId')
+        ?.get(pharmacyProductController.getProduct)
+        ?.update(pharmacyProductController.updateProduct)
+        ?.delete(pharmacyProductController.deleteProduct);
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:cashierId/api/orders')
+        ?.get(cashierOrdersController.getOrders)
+        ?.post(cashierOrdersController.createOrder);
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:cashierId/api/orders/:orderId')
+        ?.get(cashierOrdersController.getOrder)
+        ?.update(cashierOrdersController.updateOrder)
+        ?.delete(cashierOrdersController.deleteOrder);
+
+
+
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/owners/:OwnerId/products')
+        ?.get(pharmacyProductsController.renderPharmacyProducts);
+
+
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/owners/:OwnerId/staff')
 
         //:: CUSTOMERS ROUTES
         AppRouter.pipe(req ,res).route("/customers/:customerId")
+        ?.authenticate()
         ?.get(customerController.renderCustomerHome);
         AppRouter.pipe(req ,res).route("/customers/:customerId/medicines")
             ?.get(renderCustomerMedicines);
@@ -208,6 +250,9 @@ const server = http.createServer((req , res)=>{
         AppRouter.pipe(req ,res).route("/customers/:customerId/profile")
             ?.get(customerProfileController.renderCustomerProfile);
 
+        AppRouter.pipe(req ,res).route("/customers/:customerId/pharmacy/register")
+        ?.get(pharmacyController.renderPharmacyRegister);
+        ;
         AppRouter.pipe(req ,res).route("/customers/:customerId/profile/edit");
         
         AppRouter.pipe(req ,res).route("/customers/:customerId/pharmacies")

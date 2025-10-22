@@ -12,7 +12,7 @@ exports.renderAdminCreateMedicine = async (req , res)=>{
         .resend((data)=>{
             const medicines = data.data; 
 
-            return view('admin.medicines.create' ,{
+            return view('admin.medicines' ,{
                 medicines : medicines.map((medicine)=>view("components/medicine.card" , {
                     ...medicine,
                     manufacture : medicine.menuCode,
@@ -28,7 +28,9 @@ exports.renderAdminCreateMedicine = async (req , res)=>{
 }
 
 exports.renderAdminMedicines = async (req , res)=>{
-    return response(res , view("admin.medicines") , 200);
+    return response(res , view("admin.medicines" , {
+        adminId : req.adminId,
+    }) , 200);
 }
 
 

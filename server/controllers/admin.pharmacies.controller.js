@@ -16,8 +16,9 @@ exports.renderAdminPharmacyPage = async (req, res) => {
         .json()
         .resend((data) => {
             // Render pharmacy admin page with retrieved data
-            return view("admin.pharmacies.manage", {
+            return view("admin.pharmacy.verify", {
                 pharmacies: data || [],
+                adminId : req.adminId,
             });
         }, 200);
 };
@@ -53,7 +54,7 @@ exports.updatePharmacy = async (req, res) => {
         })
         .json()
         .resend((data) => {
-            return view("admin.pharmacies.manage", {
+            return view("admin.pharmacies", {
                 message: "Pharmacy updated successfully",
                 data,
             });

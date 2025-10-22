@@ -37,6 +37,9 @@ class MedicineModel extends Model{
         this.dosageCode = {
             type:"VARCHAR(100)"
         }
+        this.category = {
+            type:"VARCHAR(100)"
+        }
 
     }
 }

@@ -109,14 +109,16 @@ class Model{
             if(!value) continue;
 
             if(typeof value == "string"){
-                valuesArray.push(`"${value}"`);
+                valuesArray.push(`${value}`);
             }else{
                 valuesArray.push(value);
             }
 
+
             columnsArray.push(columnName);
 
         }
+
 
         query = query.replace("%%COLUMNS%%" , columnsArray.join(","));
         query = query.replace("%%VALUES%%" , valuesArray.join(','));
@@ -197,7 +199,11 @@ class Model{
             let filters = [];
     
             for(const [column , value] of Object.entries(data)){
-                filters.push(`${column}=${value}`);
+                if(typeof value == "string"){
+                    filters.push(`${column}='${value}'`);
+                }else{
+                    filters.push(`${column}=${value}`);
+                }
             }
             query += filters.join(" AND ");
         }

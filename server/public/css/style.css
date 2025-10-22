@@ -385,6 +385,44 @@ div[data-role=popup-container] #pointer {
     transform: translateY(100%);
   }
 }
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 60rem;
+  height: 40rem;
+  border-radius: 1rem;
+  background-color: #fff;
+  box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.1450980392);
+  transform: translate(-50%, 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+  z-index: -10;
+  opacity: 0;
+  transition: all 1s ease;
+}
+.popup > div {
+  z-index: 10;
+}
+
+.visible {
+  opacity: 1;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+}
+
+.success {
+  background-color: #028080;
+  color: white;
+}
+
+.error {
+  background-color: #f6912d;
+  color: black;
+}
+
 div[data-role=slide-container] {
   position: relative;
   --active-slide: 1;
@@ -3044,7 +3082,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   font-size: 4.5rem;
   color: white;
   font-weight: 700;
-  background-image: url(/public/images/login\ Image.svg);
+  background-image: url("/images/login Image.svg");
   text-align: center;
 }
 .RegPharmacy .container .LeftPanel ul {
@@ -3066,7 +3104,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   padding-right: 1rem;
 }
 .RegPharmacy .container .LeftPanel .instruction-card ul {
-  list-style-image: url(/public/images/check-circle.svg);
+  list-style-image: url("/images/check-circle.svg");
 }
 .RegPharmacy .container .LeftPanel .instruction-card ul li {
   font-size: 1.7rem;

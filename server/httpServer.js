@@ -3,6 +3,8 @@ const fs = require('fs');
 const { requestFile } = require('./fileServer');
 const AppRouter = require('./common/Router');
 const indexController = require('./controllers/index.controller');
+const cashierController = require('./controllers/Cashier/cashier.contreller');
+const { isConstructorDeclaration } = require('typescript');
 
 
 const server = http.createServer((req , res)=>{
@@ -35,10 +37,34 @@ const server = http.createServer((req , res)=>{
         AppRouter.pipe(req , res).route('/')
         ?.get(indexController.renderIndexPage);
 
-        AppRouter.pipe(req ,res).route('/login')
-        ?.get()
+        AppRouter.pipe(req ,res).route('/cashier-dashboard')
+        ?.get(cashierController.renderCashierDashboard);
 
+
+        AppRouter.pipe(req ,res).route('/cashier-customer')
+        ?.get(cashierController.renderCashierCustomer);
+
+        AppRouter.pipe(req ,res).route('/cashier-createBill')
+        ?.get(cashierController.renderCashierBillPage);
+
+         AppRouter.pipe(req ,res).route('/cashier-order')
+        ?.get(cashierController.renderCashierorder);
+
+        AppRouter.pipe(req ,res).route('/cashier-sales')
+        ?.get(cashierController.renderCashierSale);
+
+        AppRouter.pipe(req ,res).route('/cashier-product')
+        ?.get(cashierController.renderCashierProduct);
+        
+        AppRouter.pipe(req ,res).route('/Product-management')
+        ?.get(cashierController.cashierProductManagement);
+
+        AppRouter.pipe(req, res).route('/api/products')
+        ?.post(cashierController.createProduct);
+
+        
         AppRouter.pipe(req ,res).route('/signup')
+        AppRouter.pipe(req ,res).end();
 
 
     

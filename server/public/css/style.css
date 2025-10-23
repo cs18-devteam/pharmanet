@@ -523,6 +523,39 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
     transform: rotate(360deg);
   }
 }
+.navbar-pharmacy nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 2rem;
+  font-family: var(--primary-font);
+}
+.navbar-pharmacy .nav-links {
+  display: flex;
+  background-color: black;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  height: 5rem;
+}
+.navbar-pharmacy .nav-links .tab {
+  background: none;
+  color: white;
+  border: none;
+  padding: 1rem 3rem;
+  cursor: pointer;
+  font-size: 1.6rem;
+}
+.navbar-pharmacy .nav-links .tab:hover {
+  background-color: #404040;
+  border-radius: 1.2rem;
+  transition: all 0.2s ease-out;
+}
+.navbar-pharmacy .nav-links .tab.active {
+  background-color: white;
+  color: #000;
+  border-radius: 1.2rem;
+}
+
 @font-face {
   font-family: "red hat display";
   font-weight: 100;
@@ -4901,6 +4934,21 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   vertical-align: middle;
   font-size: 1.4rem;
 }
+.cashier-create-bill .search-result-table tbody tr .Add {
+  color: #d62839;
+  margin: 1rem;
+  cursor: pointer;
+  padding: 1rem;
+  background-color: #ea4335;
+  border: none;
+  border-radius: 1rem;
+  border-color: #ea4335;
+  font-size: 1.5rem;
+  width: 15rem;
+  height: 5rem;
+  color: white;
+  font-weight: 500;
+}
 .cashier-create-bill .search-result-table .add-icon {
   width: 3rem;
   height: 3rem;
@@ -6235,7 +6283,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   border: 0.2rem solid #aaa;
   border-radius: 1rem;
   font-size: 1.5rem;
-  width: 40rem;
+  width: 30rem;
   height: 5rem;
   cursor: pointer;
   transition: 0.2s ease;
@@ -6260,7 +6308,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .product .top-bar .searchButton {
   border-radius: 1rem;
   border: 0.2rem solid #aaa;
-  width: 10rem;
+  width: 8rem;
   height: 5rem;
   background-color: white;
   font-size: 1.5rem;
@@ -6279,7 +6327,6 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   border-radius: 1rem;
   border-color: #ea4335;
   font-size: 1.5rem;
-  width: 15rem;
   height: 5rem;
   color: white;
   font-weight: 500;
@@ -6376,6 +6423,355 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   cursor: pointer;
 }
 .product .pagination .page-btn.active {
+  background: #003344;
+  color: white;
+}
+.product .addProduct {
+  background: #ff9d00;
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  height: 5rem;
+  font-weight: 500;
+  transition: 0.2s ease;
+  font-size: 1.5rem;
+}
+.product .addProduct:hover {
+  background: #e68a00;
+}
+.product .popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.product .popup-overlay.active {
+  display: flex;
+}
+.product .popup-box {
+  background: #181818;
+  color: #fff;
+  width: 500px;
+  border-radius: 20px;
+  padding: 25px 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  animation: fadeIn 0.3s ease;
+}
+.product .popup-box h2 {
+  text-align: center;
+  color: #ffb600;
+  margin-bottom: 20px;
+}
+.product .popup-box .form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+.product .popup-box .form-row label {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.product .popup-box .form-row input {
+  background: #2a2a2a;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  padding: 10px;
+  outline: none;
+  font-size: 1.5rem;
+}
+.product .popup-box .form-row input:focus {
+  border: 1px solid #ffb600;
+}
+.product .popup-box .actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+.product .popup-box .actions button {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.product .popup-box .actions .save {
+  background: #00b050;
+  color: white;
+}
+.product .popup-box .actions .save:hover {
+  background: #009745;
+}
+.product .popup-box .actions .close {
+  background: #ff4d4d;
+  color: white;
+}
+.product .popup-box .actions .close:hover {
+  background: #e33e3e;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cashier-sales-page {
+  background: linear-gradient(180deg, #f8fbfb, #e8f0f0);
+  /* ---------------- Sidebar ---------------- */
+}
+.cashier-sales-page .sidebar {
+  width: 22rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-family: var(--primary-font);
+}
+.cashier-sales-page .dashboard {
+  display: flex;
+}
+.cashier-sales-page .section-title {
+  font-size: 1.6rem;
+  color: var(--color-green-02);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.cashier-sales-page ul {
+  list-style: none;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+.cashier-sales-page li {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1rem 1.4rem;
+  border-radius: 2rem;
+  color: #2b3a3a;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.cashier-sales-page li:hover {
+  background-color: #dce8e8;
+}
+.cashier-sales-page li.active {
+  background-color: var(--color-green-01);
+  color: white;
+}
+.cashier-sales-page li .icon {
+  font-size: 16px;
+}
+.cashier-sales-page {
+  /* ---------------- Right Side ---------------- */
+}
+.cashier-sales-page .right-side {
+  flex: 1;
+  padding: 30px 40px;
+  font-family: var(--primary-font);
+}
+.cashier-sales-page {
+  /* ---------------- Top Bar ---------------- */
+}
+.cashier-sales-page .top-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1rem;
+  font-family: var(--primary-font);
+  border-radius: 2rem;
+  background-color: white;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+}
+.cashier-sales-page .top-bar .searchmedi {
+  margin: 1rem;
+  padding: 1rem;
+  border: 0.2rem solid #aaa;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  width: 40rem;
+  height: 5rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.cashier-sales-page .top-bar .searchmedi:hover {
+  background-color: #f0f0f0;
+}
+.cashier-sales-page .top-bar .searchButton {
+  border-radius: 1rem;
+  border: 0.2rem solid #aaa;
+  width: 10rem;
+  height: 5rem;
+  background-color: white;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.cashier-sales-page .top-bar .searchButton:hover {
+  background-color: #f0f0f0;
+}
+.cashier-sales-page .top-bar .createBill {
+  margin: 1rem;
+  cursor: pointer;
+  padding: 1rem;
+  background-color: #ea4335;
+  border-radius: 1rem;
+  border-color: #ea4335;
+  font-size: 1.5rem;
+  width: 15rem;
+  height: 5rem;
+  color: white;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+.cashier-sales-page .top-bar .createBill:hover {
+  background-color: #d62839;
+}
+.cashier-sales-page {
+  /* ---------------- Sales Results ---------------- */
+}
+.cashier-sales-page .sales-results {
+  color: #1d2d2d;
+  background-color: white;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  border-radius: 2rem;
+  margin: 1rem;
+  padding: 2rem;
+}
+.cashier-sales-page .sales-results h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  color: var(--color-green-02);
+}
+.cashier-sales-page .sales-results .cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+.cashier-sales-page .sales-results .card {
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: white;
+}
+.cashier-sales-page .sales-results .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+.cashier-sales-page .sales-results .card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.cashier-sales-page .sales-results .card .card-header .icon {
+  font-size: 22px;
+}
+.cashier-sales-page .sales-results .card .card-header .more {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+}
+.cashier-sales-page .sales-results .card h3 {
+  font-size: 16px;
+  margin: 0 0 10px;
+}
+.cashier-sales-page .sales-results .card .value {
+  font-size: 26px;
+  font-weight: 600;
+  margin: 0;
+}
+.cashier-sales-page .sales-results .card .change {
+  font-size: 13px;
+  margin-top: 5px;
+}
+.cashier-sales-page .sales-results .card.green {
+  background-color: var(--color-green-01);
+}
+.cashier-sales-page .sales-results .card.yellow {
+  background-color: #aaa;
+}
+.cashier-sales-page .sales-results .card.red {
+  background-color: #fb8f21;
+}
+.cashier-sales-page .sales-results .card.ash {
+  background-color: #ea4335;
+}
+.cashier-sales-page {
+  /* ---------------- Recent Sales ---------------- */
+}
+.cashier-sales-page .recentSale {
+  background-color: white;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  border-radius: 2rem;
+  margin: 1rem;
+  padding: 2rem;
+}
+.cashier-sales-page .recent-sales-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.cashier-sales-page .recent-sales-table thead {
+  padding: 2rem;
+  color: var(--color-green-02);
+  font-weight: 500;
+}
+.cashier-sales-page .recent-sales-table thead th {
+  padding: 12px 10px;
+  text-align: left;
+  font-weight: 600;
+}
+.cashier-sales-page .recent-sales-table tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+}
+.cashier-sales-page .recent-sales-table tbody tr:hover {
+  background-color: #f8f8f8;
+}
+.cashier-sales-page .recent-sales-table tbody tr td {
+  padding: 14px 10px;
+  vertical-align: middle;
+  font-size: 1.4rem;
+}
+.cashier-sales-page {
+  /* ---------------- Pagination ---------------- */
+}
+.cashier-sales-page .pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+.cashier-sales-page .pagination .page-btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 50%;
+  background: #f0f0f0;
+  cursor: pointer;
+}
+.cashier-sales-page .pagination .page-btn.active {
   background: #003344;
   color: white;
 }

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            font-size: 18px;
+            color: #666;
+            text-decoration: none;
+            font-family: sans-serif;
+            text-transform: capitalize;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        [data-view='product'] .product{
+            background-color: black;
+            color: #fff;
+        }
+        [data-view='staff'] .staff{
+            background-color: black;
+            color: #fff;
+        }
+        [data-view='blogs'] .blogs{
+            background-color: black;
+            color: #fff;
+        }
+        [data-view='medicine'] .medicine{
+            background-color: black;
+            color: #fff;
+        }
+        
+        .container{
+            width: 800px;
+            margin: 0 auto;
+            padding-top: 30px;
+        }
+
+        h1, h4{
+            color : black;
+        }
+
+        h4{
+            font-weight: 400;
+            color:rgba(0, 0, 0, 0.684);
+        }
+
+        h1{
+            font-size: 36px;
+        }
+
+        .top{
+            width: 800px;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 auto;
+        }
+
+        .top a {
+            padding: 10px 20px;
+            border: 1px solid #666;
+            border-radius: 30px;
+        }
+
+        .action-bar{
+            width: 800px;
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+            margin: 0 auto;
+        }
+
+        .create{
+            background-color: rgb(50, 158, 0);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 10px;
+            height: fit-content;
+        }
+
+        .btn{
+            padding: 10px 20px;
+            border: 1px solid green;
+            color: green;
+            border-radius: 10px;
+            margin: 5px;
+        }
+
+        .items{
+            padding-top: 50px ;
+        }
+
+        .item{
+            display: flex;
+            width: 600px;
+            justify-content: space-between;
+            margin: 1px auto;
+            align-items: center;
+            border-bottom: 1px solid rgba(0,0,0,0.25);
+            padding: 20px 0;
+
+        }
+        .details .name{
+            font-size: 14px;
+            opacity: .5;
+        }
+        .details .value{
+            font-size: 24px;
+            opacity: 1;
+            color: black;
+            font-weight: 300;
+        }
+
+
+
+    </style>
+</head>
+<body data-view="{service}">
+    {navbar}
+
+    <div class="container">
+        
+
+        
+        <div class="top">
+            <a href="/admin/products" class="product">products</a>
+            <a href="/admin/medicines" class="medicine">medicines</a>
+            <a href="/admin/staff" class="staff">staff</a>
+            <a href="/admin/blogs" class="blogs">blogs</a>
+        </div>
+        
+  
+
+        <div class="action-bar">
+            <div>
+                <h4>Admin/{service}</h4>
+                <h1>Manage Your All {service}</h1>
+            </div>
+            <a href="/admin/{service}/create" class="create">create</a>
+        </div>
+
+
+
+        <div class="items">
+            {items}
+        </div>
+
+
+    </div>
+        
+</body>
+</html>

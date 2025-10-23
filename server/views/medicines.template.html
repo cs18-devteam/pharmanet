@@ -51,7 +51,7 @@
 	<div class="wrapper">
 		<!-- left: form -->
 		<section class="card" aria-labelledby="form-title">
-			<h1 id="form-title">Medicine • Create / Edit</h1>
+			<h1 id="form-title">Medicine • Create</h1>
 			<div class="small">Fill details and press Add. Use the list to edit or delete items.</div>
 
 			<form id="medicine-form" onsubmit="return false;" style="margin-top:12px">
@@ -63,13 +63,13 @@
 				<label for="med-sku">Serial Code</label>
 				<input id="med-sku" type="text" name="serialNumber" placeholder="e.g. PARA-500" />
 
-				<label for="med-sku">Registration Number</label>
-				<input id="med-sku" type="text" name="registrationNo" placeholder="e.g. PARA-500" />
+				<label for="med-registration">Registration Number</label>
+				<input id="med-registration" type="text" name="registrationNo" placeholder="e.g. REG-123" />
 
 				<div style="display:flex;gap:10px;margin-top:6px">
 					<div style="flex:1">
-						<label for="med-price">Agent Code</label>
-						<input id="med-price" name="agentCode" type="number" min="0" step="0.01" placeholder="0.00" />
+						<label for="med-agent">Agent Code</label>
+						<input id="med-agent" name="agentCode" type="number" min="0" step="0.01" placeholder="0.00" />
 					</div>
 				</div>
 
@@ -105,7 +105,7 @@
 				</select>
 
                 <label for="Country Code">Country Code</label>
-                <select name="schedule" id="med-status schedule">
+                <select name="country" id="med-country">
                     <option value="">Select country</option>
                     <option value="AF">Afghanistan</option>
                     <option value="AX">Aland Islands</option>
@@ -360,7 +360,7 @@
                 </select>
 
 				<div class="form-actions">
-					<input type="submit" id="save-btn" class="btn btn-ghost" type="button" value="Save"/>
+					<input type="submit" id="save-btn" class="btn btn-ghost" value="Save"/>
                     <input type="reset" value="Cancel" id="cancel-btn" class="btn btn-ghost">
 					<div style="flex:1"></div>
 					<button id="import-btn" class="btn btn-ghost" type="button">Import CSV</button>
@@ -406,45 +406,142 @@
 	</div>
 
 
-    <div class="popup">
-        <h1>hello</h1>
+    <div class="popup" style="display:none;padding:12px;border-radius:8px;">
+        <!-- popup text will be inserted dynamically -->
     </div>
 
- <script>
-        const form = document.getElementById('medicine-form');
-        const data = {};
-        form.addEventListener("submit" ,async (e)=>{
-          e.preventDefault();
-          const formData = new FormData(form);
-          for(const [key , value] of formData.entries()){
-            data[key] = value;
-          };
+<script>
+    // CRUD client script: create, update, delete, edit-populate
+    const form = document.getElementById('medicine-form');
+    const saveBtn = document.getElementById('save-btn');
+    const cancelBtn = document.getElementById('cancel-btn');
+    const tbody = document.querySelector('table tbody');
+    const newBtn = document.getElementById('new-btn');
+    const clearSearch = document.getElementById('clear-search');
+    const popup = document.querySelector('.popup');
 
+    function showPopup(message, status = 'info') {
+      popup.textContent = message;
+      popup.className = 'popup ' + status;
+      popup.style.display = 'block';
+      setTimeout(() => {
+        popup.style.display = 'none';
+      }, 2000);
+    }
 
-          const respond = await fetch("/medicines" , {
-            method:"POST",
-            body: JSON.stringify(data),
-          }); 
+    function formToObject(form) {
+      const fd = new FormData(form);
+      const obj = {};
+      for (const [k, v] of fd.entries()) obj[k] = v;
+      return obj;
+    }
 
-          const results = await respond.json();
-          popup.classList.add('visible');
+    // Submit: create or update depending on med-id
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const payload = formToObject(form);
+      const id = document.getElementById('med-id').value.trim();
+      try {
+        const method = id ? 'PUT' : 'POST';
+        const url = id ? `/medicines/${id}` : '/medicines';
+        const res = await fetch(url, {
+          method,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const json = await res.json();
+        if (res.ok && json.status === 'success') {
+          showPopup(id ? 'Medicine updated' : 'Medicine added', 'success');
+          // on create/update, reload to reflect server-side list (simpler)
+          setTimeout(() => { window.location.reload(); }, 800);
+        } else {
+          showPopup(json.message || 'Operation failed', 'error');
+        }
+      } catch (err) {
+        showPopup(err.message || 'Network error', 'error');
+      }
+    });
 
-        if(results.status == "success"){
-            const popup =  document.querySelector('.popup');
-            popup.textContent = "Medicine Added Successfully";
-            popup.classList.add('success');
-            setTimeout(()=>{
-                window.location.href = "/users/medicines";
-            } , 2000);
-     
-        }else{
-            popup.classList.add('error');
-            popup.textContent = "Medicine not added";
+    // Edit / Delete via event delegation from table body
+    tbody.addEventListener('click', async (e) => {
+      const btn = e.target.closest('[data-action]');
+      if (!btn) return;
+      const action = btn.dataset.action;
+      const id = btn.dataset.id;
+      if (!id) return;
+
+      if (action === 'edit') {
+        // fetch item and populate form
+        try {
+          const res = await fetch(`/medicines/${id}`);
+          if (!res.ok) throw new Error('Failed to fetch');
+          const doc = await res.json();
+          // populate known fields if present
+          document.getElementById('med-id').value = doc.id || doc._id || id;
+          if (doc.geneticName) document.getElementById('med-name').value = doc.geneticName;
+          if (doc.serialNumber) document.getElementById('med-sku').value = doc.serialNumber;
+          if (doc.registrationNo) document.getElementById('med-registration').value = doc.registrationNo;
+          if (doc.agentCode !== undefined) document.getElementById('med-agent').value = doc.agentCode;
+          if (doc.category) document.getElementById('med-category').value = doc.category;
+          if (doc.schedule) document.getElementById('schedule').value = doc.schedule;
+          if (doc.country) document.getElementById('med-country').value = doc.country;
+          saveBtn.value = 'Update';
+          // switch form into update mode
+          document.getElementById('form-title').textContent = 'Medicine • Update';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } catch (err) {
+          showPopup('Unable to load item for editing', 'error');
+        }
+      }
+
+      if (action === 'delete') {
+        if (!confirm('Delete this medicine? This action cannot be undone.')) return;
+        try {
+          const res = await fetch(`/medicines/${id}`, { method: 'DELETE' });
+          const json = await res.json().catch(() => ({}));
+          if (res.ok) {
+            // remove row visually
+            const tr = btn.closest('tr');
+            if (tr) tr.remove();
+            showPopup(json.message || 'Deleted', 'success');
+          } else {
+            showPopup(json.message || 'Delete failed', 'error');
           }
-        })
+        } catch (err) {
+          showPopup('Network error', 'error');
+        }
+      }
+    });
 
+    // New: reset form for creating
+    newBtn.addEventListener('click', () => {
+      form.reset();
+      document.getElementById('med-id').value = '';
+      saveBtn.value = 'Save';
+      document.getElementById('form-title').textContent = 'Medicine • Create';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
-    </script>
+    // Reset button: clear med-id and restore Save text
+    cancelBtn.addEventListener('click', () => {
+      document.getElementById('med-id').value = '';
+      saveBtn.value = 'Save';
+      document.getElementById('form-title').textContent = 'Medicine • Create';
+    });
+
+    // also handle form reset (keyboard / programmatic)
+    form.addEventListener('reset', () => {
+      document.getElementById('med-id').value = '';
+      saveBtn.value = 'Save';
+      document.getElementById('form-title').textContent = 'Medicine • Create';
+    });
+
+    // Clear search (just clears input — server-side search integration not changed)
+    clearSearch.addEventListener('click', () => {
+      const s = document.getElementById('search');
+      if (s) s.value = '';
+    });
+</script>
 
 
 

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            font-size: 18px;
+            color: #666;
+            text-decoration: none;
+            font-family: sans-serif;
+            text-transform: capitalize;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        [data-view='product'] .product{
+            background-color: black;
+            color: #fff;
+        }
+        [data-view='staff'] .staff{
+            background-color: black;
+            color: #fff;
+        }
+        [data-view='blog'] .blog{
+            background-color: black;
+            color: #fff;
+        }
+        [data-view='medicine'] .medicine{
+            background-color: black;
+            color: #fff;
+        }
+
+        body{
+            overflow: hidden;
+        }
+        
+        .container{
+            width: 800px;
+            margin: 0 auto;
+            padding-top: 30px;
+        }
+
+        h1, h4{
+            color : black;
+        }
+
+        h4{
+            font-weight: 400;
+            color:rgba(0, 0, 0, 0.684);
+        }
+        h2{
+            font-size: 20px;
+            color:black;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        .id{
+            padding: 10px 20px;
+            background-color: rgb(254, 254, 165);
+        }
+
+        h1{
+            font-size: 36px;
+        }
+
+        .top{
+            width: 800px;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 auto;
+        }
+
+        .top a {
+            padding: 10px 20px;
+            border: 1px solid #666;
+            border-radius: 30px;
+        }
+
+        .action-bar{
+            width: 800px;
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+            margin: 0 auto;
+        }
+
+        .create{
+            background-color: rgb(50, 158, 0);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 10px;
+            height: fit-content;
+        }
+
+        .table{
+            width: 800px;
+            margin: 30px auto;
+            padding: 0;
+            border: 1px solid #fff;
+            border-collapse: collapse;
+            border-radius: 10px;
+
+
+        }
+
+        tr{
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        td{
+            width: 300px;
+            text-overflow: wrap;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            /* border-left: 1px solid rgba(0, 0, 0, 0.1); */
+            padding: 10px;
+        }
+
+        .action-btns{
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn{
+            padding: 10px 20px;
+            border-radius: 10px;
+            margin: 10px;
+            
+        }
+        
+        .delete{
+            border: 1px solid rgb(135, 38, 38);
+            background-color: rgb(255, 143, 143);
+            color:rgb(57, 29, 29);
+            cursor: pointer;
+        }
+
+        .edit{
+            border: 1px solid rgb(187, 187, 0);
+            background-color: rgb(248, 248, 188);
+            color:rgb(45, 45, 2);
+        }
+
+        .popup{
+            position: absolute;
+            /* overflow: hidden; */
+            aspect-ratio: 1;
+            right:0;
+            bottom: 0;
+            transform: translate(50% , 50%);
+            background-color: #fff;
+            border-radius: 50%;
+            border: 1px solid black;
+            height: 600vh;
+            transition: all 2s ease;
+            color:black;
+        }
+
+        [type='checkbox']:checked{
+            display: none;
+        }
+        
+        [type='checkbox']:checked ~ .popup {
+            height: 1px;
+        }
+        [type='checkbox']:checked ~ .conform {
+            opacity: 0;
+            z-index: -10;
+            transition: all 1s ease ;
+            
+        }
+
+        .conform{
+            position: fixed;
+            top: 40%;
+            left: 50%;
+            width: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            z-index: 10;
+            opacity: 1;
+            transform: translate(-50% , -50%);
+            transition: all 1s ease 1s ;
+            
+        }
+        
+        .conform .question p:first-child{
+            color: rgba(0, 0, 0, 0.8);
+            font-size: 48px;
+            font-weight: 600;
+        }
+        .conform .question p:last-child{
+            color: rgba(0, 0, 0, 0.8);
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .cancel{
+            border-radius: 30px;
+            border: 1px solid black;
+            padding: 10px 20px;
+            width: min-content;
+            align-self:flex-end;
+
+        }
+
+        .delete-conform{
+            padding: 10px 100px;
+            border-radius: 5px;
+            margin: 20px 0;
+            width: min-content;
+            color: white;
+            background-color: rgb(255, 78, 30);
+            border: none;
+        }
+
+
+
+    </style>
+</head>
+<body data-view="product">
+
+    <div class="container">
+        
+
+        
+        <div class="top">
+            <a href="/admin/products" class="product">products</a>
+            <a href="/admin/medicines" class="medicine">medicines</a>
+            <a href="/admin/staff" class="staff">staff</a>
+            <a href="/admin/blogs" class="blogs">blogs</a>
+        </div>
+        
+
+        <h2>details of "Face Mask"</h2>
+        <form action="" method="post">
+            <table class="table">
+                <tr>
+                    <th>field</th>
+                    <th>value</th>
+                    <th>new value</th>
+                </tr>
+                <tr>
+                    <td>name</td>
+                    <td>Face mask</td>
+                    <td><input type="text"></td>
+                </tr>
+    
+            </table>
+
+        </form>
+
+
+
+        <div class="action-btns">
+            <a href="/admin/product/edit/1" class="btn edit">edit</a>
+            <label for="popup" class="btn delete">delete</label>
+        </div>
+
+
+        <input type="checkbox" name="popup" id="popup" checked >
+        <div class="popup">
+            
+        </div>
+
+
+        <div class="conform">
+                <label for="popup" class="cancel">close</label>
+
+                <div class="question">
+                    <p>
+                        Are You Sure ?
+                    </p>
+                    <p>
+                        <!-- you can't undo this action !  -->
+                    </p>
+                </div>
+
+                <a href="/admin/product/delete/1"  class="save save-conform">yes</a>
+
+
+            </div>
+
+    </div>
+        
+</body>
+</html>

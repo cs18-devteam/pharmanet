@@ -17,7 +17,7 @@ const adminPharmacyController = require('./controllers/admin.pharmacies.controll
 const customerController = require('./controllers/customer.controller');
 const customerProfileController = require('./controllers/customer.profile.controller');
 const customerPharmacyController = require('./controllers/customer.pharmacies.controller');
-const adminMedicineController = require('./controllers/admin.medicines.controller');
+const adminMedicineControllerSpec = require('./controllers/admin.medicines.controller');
 const { renderPharamcyStaffAttendance } = require('./controllers/pharmacy.staff.attendance.controller');
 const { renderPharmacyStaffLeave } = require('./controllers/pharmacy.staff.leave.controller');
 const medicineController = require('./controllers/medicines.controller');
@@ -41,6 +41,10 @@ const { renderCustomerMedicines } = require('./controllers/customer.medicines.co
 const pharmacyProductController = require("./controllers/pharmacy.products.controller");
 const cashierOrdersController = require("./controllers/cashier.order.controller");
 const cashierController = require('./controllers/pharmacy/cashiers/cashier.controller');
+const adminProductsController= require('./controllers/admin/product.controller');
+const adminBlogController= require('./controllers/admin/blog.controller');
+const adminMedicineController= require('./controllers/admin/medicine.controller');
+const adminStaffController= require('./controllers/admin/staff.controller');
 
 
 const server = http.createServer((req , res)=>{
@@ -67,6 +71,46 @@ const server = http.createServer((req , res)=>{
         if(process.env.NODE_ENV == "development"){
             console.log(method , url  , path)
         }
+
+
+        //all read operations
+        AppRouter.pipe(req ,res).route('/admin/products')
+        ?.get(adminProductsController.getAll);
+        AppRouter.pipe(req ,res).route('/admin/staff')
+        ?.get(adminStaffController.getAll);
+        AppRouter.pipe(req ,res).route('/admin/medicines')
+        ?.get(adminMedicineController.getAll);
+        AppRouter.pipe(req ,res).route('/admin/blogs')
+        ?.get(adminBlogController.getAll);
+        
+        //all view operations
+        AppRouter.pipe(req ,res).route('/admin/products/create')
+        ?.get(adminProductsController.renderCreatePage)
+        ?.post(adminProductsController.create);
+        AppRouter.pipe(req ,res).route('/admin/staff/create')
+        ?.get(adminStaffController.renderCreatePage)
+        ?.post(adminStaffController.create);
+        AppRouter.pipe(req ,res).route('/admin/medicines/create')
+        ?.get(adminMedicineController.renderCreatePage)
+        ?.post(adminMedicineController.create);
+        AppRouter.pipe(req ,res).route('/admin/blogs/create')
+        ?.get(adminBlogController.renderCreatePage)
+        ?.post(adminBlogController.create);
+
+
+        //all view operations
+        AppRouter.pipe(req ,res).route('/admin/products/:id')
+        ?.get(adminProductsController.getItem);
+        AppRouter.pipe(req ,res).route('/admin/staff/:id')
+        ?.get(adminStaffController.getItem);
+        AppRouter.pipe(req ,res).route('/admin/medicines/:id')
+        ?.get(adminMedicineController.getItem);
+        AppRouter.pipe(req ,res).route('/admin/blogs/:id')
+        ?.get(adminBlogController.getItem);
+
+
+        
+        // return AppRouter.pipe(req , res).end();
 
         //////////////////////////////
         //:: ROOT ROUTES
@@ -165,7 +209,7 @@ const server = http.createServer((req , res)=>{
         
         // --ADMIN MEDICINES MANAGEMENTS
         AppRouter.pipe(req , res).route("/admin/:adminId/medicines")
-        ?.get(adminMedicineController.getAllMedicines);
+        ?.get(adminMedicineController.renderCreatePage);
         
         AppRouter.pipe(req , res).route("/admin/:adminId/medicine/create")
         ?.get(adminMedicineController.renderAdminCreateMedicine)
@@ -236,15 +280,19 @@ const server = http.createServer((req , res)=>{
         ?.get(pharmacyController.renderPharmacyDashboard);
         
         AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/owners/:OwnerId/api/medicines')
-        ?.get(pharmacyProductApi.getProducts)
-        ?.post(pharmacyProductApi.createProduct)
-        ?.update(pharmacyProductApi.updateProduct)
-        ?.delete(pharmacyProductApi.deleteProduct);
+        ?.get(pharmacyProductsController.getProducts)
+        ?.post(pharmacyProductsController.createProduct)
+        ?.update(pharmacyProductsController.updateProduct)
+        ?.delete(pharmacyProductsController.deleteProduct);
 
         AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/owners/:OwnerId/products')
-        ?.get(pharmacyProductsController.renderPharmacyProducts);
-
+        ?.get(pharmacyProductsController.renderPharmacyProducts)
+        
         AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/owners/:OwnerId/staff')
+        
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/owners/:OwnerId/api/products')
+        ?.post(pharmacyProductController.createProduct)
+        ?.get(pharmacyProductController.getProducts);
 
         AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/owners/:OwnerId/api/products/:productId')
         ?.get(pharmacyProductController.getProduct)
@@ -262,41 +310,38 @@ const server = http.createServer((req , res)=>{
         ?.update(cashierOrdersController.updateOrder)
         ?.delete(cashierOrdersController.deleteOrder);
 
-        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:casheirId')
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:cashierId')
         ?.get(cashierController.renderCashierDashboard);
 
-        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:casheirId/bills')
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:cashierId/bills')
         ?.get(cashierController.renderCashierCreateBill);
 
-        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:casheirId/customers')
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:cashierId/customers')
         ?.get(cashierController.renderCashierCustomer);
 
-        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:casheirId/orders')
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:cashierId/orders')
         ?.get(cashierController.renderCashierOrder);
 
-        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:casheirId/orders')
-        ?.get(cashierController.renderCashierOrder);
-
-        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:casheirId/payment/qr')
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:cashierId/payment/qr')
         ?.get(cashierController.renderCashierPaymentQR);
 
-        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:casheirId/payment/card')
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:cashierId/payment/card')
         ?.get(cashierController.renderCashierPaymentCard);
 
-        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:casheirId/payment/cash')
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:cashierId/payment/cash')
         ?.get(cashierController.renderCashierPaymentCash);
 
-        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:casheirId/product')
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:cashierId/products')
         ?.get(cashierController.renderCashierProduct);
 
-        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:casheirId/sales')
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/cashiers/:cashierId/sales')
         ?.get(cashierController.renderCashierSales);
 
     
 
         //:: CUSTOMERS ROUTES
         AppRouter.pipe(req ,res).route("/customers/:customerId")
-        ?.authenticate()
+        // ?.authenticate()
         ?.get(customerController.renderCustomerHome);
         AppRouter.pipe(req ,res).route("/customers/:customerId/medicines")
             ?.get(renderCustomerMedicines);

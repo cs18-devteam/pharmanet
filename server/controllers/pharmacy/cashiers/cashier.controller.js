@@ -2,11 +2,23 @@ const { response } = require("../../../common/response");
 const view = require("../../../common/view");
 
 exports.renderCashierDashboard = async (req , res)=>{
-    return response(res , view('/pharmacy/cashiers/cashier.dashboard') , 200);
+    return response(res , view('/pharmacy/cashiers/cashier.dashboard' , {
+        navbar : view('components/navbar.staff' , {
+            name:"chamani niroshani",
+            id: 1,
+        }),
+        sidebar: view('pharmacy/cashiers/leftsidebar')
+    }) , 200);
 }
 
 exports.renderCashierCustomer = async (req , res)=>{
-    return response(res , view('/pharmacy/cashiers/cashier.customer') , 200);
+     return response(res , view('/pharmacy/cashiers/cashier.customer' , {
+        navbar : view('components/navbar.staff' , {
+            name:"chamani niroshani",
+            id: 1,
+        }),
+        sidebar: view('pharmacy/cashiers/leftsidebar')
+    }) , 200);
 }
 
 exports.renderCashierOrder = async (req ,res)=>{

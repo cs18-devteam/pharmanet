@@ -109,7 +109,7 @@ class Model{
             if(!value) continue;
 
             if(typeof value == "string"){
-                valuesArray.push(`${value}`);
+                valuesArray.push(`"${value}"`);
             }else{
                 valuesArray.push(value);
             }

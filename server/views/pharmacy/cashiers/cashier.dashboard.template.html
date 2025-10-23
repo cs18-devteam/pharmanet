@@ -10,7 +10,7 @@
 <body class="cashier-dashboard">
   <!-- ---------------- Header ---------------- -->
   <header>
-    <nav>
+    <!-- <nav>
       <div class="logo">
         <img class="logopic" src="/public/logo/logo.svg" alt="Pharmacy Logo" />
       </div>
@@ -34,40 +34,16 @@
           </a>
         </div>
       </div>
-    </nav>
+    </nav> -->
+
+    {navbar}
   </header>
 
   <!-- ---------------- Dashboard Layout ---------------- -->
   <div class="dashboard">
 
     <!-- Sidebar -->
-    <aside class="sidebar">
-      <div class="menu-section">
-        <h4 class="section-title">MAIN MENU</h4>
-        <ul>
-          <li onclick="window.location.href='cashier-dashboard.html'" class="active"><i class="icon"></i><span>Dashboard</span></li>
-          <li onclick="window.location.href='cashier-product.html'"><i class="icon"></i><span>Products</span></li>
-        </ul>
-      </div>
-
-      <div class="menu-section">
-        <h4 class="section-title">LEADS</h4>
-        <ul>
-          <li onclick="window.location.href='cashier-order.html'"><i class="icon"></i><span>Orders</span></li>
-          <li onclick="window.location.href='cashier-sales.html'"><i class="icon"></i><span>Sales</span></li>
-          <li onclick="window.location.href='cashier-customer.html'"><i class="icon"></i><span>Customers</span></li>
-        </ul>
-      </div>
-
-      <div class="menu-section">
-        <h4 class="section-title">COMMS</h4>
-        <ul>
-          <li><i class="icon"></i><span>Reports</span></li>
-          <li><i class="icon"></i><span>Settings</span></li>
-        </ul>
-      </div>
-    </aside>
-
+  {sidebar}
     <!-- Right Side Content -->
     <div class="right-side">
       <main class="content">

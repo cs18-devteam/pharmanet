@@ -91,6 +91,7 @@ class Model{
     }
 
     async save(data){
+        
 
         let query = "INSERT INTO %%TABLE_NAME%%( %%COLUMNS%% ) VALUES( %%VALUES%% )";
 
@@ -108,11 +109,13 @@ class Model{
 
             if(!value) continue;
 
+         
             if(typeof value == "string"){
                 valuesArray.push(`"${value}"`);
             }else{
                 valuesArray.push(value);
             }
+
 
             columnsArray.push(columnName);
 

@@ -64,10 +64,8 @@ exports.updateStaffMember = async (req , res)=>{
 
 
 exports.createStaffMember = async (req , res)=>{
-    const {user , requestedDate , acceptedDate , dateFrom , dateTo , reason , acceptedBy} = JSON.parse(await getRequestData(req));
-    const newLeaveRequest = await PharmacyStaff.save({
-        user , requestedDate , acceptedDate , dateFrom , dateTo , reason , acceptedBy
-    });
+    const data = JSON.parse(await getRequestData(req));
+    const newLeaveRequest = await PharmacyStaff.save(data);
     
     return responseJson(res , 201 , {
         status: 'success',

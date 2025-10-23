@@ -79,7 +79,7 @@ exports.createUser = async (req, res) => {
 
             if(!customer) return view('404');
 
-            token = createToken(users);
+            token = createToken(customer);
 
             return JSON.stringify({
                 status:"success",

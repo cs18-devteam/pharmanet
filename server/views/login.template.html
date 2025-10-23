@@ -86,6 +86,7 @@
           <span>Help</span>
           <span>Support</span>
           <span>Contacts</span>
+          <a href="/system/login">login as admin</a>
         </div>
       </div>
     </div>
@@ -123,7 +124,7 @@
                 document.body.classList.add('success');
                 setTimeout(()=>{
                     console.log(result.data.id);
-                    window.location.href = `http://localhost:3000/customers/${result.data.id}`;
+                    window.location.href = `http://localhost:3000/{url}`;
                 } , 3000)
 
 

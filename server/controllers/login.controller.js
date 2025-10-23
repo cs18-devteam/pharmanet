@@ -47,6 +47,8 @@ exports.login = async (req, res) => {
             message :"Wrong email or password",
         }));
 
+        
+
         if(customer){
             const token = createToken(customer);
             

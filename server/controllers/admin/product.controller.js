@@ -16,10 +16,10 @@ exports.getItem =async  (req , res)=>{
     const {data : products} = await respond.json();
     response(res , view('admin/read' , {
         service :"products",
-        rows: Object.entries(products[0]).map(([key , value])=>{
+        rows: (products[0]) ? Object.entries(products[0])?.map(([key , value])=>{
             console.log(key , value);
             return view('admin/row' , {key , value})
-        }).join('')
+        }).join('') : "",
     }) , 200);
 }
 

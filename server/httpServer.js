@@ -72,8 +72,9 @@ const server = http.createServer((req , res)=>{
             console.log(method , url  , path)
         }
 
+        AppRouter.pipe(req , res).route('/admin')
 
-        //all read operations
+        // //all read operations
         AppRouter.pipe(req ,res).route('/admin/products')
         ?.get(adminProductsController.getAll);
         AppRouter.pipe(req ,res).route('/admin/staff')
@@ -83,7 +84,7 @@ const server = http.createServer((req , res)=>{
         AppRouter.pipe(req ,res).route('/admin/blogs')
         ?.get(adminBlogController.getAll);
         
-        //all view operations
+        // //all view operations
         AppRouter.pipe(req ,res).route('/admin/products/create')
         ?.get(adminProductsController.renderCreatePage)
         ?.post(adminProductsController.create);
@@ -97,8 +98,11 @@ const server = http.createServer((req , res)=>{
         ?.get(adminBlogController.renderCreatePage)
         ?.post(adminBlogController.create);
 
+        AppRouter.pipe(req , res).route('/admin/product/delete/:productId')
+        ?.get(adminProductsController.getAll)
 
-        //all view operations
+
+        // //all view operations
         AppRouter.pipe(req ,res).route('/admin/products/:id')
         ?.get(adminProductsController.getItem);
         AppRouter.pipe(req ,res).route('/admin/staff/:id')
@@ -124,6 +128,10 @@ const server = http.createServer((req , res)=>{
         AppRouter.pipe(req ,res).route('/users/blogs')
         AppRouter.pipe(req ,res).route('/users/blogs')
 
+        //:: USER ROUTES
+        AppRouter.pipe(req , res).route('/system/login')
+            ?.get(loginController.renderLogin)
+            ?.post(loginController.login);
 
         //:: USER ROUTES
         AppRouter.pipe(req , res).route('/login')

@@ -36,10 +36,12 @@ const refreshCache = (filePath)=>{
         const fileObj =  {
             ...file , 
             type : MIME_TYPES[file.name.split('.').slice(-1)] || 'text/plain',
-            name : path.relative(filePath , path.join(file.parentPath , file.name)).replaceAll("\\" , "/"),
-            path : path.join(__dirname , file.parentPath , file.name).replaceAll('\\' , "/"),
+            name : path.relative(filePath , path.join(file.parentPath , file.name)).replaceAll("\\\\" , "/"),
+            path : path.join(__dirname , file.parentPath , file.name).replaceAll('\\\\' , "/"),
 
         }
+
+        console.log(cache);
 
         const stat = fs.statSync(fileObj.path);
         if(stat.isDirectory()){

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create New Blog Post</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="createNewBlog">
+  <header class="page-header">
+    <a href="blogView.html" class="back-btn">←</a>
+    <div class="title-group">
+      <h1>Create New Blog Post</h1>
+      <p>Share health tips and pharmacy insights with your community</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="form-section">
+      <div class="card">
+        <h3>Post Details</h3>
+        <p class="subtitle">Enter the basic information for your blog post</p>
+
+        <label>Post Title</label>
+        <input type="text" placeholder="e.g., 5 Tips for Managing Your Medications">
+
+        <label>URL Slug</label>
+        <input type="text" placeholder="auto-generated from title">
+
+        <label>Excerpt</label>
+        <textarea placeholder="Brief summary of your post (shown in listings)"></textarea>
+      </div>
+
+      <div class="card">
+        <h3>Content</h3>
+        <p class="subtitle">Write your blog post content here</p>
+
+        <label>Post Content</label>
+        <textarea placeholder="Write your blog post content here. You can use markdown formatting..."></textarea>
+      </div>
+    </div>
+
+    <aside class="sidebar">
+      <div class="card">
+        <h3>Publish Settings</h3>
+
+        <label>Status</label>
+        <select>
+          <option>Draft</option>
+          <option>Published</option>
+        </select>
+
+        <label>Category</label>
+        <select>
+          <option>Select a category</option>
+          <option>Medicine</option>
+          <option>Disease</option>
+        </select>
+
+        <label>Author</label>
+        <input type="text" placeholder="Your name">
+
+        <label>Tags</label>
+        <input type="text" placeholder="Separate with commas">
+      </div>
+
+      <div class="buttons">
+        <button class="save"><span></span> Save Post</button>
+        <button class="preview"><span>👁</span> Preview</button>
+      </div>
+
+      <div class="tip">
+        <p><strong>Tip:</strong> Write clear, informative content that helps your customers. Include relevant keywords for better search visibility.</p>
+      </div>
+    </aside>
+  </main>
+</body>
+</html>

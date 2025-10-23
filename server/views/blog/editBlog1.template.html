@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PharmaCare Blog</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="editBlog">
+  <header class="navbar">
+    <div class="logo">
+      <img class="logopic" src="/public/logo/logo.svg" alt="logo">
+      <span>PharmaNet</span>
+    </div>
+    <div class="nav-buttons">
+      <a href="blogView.html"><button class="btn btn-filled">All Blogs</button></a>
+      <a href="blogManage.html"><button class="btn btn-icon"><i class="settings-icon">⚙</i> Manage</button></a>
+    </div>
+  </header>
+
+  <div class="edit-container">
+    <div class="edit-card">
+      <h2>Edit Blog</h2>
+
+      <form class="edit-form">
+        <!-- Title -->
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" id="title" value="Understanding Diabetes: Types and Management" />
+        </div>
+
+        <!-- Category and Author -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category">
+              <option>Diseases</option>
+              <option>Medicines</option>
+              <option>Nutrition</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="author">Author</label>
+            <input type="text" id="author" value="Dr. Sarah Johnson" />
+          </div>
+        </div>
+
+        <!-- Excerpt -->
+        <div class="form-group">
+          <label for="excerpt">Excerpt</label>
+          <textarea id="excerpt" rows="2">
+A comprehensive guide to understanding diabetes, its types, and effective management strategies for better health outcomes.
+          </textarea>
+        </div>
+
+        <!-- Content -->
+        <div class="form-group">
+          <label for="content">Content</label>
+          <textarea id="content" rows="6">Types of Diabetes
+There are three main types of diabetes:
+
+Type 1 Diabetes: An autoimmune condition where the pancreas doesn't produce insulin. This type usually develops in children and young adults.
+
+Type 2 Diabetes: The most common type, where the body becomes resistant to insulin or doesn't produce enough. It's often associated with lifestyle factors.
+
+Gestational Diabetes: Occurs during pregnancy and usually resolves after delivery, though it increases the risk of developing Type 2 diabetes later.
+
+Management Strategies
+Effective diabetes management involves:
+
+**Blood Sugar Monitoring**: Regular testing helps track glucose levels and adjust treatment accordingly.
+**Healthy Diet**: Focus on whole grains, lean proteins, and vegetables while limiting sugary foods.
+**Regular Exercise**: Aim for at least 150 minutes of moderate activity per week.
+**Medication**: Insulin or oral medications may be necessary depending on the type and severity.
+**Stress Management**: Chronic stress can affect blood sugar levels, so relaxation techniques are important.
+Prevention and Outlook
+While Type 1 diabetes cannot be prevented, Type 2 can often be prevented or delayed through lifestyle changes. With proper management, people with diabetes can live long, healthy lives.</textarea>
+        </div>
+
+        <!-- Buttons -->
+        <div class="form-actions">
+          <a href="blogManage.html"><button type="button" class="btn-cancel">Cancel</button></a>
+          <button type="submit" class="btn-save"> Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  </body>
+</html>

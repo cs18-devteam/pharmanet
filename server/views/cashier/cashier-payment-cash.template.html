@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cash Payment</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body class="cashier-payment-cash">
+  <!-- ---------------- Header ---------------- -->
+  <header>
+    <nav>
+      <div class="logo">
+        <img class="logopic" src="/public/logo/logo.svg" alt="Pharmacy Logo" />
+      </div>
+
+      <div id="toggle-placeholder"></div>
+
+      <nav class="nav-links">
+        <button class="tab">Store</button>
+        <button class="tab">Dashboard</button>
+        <button class="tab active">Cashier</button>
+      </nav>
+
+      <div class="profile">
+        <div class="profileName">
+          <a href="#">Chamani Niroshani</a>
+          <div class="welcome">Welcome</div>
+        </div>
+        <div class="profilePic">
+          <a href="/signup.html">
+            <img src="/public/logo/profile_pic.jpg" alt="Profile Picture" />
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ---------------- Dashboard Layout ---------------- -->
+  <div class="dashboard">
+
+    
+
+  <!-- Payment Popup -->
+<div class="payment-popup" id="paymentPopup">
+  <div class="popup-content">
+    <span class="close-btn" id="closePopup">&times;</span>
+    <h2>Cash Payment</h2>
+
+    <h3>Received Amount</h3>
+    <form action="" method="post">
+        <input type="text" name="Received-amount" value="Rs 5000">
+    </form>
+    <h3>Total</h3>
+    <p>Rs 3000</p>
+    <h3>Balance</h3>
+    <p>Rs 2000</p>
+
+    <div class="payment-action">
+      <button type="button" id="paid" > Paid</button>
+      <button type="button" id="faild"> Failed</button>
+      <button type="reset" id="reset">Cancel</button>
+      
+    </div>
+
+  </div>
+</div>
+
+
+  </div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PharmaNet Registration</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="addPharmarcy01">
+<a href="pharmacy.html"><button class="closeBtn"></button></a>
+  <div class="registration-container">
+    <header>
+      <img class="logopic" src="/public/logo/logo.svg" alt="logo">
+      <h1>PharmaNet</h1>
+      <p>Register your pharmacy to get started</p>
+    </header>
+
+    <div class="steps">
+      <div class="step active">
+        <div class="circle">1</div>
+        <span>Pharmacy Details</span>
+      </div>
+      <div class="step">
+        <div class="circle">2</div>
+        <span>Owner Information</span>
+      </div>
+      <div class="step">
+        <div class="circle">3</div>
+        <span>Location</span>
+      </div>
+      <div class="step">
+        <div class="circle">4</div>
+        <span>Pharmacist & Services</span>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <div class="card-header">
+        <i class="fa-solid fa-building-columns"></i>
+        <span>Pharmacy Details</span>
+        <p>Enter your pharmacy details and license information</p>
+      </div>
+
+      <form>
+        <div class="form-row">
+          <label>Pharmacy Name *</label>
+          <input type="text" placeholder="Enter pharmacy name" required>
+        </div>
+
+        <div class="form-row two-cols">
+          <div>
+            <label>License Number *</label>
+            <input type="text" placeholder="e.g., PH-2024-001" required>
+          </div>
+          <div>
+            <label>License Expiry Date *</label>
+            <input type="date" required>
+          </div>
+        </div>
+
+        <div class="form-buttons">
+          <!-- <button type="button" class="btn prev">Previous</button> -->
+          <a href="addPharmarcy02.html"><button type="button" class="btn next">Next</button></a>
+        </div>
+      </form>
+    </div>
+
+    <footer>
+      Need help? <a href="#">Contact support</a>
+    </footer>
+  </div>
+
+</body>
+</html>

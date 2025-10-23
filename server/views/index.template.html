@@ -3,43 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        Pharmanet || Find Medicine Easily
-    </title>
-    <link rel="stylesheet" href="/css/style.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body class="landing">
 
     <!--nav bar for all page-->
     <header>
-{navbar}
+    <nav>
+        <div class="logo">
+            <img class="logopic" src="public/logo/logo.svg" alt="logo">
+            <p class="logoname">PharmaNet</p>
+        </div>
+
+
+        <div class="search">
+            <form action="POST">
+                <input type="search" placeholder="paracetamol........">
+                <input type="submit" value="Find">
+            </form>
+        </div>
+        <div class="dropdown">
+            <a href="#">Services</a>
+                <ul class="navbar">
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+        </div>
+
+        <div id="toggle-placeholder"></div>
+        
+    <div class="profile">
+            <div class="profileName">
+                <a href="">Chamani Niroshani</a>
+                <div class="welcome">Welcome</div>
+            </div>
+            
+            <div class="profilePic"><a href="#"><img src="public/logo/profile_pic.jpg"></a>
+            </div>
+        </div>
+
+
+    </nav>
         
 
     </header>
-
+<!--header section-->
+    <header>
         <div class="container">
             <div class="header-content">
                 <h1 class="header-title">Smarter Access to Pharmacies and <br> Medicines. <span class="highlight">Anytime</span>. <span class="highlight">Anywhere</span>.</h1>
                 <div class="header-discription">Easily search for nearby pharmacies, check medicine availability, and <br>get the care you need - all in one place.
                     <div class="header-background"></div>
                     <div class="fb-call-msg">
-                        <img src="/images/fb-call-msg.svg" alt="fb-call-msg">
+                        <img src="public/images/fb-call-msg.svg" alt="fb-call-msg">
                     </div>
                 
                     <div class="pills">
-                        <img src="/logo/pils.svg" alt="pills">
+                        <img src="/public/logo/pils.svg" alt="pills">
                     </div>
                         
                     <div class="pillBW">
-                        <img src="/logo/pillBW.svg" alt="pillBW">
+                        <img src="/public/logo/pillBW.svg" alt="pillBW">
                     </div>
 
                     <div class="pillwhite">
-                        <img src="/logo/pillwhite.svg" alt="pillwhite">
+                        <img src="/public/logo/pillwhite.svg" alt="pillwhite">
                     </div>
 
                     <div class="pillblue"> 
-                        <img src="/logo/pillblue.svg" alt="pillblue">
+                        <img src="/public/logo/pillblue.svg" alt="pillblue">
                     </div>
 
                     <div class="side-words">
@@ -49,7 +83,7 @@
                     <div class="upload-container">
                             <input type="file,jpg,png,svg" id="fileUpload" hidden/>
                             <lable for="fileUpload" class="upload-box">
-                                <div class="icon"><img src="/images/upload.svg" alt="upload prescription"></div>
+                                <div class="icon"><img src="public/images/upload.svg" alt="upload prescription"></div>
                                 <p>Upload<br>Prescription</p>
                             </lable>
                     </div>
@@ -67,17 +101,17 @@
 
             <div class="advantages-grid">
                 <div class="advantage-card">
-                    <h3 class="advantage-title"><img src="/images/lock.svg" alt="end-to-encript">End-to-End Privacy</h3>
+                    <h3 class="advantage-title"><img src="public/images/lock.svg" alt="end-to-encript">End-to-End Privacy</h3>
                     <p class="advantage-disc">From the moment you connect to the moment you log out, your data is encrypted, secure, and invisible to everyone but you. No middlemen, no leaks — just total control over your information.</p>
                 </div>
 
                 <div class="advantage-card">
-                    <h3 class="advantage-title"><img src="/images/database.svg">Discover Medicines</h3>
+                    <h3 class="advantage-title"><img src="public/images/database.svg">Discover Medicines</h3>
                     <p class="advantage-disc">Effortlessly explore a wide range of medicines with accurate details, availability, and alternatives — all in one place, just a tap away.</p>
                 </div>
 
                 <div class="advantage-card">
-                    <h3 class="advantage-title"><img src="/images/Location city.svg">Connect with Pharmacies</h3>
+                    <h3 class="advantage-title"><img src="public/images/Location city.svg">Connect with Pharmacies</h3>
                     <p class="advantage-disc">Easily reach out to nearby or trusted pharmacies for inquiries, orders, or support — all within one seamless platform.</p>
                 </div>
             </div>
@@ -101,7 +135,7 @@
 
                     <div class="section-title">
                         <div class="lock-icon">
-                            <img src="/images/lockicon.svg"></img>
+                            <img src="public/images/lockicon.svg"></img>
                         </div>
                         <h3 class="section-first-title">What we provide</h3>
                         <p class="section-second-title">why should you trust us?</p>
@@ -111,7 +145,7 @@
                         <div class="arc"></div>
                         <div class="text-wrapper">
                         <div class="progress-text">
-                            <div class="value">0</div>
+                            <div class="value">1,234</div>
                             <div class="label">Verified Pharmacies</div>
                         </div>
                         </div>
@@ -120,6 +154,7 @@
             </div>
         </section>
     
+    </header>
 
 <!-- Top Pharmacies Section -->
     <section class="top-pharmacy">
@@ -131,15 +166,15 @@
 
             <div class="pharmacies-grid">
                 <div class="pharmacy-card">
-                    <img src="/pharmacy picture/hedeniyapharmacy.jpg" alt="Hedeniya Pharmacy" class="pharmacy-img">
+                    <img src="/public/pharmacy picture/hedeniyapharmacy.jpg" alt="Hedeniya Pharmacy" class="pharmacy-img">
                     <div class="pharmacy-info">
                         <h3 class="pharmacy-name">Hedeniya Pharmacy</h3>
                         <div class="pharmacy-rating">
-                            <img src="/images/Star.svg">
-                            <img src="/images/Star.svg">
-                            <img src="/images/Star.svg">
-                            <img src="/images/Star.svg">
-                            <img src="/images/Star.svg">
+                            <img src="public/images/Star.svg">
+                            <img src="public/images/Star.svg">
+                            <img src="public/images/Star.svg">
+                            <img src="public/images/Star.svg">
+                            <img src="public/images/Star.svg">
                             <span>4.9</span>
                         </div>
                         <p class="pharmacy-address">Kurunegala road, Hedeniya</p>
@@ -147,15 +182,15 @@
                 </div>
 
                 <div class="pharmacy-card">
-                    <img src="/pharmacy picture/Sunshine-Healthguard-1-11.jpg" alt="Healthguard Pharmacy" class="pharmacy-img">
+                    <img src="/public/pharmacy picture/Sunshine-Healthguard-1-11.jpg" alt="Healthguard Pharmacy" class="pharmacy-img">
                     <div class="pharmacy-info">
                         <h3 class="pharmacy-name">Healthguard Pharmacy</h3>
                         <div class="pharmacy-rating">
-                            <img src="/images/Star.svg">
-                            <img src="/images/Star.svg">
-                            <img src="/images/Star.svg">
-                            <img src="/images/Star.svg">
-                            <img src="/images/Star.svg">
+                            <img src="public/images/Star.svg">
+                            <img src="public/images/Star.svg">
+                            <img src="public/images/Star.svg">
+                            <img src="public/images/Star.svg">
+                            <img src="public/images/Star.svg">
                             <span>4.9</span>
                         </div>
                         <p class="pharmacy-address">Kuliyapitiya</p>
@@ -163,15 +198,15 @@
                 </div>
 
                 <div class="pharmacy-card">
-                    <img src="/pharmacy picture/lankapharmacy.jpg" alt="Lanka Pharmacy" class="pharmacy-img">
+                    <img src="/public/pharmacy picture/lankapharmacy.jpg" alt="Lanka Pharmacy" class="pharmacy-img">
                     <div class="pharmacy-info">
                         <h3 class="pharmacy-name">Lanka Pharmacy</h3>
                         <div class="pharmacy-rating">
-                          <img src="/images/Star.svg">
-                            <img src="/images/Star.svg">
-                            <img src="/images/Star.svg">
-                            <img src="/images/Star.svg">
-                            <img src="/images/Star.svg">
+                          <img src="public/images/Star.svg">
+                            <img src="public/images/Star.svg">
+                            <img src="public/images/Star.svg">
+                            <img src="public/images/Star.svg">
+                            <img src="public/images/Star.svg">
                             <span>4.8</span>
                         </div>
                         <p class="pharmacy-address">Kandy road, Kiribithgoda</p>
@@ -179,15 +214,15 @@
                 </div>
 
                 <div class="pharmacy-card">
-                    <img src="/pharmacy picture/NethunPharmacy.jpg" alt="Nethun Pharmacy" class="pharmacy-img">
+                    <img src="/public/pharmacy picture/NethunPharmacy.jpg" alt="Nethun Pharmacy" class="pharmacy-img">
                     <div class="pharmacy-info">
                         <h3 class="pharmacy-name">Nethun Pharmacy</h3>
                         <div class="pharmacy-rating">
-                            <img src="/images/Star.svg">
-                            <img src="/images/Star.svg">
-                            <img src="/images/Star.svg">
-                            <img src="/images/Star.svg">
-                            <img src="/images/Star.svg">
+                            <img src="public/images/Star.svg">
+                            <img src="public/images/Star.svg">
+                            <img src="public/images/Star.svg">
+                            <img src="public/images/Star.svg">
+                            <img src="public/images/Star.svg">
                             <span>4.9</span>
                         </div>
                         <p class="pharmacy-address">Peradeniya road, Kandy</p>
@@ -205,12 +240,12 @@
         <h1 class="header-title">Join to Us !</h1>
         <p class="header-discription">Become a Partner Pharmacy</p>
         <div class="button-group">
-            <a href="mailto:cs18.devteam.feedback@gmail.com" class="btn demo">
+            <button class="btn demo">
                 Request a Demo <span class="icon"><img src=""></span>
-            </a>
-            <a href="/signup" class="btn reg">
+            </button>
+            <button class="btn reg">
                 Register as Pharmacy<span class="icon"><img src=""></span>
-            </a>
+            </button>
         </div>
     </div>
 
@@ -220,7 +255,7 @@
         <div class="main">
 
              <div class="logo">
-                <img class="logopic" src="/logo/logo.svg" alt="logo">
+                <img class="logopic" src="public/logo/logo.svg" alt="logo">
                 <p class="logoname">PharmaNet</p>
             </div>
 
@@ -251,6 +286,9 @@
             </nav>
         </div>
     </section>
+
+    
+
 
     <script type="module" src="/js/controller/controller.js"></script>
 </body>

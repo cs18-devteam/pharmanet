@@ -40,7 +40,9 @@
   display: flex;
   gap: 30px;
   padding: 40px;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
 }
 
 .form-section {

@@ -13,8 +13,8 @@
       <span>PharmaNet</span>
     </div>
     <div class="nav-buttons">
-      <a href="blogView.html"><button class="btn btn-filled">All Blogs</button></a>
-      <a href="blogManage.html"><button class="btn btn-icon"><i class="settings-icon">⚙</i> Manage</button></a>
+      <a href="/blogView"><button class="btn btn-filled">All Blogs</button></a>
+      <a href="/blogManage"><button class="btn btn-icon"><i class="settings-icon">⚙</i> Manage</button></a>
     </div>
   </header>
 
@@ -23,7 +23,7 @@
     <header>
       <h1>Manage Blogs</h1>
       <p>View, edit, and manage all blog posts</p>
-      <a href="createNewBlog.html"><button class="btn-create">+ Create New Blog</button></a>
+      <a href="/createNewBlog"><button class="btn-create">+ Create New Blog</button></a>
     </header>
 
     <section class="blog-table">
@@ -38,7 +38,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <!-- <tr>
             <td>
               <strong>Understanding Diabetes: Types and Management</strong>
               <p>A comprehensive guide to understanding diabetes, its types, and effective management...</p>
@@ -47,10 +47,11 @@
             <td>Dr. Sarah Johnson</td>
             <td>10/15/2024</td>
             <td class="actions">
-              <a href="editBlog1.html" class="edit"> Edit</a>
+              <a href="/editBlog1" class="edit"> Edit</a>
               <a href="#" class="delete"> Delete</a>
             </td>
-          </tr>
+          </tr> -->
+          {blogs}
           <tr>
             <td>
               <strong>Antibiotics: When and How to Use Them Safely</strong>
@@ -60,7 +61,7 @@
             <td>Dr. Michael Chen</td>
             <td>10/12/2024</td>
             <td class="actions">
-              <a href="editBlog2.html" class="edit"> Edit</a>
+              <a href="/editBlog1" class="edit"> Edit</a>
               <a href="#" class="delete"> Delete</a>
             </td>
           </tr>
@@ -73,7 +74,7 @@
             <td>Dr. Emily Rodriguez</td>
             <td>10/10/2024</td>
             <td class="actions">
-              <a href="editBlog3.html" class="edit"> Edit</a>
+              <a href="/editBlog1" class="edit"> Edit</a>
               <a href="#" class="delete"> Delete</a>
             </td>
           </tr>
@@ -86,7 +87,7 @@
             <td>Dr. James Wilson</td>
             <td>10/08/2024</td>
             <td class="actions">
-              <a href="editBlog4.html" class="edit"> Edit</a>
+              <a href="/editBlog1" class="edit"> Edit</a>
               <a href="#" class="delete"> Delete</a>
             </td>
           </tr>
@@ -109,6 +110,23 @@
       </div>
     </section>
   </div>
+
+
+
+  <script>
+    document.addEventListener('click',async(e)=>{
+      const target = e.target;
+      if(target.closest('.delete')){
+        <!-- window.location.href = `/delete/${target.dataset.id}`; -->
+        const id = target.dataset.id;
+      
+        const respond = await fetch(`/api/blogs/${id}`, {
+          method:'DELETE'
+        })
+        
+      }
+    })
+  </script>
 
   </body>
 </html>

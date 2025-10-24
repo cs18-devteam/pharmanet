@@ -36,10 +36,12 @@ const refreshCache = (filePath)=>{
         const fileObj =  {
             ...file , 
             type : MIME_TYPES[file.name.split('.').slice(-1)] || 'text/plain',
-            name : path.relative(filePath , path.join(file.parentPath , file.name)).replaceAll("\\" , "/"),
-            path : path.join(__dirname , file.parentPath , file.name).replaceAll('\\' , "/"),
+            name : path.relative(filePath , path.join(file.parentPath , file.name)).replaceAll("\\","/"),
+            path : path.join(__dirname , file.parentPath.replaceAll("\\","/"), file.name).replaceAll('\\' , "/"),
 
         }
+
+        // console.log(cache);
 
         const stat = fs.statSync(fileObj.path);
         if(stat.isDirectory()){
@@ -51,6 +53,8 @@ const refreshCache = (filePath)=>{
 
     });
 
+
+
     if(process.env.NODE_ENV == "development"){
         if(typeof refreshCache.initialize === 'undefined'){
             console.log(filePath , ": serve as public resource");
@@ -59,6 +63,8 @@ const refreshCache = (filePath)=>{
             console.log(filePath , ": change detected");
         }
     }
+
+    console.log(cache)
 }
 
 exports.requestFile = (filePath) =>{
@@ -68,7 +74,9 @@ exports.requestFile = (filePath) =>{
     }
     const [file] = cache.filter(file=>{
         if (file.type == 'dir') return false;
-        const absPath = path.join("." , file.name);
+        const absPath = path.join("." , file.name).replaceAll('\\' , '/');
+        console.log(absPath , filePath)
+
         return absPath == filePath;
     })
 

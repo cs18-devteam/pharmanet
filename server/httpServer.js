@@ -62,6 +62,15 @@ const server = http.createServer((req , res)=>{
         AppRouter.pipe(req, res).route('/api/products')
         ?.post(cashierController.createProduct);
 
+        AppRouter.pipe(req, res).route('/cashier-payment-cash')
+        ?.post(cashierController.paymentcash);
+
+        AppRouter.pipe(req, res).route('/cashier-payment-card')
+        ?.post(cashierController.paymentcard);
+
+        AppRouter.pipe(req, res).route('/cashier-payment-QR')
+        ?.post(cashierController.paymentQR);
+
         
         AppRouter.pipe(req ,res).route('/signup')
         AppRouter.pipe(req ,res).end();

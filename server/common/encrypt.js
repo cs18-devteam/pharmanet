@@ -35,7 +35,7 @@ exports.decrypt = (encryptedData) => {
         Buffer.from(ENCRYPT_KEY, "hex"),
         Buffer.from(IV, "hex")
     );
-    let decrypted = decipher.update(encryptedData, "hex", "utf8");
+    let decrypted = decipher.update(encryptedData, "hex" , "utf-8");
     decrypted += decipher.final("utf8");
     return decrypted;
 }
@@ -56,12 +56,15 @@ exports.authenticate =async (req , res)=>{
     });
 
     const token = cookies.token;
+    console.log(token)
     if(!token) return false;
     const data = JSON.parse(this.decrypt(token));
     const respond = await fetch(`${Bridge.registry.USER_SERVICE}?id=${data.id}`);
     const results = await respond.json();
     const user = results.data[0];
-    if(!user) return false;        
+    if(!user) return false;    
+    
+    return this.verifyPassword(data.password , user.password)
 
 }
 
@@ -79,8 +82,9 @@ exports.hashPassword = (password)=> {
 
 
 exports.createToken = (user)=>{
-    const {content : token} = this.encrypt(JSON.stringify({id : user.id , password : user.password}))
-    return token; 
+    const en = this.encrypt(JSON.stringify({id : user.id , password : user.password}))
+    console.log(en);
+    return en.content; 
 
 
 }

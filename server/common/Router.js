@@ -67,7 +67,7 @@ class Router{
     }
 
     update(handler , access = []){
-        if(this.req?.method != "UPDATE") return this;
+        if(this.req?.method != "PATCH") return this;
         this.updateHandler = handler;
         this.#verify(access).then(()=>handler(this.req  , this.res));
     }

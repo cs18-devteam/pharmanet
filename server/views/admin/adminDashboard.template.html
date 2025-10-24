@@ -11,21 +11,14 @@
     <div class="container-1">
     <div class="sideBar">
     <div class="logo">
-      <img class="logopic" src="/public/logo/logo.svg" alt="logo">
+      <img class="logopic" src="/logo/logo.svg" alt="logo">
       <div>
         <h3>System Admin</h3>
         <p>Management System</p>
       </div>
     </div>
 
-    <ul class="menu">
-      <a href="/systemAdmin/adminDashboard.html" >Dashboard</a>
-      <a href="/systemAdmin/pharmacy.html">Pharmacies</a>
-      <a href="/systemAdmin/medicines.html">Medicines</a>
-      <a href="/systemAdmin/users.html">Users</a>
-      <a href="">Analytics</a>
-      <a href="/systemAdmin/dataAssets.html">Data Assets</a>
-    </ul>
+    {sidebar}
 
     <div class="menuItem">
         <button class="text setting"> Settings</button>
@@ -167,6 +160,8 @@
   </div>
   </div>   
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/systemAdmin/script.js"></script>
+  <script src="/js/controller/admin/system.admin.js"></script>
 </body>
 </html>
+
+

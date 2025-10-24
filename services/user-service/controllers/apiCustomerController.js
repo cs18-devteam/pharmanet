@@ -3,6 +3,8 @@ const { responseJson } = require("../common/response");
 const Customers = require("../model/CustomerModel");
 
 exports.getCustomers =async (req , res)=>{
+    try{
+
     const filter = {};
     if(req.params.get('id')) filter.id = req.params.get('id')
     if(req.params.get('email')) filter.email = req.params.get('email')
@@ -25,11 +27,20 @@ exports.getCustomers =async (req , res)=>{
         data : content,
         count : content.length,
     })
+
+    }catch(e){
+        return responseJson(res , 500 , {
+            status:"error"
+        })
+    }
+
     
 }
 
 
 exports.deleteCustomer =async (req , res)=>{
+    try{
+
     const {id} = JSON.parse(await getRequestData(req));
     const results = await Customers.deleteById(id);
     
@@ -37,10 +48,19 @@ exports.deleteCustomer =async (req , res)=>{
         status: 'success',
         data: results,
     });
+
+    }catch(e){
+        return responseJson(res , 500 , {
+            status:"error",
+        });
+    }
+
 }
 
 
 exports.updateCustomer = async (req , res)=>{
+    try{
+
     const {firstName , lastName , email , password , birthDay } = JSON.parse(await getRequestData(req));
     const results = await Customers.update({
         firstName , lastName , email , password , birthDay 
@@ -50,18 +70,34 @@ exports.updateCustomer = async (req , res)=>{
         status: 'success',
         data: results,
     });
+    }catch(e){
+        return responseJson(res, 500 , {
+            status:"error"
+        })
+    }
+
 }
 
 
 exports.createCustomer = async (req , res)=>{
-    const {firstName , lastName , email , password , birthDay } = JSON.parse(await getRequestData(req));
-    const newLeaveRequest = await Customers.save({
-        firstName , lastName , email , password , birthDay 
-    });
-    
-    return responseJson(res , 201 , {
-        status: 'success',
-        data: newLeaveRequest,
-        count : newLeaveRequest.length,
-    });
+    try{
+
+        const {firstName , lastName , email , password , birthDay } = JSON.parse(await getRequestData(req));
+        const newLeaveRequest = await Customers.save({
+            firstName , lastName , email , password , birthDay 
+        });
+
+        return responseJson(res , 201 , {
+            status: 'success',
+            data: newLeaveRequest,
+            count : newLeaveRequest.length,
+        });
+    }catch(e){
+        console.log(e);
+        
+        
+        return responseJson(res , 201 , {
+            status: 'error',
+        });
+    }
 }

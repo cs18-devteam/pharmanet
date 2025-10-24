@@ -91,6 +91,8 @@ class Model{
     }
 
     async save(data){
+        try{
+
 
         let query = "INSERT INTO %%TABLE_NAME%%( %%COLUMNS%% ) VALUES( %%VALUES%% )";
 
@@ -121,18 +123,23 @@ class Model{
         query = query.replace("%%COLUMNS%%" , columnsArray.join(","));
         query = query.replace("%%VALUES%%" , valuesArray.join(','));
 
-        const results =await db.query(query);
+        const results = await db.query(query);
 
         if(!results) return null;
 
         const createdUser = await db.query(`select * from ${this.#table} where id=${results.insertId}`);
 
         return createdUser;
+        }catch(e){
+            return e.message;
+        }
+
         
     }
 
 
     async update(data){
+
         const id = data.id;
 
         if(!id) throw new Error("no id in request body");

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PharmaNet Registration</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body  class="addPharmarcy04">
+
+  <div class="registration-container">
+    <header>
+      <img class="logopic" src="/logo/logo.svg" alt="logo">
+      <h1>PharmaNet</h1>
+      <p>Register your pharmacy to get started</p>
+    </header>
+
+    <div class="steps">
+      <div class="step">
+        <div class="circle">1</div>
+        <span>Pharmacy Details</span>
+      </div>
+      <div class="step">
+        <div class="circle">2</div>
+        <span>Owner Information</span>
+      </div>
+      <div class="step">
+        <div class="circle">3</div>
+        <span>Location</span>
+      </div>
+      <div class="step active">
+        <div class="circle">4</div>
+        <span>Pharmacist & Services</span>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <div class="card-header">
+        <i class="fa-solid fa-building-columns"></i>
+        <span>Pharmacist & Services</span>
+        <p>Add pharmacist details and service information</p>
+      </div>
+
+      <form id="form">
+        <div class="form-row">
+          <label>Head Pharmacist Name *</label>
+          <input type="text" value="{pharmacist}" name="pharmacist" placeholder="Enter pharmacist name" required>
+        </div>
+
+        <div class="form-row">
+          <label>Pharmacist License Number *</label>
+          <input type="text" name="pharmacistlicense" placeholder="Eg: RPH-2024-001" required>
+        </div>
+
+        <div class="form-row">
+          <label>Primary Service Type *</label>
+          <select name="type" value="{type}" required>
+            <option >Select service type</option>
+            <option value="retail">Retail Pharamarcy</option>
+            <option value="hospital">Hospital Pharamarcy</option>
+            <option value="clinical">Clinical Pharamrcy</option>
+            <option value="mail">Mail Pharamrcy</option>
+          </select>
+        </div>
+
+        <div class="form-buttons">
+        <a href="/admin/pharmacy/{id}/edit/step/3"><button type="button" class="btn prev btn-previous">Previous</button></a>
+         <button type="button" class="btn btn-submit submit">Submit</button>
+        </div>
+      </form>
+    </div>
+
+    <footer>
+      Need help? <a href="#">Contact support</a>
+    </footer>
+  </div>
+
+   <script>
+    const form = document.getElementById('form');
+    const btn_submit = document.querySelector('.btn-submit');
+
+    const data = {}
+    btn_submit.addEventListener('click' , (e)=>{
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      for( const [key , value] of formData.entries()){
+        
+        if(!value){
+          document.querySelector(`[name=${key}]`).classList.add('utility-warn');
+          document.querySelector(`[name="${key}"]`).classList.remove('utility-success');
+          console.log(document.querySelector(`[name=${key}]`));
+          return;
+        }else{
+          document.querySelector(`[name="${key}"]`).classList.add('utility-success');
+          document.querySelector(`[name="${key}"]`).classList.remove('utility-warn');
+        }
+        data[key] = value;
+      }
+      
+      //save to storage
+      const previous = JSON.parse(localStorage.getItem('pharmacy'));
+      if(!previous) window.location.href = "/admin/pharmacy/{id}step/4";
+      localStorage.setItem("pharmacy" , JSON.stringify({...previous , ...data }));
+
+      fetch("/admin/pharmacy/{id}/update" , {
+        method:"PATCH",
+        body: localStorage.getItem("pharmacy"),
+      }).then(data=>data.json()).then(data=>{
+        if(typeof (data?.data?.[0]) == "object"){
+
+          window.location.href = `/admin/pharmacy/view/${data?.data?.[0]?.id}`;
+        }
+      }).catch(e=>console.log(e)).finally(()=>console.log(localStorage.getItem("pharmacy")))      
+
+
+
+
+    })</script>
+
+
+</body>
+</html>

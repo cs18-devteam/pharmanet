@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href = "/css/style.css">
+
+    <style>
+        .success{
+            animation: animateFade 2s ease forwards;
+        }
+
+        .congrats{
+            position: fixed;
+            top: 100%;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            opacity: 0;
+            z-index: -10;
+            transition: all 2s ease;
+            color: #888;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .congrats > span{
+            color: transparent;
+            background-image: linear-gradient(var(--color-green-01) , var(--color-green-02));
+            background-clip: text;
+        }
+
+        .success .congrats {
+            top: 0;
+            z-index: 10;
+            opacity: 1;
+        }
+
+        @keyframes animateFade{
+            100%{
+                opacity: 0; 
+                transform: translateY(-100px); 
+            }
+        }
+
+    </style>
+
+</head>
+<body class="signup">
+    <header>
+        <nav class="nav">
+        <div class="logo">
+            <img class="logopic" src="/logo/logo.svg" alt="logo">
+            <p class="logoname">PharmaNet</p>
+        </div>
+    </nav>
+
+    </header>
+    <div class = "container">
+    <div class = "signupImage">
+        <img src="/signup/signup.jpg" alt="signup image">
+        <div class="signupText">"Take Control of Your Medication Journey"</div>
+    </div>
+    <div class = "signupForm">
+    <form  id="form" class="signup" autocomplete="off" action="/signup" method="post">
+     
+    <h1 class="signupTitle">Get Start Now</h1>
+    <p class="signupMoto" >Your Digital Journey To Seamless Prescriptions, Smarter Inventory, And Happier Patients Begins Here.</p>
+    <div class="nameFields">
+    
+    <div>
+    <label for="fName">First Name</label><br>
+    <input type="text" id="fName" name="firstName" placeholder="Chathura" required/><br>
+    <span id="feedbackname" ></span><br>
+    </div>
+
+    <div>
+    <label for="lName">Last Name</label><br>
+    <input type="text" id="lName" name="lastName" placeholder="Priyashan" required/><br>
+    <span id="feedbackname"></span><br>
+    </div>     
+
+    </div>
+   
+    <label for="email">Email</label><br>
+    <input type="text" id="email" name="email" placeholder="Example@Gmail.com" required/><br>
+    <span id="feedbackEmail"></span><br>
+    
+    <label for="birthDay">BirthDay</label><br>
+    <input type="date" id="birthDay" name="birthDay" placeholder="2003/07/11" required/><br>
+    <span id="feedbackBirthDay"></span><br>
+    
+    <label for="password">Password</label><br>
+    <input type="password" id="password" name="password" placeholder="********" required/><br>
+    <span id="feedbackPassword"></span><br>
+
+    <label for="confirmPassword">Confirm Password</label><br>
+    <input type="password" id="confirmPassword" name="conformPassword" placeholder="********" required/><br>
+    <span id="feedbackPassword"></span><br>
+    
+    <button type="submit" id="submitButton">Create Account</button>
+    <a type="submit" id="forgetPassword">Do you need any help ?</a><br>
+    
+    <div style="text-align: center;">
+    <p class="haveAcc" style="display: inline-block; margin-right: 10px;">I Have An Account</p>
+    <a href="/login"  class="logInButton" style="display: inline-block;">Log In</a>
+    </div>
+
+
+  </form>
+  
+    </div>
+    </div>
+    
+        
+
+
+      
+    </header>  
+    
+    <div class="congrats">
+        Welcome to <span>Pharmanet</span>
+    </div>
+
+
+
+    <script>
+        const form = document.getElementById('form');
+        form.addEventListener('submit' ,async (e)=>{
+            try{
+
+                
+                e.preventDefault(e);
+                
+                const data = {};
+                const formData = new FormData(form);
+                for(const [key , value] of formData.entries()){
+                    data[key] = value;
+                }
+                if(data.password != data.conformPassword) throw new Error("password doesn't match");
+                
+                const respond = await fetch("/signup" , {
+                    method:"POST",
+                    headers:{
+                        "Content-Type" : "application/json",
+                    },
+                    body : JSON.stringify(data),
+                });
+                
+
+                const result = await respond.json();
+                console.log(result , respond);
+                if(result.status != "success" ) throw new Error("Input Details Invalid");
+
+                document.body.classList.add('success');
+                setTimeout(()=>{
+                    console.log(result.data.id);
+                    window.location.href = `http://localhost:3000/customers/${result.data.id}`;
+                } , 3000)
+
+
+                
+            }catch(error){
+                alert(error.message);
+                console.log(error);
+            }
+            
+
+
+            
+        })
+
+
+    </script>
+</body>
+</html>

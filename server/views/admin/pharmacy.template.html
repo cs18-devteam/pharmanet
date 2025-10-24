@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+ 
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="pharmarcy">
@@ -11,22 +12,14 @@
     <div class="container-1">
     <div class="sideBar">
     <div class="logo">
-      <img class="logopic" src="/public/logo/logo.svg" alt="logo">
+      <img class="logopic" src="/logo/logo.svg" alt="logo">
       <div>
         <h3>System Admin</h3>
         <p>Management System</p>
       </div>
     </div>
 
-    <ul class="menu">
-      <a href="/systemAdmin/adminDashboard.html">Dashboard</a>
-      <a href="/systemAdmin/pharmacy.html">Pharmacies</a>
-      <a href="/systemAdmin/medicines.html">Medicines</a>
-      <a href="/systemAdmin/users.html">Users</a>
-      <a href="">Analytics</a>
-      <a href="/systemAdmin/dataAssets.html">Data Assets</a>
-    </ul>
-
+    {sidebar}
     <div class="menuItem">
         <button class="text setting"> Settings</button>
         <button class="text signOut"> Sign Out</button>
@@ -51,84 +44,71 @@
       <p>Manage All pharmarcy locations and their details.</p>
       </div>
       <div>
-      <a href="addPharmarcy01.html" class="addBtn">Add Pharmarcy</a>
+      <a href="/admin/pharmacy/create" class="addBtn">Add Pharmarcy</a>
       </div>
       </div>
     
     <div class="content-wrapper">
     <div class="pharmacy-grid">
-    <div class="pharmacy-card">
-      <div class="header">
-        <h3>Downtown Pharmacy <span class="status active">active</span></h3>
-        <button class="menu-btn">⋮</button>
-      </div>
-      <p>Manager: John Smith</p>
-      <ul class="details">
-        <li><span class="address"></span> 123 Main Street, New York, NY 10001</li>
-        <li><span class="telephoneNo"></span> +1 (555) 123-4567</li>
-        <li><span class="email"></span> downtown@pharmacy.com</li>
-      </ul>
-      <div class="footer">
-        <p>Inventory: <strong>847 items</strong></p>
-        <button class="details-btn">View Details</button>
-      </div>
-    </div>
+    
 
-    <div class="pharmacy-card">
-      <div class="header">
-        <h3>Central Medical Pharmacy <span class="status active">active</span></h3>
-        <button class="menu-btn">⋮</button>
-      </div>
-      <p>Manager: Sarah Johnson</p>
-      <ul class="details">
-        <li><span class="address"></span> 456 Oak Avenue, Brooklyn, NY 11201</li>
-        <li><span class="telephoneNo"></span> +1 (555) 234-5678</li>
-        <li><span class="email"></span> central@pharmacy.com</li>
-      </ul>
-      <div class="footer">
-        <p>Inventory: <strong>1203 items</strong></p>
-        <button class="details-btn">View Details</button>
-      </div>
-    </div>
+  
+    
 
-    <div class="pharmacy-card">
-      <div class="header">
-        <h3>Westside Pharmacy <span class="status active">active</span></h3>
-        <button class="menu-btn">⋮</button>
-      </div>
-      <p>Manager: Mike Davis</p>
-      <ul class="details">
-        <li><span class="address"></span> 789 Park Boulevard, Queens, NY 11354</li>
-        <li><span class="telephoneNo"></span> +1 (555) 345-6789</li>
-        <li><span class="email"></span> westside@pharmacy.com</li>
-      </ul>
-      <div class="footer">
-        <p>Inventory: <strong>654 items</strong></p>
-        <button class="details-btn">View Details</button>
-      </div>
-    </div>
-
-    <div class="pharmacy-card">
-      <div class="header">
-        <h3>Eastgate Pharmacy <span class="status inactive">inactive</span></h3>
-        <button class="menu-btn">⋮</button>
-      </div>
-      <p>Manager: Lisa Anderson</p>
-      <ul class="details">
-        <li><span class="address"></span> 321 River Road, Bronx, NY 10451</li>
-        <li><span class="telephoneNo"></span> +1 (555) 456-7890</li>
-        <li><span class="email"></span> eastgate@pharmacy.com</li>
-      </ul>
-      <div class="footer">
-        <p>Inventory: <strong>423 items</strong></p>
-        <button class="details-btn">View Details</button>
-      </div>
-    </div>
    </div>
   </div>
     </section>
   </div>
   </div>
+
+  <script>
+    async function renderPharmacies(){
+      const respond = await fetch("/admin/pharmacy/list" , {
+        method:"GET",
+      });
+
+      const  results = await respond.json();
+      console.log(results);
+
+      if(!results.data) return;
+      if(!results.data[0])return;
+
+      const pharmacies = results.data.map(pharmacy=>{
+        const pharmacyCard = `
+        <a href="/admin/pharmacy/view/${pharmacy.id}" class="pharmacy-card">
+          <div class="header">
+            <h3>${pharmacy.name} <span class="status inactive">inactive</span></h3>
+            <button class="menu-btn">⋮</button>
+          </div>
+          <p>Manager: Lisa Anderson</p>
+          <ul class="details">
+            <li><span class="address"></span>${pharmacy.street} , ${pharmacy.town} , ${pharmacy.province}</li>
+            <li><span class="email"></span> ${pharmacy.email}</li>
+          </ul>
+          <div class="footer">
+            <p>Inventory: <strong>423 items</strong></p>
+            <button class="details-btn">View Details</button>
+          </div>
+        </a>`;
+
+        return pharmacyCard;
+
+          })
+          const pharmacyBody = document.querySelector('.pharmacy-grid');
+          if(pharmacyBody){
+            pharmacyBody.innerHTML = pharmacies.join(' ');
+          }
+          
+        }
+
+
+
+    renderPharmacies();
+
+
+
+  </script>
+
 
   <script>
        //Search filter
@@ -146,6 +126,9 @@
   });
 });
   </script>
+
+
+  
     
 </body>
 </html>

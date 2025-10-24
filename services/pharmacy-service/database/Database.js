@@ -9,12 +9,22 @@ class Database{
     }
 
     query(queryString){
-        return new Promise((resolve , reject)=>{
-            this.connection.query(queryString , (error , data , fields)=>{
-                if(error) throw error;
-                resolve(data , fields);
-            });
-        })
+        try{
+
+            return new Promise((resolve , reject)=>{
+                try{
+
+                    this.connection.query(queryString , (error , data , fields)=>{
+                        if(error) return reject(error)
+                        resolve(data , fields);
+                    });
+                }catch(e){
+                    reject(e)
+                }
+            })
+        }catch(e){
+            return Promise.reject(e);
+        }
     }
 
     execute(queryString , clb){

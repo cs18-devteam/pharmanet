@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pharmacy Registration</title>
+  <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body class="RegPharmacy">
+
+    <!--header section-->
+  <header class="top-bar">
+    <nav>
+        <div class="logo">
+            <img class="logopic" src="/logo/logo.svg" alt="logo">
+            <p class="logoname">PharmaNet</p>
+        </div>
+
+        <div id="toggle-placeholder"></div>
+
+    </nav>
+  </header>
+
+  <main class="PhramacyRegistration">
+    <div class="container">
+        <div class="LeftPanel">
+            <div class="header">
+                <p>“ Bringing Better Health <br>to Every Doorstep. ”</p>
+            </div>
+            <div class="main-title">
+                Instruction For You
+            </div>
+            <ul>
+            <li><div class="instruction-card">
+                <h1 class="title"><img src="/images/document.svg">Prepare Require Documents</h1>
+                <ul class="list">
+                    <li>
+                        Pharmacy Registration Certificate (issued by relevant government/health authority)
+                    </li>
+                    <li>
+                        Owner/Manager ID Proof
+                    </li>
+                    <li>
+                        Valid Email Address & Phone Number
+                    </li>
+                    <li>
+                        Bank Account Details (needed after approval)
+                    </li>
+                    <li>
+                        Pharmacy Address Proof (utility bill or rental agreement)
+                    </li>
+                    <li>
+                        Pharmacy longitude and latitude (you can get from google map platform)
+                    </li>
+                </ul>
+            </div></li>
+
+            <li><div class="instruction-card">
+                <h1 class="title"><img src="/images/upload-cloud.svg">Fill Out the Registration Form</h1>
+                <ul class="list">
+                    <li>
+                        Add details to form
+                        <ul class="">
+                            <li>Pharmacy Name</li>
+                            <li>License Number</li>
+                            <li>Contact Info</li>
+                            <li>Owner/Pharmacist Details</li>
+                            <li>Location(With Google Map Pin Available)</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Make sure documents are clear and readable (PDF or JPG).
+                    </li>
+                    <li>
+                        You’ll receive an email or SMS confirmation
+                    </li>
+                    <li>
+                        Verify your account clicking received email.
+                    </li>
+                </ul>
+            </div></li>
+
+            <li><div class="instruction-card">
+                <h1 class="title"><img src="/images/coffee.svg">Wait For Approval</h1>
+                <ul class="list">
+                    <li>
+                        Your application will be reviewed by our team.
+                    </li>
+                    <li>
+                        If approved:
+                        <ul>
+                            <li>You’ll receive  a welcome email.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        If more info is needed:
+                        <ul>
+                            <li>We will contact you with specific instructions.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        if all completed . You can now start using PharmaNet!
+                    </li>
+                </ul>
+            </div></li>
+
+            <li><div class="instruction-card">
+                <h1 class="title"><img src="/images/call-img.svg">Need help?</h1>
+                <ul class="Need-list">
+                    <li><img src="/images/msg-img.svg">cs18.devteam.feedback@gmail.com</li>
+                    <li><img src="/images/call-img.svg">+94 76 54 123 123</li>
+                    <li><img src="/images/call-img.svg">+94 71  23 123 123</li>
+                </ul>
+            </div></li>
+            
+            </ul>
+        </div>
+        <div class="RightPanel">
+            <div class="rightSideTitle">
+                <img src="">Get Start As 
+                <span class="highlight">Pharmacy</span>
+            </div>
+            <p class="discription">
+                Your digital journey to seamless prescriptions, smarter inventory,
+                and happier patients begins here.
+            </p>
+            
+                <form id="pharmacy-form" method="POST" >
+                    <div class="FormGroup">
+
+                        <h3 class="title">
+                            <span class="line"></span>Basic Info
+                        </h3>
+
+                        <label for="pharmacy-name">Pharmacy Name</label><br>
+                            <input type="text" name="pharmacy-name" id="pharmacy-name" placeholder="Helthcare Medical"><br>
+                        
+                        <label for="owner">Owner Name</label><br>
+                            <input type="text" name="owner" id="owner" placeholder="R.P.Kamal Sathsara"><br>
+                        
+                        <label for="PharmacyEmail">Email</label><br>
+                            <input type="text" name="ParmacyEmail" id="PharmacyEmail" placeholder="Healthcaremedical.Contact@gmail.com"> <br>   
+                    </div>
+
+
+                    <div class="FormGroup">
+
+                        <h3 class="title">
+                            <span class="line"></span>Location Info
+                        </h3>
+                
+                        <label>Address</label><br>
+                            <input type="text" name="address-no" placeholder="No"><br>
+                            <input type="text" name="address-street" placeholder="Street"><br>
+                            <input type="text" name="address-town" placeholder="Town"><br>
+                            <input type="text" name="address-Province" placeholder="Province"><br>
+                            <input type="text" name="address-postalCode" placeholder="Postal Code"><br>
+
+                        <label for="map">Google Map Location Link</label><br>
+                            <input type="url" name="map" id="map" placeholder="https://maps.app.goo.gl/RRaKYtBqVNnwgwCN9" required><br>
+                        
+                        <div class="longitude-latitude">    
+                            <label for="longitude">Longitude</label>
+                                <input type="text" name="longitude" id="longitude" placeholder="7.268932" required>
+                            <label for="latitude">Latitude</label>
+                                <input type="text" name="latitude" id="latitude" placeholder="80.341595" required>
+                        </div>
+                    </div>
+
+                    <div class="FormGroup" style="display: none;">
+
+                        <h3 class="title">
+                            <span class="line"></span>Upload Documents
+                        </h3>
+
+                        <div class="info-label">
+                            <p>Please upload your documents carefully. Make sure they are clear and easy to read. 
+                                We only accept PDF and JPG files. Check that you are uploading the correct files, 
+                                because you won’t be able to change them after uploading.
+                            </p>
+                        </div>
+
+                        <div class="UploadSection" >
+                            <div class="custom-upload">
+                                <label for="upload-p-reg-certificate">Pharmacy Registration Certificate</label>
+                                <label class="upload-btn" for="upload-p-reg-certificate">Upload File</label>
+                                <input type="file" id="upload-p-reg-certificate" name="p-reg-certificate" required>
+                            </div>
+
+                            <div class="custom-upload">
+                                <label for="OwnerProof">Owner/Manager Proof</label>
+                                <label class="upload-btn" for="OwnerProof">Upload File</label>
+                                <input type="file" id="OwnerProof" name="OwnerProof" required>
+                            </div>
+
+                            <div class="custom-upload">
+                                <label for="P-AddressProof">Pharmacy Address Proof</label>
+                                <label class="upload-btn" for="P-AddressProof">Upload File</label>
+                                <input type="file" id="P-AddressProof" name="P-AddressProof" required>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+
+                    <button type="submit" name="CreatePharmacyAccount" class="CreateAccount">Create Account</button>
+
+                    <div class="helpLink">
+                        <a href="#">Do you need any help ?</a>
+                    </div>
+                    <div class="footer">
+                        I Have An Account
+                        <a href="#" class="login">Log in</a>
+                    </div>
+                    
+
+                </form>
+        </div>
+
+    </div>
+    </div>
+  </main>
+
+</body>
+</html>

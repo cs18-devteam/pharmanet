@@ -8,13 +8,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body class="addPharmarcy01">
-<a href="pharmacy.html"><button class="closeBtn"></button></a>
+<a href="/admin/pharmacy"><button class="closeBtn"></button></a>
   <div class="registration-container">
     <header>
-      <img class="logopic" src="/public/logo/logo.svg" alt="logo">
+      <img class="logopic" src="/logo/logo.svg" alt="logo">
       <h1>PharmaNet</h1>
       <p>Register your pharmacy to get started</p>
     </header>
+
 
     <div class="steps">
       <div class="step active">
@@ -42,26 +43,26 @@
         <p>Enter your pharmacy details and license information</p>
       </div>
 
-      <form>
+      <form id="form" method="post" action="/admin/pharmacy/edit/step/2">
         <div class="form-row">
           <label>Pharmacy Name *</label>
-          <input type="text" placeholder="Enter pharmacy name" required>
+          <input type="text" name="name" value="{name}" placeholder="Enter pharmacy name" required>
         </div>
 
         <div class="form-row two-cols">
           <div>
             <label>License Number *</label>
-            <input type="text" placeholder="e.g., PH-2024-001" required>
+            <input type="text" name="licenseNumber" placeholder="e.g., PH-2024-001" value="{licenseNumber}" required>
           </div>
           <div>
             <label>License Expiry Date *</label>
-            <input type="date" required>
+            <input type="date" name="expireDate" required>
           </div>
         </div>
 
         <div class="form-buttons">
           <!-- <button type="button" class="btn prev">Previous</button> -->
-          <a href="addPharmarcy02.html"><button type="button" class="btn next">Next</button></a>
+          <button data-href="/admin/pharmacy/{id}/edit/step/2" type="button" class="btn next btn-next">Next</button>
         </div>
       </form>
     </div>
@@ -70,6 +71,41 @@
       Need help? <a href="#">Contact support</a>
     </footer>
   </div>
+
+
+  <script>
+    const form = document.getElementById('form');
+    const btn_next = document.querySelector('.btn-next');
+
+    
+
+    const data = {}
+    btn_next.addEventListener('click' , (e)=>{
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      for( const [key , value] of formData.entries()){
+        
+        if(!value){
+          document.querySelector(`input[name=${key}]`).classList.add('utility-warn');
+          document.querySelector(`input[name="${key}"]`).classList.remove('utility-success');
+          console.log(document.querySelector(`input[name=${key}]`));
+          return;
+        }else{
+          document.querySelector(`input[name="${key}"]`).classList.add('utility-success')
+          document.querySelector(`input[name="${key}"]`).classList.remove('utility-warn')
+        }
+        data[key] = value;
+      }
+      
+      //save to storage
+      localStorage.setItem("pharmacy" , JSON.stringify(data));
+      window.location.href = "/admin/pharmacy/{id}/edit/step/2";
+    })
+    
+
+
+  </script>
 
 </body>
 </html>

@@ -712,6 +712,34 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   transition: all 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
+.utility-warn {
+  animation: warn 4s ease;
+  background-image: linear-gradient(120deg, white, #ffc3c3, white);
+  background-size: 200%;
+  background-repeat: no-repeat;
+  outline: 1px solid red;
+  background-position-x: 0%;
+}
+
+@keyframes warn {
+  100% {
+    background-position-x: 200%;
+  }
+}
+.utility-success {
+  animation: success 4s ease forwards;
+  background-image: linear-gradient(120deg, white, #c4ffb8, white);
+  background-size: 200%;
+  background-repeat: no-repeat;
+  outline: 1px solid green;
+  background-position-x: 0%;
+}
+
+@keyframes success {
+  100% {
+    background-position-x: 200%;
+  }
+}
 .signup header {
   margin: 2rem;
 }
@@ -7547,6 +7575,1942 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .supplement .blog-post .back-btn a:hover {
   background: #FB8F21;
   color: white;
+}
+
+.addPharmarcy01 body {
+  position: relative;
+  font-family: "Segoe UI", sans-serif;
+  background: #F7F7F7;
+  color: #08374F;
+  margin: 0;
+  padding: 40px 0;
+}
+.addPharmarcy01 .closeBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #F7F7F7;
+  border: 1rem black;
+  color: #9ca3af;
+  font-size: 2.4rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.addPharmarcy01 .closeBtn::before {
+  content: "×";
+}
+.addPharmarcy01 .closeBtn:hover {
+  color: #ff4444;
+}
+.addPharmarcy01 .registration-container {
+  max-width: 70rem;
+  margin: auto;
+  text-align: center;
+}
+.addPharmarcy01 .registration-container header .logo-icon {
+  font-size: 40px;
+  color: #08374F;
+}
+.addPharmarcy01 .registration-container header h1 {
+  margin: 10px 0 5px;
+  color: #08374F;
+}
+.addPharmarcy01 .registration-container header p {
+  color: #555;
+}
+.addPharmarcy01 .registration-container .steps {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0 20px;
+}
+.addPharmarcy01 .registration-container .steps .step {
+  text-align: center;
+  flex: 1;
+}
+.addPharmarcy01 .registration-container .steps .step .circle {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #ccc;
+  color: white;
+  margin: 0 auto 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+.addPharmarcy01 .registration-container .steps .step.active .circle {
+  background: #FB8F21;
+}
+.addPharmarcy01 .registration-container .steps .step span {
+  font-size: 13px;
+  color: #9ca3af;
+}
+.addPharmarcy01 .registration-container .form-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  padding: 0;
+}
+.addPharmarcy01 .registration-container .form-card .card-header {
+  background: #f1f1f1;
+  padding: 16px 20px;
+  border-radius: 12px 12px 0 0;
+}
+.addPharmarcy01 .registration-container .form-card .card-header i {
+  color: #08374F;
+  margin-right: 8px;
+}
+.addPharmarcy01 .registration-container .form-card .card-header span {
+  font-weight: bold;
+  color: #08374F;
+  margin-left: 0rem;
+}
+.addPharmarcy01 .registration-container .form-card .card-header p {
+  margin: 0rem 0 0 0rem;
+  color: #666;
+  font-size: 13px;
+}
+.addPharmarcy01 .registration-container .form-card form {
+  padding: 20px;
+}
+.addPharmarcy01 .registration-container .form-card form .form-row {
+  margin-bottom: 16px;
+}
+.addPharmarcy01 .registration-container .form-card form .form-row label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #08374F;
+}
+.addPharmarcy01 .registration-container .form-card form .form-row input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.addPharmarcy01 .registration-container .form-card form .two-cols {
+  display: flex;
+  gap: 20px;
+}
+.addPharmarcy01 .registration-container .form-card form .two-cols div {
+  flex: 1;
+}
+.addPharmarcy01 .registration-container .form-card form .form-buttons {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid;
+  padding-top: 16px;
+  margin-top: 20px;
+}
+.addPharmarcy01 .registration-container .form-card form .form-buttons .btn {
+  padding: 10px 28px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.addPharmarcy01 .registration-container .form-card form .form-buttons .btn.prev {
+  background: #eee;
+  color: #555;
+}
+.addPharmarcy01 .registration-container .form-card form .form-buttons .btn.next {
+  background: #08374F;
+  color: white;
+}
+.addPharmarcy01 .registration-container .form-card form .form-buttons .btn.next:hover {
+  color: #FB8F21;
+}
+.addPharmarcy01 .registration-container footer {
+  margin-top: 20px;
+  color: #555;
+  font-size: 14px;
+}
+.addPharmarcy01 .registration-container footer a {
+  color: #08374F;
+  text-decoration: none;
+}
+.addPharmarcy01 .registration-container footer a:hover {
+  text-decoration: underline;
+}
+
+.addPharmarcy01 body {
+  position: relative;
+  font-family: "Segoe UI", sans-serif;
+  background: #F7F7F7;
+  color: #08374F;
+  margin: 0;
+  padding: 40px 0;
+}
+.addPharmarcy01 .closeBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #F7F7F7;
+  border: 1rem black;
+  color: #9ca3af;
+  font-size: 2.4rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.addPharmarcy01 .closeBtn::before {
+  content: "×";
+}
+.addPharmarcy01 .closeBtn:hover {
+  color: #ff4444;
+}
+.addPharmarcy01 .registration-container {
+  max-width: 70rem;
+  margin: auto;
+  text-align: center;
+}
+.addPharmarcy01 .registration-container header .logo-icon {
+  font-size: 40px;
+  color: #08374F;
+}
+.addPharmarcy01 .registration-container header h1 {
+  margin: 10px 0 5px;
+  color: #08374F;
+}
+.addPharmarcy01 .registration-container header p {
+  color: #555;
+}
+.addPharmarcy01 .registration-container .steps {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0 20px;
+}
+.addPharmarcy01 .registration-container .steps .step {
+  text-align: center;
+  flex: 1;
+}
+.addPharmarcy01 .registration-container .steps .step .circle {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #ccc;
+  color: white;
+  margin: 0 auto 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+.addPharmarcy01 .registration-container .steps .step.active .circle {
+  background: #FB8F21;
+}
+.addPharmarcy01 .registration-container .steps .step span {
+  font-size: 13px;
+  color: #9ca3af;
+}
+.addPharmarcy01 .registration-container .form-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  padding: 0;
+}
+.addPharmarcy01 .registration-container .form-card .card-header {
+  background: #f1f1f1;
+  padding: 16px 20px;
+  border-radius: 12px 12px 0 0;
+}
+.addPharmarcy01 .registration-container .form-card .card-header i {
+  color: #08374F;
+  margin-right: 8px;
+}
+.addPharmarcy01 .registration-container .form-card .card-header span {
+  font-weight: bold;
+  color: #08374F;
+  margin-left: 0rem;
+}
+.addPharmarcy01 .registration-container .form-card .card-header p {
+  margin: 0rem 0 0 0rem;
+  color: #666;
+  font-size: 13px;
+}
+.addPharmarcy01 .registration-container .form-card form {
+  padding: 20px;
+}
+.addPharmarcy01 .registration-container .form-card form .form-row {
+  margin-bottom: 16px;
+}
+.addPharmarcy01 .registration-container .form-card form .form-row label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #08374F;
+}
+.addPharmarcy01 .registration-container .form-card form .form-row input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.addPharmarcy01 .registration-container .form-card form .two-cols {
+  display: flex;
+  gap: 20px;
+}
+.addPharmarcy01 .registration-container .form-card form .two-cols div {
+  flex: 1;
+}
+.addPharmarcy01 .registration-container .form-card form .form-buttons {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid;
+  padding-top: 16px;
+  margin-top: 20px;
+}
+.addPharmarcy01 .registration-container .form-card form .form-buttons .btn {
+  padding: 10px 28px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.addPharmarcy01 .registration-container .form-card form .form-buttons .btn.prev {
+  background: #eee;
+  color: #555;
+}
+.addPharmarcy01 .registration-container .form-card form .form-buttons .btn.next {
+  background: #08374F;
+  color: white;
+}
+.addPharmarcy01 .registration-container .form-card form .form-buttons .btn.next:hover {
+  color: #FB8F21;
+}
+.addPharmarcy01 .registration-container footer {
+  margin-top: 20px;
+  color: #555;
+  font-size: 14px;
+}
+.addPharmarcy01 .registration-container footer a {
+  color: #08374F;
+  text-decoration: none;
+}
+.addPharmarcy01 .registration-container footer a:hover {
+  text-decoration: underline;
+}
+
+.addPharmarcy02 body {
+  font-family: "Segoe UI", sans-serif;
+  background: #F7F7F7;
+  color: #08374F;
+  margin: 0;
+  padding: 40px 0;
+}
+.addPharmarcy02 .registration-container {
+  max-width: 700px;
+  margin: auto;
+  text-align: center;
+}
+.addPharmarcy02 .registration-container header .logo-icon {
+  font-size: 40px;
+  color: #08374F;
+}
+.addPharmarcy02 .registration-container header h1 {
+  margin: 10px 0 5px;
+}
+.addPharmarcy02 .registration-container header p {
+  color: #555;
+}
+.addPharmarcy02 .registration-container .steps {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0 20px;
+}
+.addPharmarcy02 .registration-container .steps .step {
+  text-align: center;
+  flex: 1;
+}
+.addPharmarcy02 .registration-container .steps .step .circle {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #ccc;
+  color: white;
+  margin: 0 auto 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+.addPharmarcy02 .registration-container .steps .step.active .circle {
+  background: #FB8F21;
+}
+.addPharmarcy02 .registration-container .steps .step span {
+  font-size: 13px;
+  color: #444;
+}
+.addPharmarcy02 .registration-container .form-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  padding: 0;
+}
+.addPharmarcy02 .registration-container .form-card .card-header {
+  background: #f1f1f1;
+  padding: 16px 20px;
+  border-radius: 12px 12px 0 0;
+}
+.addPharmarcy02 .registration-container .form-card .card-header i {
+  color: #08374F;
+  margin-right: 8px;
+}
+.addPharmarcy02 .registration-container .form-card .card-header span {
+  font-weight: bold;
+}
+.addPharmarcy02 .registration-container .form-card .card-header p {
+  margin: 4px 0 0;
+  color: #666;
+  font-size: 13px;
+}
+.addPharmarcy02 .registration-container .form-card form {
+  padding: 20px;
+}
+.addPharmarcy02 .registration-container .form-card form .form-row {
+  margin-bottom: 16px;
+}
+.addPharmarcy02 .registration-container .form-card form .form-row label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.addPharmarcy02 .registration-container .form-card form .form-row input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.addPharmarcy02 .registration-container .form-card form .two-cols {
+  display: flex;
+  gap: 20px;
+}
+.addPharmarcy02 .registration-container .form-card form .two-cols div {
+  flex: 1;
+}
+.addPharmarcy02 .registration-container .form-card form .form-buttons {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid;
+  padding-top: 16px;
+  margin-top: 20px;
+}
+.addPharmarcy02 .registration-container .form-card form .form-buttons .btn {
+  padding: 10px 28px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.addPharmarcy02 .registration-container .form-card form .form-buttons .btn.prev {
+  background: #eee;
+  color: #555;
+}
+.addPharmarcy02 .registration-container .form-card form .form-buttons .btn.next {
+  background: #08374F;
+  color: white;
+}
+.addPharmarcy02 .registration-container .form-card form .form-buttons .btn.next:hover {
+  color: #FB8F21;
+}
+.addPharmarcy02 .registration-container footer {
+  margin-top: 20px;
+  color: #555;
+  font-size: 14px;
+}
+.addPharmarcy02 .registration-container footer a {
+  color: #08374F;
+  text-decoration: none;
+}
+.addPharmarcy02 .registration-container footer a:hover {
+  text-decoration: underline;
+}
+
+.addPharmarcy03 body {
+  font-family: "Segoe UI", sans-serif;
+  background: #F7F7F7;
+  color: #08374F;
+  margin: 0;
+  padding: 40px 0;
+}
+.addPharmarcy03 .registration-container {
+  max-width: 700px;
+  margin: auto;
+  text-align: center;
+}
+.addPharmarcy03 .registration-container header .logo-icon {
+  font-size: 40px;
+  color: #08374F;
+}
+.addPharmarcy03 .registration-container header h1 {
+  margin: 10px 0 5px;
+}
+.addPharmarcy03 .registration-container header p {
+  color: #555;
+}
+.addPharmarcy03 .registration-container .steps {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0 20px;
+}
+.addPharmarcy03 .registration-container .steps .step {
+  text-align: center;
+  flex: 1;
+}
+.addPharmarcy03 .registration-container .steps .step .circle {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #ccc;
+  color: white;
+  margin: 0 auto 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+.addPharmarcy03 .registration-container .steps .step.active .circle {
+  background: #FB8F21;
+}
+.addPharmarcy03 .registration-container .steps .step span {
+  font-size: 13px;
+  color: #444;
+}
+.addPharmarcy03 .registration-container .form-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  padding: 0;
+}
+.addPharmarcy03 .registration-container .form-card .card-header {
+  background: #f1f1f1;
+  padding: 16px 20px;
+  border-radius: 12px 12px 0 0;
+}
+.addPharmarcy03 .registration-container .form-card .card-header i {
+  color: #08374F;
+  margin-right: 8px;
+}
+.addPharmarcy03 .registration-container .form-card .card-header span {
+  font-weight: bold;
+}
+.addPharmarcy03 .registration-container .form-card .card-header p {
+  margin: -1px 0 0;
+  color: #666;
+  font-size: 13px;
+}
+.addPharmarcy03 .registration-container .form-card form {
+  padding: 20px;
+}
+.addPharmarcy03 .registration-container .form-card form .form-row {
+  margin-bottom: 16px;
+}
+.addPharmarcy03 .registration-container .form-card form .form-row label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.addPharmarcy03 .registration-container .form-card form .form-row input, .addPharmarcy03 .registration-container .form-card form .form-row select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.addPharmarcy03 .registration-container .form-card form .two-cols {
+  display: flex;
+  gap: 20px;
+}
+.addPharmarcy03 .registration-container .form-card form .two-cols div {
+  flex: 1;
+}
+.addPharmarcy03 .registration-container .form-card form .form-buttons {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid;
+  padding-top: 16px;
+  margin-top: 20px;
+}
+.addPharmarcy03 .registration-container .form-card form .form-buttons .btn {
+  padding: 10px 28px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.addPharmarcy03 .registration-container .form-card form .form-buttons .btn.prev {
+  background: #eee;
+  color: #555;
+}
+.addPharmarcy03 .registration-container .form-card form .form-buttons .btn.next {
+  background: #08374F;
+  color: white;
+}
+.addPharmarcy03 .registration-container .form-card form .form-buttons .btn.next:hover {
+  color: #FB8F21;
+}
+.addPharmarcy03 .registration-container footer {
+  margin-top: 20px;
+  color: #555;
+  font-size: 14px;
+}
+.addPharmarcy03 .registration-container footer a {
+  color: #08374F;
+  text-decoration: none;
+}
+.addPharmarcy03 .registration-container footer a:hover {
+  text-decoration: underline;
+}
+
+.addPharmarcy04 body {
+  font-family: "Segoe UI", sans-serif;
+  background: #F7F7F7;
+  color: #08374F;
+  margin: 0;
+  padding: 40px 0;
+}
+.addPharmarcy04 .registration-container {
+  max-width: 700px;
+  margin: auto;
+  text-align: center;
+}
+.addPharmarcy04 .registration-container header .logo-icon {
+  font-size: 40px;
+  color: #08374F;
+}
+.addPharmarcy04 .registration-container header h1 {
+  margin: 10px 0 5px;
+}
+.addPharmarcy04 .registration-container header p {
+  color: #555;
+}
+.addPharmarcy04 .registration-container .steps {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0 20px;
+}
+.addPharmarcy04 .registration-container .steps .step {
+  text-align: center;
+  flex: 1;
+}
+.addPharmarcy04 .registration-container .steps .step .circle {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #ccc;
+  color: white;
+  margin: 0 auto 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+.addPharmarcy04 .registration-container .steps .step.active .circle {
+  background: #FB8F21;
+}
+.addPharmarcy04 .registration-container .steps .step span {
+  font-size: 13px;
+  color: #444;
+}
+.addPharmarcy04 .registration-container .form-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  padding: 0;
+}
+.addPharmarcy04 .registration-container .form-card .card-header {
+  background: #f1f1f1;
+  padding: 16px 20px;
+  border-radius: 12px 12px 0 0;
+}
+.addPharmarcy04 .registration-container .form-card .card-header i {
+  color: #08374F;
+  margin-right: 8px;
+}
+.addPharmarcy04 .registration-container .form-card .card-header span {
+  font-weight: bold;
+}
+.addPharmarcy04 .registration-container .form-card .card-header p {
+  margin: 4px 0 0;
+  color: #666;
+  font-size: 13px;
+}
+.addPharmarcy04 .registration-container .form-card form {
+  padding: 20px;
+}
+.addPharmarcy04 .registration-container .form-card form .form-row {
+  margin-bottom: 16px;
+}
+.addPharmarcy04 .registration-container .form-card form .form-row label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.addPharmarcy04 .registration-container .form-card form .form-row input, .addPharmarcy04 .registration-container .form-card form .form-row select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #666;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.addPharmarcy04 .registration-container .form-card form .form-row select option:hover {
+  background-color: #FB8F21;
+}
+.addPharmarcy04 .registration-container .form-card form .form-buttons {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid;
+  padding-top: 16px;
+  margin-top: 20px;
+}
+.addPharmarcy04 .registration-container .form-card form .form-buttons .btn {
+  padding: 10px 28px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.addPharmarcy04 .registration-container .form-card form .form-buttons .btn.prev {
+  background: #eee;
+  color: #555;
+}
+.addPharmarcy04 .registration-container .form-card form .form-buttons .btn.submit {
+  background: #08374F;
+  color: white;
+}
+.addPharmarcy04 .registration-container .form-card form .form-buttons .btn.submit:hover {
+  color: #FB8F21;
+}
+.addPharmarcy04 .registration-container footer {
+  margin-top: 20px;
+  color: #555;
+  font-size: 14px;
+}
+.addPharmarcy04 .registration-container footer a {
+  color: #08374F;
+  text-decoration: none;
+}
+.addPharmarcy04 .registration-container footer a:hover {
+  text-decoration: underline;
+}
+
+.dataAssets .container {
+  display: flex;
+  flex-direction: row;
+}
+.dataAssets .container .container-1 {
+  flex: -2;
+  margin-right: 0rem;
+  align-items: stretch;
+  min-height: 95vh;
+  background: #F7F7F7;
+  border-radius: 1rem;
+}
+.dataAssets .container .container-1 .sideBar {
+  width: 26rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.dataAssets .container .container-1 .sideBar .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.dataAssets .container .container-1 .sideBar .logo .logopic {
+  font-size: 2.4rem;
+}
+.dataAssets .container .container-1 .sideBar .logo div h3 {
+  font-size: 1.8rem;
+  margin-bottom: -0.5rem;
+  color: #08374F;
+}
+.dataAssets .container .container-1 .sideBar .logo div p {
+  font-size: 1.2rem;
+  color: #9ca3af;
+}
+.dataAssets .container .menu {
+  flex: 2;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4rem;
+}
+.dataAssets .container .menu a {
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #9ca3af;
+  transition: all 0.3s;
+}
+.dataAssets .container .menu a.active, .dataAssets .container .menu a:hover {
+  background: #768190;
+  color: #FB8F21;
+}
+.dataAssets .container .menuItem {
+  display: flex;
+  border-radius: 0.5rem;
+}
+.dataAssets .container .menuItem .text1 {
+  font-size: 1rem;
+  text-decoration: none;
+  border: none;
+}
+.dataAssets .container .menuItem .text1::before {
+  content: "⚙";
+}
+.dataAssets .container .menuItem .text2 {
+  font-size: 1rem;
+}
+.dataAssets .container .menuItem .text2::before {
+  content: "⎋";
+}
+.dataAssets .container .menuItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: -2rem;
+  padding: 2rem;
+  width: 26rem;
+  background-color: #08374F;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  position: absolute;
+  top: 59rem;
+}
+.dataAssets .container .menuItem .text {
+  border: none;
+  font-size: 1.5rem;
+  background: none;
+  color: white;
+  cursor: pointer;
+}
+.dataAssets .container .menuItem .text:hover {
+  color: #FB8F21;
+}
+.dataAssets .container .menuItem .text.setting::before {
+  content: "⚙";
+}
+.dataAssets .container .menuItem .text.signOut::before {
+  content: "⎋";
+}
+.dataAssets .container .container-2 {
+  flex: 2;
+}
+.dataAssets .container .container-2 .main {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+}
+.dataAssets .container .container-2 .main header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  justify-content: space-around;
+}
+.dataAssets .container .container-2 .main header input {
+  background: white;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  width: 50%;
+  color: #9ca3af;
+  border-radius: 8px;
+}
+.dataAssets .container .container-2 .main header .user-section {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.dataAssets .container .container-2 .main header .user-section .bell {
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: relative;
+}
+.dataAssets .container .container-2 .main header .user-section .bell::before {
+  content: "🔔";
+}
+.dataAssets .container .container-2 .main header .user-section .bell::after {
+  content: "3";
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  background: red;
+  color: white;
+  font-size: 0.7rem;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+}
+.dataAssets .container .container-2 .main header .user-section .admin {
+  width: 3.5rem;
+  height: 3.5rem;
+  background: #FB8F21;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fff;
+}
+.dataAssets .container .container-2 .main .dashboard .sectionHeading {
+  display: flex;
+  justify-content: space-between;
+}
+.dataAssets .container .container-2 .main .dashboard .sectionHeading .uploadBtn {
+  background: linear-gradient(to right, #18978D, #083851);
+  color: white;
+  font-size: 1.4rem;
+  border-radius: 1rem;
+  border: 1rem #FB8F21;
+  align-items: baseline;
+  padding: 1.5rem;
+  cursor: pointer;
+}
+.dataAssets .container .container-2 .main .dashboard .sectionHeading .uploadBtn:hover {
+  color: #FB8F21;
+}
+.dataAssets .container .container-2 .main .dashboard h1 {
+  font-size: 3.2rem;
+  margin-bottom: 0.8rem;
+  color: #08374F;
+  margin-bottom: -0.5rem;
+}
+.dataAssets .container .container-2 .main .dashboard p {
+  color: #9ca3af;
+  margin-bottom: 3rem;
+}
+.dataAssets .container .container-2 .table-container {
+  background: #F7F7F7;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  margin-top: 2rem;
+}
+.dataAssets .container .container-2 .file-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.dataAssets .container .container-2 .file-table th,
+.dataAssets .container .container-2 .file-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid black;
+}
+.dataAssets .container .container-2 .file-table th {
+  color: #F7F7F7;
+  font-size: 0.9rem;
+}
+.dataAssets .container .container-2 .file-table tr:last-child td {
+  border-bottom: none;
+}
+.dataAssets .container .container-2 .file-table td small {
+  color: #F7F7F7;
+  font-size: 0.8rem;
+}
+.dataAssets .container .container-2 .file-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: sans-serif;
+}
+.dataAssets .container .container-2 .file-cell .file-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: white;
+}
+.dataAssets .container .container-2 .file-cell .file-icon.pdf {
+  background: rgba(183, 28, 28, 0.8);
+}
+.dataAssets .container .container-2 .file-cell .file-icon.excel {
+  background: rgba(46, 125, 50, 0.8);
+}
+.dataAssets .container .container-2 .file-cell .file-icon.csv {
+  background: rgba(21, 101, 192, 0.8);
+}
+.dataAssets .container .container-2 .file-cell .file-info {
+  display: flex;
+  align-items: center;
+}
+.dataAssets .container .container-2 .file-cell .file-info a {
+  line-height: 1.2;
+  font-family: sans-serif;
+  color: #08374F;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+.dataAssets .container .container-2 .tag {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  background: #333;
+  color: #fff;
+  font-family: sans-serif;
+}
+.dataAssets .container .container-2 .tag.reports {
+  background: blue;
+}
+.dataAssets .container .container-2 .tag.inventory {
+  background: green;
+}
+.dataAssets .container .container-2 .tag.prescriptions {
+  background: purple;
+}
+.dataAssets .container .container-2 .tag.compliance {
+  background: #555;
+}
+.dataAssets .container .container-2 .tag.training {
+  background: yellow;
+  color: #000;
+}
+.dataAssets .container .container-2 .tag.pricing {
+  background: red;
+}
+.dataAssets .container .container-2 .dots {
+  background: none;
+  border: none;
+  color: black;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.dataAssets .container .container-2 .dots:hover {
+  color: #9ca3af;
+}
+
+.medicines .container {
+  display: flex;
+  flex-direction: row;
+}
+.medicines .container .container-1 {
+  flex: -2;
+  margin-right: 0rem;
+  align-items: stretch;
+  min-height: 95vh;
+  background: #F7F7F7;
+  border-radius: 1rem;
+}
+.medicines .container .container-1 .sideBar {
+  width: 26rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.medicines .container .container-1 .sideBar .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.medicines .container .container-1 .sideBar .logo .logopic {
+  font-size: 2.4rem;
+}
+.medicines .container .container-1 .sideBar .logo div h3 {
+  font-size: 1.8rem;
+  margin-bottom: -0.5rem;
+  color: #08374F;
+}
+.medicines .container .container-1 .sideBar .logo div p {
+  font-size: 1.2rem;
+  color: #9ca3af;
+}
+.medicines .container .menu {
+  flex: 2;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4rem;
+}
+.medicines .container .menu a {
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #9ca3af;
+  transition: all 0.3s;
+}
+.medicines .container .menu a.active, .medicines .container .menu a:hover {
+  background: #768190;
+  color: #FB8F21;
+}
+.medicines .container .menuItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: -2rem;
+  padding: 2rem;
+  width: 26rem;
+  background-color: #08374F;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  position: absolute;
+  top: 59rem;
+}
+.medicines .container .menuItem .text {
+  border: none;
+  font-size: 1.5rem;
+  background: none;
+  color: white;
+  cursor: pointer;
+}
+.medicines .container .menuItem .text:hover {
+  color: #FB8F21;
+}
+.medicines .container .menuItem .text.setting::before {
+  content: "⚙";
+}
+.medicines .container .menuItem .text.signOut::before {
+  content: "⎋";
+}
+.medicines .container .container-2 {
+  flex: 2;
+}
+.medicines .container .container-2 .main {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+}
+.medicines .container .container-2 .main header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  justify-content: space-around;
+}
+.medicines .container .container-2 .main header input {
+  background: white;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  width: 50%;
+  color: #9ca3af;
+  border-radius: 8px;
+}
+.medicines .container .container-2 .main header .user-section {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.medicines .container .container-2 .main header .user-section .bell {
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: relative;
+}
+.medicines .container .container-2 .main header .user-section .bell::before {
+  content: "🔔";
+}
+.medicines .container .container-2 .main header .user-section .bell::after {
+  content: "3";
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  background: red;
+  color: white;
+  font-size: 0.7rem;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+}
+.medicines .container .container-2 .main header .user-section .admin {
+  width: 3.5rem;
+  height: 3.5rem;
+  background: #FB8F21;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fff;
+}
+.medicines .container .container-2 .main .dashboard .sectionHeading {
+  display: flex;
+  justify-content: space-between;
+}
+.medicines .container .container-2 .main .dashboard .sectionHeading .addBtn {
+  background: linear-gradient(to right, #18978D, #083851);
+  color: white;
+  font-size: 1.4rem;
+  border-radius: 1rem;
+  border: 1rem #FB8F21;
+  align-items: baseline;
+  padding: 1.5rem;
+  cursor: pointer;
+}
+.medicines .container .container-2 .main .dashboard .sectionHeading .addBtn::before {
+  content: "+ ";
+}
+.medicines .container .container-2 .main .dashboard h1 {
+  font-size: 3.2rem;
+  margin-bottom: 0.8rem;
+  color: #08374F;
+  margin-bottom: -0.5rem;
+}
+.medicines .container .container-2 .main .dashboard p {
+  color: #9ca3af;
+  margin-bottom: 3rem;
+}
+.medicines .container .table-container {
+  width: 100%;
+  background: #F7F7F7;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+.medicines .container .medicine-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.medicines .container .medicine-table th, .medicines .container .medicine-table td {
+  text-align: left;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid black;
+}
+.medicines .container .medicine-table th {
+  color: #aaa;
+  font-size: 1.5rem;
+}
+.medicines .container .medicine-table tr:last-child td {
+  border-bottom: none;
+}
+.medicines .container .medicine-table td small {
+  color: #9ca3af;
+  font-size: 1rem;
+  margin-top: -1rem;
+}
+.medicines .container .tag {
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  color: #fff;
+  background: #9ca3af;
+}
+.medicines .container .tag.antibiotics {
+  background: #007bff;
+}
+.medicines .container .tag.pain-relief {
+  background: #ff9800;
+}
+.medicines .container .tag.diabetes {
+  background: #9c27b0;
+}
+.medicines .container .tag.cardiac {
+  background: #673ab7;
+}
+.medicines .container .tag.gastric {
+  background: #00bcd4;
+}
+.medicines .container .status {
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: white;
+}
+.medicines .container .status.in-stock {
+  background: #00a676;
+}
+.medicines .container .status.low-stock {
+  background: #00a676;
+}
+.medicines .container .status.critical {
+  background: #ff4444;
+}
+.medicines .container .critical {
+  font-weight: 600;
+}
+.medicines .container .actions {
+  text-align: right;
+}
+.medicines .container .actions .dropdownMenu {
+  position: relative;
+  overflow: visible;
+}
+.medicines .container .actions .dropdownMenu .dropdown {
+  display: none;
+  list-style: none;
+  position: absolute;
+  top: 10%;
+  right: 0%;
+  background-color: #F7F7F7;
+  border-radius: 0.8rem;
+  width: 13rem;
+  overflow: visible;
+  z-index: 10;
+  height: fit-content;
+  box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.4);
+}
+.medicines .container .actions .dropdownMenu .dropdown a {
+  padding: 1rem 1.5rem;
+  color: #08374F;
+  cursor: pointer;
+  font-size: 1.4rem;
+}
+.medicines .container .actions .dropdownMenu .dropdown a:hover {
+  background-color: #FB8F21;
+  border-radius: 0.5rem;
+}
+.medicines .container .actions .dropdownMenu .dropdown a.danger {
+  color: #ff4444;
+}
+.medicines .container .actions .dropdownMenu .dropdown.show {
+  display: block;
+}
+.medicines .container .actions .dropdownMenu .dots {
+  background: none;
+  border: none;
+  color: black;
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+.medicines .container .actions .dropdownMenu .dots:hover {
+  color: #9ca3af;
+}
+.medicines .container .actions .dropdownMenu .dropdown.open-up {
+  top: auto;
+  bottom: 100%;
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  box-shadow: 0 -0.4rem 1rem rgba(0, 0, 0, 0.4);
+}
+
+.pharmarcy .container {
+  display: flex;
+  flex-direction: row;
+}
+.pharmarcy .container .container-1 {
+  flex: -2;
+  margin-right: 0rem;
+  align-items: stretch;
+  min-height: 95vh;
+  background: #F7F7F7;
+  border-radius: 1rem;
+}
+.pharmarcy .container .container-1 .sideBar {
+  width: 26rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.pharmarcy .container .container-1 .sideBar .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.pharmarcy .container .container-1 .sideBar .logo .logopic {
+  font-size: 2.4rem;
+}
+.pharmarcy .container .container-1 .sideBar .logo div h3 {
+  font-size: 1.8rem;
+  margin-bottom: -0.5rem;
+  color: #08374F;
+}
+.pharmarcy .container .container-1 .sideBar .logo div p {
+  font-size: 1.2rem;
+  color: #9ca3af;
+}
+.pharmarcy .container .menu {
+  flex: 2;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4rem;
+}
+.pharmarcy .container .menu a {
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #9ca3af;
+  transition: all 0.3s;
+}
+.pharmarcy .container .menu a.active, .pharmarcy .container .menu a:hover {
+  background: #768190;
+  color: #FB8F21;
+}
+.pharmarcy .container .menuItem {
+  display: flex;
+  border-radius: 0.5rem;
+}
+.pharmarcy .container .menuItem .text1 {
+  font-size: 1rem;
+  text-decoration: none;
+  border: none;
+}
+.pharmarcy .container .menuItem .text1::before {
+  content: "⚙";
+}
+.pharmarcy .container .menuItem .text2 {
+  font-size: 1rem;
+}
+.pharmarcy .container .menuItem .text2::before {
+  content: "⎋";
+}
+.pharmarcy .container .menuItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: -2rem;
+  padding: 2rem;
+  width: 26rem;
+  background-color: #08374F;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  position: absolute;
+  top: 75rem;
+}
+.pharmarcy .container .menuItem .text {
+  border: none;
+  font-size: 1.5rem;
+  background: none;
+  color: white;
+  cursor: pointer;
+}
+.pharmarcy .container .menuItem .text:hover {
+  color: #FB8F21;
+}
+.pharmarcy .container .menuItem .text.setting::before {
+  content: "⚙";
+}
+.pharmarcy .container .menuItem .text.signOut::before {
+  content: "⎋";
+}
+.pharmarcy .container .container-2 {
+  flex: 2;
+}
+.pharmarcy .container .container-2 .main {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+}
+.pharmarcy .container .container-2 .main header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  justify-content: space-around;
+}
+.pharmarcy .container .container-2 .main header input {
+  background: white;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  width: 50%;
+  color: #9ca3af;
+  border-radius: 8px;
+}
+.pharmarcy .container .container-2 .main header .user-section {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.pharmarcy .container .container-2 .main header .user-section .bell {
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: relative;
+}
+.pharmarcy .container .container-2 .main header .user-section .bell::before {
+  content: "🔔";
+}
+.pharmarcy .container .container-2 .main header .user-section .bell::after {
+  content: "3";
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  background: red;
+  color: white;
+  font-size: 0.7rem;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+}
+.pharmarcy .container .container-2 .main header .user-section .admin {
+  width: 3.5rem;
+  height: 3.5rem;
+  background: #FB8F21;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fff;
+}
+.pharmarcy .container .container-2 .main .dashboard .sectionHeading {
+  display: flex;
+  justify-content: space-between;
+}
+.pharmarcy .container .container-2 .main .dashboard .sectionHeading .addBtn {
+  background: linear-gradient(to right, #18978D, #083851);
+  color: white;
+  font-size: 1.4rem;
+  border-radius: 1rem;
+  border: 1rem #FB8F21;
+  align-items: baseline;
+  padding: 1.5rem;
+}
+.pharmarcy .container .container-2 .main .dashboard .sectionHeading .addBtn::before {
+  content: "+ ";
+}
+.pharmarcy .container .container-2 .main .dashboard h1 {
+  font-size: 3.2rem;
+  margin-bottom: 0.8rem;
+  color: #08374F;
+  margin-bottom: -0.5rem;
+}
+.pharmarcy .container .container-2 .main .dashboard p {
+  color: #9ca3af;
+  margin-bottom: 3rem;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(45rem, 1fr));
+  gap: 1.5rem;
+  min-height: 90vh;
+  align-items: stretch;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card {
+  display: grid;
+  background-color: #F7F7F7;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+  position: relative;
+  align-items: stretch;
+  max-width: 60rem;
+  max-height: 50vh;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .header h3 {
+  font-size: 1.5rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #08374F;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .header .menu-btn {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card p {
+  margin: 0.75rem 0 0.5rem;
+  color: #08374F;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .details li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+  font-size: 1.2rem;
+  color: #FB8F21;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .details li span {
+  font-size: 1.5rem;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .details li span.address::before {
+  content: "📍";
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .details li span.telephoneNo::before {
+  content: "📞 ";
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .details li span.email::before {
+  content: "✉️ ";
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .footer {
+  margin-top: 1.2rem;
+  border-top: 1px solid #222;
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .footer p {
+  font-size: 0.95rem;
+  color: #aaa;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .footer p strong {
+  color: #08374F;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .footer .details-btn {
+  background: linear-gradient(to right, #18978D, #083851);
+  border: 1px solid #08374F;
+  color: #fff;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .footer .details-btn:hover {
+  background-color: #1e1e1e;
+}
+.pharmarcy .container .container-2 .main .dashboard .status {
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.pharmarcy .container .container-2 .main .dashboard .status.active {
+  background-color: #00c853;
+  color: #fff;
+}
+.pharmarcy .container .container-2 .main .dashboard .status.inactive {
+  background-color: #424242;
+  color: #ccc;
+}
+
+.users .container {
+  display: flex;
+  flex-direction: row;
+}
+.users .container .container-1 {
+  flex: -2;
+  margin-right: 0rem;
+  align-items: stretch;
+  min-height: 95vh;
+  background: #F7F7F7;
+  border-radius: 1rem;
+}
+.users .container .container-1 .sideBar {
+  width: 26rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.users .container .container-1 .sideBar .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.users .container .container-1 .sideBar .logo .logopic {
+  font-size: 2.4rem;
+}
+.users .container .container-1 .sideBar .logo div h3 {
+  font-size: 1.8rem;
+  margin-bottom: -0.5rem;
+  color: #08374F;
+}
+.users .container .container-1 .sideBar .logo div p {
+  font-size: 1.2rem;
+  color: #9ca3af;
+}
+.users .container .menu {
+  flex: 2;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4rem;
+}
+.users .container .menu a {
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #9ca3af;
+  transition: all 0.3s;
+}
+.users .container .menu a.active, .users .container .menu a:hover {
+  background: #768190;
+  color: #FB8F21;
+}
+.users .container .menuItem {
+  display: flex;
+  border-radius: 0.5rem;
+}
+.users .container .menuItem .text1 {
+  font-size: 1rem;
+  text-decoration: none;
+  border: none;
+}
+.users .container .menuItem .text1::before {
+  content: "⚙";
+}
+.users .container .menuItem .text2 {
+  font-size: 1rem;
+}
+.users .container .menuItem .text2::before {
+  content: "⎋";
+}
+.users .container .menuItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: -2rem;
+  padding: 2rem;
+  width: 26rem;
+  background-color: #08374F;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  position: absolute;
+  top: 59rem;
+}
+.users .container .menuItem .text {
+  border: none;
+  font-size: 1.5rem;
+  background: none;
+  color: white;
+  cursor: pointer;
+}
+.users .container .menuItem .text:hover {
+  color: #FB8F21;
+}
+.users .container .menuItem .text.setting::before {
+  content: "⚙";
+}
+.users .container .menuItem .text.signOut::before {
+  content: "⎋";
+}
+.users .container .container-2 {
+  flex: 2;
+}
+.users .container .container-2 .main {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+}
+.users .container .container-2 .main header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  justify-content: space-around;
+}
+.users .container .container-2 .main header input {
+  background: white;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  width: 50%;
+  color: #9ca3af;
+  border-radius: 8px;
+}
+.users .container .container-2 .main header .user-section {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.users .container .container-2 .main header .user-section .bell {
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: relative;
+}
+.users .container .container-2 .main header .user-section .bell::before {
+  content: "🔔";
+}
+.users .container .container-2 .main header .user-section .bell::after {
+  content: "3";
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  background: red;
+  color: white;
+  font-size: 0.7rem;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+}
+.users .container .container-2 .main header .user-section .admin {
+  width: 3.5rem;
+  height: 3.5rem;
+  background: #FB8F21;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fff;
+}
+.users .container .container-2 .main .dashboard .sectionHeading {
+  display: flex;
+  justify-content: space-between;
+}
+.users .container .container-2 .main .dashboard .sectionHeading .addBtn {
+  background: linear-gradient(to right, #18978D, #083851);
+  color: white;
+  font-size: 1.4rem;
+  border-radius: 1rem;
+  border: 1rem #FB8F21;
+  align-items: baseline;
+  padding: 1.5rem;
+  cursor: pointer;
+}
+.users .container .container-2 .main .dashboard .sectionHeading .addBtn::before {
+  content: "+ ";
+}
+.users .container .container-2 .main .dashboard .sectionHeading .addBtn:hover {
+  color: #FB8F21;
+}
+.users .container .container-2 .main .dashboard h1 {
+  font-size: 3.2rem;
+  margin-bottom: 0.8rem;
+  color: #08374F;
+  margin-bottom: -0.5rem;
+}
+.users .container .container-2 .main .dashboard p {
+  color: #9ca3af;
+  margin-bottom: 3rem;
+}
+.users .container .user-table {
+  width: 100%;
+  max-width: 140rem;
+  background-color: #F7F7F7;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+.users .container .user-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.users .container .user-table table th, .users .container .user-table table td {
+  text-align: left;
+  padding: 16px 20px;
+}
+.users .container .user-table table th {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.8;
+  border-bottom: 1px solid #222;
+}
+.users .container .user-table table tbody tr {
+  border-bottom: 1px solid #1c1c1c;
+}
+.users .container .user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.users .container .user-info .avatar {
+  width: 35px;
+  height: 35px;
+  background-color: #1f1f1f;
+  color: #00a676;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 600;
+}
+.users .container .user-info .details .name {
+  font-weight: 600;
+}
+.users .container .user-info .details .email {
+  font-size: 13px;
+  opacity: 0.7;
+}
+.users .container .role {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  background-color: #222;
+}
+.users .container .role.admin {
+  background-color: #00a676;
+  color: #000;
+}
+.users .container .role.manager {
+  background-color: #333;
+}
+.users .container .role.pharmacist {
+  background-color: #222;
+}
+.users .container .role.staff {
+  background-color: #222;
+}
+.users .container .status {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+.users .container .status.active {
+  background-color: #00a676;
+  color: #000;
+}
+.users .container .status.inactive {
+  background-color: #9ca3af;
+}
+.users .container .actions {
+  text-align: right;
+}
+.users .container .actions .dropdownMenu {
+  position: relative;
+  overflow: visible;
+}
+.users .container .actions .dropdownMenu .dropdown {
+  display: none;
+  list-style: none;
+  position: absolute;
+  top: 10%;
+  right: 0%;
+  background-color: #F7F7F7;
+  border-radius: 0.8rem;
+  width: 14rem;
+  overflow: visible;
+  z-index: 10000;
+  height: fit-content;
+  box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.4);
+}
+.users .container .actions .dropdownMenu .dropdown a {
+  padding: 1rem 1.5rem;
+  color: #08374F;
+  cursor: pointer;
+  font-size: 1.4rem;
+}
+.users .container .actions .dropdownMenu .dropdown a:hover {
+  background-color: #FB8F21;
+  border-radius: 0.5rem;
+}
+.users .container .actions .dropdownMenu .dropdown a.danger {
+  color: #ff4444;
+}
+.users .container .actions .dropdownMenu .dropdown.show {
+  display: block;
+}
+.users .container .actions .dropdownMenu .dots {
+  background: none;
+  border: none;
+  color: black;
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+.users .container .actions .dropdownMenu .dots:hover {
+  color: #9ca3af;
+}
+.users .container .actions .dropdownMenu .dropdown.open-up {
+  top: auto;
+  bottom: 100%;
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  box-shadow: 0 -0.4rem 1rem rgba(0, 0, 0, 0.4);
 }
 
 /*# sourceMappingURL=style.css.map */

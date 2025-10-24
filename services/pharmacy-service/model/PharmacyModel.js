@@ -49,6 +49,12 @@ class PharmacyModel extends Model{
         this.postalCode = {
             type:"INT"
         }
+        this.pharmacist = {
+            type:"VARCHAR(100)"
+        }
+        this.type = {
+            type:"VARCHAR(100)"
+        }
 
     }
 }

@@ -1,7 +1,13 @@
 /node_modules
 /package-lock.json
 /css/style.css
+<<<<<<< HEAD
 /extensions/slider/node_modules
 /extensions/popup/node_modules
 *.map
 
+=======
+/css/style.css.map
+css/style.css
+/css/*
+>>>>>>> origin/Chamani/patient/verifypages

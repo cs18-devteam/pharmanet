@@ -428,21 +428,14 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   color: #888;
 }
 
-.navbar-pharmacy nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0rem 2rem;
-  font-family: var(--primary-font);
-}
-.navbar-pharmacy .nav-links {
+.nav-links {
   display: flex;
   background-color: black;
   border-radius: 1.5rem;
   overflow: hidden;
   height: 5rem;
 }
-.navbar-pharmacy .nav-links .tab {
+.nav-links .tab {
   background: none;
   color: white;
   border: none;
@@ -450,12 +443,12 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   cursor: pointer;
   font-size: 1.6rem;
 }
-.navbar-pharmacy .nav-links .tab:hover {
+.nav-links .tab:hover {
   background-color: #404040;
   border-radius: 1.2rem;
   transition: all 0.2s ease-out;
 }
-.navbar-pharmacy .nav-links .tab.active {
+.nav-links .tab.active {
   background-color: white;
   color: #000;
   border-radius: 1.2rem;
@@ -4322,6 +4315,1859 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .AddMedi .container .medicine-inventory .inventory-body .actions button.delete-btn:hover {
   background: #a71d2a;
+}
+
+.cashier-dashboard {
+  background: linear-gradient(180deg, #f8fbfb, #e8f0f0);
+  /* ---------------- Sidebar ---------------- */
+}
+.cashier-dashboard .sidebar {
+  width: 22rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-family: var(--primary-font);
+}
+.cashier-dashboard .dashboard {
+  display: flex;
+}
+.cashier-dashboard .section-title {
+  font-size: 1.6rem;
+  color: var(--color-green-02);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.cashier-dashboard ul {
+  list-style: none;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+.cashier-dashboard li {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1rem 1.4rem;
+  border-radius: 2rem;
+  color: #2b3a3a;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.cashier-dashboard li:hover {
+  background-color: #dce8e8;
+}
+.cashier-dashboard li.active {
+  background-color: var(--color-green-01);
+  color: white;
+}
+.cashier-dashboard li .icon {
+  font-size: 16px;
+}
+.cashier-dashboard {
+  /* ---------------- Right Side ---------------- */
+}
+.cashier-dashboard .right-side {
+  flex: 1;
+  padding: 30px 40px;
+  font-family: var(--primary-font);
+}
+.cashier-dashboard {
+  /* ---------------- Top Bar ---------------- */
+}
+.cashier-dashboard .top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+  font-family: var(--primary-font);
+  border-radius: 2rem;
+  background-color: white;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+}
+.cashier-dashboard .top-bar span {
+  font-weight: 600;
+  padding-left: 2rem;
+}
+.cashier-dashboard .top-bar .searchmedi {
+  margin: 1rem;
+  padding: 1rem;
+  border: 0.2rem solid #aaa;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  width: 40rem;
+  height: 5rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.cashier-dashboard .top-bar .searchmedi:hover {
+  background-color: #f0f0f0;
+}
+.cashier-dashboard .top-bar .selector {
+  margin: 1rem;
+  cursor: pointer;
+  padding: 1rem;
+  border: 0.2rem solid #aaa;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  width: 30rem;
+  height: 5rem;
+  transition: 0.2s ease;
+}
+.cashier-dashboard .top-bar .selector:hover {
+  background-color: #f0f0f0;
+}
+.cashier-dashboard .top-bar .searchButton {
+  border-radius: 1rem;
+  border: 0.2rem solid #aaa;
+  width: 10rem;
+  height: 5rem;
+  background-color: white;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.cashier-dashboard .top-bar .searchButton:hover {
+  background-color: #f0f0f0;
+}
+.cashier-dashboard .top-bar .createBill {
+  margin: 1rem;
+  cursor: pointer;
+  padding: 1rem;
+  background-color: #ea4335;
+  border-radius: 1rem;
+  border-color: #ea4335;
+  font-size: 1.5rem;
+  width: 15rem;
+  height: 5rem;
+  color: white;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+.cashier-dashboard .top-bar .createBill:hover {
+  background-color: #d62839;
+}
+.cashier-dashboard {
+  /* ---------------- Sales Results ---------------- */
+}
+.cashier-dashboard .sales-results {
+  color: #1d2d2d;
+  background-color: white;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  border-radius: 2rem;
+  margin: 1rem;
+  padding: 2rem;
+}
+.cashier-dashboard .sales-results h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  color: var(--color-green-02);
+}
+.cashier-dashboard .sales-results .cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+.cashier-dashboard .sales-results .card {
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: white;
+}
+.cashier-dashboard .sales-results .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+.cashier-dashboard .sales-results .card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.cashier-dashboard .sales-results .card .card-header .icon {
+  font-size: 22px;
+}
+.cashier-dashboard .sales-results .card .card-header .more {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+}
+.cashier-dashboard .sales-results .card h3 {
+  font-size: 16px;
+  margin: 0 0 10px;
+}
+.cashier-dashboard .sales-results .card .value {
+  font-size: 26px;
+  font-weight: 600;
+  margin: 0;
+}
+.cashier-dashboard .sales-results .card .change {
+  font-size: 13px;
+  margin-top: 5px;
+}
+.cashier-dashboard .sales-results .card.green {
+  background-color: var(--color-green-01);
+}
+.cashier-dashboard .sales-results .card.yellow {
+  background-color: #fb8f21;
+}
+.cashier-dashboard .sales-results .card.red {
+  background-color: #ea4335;
+}
+.cashier-dashboard .sales-results .card.ash {
+  background-color: #aaa;
+}
+.cashier-dashboard {
+  /* ---------------- Recent Sales ---------------- */
+}
+.cashier-dashboard .recentSale {
+  background-color: white;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  border-radius: 2rem;
+  margin: 1rem;
+  padding: 2rem;
+}
+.cashier-dashboard .recent-sales-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.cashier-dashboard .recent-sales-table thead {
+  padding: 2rem;
+  color: var(--color-green-02);
+  font-weight: 500;
+}
+.cashier-dashboard .recent-sales-table thead th {
+  padding: 12px 10px;
+  text-align: left;
+  font-weight: 600;
+}
+.cashier-dashboard .recent-sales-table tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+}
+.cashier-dashboard .recent-sales-table tbody tr:hover {
+  background-color: #f8f8f8;
+}
+.cashier-dashboard .recent-sales-table tbody tr td {
+  padding: 14px 10px;
+  vertical-align: middle;
+}
+.cashier-dashboard {
+  /* ---------------- Pagination ---------------- */
+}
+.cashier-dashboard .pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+.cashier-dashboard .pagination .page-btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 50%;
+  background: #f0f0f0;
+  cursor: pointer;
+}
+.cashier-dashboard .pagination .page-btn.active {
+  background: #003344;
+  color: white;
+}
+.cashier-dashboard {
+  /*-------------------customer view-------------------*/
+}
+.cashier-dashboard .popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+}
+.cashier-dashboard .popup.show {
+  display: flex;
+}
+.cashier-dashboard .popup .popup-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 80%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.cashier-dashboard .popup .popup-content .product-list {
+  background-color: white;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  border-radius: 2rem;
+  margin: 1rem;
+  padding: 1rem;
+}
+.cashier-dashboard .popup .popup-content .product-result-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.cashier-dashboard .popup .popup-content .product-result-table thead {
+  padding: 2rem;
+  color: var(--color-green-02);
+  font-weight: 500;
+}
+.cashier-dashboard .popup .popup-content .product-result-table thead th {
+  padding: 1.2rem 1rem;
+  text-align: left;
+  font-weight: 600;
+}
+.cashier-dashboard .popup .popup-content .product-result-table tbody tr {
+  border-bottom: 0.1rem solid #e0e0e0;
+}
+.cashier-dashboard .popup .popup-content .product-result-table tbody tr:hover {
+  background-color: #f8f8f8;
+}
+.cashier-dashboard .popup .popup-content .product-result-table tbody tr td {
+  padding: 1.4rem 1rem;
+  vertical-align: middle;
+  font-size: 1.4rem;
+}
+.cashier-dashboard .popup .popup-content .product-result-table tbody tr td .remove-btn {
+  border-radius: 1rem;
+  border: none;
+  padding: 0.5rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+  color: white;
+  background-color: #FB8F21;
+}
+.cashier-dashboard .popup .popup-content .product-result-table tbody tr td .remove-btn:hover {
+  background-color: #ce8133;
+}
+.cashier-dashboard .popup .popup-content .product-result-table tbody tr td .Edit-btn {
+  border-radius: 1rem;
+  border: none;
+  padding: 0.5rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+  color: white;
+  background-color: #18978D;
+}
+.cashier-dashboard .popup .popup-content .product-result-table tbody tr td .Edit-btn:hover {
+  background-color: #14887e;
+}
+.cashier-dashboard .popup .popup-content .product-result-table .add-icon {
+  width: 3rem;
+  height: 3rem;
+}
+.cashier-dashboard .popup .popup-content .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cashier-create-bill {
+  background: linear-gradient(180deg, #f8fbfb, #e8f0f0);
+  /* ---------------- Dashboard Layout ---------------- */
+}
+.cashier-create-bill .dashboard {
+  display: flex;
+}
+.cashier-create-bill {
+  /* ---------------- Left side ---------------- */
+}
+.cashier-create-bill .left-side {
+  flex: 1;
+  padding: 30px 40px;
+  font-family: var(--primary-font);
+}
+.cashier-create-bill {
+  /* ---------------- Top Bar ---------------- */
+}
+.cashier-create-bill .top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+  font-family: var(--primary-font);
+  border-radius: 2rem;
+  background-color: white;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+}
+.cashier-create-bill .top-bar span {
+  font-weight: 600;
+  padding-left: 1rem;
+  font-size: 2rem;
+  color: var(--color-green-01);
+}
+.cashier-create-bill .top-bar .searchmedi {
+  margin: 1rem;
+  padding: 1rem;
+  border: 0.2rem solid #777;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  width: 30rem;
+  height: 5rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.cashier-create-bill .top-bar .searchmedi:hover {
+  background-color: #f0f0f0;
+}
+.cashier-create-bill .top-bar .selector {
+  margin: 1rem;
+  cursor: pointer;
+  padding: 1rem;
+  border: 0.2rem solid #aaa;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  width: 25rem;
+  height: 5rem;
+  transition: 0.2s ease;
+}
+.cashier-create-bill .top-bar .selector:hover {
+  background-color: #f0f0f0;
+}
+.cashier-create-bill .top-bar .searchButton {
+  border-radius: 1rem;
+  border: 0.2rem solid #aaa;
+  width: 10rem;
+  height: 5rem;
+  background-color: white;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.cashier-create-bill .top-bar .searchButton:hover {
+  background-color: #f0f0f0;
+}
+.cashier-create-bill .top-bar .createBill {
+  margin: 1rem;
+  cursor: pointer;
+  padding: 1rem;
+  background-color: #ea4335;
+  border: none;
+  border-radius: 1rem;
+  border-color: #ea4335;
+  font-size: 1.5rem;
+  width: 15rem;
+  height: 5rem;
+  color: white;
+  font-weight: 500;
+}
+.cashier-create-bill {
+  /* ---------------- Search Result ---------------- */
+}
+.cashier-create-bill .Search-list {
+  background-color: white;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  border-radius: 2rem;
+  margin: 1rem;
+  padding: 1rem;
+}
+.cashier-create-bill .search-result-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.cashier-create-bill .search-result-table thead {
+  padding: 2rem;
+  color: var(--color-green-02);
+  font-weight: 500;
+}
+.cashier-create-bill .search-result-table thead th {
+  padding: 1.2rem 1rem;
+  text-align: left;
+  font-weight: 600;
+}
+.cashier-create-bill .search-result-table tbody tr {
+  border-bottom: 0.1rem solid #e0e0e0;
+}
+.cashier-create-bill .search-result-table tbody tr:hover {
+  background-color: #f8f8f8;
+}
+.cashier-create-bill .search-result-table tbody tr td {
+  padding: 1.4rem 1rem;
+  vertical-align: middle;
+  font-size: 1.4rem;
+}
+.cashier-create-bill .search-result-table .add-icon {
+  width: 3rem;
+  height: 3rem;
+}
+.cashier-create-bill {
+  /* ---------------- Pagination ---------------- */
+}
+.cashier-create-bill .pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+.cashier-create-bill .pagination .page-btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 50%;
+  background: #f0f0f0;
+  cursor: pointer;
+}
+.cashier-create-bill .pagination .page-btn.active {
+  background: #003344;
+  color: white;
+}
+.cashier-create-bill .pagination .entries {
+  font-size: 1.4rem;
+}
+.cashier-create-bill .pagination .show-count {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+.cashier-create-bill {
+  /* ---------------- Create Bill ---------------- */
+}
+.cashier-create-bill .order-container {
+  width: 400px;
+  padding: 2rem;
+  margin: 4rem 0rem;
+  font-family: var(--primary-font);
+  background-color: white;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  border-radius: 2rem;
+}
+.cashier-create-bill .order-container .order-header {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+.cashier-create-bill .order-container .order-header h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-green-01);
+}
+.cashier-create-bill .order-container .order-header p {
+  color: #888;
+  font-size: 1.5rem;
+  margin: 0.2rem 0;
+}
+.cashier-create-bill .order-container .item-list .item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fafafa;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  transition: 0.2s ease;
+}
+.cashier-create-bill .order-container .item-list .item-row:hover {
+  background: #f0f0f0;
+}
+.cashier-create-bill .order-container .item-list .item-row .item-info {
+  flex: 1;
+}
+.cashier-create-bill .order-container .item-list .item-row .item-info h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-green-02);
+}
+.cashier-create-bill .order-container .item-list .item-row .item-info p {
+  font-size: 1.5rem;
+  color: #777;
+}
+.cashier-create-bill .order-container .item-list .item-row .item-info .price {
+  color: #e63946;
+  font-weight: 600;
+}
+.cashier-create-bill .order-container .item-list .item-row .qty-control {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.cashier-create-bill .order-container .item-list .item-row .qty-control button {
+  border: none;
+  background: #EA4335;
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.cashier-create-bill .order-container .item-list .item-row .qty-control button:hover {
+  background: #d62839;
+}
+.cashier-create-bill .order-container .item-list .item-row .qty-control span {
+  margin: 0 0.5rem;
+  padding: 0 1rem 0 1rem;
+  font-weight: 500;
+}
+.cashier-create-bill .order-container .order-summary {
+  margin-top: 1.5rem;
+  font-size: 1.5rem;
+}
+.cashier-create-bill .order-container .order-summary .summary-row,
+.cashier-create-bill .order-container .order-summary .summary-total {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.4rem 0;
+}
+.cashier-create-bill .order-container .order-summary .summary-total {
+  font-weight: 700;
+  border-top: 1px solid #ddd;
+  padding-top: 0.5rem;
+}
+.cashier-create-bill .order-container .down-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.cashier-create-bill .order-container .down-row .payment-btn, .cashier-create-bill .order-container .down-row .cancel-btn {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  color: #fff;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.cashier-create-bill .order-container .down-row .payment-btn:hover, .cashier-create-bill .order-container .down-row .cancel-btn:hover {
+  background: #18978D;
+}
+.cashier-create-bill .order-container .down-row .payment-btn {
+  background: #FB8F21;
+}
+.cashier-create-bill .order-container .down-row .cancel-btn {
+  background: #EA4335;
+}
+.cashier-create-bill .order-container .payment-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.cashier-create-bill .order-container .payment-popup.active {
+  display: flex;
+  animation: popupFadeIn 0.3s ease forwards;
+}
+.cashier-create-bill .order-container .payment-popup .popup-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  width: 380px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-50px);
+  opacity: 0;
+  animation: popupSlideIn 0.4s ease forwards;
+}
+.cashier-create-bill .order-container .payment-popup .popup-content h2 {
+  margin-bottom: 1.5rem;
+  margin-top: 3rem;
+  color: #ffa62b;
+}
+.cashier-create-bill .order-container .payment-popup .popup-content .payment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+.cashier-create-bill .order-container .payment-popup .popup-content .payment-options button {
+  background-image: linear-gradient(to right, var(--color-green-01), var(--color-green-02));
+  color: white;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 3rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  font-size: 1.5rem;
+}
+.cashier-create-bill .order-container .payment-popup .popup-content .payment-options button:hover {
+  background-image: linear-gradient(to right, var(--color-green-02), var(--color-green-02));
+}
+.cashier-create-bill .order-container .payment-popup .popup-content .payment-options button input {
+  margin-right: 0.5rem;
+}
+.cashier-create-bill .order-container .payment-popup .popup-content .close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.8rem;
+  font-size: 3rem;
+  color: white;
+  padding: 0 1rem 0 1rem;
+  font-weight: 600;
+  background-color: #ccc;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.cashier-create-bill .order-container .payment-popup .popup-content .close-btn:hover {
+  color: red;
+}
+.cashier-create-bill .order-container {
+  /* 🔹 Animation for popup appearing */
+}
+@keyframes popupSlideIn {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.cashier-create-bill .order-container {
+  /* 🔹 Smooth fade-in background */
+}
+@keyframes popupFadeIn {
+  0% {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.product {
+  background: linear-gradient(180deg, #f8fbfb, #e8f0f0);
+  /* ---------------- Sidebar ---------------- */
+}
+.product .sidebar {
+  width: 22rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-family: var(--primary-font);
+}
+.product .dashboard {
+  display: flex;
+}
+.product .section-title {
+  font-size: 1.6rem;
+  color: var(--color-green-02);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.product ul {
+  list-style: none;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+.product li {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1rem 1.4rem;
+  border-radius: 2rem;
+  color: #2b3a3a;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.product li:hover {
+  background-color: #dce8e8;
+}
+.product li.active {
+  background-color: var(--color-green-01);
+  color: white;
+}
+.product li .icon {
+  font-size: 16px;
+}
+.product {
+  /* ---------------- Right Side ---------------- */
+}
+.product .right-side {
+  flex: 1;
+  padding: 30px 40px;
+  font-family: var(--primary-font);
+}
+.product {
+  /* ---------------- Top Bar ---------------- */
+}
+.product .top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+  font-family: var(--primary-font);
+  border-radius: 2rem;
+  background-color: white;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+}
+.product .top-bar span {
+  font-weight: 600;
+  padding-left: 2rem;
+}
+.product .top-bar .searchmedi {
+  margin: 1rem;
+  padding: 1rem;
+  border: 0.2rem solid #aaa;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  width: 40rem;
+  height: 5rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.product .top-bar .searchmedi:hover {
+  background-color: #f0f0f0;
+}
+.product .top-bar .selector {
+  margin: 1rem;
+  cursor: pointer;
+  padding: 1rem;
+  border: 0.2rem solid #aaa;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  width: 30rem;
+  height: 5rem;
+  transition: 0.2s ease;
+}
+.product .top-bar .selector:hover {
+  background-color: #f0f0f0;
+}
+.product .top-bar .searchButton {
+  border-radius: 1rem;
+  border: 0.2rem solid #aaa;
+  width: 10rem;
+  height: 5rem;
+  background-color: white;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.product .top-bar .searchButton:hover {
+  background-color: #f0f0f0;
+}
+.product .top-bar .createBill {
+  margin: 1rem;
+  cursor: pointer;
+  padding: 1rem;
+  background-color: #ea4335;
+  border-radius: 1rem;
+  border-color: #ea4335;
+  font-size: 1.5rem;
+  width: 15rem;
+  height: 5rem;
+  color: white;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+.product .top-bar .createBill:hover {
+  background-color: #d62839;
+}
+.product {
+  /* ---------------- All product table ---------------- */
+}
+.product .product-list {
+  background-color: white;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  border-radius: 2rem;
+  margin: 1rem;
+  padding: 1rem;
+}
+.product .product-result-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.product .product-result-table thead {
+  padding: 2rem;
+  color: var(--color-green-02);
+  font-weight: 500;
+}
+.product .product-result-table thead th {
+  padding: 1.2rem 1rem;
+  text-align: left;
+  font-weight: 600;
+}
+.product .product-result-table tbody tr {
+  border-bottom: 0.1rem solid #e0e0e0;
+}
+.product .product-result-table tbody tr:hover {
+  background-color: #f8f8f8;
+}
+.product .product-result-table tbody tr td {
+  padding: 1.4rem 1rem;
+  vertical-align: middle;
+  font-size: 1.4rem;
+}
+.product .product-result-table tbody tr td .remove-btn {
+  border-radius: 1rem;
+  border: none;
+  padding: 0.5rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+  color: white;
+  background-color: #FB8F21;
+}
+.product .product-result-table tbody tr td .remove-btn:hover {
+  background-color: #ce8133;
+}
+.product .product-result-table tbody tr td .Edit-btn {
+  border-radius: 1rem;
+  border: none;
+  padding: 0.5rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+  color: white;
+  background-color: #18978D;
+}
+.product .product-result-table tbody tr td .Edit-btn:hover {
+  background-color: #14887e;
+}
+.product .product-result-table .add-icon {
+  width: 3rem;
+  height: 3rem;
+}
+.product {
+  /* ---------------- Pagination ---------------- */
+}
+.product .pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+.product .pagination .page-btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 50%;
+  background: #f0f0f0;
+  cursor: pointer;
+}
+.product .pagination .page-btn.active {
+  background: #003344;
+  color: white;
+}
+
+.cashier-sales-page {
+  background: linear-gradient(180deg, #f8fbfb, #e8f0f0);
+  /* ---------------- Sidebar ---------------- */
+}
+.cashier-sales-page .sidebar {
+  width: 22rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-family: var(--primary-font);
+}
+.cashier-sales-page .dashboard {
+  display: flex;
+}
+.cashier-sales-page .section-title {
+  font-size: 1.6rem;
+  color: var(--color-green-02);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.cashier-sales-page ul {
+  list-style: none;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+.cashier-sales-page li {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1rem 1.4rem;
+  border-radius: 2rem;
+  color: #2b3a3a;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.cashier-sales-page li:hover {
+  background-color: #dce8e8;
+}
+.cashier-sales-page li.active {
+  background-color: var(--color-green-01);
+  color: white;
+}
+.cashier-sales-page li .icon {
+  font-size: 16px;
+}
+.cashier-sales-page {
+  /* ---------------- Right Side ---------------- */
+}
+.cashier-sales-page .right-side {
+  flex: 1;
+  padding: 30px 40px;
+  font-family: var(--primary-font);
+}
+.cashier-sales-page {
+  /* ---------------- Top Bar ---------------- */
+}
+.cashier-sales-page .top-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1rem;
+  font-family: var(--primary-font);
+  border-radius: 2rem;
+  background-color: white;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+}
+.cashier-sales-page .top-bar .searchmedi {
+  margin: 1rem;
+  padding: 1rem;
+  border: 0.2rem solid #aaa;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  width: 40rem;
+  height: 5rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.cashier-sales-page .top-bar .searchmedi:hover {
+  background-color: #f0f0f0;
+}
+.cashier-sales-page .top-bar .searchButton {
+  border-radius: 1rem;
+  border: 0.2rem solid #aaa;
+  width: 10rem;
+  height: 5rem;
+  background-color: white;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.cashier-sales-page .top-bar .searchButton:hover {
+  background-color: #f0f0f0;
+}
+.cashier-sales-page .top-bar .createBill {
+  margin: 1rem;
+  cursor: pointer;
+  padding: 1rem;
+  background-color: #ea4335;
+  border-radius: 1rem;
+  border-color: #ea4335;
+  font-size: 1.5rem;
+  width: 15rem;
+  height: 5rem;
+  color: white;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+.cashier-sales-page .top-bar .createBill:hover {
+  background-color: #d62839;
+}
+.cashier-sales-page {
+  /* ---------------- Sales Results ---------------- */
+}
+.cashier-sales-page .sales-results {
+  color: #1d2d2d;
+  background-color: white;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  border-radius: 2rem;
+  margin: 1rem;
+  padding: 2rem;
+}
+.cashier-sales-page .sales-results h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  color: var(--color-green-02);
+}
+.cashier-sales-page .sales-results .cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+.cashier-sales-page .sales-results .card {
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: white;
+}
+.cashier-sales-page .sales-results .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+.cashier-sales-page .sales-results .card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.cashier-sales-page .sales-results .card .card-header .icon {
+  font-size: 22px;
+}
+.cashier-sales-page .sales-results .card .card-header .more {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+}
+.cashier-sales-page .sales-results .card h3 {
+  font-size: 16px;
+  margin: 0 0 10px;
+}
+.cashier-sales-page .sales-results .card .value {
+  font-size: 26px;
+  font-weight: 600;
+  margin: 0;
+}
+.cashier-sales-page .sales-results .card .change {
+  font-size: 13px;
+  margin-top: 5px;
+}
+.cashier-sales-page .sales-results .card.green {
+  background-color: var(--color-green-01);
+}
+.cashier-sales-page .sales-results .card.yellow {
+  background-color: #aaa;
+}
+.cashier-sales-page .sales-results .card.red {
+  background-color: #fb8f21;
+}
+.cashier-sales-page .sales-results .card.ash {
+  background-color: #ea4335;
+}
+.cashier-sales-page {
+  /* ---------------- Recent Sales ---------------- */
+}
+.cashier-sales-page .recentSale {
+  background-color: white;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  border-radius: 2rem;
+  margin: 1rem;
+  padding: 2rem;
+}
+.cashier-sales-page .recent-sales-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.cashier-sales-page .recent-sales-table thead {
+  padding: 2rem;
+  color: var(--color-green-02);
+  font-weight: 500;
+}
+.cashier-sales-page .recent-sales-table thead th {
+  padding: 12px 10px;
+  text-align: left;
+  font-weight: 600;
+}
+.cashier-sales-page .recent-sales-table tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+}
+.cashier-sales-page .recent-sales-table tbody tr:hover {
+  background-color: #f8f8f8;
+}
+.cashier-sales-page .recent-sales-table tbody tr td {
+  padding: 14px 10px;
+  vertical-align: middle;
+  font-size: 1.4rem;
+}
+.cashier-sales-page {
+  /* ---------------- Pagination ---------------- */
+}
+.cashier-sales-page .pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+.cashier-sales-page .pagination .page-btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 50%;
+  background: #f0f0f0;
+  cursor: pointer;
+}
+.cashier-sales-page .pagination .page-btn.active {
+  background: #003344;
+  color: white;
+}
+
+.cashier-customer {
+  background: linear-gradient(180deg, #f8fbfb, #e8f0f0);
+  /* ---------------- Sidebar ---------------- */
+}
+.cashier-customer .sidebar {
+  width: 22rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-family: var(--primary-font);
+}
+.cashier-customer .dashboard {
+  display: flex;
+}
+.cashier-customer .section-title {
+  font-size: 1.6rem;
+  color: var(--color-green-02);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.cashier-customer ul {
+  list-style: none;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+.cashier-customer li {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1rem 1.4rem;
+  border-radius: 2rem;
+  color: #2b3a3a;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.cashier-customer li:hover {
+  background-color: #dce8e8;
+}
+.cashier-customer li.active {
+  background-color: var(--color-green-01);
+  color: white;
+}
+.cashier-customer li .icon {
+  font-size: 16px;
+}
+.cashier-customer {
+  /* ---------------- Right Side ---------------- */
+}
+.cashier-customer .right-side {
+  flex: 1;
+  padding: 30px 40px;
+  font-family: var(--primary-font);
+}
+.cashier-customer {
+  /* ---------------- Top Bar ---------------- */
+}
+.cashier-customer .top-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1rem;
+  font-family: var(--primary-font);
+  border-radius: 2rem;
+  background-color: white;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+}
+.cashier-customer .top-bar .searchmedi {
+  margin: 1rem;
+  padding: 1rem;
+  border: 0.2rem solid #aaa;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  width: 40rem;
+  height: 5rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.cashier-customer .top-bar .searchmedi:hover {
+  background-color: #f0f0f0;
+}
+.cashier-customer .top-bar .selector {
+  margin: 1rem;
+  cursor: pointer;
+  padding: 1rem;
+  border: 0.2rem solid #aaa;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  width: 30rem;
+  height: 5rem;
+  transition: 0.2s ease;
+}
+.cashier-customer .top-bar .selector:hover {
+  background-color: #f0f0f0;
+}
+.cashier-customer .top-bar .searchButton {
+  border-radius: 1rem;
+  border: 0.2rem solid #aaa;
+  width: 10rem;
+  height: 5rem;
+  background-color: white;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.cashier-customer .top-bar .searchButton:hover {
+  background-color: #f0f0f0;
+}
+.cashier-customer .top-bar .createBill {
+  margin: 1rem;
+  cursor: pointer;
+  padding: 1rem;
+  background-color: #ea4335;
+  border-radius: 1rem;
+  border-color: #ea4335;
+  font-size: 1.5rem;
+  width: 15rem;
+  height: 5rem;
+  color: white;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+.cashier-customer .top-bar .createBill:hover {
+  background-color: #d62839;
+}
+.cashier-customer {
+  /* ---------------- All product table ---------------- */
+}
+.cashier-customer .customer-list {
+  background-color: white;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  border-radius: 2rem;
+  margin: 1rem;
+  padding: 1rem;
+}
+.cashier-customer .customer-result-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.cashier-customer .customer-result-table thead {
+  padding: 2rem;
+  color: var(--color-green-02);
+  font-weight: 500;
+}
+.cashier-customer .customer-result-table thead th {
+  padding: 1.2rem 1rem;
+  text-align: left;
+  font-weight: 600;
+}
+.cashier-customer .customer-result-table tbody tr {
+  border-bottom: 0.1rem solid #e0e0e0;
+}
+.cashier-customer .customer-result-table tbody tr:hover {
+  background-color: #f8f8f8;
+}
+.cashier-customer .customer-result-table tbody tr td {
+  padding: 1.4rem 1rem;
+  vertical-align: middle;
+  font-size: 1.4rem;
+}
+.cashier-customer .customer-result-table tbody tr td .openProfile {
+  border-radius: 1rem;
+  border: none;
+  padding: 0.5rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+  color: white;
+  background-color: #FB8F21;
+}
+.cashier-customer .customer-result-table tbody tr td .openProfile:hover {
+  background-color: #ce8133;
+}
+.cashier-customer .customer-result-table tbody tr td .Edit-btn {
+  border-radius: 1rem;
+  border: none;
+  padding: 0.5rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+  color: white;
+  background-color: #18978D;
+}
+.cashier-customer .customer-result-table tbody tr td .Edit-btn:hover {
+  background-color: #14887e;
+}
+.cashier-customer .customer-result-table .add-icon {
+  width: 3rem;
+  height: 3rem;
+}
+.cashier-customer {
+  /* ---------------- Pagination ---------------- */
+}
+.cashier-customer .pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+.cashier-customer .pagination .page-btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 50%;
+  background: #f0f0f0;
+  cursor: pointer;
+}
+.cashier-customer .pagination .page-btn.active {
+  background: #003344;
+  color: white;
+}
+.cashier-customer {
+  /*-------------------customer view-------------------*/
+}
+.cashier-customer .popup-section {
+  font-family: var(--primary-font);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.cashier-customer .popup-section .profile-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80rem;
+  background: #1c1c1c;
+  color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+  display: none;
+  flex-direction: column;
+  padding: 1rem;
+  z-index: 9999;
+}
+.cashier-customer .popup-section .profile-popup.show {
+  display: flex;
+  animation: fadeIn 0.3s ease;
+}
+.cashier-customer .popup-section .profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+}
+.cashier-customer .popup-section .profile-header .profile-icons {
+  display: flex;
+  gap: 0.5rem;
+}
+.cashier-customer .popup-section .profile-header .profileName {
+  text-align: left;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #ffa62b;
+}
+.cashier-customer .popup-section .profile-header .profilePic img {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.cashier-customer .popup-section .profile-header a {
+  text-decoration: none;
+  color: #ffa62b;
+  transition: all 0.2s ease-out;
+}
+.cashier-customer .popup-section .profile-header a:hover {
+  color: var(--color-yellow-01);
+}
+.cashier-customer .popup-section .icon-btn {
+  border: none;
+  color: #fff;
+  font-size: 1.3rem;
+  border-radius: 3rem;
+  width: 5rem;
+  height: 3rem;
+  padding: 0.5;
+  cursor: pointer;
+}
+.cashier-customer .popup-section .icon-btn.green {
+  background: #18978D;
+}
+.cashier-customer .popup-section .icon-btn.red {
+  background: #e74c3c;
+}
+.cashier-customer .popup-section .profile-items {
+  margin-top: 1rem;
+  max-height: 300px;
+  overflow-y: auto;
+}
+.cashier-customer .popup-section .profile-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #2b2b2b;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 10px;
+}
+.cashier-customer .popup-section .profile-item img {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+}
+.cashier-customer .popup-section .profile-item .item-info {
+  margin-left: 0.5rem;
+}
+.cashier-customer .popup-section .profile-item .item-info h4 {
+  font-size: 1.5rem;
+  margin: 0.5rem;
+}
+.cashier-customer .popup-section .profile-item .item-info p {
+  font-size: 1.2rem;
+  color: #bbb;
+  margin-left: 0.5rem;
+}
+.cashier-customer .popup-section .profile-item .item-info .data {
+  font-size: 1.5rem;
+}
+.cashier-customer .popup-section .profile-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #444;
+  padding-top: 0.8rem;
+}
+.cashier-customer .popup-section .profile-footer .total span {
+  font-size: 1.5rem;
+  color: #ccc;
+}
+.cashier-customer .popup-section .profile-footer .total strong {
+  display: block;
+  font-size: 2rem;
+  color: #fff;
+}
+.cashier-customer .popup-section .profile-footer .chat-btn {
+  background: #008c8c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -70%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+@keyframes popupFadeIn {
+  0% {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.cashier-payment-cash {
+  background: linear-gradient(180deg, #f8fbfb, #e8f0f0);
+  /* ---------------- Dashboard Layout ---------------- */
+}
+.cashier-payment-cash .dashboard {
+  display: flex;
+}
+.cashier-payment-cash .payment-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.cashier-payment-cash .payment-popup.active {
+  display: flex;
+  animation: popupFadeIn 0.3s ease forwards;
+}
+.cashier-payment-cash .payment-popup .popup-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  width: 380px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-50px);
+  opacity: 0;
+  animation: popupSlideIn 0.4s ease forwards;
+}
+.cashier-payment-cash .payment-popup .popup-content h2 {
+  margin-bottom: 1.5rem;
+  margin-top: 3rem;
+  color: #ffa62b;
+}
+.cashier-payment-cash .payment-popup .popup-content h3 {
+  margin-top: 2rem;
+  color: var(--color-green-02);
+}
+.cashier-payment-cash .payment-popup .popup-content input {
+  border-radius: 2rem;
+}
+.cashier-payment-cash .payment-popup .popup-content .payment-action {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+.cashier-payment-cash .payment-popup .popup-content .payment-action button {
+  background-image: linear-gradient(to right, var(--color-green-01), var(--color-green-02));
+  color: white;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 3rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  font-size: 1.5rem;
+}
+.cashier-payment-cash .payment-popup .popup-content .payment-action button:hover {
+  background-image: linear-gradient(to right, var(--color-green-02), var(--color-green-02));
+}
+.cashier-payment-cash .payment-popup .popup-content .payment-action button input {
+  margin-right: 0.5rem;
+}
+.cashier-payment-cash .payment-popup .popup-content .close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.8rem;
+  font-size: 3rem;
+  color: white;
+  padding: 0 1rem 0 1rem;
+  font-weight: 600;
+  background-color: #ccc;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.cashier-payment-cash .payment-popup .popup-content .close-btn:hover {
+  color: red;
+}
+
+.cashier-payment-card {
+  background: linear-gradient(180deg, #f8fbfb, #e8f0f0);
+  /* ---------------- Dashboard Layout ---------------- */
+}
+.cashier-payment-card .dashboard {
+  display: flex;
+}
+.cashier-payment-card .payment-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.cashier-payment-card .payment-popup.active {
+  display: flex;
+  animation: popupFadeIn 0.3s ease forwards;
+}
+.cashier-payment-card .payment-popup .popup-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  width: 380px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-50px);
+  opacity: 0;
+  animation: popupSlideIn 0.4s ease forwards;
+}
+.cashier-payment-card .payment-popup .popup-content h2 {
+  margin-bottom: 1.5rem;
+  margin-top: 3rem;
+  color: #ffa62b;
+}
+.cashier-payment-card .payment-popup .popup-content h3 {
+  margin-top: 2rem;
+  color: var(--color-green-02);
+}
+.cashier-payment-card .payment-popup .popup-content input {
+  border-radius: 2rem;
+}
+.cashier-payment-card .payment-popup .popup-content .payment-action {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+.cashier-payment-card .payment-popup .popup-content .payment-action button {
+  background-image: linear-gradient(to right, var(--color-green-01), var(--color-green-02));
+  color: white;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 3rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  font-size: 1.5rem;
+}
+.cashier-payment-card .payment-popup .popup-content .payment-action button:hover {
+  background-image: linear-gradient(to right, var(--color-green-02), var(--color-green-02));
+}
+.cashier-payment-card .payment-popup .popup-content .payment-action button input {
+  margin-right: 0.5rem;
+}
+.cashier-payment-card .payment-popup .popup-content .close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.8rem;
+  font-size: 3rem;
+  color: white;
+  padding: 0 1rem 0 1rem;
+  font-weight: 600;
+  background-color: #ccc;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.cashier-payment-card .payment-popup .popup-content .close-btn:hover {
+  color: red;
+}
+
+.cashier-payment-qr {
+  background: linear-gradient(180deg, #f8fbfb, #e8f0f0);
+  /* ---------------- Dashboard Layout ---------------- */
+}
+.cashier-payment-qr .dashboard {
+  display: flex;
+}
+.cashier-payment-qr .payment-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.cashier-payment-qr .payment-popup.active {
+  display: flex;
+  animation: popupFadeIn 0.3s ease forwards;
+}
+.cashier-payment-qr .payment-popup .popup-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  width: 380px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-50px);
+  opacity: 0;
+  animation: popupSlideIn 0.4s ease forwards;
+}
+.cashier-payment-qr .payment-popup .popup-content h2 {
+  margin-bottom: 1.5rem;
+  margin-top: 3rem;
+  color: #ffa62b;
+}
+.cashier-payment-qr .payment-popup .popup-content h3 {
+  margin-top: 2rem;
+  color: var(--color-green-02);
+}
+.cashier-payment-qr .payment-popup .popup-content input {
+  border-radius: 2rem;
+}
+.cashier-payment-qr .payment-popup .popup-content .payment-action {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+.cashier-payment-qr .payment-popup .popup-content .payment-action button {
+  background-image: linear-gradient(to right, var(--color-green-01), var(--color-green-02));
+  color: white;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 3rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  font-size: 1.5rem;
+}
+.cashier-payment-qr .payment-popup .popup-content .payment-action button:hover {
+  background-image: linear-gradient(to right, var(--color-green-02), var(--color-green-02));
+}
+.cashier-payment-qr .payment-popup .popup-content .payment-action button input {
+  margin-right: 0.5rem;
+}
+.cashier-payment-qr .payment-popup .popup-content .close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.8rem;
+  font-size: 3rem;
+  color: white;
+  padding: 0 1rem 0 1rem;
+  font-weight: 600;
+  background-color: #ccc;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.cashier-payment-qr .payment-popup .popup-content .close-btn:hover {
+  color: red;
 }
 
 /*# sourceMappingURL=style.css.map */

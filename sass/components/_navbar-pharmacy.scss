@@ -1,0 +1,42 @@
+.navbar-pharmacy{
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0rem 2rem;
+        font-family: var(--primary-font);
+        }
+    
+
+    .nav-links {
+        display: flex;
+        background-color: black;
+        border-radius: 1.5rem;
+        overflow: hidden;
+        height: 5rem;
+
+    .tab {
+        background: none;
+
+        color: white;
+        border: none;
+        padding: 1rem 3rem;
+        cursor: pointer;
+        font-size: 1.6rem;
+
+
+        &:hover {
+        background-color: #404040;
+        border-radius: 1.2rem;
+        transition: all 0.2s ease-out;
+        }
+
+        &.active {
+        background-color: white;
+        color: #000;
+        border-radius: 1.2rem;
+        }
+    }
+}
+}

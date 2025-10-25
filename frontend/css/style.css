@@ -428,6 +428,39 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   color: #888;
 }
 
+.navbar-pharmacy nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 2rem;
+  font-family: var(--primary-font);
+}
+.navbar-pharmacy .nav-links {
+  display: flex;
+  background-color: black;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  height: 5rem;
+}
+.navbar-pharmacy .nav-links .tab {
+  background: none;
+  color: white;
+  border: none;
+  padding: 1rem 3rem;
+  cursor: pointer;
+  font-size: 1.6rem;
+}
+.navbar-pharmacy .nav-links .tab:hover {
+  background-color: #404040;
+  border-radius: 1.2rem;
+  transition: all 0.2s ease-out;
+}
+.navbar-pharmacy .nav-links .tab.active {
+  background-color: white;
+  color: #000;
+  border-radius: 1.2rem;
+}
+
 @font-face {
   font-family: "red hat display";
   font-weight: 100;
@@ -934,15 +967,15 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 
 .landingPage {
   margin-right: 0%;
-  /* Navbar */
-  /* Header */
-  /* Store */
 }
 .landingPage body {
   font-family: Arial, sans-serif;
   margin: 0;
   background: #f9f9f9;
   color: #222;
+}
+.landingPage {
+  /* Navbar */
 }
 .landingPage .navbar {
   display: flex;
@@ -964,6 +997,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .landingPage .navbar .nav-links a.active {
   border-bottom: 2px solid #0a8f8f;
+}
+.landingPage {
+  /* Header */
 }
 .landingPage .header {
   margin: 1rem;
@@ -1070,6 +1106,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .landingPage .header .contact-card .btn svg {
   margin-left: 0.4rem;
 }
+.landingPage {
+  /* Store */
+}
 .landingPage .store {
   padding: 2rem;
 }
@@ -1127,8 +1166,6 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   align-items: flex-start;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s;
-  /* Sizes */
-  /* Quantity */
 }
 .landingPage .store .product-card:hover {
   transform: translateY(-4px);
@@ -1168,6 +1205,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   font-size: 2rem;
   font-weight: 500;
 }
+.landingPage .store .product-card {
+  /* Sizes */
+}
 .landingPage .store .product-card .sizes {
   display: flex;
   justify-content: left;
@@ -1187,6 +1227,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   background: #0a8f8f;
   color: #fff;
   border-color: #0a8f8f;
+}
+.landingPage .store .product-card {
+  /* Quantity */
 }
 .landingPage .store .product-card .quantity {
   display: flex;
@@ -2212,9 +2255,6 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   color: #127EB5;
 }
 
-.staffMember {
-  /* -------------------- MEDIA QUERIES -------------------- */
-}
 .staffMember .page-container {
   display: flex;
   gap: 2rem;
@@ -2527,6 +2567,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .staffMember .page-container .column3 .attendance-card .documents ul li .download:hover {
   color: #d85a00;
+}
+.staffMember {
+  /* -------------------- MEDIA QUERIES -------------------- */
 }
 @media (max-width: 768px) {
   .staffMember .page-container {
@@ -4128,11 +4171,11 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   border-radius: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-.AddMedi .container .medicine-details {
-  flex: 1;
-}
 .AddMedi .container .medicine-details h2 {
   margin-bottom: 1rem;
+}
+.AddMedi .container .medicine-details {
+  flex: 1;
 }
 .AddMedi .container .medicine-details form {
   display: flex;

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href = "/css/style.css">
+</head>
+<body>
+    <header>
+    <nav>
+        <div class="logo">
+            <img class="logopic" src="/public/logo/logo.svg" alt="logo">
+            <p class="logoname">PharmaNet</p>
+        </div>
+        </nav>
+    <h1 class="fheader">
+    <span class="fWord"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="35" viewBox="0 0 34 35" fill="none">
+  <g clip-path="url(#clip0_181_251)">
+    <path d="M17 21.7498C22.4769 21.7498 26.9167 17.31 26.9167 11.8332C26.9167 6.35635 22.4769 1.9165 17 1.9165C11.5232 1.9165 7.08337 6.35635 7.08337 11.8332C7.08337 17.31 11.5232 21.7498 17 21.7498Z" stroke="#00BAAC" stroke-width="2.83333" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M11.6308 20.1773L9.91663 33.0831L17 28.8331L24.0833 33.0831L22.3691 20.1631" stroke="#00BAAC" stroke-width="2.83333" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_181_251">
+      <rect width="34" height="34" fill="white" transform="translate(0 0.5)"/>
+    </clipPath>
+  </defs>
+</svg>Staff Member</span><span class="sWord">Creation Form</span>
+    </h1>
+    </header>
+<div class="container">
+    <div class="basicInfo">
+       
+        <form action="submit_form.php" method="post">
+             <h5><svg xmlns="http://www.w3.org/2000/svg" width="21" height="6" viewBox="0 0 21 6" fill="none">
+                <path d="M3 3H18.3065" stroke="#F9A550" stroke-width="4.83363" stroke-linecap="round"/>
+                </svg> Basic Info</h5>
+            <div class="nameFields">
+            <div>
+            <label for="fName" >First Name</label><br>
+            <input type="text" class="fname" name="name" placeholder="Saman" required>
+            </div>
+
+            <div>
+            <label for="lName">Last Name</label><br>
+            <input type="text" class="lname" name="name" placeholder="Kumara" required><br>
+            </div>
+            </div>
+
+            <label for="fullName">Full Name</label><br>
+            <input type="text" class="fullName" name="name" placeholder="Gamage Arachchige Saman Kumara" required><br>
+
+            <label for="email">Email</label><br>
+            <input type="email" class="email" name="email" placeholder="Xxxxx@gmail.com" required><br>
+
+            <div class="sectionNIC">
+
+            <div>
+            <label for="idNumber">National Identity Card IdNumber</label><br>
+            <input type="text" class="idNumber" name="idNumber" placeholder="12345678909V" required>
+            </div>
+
+            <div>
+            <label for="myFile">National Identity Card Proof</label><br>
+            <input type="text" class="myFile" name="myFile" placeholder="Upload file" required><br>
+            <input type="file"  name="myFile"><br>
+            </div>
+            </div>
+            
+            <div class = "container1">
+            <div>
+            <label for="Contact">Contact</label><br>
+            <input type="tel" class="contact" name="contact" placeholder="07X XXX XXXX" required><br>
+            <input type="tel" class="contact" name="contact" placeholder="07X XXX XXXX" required><br>
+            <input type="tel" class="contact" name="contact" placeholder="07X XXX XXXX" required>
+            </div>
+
+            <div>
+            <label for="epfNo">EPF Number</label><br>
+            <input type="text" class="epfNo" name="epfNo" placeholder="XXXXXX" required><br>
+            
+            <label for="gender">Gender</label><br>
+            <select class="gender" name="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select><br>
+            </div>
+            </div>
+        </form>
+    </div>
+    
+
+<!--Location Info division-->
+<div class="locationInfo">
+    <h5><svg xmlns="http://www.w3.org/2000/svg" width="21" height="6" viewBox="0 0 21 6" fill="none">
+        <path d="M3 3H18.3065" stroke="#F9A550" stroke-width="4.83363" stroke-linecap="round"/>
+        </svg> Location Info</h5>
+    <form action="submit_location.php" method="post">
+        <label for="address">Address</label><br>
+        <input type="text" class="address" name="address" placeholder="No" required><br>
+        <input type="text" class="address" name="address" placeholder="Street" required><br>
+        <input type="text" class="address" name="address" placeholder="Town"><br>
+        <input type="text" class="address" name="address" placeholder="Province"><br>
+        <input type="text" class="address" name="address" placeholder="Postal Code"><br>
+        <h5><svg xmlns="http://www.w3.org/2000/svg" width="21" height="6" viewBox="0 0 21 6" fill="none">
+        <path d="M3 3H18.3065" stroke="#F9A550" stroke-width="4.83363" stroke-linecap="round"/>
+        </svg> System Login</h5>
+        <label for="userName">User Name</label><br>
+        <input type="text" class="userName" name="userName" placeholder="Kumara1234" required><br>
+
+        <label for="password">Password</label><br>
+        <input type="text" class="password" name="password" placeholder="123456"><br>
+
+        
+    </form>
+</div>
+
+<!--Banking Info division-->
+<div class="bankingInfo">
+    <h5><svg xmlns="http://www.w3.org/2000/svg" width="21" height="6" viewBox="0 0 21 6" fill="none">
+        <path d="M3 3H18.3065" stroke="#F9A550" stroke-width="4.83363" stroke-linecap="round"/>
+        </svg> Banking Info</h5>
+    <form action="" method="post">
+        <label for="bank_details">Bank Details</label>
+        <input type="text" class="bankName" name="bank_Name" placeholder="Bank Name" required><br>
+        <input type="text" class="accNo" name="accNo" placeholder="Account No" required><br>
+        <input type="text" class="bankBranch" name="bank_Branch" placeholder="Bank Branch"><br>
+
+        <label for="detailsProof">Bank Details Proof</label>
+        <input type="upload" class="detailsProof" name="detailsProof" placeholder="Upload File"><br>
+        
+        <h5><svg xmlns="http://www.w3.org/2000/svg" width="21" height="6" viewBox="0 0 21 6" fill="none">
+        <path d="M3 3H18.3065" stroke="#F9A550" stroke-width="4.83363" stroke-linecap="round"/>
+        </svg> Assign Roles</h5>
+         <label for="role">Role</label>
+        <input type="text" class="role" name="role" placeholder="Manager" required><br>
+
+
+        <button type="submit" class="createBtn">Create Member</button>
+    
+        
+    </form>
+</div>
+</div>
+
+
+<script src="index.js"></script>
+</body>
+</html>

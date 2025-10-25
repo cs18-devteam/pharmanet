@@ -1279,4 +1279,162 @@ nav .logo .logoname {
   text-transform: capitalize;
 }
 
+h1 {
+  font-size: 3.6rem;
+  font-weight: 60rem;
+  font-style: normal;
+  text-align: left;
+  margin-top: 2rem;
+  margin-left: 1.5rem;
+  line-height: 4.3rem;
+}
+h1 .fWord {
+  color: #f9a550;
+}
+h1 .sWord {
+  color: #083851;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 150rem;
+  justify-content: space-around;
+  gap: 2rem;
+  padding: 2rem;
+  padding-top: 1rem;
+  height: 120vh;
+  color: #083851;
+  font-size: 1rem;
+}
+.container .basicInfo {
+  flex: 7;
+  padding: 2rem;
+  background-color: #ffffff;
+}
+.container .basicInfo form {
+  line-height: 2rem;
+}
+.container .basicInfo form label {
+  font-size: 1.9335rem;
+  font-weight: 60rem;
+  font-style: normal;
+  line-height: 3rem;
+}
+.container .basicInfo form h5 {
+  color: #f9a550;
+  margin-top: 0.5rem;
+  margin-bottom: 0rem;
+  font-weight: 40rem;
+  font-size: 1.6918rem;
+}
+.container .basicInfo form .nameFields {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.container .basicInfo form .nameFields div {
+  flex: 1;
+  width: fit-content;
+}
+.container .basicInfo form .sectionNIC {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.container .basicInfo form .sectionNIC div {
+  flex: 1;
+  width: fit-content;
+}
+.container .basicInfo form .container1 {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 0.5rem;
+}
+.container .basicInfo form .container1 div {
+  flex: 4;
+  width: fit-content;
+}
+.container .basicInfo form .fname, .container .basicInfo form .lname, .container .basicInfo form .fullName, .container .basicInfo form .email, .container .basicInfo form .idNumber, .container .basicInfo form .myFile, .container .basicInfo form .contact, .container .basicInfo form .epfNo, .container .basicInfo form .gender {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 0.081rem solid #787676;
+  border-radius: 0.5rem;
+  padding: 0.806rem, 0.806rem, 0.806rem, 1.12rem;
+}
+.container .basicInfo form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.container .locationInfo {
+  flex: 3;
+  padding: 2rem;
+  background-color: #ffffff;
+}
+.container .locationInfo label {
+  font-size: 1.9335rem;
+  font-weight: 80rem;
+  font-style: semi-bold;
+  line-height: 3rem;
+}
+.container .locationInfo h5 {
+  color: #f9a550;
+  font-size: 1.6918rem;
+}
+.container .locationInfo form .address, .container .locationInfo form .userName, .container .locationInfo form .password {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 0.081rem solid #787676;
+  border-radius: 0.5rem;
+  padding: 0.806rem, 0.806rem, 0.806rem, 1.12rem;
+  line-height: 1rem;
+}
+.container .locationInfo form label {
+  display: block;
+  border-bottom: 0rem;
+}
+.container .bankingInfo {
+  flex: 3;
+  max-width: 100rem;
+  padding: 2rem;
+  background-color: #ffffff;
+}
+.container .bankingInfo label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1.9335rem;
+  font-weight: 60rem;
+  font-style: normal;
+  line-height: 3rem;
+}
+.container .bankingInfo h5 {
+  color: #f9a550;
+  font-size: 1.6918rem;
+}
+.container .bankingInfo form .bankName, .container .bankingInfo form .bankBranch, .container .bankingInfo form .accNo, .container .bankingInfo form .detailsProof, .container .bankingInfo form .role {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 0.081rem solid #787676;
+  border-radius: 0.5rem;
+  padding: 0.806rem, 0.806rem, 0.806rem, 1.12rem;
+}
+.container .bankingInfo .createBtn {
+  width: 100%;
+  margin-top: 5.5rem;
+  background-image: linear-gradient(to right, #18978D, #083851);
+  padding: 1rem;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.8rem;
+}
+
 /*# sourceMappingURL=style.css.map */

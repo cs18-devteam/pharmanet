@@ -9,7 +9,14 @@ class Popup{
     constructor(tag){
         this.tag = tag;
         this.init();
+<<<<<<< HEAD
         this.#activatePopupButtons();
+=======
+<<<<<<< HEAD
+=======
+        this.#activatePopupButtons();
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order
         return this.popupContainer;
 
     }
@@ -19,6 +26,14 @@ class Popup{
 
             this.popUpBtns = document.querySelectorAll(`popup-${type}[for=${this.id}]`);
             if(this.popUpBtns.length == 0) return;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+            console.log(this.popUpBtns);
+=======
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order
             
             this.popUpBtns.forEach((btn=>{
                 let popupBtn = document.createElement('button');
@@ -27,13 +42,38 @@ class Popup{
                 popupBtn.dataset.role=`popup-${type}`;
                 popupBtn.innerHTML = btn.innerHTML;
 
+<<<<<<< HEAD
                 btn.replaceWith(popupBtn);
                 
+=======
+<<<<<<< HEAD
+                console.log(btn , popupBtn);
+                btn.replaceWith(popupBtn);
+
+                popupBtn.addEventListener('click' , ()=>{
+                    if(this.status == "open"){
+                        this.popupClose();
+                    }else{
+                        this.popupOpen();
+                    }
+
+                    console.log(this.status);
+                })
+=======
+                btn.replaceWith(popupBtn);
+                
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order
             }))
         })
 
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> origin/hamdha/backend/order
     #activatePopupButtons(){
         document.addEventListener('click' , (e)=>{
             const target = e.target;
@@ -47,6 +87,10 @@ class Popup{
         })
     }
 
+<<<<<<< HEAD
+=======
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order
 
     popupBoxCursorEffect(){
         const pointer = document.createElement("div");

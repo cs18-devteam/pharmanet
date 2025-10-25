@@ -7,6 +7,21 @@
 @forward "./verify-number";
 @forward "./staffMember";
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+@forward "./login";
+@forward "./medCreate";
+@forward "./medUpdate";
+@forward "./userProfile";
+=======
+@forward "./search-medicine";
+@forward "./search-pharmacy";
+@forward "./pharmacy-registration";
+>>>>>>> 0242b0c9ca2cdefd93a6450cce1d4a5119f600cd
+=======
+>>>>>>> origin/hamdha/backend/order
 @forward "./search-medicine";
 @forward "./search-pharmacy";
 @forward "./pharmacy-registration";
@@ -18,6 +33,7 @@
 @forward "./allStaff";
 @forward "./memberDetails";
 @forward "./medicineAdd";
+<<<<<<< HEAD
 @forward "./cashier-dashboard";
 @forward "./cashier-create-bill";
 @forward "./cashier-product";
@@ -60,3 +76,6 @@
 @forward "./pharmacy-registration";
 >>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
 >>>>>>> origin/hamdha/backend/leave
+=======
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order

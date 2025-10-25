@@ -18,18 +18,34 @@
     }
 
     .LeftPanel{
+<<<<<<< HEAD
         margin-left: 4rem;
+=======
+<<<<<<< HEAD
+=======
+        margin-left: 4rem;
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order
         .header{
         font-size: 4.5rem;
         color:white;
         font-weight:700;
         background-image:url(/public/images/login\ Image.svg);
         text-align: center;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> origin/hamdha/backend/order
        
         }
 
          ul{
             list-style-type: none;
+<<<<<<< HEAD
+=======
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order
         }
 
     .main-title{
@@ -44,6 +60,15 @@
             font-size:2.4rem;
             font-weight:700;
             color:var(--font-linear-primary-color);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            margin:2rem;
+            }
+
+        ul{
+=======
+>>>>>>> origin/hamdha/backend/order
             margin-top: 4rem;
             
             img{
@@ -53,11 +78,24 @@
 
         ul{
             //padding-left:3rem;
+<<<<<<< HEAD
+=======
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order
             list-style-image: url(/public/images/check-circle.svg);
             li{
                 font-size: 1.7rem; 
                 margin: 2rem;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+                ul{
+                list-style-type: disc;
+                }
+            } 
+=======
+>>>>>>> origin/hamdha/backend/order
                 &>ul{
                     list-style-image: none;
                     list-style-type: disc;
@@ -69,6 +107,10 @@
                 list-style-image:none;
                 list-style-type: none;
             
+<<<<<<< HEAD
+=======
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order
         }    
     }
 
@@ -99,6 +141,16 @@
         .title{
             color:var(--color-yellow-01);
             font-weight: 600;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            .line{
+                width:1.9rem;
+                height:0rem;
+                background-color: var(--color-yellow-01);
+                border-radius: 10%;
+=======
+>>>>>>> origin/hamdha/backend/order
             padding:1rem;
             .line{
                 display: inline-block;
@@ -108,6 +160,10 @@
                 border-radius: 0.3rem;
                 margin-right: 1rem;                  // spacing before text
                 vertical-align: middle;
+<<<<<<< HEAD
+=======
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order
             }
         }
         label{
@@ -120,6 +176,15 @@
             font-size:2.4rem;
             width:100%;
             height:5rem;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            border-radius: 1rem;
+            margin:1rem 0rem;
+            font-weight:400;
+            border: 0.1rem solid #707070;
+=======
+>>>>>>> origin/hamdha/backend/order
             padding: 2rem;
             border-radius: 1rem;
             margin:1rem 0rem;
@@ -129,6 +194,10 @@
             &:hover{
                 border-color: #007bff;
             }
+<<<<<<< HEAD
+=======
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order
             
         }
 
@@ -165,9 +234,22 @@
                 .upload-btn {
                 display: block;
                 width: 100%;
+<<<<<<< HEAD
                 padding: 1.2rem;
                 border: 0.1rem solid #ccc;
                 border-radius: 1rem;
+=======
+<<<<<<< HEAD
+                padding: 12px;
+                background-color: #f9f9f9;
+                border: 2px solid #ccc;
+                border-radius: 10px;
+=======
+                padding: 1.2rem;
+                border: 0.1rem solid #ccc;
+                border-radius: 1rem;
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order
                 text-align: center;
                 color: #999;
                 cursor: pointer;
@@ -180,6 +262,11 @@
             }
         }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> origin/hamdha/backend/order
        
     }
         .CreateAccount{
@@ -232,12 +319,24 @@
     }
         
 
+<<<<<<< HEAD
+=======
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order
     }
     
     
 }
 
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+}
+=======
+
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order
 
 
 

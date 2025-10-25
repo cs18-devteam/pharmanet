@@ -1,3 +1,27 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+/* Error: expected "{".
+ *   ,
+ * 8 | @forward "./login";
+ *   |                   ^
+ *   '
+ *   sass\pages\_index.scss 8:19  @use
+ *   sass\main.scss 7:1           root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: 'Error: expected "{".\a   \2577 \a 8 \2502  @forward "./login";\d\a   \2502                    ^\a   \2575 \a   sass\\pages\\_index.scss 8:19  @use\a   sass\\main.scss 7:1           root stylesheet';
+}
+=======
+@charset "UTF-8";
+>>>>>>> origin/hamdha/backend/order
 :root {
   --white:#ffffff;
   --color-green-01: #18978D;
@@ -427,6 +451,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   color: #888;
 }
 
+<<<<<<< HEAD
 .nav-links {
   display: flex;
   background-color: black;
@@ -453,6 +478,8 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   border-radius: 1.2rem;
 }
 
+=======
+>>>>>>> origin/hamdha/backend/order
 @font-face {
   font-family: "red hat display";
   font-weight: 100;
@@ -2611,6 +2638,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -3263,6 +3291,8 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 =======
 >>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
 >>>>>>> origin/hamdha/backend/leave
+=======
+>>>>>>> origin/hamdha/backend/order
 .SearchMedi .main-container {
   display: flex;
   padding: 1rem 2rem;
@@ -3772,6 +3802,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .RegPharmacy .container .FormGroup .UploadSection .custom-upload .upload-btn:hover {
   border-color: #007bff;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/hamdha/backend/order
 }
 .RegPharmacy .container .CreateAccount {
   background: linear-gradient(to right, #00BAAC, #083851);
@@ -5109,6 +5142,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   color: #fff;
 }
 .AddMedi .container .medicine-inventory .inventory-body .actions button.delete-btn:hover {
+<<<<<<< HEAD
   background-color: var(--color-yellow-02);
 }
 
@@ -6972,6 +7006,10 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 =======
 >>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
 >>>>>>> origin/hamdha/backend/leave
+=======
+  background: #a71d2a;
+>>>>>>> origin/hamdha/backend/order
 }
 
 /*# sourceMappingURL=style.css.map */
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf

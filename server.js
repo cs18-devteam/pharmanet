@@ -1,3 +1,22 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+const App = require("./App");
+const Database = require("./database/Database");
+const env = require('./common/middlewares/env');
+const userRouter= require("./services/user-service/routes/userRouter");
+const orderRouter = require("./services/order-service/routes/orderRoutes");
+
+const db = Database.getInstance();
+const app = App.getInstance();
+env();
+
+app.public('./frontend');
+
+app.route('/users' , userRouter);
+app.route('/order', orderRouter);
+=======
+>>>>>>> origin/hamdha/backend/order
 const env = require('./common/middlewares/env');
 const Database = require("./database/Database");
 const App = require("./App");
@@ -70,11 +89,15 @@ app.route('/users' , userRouter);
 <<<<<<< HEAD
 //app.route('/attendance' , attendanceRouter);
 app.route('/leaves' , leaveRouter);
+<<<<<<< HEAD
 app.route('/Medicines', medicineRouter);
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
 app.route('/order', orderRouter);
+=======
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order
 
 =======
 app.route('/medicine' , medicineRouter);

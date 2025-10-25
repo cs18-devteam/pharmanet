@@ -3,6 +3,7 @@
 /css/style.css
 <<<<<<< HEAD
 /extensions/slider/node_modules
+<<<<<<< HEAD
 /extensions/popup/node_modules
 *.map
 
@@ -11,3 +12,12 @@
 css/style.css
 /css/*
 >>>>>>> origin/Chamani/patient/verifypages
+=======
+<<<<<<< HEAD
+/extensions/popup/node_modules
+=======
+/extensions/popup/node_modules
+*.map
+
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order

@@ -5,6 +5,17 @@ class Database{
     static #database = undefined;
 
     constructor(){
+<<<<<<< HEAD
+=======
+
+        this.connection = mysql.createConnection({
+            host:"localhost",
+            user:"root",
+            password: "Ham#2003"
+        }
+        );
+
+>>>>>>> origin/hamdha/backend/order
         this.createConnection();
     }
 
@@ -29,6 +40,7 @@ class Database{
             password: process.env.DATABASE_PASSWORD 
         });
 
+<<<<<<< HEAD
 =======
             host:"localhost",
             user:"root",
@@ -42,11 +54,15 @@ class Database{
         }
         );
 >>>>>>> origin/hamdha/backend/leave
+=======
+
+>>>>>>> origin/hamdha/backend/order
         
         this.connection.connect((error)=>{
             if(error){
                 console.error(error);
                 throw error;
+
             }else{
                 this.use();
                 console.log("database connection Successful");
@@ -75,7 +91,10 @@ class Database{
     static getInstance(){
         if(!Database.#database){
             Database.#database = new Database();
+<<<<<<< HEAD
             
+=======
+>>>>>>> origin/hamdha/backend/order
 
         }
 

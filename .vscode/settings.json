@@ -1,5 +1,12 @@
 {
     "cSpell.words": [
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        "pharmanet"
+    ]
+=======
+>>>>>>> origin/hamdha/backend/order
         "Chathura",
         "pharmacymanager",
         "pharmanet",
@@ -7,4 +14,8 @@
         "usermodel"
     ],
     "postman.settings.dotenv-detection-notification-visibility": false
+<<<<<<< HEAD
+=======
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order
 }

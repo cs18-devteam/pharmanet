@@ -1,6 +1,17 @@
 const fs = require('node:fs');
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+module.exports = function env(){
+    const envFileContent = fs.readFileSync('./.env' , {encoding: 'utf-8'}).trim();
+    envFileContent.split('\n').forEach(value=> {
+        value = value.split('=');
+        process.env[value[0]] =  value[1].replaceAll("\r" , '').replaceAll('\n','');
+    });
+}
+=======
+>>>>>>> origin/hamdha/backend/order
 
 class Env{
     constructor(){
@@ -23,6 +34,7 @@ class Env{
 
 
 module.exports = new Env();
+<<<<<<< HEAD
 =======
 module.exports = function env(){
     const envFileContent = fs.readFileSync('./.env' , {encoding: 'utf-8'}).trim();
@@ -40,3 +52,6 @@ module.exports = function env(){
     });
 }
 >>>>>>> origin/hamdha/backend/leave
+=======
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order

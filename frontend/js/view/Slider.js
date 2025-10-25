@@ -31,6 +31,26 @@ class Slider{
     }
 
     activateBtns(){
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        console.log(this.nextBtn);
+        if(this.nextBtn){
+            this.nextBtn.addEventListener('click' ,()=>{
+                this.next();
+                console.log("clicked next");
+            });
+        }
+
+        console.log(this.previousBtn)
+        if(this.previousBtn){
+            this.previousBtn.addEventListener('click' , ()=> {
+                this.previous()
+                console.log("clicked previous");
+
+            })
+=======
+>>>>>>> origin/hamdha/backend/order
         if(this.nextBtns?.length){
             this.nextBtns?.forEach(nextBtn=>{
                 nextBtn.addEventListener('click' ,()=>{
@@ -46,6 +66,10 @@ class Slider{
                 this.previous();
             })
             });
+<<<<<<< HEAD
+=======
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order
         }
     }
 
@@ -82,6 +106,17 @@ class Slider{
             });
             
             //replace next and previous btns
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            const nextTag = this.slideContainer.querySelector('slide-next');
+            const previousTag = this.slideContainer.querySelector('slide-previous');
+            nextTag.dataset.role="slide-next";
+            previousTag.dataset.role="slide-previous";
+            this.nextBtn = Utilities.replaceTag(nextTag , 'button');
+            this.previousBtn = Utilities.replaceTag(previousTag , 'button');   
+=======
+>>>>>>> origin/hamdha/backend/order
             const nextTags = this.slideContainer.querySelectorAll('slide-next');
             const previousTags = this.slideContainer.querySelectorAll('slide-previous');
 
@@ -98,6 +133,10 @@ class Slider{
                 this.previousBtns.push(Utilities.replaceTag(previousTag , 'button'));   
             });
 
+<<<<<<< HEAD
+=======
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order
             
         }catch(error){
             console.log(error);

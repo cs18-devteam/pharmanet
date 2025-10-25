@@ -1,7 +1,14 @@
 const http = require('node:http');
 const path = require('path');
 const fs = require('fs');
+<<<<<<< HEAD
 const Router = require('./common/Router');
+=======
+<<<<<<< HEAD
+=======
+const Router = require('./common/Router');
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order
 
 const mimeMap = {
     ".html": "text/html",
@@ -16,14 +23,30 @@ const mimeMap = {
     ".ico":"image/icon"
 };
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order
 module.exports = class App{
     static #app = undefined;
     static server = undefined;
     #files = [];
     static #routes = [];
 
+<<<<<<< HEAD
     constructor({port = "8000", hostname = "localhost"}={}){
 
+=======
+<<<<<<< HEAD
+    constructor({port = "8080", hostname = "localhost"}={}){
+=======
+    constructor({port = "8000", hostname = "localhost"}={}){
+
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order
         this.port = port;
         this.hostname = hostname;
 
@@ -32,8 +55,17 @@ module.exports = class App{
             //parse url
             const url = new URL(req.url , `http://${req.headers.host}`);
             req.params = url.searchParams;
+<<<<<<< HEAD
 
             req.pathname = url.pathname.replace(/%20/g , ' ').replace(/\\/g , "/");
+=======
+<<<<<<< HEAD
+            req.pathname = url.pathname;
+=======
+
+            req.pathname = url.pathname.replace(/%20/g , ' ').replace(/\\/g , "/");
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order
             req.protocol = url.protocol;
 
             // for development cases
@@ -41,6 +73,19 @@ module.exports = class App{
                 console.log(`${req.method} ${req.pathname}`)
             }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            //handle special case
+            if(req.pathname == "/"){
+                req.pathname = '/index.html';
+            };
+
+
+            const isFound = await this.findFile(req,res);
+            if(!isFound) this.findRoute(req , res);
+=======
+>>>>>>> origin/hamdha/backend/order
 
             res.send = (html)=>{
                 res.writeHead(200 , {"content-type":"text/html"});
@@ -54,12 +99,17 @@ module.exports = class App{
 
             
             if(!isFound) this.findRoute(req,res);
+<<<<<<< HEAD
+=======
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order
         });
 
     }
 
     async findFile(req , res){
         const [file] = this.#files.filter(file=>file.url == req.pathname);
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 
@@ -74,6 +124,14 @@ module.exports = class App{
 >>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
 >>>>>>> origin/hamdha/backend/leave
 
+=======
+
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order
         if(file){
             const fileExt = path.extname(file.url);
             fs.readFile(file.file , (error , data)=>{
@@ -94,6 +152,45 @@ module.exports = class App{
         return false;
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    async findRoute(req , res){
+        try{
+            App.#routes.forEach(async (route)=>{
+
+                if(route.path == req.pathname ){
+                    const method = req.method;
+                    switch(method){
+                        case "GET":
+                            route.router.getHandler(req, res);
+                            break;
+                        case "POST":
+                            route.router.postHandler(req,res);
+                            break;
+                        case "PATCH":
+                            route.router.patchHandler(req , res);
+                            break;
+                        case "DELETE":
+                            route.router.deleteHandler(req , res);
+                            break;
+                    }
+                }
+                return;
+
+            })
+
+        }catch(error){
+            console.log("error : find Route method");
+        }
+    }
+
+    route(path , router){
+        const routeObj = {
+            path ,
+            router ,
+=======
+>>>>>>> origin/hamdha/backend/order
     #next(req , res , func){
         if(typeof func == "function"){
             return func(req , res);
@@ -154,6 +251,10 @@ module.exports = class App{
         const routeObj = {
             path ,
             router : handlers,
+<<<<<<< HEAD
+=======
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order
         };
 
         App.#routes.push(routeObj);
@@ -170,11 +271,17 @@ module.exports = class App{
         App.server?.listen(this.port , this.hostname , ()=>{
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             
 =======
 >>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
 =======
 >>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
+=======
+            
+=======
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order
             if(process.env.NODE_ENV == "development"){
                 console.log(`app is running on http://${this.hostname}:${this.port}`);
 >>>>>>> origin/hamdha/backend/leave
@@ -191,11 +298,24 @@ module.exports = class App{
             const filePath = path.join(directory , file);
             const fileUrl = "/"+ path.relative(directory , filePath);
 
+<<<<<<< HEAD
             this.#files.push({
 
                 file: filePath.replaceAll('\\','/') , 
                 url : fileUrl.replaceAll('\\','/'),
 
+=======
+<<<<<<< HEAD
+            
+            this.#files.push({
+                file: filePath , 
+                url : fileUrl,
+=======
+            this.#files.push({
+                file: filePath.replace(/%20/g , ' ').replace(/\\/g , "/") , 
+                url : fileUrl.replace(/%20/g , ' ').replace(/\\/g , "/"),
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order
             });
 
 
@@ -207,7 +327,15 @@ module.exports = class App{
         if(!App.#app){
             App.#app = new App({
                 port:process.env.APP_PORT,
+<<<<<<< HEAD
                 hostname: "localhost",
+=======
+<<<<<<< HEAD
+                hostname: process.env.DEVELOPMENT_HOSTNAME,
+=======
+                hostname: "localhost",
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order
             });
             console.log("app created.");
             return App.#app;

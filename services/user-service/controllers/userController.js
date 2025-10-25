@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 const UserTypes = require("../helpers/UserTypes");
+=======
+<<<<<<< HEAD
+const DB = require('../../../database/Database');
+const db = DB.getInstance();
+>>>>>>> origin/hamdha/backend/order
 
 
 <<<<<<< HEAD
@@ -13,12 +19,37 @@ exports.getAllUsers = (req, res)=>{
     res.writeHead(200 , {"Content-Type":"text/html"} );
     res.write("<h1>users</h1>");
     res.end();
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
 exports.getAllUsers =async (req, res)=>{
     
 >>>>>>> origin/hamdha/backend/leave
+=======
+    return;
+
+}
+
+
+exports.updateUser = (req, res)=>{
+    console.log("hi from get update");
+}
+
+exports.deleteUser = (req, res)=>{
+    console.log("hi from get delete");
+}
+
+exports.createUser = (req, res)=>{
+    console.log("hi from get create");
+}
+=======
+const UserTypes = require("../helpers/UserTypes");
+
+
+exports.redirectUsers = async (req, res)=>{
+    console.log(req.userType);
+>>>>>>> origin/hamdha/backend/order
 
 
     if(req.userType){
@@ -86,3 +117,7 @@ exports.getAllUsers =async (req, res)=>{
         res.end()
     }
 }
+<<<<<<< HEAD
+=======
+>>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
+>>>>>>> origin/hamdha/backend/order

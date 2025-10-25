@@ -18,12 +18,30 @@ const staffRouter = require('./services/staff-service/routes/staffRouter');
 const userRouter= require("./services/user-service/routes/userRouter");
 const attendanceRouter= require("./services/attendence-service/routes/attendancerouter");
 const leaveRouter = require('./services/leave-service/routes/leaveRouter');
+const medicineRouter = require('./services/medicine-service/routes/medicineRouter');
+
+
+const MedicineModel = require("./services/medicine-service/models/medicineModel");
+const PharmacyModel = require("./services/pharmacy-service/models/pharmacyModel");
+
+
+const db = Database.getInstance();
+ const medicineInstance = new MedicineModel();
+ const pharmacyInstance = new PharmacyModel();
+
+
+
+ medicineInstance.createTable().catch(console.error);
+ pharmacyInstance.createTable().catch(console.error);
 
 
 const app = App.getInstance();
+
 env();
 // handle user Routes
-app.route('/', usersReDirectRouter);
+
+//app.route('/',authenticate , usersReDirectRouter);
+
 app.route('/login' , LogInRouter)
 app.route('/signup' , SignUpRouter);
 app.route('/users/customers' , customerRouter);
@@ -37,8 +55,8 @@ app.route('/users/system/admin' , systemAdminRouter );
 app.route('/customers/loyalty' ,  loyaltyPointsRouter);
 app.route('/pharmacy/staff' ,staffRouter);
 app.route('/users' , userRouter);
-app.route('/attendance' , attendanceRouter);
+//app.route('/attendance' , attendanceRouter);
 app.route('/leaves' , leaveRouter);
-
+app.route('/Medicines', medicineRouter);
 
 app.run();

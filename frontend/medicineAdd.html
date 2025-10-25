@@ -26,7 +26,7 @@
         <!-- Medicine Details Form -->
         <div class="medicine-details">
             <h2>Medicine Details</h2>
-            <form action="/medicine/" method="POST">
+            <form action="/medicine" method="POST">
                 <div class="col">
                     <label>Medicine Name</label>
                     <input type="text" name="name" placeholder="Enter medicine name">
@@ -38,12 +38,24 @@
                         <label>Category</label>
                         <select name="categoryId">
                             <option>Select category</option>
+                            <option>Pain Relief</option>
+                            <option>Antibiotics</option>
+                            <option>Cough & Cold</option>
+                            <option>Digestive Health</option>
+                            <option>Skin Care</option>
+                            <option>Vitamin & Minerals</option>
                         </select>
                     </div>
                     <div class="col">
                         <label>Type</label>
                         <select name="typeId">
                             <option>Select type</option>
+                            <option>Tablet</option>
+                            <option>Capsule</option>
+                            <option>Syrup</option>
+                            <option>injection</option>
+                            <option>Ointment</option>
+                            <option>Drop</option>
                         </select>
                     </div>
                 </div>
@@ -51,11 +63,11 @@
                 <div class="row">
                     <div class="col">
                         <label>Price ($)</label>
-                        <input type="number" name="price" value="0.00">
+                        <input type="int" name="price" value="0.00">
                     </div>
                     <div class="col">
                         <label>Stock Quantity</label>
-                        <input type="number" name="stock" value="0">
+                        <input type="int" name="stock" value="0">
                     </div>
                 </div>
 
@@ -97,48 +109,39 @@
             <div class="inventory-body">
                 <div class="medicine-card">
                     <div class="col">
-                        <label>Paracetamol</label>
+                        <label id="title">Paracetamol</label>
                     </div>
                     <div class="col">
-                        <label>Category:</label> <label>Relief</label> </div>
-                    <div class="col"><label>Type:</label> Tablet</div>
-                    <div class="col"><label>Price:</label> $5.00</div>
-                    <div class="col"><label>Stock:</label> 100</div>
-                    <div class="col"><label>Manufacturer:</label> ABC Pharma</div>
-                    <div class="col"><label>Expiry:</label> 2026-01-01</div>
+                        <label id="title">Category:</label> 
+                        <label>Relief</label> 
+                    </div>
+                    <div class="col">
+                        <label id="title">Type:</label>
+                        <label>Tablet</label>  
+                    </div>
+                    <div class="col">
+                        <label id="title">Price:</label> 
+                        <label>$5.00</label>
+                    </div>
+                    <div class="col">
+                        <label id="title">Stock:</label>
+                        <label>100</label>
+                    </div>
+                    <div class="col">
+                        <label id="title">Manufacturer:</label>
+                         <label>ABC Pharma</label>
+                    </div>
+                    <div class="col">
+                        <label id="title">Expiry:</label>
+                        <label>2026-01-01</label> 
+                    </div>
                     <div class="actions">
                         <button class="update-btn">Update</button>
                         <button class="delete-btn">Delete</button>
                     </div>
                 </div>
 
-                <div class="medicine-card">
-                    <h3>Amoxicillin</h3>
-                    <p><b>Category:</b> Antibiotic</p>
-                    <p><b>Type:</b> Capsule</p>
-                    <p><b>Price:</b> $12.00</p>
-                    <p><b>Stock:</b> 50</p>
-                    <p><b>Manufacturer:</b> Medico Ltd.</p>
-                    <p><b>Expiry:</b> 2025-10-10</p>
-                    <div class="actions">
-                        <button class="update-btn">Update</button>
-                        <button class="delete-btn">Delete</button>
-                    </div>
-                </div>
-
-                <div class="medicine-card">
-                    <h3>Cough Syrup</h3>
-                    <p><b>Category:</b> Cold & Flu</p>
-                    <p><b>Type:</b> Liquid</p>
-                    <p><b>Price:</b> $8.50</p>
-                    <p><b>Stock:</b> 75</p>
-                    <p><b>Manufacturer:</b> HealWell</p>
-                    <p><b>Expiry:</b> 2026-05-20</p>
-                    <div class="actions">
-                        <button class="update-btn">Update</button>
-                        <button class="delete-btn">Delete</button>
-                    </div>
-                </div>
+            
             </div>
         </div>
     </div>

@@ -1,168 +1,48 @@
-const MedicineModel = require("../models/medicineModel");
 
-const medicineInstance = new MedicineModel();
-
-
-exports.getAllMedicines = async (req, res) => {
-    try{
-        //fetch all medicine from db
-        const allMedicines= await medicineInstance.getAll(); 
-
-        // return them as json --> tells the client/browser that the data being returned is in JSON format.
-        res.writeHead(200,{"Content-Type" : "application/json"})
-
-        res.write(JSON.stringify(allMedicines));  
-        //res.write -> only accepts string and buffer 
-        // (sends that string to the client.)
-        // JSON.stringify() → turns JS object/array → JSON string.
-
-        res.end();
-    }
-    catch (err) {
-        //Haddle error
-        console.error(err);
-        res.status(500,{"content-type" : "application/json"});
-        res.write(JSON.stringify({ error: "Failed to fetch medicine" }));
-        res.end();
-    }
-};
+const Medicines =require("../models/MedicineModel")
+const querystring = require("querystring");
 
 
 
-//=======================================
-//CREATE MEDICINE
-
-
-exports.createMedicines = async (req, res) => {
+exports.createMedicines = async (req ,res ) => {
     
-        //it will store incomming request body data in chunk
-        let body = "";
+    const newMedicine = await Medicines.save({
+    name: "Paracetamol",
+    categoryId: 1,
+    typeId: 2,
+    price: 15,
+    stock: 100,
+    manufacturer: "PharmaCorp",
+    expiryDate: "2026-12-31",
+    batchNumber: "BATCH001",
+    description: "Fever and pain relief"
+  });
 
-        //collect incomming request body data in chunk
-        req.on("data", (chunk) => {
+  console.log(newMedicine);
+}
 
-            //apprnd each chunk to data string
-            body += chunk;
-        });
-        
-        //when all data has been received
-        req.on("end" , async() => {
-            try{
-                //it is used because when a form submits with multipart/form-data, 
-                // the raw body is not JSON — you need to decode it into a 
-                // usable object.
-                //const formData = decodeMultipartFormData(req, data);
+exports.getMedicines = async (req ,res ) => {
+    const allMedicines = await Medicines.get();
+    //res.writeHead(200,{"Content-Type" : "text/html"});
+    console.log(allMedicines);
 
-                const data = new URLSearchParams(body);
 
-                const medicine = {
-                    name: data.get("name"),
-                    category_id: data.get("categoryId"),
-                    type_id: data.get("typeId"),
-                    price: data.get("price"),
-                    stock: data.get("stock"),
-                    manufacturer: data.get("manufacturer"),
-                    expiry_date: data.get("e-expiry_date"),
-                    batch_number: data.get("batch_number"),
-                    description: data.get("description")
-                };
+}
 
-                const result = await medicineInstance.save(medicine); 
-                
-                res.writeHead(201, {"content-Type" : "application/json"});
-                res.write(JSON.stringify({message: "medicine added", id: result.insertId }));
-                res.end();
+exports.updateMedicines = async (req ,res ) => {
 
-            } catch (err) {
-                console.error(err); 
-                res.write(JSON.stringify({error: "Failed to create medicine"}));
-                res.end();
-            }
-        });
-    };
-
-//===============================
-//update data
-
-exports.updateMedicines = async (req, res) => {
-    let body = "";
-
-    req.on("data", (chunk) => {
-        body += chunk;
+    const updated = await Medicines.update({
+    id: 1, // make sure this ID exists
+    name: "Updated Paracetamol",
+    price: 20
     });
 
+  console.log(updated)
+
+  const deleted = await Medicines.deleteById(1); // replace 1 with the ID to delete
+  console.log(deleted);
+}
+
+exports.deleteMedicines = async (req ,res ) => {
     
-
-        req.on("end", async () => {
-                try {
-                    //const formData = decodeMultipartFormData(req, data);
-                    const data = new URLSearchParams(body);
-                    const id = req.url.split("/")[2];
-
-                    const medicine = {
-                        name: data.get("name"),
-                        categoryId: data.get("categoryId"),
-                        typeId: data.get("typeId"),
-                        price: data.get("price"),
-                        stock: data.get("stock"),
-                        manufacturer: data.get("manufacturer"),
-                        expiryDate: data.get("e-expiry_date"),
-                        batchNumber: data.get("batch_number"),
-                        description: data.get("description")
-                };
-
-
-                    const result = await medicineInstance.update(id, medicine);
-
-                    if (result.affectedRows === 0) {
-                        res.writeHead(404, { "Content-Type": "application/json" });
-                        res.write(JSON.stringify({ message: "Medicine not found" }));
-                        res.end();
-                        return;
-                    }
-
-                    res.writeHead(200, { "Content-Type": "application/json" });
-                    res.write(JSON.stringify({ message: "Medicine updated", affected: result.affectedRows }));
-                    res.end();
-                }
-                 catch (err) {
-                    console.error(err);
-                    res.writeHead(500, { "Content-Type": "application/json" });
-                    res.write(JSON.stringify({ error: "Failed to update medicine" }));
-                    res.end();
-                }
-            });
-        };
-
-
-// =============================
-// DELETE Medicine 
-
-exports.deleteMedicines = async (req, res) => {
-   
-        try {
-
-            //const formData = decodeMultipartFormData(req, data);
-            const id = req.url.split("/")[2]
-
-            const result = await medicineInstance.delete(id);
-
-            // If no rows were deleted → medicine not found
-            if (result.affectedRows === 0) {
-                res.writeHead(404, { "Content-Type": "application/json" });
-                res.write(JSON.stringify({ message: "Medicine not found" }));
-                res.end();
-                return;
-            }
-
-            res.writeHead(200, { "Content-Type": "application/json" });
-            res.write(JSON.stringify({ message: "Medicine deleted", affected: result.affectedRows }));
-            res.end();
-        } catch (err) {
-            console.error(err);
-            res.writeHead(500, { "Content-Type": "application/json" });
-            res.write(JSON.stringify({ error: "Failed to delete medicine" }));
-            res.end();
-        }
-
-};
+}

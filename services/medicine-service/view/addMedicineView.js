@@ -1,4 +1,3 @@
-/*
 const fs = require('fs');
 const path = require ('path');
 
@@ -26,7 +25,7 @@ exports.renderAllMedicines  = (req, res)=>{
             .replace("%%DATE%%", data?.expiryDate))
 
     })
+ console.log("render all medi")
    res.write(getAllMedicine.replace('%%ADD-MEDICINE%%' , MedicineCards.join(' ')));
     res.end();
-}*/
-
+}

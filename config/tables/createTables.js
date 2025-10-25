@@ -15,6 +15,7 @@ const Database = require("../../database/Database");
 const LoyaltyPoints = require("../../services/loyaltypoints-service/models/LoyaltyPointsModel");
 const Pharmacies = require("../../services/pharmacy-service/model/PharmacyModel");
 const Leaves = require("../../services/leave-service/models/LeaveModel");
+const Medicines = require("../../services/medicine-service/models/MedicineModel");
 const db = Database.getInstance();
 
 
@@ -32,3 +33,5 @@ SystemPharmacyManagers.createTable();
 SystemStockManagers.createTable();
 LoyaltyPoints.createTable();
 Leaves.createTable();
+Medicines.createTable();
+

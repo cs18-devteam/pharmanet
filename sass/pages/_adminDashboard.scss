@@ -1,0 +1,360 @@
+.adminDashboard{
+
+    $text-muted: #9ca3af;
+    $element-bg: #F7F7F7;
+    $primary: #08374F;
+    $accent: #FB8F21;
+
+    .container{
+        display: flex;
+        flex-direction: row;
+     .container-1{
+            flex: -2;
+            margin-right: 0rem;
+            align-items: stretch;
+            min-height: 95vh;
+            background: $element-bg;
+            border-radius: 1rem;
+    
+    .sideBar{
+    
+        width: 26rem;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        position: relative;
+       
+        
+        
+
+        .logo{
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            .logopic{
+                font-size: 2.4rem;
+            }
+            div{
+            h3{
+                font-size: 1.8rem;
+                margin-bottom: -0.5rem;
+                color: $primary;
+            }   
+
+            p{
+                font-size: 1.2rem;
+                color: $text-muted;
+            }
+           }
+        }
+    }
+}
+ 
+    .menu {
+        flex: 2;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 4rem;
+
+    a {
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      color: $text-muted;
+      transition: all 0.3s;
+
+      &:active,
+      &:hover {
+        background: #768190;
+        color: $accent;
+      }
+    }
+  }
+    .menuItem{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: -2rem;
+        padding: 2rem;
+        width: 26rem;
+        background-color: $primary;
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+        position: absolute;
+        top: 108.5rem;
+
+       
+        .text{
+            border: none;
+            font-size: 1.5rem;
+            background: none;
+            color: white;
+            cursor: pointer;
+
+            &:hover{color: $accent;}
+
+            &.setting{
+              &::before{content: "⚙";}
+            }
+            &.signOut{
+              &::before{content: "⎋";}
+            }
+  }
+}
+
+
+.container-2{
+    flex: 3;
+    
+.main {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    justify-content: space-around;
+
+    input {
+      background: white;
+      border: none;
+      outline: none;
+      padding: 10px 15px;
+      width: 50%;
+      color: $text-muted;
+      border-radius: 8px;
+    }
+
+    .user-section {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+
+      .bell {
+        font-size: 1.5rem;
+        cursor: pointer;
+
+        position: relative;
+
+        &::before{
+            content: "🔔";
+        }
+
+        &::after {
+            content: '3'; 
+            position: absolute;
+            top: -0.5rem;
+            right: -0.5rem;
+            background: red;
+            color: white;
+            font-size: 0.7rem;
+            border-radius: 50%;
+            padding: 0.2rem 0.5rem;
+        }
+      }
+
+      .admin {
+        width: 3.5rem;
+        height: 3.5rem;
+        background: $accent;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: #fff;
+      }
+    }
+  }
+
+  .dashboard {
+    h1 {
+      font-size: 3.2rem;
+      margin-bottom: 0.8rem;
+      color: $primary;
+      margin-bottom: -0.5rem;
+    }
+
+    p {
+      color: $text-muted;
+      margin-bottom: 3rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 2rem;
+
+      .card {
+        background: $element-bg;
+        padding: 2rem;
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        box-shadow: 0 0.2rem 0.8ren rgba(0,0,0,0.4);
+
+        .icon {
+          font-size: 2.6rem;
+          color: $accent;
+
+          &.pharmarcy {
+            &::before{content: "🏢";}
+          }
+          &.stock {
+            &::before{content: "🔗";}
+          }
+          &.users {
+            &::before{content: "👥";}
+          }
+          &.revenue {
+            &::before{content: "📈";}
+          }
+
+
+        }
+
+        h3 {
+          font-size: 1.6rem;
+          color: $text-muted;
+        }
+
+        h1 {
+          font-size: 2.8rem;
+        }
+
+        .change {
+          color: $accent;
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+}
+
+.analyticCards{
+    display: flex;
+    flex-direction: row;
+    margin: 0rem 4rem 0rem 4rem;
+    gap: 2rem;
+
+.analyticCard1,.analyticCard2 {
+  background-color: $element-bg;
+  border-radius: 12px;
+  padding: 1.5rem;
+  flex: 1 1 45%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0rem;
+    color: $primary;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: #bbb;
+    margin-bottom: 1rem;
+  }
+  canvas {
+    width: 100%;
+    height: 30rem;
+  }
+}
+}
+
+.activity-card {
+  background-color: $element-bg;
+  padding: 1.5rem;
+  border-radius: 1.2rem;
+  margin: 2rem 4rem 0rem 4rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0rem;
+  }
+
+  .subtitle {
+    color: #bbb;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .activity-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    .activity-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+
+      .avatar {
+        background-color: #003c2f;
+        color: #b7f5d5;
+        font-weight: 600;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .details {
+        flex: 1;
+
+        .info {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          margin-bottom: 0.25rem;
+
+          strong {
+            font-weight: 600;
+          }
+        }
+
+        p {
+          margin: 0.2rem 0;
+        }
+
+        .time {
+          font-size: 0.8rem;
+          color: #888;
+        }
+      }
+    }
+  }
+}
+
+// Tag styles
+.tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  background-color: #333;
+  color: #fff;
+
+  &.medicine     { background-color: #2e7d32; }
+  &.pharmacy     { background-color: #0277bd; }
+  &.user         { background-color: #6a1b9a; }
+  &.prescription { background-color: #c62828; }
+  &.inventory    { background-color: #ef6c00; }
+}
+}
+}
+}

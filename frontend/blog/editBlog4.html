@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PharmaCare Blog</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="editBlog">
+  <header class="navbar">
+    <div class="logo">
+      <img class="logopic" src="/public/logo/logo.svg" alt="logo">
+      <span>PharmaNet</span>
+    </div>
+    <div class="nav-buttons">
+      <a href="blogView.html"><button class="btn btn-filled">All Blogs</button></a>
+      <a href="blogManage.html"><button class="btn btn-icon"><i class="settings-icon">⚙</i> Manage</button></a>
+    </div>
+  </header>
+
+  <div class="edit-container">
+    <div class="edit-card">
+      <h2>Edit Blog</h2>
+
+      <form class="edit-form">
+        <!-- Title -->
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" id="title" value="Vitamin Supplements: Do You Really Need Them?" />
+        </div>
+
+        <!-- Category and Author -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category">
+              <option>Medicines</option>
+              <option>Diseases</option>
+              <option>Nutrition</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="author">Author</label>
+            <input type="text" id="author" value="Dr. James Wilson" />
+          </div>
+        </div>
+
+        <!-- Excerpt -->
+        <div class="form-group">
+          <label for="excerpt">Excerpt</label>
+          <textarea id="excerpt" rows="2">
+The supplement industry is booming, but do you really need vitamins? Let's explore the evidence.
+          </textarea>
+        </div>
+
+        <!-- Content -->
+        <div class="form-group">
+          <label for="content">Content</label>
+          <textarea id="content" rows="6">The Supplement Market
+Americans spend over $40 billion annually on dietary supplements. But are they necessary for good health?
+
+Essential Vitamins and Minerals
+Your body needs certain vitamins and minerals to function properly:
+
+**Vitamin D**: Important for bone health and immune function
+**Vitamin B12**: Essential for nerve function and red blood cell formation
+**Iron**: Crucial for oxygen transport
+**Calcium**: Vital for bone health
+**Folate**: Important for cell division and DNA synthesis
+When You Might Need Supplements
+Supplements may be beneficial if you:
+
+Follow a restrictive diet (vegan, vegetarian)
+Have certain medical conditions
+Are pregnant or breastfeeding
+Are over 50 (especially for B12 and vitamin D)
+Have limited sun exposure
+Have absorption issues
+Getting Nutrients from Food
+The best approach is to get nutrients from a balanced diet:
+
+Eat a variety of colorful fruits and vegetables
+Include lean proteins
+Choose whole grains
+Include dairy or fortified alternatives
+Eat fatty fish for omega-3s
+Supplement Safety
+If you do take supplements:
+
+Choose reputable brands
+Look for third-party testing
+Inform your doctor about all supplements
+Don't exceed recommended doses
+Be aware of potential interactions with medications
+The bottom line: A balanced diet is usually sufficient, but supplements can help fill specific gaps.</textarea>
+        </div>
+
+        <!-- Buttons -->
+        <div class="form-actions">
+          <a href="blogManage.html"><button type="button" class="btn-cancel">Cancel</button></a>
+          <button type="submit" class="btn-save"> Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  </body>
+</html>

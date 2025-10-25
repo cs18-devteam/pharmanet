@@ -2277,9 +2277,12 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> origin/Chamani/medicinPharmacy/crud
+=======
+>>>>>>> origin/origin/kasun/admin
 .staffMember .page-container {
   display: flex;
   gap: 2rem;
@@ -5382,16 +5385,34 @@ body.order {
   background-color: var(--color-yellow-02);
 }
 
+<<<<<<< HEAD
 .cashier-dashboard {
   background: linear-gradient(180deg, #f8fbfb, #e8f0f0);
   /* ---------------- Sidebar ---------------- */
 }
 .cashier-dashboard .sidebar {
   width: 22rem;
+=======
+.adminDashboard .container {
+  display: flex;
+  flex-direction: row;
+}
+.adminDashboard .container .container-1 {
+  flex: -2;
+  margin-right: 0rem;
+  align-items: stretch;
+  min-height: 95vh;
+  background: #F7F7F7;
+  border-radius: 1rem;
+}
+.adminDashboard .container .container-1 .sideBar {
+  width: 26rem;
+>>>>>>> origin/origin/kasun/admin
   padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+<<<<<<< HEAD
   font-family: var(--primary-font);
 }
 .cashier-dashboard .dashboard {
@@ -7248,5 +7269,2971 @@ body.order {
 }
 >>>>>>> a26acf01652afc5fc72a5617b1c7bbafaf6195b2
 
+=======
+  position: relative;
+}
+.adminDashboard .container .container-1 .sideBar .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.adminDashboard .container .container-1 .sideBar .logo .logopic {
+  font-size: 2.4rem;
+}
+.adminDashboard .container .container-1 .sideBar .logo div h3 {
+  font-size: 1.8rem;
+  margin-bottom: -0.5rem;
+  color: #08374F;
+}
+.adminDashboard .container .container-1 .sideBar .logo div p {
+  font-size: 1.2rem;
+  color: #9ca3af;
+}
+.adminDashboard .container .menu {
+  flex: 2;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4rem;
+}
+.adminDashboard .container .menu a {
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #9ca3af;
+  transition: all 0.3s;
+}
+.adminDashboard .container .menu a:active, .adminDashboard .container .menu a:hover {
+  background: #768190;
+  color: #FB8F21;
+}
+.adminDashboard .container .menuItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: -2rem;
+  padding: 2rem;
+  width: 26rem;
+  background-color: #08374F;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  position: absolute;
+  top: 108.5rem;
+}
+.adminDashboard .container .menuItem .text {
+  border: none;
+  font-size: 1.5rem;
+  background: none;
+  color: white;
+  cursor: pointer;
+}
+.adminDashboard .container .menuItem .text:hover {
+  color: #FB8F21;
+}
+.adminDashboard .container .menuItem .text.setting::before {
+  content: "⚙";
+}
+.adminDashboard .container .menuItem .text.signOut::before {
+  content: "⎋";
+}
+.adminDashboard .container .container-2 {
+  flex: 3;
+}
+.adminDashboard .container .container-2 .main {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+}
+.adminDashboard .container .container-2 .main header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  justify-content: space-around;
+}
+.adminDashboard .container .container-2 .main header input {
+  background: white;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  width: 50%;
+  color: #9ca3af;
+  border-radius: 8px;
+}
+.adminDashboard .container .container-2 .main header .user-section {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.adminDashboard .container .container-2 .main header .user-section .bell {
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: relative;
+}
+.adminDashboard .container .container-2 .main header .user-section .bell::before {
+  content: "🔔";
+}
+.adminDashboard .container .container-2 .main header .user-section .bell::after {
+  content: "3";
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  background: red;
+  color: white;
+  font-size: 0.7rem;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+}
+.adminDashboard .container .container-2 .main header .user-section .admin {
+  width: 3.5rem;
+  height: 3.5rem;
+  background: #FB8F21;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fff;
+}
+.adminDashboard .container .container-2 .main .dashboard h1 {
+  font-size: 3.2rem;
+  margin-bottom: 0.8rem;
+  color: #08374F;
+  margin-bottom: -0.5rem;
+}
+.adminDashboard .container .container-2 .main .dashboard p {
+  color: #9ca3af;
+  margin-bottom: 3rem;
+}
+.adminDashboard .container .container-2 .main .dashboard .cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 2rem;
+}
+.adminDashboard .container .container-2 .main .dashboard .cards .card {
+  background: #F7F7F7;
+  padding: 2rem;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 0.2rem 0.8ren rgba(0, 0, 0, 0.4);
+}
+.adminDashboard .container .container-2 .main .dashboard .cards .card .icon {
+  font-size: 2.6rem;
+  color: #FB8F21;
+}
+.adminDashboard .container .container-2 .main .dashboard .cards .card .icon.pharmarcy::before {
+  content: "🏢";
+}
+.adminDashboard .container .container-2 .main .dashboard .cards .card .icon.stock::before {
+  content: "🔗";
+}
+.adminDashboard .container .container-2 .main .dashboard .cards .card .icon.users::before {
+  content: "👥";
+}
+.adminDashboard .container .container-2 .main .dashboard .cards .card .icon.revenue::before {
+  content: "📈";
+}
+.adminDashboard .container .container-2 .main .dashboard .cards .card h3 {
+  font-size: 1.6rem;
+  color: #9ca3af;
+}
+.adminDashboard .container .container-2 .main .dashboard .cards .card h1 {
+  font-size: 2.8rem;
+}
+.adminDashboard .container .container-2 .main .dashboard .cards .card .change {
+  color: #FB8F21;
+  font-size: 1.4rem;
+}
+.adminDashboard .container .container-2 .analyticCards {
+  display: flex;
+  flex-direction: row;
+  margin: 0rem 4rem 0rem 4rem;
+  gap: 2rem;
+}
+.adminDashboard .container .container-2 .analyticCards .analyticCard1, .adminDashboard .container .container-2 .analyticCards .analyticCard2 {
+  background-color: #F7F7F7;
+  border-radius: 12px;
+  padding: 1.5rem;
+  flex: 1 1 45%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.adminDashboard .container .container-2 .analyticCards .analyticCard1 h2, .adminDashboard .container .container-2 .analyticCards .analyticCard2 h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0rem;
+  color: #08374F;
+}
+.adminDashboard .container .container-2 .analyticCards .analyticCard1 p, .adminDashboard .container .container-2 .analyticCards .analyticCard2 p {
+  font-size: 1.2rem;
+  color: #bbb;
+  margin-bottom: 1rem;
+}
+.adminDashboard .container .container-2 .analyticCards .analyticCard1 canvas, .adminDashboard .container .container-2 .analyticCards .analyticCard2 canvas {
+  width: 100%;
+  height: 30rem;
+}
+.adminDashboard .container .container-2 .activity-card {
+  background-color: #F7F7F7;
+  padding: 1.5rem;
+  border-radius: 1.2rem;
+  margin: 2rem 4rem 0rem 4rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.adminDashboard .container .container-2 .activity-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0rem;
+}
+.adminDashboard .container .container-2 .activity-card .subtitle {
+  color: #bbb;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+.adminDashboard .container .container-2 .activity-card .activity-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.adminDashboard .container .container-2 .activity-card .activity-list .activity-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+.adminDashboard .container .container-2 .activity-card .activity-list .activity-item .avatar {
+  background-color: #003c2f;
+  color: #b7f5d5;
+  font-weight: 600;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  font-size: 0.9rem;
+}
+.adminDashboard .container .container-2 .activity-card .activity-list .activity-item .details {
+  flex: 1;
+}
+.adminDashboard .container .container-2 .activity-card .activity-list .activity-item .details .info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+.adminDashboard .container .container-2 .activity-card .activity-list .activity-item .details .info strong {
+  font-weight: 600;
+}
+.adminDashboard .container .container-2 .activity-card .activity-list .activity-item .details p {
+  margin: 0.2rem 0;
+}
+.adminDashboard .container .container-2 .activity-card .activity-list .activity-item .details .time {
+  font-size: 0.8rem;
+  color: #888;
+}
+.adminDashboard .container .container-2 .tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  background-color: #333;
+  color: #fff;
+}
+.adminDashboard .container .container-2 .tag.medicine {
+  background-color: #2e7d32;
+}
+.adminDashboard .container .container-2 .tag.pharmacy {
+  background-color: #0277bd;
+}
+.adminDashboard .container .container-2 .tag.user {
+  background-color: #6a1b9a;
+}
+.adminDashboard .container .container-2 .tag.prescription {
+  background-color: #c62828;
+}
+.adminDashboard .container .container-2 .tag.inventory {
+  background-color: #ef6c00;
+}
+
+.pharmarcy .container {
+  display: flex;
+  flex-direction: row;
+}
+.pharmarcy .container .container-1 {
+  flex: -2;
+  margin-right: 0rem;
+  align-items: stretch;
+  min-height: 95vh;
+  background: #F7F7F7;
+  border-radius: 1rem;
+}
+.pharmarcy .container .container-1 .sideBar {
+  width: 26rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.pharmarcy .container .container-1 .sideBar .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.pharmarcy .container .container-1 .sideBar .logo .logopic {
+  font-size: 2.4rem;
+}
+.pharmarcy .container .container-1 .sideBar .logo div h3 {
+  font-size: 1.8rem;
+  margin-bottom: -0.5rem;
+  color: #08374F;
+}
+.pharmarcy .container .container-1 .sideBar .logo div p {
+  font-size: 1.2rem;
+  color: #9ca3af;
+}
+.pharmarcy .container .menu {
+  flex: 2;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4rem;
+}
+.pharmarcy .container .menu a {
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #9ca3af;
+  transition: all 0.3s;
+}
+.pharmarcy .container .menu a.active, .pharmarcy .container .menu a:hover {
+  background: #768190;
+  color: #FB8F21;
+}
+.pharmarcy .container .menuItem {
+  display: flex;
+  border-radius: 0.5rem;
+}
+.pharmarcy .container .menuItem .text1 {
+  font-size: 1rem;
+  text-decoration: none;
+  border: none;
+}
+.pharmarcy .container .menuItem .text1::before {
+  content: "⚙";
+}
+.pharmarcy .container .menuItem .text2 {
+  font-size: 1rem;
+}
+.pharmarcy .container .menuItem .text2::before {
+  content: "⎋";
+}
+.pharmarcy .container .menuItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: -2rem;
+  padding: 2rem;
+  width: 26rem;
+  background-color: #08374F;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  position: absolute;
+  top: 75rem;
+}
+.pharmarcy .container .menuItem .text {
+  border: none;
+  font-size: 1.5rem;
+  background: none;
+  color: white;
+  cursor: pointer;
+}
+.pharmarcy .container .menuItem .text:hover {
+  color: #FB8F21;
+}
+.pharmarcy .container .menuItem .text.setting::before {
+  content: "⚙";
+}
+.pharmarcy .container .menuItem .text.signOut::before {
+  content: "⎋";
+}
+.pharmarcy .container .container-2 {
+  flex: 2;
+}
+.pharmarcy .container .container-2 .main {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+}
+.pharmarcy .container .container-2 .main header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  justify-content: space-around;
+}
+.pharmarcy .container .container-2 .main header input {
+  background: white;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  width: 50%;
+  color: #9ca3af;
+  border-radius: 8px;
+}
+.pharmarcy .container .container-2 .main header .user-section {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.pharmarcy .container .container-2 .main header .user-section .bell {
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: relative;
+}
+.pharmarcy .container .container-2 .main header .user-section .bell::before {
+  content: "🔔";
+}
+.pharmarcy .container .container-2 .main header .user-section .bell::after {
+  content: "3";
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  background: red;
+  color: white;
+  font-size: 0.7rem;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+}
+.pharmarcy .container .container-2 .main header .user-section .admin {
+  width: 3.5rem;
+  height: 3.5rem;
+  background: #FB8F21;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fff;
+}
+.pharmarcy .container .container-2 .main .dashboard .sectionHeading {
+  display: flex;
+  justify-content: space-between;
+}
+.pharmarcy .container .container-2 .main .dashboard .sectionHeading .addBtn {
+  background: linear-gradient(to right, #18978D, #083851);
+  color: white;
+  font-size: 1.4rem;
+  border-radius: 1rem;
+  border: 1rem #FB8F21;
+  align-items: baseline;
+  padding: 1.5rem;
+}
+.pharmarcy .container .container-2 .main .dashboard .sectionHeading .addBtn::before {
+  content: "+ ";
+}
+.pharmarcy .container .container-2 .main .dashboard h1 {
+  font-size: 3.2rem;
+  margin-bottom: 0.8rem;
+  color: #08374F;
+  margin-bottom: -0.5rem;
+}
+.pharmarcy .container .container-2 .main .dashboard p {
+  color: #9ca3af;
+  margin-bottom: 3rem;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(45rem, 1fr));
+  gap: 1.5rem;
+  min-height: 90vh;
+  align-items: stretch;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card {
+  display: grid;
+  background-color: #F7F7F7;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+  position: relative;
+  align-items: stretch;
+  max-width: 60rem;
+  max-height: 50vh;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .header h3 {
+  font-size: 1.5rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #08374F;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .header .menu-btn {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card p {
+  margin: 0.75rem 0 0.5rem;
+  color: #08374F;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .details li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+  font-size: 1.2rem;
+  color: #FB8F21;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .details li span {
+  font-size: 1.5rem;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .details li span.address::before {
+  content: "📍";
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .details li span.telephoneNo::before {
+  content: "📞 ";
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .details li span.email::before {
+  content: "✉️ ";
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .footer {
+  margin-top: 1.2rem;
+  border-top: 1px solid #222;
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .footer p {
+  font-size: 0.95rem;
+  color: #aaa;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .footer p strong {
+  color: #08374F;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .footer .details-btn {
+  background: linear-gradient(to right, #18978D, #083851);
+  border: 1px solid #08374F;
+  color: #fff;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .footer .details-btn:hover {
+  background-color: #1e1e1e;
+}
+.pharmarcy .container .container-2 .main .dashboard .status {
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.pharmarcy .container .container-2 .main .dashboard .status.active {
+  background-color: #00c853;
+  color: #fff;
+}
+.pharmarcy .container .container-2 .main .dashboard .status.inactive {
+  background-color: #424242;
+  color: #ccc;
+}
+
+.users .container {
+  display: flex;
+  flex-direction: row;
+}
+.users .container .container-1 {
+  flex: -2;
+  margin-right: 0rem;
+  align-items: stretch;
+  min-height: 95vh;
+  background: #F7F7F7;
+  border-radius: 1rem;
+}
+.users .container .container-1 .sideBar {
+  width: 26rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.users .container .container-1 .sideBar .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.users .container .container-1 .sideBar .logo .logopic {
+  font-size: 2.4rem;
+}
+.users .container .container-1 .sideBar .logo div h3 {
+  font-size: 1.8rem;
+  margin-bottom: -0.5rem;
+  color: #08374F;
+}
+.users .container .container-1 .sideBar .logo div p {
+  font-size: 1.2rem;
+  color: #9ca3af;
+}
+.users .container .menu {
+  flex: 2;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4rem;
+}
+.users .container .menu a {
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #9ca3af;
+  transition: all 0.3s;
+}
+.users .container .menu a.active, .users .container .menu a:hover {
+  background: #768190;
+  color: #FB8F21;
+}
+.users .container .menuItem {
+  display: flex;
+  border-radius: 0.5rem;
+}
+.users .container .menuItem .text1 {
+  font-size: 1rem;
+  text-decoration: none;
+  border: none;
+}
+.users .container .menuItem .text1::before {
+  content: "⚙";
+}
+.users .container .menuItem .text2 {
+  font-size: 1rem;
+}
+.users .container .menuItem .text2::before {
+  content: "⎋";
+}
+.users .container .menuItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: -2rem;
+  padding: 2rem;
+  width: 26rem;
+  background-color: #08374F;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  position: absolute;
+  top: 59rem;
+}
+.users .container .menuItem .text {
+  border: none;
+  font-size: 1.5rem;
+  background: none;
+  color: white;
+  cursor: pointer;
+}
+.users .container .menuItem .text:hover {
+  color: #FB8F21;
+}
+.users .container .menuItem .text.setting::before {
+  content: "⚙";
+}
+.users .container .menuItem .text.signOut::before {
+  content: "⎋";
+}
+.users .container .container-2 {
+  flex: 2;
+}
+.users .container .container-2 .main {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+}
+.users .container .container-2 .main header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  justify-content: space-around;
+}
+.users .container .container-2 .main header input {
+  background: white;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  width: 50%;
+  color: #9ca3af;
+  border-radius: 8px;
+}
+.users .container .container-2 .main header .user-section {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.users .container .container-2 .main header .user-section .bell {
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: relative;
+}
+.users .container .container-2 .main header .user-section .bell::before {
+  content: "🔔";
+}
+.users .container .container-2 .main header .user-section .bell::after {
+  content: "3";
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  background: red;
+  color: white;
+  font-size: 0.7rem;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+}
+.users .container .container-2 .main header .user-section .admin {
+  width: 3.5rem;
+  height: 3.5rem;
+  background: #FB8F21;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fff;
+}
+.users .container .container-2 .main .dashboard .sectionHeading {
+  display: flex;
+  justify-content: space-between;
+}
+.users .container .container-2 .main .dashboard .sectionHeading .addBtn {
+  background: linear-gradient(to right, #18978D, #083851);
+  color: white;
+  font-size: 1.4rem;
+  border-radius: 1rem;
+  border: 1rem #FB8F21;
+  align-items: baseline;
+  padding: 1.5rem;
+  cursor: pointer;
+}
+.users .container .container-2 .main .dashboard .sectionHeading .addBtn::before {
+  content: "+ ";
+}
+.users .container .container-2 .main .dashboard .sectionHeading .addBtn:hover {
+  color: #FB8F21;
+}
+.users .container .container-2 .main .dashboard h1 {
+  font-size: 3.2rem;
+  margin-bottom: 0.8rem;
+  color: #08374F;
+  margin-bottom: -0.5rem;
+}
+.users .container .container-2 .main .dashboard p {
+  color: #9ca3af;
+  margin-bottom: 3rem;
+}
+.users .container .user-table {
+  width: 100%;
+  max-width: 140rem;
+  background-color: #F7F7F7;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+.users .container .user-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.users .container .user-table table th, .users .container .user-table table td {
+  text-align: left;
+  padding: 16px 20px;
+}
+.users .container .user-table table th {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.8;
+  border-bottom: 1px solid #222;
+}
+.users .container .user-table table tbody tr {
+  border-bottom: 1px solid #1c1c1c;
+}
+.users .container .user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.users .container .user-info .avatar {
+  width: 35px;
+  height: 35px;
+  background-color: #1f1f1f;
+  color: #00a676;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 600;
+}
+.users .container .user-info .details .name {
+  font-weight: 600;
+}
+.users .container .user-info .details .email {
+  font-size: 13px;
+  opacity: 0.7;
+}
+.users .container .role {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  background-color: #222;
+}
+.users .container .role.admin {
+  background-color: #00a676;
+  color: #000;
+}
+.users .container .role.manager {
+  background-color: #333;
+}
+.users .container .role.pharmacist {
+  background-color: #222;
+}
+.users .container .role.staff {
+  background-color: #222;
+}
+.users .container .status {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+.users .container .status.active {
+  background-color: #00a676;
+  color: #000;
+}
+.users .container .status.inactive {
+  background-color: #9ca3af;
+}
+.users .container .actions {
+  text-align: right;
+}
+.users .container .actions .dropdownMenu {
+  position: relative;
+  overflow: visible;
+}
+.users .container .actions .dropdownMenu .dropdown {
+  display: none;
+  list-style: none;
+  position: absolute;
+  top: 10%;
+  right: 0%;
+  background-color: #F7F7F7;
+  border-radius: 0.8rem;
+  width: 14rem;
+  overflow: visible;
+  z-index: 10000;
+  height: fit-content;
+  box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.4);
+}
+.users .container .actions .dropdownMenu .dropdown a {
+  padding: 1rem 1.5rem;
+  color: #08374F;
+  cursor: pointer;
+  font-size: 1.4rem;
+}
+.users .container .actions .dropdownMenu .dropdown a:hover {
+  background-color: #FB8F21;
+  border-radius: 0.5rem;
+}
+.users .container .actions .dropdownMenu .dropdown a.danger {
+  color: #ff4444;
+}
+.users .container .actions .dropdownMenu .dropdown.show {
+  display: block;
+}
+.users .container .actions .dropdownMenu .dots {
+  background: none;
+  border: none;
+  color: black;
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+.users .container .actions .dropdownMenu .dots:hover {
+  color: #9ca3af;
+}
+.users .container .actions .dropdownMenu .dropdown.open-up {
+  top: auto;
+  bottom: 100%;
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  box-shadow: 0 -0.4rem 1rem rgba(0, 0, 0, 0.4);
+}
+
+.medicines .container {
+  display: flex;
+  flex-direction: row;
+}
+.medicines .container .container-1 {
+  flex: -2;
+  margin-right: 0rem;
+  align-items: stretch;
+  min-height: 95vh;
+  background: #F7F7F7;
+  border-radius: 1rem;
+}
+.medicines .container .container-1 .sideBar {
+  width: 26rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.medicines .container .container-1 .sideBar .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.medicines .container .container-1 .sideBar .logo .logopic {
+  font-size: 2.4rem;
+}
+.medicines .container .container-1 .sideBar .logo div h3 {
+  font-size: 1.8rem;
+  margin-bottom: -0.5rem;
+  color: #08374F;
+}
+.medicines .container .container-1 .sideBar .logo div p {
+  font-size: 1.2rem;
+  color: #9ca3af;
+}
+.medicines .container .menu {
+  flex: 2;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4rem;
+}
+.medicines .container .menu a {
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #9ca3af;
+  transition: all 0.3s;
+}
+.medicines .container .menu a.active, .medicines .container .menu a:hover {
+  background: #768190;
+  color: #FB8F21;
+}
+.medicines .container .menuItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: -2rem;
+  padding: 2rem;
+  width: 26rem;
+  background-color: #08374F;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  position: absolute;
+  top: 59rem;
+}
+.medicines .container .menuItem .text {
+  border: none;
+  font-size: 1.5rem;
+  background: none;
+  color: white;
+  cursor: pointer;
+}
+.medicines .container .menuItem .text:hover {
+  color: #FB8F21;
+}
+.medicines .container .menuItem .text.setting::before {
+  content: "⚙";
+}
+.medicines .container .menuItem .text.signOut::before {
+  content: "⎋";
+}
+.medicines .container .container-2 {
+  flex: 2;
+}
+.medicines .container .container-2 .main {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+}
+.medicines .container .container-2 .main header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  justify-content: space-around;
+}
+.medicines .container .container-2 .main header input {
+  background: white;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  width: 50%;
+  color: #9ca3af;
+  border-radius: 8px;
+}
+.medicines .container .container-2 .main header .user-section {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.medicines .container .container-2 .main header .user-section .bell {
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: relative;
+}
+.medicines .container .container-2 .main header .user-section .bell::before {
+  content: "🔔";
+}
+.medicines .container .container-2 .main header .user-section .bell::after {
+  content: "3";
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  background: red;
+  color: white;
+  font-size: 0.7rem;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+}
+.medicines .container .container-2 .main header .user-section .admin {
+  width: 3.5rem;
+  height: 3.5rem;
+  background: #FB8F21;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fff;
+}
+.medicines .container .container-2 .main .dashboard .sectionHeading {
+  display: flex;
+  justify-content: space-between;
+}
+.medicines .container .container-2 .main .dashboard .sectionHeading .addBtn {
+  background: linear-gradient(to right, #18978D, #083851);
+  color: white;
+  font-size: 1.4rem;
+  border-radius: 1rem;
+  border: 1rem #FB8F21;
+  align-items: baseline;
+  padding: 1.5rem;
+  cursor: pointer;
+}
+.medicines .container .container-2 .main .dashboard .sectionHeading .addBtn::before {
+  content: "+ ";
+}
+.medicines .container .container-2 .main .dashboard h1 {
+  font-size: 3.2rem;
+  margin-bottom: 0.8rem;
+  color: #08374F;
+  margin-bottom: -0.5rem;
+}
+.medicines .container .container-2 .main .dashboard p {
+  color: #9ca3af;
+  margin-bottom: 3rem;
+}
+.medicines .container .table-container {
+  width: 100%;
+  background: #F7F7F7;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+.medicines .container .medicine-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.medicines .container .medicine-table th, .medicines .container .medicine-table td {
+  text-align: left;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid black;
+}
+.medicines .container .medicine-table th {
+  color: #aaa;
+  font-size: 1.5rem;
+}
+.medicines .container .medicine-table tr:last-child td {
+  border-bottom: none;
+}
+.medicines .container .medicine-table td small {
+  color: #9ca3af;
+  font-size: 1rem;
+  margin-top: -1rem;
+}
+.medicines .container .tag {
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  color: #fff;
+  background: #9ca3af;
+}
+.medicines .container .tag.antibiotics {
+  background: #007bff;
+}
+.medicines .container .tag.pain-relief {
+  background: #ff9800;
+}
+.medicines .container .tag.diabetes {
+  background: #9c27b0;
+}
+.medicines .container .tag.cardiac {
+  background: #673ab7;
+}
+.medicines .container .tag.gastric {
+  background: #00bcd4;
+}
+.medicines .container .status {
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: white;
+}
+.medicines .container .status.in-stock {
+  background: #00a676;
+}
+.medicines .container .status.low-stock {
+  background: #00a676;
+}
+.medicines .container .status.critical {
+  background: #ff4444;
+}
+.medicines .container .critical {
+  font-weight: 600;
+}
+.medicines .container .actions {
+  text-align: right;
+}
+.medicines .container .actions .dropdownMenu {
+  position: relative;
+  overflow: visible;
+}
+.medicines .container .actions .dropdownMenu .dropdown {
+  display: none;
+  list-style: none;
+  position: absolute;
+  top: 10%;
+  right: 0%;
+  background-color: #F7F7F7;
+  border-radius: 0.8rem;
+  width: 13rem;
+  overflow: visible;
+  z-index: 10;
+  height: fit-content;
+  box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.4);
+}
+.medicines .container .actions .dropdownMenu .dropdown a {
+  padding: 1rem 1.5rem;
+  color: #08374F;
+  cursor: pointer;
+  font-size: 1.4rem;
+}
+.medicines .container .actions .dropdownMenu .dropdown a:hover {
+  background-color: #FB8F21;
+  border-radius: 0.5rem;
+}
+.medicines .container .actions .dropdownMenu .dropdown a.danger {
+  color: #ff4444;
+}
+.medicines .container .actions .dropdownMenu .dropdown.show {
+  display: block;
+}
+.medicines .container .actions .dropdownMenu .dots {
+  background: none;
+  border: none;
+  color: black;
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+.medicines .container .actions .dropdownMenu .dots:hover {
+  color: #9ca3af;
+}
+.medicines .container .actions .dropdownMenu .dropdown.open-up {
+  top: auto;
+  bottom: 100%;
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  box-shadow: 0 -0.4rem 1rem rgba(0, 0, 0, 0.4);
+}
+
+.dataAssets .container {
+  display: flex;
+  flex-direction: row;
+}
+.dataAssets .container .container-1 {
+  flex: -2;
+  margin-right: 0rem;
+  align-items: stretch;
+  min-height: 95vh;
+  background: #F7F7F7;
+  border-radius: 1rem;
+}
+.dataAssets .container .container-1 .sideBar {
+  width: 26rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.dataAssets .container .container-1 .sideBar .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.dataAssets .container .container-1 .sideBar .logo .logopic {
+  font-size: 2.4rem;
+}
+.dataAssets .container .container-1 .sideBar .logo div h3 {
+  font-size: 1.8rem;
+  margin-bottom: -0.5rem;
+  color: #08374F;
+}
+.dataAssets .container .container-1 .sideBar .logo div p {
+  font-size: 1.2rem;
+  color: #9ca3af;
+}
+.dataAssets .container .menu {
+  flex: 2;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4rem;
+}
+.dataAssets .container .menu a {
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #9ca3af;
+  transition: all 0.3s;
+}
+.dataAssets .container .menu a.active, .dataAssets .container .menu a:hover {
+  background: #768190;
+  color: #FB8F21;
+}
+.dataAssets .container .menuItem {
+  display: flex;
+  border-radius: 0.5rem;
+}
+.dataAssets .container .menuItem .text1 {
+  font-size: 1rem;
+  text-decoration: none;
+  border: none;
+}
+.dataAssets .container .menuItem .text1::before {
+  content: "⚙";
+}
+.dataAssets .container .menuItem .text2 {
+  font-size: 1rem;
+}
+.dataAssets .container .menuItem .text2::before {
+  content: "⎋";
+}
+.dataAssets .container .menuItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: -2rem;
+  padding: 2rem;
+  width: 26rem;
+  background-color: #08374F;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  position: absolute;
+  top: 59rem;
+}
+.dataAssets .container .menuItem .text {
+  border: none;
+  font-size: 1.5rem;
+  background: none;
+  color: white;
+  cursor: pointer;
+}
+.dataAssets .container .menuItem .text:hover {
+  color: #FB8F21;
+}
+.dataAssets .container .menuItem .text.setting::before {
+  content: "⚙";
+}
+.dataAssets .container .menuItem .text.signOut::before {
+  content: "⎋";
+}
+.dataAssets .container .container-2 {
+  flex: 2;
+}
+.dataAssets .container .container-2 .main {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+}
+.dataAssets .container .container-2 .main header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  justify-content: space-around;
+}
+.dataAssets .container .container-2 .main header input {
+  background: white;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  width: 50%;
+  color: #9ca3af;
+  border-radius: 8px;
+}
+.dataAssets .container .container-2 .main header .user-section {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.dataAssets .container .container-2 .main header .user-section .bell {
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: relative;
+}
+.dataAssets .container .container-2 .main header .user-section .bell::before {
+  content: "🔔";
+}
+.dataAssets .container .container-2 .main header .user-section .bell::after {
+  content: "3";
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  background: red;
+  color: white;
+  font-size: 0.7rem;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+}
+.dataAssets .container .container-2 .main header .user-section .admin {
+  width: 3.5rem;
+  height: 3.5rem;
+  background: #FB8F21;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fff;
+}
+.dataAssets .container .container-2 .main .dashboard .sectionHeading {
+  display: flex;
+  justify-content: space-between;
+}
+.dataAssets .container .container-2 .main .dashboard .sectionHeading .uploadBtn {
+  background: linear-gradient(to right, #18978D, #083851);
+  color: white;
+  font-size: 1.4rem;
+  border-radius: 1rem;
+  border: 1rem #FB8F21;
+  align-items: baseline;
+  padding: 1.5rem;
+  cursor: pointer;
+}
+.dataAssets .container .container-2 .main .dashboard .sectionHeading .uploadBtn:hover {
+  color: #FB8F21;
+}
+.dataAssets .container .container-2 .main .dashboard h1 {
+  font-size: 3.2rem;
+  margin-bottom: 0.8rem;
+  color: #08374F;
+  margin-bottom: -0.5rem;
+}
+.dataAssets .container .container-2 .main .dashboard p {
+  color: #9ca3af;
+  margin-bottom: 3rem;
+}
+.dataAssets .container .container-2 .table-container {
+  background: #F7F7F7;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  margin-top: 2rem;
+}
+.dataAssets .container .container-2 .file-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.dataAssets .container .container-2 .file-table th,
+.dataAssets .container .container-2 .file-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid black;
+}
+.dataAssets .container .container-2 .file-table th {
+  color: #F7F7F7;
+  font-size: 0.9rem;
+}
+.dataAssets .container .container-2 .file-table tr:last-child td {
+  border-bottom: none;
+}
+.dataAssets .container .container-2 .file-table td small {
+  color: #F7F7F7;
+  font-size: 0.8rem;
+}
+.dataAssets .container .container-2 .file-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: sans-serif;
+}
+.dataAssets .container .container-2 .file-cell .file-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: white;
+}
+.dataAssets .container .container-2 .file-cell .file-icon.pdf {
+  background: rgba(183, 28, 28, 0.8);
+}
+.dataAssets .container .container-2 .file-cell .file-icon.excel {
+  background: rgba(46, 125, 50, 0.8);
+}
+.dataAssets .container .container-2 .file-cell .file-icon.csv {
+  background: rgba(21, 101, 192, 0.8);
+}
+.dataAssets .container .container-2 .file-cell .file-info {
+  display: flex;
+  align-items: center;
+}
+.dataAssets .container .container-2 .file-cell .file-info a {
+  line-height: 1.2;
+  font-family: sans-serif;
+  color: #08374F;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+.dataAssets .container .container-2 .tag {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  background: #333;
+  color: #fff;
+  font-family: sans-serif;
+}
+.dataAssets .container .container-2 .tag.reports {
+  background: blue;
+}
+.dataAssets .container .container-2 .tag.inventory {
+  background: green;
+}
+.dataAssets .container .container-2 .tag.prescriptions {
+  background: purple;
+}
+.dataAssets .container .container-2 .tag.compliance {
+  background: #555;
+}
+.dataAssets .container .container-2 .tag.training {
+  background: yellow;
+  color: #000;
+}
+.dataAssets .container .container-2 .tag.pricing {
+  background: red;
+}
+.dataAssets .container .container-2 .dots {
+  background: none;
+  border: none;
+  color: black;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.dataAssets .container .container-2 .dots:hover {
+  color: #9ca3af;
+}
+
+.addPharmarcy01 body {
+  position: relative;
+  font-family: "Segoe UI", sans-serif;
+  background: #F7F7F7;
+  color: #08374F;
+  margin: 0;
+  padding: 40px 0;
+}
+.addPharmarcy01 .closeBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #F7F7F7;
+  border: 1rem black;
+  color: #9ca3af;
+  font-size: 2.4rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.addPharmarcy01 .closeBtn::before {
+  content: "×";
+}
+.addPharmarcy01 .closeBtn:hover {
+  color: #ff4444;
+}
+.addPharmarcy01 .registration-container {
+  max-width: 70rem;
+  margin: auto;
+  text-align: center;
+}
+.addPharmarcy01 .registration-container header .logo-icon {
+  font-size: 40px;
+  color: #08374F;
+}
+.addPharmarcy01 .registration-container header h1 {
+  margin: 10px 0 5px;
+  color: #08374F;
+}
+.addPharmarcy01 .registration-container header p {
+  color: #555;
+}
+.addPharmarcy01 .registration-container .steps {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0 20px;
+}
+.addPharmarcy01 .registration-container .steps .step {
+  text-align: center;
+  flex: 1;
+}
+.addPharmarcy01 .registration-container .steps .step .circle {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #ccc;
+  color: white;
+  margin: 0 auto 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+.addPharmarcy01 .registration-container .steps .step.active .circle {
+  background: #FB8F21;
+}
+.addPharmarcy01 .registration-container .steps .step span {
+  font-size: 13px;
+  color: #9ca3af;
+}
+.addPharmarcy01 .registration-container .form-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  padding: 0;
+}
+.addPharmarcy01 .registration-container .form-card .card-header {
+  background: #f1f1f1;
+  padding: 16px 20px;
+  border-radius: 12px 12px 0 0;
+}
+.addPharmarcy01 .registration-container .form-card .card-header i {
+  color: #08374F;
+  margin-right: 8px;
+}
+.addPharmarcy01 .registration-container .form-card .card-header span {
+  font-weight: bold;
+  color: #08374F;
+  margin-left: 0rem;
+}
+.addPharmarcy01 .registration-container .form-card .card-header p {
+  margin: 0rem 0 0 0rem;
+  color: #666;
+  font-size: 13px;
+}
+.addPharmarcy01 .registration-container .form-card form {
+  padding: 20px;
+}
+.addPharmarcy01 .registration-container .form-card form .form-row {
+  margin-bottom: 16px;
+}
+.addPharmarcy01 .registration-container .form-card form .form-row label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #08374F;
+}
+.addPharmarcy01 .registration-container .form-card form .form-row input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.addPharmarcy01 .registration-container .form-card form .two-cols {
+  display: flex;
+  gap: 20px;
+}
+.addPharmarcy01 .registration-container .form-card form .two-cols div {
+  flex: 1;
+}
+.addPharmarcy01 .registration-container .form-card form .form-buttons {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid;
+  padding-top: 16px;
+  margin-top: 20px;
+}
+.addPharmarcy01 .registration-container .form-card form .form-buttons .btn {
+  padding: 10px 28px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.addPharmarcy01 .registration-container .form-card form .form-buttons .btn.prev {
+  background: #eee;
+  color: #555;
+}
+.addPharmarcy01 .registration-container .form-card form .form-buttons .btn.next {
+  background: #08374F;
+  color: white;
+}
+.addPharmarcy01 .registration-container .form-card form .form-buttons .btn.next:hover {
+  color: #FB8F21;
+}
+.addPharmarcy01 .registration-container footer {
+  margin-top: 20px;
+  color: #555;
+  font-size: 14px;
+}
+.addPharmarcy01 .registration-container footer a {
+  color: #08374F;
+  text-decoration: none;
+}
+.addPharmarcy01 .registration-container footer a:hover {
+  text-decoration: underline;
+}
+
+.addPharmarcy02 body {
+  font-family: "Segoe UI", sans-serif;
+  background: #F7F7F7;
+  color: #08374F;
+  margin: 0;
+  padding: 40px 0;
+}
+.addPharmarcy02 .registration-container {
+  max-width: 700px;
+  margin: auto;
+  text-align: center;
+}
+.addPharmarcy02 .registration-container header .logo-icon {
+  font-size: 40px;
+  color: #08374F;
+}
+.addPharmarcy02 .registration-container header h1 {
+  margin: 10px 0 5px;
+}
+.addPharmarcy02 .registration-container header p {
+  color: #555;
+}
+.addPharmarcy02 .registration-container .steps {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0 20px;
+}
+.addPharmarcy02 .registration-container .steps .step {
+  text-align: center;
+  flex: 1;
+}
+.addPharmarcy02 .registration-container .steps .step .circle {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #ccc;
+  color: white;
+  margin: 0 auto 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+.addPharmarcy02 .registration-container .steps .step.active .circle {
+  background: #FB8F21;
+}
+.addPharmarcy02 .registration-container .steps .step span {
+  font-size: 13px;
+  color: #444;
+}
+.addPharmarcy02 .registration-container .form-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  padding: 0;
+}
+.addPharmarcy02 .registration-container .form-card .card-header {
+  background: #f1f1f1;
+  padding: 16px 20px;
+  border-radius: 12px 12px 0 0;
+}
+.addPharmarcy02 .registration-container .form-card .card-header i {
+  color: #08374F;
+  margin-right: 8px;
+}
+.addPharmarcy02 .registration-container .form-card .card-header span {
+  font-weight: bold;
+}
+.addPharmarcy02 .registration-container .form-card .card-header p {
+  margin: 4px 0 0;
+  color: #666;
+  font-size: 13px;
+}
+.addPharmarcy02 .registration-container .form-card form {
+  padding: 20px;
+}
+.addPharmarcy02 .registration-container .form-card form .form-row {
+  margin-bottom: 16px;
+}
+.addPharmarcy02 .registration-container .form-card form .form-row label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.addPharmarcy02 .registration-container .form-card form .form-row input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.addPharmarcy02 .registration-container .form-card form .two-cols {
+  display: flex;
+  gap: 20px;
+}
+.addPharmarcy02 .registration-container .form-card form .two-cols div {
+  flex: 1;
+}
+.addPharmarcy02 .registration-container .form-card form .form-buttons {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid;
+  padding-top: 16px;
+  margin-top: 20px;
+}
+.addPharmarcy02 .registration-container .form-card form .form-buttons .btn {
+  padding: 10px 28px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.addPharmarcy02 .registration-container .form-card form .form-buttons .btn.prev {
+  background: #eee;
+  color: #555;
+}
+.addPharmarcy02 .registration-container .form-card form .form-buttons .btn.next {
+  background: #08374F;
+  color: white;
+}
+.addPharmarcy02 .registration-container .form-card form .form-buttons .btn.next:hover {
+  color: #FB8F21;
+}
+.addPharmarcy02 .registration-container footer {
+  margin-top: 20px;
+  color: #555;
+  font-size: 14px;
+}
+.addPharmarcy02 .registration-container footer a {
+  color: #08374F;
+  text-decoration: none;
+}
+.addPharmarcy02 .registration-container footer a:hover {
+  text-decoration: underline;
+}
+
+.blogView .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.blogView .navbar .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 600;
+  font-size: 3rem;
+}
+.blogView .navbar .logo img {
+  width: 4rem;
+  height: 4rem;
+}
+.blogView .navbar .logo span {
+  color: #08374F;
+  font-size: 2rem;
+}
+.blogView .navbar .nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.blogView .navbar .nav-buttons .btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+.blogView .navbar .nav-buttons .btn.btn-filled {
+  background: linear-gradient(to right, #18978D, #083851);
+  color: white;
+  border: 0.2rem solid #08374F;
+}
+.blogView .navbar .nav-buttons .btn.btn-icon {
+  background: none;
+  color: #08374F;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 0.2rem solid #08374F;
+}
+.blogView .navbar .nav-buttons .btn:hover {
+  background: #FB8F21;
+}
+.blogView .blog-section {
+  padding: 2rem 10rem 0 10rem;
+}
+.blogView .blog-section .blog-header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: -0.1rem;
+  color: #08374F;
+}
+.blogView .blog-section .blog-header p {
+  color: #9ca3af;
+  font-size: 1.5rem;
+  margin-bottom: 1.4rem;
+}
+.blogView .blog-section .filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.blogView .blog-section .filter-bar .filter {
+  background-color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.blogView .blog-section .filter-bar .filter.active {
+  background-color: #08374F;
+  color: white;
+}
+.blogView .blog-section .filter-bar .filter:not(.active):hover {
+  background-color: #FB8F21;
+}
+.blogView .blog-section .filter-bar .btn-new {
+  margin-left: auto;
+  background: linear-gradient(to right, #18978D, #083851);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 1rem 1.6rem;
+  cursor: pointer;
+  display: flex;
+  align-items: space-between;
+  gap: 6px;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+.blogView .blog-section .filter-bar .btn-new a {
+  color: white;
+}
+.blogView .blog-section .filter-bar .btn-new a:hover {
+  color: #FB8F21;
+}
+.blogView .blog-section .filter-bar .btn-new:hover {
+  color: #FB8F21;
+}
+.blogView .blog-section .articles-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60rem, 1fr));
+  gap: 1.5rem;
+  padding-top: 4rem;
+  max-width: 100%;
+  max-height: 100vh;
+}
+.blogView .blog-section .card {
+  background: #F7F7F7;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  max-width: 130rem;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.blogView .blog-section .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.blogView .blog-section .card .tag {
+  background: #e7f6ec;
+  color: #00a676;
+  font-size: 1.2rem;
+  padding: 0rem 0.8rem;
+  border-radius: 999px;
+  align-self: flex-start;
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+}
+.blogView .blog-section .card h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 0.4rem;
+  color: #08374F;
+}
+.blogView .blog-section .card .author {
+  font-size: 1.5rem;
+  color: #9ca3af;
+  margin-bottom: 0.8rem;
+}
+.blogView .blog-section .card .description {
+  flex-grow: 1;
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+.blogView .blog-section .card .card-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  color: #9ca3af;
+}
+
+.diabetics .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.diabetics .navbar .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 600;
+  font-size: 3rem;
+}
+.diabetics .navbar .logo img {
+  width: 4rem;
+  height: 4rem;
+}
+.diabetics .navbar .logo span {
+  color: #08374F;
+  font-size: 2rem;
+}
+.diabetics .navbar .nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.diabetics .navbar .nav-buttons .btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+.diabetics .navbar .nav-buttons .btn.btn-filled {
+  background-color: #F7F7F7;
+  color: #08374F;
+  border: 0.2rem solid #08374F;
+}
+.diabetics .navbar .nav-buttons .btn.btn-icon {
+  background: #F7F7F7;
+  color: #08374F;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 0.2rem solid #08374F;
+}
+.diabetics .navbar .nav-buttons .btn:hover {
+  background: #FB8F21;
+}
+.diabetics .article {
+  max-width: 100%;
+  width: 100%;
+  padding: 2rem 30rem 2rem 30rem;
+}
+.diabetics .article-card {
+  background: #F7F7F7;
+  border-radius: 1rem;
+  padding: 2rem 2.5rem;
+  line-height: 1.6;
+}
+.diabetics .tag {
+  background: azure;
+  color: #00a676;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-weight: 600;
+  border: 0.2rem solid #00a676;
+}
+.diabetics h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  margin: 0.8rem 0 0.5rem;
+  line-height: 4rem;
+}
+.diabetics .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  color: #9ca3af;
+  font-size: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+.diabetics .meta i {
+  margin-right: 0.3rem;
+}
+.diabetics hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 1.2rem 0;
+}
+.diabetics p {
+  font-size: 1.5rem;
+  color: #222;
+  margin: 0.8rem 0;
+}
+.diabetics h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.6rem;
+}
+.diabetics ol {
+  margin-left: 1.5rem;
+}
+.diabetics ol li {
+  margin-bottom: 0.7rem;
+}
+.diabetics ol li strong {
+  font-weight: 700;
+}
+.diabetics .back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #08374F;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+.diabetics .back-btn:hover {
+  background: #FB8F21;
+}
+.diabetics .back-btn i {
+  font-size: 1.5rem;
+}
+
+.blogManage {
+  background: #F7F7F7;
+}
+.blogManage .navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.blogManage .navbar .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 600;
+  font-size: 3rem;
+}
+.blogManage .navbar .logo img {
+  width: 4rem;
+  height: 4rem;
+}
+.blogManage .navbar .logo span {
+  color: #08374F;
+  font-size: 2rem;
+}
+.blogManage .navbar .nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.blogManage .navbar .nav-buttons .btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+.blogManage .navbar .nav-buttons .btn.btn-filled {
+  color: #08374F;
+  border: 0.2rem solid #08374F;
+}
+.blogManage .navbar .nav-buttons .btn.btn-icon {
+  background: linear-gradient(to right, #18978D, #083851);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 0.2rem solid #08374F;
+}
+.blogManage .navbar .nav-buttons .btn:hover {
+  background: #FB8F21;
+}
+.blogManage .container {
+  max-width: 1200px;
+  margin: 5rem auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+.blogManage header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  position: relative;
+}
+.blogManage header h1 {
+  font-size: 2.5rem;
+  color: #08374F;
+  font-weight: 700;
+  margin-bottom: 0rem;
+}
+.blogManage header p {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+.blogManage header .btn-create {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: linear-gradient(to right, #18978D, #083851);
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+  padding: 1.5rem;
+}
+.blogManage header .btn-create:hover {
+  background: #08374F, 8%;
+}
+.blogManage .blog-table table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+.blogManage .blog-table table th {
+  text-align: left;
+  background: #e6f0ef;
+  padding: 0.8rem;
+  font-weight: 600;
+  color: #08374F;
+  font-family: sans-serif;
+}
+.blogManage .blog-table table td {
+  padding: 1rem;
+  border-bottom: 1px solid #00a676;
+  vertical-align: top;
+}
+.blogManage .blog-table table td strong {
+  color: #08374F;
+  font-size: 1.8rem;
+}
+.blogManage .blog-table table td p {
+  font-size: 1.2rem;
+  color: #666;
+  margin: 0.3rem 0 0;
+}
+.blogManage .blog-table table .actions a {
+  margin-right: 0.6rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+.blogManage .blog-table table .actions a.edit {
+  color: #0a7b83;
+}
+.blogManage .blog-table table .actions a.edit::before {
+  content: "✏️";
+}
+.blogManage .blog-table table .actions a.delete {
+  color: #c0392b;
+}
+.blogManage .blog-table table .actions a.delete::before {
+  content: "🗑️";
+}
+.blogManage .tag {
+  padding: 0.2rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.blogManage .tag.tag-green {
+  background: #e3f9e5;
+  color: #1b7a35;
+}
+.blogManage .tag.tag-blue {
+  background: #e3f0ff;
+  color: #2b56d6;
+}
+.blogManage .summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.blogManage .summary .card {
+  flex: 1;
+  background: #F7F7F7;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+.blogManage .summary .card h3 {
+  margin-bottom: 0.5rem;
+  color: #666;
+}
+.blogManage .summary .card p {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.editBlog {
+  background: #F7F7F7;
+}
+.editBlog .navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.editBlog .navbar .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 600;
+  font-size: 3rem;
+}
+.editBlog .navbar .logo img {
+  width: 4rem;
+  height: 4rem;
+}
+.editBlog .navbar .logo span {
+  color: #08374F;
+  font-size: 2rem;
+}
+.editBlog .navbar .nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.editBlog .navbar .nav-buttons .btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+.editBlog .navbar .nav-buttons .btn.btn-filled {
+  color: #08374F;
+  border: 0.2rem solid #08374F;
+}
+.editBlog .navbar .nav-buttons .btn.btn-icon {
+  background: linear-gradient(to right, #18978D, #083851);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 0.2rem solid #08374F;
+}
+.editBlog .navbar .nav-buttons .btn:hover {
+  background: #FB8F21;
+}
+.editBlog .edit-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3rem 1rem;
+}
+.editBlog .edit-card {
+  background: white;
+  border: 1px solid #9ca3af;
+  border-radius: 1rem;
+  max-width: 700px;
+  width: 100%;
+  padding: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+.editBlog .edit-card h2 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #08374F;
+}
+.editBlog .edit-card .edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.editBlog .edit-card .edit-form .form-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.editBlog .edit-card .edit-form .form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.editBlog .edit-card .edit-form .form-group label {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: #08374F;
+}
+.editBlog .edit-card .edit-form .form-group input, .editBlog .edit-card .edit-form .form-group select, .editBlog .edit-card .edit-form .form-group textarea {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #9ca3af;
+  border-radius: 1rem;
+  font-size: 1.2rem;
+  font-family: inherit;
+  background: #f9f9f9;
+  transition: border 0.2s ease;
+}
+.editBlog .edit-card .edit-form .form-group input:focus, .editBlog .edit-card .edit-form .form-group select:focus, .editBlog .edit-card .edit-form .form-group textarea:focus {
+  border-color: #08374F;
+  outline: none;
+  background: #fff;
+}
+.editBlog .edit-card .edit-form .form-group textarea {
+  resize: vertical;
+}
+.editBlog .edit-card .edit-form .form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+.editBlog .edit-card .edit-form .form-actions .btn-cancel {
+  background: transparent;
+  border: none;
+  color: #555;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.editBlog .edit-card .edit-form .form-actions .btn-cancel:hover {
+  color: #000;
+}
+.editBlog .edit-card .edit-form .form-actions .btn-save {
+  background: #08374F;
+  color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.7rem 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: background 0.3s ease;
+}
+.editBlog .edit-card .edit-form .form-actions .btn-save:hover {
+  background: #08374F, 8%;
+}
+
+.antibiotics .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.antibiotics .navbar .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 600;
+  font-size: 3rem;
+}
+.antibiotics .navbar .logo img {
+  width: 4rem;
+  height: 4rem;
+}
+.antibiotics .navbar .logo span {
+  color: #08374F;
+  font-size: 2rem;
+}
+.antibiotics .navbar .nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.antibiotics .navbar .nav-buttons .btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+.antibiotics .navbar .nav-buttons .btn.btn-filled {
+  background-color: #F7F7F7;
+  color: #08374F;
+  border: 0.2rem solid #08374F;
+}
+.antibiotics .navbar .nav-buttons .btn.btn-icon {
+  background: #F7F7F7;
+  color: #08374F;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 0.2rem solid #08374F;
+}
+.antibiotics .navbar .nav-buttons .btn:hover {
+  background: #FB8F21;
+}
+.antibiotics .blog-container {
+  max-width: 100%;
+  width: 100%;
+  padding: 2rem 30rem 2rem 30rem;
+}
+.antibiotics .blog-post {
+  background: #F7F7F7;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+.antibiotics .blog-post .category {
+  display: inline-block;
+  background: azure;
+  color: #00a676;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 0.2rem solid #00a676;
+}
+.antibiotics .blog-post h1 {
+  font-size: 4rem;
+  line-height: 4rem;
+  font-weight: 800;
+  margin: 0.8rem 0 0.5rem;
+  color: #111;
+}
+.antibiotics .blog-post .meta {
+  color: #666;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  gap: 1.2rem;
+}
+.antibiotics .blog-post h2 {
+  color: #111;
+  margin-top: 1.5rem;
+  font-size: 1.5rem;
+}
+.antibiotics .blog-post p, .antibiotics .blog-post ul, .antibiotics .blog-post ol {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+.antibiotics .blog-post ul, .antibiotics .blog-post ol {
+  padding-left: 1.5rem;
+}
+.antibiotics .blog-post ol li {
+  margin-bottom: 0.5rem;
+}
+.antibiotics .blog-post .intro {
+  font-weight: 500;
+}
+.antibiotics .blog-post .back-btn {
+  margin-top: 2rem;
+  text-align: left;
+}
+.antibiotics .blog-post .back-btn a {
+  display: inline-block;
+  text-decoration: none;
+  background: #08374F;
+  padding: 0.6rem 1.2rem;
+  border-radius: 1rem;
+  color: white;
+  font-weight: 600;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+.antibiotics .blog-post .back-btn a:hover {
+  background: #FB8F21;
+  color: white;
+}
+
+.hypertension .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.hypertension .navbar .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 600;
+  font-size: 3rem;
+}
+.hypertension .navbar .logo img {
+  width: 4rem;
+  height: 4rem;
+}
+.hypertension .navbar .logo span {
+  color: #08374F;
+  font-size: 2rem;
+}
+.hypertension .navbar .nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hypertension .navbar .nav-buttons .btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+.hypertension .navbar .nav-buttons .btn.btn-filled {
+  background-color: #F7F7F7;
+  color: #08374F;
+  border: 0.2rem solid #08374F;
+}
+.hypertension .navbar .nav-buttons .btn.btn-icon {
+  background: #F7F7F7;
+  color: #08374F;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 0.2rem solid #08374F;
+}
+.hypertension .navbar .nav-buttons .btn:hover {
+  background: #FB8F21;
+}
+.hypertension .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.hypertension .navbar .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 600;
+  font-size: 3rem;
+}
+.hypertension .navbar .logo img {
+  width: 4rem;
+  height: 4rem;
+}
+.hypertension .navbar .logo span {
+  color: #08374F;
+  font-size: 2rem;
+}
+.hypertension .navbar .nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hypertension .navbar .nav-buttons .btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+.hypertension .navbar .nav-buttons .btn.btn-filled {
+  background-color: #F7F7F7;
+  color: #08374F;
+  border: 0.2rem solid #08374F;
+}
+.hypertension .navbar .nav-buttons .btn.btn-icon {
+  background: #F7F7F7;
+  color: #08374F;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 0.2rem solid #08374F;
+}
+.hypertension .navbar .nav-buttons .btn:hover {
+  background: #FB8F21;
+}
+.hypertension .blog-container {
+  max-width: 100%;
+  width: 100%;
+  padding: 2rem 30rem 2rem 30rem;
+}
+.hypertension .blog-post {
+  background: #F7F7F7;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+.hypertension .blog-post .category {
+  display: inline-block;
+  background: azure;
+  color: #00a676;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 0.2rem solid #00a676;
+}
+.hypertension .blog-post h1 {
+  font-size: 4rem;
+  line-height: 4rem;
+  font-weight: 800;
+  margin: 0.8rem 0 0.5rem;
+  color: #111;
+}
+.hypertension .blog-post .meta {
+  color: #666;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.hypertension .blog-post h2 {
+  color: #111;
+  margin-top: 1.5rem;
+  font-size: 1.5rem;
+}
+.hypertension .blog-post p, .hypertension .blog-post ul, .hypertension .blog-post ol {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+.hypertension .blog-post ul, .hypertension .blog-post ol {
+  padding-left: 1.5rem;
+}
+.hypertension .blog-post ol li {
+  margin-bottom: 0.5rem;
+}
+.hypertension .blog-post .intro {
+  font-weight: 500;
+}
+.hypertension .blog-post .back-btn {
+  margin-top: 2rem;
+  text-align: left;
+}
+.hypertension .blog-post .back-btn a {
+  display: inline-block;
+  text-decoration: none;
+  background: #08374F;
+  padding: 0.6rem 1.2rem;
+  border-radius: 1rem;
+  color: white;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.hypertension .blog-post .back-btn a:hover {
+  background: #FB8F21;
+  color: white;
+}
+
+.supplement .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.supplement .navbar .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 600;
+  font-size: 3rem;
+}
+.supplement .navbar .logo img {
+  width: 4rem;
+  height: 4rem;
+}
+.supplement .navbar .logo span {
+  color: #08374F;
+  font-size: 2rem;
+}
+.supplement .navbar .nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.supplement .navbar .nav-buttons .btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+.supplement .navbar .nav-buttons .btn.btn-filled {
+  background-color: #F7F7F7;
+  color: #08374F;
+  border: 0.2rem solid #08374F;
+}
+.supplement .navbar .nav-buttons .btn.btn-icon {
+  background: #F7F7F7;
+  color: #08374F;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 0.2rem solid #08374F;
+}
+.supplement .navbar .nav-buttons .btn:hover {
+  background: #FB8F21;
+}
+.supplement .blog-container {
+  max-width: 100%;
+  width: 100%;
+  padding: 2rem 30rem 2rem 30rem;
+}
+.supplement .blog-post {
+  background: #F7F7F7;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+.supplement .blog-post .category {
+  display: inline-block;
+  background: azure;
+  color: #00a676;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  border: 0.2rem solid #00a676;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.supplement .blog-post h1 {
+  font-size: 4rem;
+  line-height: 4rem;
+  margin: 0.8rem 0 0.5rem;
+  color: #111;
+}
+.supplement .blog-post .meta {
+  color: #666;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.supplement .blog-post h2 {
+  color: #111;
+  margin-top: 1.5rem;
+  font-size: 1.5rem;
+}
+.supplement .blog-post p, .supplement .blog-post ul, .supplement .blog-post ol {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+.supplement .blog-post ul, .supplement .blog-post ol {
+  padding-left: 1.5rem;
+}
+.supplement .blog-post ol li, .supplement .blog-post ul li {
+  margin-bottom: 0.5rem;
+}
+.supplement .blog-post .intro {
+  font-weight: 500;
+}
+.supplement .blog-post .back-btn {
+  margin-top: 2rem;
+  text-align: left;
+}
+.supplement .blog-post .back-btn a {
+  display: inline-block;
+  text-decoration: none;
+  background: #08374F;
+  padding: 0.6rem 1.2rem;
+  border-radius: 1rem;
+  color: white;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.supplement .blog-post .back-btn a:hover {
+  background: #FB8F21;
+  color: white;
+}
+
+.createNewBlog .page-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 40px;
+  border-bottom: 1px solid #9ca3af;
+  background: #fff;
+}
+.createNewBlog .page-header .back-btn {
+  text-decoration: none;
+  font-size: 2.5rem;
+  color: #08374F;
+}
+.createNewBlog .page-header .title-group h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  color: #08374F;
+}
+.createNewBlog .page-header .title-group p {
+  margin: 0px 0 0;
+  color: #9ca3af;
+  font-size: 0.95rem;
+}
+.createNewBlog .container {
+  display: flex;
+  gap: 30px;
+  padding: 40px;
+  align-items: flex-start;
+}
+.createNewBlog .form-section {
+  flex: 2;
+}
+.createNewBlog .sidebar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.createNewBlog .card {
+  background: #fff;
+  border: 1px solid #9ca3af;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  padding: 25px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+.createNewBlog .card h3 {
+  margin-top: 0;
+  font-size: 2.5rem;
+  color: #08374F;
+}
+.createNewBlog .card .subtitle {
+  color: #9ca3af;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  margin-top: -0.5rem;
+}
+.createNewBlog .card label {
+  display: block;
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin: 14px 0 5px;
+}
+.createNewBlog .card input, .createNewBlog .card select, .createNewBlog .card textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #9ca3af;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  background: #fafafa;
+}
+.createNewBlog .card input:focus, .createNewBlog .card select:focus, .createNewBlog .card textarea:focus {
+  outline: none;
+  border-color: #08374F;
+  background: #fff;
+  box-shadow: 0 0 3px rgba(8, 55, 79, 0.3);
+}
+.createNewBlog .card textarea {
+  min-height: 70px;
+  resize: vertical;
+}
+.createNewBlog .buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.createNewBlog .buttons button {
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: 0.2s;
+}
+.createNewBlog .buttons .save {
+  background: linear-gradient(to right, #18978D, #083851);
+  color: #fff;
+  font-size: 1.4rem;
+}
+.createNewBlog .buttons .save:hover {
+  background: #FB8F21;
+}
+.createNewBlog .buttons .preview {
+  background: #f2f2f2;
+}
+.createNewBlog .buttons .preview:hover {
+  background: #f2f2f2, 5%;
+}
+.createNewBlog .tip {
+  background: #e9f5ef;
+  border-left: 4px solid #1b5e20;
+  padding: 15px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 1rem;
+  color: black;
+}
+
+>>>>>>> origin/origin/kasun/admin
 /*# sourceMappingURL=style.css.map */
 >>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf

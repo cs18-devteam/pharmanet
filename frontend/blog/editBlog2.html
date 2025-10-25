@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PharmaCare Blog</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="editBlog">
+  <header class="navbar">
+    <div class="logo">
+      <img class="logopic" src="/public/logo/logo.svg" alt="logo">
+      <span>PharmaNet</span>
+    </div>
+    <div class="nav-buttons">
+      <a href="blogView.html"><button class="btn btn-filled">All Blogs</button></a>
+      <a href="blogManage.html"><button class="btn btn-icon"><i class="settings-icon">⚙</i> Manage</button></a>
+    </div>
+  </header>
+
+  <div class="edit-container">
+    <div class="edit-card">
+      <h2>Edit Blog</h2>
+
+      <form class="edit-form">
+        <!-- Title -->
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" id="title" value="Antibiotics: When and How to Use Them Safely" />
+        </div>
+
+        <!-- Category and Author -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category">
+              <option>Medicines</option>
+              <option>Diseases</option>
+              <option>Nutrition</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="author">Author</label>
+            <input type="text" id="author" value="	Dr. Michael Chen" />
+          </div>
+        </div>
+
+        <!-- Excerpt -->
+        <div class="form-group">
+          <label for="excerpt">Excerpt</label>
+          <textarea id="excerpt" rows="2">Antibiotics are powerful medications that have saved millions of lives. However, their misuse has led to antibiotic resistance, a growing public health concern.
+          </textarea>
+        </div>
+
+        <!-- Content -->
+        <div class="form-group">
+          <label for="content">Content</label>
+          <textarea id="content" rows="6">Hypertension, or high blood pressure, affects millions of people worldwide. Understanding its causes and treatment options is essential for prevention and management.
+
+Understanding Antibiotics
+Antibiotics are drugs that kill bacteria or inhibit their growth. They work by targeting specific bacterial structures or processes that don't exist in human cells, making them relatively safe for us while deadly for bacteria.
+
+When to Use Antibiotics
+Antibiotics should only be used for bacterial infections, not viral infections like colds or flu. Common bacterial infections that require antibiotics include:
+
+Strep throat
+Urinary tract infections
+Pneumonia
+Skin infections
+Ear infections
+Safe Usage Guidelines
+**Take as Prescribed**: Complete the full course even if you feel better.
+**Don't Share**: Never use someone else's antibiotics or share yours.
+**Store Properly**: Keep in a cool, dry place away from direct sunlight.
+**Report Allergies**: Always inform your doctor of any antibiotic allergies.
+**Ask Questions**: Understand why you're taking the antibiotic and what to expect.
+Antibiotic Resistance
+Overuse and misuse of antibiotics have led to resistant bacteria that are harder to treat. This is why it's crucial to use antibiotics only when necessary and as directed.</textarea>
+        </div>
+
+        <!-- Buttons -->
+        <div class="form-actions">
+          <a href="blogManage.html"><button type="button" class="btn-cancel">Cancel</button></a>
+          <button type="submit" class="btn-save"> Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  </body>
+</html>

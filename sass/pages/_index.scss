@@ -8,6 +8,7 @@
 @forward "./staffMember";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -56,14 +57,16 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+>>>>>>> origin/hamdha/frontend/order
 @forward "./login";
 @forward "./medCreate";
 @forward "./medUpdate";
 @forward "./userProfile";
-=======
 @forward "./search-medicine";
 @forward "./search-pharmacy";
 @forward "./pharmacy-registration";
+<<<<<<< HEAD
 >>>>>>> 0242b0c9ca2cdefd93a6450cce1d4a5119f600cd
 =======
 @forward "./search-medicine";
@@ -79,3 +82,10 @@
 =======
 >>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
 >>>>>>> origin/hamdha/backend/order
+=======
+<<<<<<< HEAD
+@forward "./order";
+=======
+@forward "./productManagement";
+>>>>>>> a26acf01652afc5fc72a5617b1c7bbafaf6195b2
+>>>>>>> origin/hamdha/frontend/order

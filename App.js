@@ -111,6 +111,7 @@ module.exports = class App{
         const [file] = this.#files.filter(file=>file.url == req.pathname);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 =======
@@ -132,6 +133,8 @@ module.exports = class App{
 
 >>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
 >>>>>>> origin/hamdha/backend/order
+=======
+>>>>>>> origin/hamdha/frontend/order
         if(file){
             const fileExt = path.extname(file.url);
             fs.readFile(file.file , (error , data)=>{
@@ -272,6 +275,7 @@ module.exports = class App{
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             
 =======
 >>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
@@ -282,6 +286,8 @@ module.exports = class App{
 =======
 >>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
 >>>>>>> origin/hamdha/backend/order
+=======
+>>>>>>> origin/hamdha/frontend/order
             if(process.env.NODE_ENV == "development"){
                 console.log(`app is running on http://${this.hostname}:${this.port}`);
 >>>>>>> origin/hamdha/backend/leave

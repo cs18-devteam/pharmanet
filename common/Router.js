@@ -14,6 +14,7 @@ module.exports = class Router{
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     #call(callback){
         callback(req , res);
     }
@@ -48,6 +49,8 @@ module.exports = class Router{
     constructor(){}
 
 >>>>>>> origin/hamdha/backend/order
+=======
+>>>>>>> origin/hamdha/frontend/order
     #call(callback = (req,res)=>{}){
         try{
             callback(req , res);
@@ -77,10 +80,6 @@ module.exports = class Router{
 =======
 
     delete(callback = (req, res)=>{}){
-<<<<<<< HEAD
->>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
-=======
->>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
         this.deleteHandler = callback;
 >>>>>>> origin/hamdha/backend/leave
 =======

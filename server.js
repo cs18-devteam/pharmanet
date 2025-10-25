@@ -4,6 +4,7 @@
 const App = require("./App");
 const Database = require("./database/Database");
 const env = require('./common/middlewares/env');
+<<<<<<< HEAD
 const userRouter= require("./services/user-service/routes/userRouter");
 const orderRouter = require("./services/order-service/routes/orderRoutes");
 
@@ -47,14 +48,19 @@ const PharmacyModel = require("./services/pharmacy-service/models/pharmacyModel"
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
-const orderRouter = require("./services/order-service/routes/orderRoutes");
 =======
+>>>>>>> origin/hamdha/frontend/order
+const orderRouter = require("./services/order-service/routes/orderRoutes");
 const medicineRouter = require("./services/medicine-service/routes/medicineRouter");
+<<<<<<< HEAD
 >>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
 =======
 const medicineRouter = require("./services/medicine-service/routes/medicineRouter");
 >>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
 >>>>>>> origin/hamdha/backend/leave
+=======
+const leaveRouter = require("./services/leave-service/routes/leaveRoutes");
+>>>>>>> origin/hamdha/frontend/order
 
 const db = Database.getInstance();
  const medicineInstance = new MedicineModel();
@@ -73,6 +79,7 @@ env();
 
 //app.route('/',authenticate , usersReDirectRouter);
 
+<<<<<<< HEAD
 app.route('/login' , LogInRouter)
 app.route('/signup' , SignUpRouter);
 app.route('/users/customers' , customerRouter);
@@ -94,17 +101,23 @@ app.route('/Medicines', medicineRouter);
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+>>>>>>> origin/hamdha/frontend/order
 app.route('/order', orderRouter);
 =======
 >>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
 >>>>>>> origin/hamdha/backend/order
 
-=======
 app.route('/medicine' , medicineRouter);
+<<<<<<< HEAD
 >>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
 =======
 app.route('/medicine' , medicineRouter);
 >>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
 >>>>>>> origin/hamdha/backend/leave
+=======
+
+app.route('/leave', leaveRouter);
+>>>>>>> origin/hamdha/frontend/order
 
 app.run();

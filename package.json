@@ -34,8 +34,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> origin/hamdha/backend/order
+=======
+>>>>>>> origin/hamdha/frontend/order
     "prod" : "node --NODE_ENV=production ./server.js",
 
     "create-database" : "node ./config/createDatabase.js",
@@ -43,6 +46,7 @@
     "create-medidata" : "node ./config/data/createMediData.js"
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
 =======
 >>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
 =======
@@ -51,10 +55,13 @@
     "live-server": "^1.2.2",
 =======
 >>>>>>> origin/hamdha/backend/order
+=======
+>>>>>>> origin/hamdha/frontend/order
     "prod": "node --NODE_ENV=production ./server.js",
     "test": "node ./test/stress.test.js",
     "create-database": "node ./config/createDatabase.js",
     "drop-database": "node ./config/dropDatabase.js",
+<<<<<<< HEAD
 <<<<<<< HEAD
     "create-medidata": "node ./config/data/createMediData.js",
     "start": "node server.js",
@@ -70,6 +77,11 @@
 =======
 >>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
 >>>>>>> origin/hamdha/backend/leave
+=======
+    "create-medidata": "node ./config/data/createMediData.js",
+    "start": "node server.js"
+>>>>>>> a26acf01652afc5fc72a5617b1c7bbafaf6195b2
+>>>>>>> origin/hamdha/frontend/order
   },
   "devDependencies": {
     "autocannon": "^8.0.0",

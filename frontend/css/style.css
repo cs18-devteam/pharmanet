@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 /* Error: expected "{".
@@ -22,6 +23,9 @@ body::before {
 =======
 @charset "UTF-8";
 >>>>>>> origin/hamdha/backend/order
+=======
+@charset "UTF-8";
+>>>>>>> origin/hamdha/frontend/order
 :root {
   --white:#ffffff;
   --color-green-01: #18978D;
@@ -2639,10 +2643,13 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD:css/style.css
+=======
+>>>>>>> origin/hamdha/frontend/order
 .login .login-container {
   display: flex;
   height: 100vh;
@@ -3285,6 +3292,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .userProfile .card1 .name-row .field input {
   width: 100%;
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
@@ -3293,6 +3301,10 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 >>>>>>> origin/hamdha/backend/leave
 =======
 >>>>>>> origin/hamdha/backend/order
+=======
+}
+
+>>>>>>> origin/hamdha/frontend/order
 .SearchMedi .main-container {
   display: flex;
   padding: 1rem 2rem;
@@ -3803,6 +3815,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   border-color: #007bff;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> origin/hamdha/backend/order
 }
@@ -3844,8 +3857,231 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   border: 0.1rem solid var(--color-yellow-01);
   border-radius: 3rem;
   padding: 0.5rem 2rem;
+=======
+>>>>>>> origin/hamdha/frontend/order
 }
 
+<<<<<<< HEAD
+body.order {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(244, 242, 242);
+  color: black;
+}
+
+.order-Container {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}
+.order-Container .navigation-bar {
+  position: fixed;
+  top: 1rem;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  color: #fff;
+  z-index: 1000;
+}
+.order-Container .navigation-bar img {
+  height: 5rem;
+  cursor: pointer;
+}
+.order-Container .navigation-bar .logo-heading {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.order-Container .navigation-bar .logo-heading h1 {
+  font-size: 3rem;
+  margin: 0;
+  color: black;
+}
+.order-Container .sidebar {
+  margin-top: 10rem;
+  margin-bottom: 7rem;
+  width: 30rem;
+  background-color: var(--white);
+  padding: 2rem;
+  border-right: 0.1rem solid #e0e0e0;
+  border-bottom: 0.1rem solid #e0e0e0;
+  box-shadow: 0.2rem 0 0.5rem rgba(0, 0, 0, 0.05);
+}
+.order-Container .sidebar .sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.order-Container .sidebar .sidebar-header h4 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: black;
+}
+.order-Container .sidebar .sidebar-header img {
+  width: 1.5rem;
+  cursor: pointer;
+  margin: 0;
+}
+.order-Container .sidebar form {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.order-Container .sidebar form label {
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+}
+.order-Container .sidebar form input[type=text],
+.order-Container .sidebar form input[type=date],
+.order-Container .sidebar form select {
+  padding: 0.7rem;
+  margin-top: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1.4rem;
+}
+.order-Container .sidebar form .medicine-group {
+  margin-left: 1rem;
+}
+.order-Container .sidebar form .medicine-group .two-input {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+.order-Container .sidebar form .medicine-group .two-input input {
+  flex: 1 1 0;
+  min-width: 0;
+}
+.order-Container .sidebar form .medicine-group input[type=text] {
+  margin-top: 0.5rem;
+}
+.order-Container .sidebar form .remove {
+  color: red;
+  border: none;
+  padding: 0.5rem;
+  margin-top: 0;
+  margin-bottom: 4rem;
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: var(--white);
+}
+.order-Container .sidebar form .remove img {
+  width: 1.2rem;
+  margin-bottom: 0.2rem;
+}
+.order-Container .sidebar form .remove:hover {
+  color: #98273a;
+}
+.order-Container .sidebar form .form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+.order-Container .sidebar form .form-actions button {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+}
+.order-Container .sidebar form .form-actions .save-order {
+  background-color: #059669;
+  color: #fff;
+  padding: 1rem 5rem;
+}
+.order-Container .sidebar form .form-actions .save-order:hover {
+  background-color: #048159;
+}
+.order-Container .sidebar form .form-actions .cancel {
+  background-color: var(--white);
+  border: 0.1rem solid lightgray;
+  padding: 1rem 2rem;
+}
+.order-Container .sidebar form .form-actions .cancel:hover {
+  background-color: #c0c2c5;
+}
+.order-Container .orders {
+  flex: 1;
+  padding: 10rem 2rem 2rem 2rem;
+  overflow-x: auto;
+}
+.order-Container .orders .order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.order-Container .orders .order-header h3 {
+  font-size: 1.5rem;
+}
+.order-Container .orders .order-header .search-orders {
+  display: flex;
+  gap: 0.5rem;
+}
+.order-Container .orders .order-header .search-orders input {
+  padding: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1.5rem;
+}
+.order-Container .orders table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--white);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
+  font-size: 1.5rem;
+  color: gray;
+}
+.order-Container .orders table th, .order-Container .orders table td {
+  padding: 1.5rem 0;
+  text-align: center;
+  border-bottom: 0.1rem solid #eee;
+}
+.order-Container .orders table th {
+  color: #6B7280;
+  font-weight: 700;
+  font-size: 1.5rem;
+  border: none;
+}
+.order-Container .orders table .Status-pending {
+  color: #854D0E;
+  background-color: #FEF9C3;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  font-weight: 600;
+}
+.order-Container .orders table .actions {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.order-Container .orders table .actions img {
+  width: 1rem;
+  cursor: pointer;
+}
+.order-Container .orders table td:first-child {
+  color: black;
+  font-weight: 600;
+}
+.order-Container .orders table td:nth-child(2) {
+  color: black;
+  font-weight: 500;
+}
+=======
 .productManagement {
   padding: 0rem;
 }
@@ -7010,6 +7246,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   background: #a71d2a;
 >>>>>>> origin/hamdha/backend/order
 }
+>>>>>>> a26acf01652afc5fc72a5617b1c7bbafaf6195b2
 
 /*# sourceMappingURL=style.css.map */
 >>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf

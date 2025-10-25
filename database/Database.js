@@ -11,6 +11,7 @@ class Database{
         this.connection = mysql.createConnection({
             host:"localhost",
             user:"root",
+<<<<<<< HEAD
             password: "Ham#2003"
         }
         );
@@ -46,11 +47,9 @@ class Database{
             user:"root",
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+>>>>>>> origin/hamdha/frontend/order
             password: "Ham#2003"
-=======
->>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
-=======
->>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
         }
         );
 >>>>>>> origin/hamdha/backend/leave

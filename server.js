@@ -39,6 +39,7 @@ const userRouter= require("./services/user-service/routes/userRouter");
 <<<<<<< HEAD
 const attendanceRouter= require("./services/attendence-service/routes/attendancerouter");
 const leaveRouter = require('./services/leave-service/routes/leaveRouter');
+<<<<<<< HEAD
 const medicineRouter = require('./services/medicine-service/routes/medicineRouter');
 
 
@@ -70,6 +71,10 @@ const db = Database.getInstance();
 
  medicineInstance.createTable().catch(console.error);
  pharmacyInstance.createTable().catch(console.error);
+=======
+const productRouter = require('./services/product-service/routes/productRouter');
+
+>>>>>>> origin/kasun/backend/productMangement
 
 
 const app = App.getInstance();
@@ -97,6 +102,7 @@ app.route('/users' , userRouter);
 //app.route('/attendance' , attendanceRouter);
 app.route('/leaves' , leaveRouter);
 <<<<<<< HEAD
+<<<<<<< HEAD
 app.route('/Medicines', medicineRouter);
 =======
 <<<<<<< HEAD
@@ -107,6 +113,10 @@ app.route('/order', orderRouter);
 =======
 >>>>>>> fc973e4276596d70e8ece3d480b5e5267cace1cf
 >>>>>>> origin/hamdha/backend/order
+=======
+app.route('/products' , productRouter);
+
+>>>>>>> origin/kasun/backend/productMangement
 
 app.route('/medicine' , medicineRouter);
 <<<<<<< HEAD

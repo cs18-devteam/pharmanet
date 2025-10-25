@@ -16,6 +16,7 @@ const usersReDirectRouter = require('./services/user-service/routes/userRouter')
 const { authenticate } = require('./services/auth-service/middlewares/authenticate');
 const staffRouter = require('./services/staff-service/routes/staffRouter');
 const userRouter= require("./services/user-service/routes/userRouter");
+<<<<<<< HEAD
 const attendanceRouter= require("./services/attendence-service/routes/attendancerouter");
 const leaveRouter = require('./services/leave-service/routes/leaveRouter');
 const medicineRouter = require('./services/medicine-service/routes/medicineRouter');
@@ -24,6 +25,17 @@ const medicineRouter = require('./services/medicine-service/routes/medicineRoute
 const MedicineModel = require("./services/medicine-service/models/medicineModel");
 const PharmacyModel = require("./services/pharmacy-service/models/pharmacyModel");
 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+const orderRouter = require("./services/order-service/routes/orderRoutes");
+=======
+const medicineRouter = require("./services/medicine-service/routes/medicineRouter");
+>>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
+=======
+const medicineRouter = require("./services/medicine-service/routes/medicineRouter");
+>>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
+>>>>>>> origin/hamdha/backend/leave
 
 const db = Database.getInstance();
  const medicineInstance = new MedicineModel();
@@ -55,8 +67,21 @@ app.route('/users/system/admin' , systemAdminRouter );
 app.route('/customers/loyalty' ,  loyaltyPointsRouter);
 app.route('/pharmacy/staff' ,staffRouter);
 app.route('/users' , userRouter);
+<<<<<<< HEAD
 //app.route('/attendance' , attendanceRouter);
 app.route('/leaves' , leaveRouter);
 app.route('/Medicines', medicineRouter);
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+app.route('/order', orderRouter);
+
+=======
+app.route('/medicine' , medicineRouter);
+>>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
+=======
+app.route('/medicine' , medicineRouter);
+>>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
+>>>>>>> origin/hamdha/backend/leave
 
 app.run();

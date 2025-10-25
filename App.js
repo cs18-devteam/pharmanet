@@ -60,8 +60,19 @@ module.exports = class App{
 
     async findFile(req , res){
         const [file] = this.#files.filter(file=>file.url == req.pathname);
+<<<<<<< HEAD
 
 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        
+>>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
+=======
+        
+>>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
+>>>>>>> origin/hamdha/backend/leave
 
         if(file){
             const fileExt = path.extname(file.url);
@@ -150,10 +161,23 @@ module.exports = class App{
     }
 
     run(){
+<<<<<<< HEAD
         App.server?.listen(this.port.replace('\r', ''), this.hostname , ()=>{
             console.log(process.env.NODE_ENV)
             console.log(`app is running on http://${this.hostname}:${this.port}`);
             if(String(process.env.NODE_ENV) == "development"){
+=======
+        App.server?.listen(this.port , this.hostname , ()=>{
+<<<<<<< HEAD
+<<<<<<< HEAD
+            
+=======
+>>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
+=======
+>>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
+            if(process.env.NODE_ENV == "development"){
+                console.log(`app is running on http://${this.hostname}:${this.port}`);
+>>>>>>> origin/hamdha/backend/leave
 
             }
         })

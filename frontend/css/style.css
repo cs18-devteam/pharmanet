@@ -1,4 +1,3 @@
-@charset "UTF-8";
 :root {
   --white:#ffffff;
   --color-green-01: #18978D;
@@ -2611,6 +2610,659 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   }
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD:css/style.css
+.login .login-container {
+  display: flex;
+  height: 100vh;
+  width: 80vw;
+  max-width: 114rem;
+  margin: 0 auto;
+}
+.login .left-panel {
+  width: 50vw;
+  height: 100vh;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: --white;
+  padding: 2rem;
+}
+.login .image-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.login .image-wrapper img:first-child {
+  width: 12rem;
+  height: auto;
+}
+.login .image-wrapper img:nth-child(2) {
+  width: 58rem;
+  height: auto;
+}
+.login .quote {
+  position: absolute;
+  text-align: center;
+  top: 20%;
+  left: 5rem;
+  right: 5rem;
+  transform: translateY(-50%);
+  font-size: 4rem;
+  font-weight: bold;
+  color: var(--white);
+  text-align: left;
+}
+.login .right-panel {
+  width: 50vw;
+  height: 100vh;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--white);
+  padding: 2rem;
+}
+.login .logo img {
+  height: 5rem;
+}
+.login h1 {
+  font-weight: 800;
+  font-size: 5rem;
+  margin: 0rem 0 2rem 0;
+  text-align: center;
+}
+.login form {
+  width: 100%;
+  max-width: 45vw;
+  display: flex;
+  flex-direction: column;
+}
+.login label {
+  margin-bottom: 0.8rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+.login input {
+  margin-bottom: 2rem;
+  padding: 0.8rem;
+  border: 0.1rem solid lightgray;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+}
+.login button {
+  background: linear-gradient(to right, var(--color-green-01), var(--color-green-02));
+  color: var(--white);
+  border: none;
+  padding: 1rem;
+  border-radius: 0.3rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.login .links {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 45vw;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+.login .links a {
+  color: var(--font-linear-secondary-color);
+  text-decoration: none;
+  margin-bottom: 5rem;
+}
+.login .links p {
+  text-align: center;
+  width: 100%;
+}
+.login .signup-btn {
+  background: lightyellow;
+  border: 1px solid var(--color-yellow-01);
+  color: var(--color-yellow-01);
+  padding: 0.5rem 1rem;
+  border-radius: 1.2rem;
+  margin-left: 0.2rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+.login .footer {
+  margin-top: 5rem;
+  display: flex;
+  gap: 5rem;
+  font-size: 1.8rem;
+  color: #757575;
+  justify-content: center;
+}
+
+.medCreate .medCreate-container {
+  width: 100vw;
+  height: 100vh;
+  max-width: 114rem;
+  margin: auto;
+  background: var(--white);
+  padding: 2rem;
+}
+.medCreate .header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  padding-bottom: 2rem;
+}
+.medCreate .header .logo-container {
+  margin-bottom: 1rem;
+}
+.medCreate .header .logo-container img {
+  height: 3.5rem;
+}
+.medCreate .header .title-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.medCreate .header .title-container .award-icon {
+  height: 3rem;
+}
+.medCreate .header h2 {
+  font-size: 3.5rem;
+  margin: 0;
+  color: var(--color-blue-01);
+}
+.medCreate .header h2 span {
+  color: var(--color-yellow-01);
+}
+.medCreate .form-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+}
+.medCreate .section-title {
+  font-weight: 700;
+  margin: 1.5rem 0 1rem;
+  color: var(--color-yellow-01);
+  position: relative;
+  padding-left: 2rem;
+  font-size: 1.5rem;
+}
+.medCreate .section-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 5px;
+  background: var(--color-yellow-01);
+  border-radius: 3px;
+}
+.medCreate .form-grid {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.medCreate .form-grid.two-separate-col {
+  grid-template-columns: 13fr 2fr;
+  gap: 1rem;
+}
+.medCreate .form-grid.three-col {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.medCreate .form-grid.two-col {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.medCreate .form-grid.one-col {
+  grid-template-columns: 1fr;
+}
+.medCreate .form-grid .form-group {
+  display: flex;
+  flex-direction: column;
+}
+.medCreate .form-grid .form-group label {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: var(--color-blue-01);
+}
+.medCreate .form-grid .form-group input {
+  width: 100%;
+  padding: 1rem;
+  border: 0.1rem solid lightgray;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  transition: border-color 0.3s;
+}
+.medCreate .form-grid .form-group input:focus {
+  outline: none;
+  border-color: var(--color-yellow-01);
+  box-shadow: 0 0 0 2px rgba(255, 126, 0, 0.2);
+}
+.medCreate .sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.medCreate .btn {
+  margin-top: 2rem;
+  display: flex;
+}
+.medCreate .btn button {
+  width: 100%;
+  background: linear-gradient(to right, var(--color-green-01), var(--color-green-02));
+  color: var(--white);
+  border: none;
+  padding: 1rem;
+  font-size: 2rem;
+  font-weight: 600;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  margin-top: 6rem;
+}
+.medCreate .btn button:hover {
+  background: linear-gradient(to right, var(--color-green-02), var(--color-green-01));
+}
+
+.medUpdate .medUpdate-container {
+  width: 100vw;
+  height: 100vh;
+  max-width: 114rem;
+  margin: auto;
+  background: var(--white);
+  padding: 2rem;
+}
+.medUpdate .header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  padding-bottom: 2rem;
+}
+.medUpdate .header .logo-container {
+  margin-bottom: 1rem;
+}
+.medUpdate .header .logo-container img {
+  height: 3.5rem;
+}
+.medUpdate .header .title-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.medUpdate .header .title-container .award-icon {
+  height: 3rem;
+}
+.medUpdate .header h2 {
+  font-size: 3.5rem;
+  margin: 0;
+  color: var(--color-blue-01);
+}
+.medUpdate .header h2 span {
+  color: var(--color-yellow-01);
+}
+.medUpdate .form-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+}
+.medUpdate .section-title {
+  font-weight: 700;
+  margin: 1.5rem 0 1rem;
+  color: var(--color-yellow-01);
+  position: relative;
+  padding-left: 2rem;
+  font-size: 1.5rem;
+}
+.medUpdate .section-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 5px;
+  background: var(--color-yellow-01);
+  border-radius: 3px;
+}
+.medUpdate .form-grid {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.medUpdate .form-grid.two-separate-col {
+  grid-template-columns: 13fr 2fr;
+  gap: 1rem;
+}
+.medUpdate .form-grid.three-col {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.medUpdate .form-grid.two-col {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.medUpdate .form-grid.one-col {
+  grid-template-columns: 1fr;
+}
+.medUpdate .form-grid .form-group {
+  display: flex;
+  flex-direction: column;
+}
+.medUpdate .form-grid .form-group label {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: var(--color-blue-01);
+}
+.medUpdate .form-grid .form-group input {
+  width: 100%;
+  padding: 1rem;
+  border: 0.1rem solid lightgray;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  transition: border-color 0.3s;
+}
+.medUpdate .form-grid .form-group input:focus {
+  outline: none;
+  border-color: var(--color-yellow-01);
+  box-shadow: 0 0 0 2px rgba(255, 126, 0, 0.2);
+}
+.medUpdate .sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.medUpdate .btn {
+  margin-top: 2rem;
+  display: flex;
+}
+.medUpdate .btn button {
+  width: 100%;
+  background: linear-gradient(to right, var(--color-yellow-02), var(--color-yellow-01));
+  color: var(--white);
+  border: none;
+  padding: 1rem;
+  font-size: 2rem;
+  font-weight: 600;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  margin-top: 6rem;
+}
+.medUpdate .btn button:hover {
+  background: linear-gradient(to right, var(--color-yellow-01), var(--color-yellow-02));
+}
+
+.userProfile .borderContainer {
+  padding: 1.6rem 3.2rem;
+  height: 150vh;
+  width: 100vw;
+}
+.userProfile .borderContainer .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.userProfile .borderContainer .header .logo img {
+  height: 5rem;
+}
+.userProfile .borderContainer .header .search-bar {
+  height: 3.5rem;
+  display: flex;
+  border: 0.1rem solid var(--color-blue-01);
+  border-radius: 0.5rem;
+  align-items: center;
+  overflow: hidden;
+}
+.userProfile .borderContainer .header .search-bar img {
+  height: 2rem;
+  width: 2rem;
+  margin: 0 0.8rem;
+}
+.userProfile .borderContainer .header .search-bar input {
+  height: 3.5rem;
+  height: 100%;
+  flex: 1;
+  border: none;
+}
+.userProfile .borderContainer .header .search-bar button {
+  height: 100%;
+  background-color: var(--color-blue-01);
+  color: var(--white);
+  cursor: pointer;
+  border: none;
+  padding: 0 2rem;
+}
+.userProfile .borderContainer .header .services {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.userProfile .borderContainer .header .services h4 {
+  margin: 0;
+}
+.userProfile .borderContainer .header .services img {
+  height: 2rem;
+  width: 2rem;
+}
+.userProfile .borderContainer .header .user-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.userProfile .borderContainer .header .user-profile .user {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.userProfile .borderContainer .header .user-profile .user span {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+.userProfile .borderContainer .header .user-profile .user p {
+  font-size: 1.2rem;
+  color: gray;
+}
+.userProfile .borderContainer .header .user-profile .profile img {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+}
+.userProfile .profile-container {
+  width: 100%;
+  margin: 2rem auto;
+  background: var(--white);
+}
+.userProfile .profile-container .header-banner {
+  width: 100%;
+  height: 12rem;
+  background: linear-gradient(90deg, var(--color-green-01), var(--color-green-02));
+  position: relative;
+  border-radius: 1rem;
+  z-index: 1;
+}
+.userProfile .profile-container .header-banner .change-photo {
+  position: absolute;
+  top: 6.8rem;
+  right: 2.2rem;
+  color: var(--white);
+  background: none;
+  border-color: var(--white);
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  font-size: 1.6rem;
+}
+.userProfile .profile-container .header-banner .change-photo:hover {
+  background: var(--color-blue-01);
+}
+.userProfile .profile-container .profile-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  margin-top: -3rem;
+  z-index: 2;
+  position: relative;
+}
+.userProfile .profile-container .profile-section .profile-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 5rem;
+}
+.userProfile .profile-container .profile-section .profile-left .profile-pic {
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 3;
+  position: relative;
+}
+.userProfile .profile-container .profile-section .profile-left .user-info .username {
+  margin: 0 auto;
+  font-size: 2.8rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--color-green-01), var(--color-green-02));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+.userProfile .profile-container .profile-section .profile-left .user-info .uid {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: gray;
+}
+.userProfile .profile-container .profile-section .orders-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-blue-01);
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+.userProfile .profile-container .profile-section .orders-link:hover {
+  text-decoration: underline;
+}
+.userProfile .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+}
+.userProfile .card1, .userProfile .card2 {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 0.1rem solid lightgray;
+  display: flex;
+  flex-direction: column;
+}
+.userProfile .card1 h3, .userProfile .card2 h3 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: var(--color-yellow-01);
+}
+.userProfile .card1 p, .userProfile .card2 p {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0.2rem 0;
+}
+.userProfile .card1 label, .userProfile .card2 label {
+  display: block;
+  margin: 0.5rem 0 0.2rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+.userProfile .card1 input, .userProfile .card2 input {
+  width: 100%;
+  font-size: 1.5rem;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  border: 0.1rem solid lightgray;
+  border-radius: 0.5rem;
+  background-color: rgb(238, 236, 236);
+}
+.userProfile .card1 a, .userProfile .card2 a {
+  text-decoration: none;
+  color: #1A73E8;
+  margin-top: 2rem;
+  margin-bottom: 0;
+}
+.userProfile .card1 a:hover, .userProfile .card2 a:hover {
+  text-decoration: underline;
+}
+.userProfile .card1 button, .userProfile .card2 button {
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  align-self: flex-end;
+  width: max-content;
+}
+.userProfile .card1 button img, .userProfile .card2 button img {
+  width: 1.7rem;
+  height: 1.7rem;
+  margin-left: 0.5rem;
+}
+.userProfile .card1 .edit-button, .userProfile .card2 .edit-button {
+  margin-top: 2rem;
+  background-color: var(--color-green-01);
+  padding: 1rem 4rem;
+}
+.userProfile .card1 .changePassword-button, .userProfile .card2 .changePassword-button {
+  background-color: var(--color-yellow-01);
+  padding: 1rem 1.5rem;
+  margin-top: 0;
+}
+.userProfile .card1 .delete-button, .userProfile .card2 .delete-button {
+  margin-top: 2rem;
+  background-color: #FB2C21;
+  padding: 1rem 2rem;
+}
+.userProfile .card1 .warning, .userProfile .card2 .warning {
+  background: rgba(249, 80, 80, 0.2);
+  border: 1px solid #d90429;
+  color: #d90429;
+  padding: 0.8rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+}
+.userProfile .card2:last-child {
+  grid-column: 2;
+}
+.userProfile .card1 .name-row {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+.userProfile .card1 .name-row .field {
+  flex: 1;
+}
+.userProfile .card1 .name-row .field input {
+  width: 100%;
+=======
+=======
+>>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
+=======
+>>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
+>>>>>>> origin/hamdha/backend/leave
 .SearchMedi .main-container {
   display: flex;
   padding: 1rem 2rem;
@@ -3119,6 +3771,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .RegPharmacy .container .FormGroup .UploadSection .custom-upload .upload-btn:hover {
   border-color: #007bff;
+<<<<<<< HEAD
 }
 .RegPharmacy .container .CreateAccount {
   background: linear-gradient(to right, #00BAAC, #083851);
@@ -6310,6 +6963,15 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .cashier-payment-qr .payment-popup .popup-content .close-btn:hover {
   color: red;
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 0242b0c9ca2cdefd93a6450cce1d4a5119f600cd:frontend/css/style.css
+=======
+>>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
+=======
+>>>>>>> d11a96628964c4af2658128742abb8e83dc984f0
+>>>>>>> origin/hamdha/backend/leave
 }
 
 /*# sourceMappingURL=style.css.map */

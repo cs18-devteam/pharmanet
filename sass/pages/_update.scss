@@ -1,0 +1,345 @@
+$primary-color: #083851;
+$accent-color: #f9a550;
+$white: #ffffff;
+
+*{
+   font-family: 'Red Hat', sans-serif;
+}
+
+body {
+  font-size: 1.8rem;
+  font-family: sans-serif;
+  height: 100%;
+}
+
+header {
+  margin: 0rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+//logo section
+.logo {
+  font-family: var(--secondary-font);
+  display: flex;
+  align-items: center;
+
+  .logopic {
+    height: 4.6rem;
+    margin-right: 1rem;
+  }
+
+  .logoname {
+    font-weight: bold;
+    color: $primary-color;
+    font-size: 1.6rem;
+  }
+}
+
+
+h1 {
+  font-size: 3.0rem;
+  font-weight: 60rem;
+  font-style: semi-bold;
+  text-align: left;
+  margin-top: 1rem;
+  margin-left: 1.5rem;
+
+    .fWord {
+    color: $accent-color;
+    padding-right: 0.2rem;
+    }
+
+    .sWord {
+    color: $primary-color;
+    }
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 200rem;
+  justify-content: center;
+  gap: 2rem;
+  padding: 3rem;
+  padding-top: 0rem;
+  padding-left: 0rem;
+  height: 100%;
+  min-height: 100vh;
+  color: $primary-color;
+  margin-top : 2rem;
+  font-size: 1rem;
+
+
+  .basicInfo{
+   flex: 3;
+//    height: 2rem;
+   padding: 1rem;
+   background-color: #ffffff;
+   font-size: 15.335px;
+   margin-top: 1rem;
+   margin-bottom: 0.5rem;
+  }
+
+  .basicInfo form{
+    line-height: 2rem;
+
+    h5{
+      color: $accent-color;
+      margin-top: 0.5rem;
+      margin-bottom: 0rem;
+      font-weight: 40rem;
+      font-size: 1.6918rem;
+      
+    }
+
+
+    .nameFields{
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      font-size: 15.335px;
+      margin-top: 1rem;
+
+     div{
+       flex: 1;
+       width: fit-content;
+    }
+  }
+
+    .sectionNIC {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      
+
+
+     div{
+       flex: 1;
+       width: fit-content;
+    }
+
+    .deleteBtn {
+      background-color: #F95050;
+      border: 0.1rem solid #F95050;
+      border-radius: 0.4rem;
+      color: $white;
+      padding: 0.5rem;
+      cursor: pointer;
+      font-size: 1.2rem;
+      margin-left: 0.5rem;
+
+      &:hover {
+        color: $accent-color;
+      }
+    }
+    .uploadBtn {
+      background-color: #9a9797;
+      border: 0.1rem solid #9a9797;
+      border-radius: 0.4rem;
+      color: #00000080;
+      cursor: pointer;
+      padding: 0.5rem;
+      font-size: 1.2rem;
+      margin-left: 0.5rem;
+
+      &:hover {
+        color: $accent-color;
+      }
+    }
+    .viewBtn{
+      display: inline-block;
+      background-color: #18978D;
+      border-radius: 0.8056rem;
+      padding: 0.5rem;
+      justify-content: center;
+      align-items: center;
+      gap: 0.8056rem;
+      width: 20rem;
+      height: 2.7rem;
+      border: none;
+      margin-left: 0.5rem;
+      margin-top: 0.5rem;
+
+    }
+  }
+
+     .container1 {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: 0.5rem;
+
+
+     div{
+       flex: 1;
+       width: fit-content;
+    }
+  }
+     .fname, .lname, .fullName, .email, .idNumber, .myFile, .contact, .epfNo, .gender {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      border: 0.081rem solid #787676;
+      border-radius: 0.5rem;
+      padding: 0.806rem, 0.806rem, 0.806rem, 1.12rem;
+    }
+    
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+       
+    }
+
+    
+
+  }
+
+
+  // locationInfo css part
+  .locationInfo{
+       flex: 2;
+       padding: 1rem;
+       background-color: #ffffff;
+       font-size: 15.335px;
+       margin-top: 1rem;
+
+    h5{
+      color: $accent-color;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      font-weight: 40rem;
+      font-size: 1.6918rem;
+    
+    }
+
+    form{
+      .address, .userName, .password{
+        width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 0.081rem solid #787676;
+      border-radius: 0.5rem;
+      padding: 0.806rem, 0.806rem, 0.806rem, 1.12rem;
+       line-height: 1rem;
+      }
+
+      label{
+        display: block;
+        border-bottom: 0rem;
+        margin-bottom: 0rem;
+      }
+      .resetBtn {
+        width: 12.4rem;
+        margin-top: 1rem;
+        background-image: linear-gradient(to right, #F95050, #FB2C21);
+        padding: 0.5rem;
+        color: $white;
+        border: none;
+        border-radius: 0.5rem;
+      }
+    }
+  }
+
+  // banking Info css part
+  .bankingInfo{
+       flex: 2;
+       padding: 1rem;
+       background-color: #ffffff;
+       font-size: 15.335px;
+       margin-top: 0.8rem;
+
+
+    h5{
+      color: $accent-color;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      font-weight: 40rem;
+      font-size: 1.6918rem;
+    }
+
+    form{
+      .bankName, .bankBranch, .accNo, .detailsProof, .role{
+        width: 100%;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        border: 0.081rem solid #787676;
+        border-radius: 0.5rem;
+        padding: 0.806rem, 0.806rem, 0.806rem, 1.12rem;
+      }
+
+      label{
+        display: block;
+        margin-bottom: 1rem;
+      }
+      
+    }
+    .deleteBtn {
+      background-color: #F95050;
+      border: 0.1rem solid #F95050;
+      border-radius: 0.4rem;
+      color: $white;
+      cursor: pointer;
+      padding: 0.5rem;
+      font-size: 1.2rem;
+      margin-left: 0.5rem;
+
+      &:hover {
+        color: $accent-color;
+      }
+    }
+    .uploadBtn {
+      background-color: #9a9797;
+      border: 0.1rem solid #9a9797;
+      border-radius: 0.4rem;
+      color: #00000080;
+      cursor: pointer;
+      font-size: 1.2rem;
+      padding: 0.5rem;
+      margin-left: 0.5rem;
+     
+
+      &:hover {
+        color: $accent-color;
+      }
+    }
+    .viewBtn{
+      display: inline-block;
+      background-color: #18978D;
+      border-radius: 0.8056rem;
+      padding: 0.5rem;
+      justify-content: center;
+      align-items: center;
+      gap: 0.8056rem;
+      width: 20.741rem;
+      height: 2.7rem;
+      border: none;
+      margin-left: 0.5rem;
+      margin-top: 0.5rem;
+
+    } 
+    .updateBtn {
+      width: 100%;
+      background-image: var(--yellow-gradient, linear-gradient(91deg, #F9A550 0%, #FB8F21 100%));
+      padding: 0.5rem;
+      color: $white;
+      border: none;
+      border-radius: 0.5rem;
+      margin-top: 10rem;
+      color: white;
+    
+    }
+  }
+}

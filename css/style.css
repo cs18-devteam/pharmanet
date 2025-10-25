@@ -1437,4 +1437,291 @@ h1 .sWord {
   border-radius: 0.8rem;
 }
 
+* {
+  font-family: "Red Hat", sans-serif;
+}
+
+body {
+  font-size: 1.8rem;
+  font-family: sans-serif;
+  height: 100%;
+}
+
+header {
+  margin: 0rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.logo {
+  font-family: var(--secondary-font);
+  display: flex;
+  align-items: center;
+}
+.logo .logopic {
+  height: 4.6rem;
+  margin-right: 1rem;
+}
+.logo .logoname {
+  font-weight: bold;
+  color: #083851;
+  font-size: 1.6rem;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 60rem;
+  font-style: semi-bold;
+  text-align: left;
+  margin-top: 1rem;
+  margin-left: 1.5rem;
+}
+h1 .fWord {
+  color: #f9a550;
+  padding-right: 0.2rem;
+}
+h1 .sWord {
+  color: #083851;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 200rem;
+  justify-content: center;
+  gap: 2rem;
+  padding: 3rem;
+  padding-top: 0rem;
+  padding-left: 0rem;
+  height: 100%;
+  min-height: 100vh;
+  color: #083851;
+  margin-top: 2rem;
+  font-size: 1rem;
+}
+.container .basicInfo {
+  flex: 3;
+  padding: 1rem;
+  background-color: #ffffff;
+  font-size: 15.335px;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+.container .basicInfo form {
+  line-height: 2rem;
+}
+.container .basicInfo form h5 {
+  color: #f9a550;
+  margin-top: 0.5rem;
+  margin-bottom: 0rem;
+  font-weight: 40rem;
+  font-size: 1.6918rem;
+}
+.container .basicInfo form .nameFields {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  font-size: 15.335px;
+  margin-top: 1rem;
+}
+.container .basicInfo form .nameFields div {
+  flex: 1;
+  width: fit-content;
+}
+.container .basicInfo form .sectionNIC {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.container .basicInfo form .sectionNIC div {
+  flex: 1;
+  width: fit-content;
+}
+.container .basicInfo form .sectionNIC .deleteBtn {
+  background-color: #F95050;
+  border: 0.1rem solid #F95050;
+  border-radius: 0.4rem;
+  color: #ffffff;
+  padding: 0.5rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
+}
+.container .basicInfo form .sectionNIC .deleteBtn:hover {
+  color: #f9a550;
+}
+.container .basicInfo form .sectionNIC .uploadBtn {
+  background-color: #9a9797;
+  border: 0.1rem solid #9a9797;
+  border-radius: 0.4rem;
+  color: rgba(0, 0, 0, 0.5019607843);
+  cursor: pointer;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
+}
+.container .basicInfo form .sectionNIC .uploadBtn:hover {
+  color: #f9a550;
+}
+.container .basicInfo form .sectionNIC .viewBtn {
+  display: inline-block;
+  background-color: #18978D;
+  border-radius: 0.8056rem;
+  padding: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8056rem;
+  width: 20rem;
+  height: 2.7rem;
+  border: none;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+}
+.container .basicInfo form .container1 {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 0.5rem;
+}
+.container .basicInfo form .container1 div {
+  flex: 1;
+  width: fit-content;
+}
+.container .basicInfo form .fname, .container .basicInfo form .lname, .container .basicInfo form .fullName, .container .basicInfo form .email, .container .basicInfo form .idNumber, .container .basicInfo form .myFile, .container .basicInfo form .contact, .container .basicInfo form .epfNo, .container .basicInfo form .gender {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0.081rem solid #787676;
+  border-radius: 0.5rem;
+  padding: 0.806rem, 0.806rem, 0.806rem, 1.12rem;
+}
+.container .basicInfo form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.container .locationInfo {
+  flex: 2;
+  padding: 1rem;
+  background-color: #ffffff;
+  font-size: 15.335px;
+  margin-top: 1rem;
+}
+.container .locationInfo h5 {
+  color: #f9a550;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  font-weight: 40rem;
+  font-size: 1.6918rem;
+}
+.container .locationInfo form .address, .container .locationInfo form .userName, .container .locationInfo form .password {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 0.081rem solid #787676;
+  border-radius: 0.5rem;
+  padding: 0.806rem, 0.806rem, 0.806rem, 1.12rem;
+  line-height: 1rem;
+}
+.container .locationInfo form label {
+  display: block;
+  border-bottom: 0rem;
+  margin-bottom: 0rem;
+}
+.container .locationInfo form .resetBtn {
+  width: 12.4rem;
+  margin-top: 1rem;
+  background-image: linear-gradient(to right, #F95050, #FB2C21);
+  padding: 0.5rem;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.5rem;
+}
+.container .bankingInfo {
+  flex: 2;
+  padding: 1rem;
+  background-color: #ffffff;
+  font-size: 15.335px;
+  margin-top: 0.8rem;
+}
+.container .bankingInfo h5 {
+  color: #f9a550;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  font-weight: 40rem;
+  font-size: 1.6918rem;
+}
+.container .bankingInfo form .bankName, .container .bankingInfo form .bankBranch, .container .bankingInfo form .accNo, .container .bankingInfo form .detailsProof, .container .bankingInfo form .role {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 0.081rem solid #787676;
+  border-radius: 0.5rem;
+  padding: 0.806rem, 0.806rem, 0.806rem, 1.12rem;
+}
+.container .bankingInfo form label {
+  display: block;
+  margin-bottom: 1rem;
+}
+.container .bankingInfo .deleteBtn {
+  background-color: #F95050;
+  border: 0.1rem solid #F95050;
+  border-radius: 0.4rem;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
+}
+.container .bankingInfo .deleteBtn:hover {
+  color: #f9a550;
+}
+.container .bankingInfo .uploadBtn {
+  background-color: #9a9797;
+  border: 0.1rem solid #9a9797;
+  border-radius: 0.4rem;
+  color: rgba(0, 0, 0, 0.5019607843);
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+}
+.container .bankingInfo .uploadBtn:hover {
+  color: #f9a550;
+}
+.container .bankingInfo .viewBtn {
+  display: inline-block;
+  background-color: #18978D;
+  border-radius: 0.8056rem;
+  padding: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8056rem;
+  width: 20.741rem;
+  height: 2.7rem;
+  border: none;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+}
+.container .bankingInfo .updateBtn {
+  width: 100%;
+  background-image: var(--yellow-gradient, linear-gradient(91deg, #F9A550 0%, #FB8F21 100%));
+  padding: 0.5rem;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.5rem;
+  margin-top: 10rem;
+  color: white;
+}
+
 /*# sourceMappingURL=style.css.map */

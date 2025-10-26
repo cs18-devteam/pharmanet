@@ -90,7 +90,11 @@
       fetch("/api/blogs" , {
         method:"POST" , 
         body : JSON.stringify(data),
-      }).then((respond)=>respond.json()).then(()=>window.location.href="/blogView").catch(e=>console.log(e));
+      }).then((respond)=>respond.json()).then((data)=>{
+        if(data.status != "error"){
+          window.location.href="/blogView"
+        }
+      }).catch(e=>console.log(e));
 	
 })
   </script>

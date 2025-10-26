@@ -7,16 +7,7 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="blogManage">
-  <header class="navbar">
-    <div class="logo">
-      <img class="logopic" src="/public/logo/logo.svg" alt="logo">
-      <span>PharmaNet</span>
-    </div>
-    <div class="nav-buttons">
-      <a href="/blogView"><button class="btn btn-filled">All Blogs</button></a>
-      <a href="/blogManage"><button class="btn btn-icon"><i class="settings-icon">⚙</i> Manage</button></a>
-    </div>
-  </header>
+  {navbar}
 
 
   <div class="container">
@@ -123,6 +114,10 @@
         const respond = await fetch(`/api/blogs/${id}`, {
           method:'DELETE'
         })
+
+        if(respond.status == 204){
+          window.location.href = "/blogManage";
+        }
         
       }
     })

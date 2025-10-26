@@ -1,6 +1,7 @@
 const Bridge = require("../../common/Bridge");
-const { response } = require("../../common/response");
+const { response, responseJson } = require("../../common/response");
 const view = require("../../common/view");
+const Users = require("../../models/UserModel");
 
 
 exports.renderPharmacy = async (req , res)=>{
@@ -10,61 +11,31 @@ exports.renderPharmacy = async (req , res)=>{
 
 exports.renderPharmacyRegister = async (req , res)=>{
     try{
+        if(!req.customerId) return responseJson(res  , 302 , {status:"error"})
+        const customer = (await Users.getById(req.customerId))[0];
 
-    Bridge.pipe(req , res)
-    .connect(Bridge.registry.CUSTOMER_SERVICE , {
-        method:"GET",
-    } ).request(async (req , res) =>{
-        return {
-            id : req.customerId,
-        }
-    }).json()
-    .resend((results)=>{
-        const customer = results.data[0];
-
-        if(!customer) return view('404');
-
-        return  view('customer/pharmacy.register' , {
-        navbar : view('customer/navbar.customer' , {
-                name : `${customer.firstName} ${customer.lastName}`,  
-                id : customer.id,
-            }) , 
+        return response(res,view('customer/pharmacy.register' , {
+            navbar : view('customer/navbar.customer' , customer) , 
             id : customer.id
-        })
+        }),200);
 
-    })
     }catch(e){
         console.log(e);
-        // return response(200 , )
+        return response(200 , view('404') , 400);
     }
 
 }
 
 exports.renderPharmacyDashboard = async (req , res)=>{
-    Bridge.pipe(req , res)
-    .connect(Bridge.registry.STAFF_SERVICE , {
-        method:"GET",
-    } ).request(async (req , res) =>{
-        return {
-            id : req.OwnerId,
-        }
-    }).json()
-    .resend((results)=>{
-        const staff = results.data[0];
+        const [staff] = (await Users.get(req.staffId));
 
-        console.log(staff)
         if(!staff) return '404 : No Staff Member';
 
-        return  view('pharmacy' , {
-        navbar : view('components/navbar.staff' , {
-                name : `${staff.firstName} ${staff.lastName}`,  
-                id : staff.id,
-            }) , 
+        return  response( res ,view('pharmacy' , {
+        navbar : view('components/navbar.staff' , staff) , 
             ownerId : staff.id,
             pharmacyId: staff.id
-        })
-
-    })
+        }))
 }
 
 

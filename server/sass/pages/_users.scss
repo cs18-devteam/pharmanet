@@ -241,10 +241,10 @@
 .user-table {
   width: 100%;
   max-width: 140rem;
-  background-color: $element-bg;
+  // background-color: $element-bg;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  // box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 
   table {
     width: 100%;
@@ -260,11 +260,11 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
       opacity: 0.8;
-      border-bottom: 1px solid #222;
+      border-bottom: 1px solid #eee;
     }
 
     tbody tr {
-      border-bottom: 1px solid #1c1c1c;
+      border-bottom: 1px solid #eee;
 
       
     }

@@ -40,16 +40,6 @@ const server = http.createServer((req , res)=>{
             console.log(method , url  , path)
         }
 
-
-        AppRouter.pipe(req , res).route('/')
-        ?.get(indexController.renderIndexPage);
-
-        AppRouter.pipe(req ,res).route('/signup')
-        AppRouter.pipe(req ,res).route('/antibiotics')
-        ?.get(blogController.antibiotics);
-        AppRouter.pipe(req , res).route('/contactus')
-        ?.get(contactUsController.renderContactus)
-
         //:: USER / LOGIN
         AppRouter.pipe(req , res).route('/login')
             ?.get(loginController.renderLogin)
@@ -67,17 +57,27 @@ const server = http.createServer((req , res)=>{
         AppRouter.pipe(req , res).route('/verify/number')
             ?.get(verifyNumberController.renderVerifyNumber);
 
+
+
+        AppRouter.pipe(req , res).route('/')
+        ?.get(indexController.renderIndexPage);
+
+        AppRouter.pipe(req ,res).route('/antibiotics')
+        ?.get(blogController.antibiotics);
+
+        AppRouter.pipe(req , res).route('/contactus')
+        ?.get(contactUsController.renderContactus)
+
+
         //////////////////////////////////////////
         // :: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         // :: ~~~~~~~~ ADMIN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         //**  admin/ */
-        // AppRouter.pipe(req ,res).route('/admin')
-        // ?.get(adminController.adminDashboard);
+        AppRouter.pipe(req ,res).route('/admin')
+        ?.get(adminController.adminDashboard);
 
-        // AppRouter.pipe(req ,res).route('/admin/:adminId')
-        // ?.authenticate(req.adminId)
-        // ?.get(adminController.adminDashboard);
+
 
         // AppRouter.pipe(req ,res).route('/admin/pharmacy/create')
         // ?.get(adminController.adminAddPharmacy)
@@ -120,7 +120,7 @@ const server = http.createServer((req , res)=>{
         AppRouter.pipe(req ,res).route('/api/blogs/:id')
         ?.delete(blogController.deleteBlog)
 
-        AppRouter.pipe(req ,res).route('/blog/delete/:id')
+        AppRouter.pipe(req ,res).route('/delete/:id')
         ?.get(blogController.delete);
 
         //* ==========================================
@@ -209,16 +209,18 @@ const server = http.createServer((req , res)=>{
 
         AppRouter.pipe(req ,res).route('/admin/:adminId/writers');
         AppRouter.pipe(req ,res).route('/admin/:adminId/writers/:writerId');
-        AppRouter.pipe(req ,res).route("/customers/:customerId/medicines")
-            ?.get(customerMedicineController.renderCustomerMedicines);
-
-
+        
+        AppRouter.pipe(req ,res).route('/admin/:adminId')
+        // ?.authenticate(req.adminId)
+        ?.get(adminController.adminDashboard);
+        
         //:: CUSTOMERS ROUTES
         AppRouter.pipe(req ,res).route("/customers/:customerId")
         // ?.authenticate(req.customerId)
         ?.get(customerController.renderCustomerHome);
-
-
+        
+        AppRouter.pipe(req ,res).route("/customers/:customerId/medicines")
+            ?.get(customerMedicineController.renderCustomerMedicines);
 
 
         AppRouter.pipe(req ,res).route("/customers/:customerId/profile")

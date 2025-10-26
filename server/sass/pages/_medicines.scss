@@ -213,10 +213,10 @@
 
 .table-container {
   width:100%;
-  background: $element-bg;
+  // background: $element-bg;
   border-radius: 12px;
   padding: 1rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  // box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .medicine-table {
@@ -226,7 +226,7 @@
   th, td {
     text-align: left;
     padding: 0.9rem 1rem;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #eee;
     
   }
 

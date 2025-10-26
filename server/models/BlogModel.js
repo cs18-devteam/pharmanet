@@ -3,17 +3,17 @@ const Model = require("../common/Model");
 class BlogModel extends Model{
     constructor(){
         super();
-        this.user = {
-            type:"INT",
+        this.title = {
+            type:"VARCHAR(100)",
             null: false,
         }
 
-        this.publishedDate = {
-            type:"DATE",
+        this.slug = {
+            type:"VARCHAR(100)",
             null : false,
         }
 
-        this.title = {
+        this.excerpt = {
             type:"VARCHAR(100)",
         }
 
@@ -21,9 +21,23 @@ class BlogModel extends Model{
             type : "VARCHAR(100)"
         }
 
-        this.acceptedBy = {
-            type:"INT"
+        this.status = {
+            type:"VARCHAR(20)"
         }
+
+        this.category = {
+            type:"VARCHAR(20)"
+        }
+
+        this.author = {
+            type:"VARCHAR(20)"
+        }
+
+         this.tag = {
+            type:"VARCHAR(20)"
+        }
+
+        
 
     }
 }

@@ -123,7 +123,7 @@ exports.getPharmacyDetails = async (req , res)=>{
         if(req.pharmacyId){
 
             
-            const pharmacy =await Pharmacies.getById(id);
+            const pharmacy =await Pharmacies.getById(req.pharmacyId);
 
             if(!pharmacy){
                 return response(res , '<script>window.location.href="/admin/pharmacy"</script>')
@@ -181,13 +181,10 @@ exports.adminEditPharmacy = async (req ,res)=>{
      try{
         if(req.pharmacyId){
 
-            const respond =await fetch(`${Bridge.registry.PHARMACY_SERVICE}?id=${req.pharmacyId}`);
-            const results = await respond.json();
-
-            const pharmacy = results.data[0];
+            const [pharmacy] = await Pharmacies.getById(req.pharmacyId);
 
 
-            return response(res , view('admin/editPharmacy' ,{
+        return response(res , view('admin/editPharmacy' ,{
         sidebar : view('admin/component.sidebar') , ...pharmacy
     } ) , 200);
         }else{

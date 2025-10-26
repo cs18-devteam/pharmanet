@@ -1,9 +1,7 @@
 const { getRequestData } = require("../../common/getRequestData")
 const { response, responseJson } = require("../../common/response")
 const view = require("../../common/view");
-const Database = require("../../database/Database");
-const Blogs = require("../../model/BlogModel");
-const db = Database.getInstance();
+const Blogs = require("../../models/BlogModel");
 
 exports.antibiotics = async (req ,res)=>{
     return response(res , view('blog/antibiotics'))
@@ -14,6 +12,7 @@ exports.blogManage = async (req ,res)=>{
     const blogs = await Blogs.get();
 
     return response(res , view('blog/blogManage' , {
+        // navbar : view('admin/nav.staff'),
         blogs : blogs.map(b=>view('blog/componentDelete' , b)).join(''),
     }))
 }
@@ -52,17 +51,35 @@ exports.supplement = async (req ,res)=>{
 
 // CREATE
 exports.createBlog = async (req, res) => {
-  const { title, category, author, excerpt, content } = JSON.parse(await getRequestData(req)); 
-  const newBlog = await Blogs.save({
-    title , category , author , excerpt , content
-  });
-  return responseJson(res , 201 , newBlog);
+
+  try{
+
+    const { title, category, author, excerpt ,slug, content } = JSON.parse(await getRequestData(req)); 
+    const newBlog = await Blogs.save({
+      title , category , author , excerpt , content , slug
+    });
+    return responseJson(res , 201 , newBlog);
+  }catch(e){
+    console.log(e);
+    return responseJson(res , 400 , {
+      status:"error",
+      message:"blog not created",
+      error:e,
+    })
+  }
 }
 // CREATE
 exports.deleteBlog = async (req, res) => {
-   
-  const newBlog = await Blogs.deleteById(req.id);
-  return responseJson(res , 201 , newBlog);
+  try{
+
+    const newBlog = await Blogs.deleteById(req.id);
+    return responseJson(res , 204 , newBlog);
+  }catch(e){
+    return responseJson(res, 400 , {
+      status:"error",
+      error:e,
+    })
+  }
 }
 // CREATE
 exports.update = async (req, res) => {
@@ -79,7 +96,7 @@ exports.getAllBlogs = async (req, res) => {
 }
 
 
-exports.delete = async (res , res)=>{
+exports.delete = async (req , res)=>{
   return response(res , view('delete') , 200)
 }
 

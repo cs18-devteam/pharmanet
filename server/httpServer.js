@@ -70,6 +70,21 @@ const server = http.createServer((req , res)=>{
 
         AppRouter.pipe(req, res).route('/cashier-payment-QR')
         ?.post(cashierController.paymentQR);
+        
+        AppRouter.pipe(req, res).route('/cashier-product')
+        ?.put(cashierController.renderCashierProduct);
+
+        AppRouter.pipe(req, res).route('/cashier-product')
+        ?.delete(cashierController.renderCashierProduct);
+
+        AppRouter.pipe(req , res).route('/api/products')
+        ?.get(cashierController.getAllProducts)
+        ?.post(cashierController.createProduct);
+
+        AppRouter.pipe(req , res).route('/api/products/:productId')
+        ?.get(cashierController.getProductById)
+        ?.update(cashierController.updateProduct)
+        ?.delete(cashierController.deleteProduct);
 
         
         AppRouter.pipe(req ,res).route('/signup')

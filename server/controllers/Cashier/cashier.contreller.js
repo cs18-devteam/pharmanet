@@ -1,5 +1,5 @@
 const { getRequestData } = require("../../common/getRequestData");
-const { response } = require("../../common/response");
+const { response, responseJson } = require("../../common/response");
 const view = require("../../common/view");
 const Database = require("../../database/Database");
 const Products = require("../../model/BillModel");
@@ -73,3 +73,96 @@ exports.createProduct= async(req, res) => {
         }));
 
   }
+
+
+
+exports.deleteProduct = async (req , res)=>{
+    const data = JSON.parse(await getRequestData(req));
+    try{
+        console.log('from delete product ' , data);
+
+        
+        if(data.id){
+            const deleteLog = await Products.deleteById(data.id);
+            return responseJson(res , 204 , {
+                status:"success",
+                message : `${data.id} product deleted successfully`
+            })
+        }
+    }catch(e){
+        console.log(e);
+        return responseJson(res , 400 , {
+            status:"error",
+            message:"product not deleted",
+            error:e,
+        })
+    }
+}
+
+
+
+exports.updateProduct = async (req , res)=>{
+    try{
+        const data = JSON.parse(await getRequestData(req));  
+        console.log("this is form update product");      
+        if(data.id){
+            const udpatedProduct = await Products.update(data);
+            console.log(udpatedProduct);
+            return responseJson(res , 200 , {
+                status:"success",
+                resutls : udpatedProduct
+            })
+
+        }else{
+            return responseJson(res , 400 , {
+                status:'error',
+                message :"product id is not available",
+            })
+        }
+    }catch(e){
+        console.log(e);
+        return responseJson(res , 400 , {
+            status:"error",
+            message:"product not updated",
+            error:e,
+        })
+    }
+}
+
+
+exports.getAllProducts = async (req , res)=>{
+    try{
+        const products = await Products.get();
+        return responseJson(res , 200 , {
+            status:"success",
+            resutls: products,
+        })
+    }catch(e){
+        console.log(e);
+        return responseJson(res , 500 , {
+            status:"error",
+            message:"insternal server error",
+            error:e,
+        })
+    }
+}
+
+exports.getProductById = async (req , res)=>{
+    try{
+        const id = req.params.get("id");
+        const products = await Products.get(id);
+        return responseJson(res , 200 , {
+            status:"success",
+            resutls: products,
+        })
+    }catch(e){
+        console.log(e);
+        return responseJson(res , 500 , {
+            status:"error",
+            message:"insternal server error",
+            error:e,
+        })
+    }
+}
+
+

@@ -10,6 +10,7 @@
 <body class="product">
   <!-- ---------------- Header ---------------- -->
   <header>
+    <div class="navbar-pharmacy">
     <nav>
       <div class="logo">
         <img class="logopic" src="/public/logo/logo.svg" alt="Pharmacy Logo" />
@@ -23,11 +24,93 @@
         <button class="tab active">Cashier</button>
       </nav>
 
-      <div class="profile">
-        <div class="profileName">
-          <a href="#">Chamani Niroshani</a>
-          <div class="welcome">Welcome</div>
+
+      <!-- Notification Button -->
+<div class="notification-container">
+  <button class="notification-bell" onclick="toggleNotificationPopup()">
+    <span class="bell-icon">💬</span>
+    <span class="notification-count" id="notificationCount">2</span>
+  </button>
+  
+  <!-- Notification Popup -->
+  <div class="notification-popup" id="notificationPopup">
+    <div class="popup-header">
+      <h3>Online Orders Chat</h3>
+      <button class="close-popup" onclick="closeNotificationPopup()">×</button>
+    </div>
+    
+    <div class="chat-container">
+      <!-- Order 1 -->
+      <div class="order-chat">
+        <div class="customer-info">
+          <span class="customer-name">John Doe</span>
+          <span class="order-id">#ORD-001</span>
+          <span class="order-time">2 min ago</span>
         </div>
+        
+        <div class="chat-messages">
+          <div class="message customer-message">
+            <div class="message-content">
+              <p>Hello, I'd like to order:</p>
+              <ul>
+                <li>2 × Amoxicillin 500mg (pack)</li>
+                <li>5 × Paracetamol 500mg (strip)</li>
+              </ul>
+            </div>
+            <span class="message-time">10:34 PM</span>
+          </div>
+          
+          <div class="message system-message">
+            <div class="message-content">
+              <p><strong>Order Summary:</strong></p>
+              <p>Items: 7 | Total: LKR 3,050 | Discount: LKR 100</p>
+              <p><strong>Final Total: LKR 2,950</strong></p>
+            </div>
+            <span class="message-time">10:35 PM</span>
+          </div>
+        </div>
+        
+        <div class="chat-actions">
+          <button class="action-btn accept-btn" onclick="acceptOrder('ORD-001')">Accept Order</button>
+          <button class="action-btn reject-btn" onclick="rejectOrder('ORD-001')">Reject</button>
+          <button class="action-btn chat-btn" onclick="startChat('ORD-001')">Message Customer</button>
+        </div>
+      </div>
+      
+      <!-- Order 2 -->
+      <div class="order-chat">
+        <div class="customer-info">
+          <span class="customer-name">Jane Smith</span>
+          <span class="order-id">#ORD-002</span>
+          <span class="order-time">5 min ago</span>
+        </div>
+        
+        <div class="chat-messages">
+          <div class="message customer-message">
+            <div class="message-content">
+              <p>Hi, I need:</p>
+              <ul>
+                <li>3 × Vitamin C 1000mg</li>
+                <li>1 × Blood Pressure Monitor</li>
+              </ul>
+              <p>Do you have these in stock?</p>
+            </div>
+            <span class="message-time">10:30 PM</span>
+          </div>
+        </div>
+        
+        <div class="chat-actions">
+          <button class="action-btn accept-btn" onclick="acceptOrder('ORD-002')">Accept Order</button>
+          <button class="action-btn reject-btn" onclick="rejectOrder('ORD-002')">Reject</button>
+          <button class="action-btn chat-btn" onclick="startChat('ORD-002')">Reply</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      <div class="profile">
         <div class="profilePic">
           <a href="/signup.html">
             <img src="/public/logo/profile_pic.jpg" alt="Profile Picture" />
@@ -35,6 +118,7 @@
         </div>
       </div>
     </nav>
+    </div>
   </header>
 
   <!-- ---------------- Dashboard Layout ---------------- -->
@@ -280,22 +364,52 @@
   }
 
   // ------- Save Edited Product -------
-  function saveEdit() {
-    if (editRow) {
-      const cells = editRow.querySelectorAll("td");
+ function saveEdit() {
+  if (!editRow) {
+    alert("No product selected to edit!");
+    return;
+  }
 
-      cells[1].textContent = document.getElementById("editProductName").value;
-      cells[2].textContent = document.getElementById("editProductBrand").value;
-      cells[3].textContent = document.getElementById("editProductCategory").value;
-      cells[4].textContent = document.getElementById("editProductPrice").value;
-      cells[5].textContent = document.getElementById("editProductQty").value;
-      //cells[6].textContent = document.getElementById("editProductExpiry").value;
+  const productId = document.getElementById("editProductId").value;
+  const updatedProduct = {
+    id: productId,
+    name: document.getElementById("editProductName").value,
+    brand: document.getElementById("editProductBrand").value,
+    category: document.getElementById("editProductCategory").value,
+    price: parseFloat(document.getElementById("editProductPrice").value),
+    quantity: parseInt(document.getElementById("editProductQty").value)
+  };
+
+  fetch(`/api/products/${productId}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(updatedProduct)
+  })
+  .then(res => res.json())
+  .then(data => {
+    console.log(data);
+    if (data.status === "success") {
+      alert("Product updated successfully!");
+
+      // Update table row
+      const cells = editRow.querySelectorAll("td");
+      cells[1].textContent = updatedProduct.name;
+      cells[2].textContent = updatedProduct.brand;
+      cells[3].textContent = updatedProduct.category;
+      cells[4].textContent = updatedProduct.price;
+      cells[5].textContent = updatedProduct.quantity;
 
       closeEditPopup();
     } else {
-      alert("No product selected to edit!");
+      alert("Failed to update product!");
     }
-  }
+  })
+  .catch(err => {
+    console.error(err);
+    alert("Error updating product!");
+  });
+}
+
 
   // ------- Attach Listeners AFTER page loads -------
   document.addEventListener("DOMContentLoaded", () => {
@@ -312,12 +426,33 @@
 
     // Remove button listener
     removeButtons.forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        if (confirm("Are you sure you want to delete this product?")) {
-          e.target.closest("tr").remove();
+  btn.addEventListener("click", async (e) => {
+    const row = e.target.closest("tr");
+    const productId = row.querySelector("td").textContent.trim();
+
+    if (confirm("Are you sure you want to delete this product?")) {
+      try {
+        const response = await fetch(`/api/products/${productId}`, {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: productId })
+        });
+
+        
+        if (response.status  == 204) {
+          alert("Product deleted successfully!");
+          row.remove();
+        } else {
+          alert("Failed to delete product!");
         }
-      });
-    });
+      } catch (err) {
+        console.error(err);
+        alert("Error deleting product!");
+      }
+    }
+  });
+});
+
   });
   function saveProduct() {
   const productData = {
@@ -354,8 +489,69 @@
   });
 }
 
+// Notification functionality
+function toggleNotificationPopup() {
+  const popup = document.getElementById('notificationPopup');
+  const overlay = document.createElement('div');
+  overlay.className = 'notification-overlay active';
+  document.body.appendChild(overlay);
+  
+  popup.classList.add('active');
+  
+  // Close when clicking overlay
+  overlay.addEventListener('click', closeNotificationPopup);
+}
+
+function closeNotificationPopup() {
+  const popup = document.getElementById('notificationPopup');
+  const overlay = document.querySelector('.notification-overlay');
+  
+  popup.classList.remove('active');
+  if (overlay) {
+    overlay.remove();
+  }
+}
+
+// Order actions
+function acceptOrder(orderId) {
+  if (confirm(`Accept order ${orderId}?`)) {
+    alert(`Order ${orderId} accepted!`);
+    // Add your API call here
+    updateNotificationCount();
+  }
+}
+
+function rejectOrder(orderId) {
+  if (confirm(`Reject order ${orderId}?`)) {
+    alert(`Order ${orderId} rejected!`);
+    // Add your API call here
+    updateNotificationCount();
+  }
+}
+
+function startChat(orderId) {
+  alert(`Starting chat for order ${orderId}`);
+  // Implement chat functionality
+}
+
+function updateNotificationCount() {
+  const countElement = document.getElementById('notificationCount');
+  let currentCount = parseInt(countElement.textContent);
+  if (currentCount > 0) {
+    countElement.textContent = currentCount - 1;
+  }
+}
+
+// Close popup when pressing Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeNotificationPopup();
+  }
+});
+
 </script>
 
 
 </body>
 </html>
+

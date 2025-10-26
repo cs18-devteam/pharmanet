@@ -24,7 +24,7 @@ class ProductModel extends Model{
             type:"DATE",
         }
 
-        this.cetagory = {
+        this.category = {
             type:"VARCHAR(100)",
         }
 

@@ -2,26 +2,30 @@ const Model = require("../common/Model");
 
 class ProductModel extends Model{
     constructor(){
-        super();
+                super();
         this.name = {
-            type:"VARCHAR(50)",
+            type:"VARCHAR(100)",
             null: false,
+        }
+
+        this.brand = {
+            type:"VARCHAR(100)",
+        }
+
+        this.quantity = {
+            type:"INT",
         }
 
         this.price = {
             type:"FLOAT",
-            null : false,
         }
 
-        this.description = {
-            type:"VARCHAR(500)",
+        this.expire = {
+            type:"DATE",
         }
 
-        this.stock = {
-            type:"INT",
-        }
-        this.pharmacyId = {
-            type:"INT",
+        this.category = {
+            type:"VARCHAR(100)",
         }
 
     }

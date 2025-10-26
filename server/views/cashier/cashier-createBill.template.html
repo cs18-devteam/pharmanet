@@ -5,14 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Create Bill</title>
   <link rel="stylesheet" href="/css/style.css" />
+     <link rel="shortcut icon" href="/logo/logo.svg" 
+    type="image/svg+xml">
+        <link rel="icon" href="/logo/favicon.svg" type="image/svg+xml">
+    <link rel="alternate icon" href="/logo/favicon.png" type="image/png">
 </head>
 
 <body class="cashier-create-bill">
   <!-- ---------------- Header ---------------- -->
   <header>
+    <div class="navbar-pharmacy">
     <nav>
       <div class="logo">
-        <img class="logopic" src="/public/logo/logo.svg" alt="Pharmacy Logo" />
+        <img class="logopic" src="/logo/logo.svg" alt="Pharmacy Logo" />
       </div>
 
       <div id="toggle-placeholder"></div>
@@ -23,18 +28,102 @@
         <button class="tab active">Cashier</button>
       </nav>
 
-      <div class="profile">
-        <div class="profileName">
-          <a href="#">Chamani Niroshani</a>
-          <div class="welcome">Welcome</div>
+
+      <!-- Notification Button -->
+<div class="notification-container">
+  <button class="notification-bell" onclick="toggleNotificationPopup()">
+    <span class="bell-icon">💬</span>
+    <span class="notification-count" id="notificationCount">2</span>
+  </button>
+  
+  <!-- Notification Popup -->
+  <div class="notification-popup" id="notificationPopup">
+    <div class="popup-header">
+      <h3>Online Orders Chat</h3>
+      <button class="close-popup" onclick="closeNotificationPopup()">×</button>
+    </div>
+    
+    <div class="chat-container">
+      <!-- Order 1 -->
+      <div class="order-chat">
+        <div class="customer-info">
+          <span class="customer-name">John Doe</span>
+          <span class="order-id">#ORD-001</span>
+          <span class="order-time">2 min ago</span>
         </div>
+        
+        <div class="chat-messages">
+          <div class="message customer-message">
+            <div class="message-content">
+              <p>Hello, I'd like to order:</p>
+              <ul>
+                <li>2 × Amoxicillin 500mg (pack)</li>
+                <li>5 × Paracetamol 500mg (strip)</li>
+              </ul>
+            </div>
+            <span class="message-time">10:34 PM</span>
+          </div>
+          
+          <div class="message system-message">
+            <div class="message-content">
+              <p><strong>Order Summary:</strong></p>
+              <p>Items: 7 | Total: LKR 3,050 | Discount: LKR 100</p>
+              <p><strong>Final Total: LKR 2,950</strong></p>
+            </div>
+            <span class="message-time">10:35 PM</span>
+          </div>
+        </div>
+        
+        <div class="chat-actions">
+          <button class="action-btn accept-btn" onclick="acceptOrder('ORD-001')">Accept Order</button>
+          <button class="action-btn reject-btn" onclick="rejectOrder('ORD-001')">Reject</button>
+          <button class="action-btn chat-btn" onclick="startChat('ORD-001')">Message Customer</button>
+        </div>
+      </div>
+      
+      <!-- Order 2 -->
+      <div class="order-chat">
+        <div class="customer-info">
+          <span class="customer-name">Jane Smith</span>
+          <span class="order-id">#ORD-002</span>
+          <span class="order-time">5 min ago</span>
+        </div>
+        
+        <div class="chat-messages">
+          <div class="message customer-message">
+            <div class="message-content">
+              <p>Hi, I need:</p>
+              <ul>
+                <li>3 × Vitamin C 1000mg</li>
+                <li>1 × Blood Pressure Monitor</li>
+              </ul>
+              <p>Do you have these in stock?</p>
+            </div>
+            <span class="message-time">10:30 PM</span>
+          </div>
+        </div>
+        
+        <div class="chat-actions">
+          <button class="action-btn accept-btn" onclick="acceptOrder('ORD-002')">Accept Order</button>
+          <button class="action-btn reject-btn" onclick="rejectOrder('ORD-002')">Reject</button>
+          <button class="action-btn chat-btn" onclick="startChat('ORD-002')">Reply</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 
+      <div class="profile">
+        
         <div class="profilePic">
           <a href="/signup.html">
             <img src="/public/logo/profile_pic.jpg" alt="Profile Picture" />
           </a>
         </div>
-      </div>
+      </div> -->
     </nav>
+    </div>
   </header>
 
   <!-- ---------------- Dashboard Layout ---------------- -->
@@ -112,7 +201,7 @@
                 <td>1200.00</td>
                 <td>50</td>
                 <td>2026-05-15</td>
-                <td><img src="/frontend/public/images/new-invoice_17167472.png" class="add-icon" alt="Add"></td>
+                <td><button type="button" class="Add">Add </button></td>
               </tr>
 
               <tr>
@@ -123,7 +212,7 @@
                 <td>150.00</td>
                 <td>200</td>
                 <td>2027-01-20</td>
-                <td></td>
+                <td><button type="button" class="Add">Add</button></td>
               </tr>
             </tbody>
           </table>
@@ -220,9 +309,9 @@
     <h2>Select Payment Method</h2>
 
     <div class="payment-options">
-      <button id="cash" onclick="window.location.href='cashier-payment-cash.html' "> Cash</button>
-      <button id="credit-debit" onclick="window.location.href='cashier-payment-card.html' "> Credit/Debit Card</button>
-      <button id="qrpayment" onclick="window.location.href='cashier-payment-QR.html'"> Mobile Payment (QR)</button>
+      <button id="cash" onclick="window.location.href='cashier-payment-cash' "> Cash</button>
+      <button id="credit-debit" onclick="window.location.href='cashier-payment-card' "> Credit/Debit Card</button>
+      <button id="qrpayment" onclick="window.location.href='cashier-payment-QR'"> Mobile Payment (QR)</button>
     </div>
 
   </div>
@@ -233,7 +322,7 @@
   const closePopup = document.getElementById("closePopup");
 
   paymentBtn.addEventListener("click", () => {
-    paymentPopup.classList.add("active");
+  paymentPopup.classList.add("active");
   });
 
   closePopup.addEventListener("click", () => {
@@ -247,6 +336,65 @@
     }
   });
 
+  // Notification functionality
+function toggleNotificationPopup() {
+  const popup = document.getElementById('notificationPopup');
+  const overlay = document.createElement('div');
+  overlay.className = 'notification-overlay active';
+  document.body.appendChild(overlay);
+  
+  popup.classList.add('active');
+  
+  // Close when clicking overlay
+  overlay.addEventListener('click', closeNotificationPopup);
+}
+
+function closeNotificationPopup() {
+  const popup = document.getElementById('notificationPopup');
+  const overlay = document.querySelector('.notification-overlay');
+  
+  popup.classList.remove('active');
+  if (overlay) {
+    overlay.remove();
+  }
+}
+
+// Order actions
+function acceptOrder(orderId) {
+  if (confirm(`Accept order ${orderId}?`)) {
+    alert(`Order ${orderId} accepted!`);
+    // Add your API call here
+    updateNotificationCount();
+  }
+}
+
+function rejectOrder(orderId) {
+  if (confirm(`Reject order ${orderId}?`)) {
+    alert(`Order ${orderId} rejected!`);
+    // Add your API call here
+    updateNotificationCount();
+  }
+}
+
+function startChat(orderId) {
+  alert(`Starting chat for order ${orderId}`);
+  // Implement chat functionality
+}
+
+function updateNotificationCount() {
+  const countElement = document.getElementById('notificationCount');
+  let currentCount = parseInt(countElement.textContent);
+  if (currentCount > 0) {
+    countElement.textContent = currentCount - 1;
+  }
+}
+
+// Close popup when pressing Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeNotificationPopup();
+  }
+});
   
 </script>
 

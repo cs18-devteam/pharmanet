@@ -136,8 +136,11 @@
                     case "customer":
                       redirectUrl = `/customers/${result.user.id}`;
                       break;
-                      case "admin":
+                    case "admin":
                       redirectUrl = `http://localhost:3000/admin/${result.user.id}`;
+                      break;
+                    case "cashier":
+                      redirectUrl = `http://localhost:3000/cashier-dashboard`;
                       break;
                         
                   }

@@ -12,7 +12,7 @@ module.exports = function customerFetch(req , res , template , templateData = {}
         const customer = data.data[0];
         if(!customer) return view('404');
         return view(template , {
-            navbar : view('components/navbar.customer' , {
+                navbar : view('components/navbar.customer' , {
                 name : `${customer?.firstName} ${customer?.lastName}`
             }, customer , ...templateData) ,
         })

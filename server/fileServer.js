@@ -75,8 +75,6 @@ exports.requestFile = (filePath) =>{
     const [file] = cache.filter(file=>{
         if (file.type == 'dir') return false;
         const absPath = path.join("." , file.name).replaceAll('\\' , '/');
-        console.log(absPath , filePath)
-
         return absPath == filePath;
     })
 

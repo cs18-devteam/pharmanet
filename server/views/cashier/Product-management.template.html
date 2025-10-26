@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+       <link rel="shortcut icon" href="/logo/logo.svg" 
+    type="image/svg+xml">
+        <link rel="icon" href="/logo/favicon.svg" type="image/svg+xml">
+    <link rel="alternate icon" href="/logo/favicon.png" type="image/png">
+</head>
+<body class="productManagement">
+    <nav>
+        <div class="navHeading">Pharmanet</div>
+        <div class="navSubHeading">Medicine Management System</div>
+    </nav>
+
+    <div class="bodyContent">
+        <div class="addProduct">
+            <h2>Add New Product</h2>
+
+            <form class="product-form">
+            <!-- Product Name -->
+            <label for="productName">Product Name</label></form><br>
+            <input type="text" id="productName" placeholder="Enter product name"><br>
+
+            <!-- Brand -->
+            <label for="brand">Brand</label><br>
+            <textarea id="brand" rows="2" placeholder="Add Your brand Here"></textarea><br>
+
+            <!-- Price -->
+            <label for="price">Price</label><br>
+            <div class="price-input">
+            <input type="number" id="price" placeholder="$ 0.00">
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn-save"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 15 14" fill="none">
+            <path d="M2.53125 0C1.42813 0 0.53125 0.896875 0.53125 2V12C0.53125 13.1031 1.42813 14 2.53125 14H12.5312C13.6344 14 14.5312 13.1031 14.5312 12V4.41563C14.5312 3.88438 14.3219 3.375 13.9469 3L11.5312 0.584375C11.1562 0.209375 10.6469 0 10.1156 0H2.53125ZM2.53125 3C2.53125 2.44688 2.97813 2 3.53125 2H9.53125C10.0844 2 10.5312 2.44688 10.5312 3V5C10.5312 5.55312 10.0844 6 9.53125 6H3.53125C2.97813 6 2.53125 5.55312 2.53125 5V3ZM7.53125 8C8.06168 8 8.57039 8.21071 8.94546 8.58579C9.32054 8.96086 9.53125 9.46957 9.53125 10C9.53125 10.5304 9.32054 11.0391 8.94546 11.4142C8.57039 11.7893 8.06168 12 7.53125 12C7.00082 12 6.49211 11.7893 6.11704 11.4142C5.74196 11.0391 5.53125 10.5304 5.53125 10C5.53125 9.46957 5.74196 8.96086 6.11704 8.58579C6.49211 8.21071 7.00082 8 7.53125 8Z" fill="white"/>
+            </svg> Save Product</button>
+        </form>
+        </div>
+
+
+    <!-- product list section -->
+    <div class="productSection">
+    <div class="header">
+      <h2>Products List</h2>
+      <div class="searchBox">
+        <input type="text" placeholder="Search products...">
+      </div>
+    </div>
+
+    <div class="productCard">
+      <div class="productInfo">
+        <h3 class="productName">Face mask</h3>
+        <p class="productDesc">NO-brand , cotton</p>
+        <p class="productPrice">Rs 20.00</p>
+      </div>
+      <div class="productActions">
+        <button class="edit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <g clip-path="url(#clip0_1907_1925)">
+                <path d="M14.7375 0.67832C14.0531 -0.0060547 12.9469 -0.0060547 12.2625 0.67832L11.3219 1.61582L14.3813 4.6752L15.3219 3.73457C16.0063 3.0502 16.0063 1.94395 15.3219 1.25957L14.7375 0.67832ZM5.3875 7.55332C5.19687 7.74395 5.05 7.97832 4.96562 8.2377L4.04063 11.0127C3.95 11.2814 4.02188 11.5783 4.22188 11.7814C4.42188 11.9846 4.71875 12.0533 4.99062 11.9627L7.76562 11.0377C8.02188 10.9533 8.25625 10.8064 8.45 10.6158L13.6781 5.38457L10.6156 2.32207L5.3875 7.55332ZM3 2.0002C1.34375 2.0002 0 3.34395 0 5.0002V13.0002C0 14.6564 1.34375 16.0002 3 16.0002H11C12.6562 16.0002 14 14.6564 14 13.0002V10.0002C14 9.44707 13.5531 9.0002 13 9.0002C12.4469 9.0002 12 9.44707 12 10.0002V13.0002C12 13.5533 11.5531 14.0002 11 14.0002H3C2.44688 14.0002 2 13.5533 2 13.0002V5.0002C2 4.44707 2.44688 4.0002 3 4.0002H6C6.55312 4.0002 7 3.55332 7 3.0002C7 2.44707 6.55312 2.0002 6 2.0002H3Z" fill="#027F80"/>
+            </g>
+            <defs>
+                <clipPath id="clip0_1907_1925">
+                <path d="M0 0H16V16H0V0Z" fill="white"/>
+                </clipPath>
+            </defs>
+            </svg></button>
+        <button class="delete"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16" fill="none">
+            <g clip-path="url(#clip0_1913_4472)">
+                <path d="M4.225 0.553125L4 1H1C0.446875 1 0 1.44687 0 2C0 2.55312 0.446875 3 1 3H13C13.5531 3 14 2.55312 14 2C14 1.44687 13.5531 1 13 1H10L9.775 0.553125C9.60625 0.2125 9.25938 0 8.88125 0H5.11875C4.74062 0 4.39375 0.2125 4.225 0.553125ZM13 4H1L1.6625 14.5938C1.7125 15.3844 2.36875 16 3.15937 16H10.8406C11.6312 16 12.2875 15.3844 12.3375 14.5938L13 4Z" fill="#FF6F5F"/>
+            </g>
+            <defs>
+                <clipPath id="clip0_1913_4472">
+                <path d="M0 0H14V16H0V0Z" fill="white"/>
+                </clipPath>
+            </defs>
+            </svg></button>
+      </div>
+    </div>
+
+    {productCards}
+ </div>
+</div>
+<script src="/js/controller/controller.js" ></script>
+</body>
+</html>

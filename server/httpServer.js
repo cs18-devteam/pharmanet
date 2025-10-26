@@ -14,6 +14,8 @@ const customerPharmacyController = require('./controllers/customer/customer.phar
 const { responseJson } = require('./common/response');
 const adminPharmacyController = require('./controllers/admins/admin.pharmacy.controller');
 const customerMedicineController = require('./controllers/customer/customer.medicines.controller');
+const cashierController = require('./controllers/Cashier/cashier.contreller');
+
 
 const server = http.createServer((req , res)=>{
     try{

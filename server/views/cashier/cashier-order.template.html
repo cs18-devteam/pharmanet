@@ -5,14 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Order</title>
   <link rel="stylesheet" href="/css/style.css" />
+     <link rel="shortcut icon" href="/logo/logo.svg" 
+    type="image/svg+xml">
+        <link rel="icon" href="/logo/favicon.svg" type="image/svg+xml">
+    <link rel="alternate icon" href="/logo/favicon.png" type="image/png">
 </head>
 
 <body class="cashier-dashboard">
   <!-- ---------------- Header ---------------- -->
   <header>
+    <div class="navbar-pharmacy">
     <nav>
       <div class="logo">
-        <img class="logopic" src="/public/logo/logo.svg" alt="Pharmacy Logo" />
+        <img class="logopic" src="/logo/logo.svg" alt="Pharmacy Logo" />
       </div>
 
       <div id="toggle-placeholder"></div>
@@ -23,18 +28,100 @@
         <button class="tab active">Cashier</button>
       </nav>
 
-      <div class="profile">
-        <div class="profileName">
-          <a href="#">Chamani Niroshani</a>
-          <div class="welcome">Welcome</div>
+      <!-- Notification Button -->
+<div class="notification-container">
+  <button class="notification-bell" onclick="toggleNotificationPopup()">
+    <span class="bell-icon">💬</span>
+    <span class="notification-count" id="notificationCount">2</span>
+  </button>
+  
+  <!-- Notification Popup -->
+  <div class="notification-popup" id="notificationPopup">
+    <div class="popup-header">
+      <h3>Online Orders Chat</h3>
+      <button class="close-popup" onclick="closeNotificationPopup()">×</button>
+    </div>
+    
+    <div class="chat-container">
+      <!-- Order 1 -->
+      <div class="order-chat">
+        <div class="customer-info">
+          <span class="customer-name">John Doe</span>
+          <span class="order-id">#ORD-001</span>
+          <span class="order-time">2 min ago</span>
         </div>
-        <div class="profilePic">
-          <a href="/signup.html">
-            <img src="/public/logo/profile_pic.jpg" alt="Profile Picture" />
-          </a>
+        
+        <div class="chat-messages">
+          <div class="message customer-message">
+            <div class="message-content">
+              <p>Hello, I'd like to order:</p>
+              <ul>
+                <li>2 × Amoxicillin 500mg (pack)</li>
+                <li>5 × Paracetamol 500mg (strip)</li>
+              </ul>
+            </div>
+            <span class="message-time">10:34 PM</span>
+          </div>
+          
+          <div class="message system-message">
+            <div class="message-content">
+              <p><strong>Order Summary:</strong></p>
+              <p>Items: 7 | Total: LKR 3,050 | Discount: LKR 100</p>
+              <p><strong>Final Total: LKR 2,950</strong></p>
+            </div>
+            <span class="message-time">10:35 PM</span>
+          </div>
+        </div>
+        
+        <div class="chat-actions">
+          <button class="action-btn accept-btn" onclick="acceptOrder('ORD-001')">Accept Order</button>
+          <button class="action-btn reject-btn" onclick="rejectOrder('ORD-001')">Reject</button>
+          <button class="action-btn chat-btn" onclick="startChat('ORD-001')">Message Customer</button>
         </div>
       </div>
+      
+      <!-- Order 2 -->
+      <div class="order-chat">
+        <div class="customer-info">
+          <span class="customer-name">Jane Smith</span>
+          <span class="order-id">#ORD-002</span>
+          <span class="order-time">5 min ago</span>
+        </div>
+        
+        <div class="chat-messages">
+          <div class="message customer-message">
+            <div class="message-content">
+              <p>Hi, I need:</p>
+              <ul>
+                <li>3 × Vitamin C 1000mg</li>
+                <li>1 × Blood Pressure Monitor</li>
+              </ul>
+              <p>Do you have these in stock?</p>
+            </div>
+            <span class="message-time">10:30 PM</span>
+          </div>
+        </div>
+        
+        <div class="chat-actions">
+          <button class="action-btn accept-btn" onclick="acceptOrder('ORD-002')">Accept Order</button>
+          <button class="action-btn reject-btn" onclick="rejectOrder('ORD-002')">Reject</button>
+          <button class="action-btn chat-btn" onclick="startChat('ORD-002')">Reply</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <!-- <div class="profile">
+        
+        <div class="profilePic">
+          <a href="/signup.html">
+            <img src="/logo/profile_pic.jpg" alt="Profile Picture" />
+          </a>
+        </div>
+      </div> -->
     </nav>
+    </div>
   </header>
 
   <!-- ---------------- Dashboard Layout ---------------- -->
@@ -45,27 +132,27 @@
       <div class="menu-section">
         <h4 class="section-title">MAIN MENU</h4>
         <ul>
-          <li onclick="window.location.href='cashier-dashboard.html'"><i class="icon"></i><span>Dashboard</span></li>
-          <li onclick="window.location.href='cashier-product.html'"><i class="icon"></i><span>Products</span></li>
+          <li onclick="window.location.href='cashier-dashboard'"><i class="icon"></i><span>Dashboard</span></li>
+          <li onclick="window.location.href='cashier-product'"><i class="icon"></i><span>Products</span></li>
         </ul>
       </div>
 
       <div class="menu-section">
         <h4 class="section-title">LEADS</h4>
         <ul>
-          <li class="active"><i class="icon"></i><span>Orders</span></li>
-          <li onclick="window.location.href='cashier-sales.html'"><i class="icon"></i><span>Sales</span></li>
-          <li onclick="window.location.href='cashier-customer.html'"><i class="icon"></i><span>Customers</span></li>
+          <li class="active" onclick="window.location.href='cashier-order'" ><i class="icon"></i><span>Orders</span></li>
+          <li onclick="window.location.href='cashier-sales'"><i class="icon"></i><span>Sales</span></li>
+          <li onclick="window.location.href='cashier-customer'"><i class="icon"></i><span>Customers</span></li>
         </ul>
       </div>
 
-      <div class="menu-section">
-        <h4 class="section-title">COMMS</h4>
-        <ul>
-          <li><i class="icon"></i><span>Reports</span></li>
-          <li><i class="icon"></i><span>Settings</span></li>
-        </ul>
-      </div>
+      <!-- <div class="menu-section"> -->
+        <!-- <h4 class="section-title">COMMS</h4> -->
+        <!-- <ul> -->
+          <!-- <li><i class="icon"></i><span>Reports</span></li> -->
+          <!-- <li><i class="icon"></i><span>Settings</span></li> -->
+        <!-- </ul> -->
+      <!-- </div> -->
     </aside>
 
     <!-- Right Side Content -->
@@ -109,7 +196,7 @@
               </label>
 
               <label for="createBill">
-                <button type="button" class="createBill" onclick="window.location.href='cashier-createBill.html'">Create Bill</button>
+                <button type="button" class="createBill" onclick="window.location.href='cashier-createBill'">Create Bill</button>
               </label>
             </form>
           </div>
@@ -134,7 +221,7 @@
           </thead>
           <tbody>
             <tr>
-              <td><img src="/frontend/public/users/1.jpg" alt="Customer" /></td>
+              <td><img src="/frontend/users/1.jpg" alt="Customer" /></td>
               <td>68e251016c109</td>
               <td>
                 2 × Amoxicillin 500mg (pack) 2×1200=2400<br />
@@ -203,6 +290,67 @@
         </div>
       </div>
       -->
+      <script>
+        // Notification functionality
+function toggleNotificationPopup() {
+  const popup = document.getElementById('notificationPopup');
+  const overlay = document.createElement('div');
+  overlay.className = 'notification-overlay active';
+  document.body.appendChild(overlay);
+  
+  popup.classList.add('active');
+  
+  // Close when clicking overlay
+  overlay.addEventListener('click', closeNotificationPopup);
+}
+
+function closeNotificationPopup() {
+  const popup = document.getElementById('notificationPopup');
+  const overlay = document.querySelector('.notification-overlay');
+  
+  popup.classList.remove('active');
+  if (overlay) {
+    overlay.remove();
+  }
+}
+
+// Order actions
+function acceptOrder(orderId) {
+  if (confirm(`Accept order ${orderId}?`)) {
+    alert(`Order ${orderId} accepted!`);
+    // Add your API call here
+    updateNotificationCount();
+  }
+}
+
+function rejectOrder(orderId) {
+  if (confirm(`Reject order ${orderId}?`)) {
+    alert(`Order ${orderId} rejected!`);
+    // Add your API call here
+    updateNotificationCount();
+  }
+}
+
+function startChat(orderId) {
+  alert(`Starting chat for order ${orderId}`);
+  // Implement chat functionality
+}
+
+function updateNotificationCount() {
+  const countElement = document.getElementById('notificationCount');
+  let currentCount = parseInt(countElement.textContent);
+  if (currentCount > 0) {
+    countElement.textContent = currentCount - 1;
+  }
+}
+
+// Close popup when pressing Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeNotificationPopup();
+  }
+});
+      </script>
     </div>
   </div>
 </body>

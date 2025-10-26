@@ -5,15 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cashier product</title>
   <link rel="stylesheet" href="/css/style.css" />
+     <link rel="shortcut icon" href="/logo/logo.svg" 
+    type="image/svg+xml">
+        <link rel="icon" href="/logo/favicon.svg" type="image/svg+xml">
+    <link rel="alternate icon" href="/logo/favicon.png" type="image/png">
 </head>
 
 <body class="product">
   <!-- ---------------- Header ---------------- -->
   <header>
+    <div class="navbar-pharmacy">
     <nav>
-      <div class="logo">
-        <img class="logopic" src="/public/logo/logo.svg" alt="Pharmacy Logo" />
-      </div>
+      <a class="logo" href="/">
+        <img class="logopic" src="/logo/logo.svg" alt="Pharmacy Logo" />
+      </a>
 
       <div id="toggle-placeholder"></div>
 
@@ -23,18 +28,101 @@
         <button class="tab active">Cashier</button>
       </nav>
 
-      <div class="profile">
-        <div class="profileName">
-          <a href="#">Chamani Niroshani</a>
-          <div class="welcome">Welcome</div>
+
+      <!-- Notification Button -->
+<div class="notification-container">
+  <button class="notification-bell" onclick="toggleNotificationPopup()">
+    <span class="bell-icon">💬</span>
+    <span class="notification-count" id="notificationCount">2</span>
+  </button>
+  
+  <!-- Notification Popup -->
+  <div class="notification-popup" id="notificationPopup">
+    <div class="popup-header">
+      <h3>Online Orders Chat</h3>
+      <button class="close-popup" onclick="closeNotificationPopup()">×</button>
+    </div>
+    
+    <div class="chat-container">
+      <!-- Order 1 -->
+      <div class="order-chat">
+        <div class="customer-info">
+          <span class="customer-name">John Doe</span>
+          <span class="order-id">#ORD-001</span>
+          <span class="order-time">2 min ago</span>
         </div>
+        
+        <div class="chat-messages">
+          <div class="message customer-message">
+            <div class="message-content">
+              <p>Hello, I'd like to order:</p>
+              <ul>
+                <li>2 × Amoxicillin 500mg (pack)</li>
+                <li>5 × Paracetamol 500mg (strip)</li>
+              </ul>
+            </div>
+            <span class="message-time">10:34 PM</span>
+          </div>
+          
+          <div class="message system-message">
+            <div class="message-content">
+              <p><strong>Order Summary:</strong></p>
+              <p>Items: 7 | Total: LKR 3,050 | Discount: LKR 100</p>
+              <p><strong>Final Total: LKR 2,950</strong></p>
+            </div>
+            <span class="message-time">10:35 PM</span>
+          </div>
+        </div>
+        
+        <div class="chat-actions">
+          <button class="action-btn accept-btn" onclick="acceptOrder('ORD-001')">Accept Order</button>
+          <button class="action-btn reject-btn" onclick="rejectOrder('ORD-001')">Reject</button>
+          <button class="action-btn chat-btn" onclick="startChat('ORD-001')">Message Customer</button>
+        </div>
+      </div>
+      
+      <!-- Order 2 -->
+      <div class="order-chat">
+        <div class="customer-info">
+          <span class="customer-name">Jane Smith</span>
+          <span class="order-id">#ORD-002</span>
+          <span class="order-time">5 min ago</span>
+        </div>
+        
+        <div class="chat-messages">
+          <div class="message customer-message">
+            <div class="message-content">
+              <p>Hi, I need:</p>
+              <ul>
+                <li>3 × Vitamin C 1000mg</li>
+                <li>1 × Blood Pressure Monitor</li>
+              </ul>
+              <p>Do you have these in stock?</p>
+            </div>
+            <span class="message-time">10:30 PM</span>
+          </div>
+        </div>
+        
+        <div class="chat-actions">
+          <button class="action-btn accept-btn" onclick="acceptOrder('ORD-002')">Accept Order</button>
+          <button class="action-btn reject-btn" onclick="rejectOrder('ORD-002')">Reject</button>
+          <button class="action-btn chat-btn" onclick="startChat('ORD-002')">Reply</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 
+      <div class="profile">
         <div class="profilePic">
           <a href="/signup.html">
             <img src="/public/logo/profile_pic.jpg" alt="Profile Picture" />
           </a>
         </div>
-      </div>
+      </div> -->
     </nav>
+    </div>
   </header>
 
   <!-- ---------------- Dashboard Layout ---------------- -->
@@ -45,27 +133,27 @@
       <div class="menu-section">
         <h4 class="section-title">MAIN MENU</h4>
         <ul>
-          <li onclick="window.location.href='cashier-dashboard.html'"><i class="icon"></i><span>Dashboard</span></li>
-          <li class="active"><i class="icon"></i><span>Products</span></li>
+          <li onclick="window.location.href='cashier-dashboard'"><i class="icon"></i><span>Dashboard</span></li>
+          <li class="active" onclick="window.location.href='cashier-product'"><i class="icon"></i><span>Products</span></li>
         </ul>
       </div>
 
       <div class="menu-section">
         <h4 class="section-title">LEADS</h4>
         <ul>
-          <li onclick="window.location.href='cashier-order.html'"><i class="icon"></i><span>Orders</span></li>
-          <li onclick="window.location.href='cashier-sales.html'"><i class="icon"></i><span>Sales</span></li>
-          <li onclick="window.location.href='cashier-customer.html'"><i class="icon"></i><span>Customers</span></li>
+          <li onclick="window.location.href='cashier-order'"><i class="icon"></i><span>Orders</span></li>
+          <li onclick="window.location.href='cashier-sales'"><i class="icon"></i><span>Sales</span></li>
+          <li onclick="window.location.href='cashier-customer'"><i class="icon"></i><span>Customers</span></li>
         </ul>
       </div>
 
-      <div class="menu-section">
+      <!--<div class="menu-section">
         <h4 class="section-title">COMMS</h4>
         <ul>
           <li><i class="icon"></i><span>Reports</span></li>
           <li><i class="icon"></i><span>Settings</span></li>
         </ul>
-      </div>
+      </div>-->
     </aside>
 
     <!-- Right Side Content -->
@@ -109,9 +197,53 @@
               </label>
 
               <label for="createBill">
-                <button type="button" class="createBill" onclick="window.location.href='cashier-createBill.html'">Create Bill</button>
+                <button type="button" class="createBill" onclick="window.location.href='cashier-createBill'">Create Bill</button>
               </label>
+              <label for="addProduct">
+                <button type="button" class="addProduct" onclick="openPopup()"> Add Product</button>
+              </label>
+              
             </form>
+
+            <!-- Add Product Popup -->
+          <div class="popup-overlay" id="popupOverlay">
+            <div class="popup-box">
+              <h2>Add New Product</h2>
+              
+
+              <div class="form-row">
+                <label>Name</label>
+                <input type="text" id="addProductName" placeholder="Enter product name">
+              </div>
+
+              <div class="form-row">
+                <label>Brand</label>
+                <input type="text" id="addProductBrand" placeholder="Enter brand name">
+              </div>
+
+              <div class="form-row">
+                <label>Category</label>
+                <input type="text" id="addProductCategory" placeholder="Enter category">
+              </div>
+
+              <div class="form-row">
+                <label>Price (Rs)</label>
+                <input type="number" id="addProductPrice" placeholder="Enter price">
+              </div>
+
+              <div class="form-row">
+                <label>Available Quantity</label>
+                <input type="number" id="addProductQty" placeholder="Enter available stock">
+              </div>
+
+
+              <div class="actions">
+                <button class="save" onclick="saveProduct()">Save</button>
+                <button class="close" onclick="closePopup()">Close</button>
+              </div>
+            </div>
+          </div>
+
           </div>
         </header>
 
@@ -129,46 +261,21 @@
                 <th>Category</th>
                 <th>Price</th>
                 <th>Available</th>
-                <th>Ex.Date</th>
                 <td>Action</td>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>001</td>
-                <td>Amoxicillin(500 mg)</td>
-                <td>GlaxoSmithKline</td>
-                <td>Antibiotics</td>
-                <td>1200.00</td>
-                <td>50</td>
-                <td>2026-05-15</td>
-                <td>
-                    <button class="remove-btn">Remove</button>
-                    <button class="Edit-btn">Edit</button>
-                </td>
-              </tr>
+              {rows}
 
-              <tr>
-                <td>002</td>
-                <td>Paracetamol(500 mg)</td>
-                <td>Pfizer</td>
-                <td>Antipyretics (Fever Medicines)</td>
-                <td>150.00</td>
-                <td>200</td>
-                <td>2027-01-20</td>
-                <td>
-                    <button class="remove-btn">Remove</button>
-                    <button class="Edit-btn">Edit</button>
-                </td>
-              </tr>
+              
             </tbody>
           </table>
 
           <!-- Pagination -->
           <div class="pagination">
             <button class="page-btn">Prev</button>
-            <button class="page-btn">1</button>
-            <button class="page-btn active">2</button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
             <button class="page-btn">...</button>
             <button class="page-btn">9</button>
             <button class="page-btn">Next</button>
@@ -185,5 +292,270 @@
       
 </div>
   </div>
+  <!-- Edit Product Popup -->
+<div class="popup-overlay" id="editPopupOverlay">
+  <div class="popup-box">
+    <h2>Edit Product</h2>
+
+    <div class="form-row">
+      <label>Product ID</label>
+      <input type="text" id="editProductId" readonly />
+    </div>
+
+    <div class="form-row">
+      <label>Name</label>
+      <input type="text" id="editProductName" />
+    </div>
+
+    <div class="form-row">
+      <label>Brand</label>
+      <input type="text" id="editProductBrand" />
+    </div>
+
+    <div class="form-row">
+      <label>Category</label>
+      <input type="text" id="editProductCategory" />
+    </div>
+
+    <div class="form-row">
+      <label>Price (Rs)</label>
+      <input type="number" id="editProductPrice" />
+    </div>
+
+    <div class="form-row">
+      <label>Available Quantity</label>
+      <input type="number" id="editProductQty" />
+    </div>
+
+    <div class="actions">
+      <button class="save" onclick="saveEdit()">Save Changes</button>
+      <button class="close" onclick="closeEditPopup()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+  <script>
+  let editRow = null;
+
+  // ------- Add Product Popup -------
+  function openPopup() {
+    document.getElementById("popupOverlay").classList.add("active");
+  }
+
+  function closePopup() {
+    document.getElementById("popupOverlay").classList.remove("active");
+  }
+
+  // ------- Edit Product Popup -------
+  function openEditPopup(row) {
+    editRow = row;
+
+    const cells = row.querySelectorAll("td");
+    document.getElementById("editProductId").value = cells[0].textContent.trim();
+    document.getElementById("editProductName").value = cells[1].textContent.trim();
+    document.getElementById("editProductBrand").value = cells[2].textContent.trim();
+    document.getElementById("editProductCategory").value = cells[3].textContent.trim();
+    document.getElementById("editProductPrice").value = cells[4].textContent.trim();
+    document.getElementById("editProductQty").value = cells[5].textContent.trim();
+   // document.getElementById("editProductExpiry").value = cells[6].textContent.trim();
+
+    document.getElementById("editPopupOverlay").classList.add("active");
+  }
+
+  function closeEditPopup() {
+    document.getElementById("editPopupOverlay").classList.remove("active");
+    editRow = null;
+  }
+
+  // ------- Save Edited Product -------
+ function saveEdit() {
+  if (!editRow) {
+    alert("No product selected to edit!");
+    return;
+  }
+
+  const productId = document.getElementById("editProductId").value;
+  const updatedProduct = {
+    id: productId,
+    name: document.getElementById("editProductName").value,
+    brand: document.getElementById("editProductBrand").value,
+    category: document.getElementById("editProductCategory").value,
+    price: parseFloat(document.getElementById("editProductPrice").value),
+    quantity: parseInt(document.getElementById("editProductQty").value)
+  };
+
+  fetch(`/api/products/${productId}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(updatedProduct)
+  })
+  .then(res => res.json())
+  .then(data => {
+    console.log(data);
+    if (data.status === "success") {
+      alert("Product updated successfully!");
+
+      // Update table row
+      const cells = editRow.querySelectorAll("td");
+      cells[1].textContent = updatedProduct.name;
+      cells[2].textContent = updatedProduct.brand;
+      cells[3].textContent = updatedProduct.category;
+      cells[4].textContent = updatedProduct.price;
+      cells[5].textContent = updatedProduct.quantity;
+
+      closeEditPopup();
+    } else {
+      alert("Failed to update product!");
+    }
+  })
+  .catch(err => {
+    console.error(err);
+    alert("Error updating product!");
+  });
+}
+
+
+  // ------- Attach Listeners AFTER page loads -------
+  document.addEventListener("DOMContentLoaded", () => {
+    const editButtons = document.querySelectorAll(".Edit-btn");
+    const removeButtons = document.querySelectorAll(".remove-btn");
+
+    // Edit button listener
+    editButtons.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const row = e.target.closest("tr");
+        openEditPopup(row);
+      });
+    });
+
+    // Remove button listener
+    removeButtons.forEach((btn) => {
+  btn.addEventListener("click", async (e) => {
+    const row = e.target.closest("tr");
+    const productId = row.querySelector("td").textContent.trim();
+
+    if (confirm("Are you sure you want to delete this product?")) {
+      try {
+        const response = await fetch(`/api/products/${productId}`, {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: productId })
+        });
+
+        
+        if (response.status  == 204) {
+          alert("Product deleted successfully!");
+          row.remove();
+        } else {
+          alert("Failed to delete product!");
+        }
+      } catch (err) {
+        console.error(err);
+        alert("Error deleting product!");
+      }
+    }
+  });
+});
+
+  });
+  function saveProduct() {
+  const productData = {
+    //id: document.getElementById("addProductId").value,
+    name: document.getElementById("addProductName").value,
+    brand: document.getElementById("addProductBrand").value,
+    category: document.getElementById("addProductCategory").value,
+    price: parseFloat(document.getElementById("addProductPrice").value),
+    quantity: parseInt(document.getElementById("addProductQty").value),
+    //expiry: document.getElementById("addProductExpiry").value
+  };
+
+  console.log(productData);
+  fetch("/api/products", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(productData)
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.status == "success") {
+      alert("Product added successfully!");
+      window.location.href = "/cashier-product"
+      
+    } else {
+      alert("Failed to add product: " + data.message);
+    }
+  })
+  .catch(err => {
+    console.error(err);
+    alert("Error adding product!");
+  });
+}
+
+// Notification functionality
+function toggleNotificationPopup() {
+  const popup = document.getElementById('notificationPopup');
+  const overlay = document.createElement('div');
+  overlay.className = 'notification-overlay active';
+  document.body.appendChild(overlay);
+  
+  popup.classList.add('active');
+  
+  // Close when clicking overlay
+  overlay.addEventListener('click', closeNotificationPopup);
+}
+
+function closeNotificationPopup() {
+  const popup = document.getElementById('notificationPopup');
+  const overlay = document.querySelector('.notification-overlay');
+  
+  popup.classList.remove('active');
+  if (overlay) {
+    overlay.remove();
+  }
+}
+
+// Order actions
+function acceptOrder(orderId) {
+  if (confirm(`Accept order ${orderId}?`)) {
+    alert(`Order ${orderId} accepted!`);
+    // Add your API call here
+    updateNotificationCount();
+  }
+}
+
+function rejectOrder(orderId) {
+  if (confirm(`Reject order ${orderId}?`)) {
+    alert(`Order ${orderId} rejected!`);
+    // Add your API call here
+    updateNotificationCount();
+  }
+}
+
+function startChat(orderId) {
+  alert(`Starting chat for order ${orderId}`);
+  // Implement chat functionality
+}
+
+function updateNotificationCount() {
+  const countElement = document.getElementById('notificationCount');
+  let currentCount = parseInt(countElement.textContent);
+  if (currentCount > 0) {
+    countElement.textContent = currentCount - 1;
+  }
+}
+
+// Close popup when pressing Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeNotificationPopup();
+  }
+});
+
+</script>
+
+
 </body>
 </html>
+

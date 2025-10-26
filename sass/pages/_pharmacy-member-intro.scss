@@ -1,4 +1,87 @@
 .PharmacyMemberIntro{
+    $accent: #FB8F21;
+    
+
+    .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+
+    a {
+      text-decoration: none;
+      color: #222;
+      font-weight: bold;
+
+      &.active {
+        border-bottom: 2px solid #0a8f8f;
+      }
+    }
+  }
+
+  .container{
+    display: flex;
+    flex-direction: row;
+
+    container2{
+        .all-staff{
+             justify-content: left;
+             margin-left: 0rem;
+
+        }
+    }
+  }
+  .sideBar{
+        width: 26rem;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        background-color: #d6d5d5;
+        border-radius: 1rem;
+        height: 100vh;
+       
+        
+        .menu {
+        flex: 2;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 4rem;
+        
+
+        .members{
+            padding: 1.5rem;
+            &::before{
+                content: "👥";
+            }
+        }
+        .requests{
+            padding: 1.5rem;
+            &::before{
+                content: "📄";
+            }
+        }
+
+    a {
+      padding: 1px 1px;
+      border-radius: 8px;
+      cursor: pointer;
+      color: #768190;
+      transition: all 0.3s;
+
+      &.active,
+      &:hover {
+        background: #9ca3af;
+        color: $accent;
+      }
+    }
+  }
+
+
+        
+        }
+    
 
     input,select{
         border: 1px solid #eee;
@@ -160,131 +243,379 @@
         }
 
 
-    .slideset{
-        .window-1{
-            display: flex;
-            flex-direction: column;
-            padding: 3rem;
-            justify-content: space-between;
-            height: vh;
+//     .slideset{
+//         .window-1{
+//             display: flex;
+//             flex-direction: column;
+//             padding: 3rem;
+//             justify-content: space-between;
+//             height: vh;
 
-            .buttons{
-                height: min-content;
-                margin-bottom: 5rem;
-                text-transform: capitalize;
-                font-size: 1.6rem;
+//             .buttons{
+//                 height: min-content;
+//                 margin-bottom: 5rem;
+//                 text-transform: capitalize;
+//                 font-size: 1.6rem;
                 
-                .popup-close{
-                    font-size: 1.6rem;
-                    padding: 2rem;
-                    width: 20rem;
-                    border-radius: 30rem;
-                    border: none;
-                    text-transform: capitalize;
+//                 .popup-close{
+//                     font-size: 1.6rem;
+//                     padding: 2rem;
+//                     width: 20rem;
+//                     border-radius: 30rem;
+//                     border: none;
+//                     text-transform: capitalize;
                     
-                }
+//                 }
                 
                 
-                .new-member-button{
-                    font-size: 1.6rem;
-                    border-radius: 30rem;
-                    width: 20rem;
-                    background-color: var(--color-green-01);
-                    color: #fff;
-                    border: none;
-                }
-            }
-        }
+//                 .new-member-button{
+//                     font-size: 1.6rem;
+//                     border-radius: 30rem;
+//                     width: 20rem;
+//                     background-color: var(--color-green-01);
+//                     color: #fff;
+//                     border: none;
+//                 }
+//             }
+//         }
 
-        .window-2{
-            padding: 3rem;
+//         .window-2{
+//             padding: 3rem;
 
 
-        }
+//         }
 
-        .window-3{
-            padding: 3rem;
+//         .window-3{
+//             padding: 3rem;
 
-            .contact-location{
-                display: flex;
-                justify-content: space-between;
-                > div{
-                    width: 48%;
-                }
-            }
+//             .contact-location{
+//                 display: flex;
+//                 justify-content: space-between;
+//                 > div{
+//                     width: 48%;
+//                 }
+//             }
             
-            input{
-                margin-bottom: .5rem !important;
+//             input{
+//                 margin-bottom: 0.5rem;
+//             }
+//         }
+
+//         .window-4{
+//             padding: 3rem;
+//             // display: flex;
+//             // flex-direction: column;
+//             // justify-content: end;
+
+
+//             .title-3{
+
+//             h1{
+//                 color: #027F80;
+//             }
+//             p{
+//             color: #707070;
+//             font-size: 1.5rem;
+//             margin-bottom: 5rem;
+//             margin-top: -0.5rem;
+            
+            
+//             }
+//         }
+           
+//         .role{
+//             display: flex;
+//             flex-direction: column;
+//             align-items: center;
+
+//             label{
+//                margin-left: -5rem;
+//             }
+//             select{
+//                 color: #707070;
+//                 border-radius: 0.5rem;
+
+//             }
+//         }
+
+//         .role-details{
+//             color: #027F80;
+//             display: flex;
+//             flex-direction: column;
+//             margin-left: 18rem;
+//             margin-top: 3rem;
+//             font-size: 1.8rem;
+//             font-weight: 500;
+//             // line-height: 2rem;
+
+ 
+//         }
+
+//             .footer{
+//                margin-top: 28rem;
+//             }
+
+//         //     .finished{
+//         //         border-radius: 3rem;
+//         //         background-color: #027F80;
+//         //         color: #fff;
+
+//         //         &::after{
+//         //             content: '';
+//         //         }
+                
+//         //     }
+
+//         // }
+
+//         .progress-dots{
+//             .dot{
+//                 background-color: #eee;
+//                 width: 1rem;
+//                 height: 1rem;
+//                 border-radius: 1rem;
+
+//             }
+//         }
+//         }
+
+
+
+//     .footer{
+//         display: flex;
+//         align-items: center;
+//         button{
+//             font-size: 1.6rem;
+//             text-transform: capitalize;
+//             font-family: var(--primary-font);
+            
+//             &:nth-child(1)::before{
+//                 content: "<";
+//             }
+
+//             &:nth-child(3)::after{
+//                 content: ">";
+//             }
+//         }
+//     }
+    
+    
+
+
+// }
+
+// // @for $i from 1 to 10{
+
+    
+// //     .slide-container[active="#{$i}"]{
+// //         .progress-dots{
+// //             .dot:nth-child(#{$i - 1}){
+// //                 background-color: #027F80;
+                
+// //             }
+// //         }
+// //     }
+// // }
+
+
+.slideset{
+    padding: 2rem;
+    .window-1{
+       p{
+        color: #707070;
+       }
+
+       .btn{
+            margin-bottom: 5rem;
+            text-transform: capitalize;
+            font-size: 1.6rem;
+            width: 12rem;
+            display: inline;
+            align-content: center;
+
+            
+
+            &.prev{
+                border: none; 
+
+            }
+
+            &.Close{
+                background-color: none;
+                border-radius: 1rem;
+                margin-left: 2rem; 
+               
+            }
+            &.Forward{
+                border-radius: 1rem;
+                background-color: #027f80;
+            }
+        }
+    }
+    .window-2{
+       margin: 2rem;
+       padding: 2rem;
+        p{
+            color: #707070;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+        }
+        .btn{
+            display: flex;
+            flex-direction: row;
+            align-items: baseline;
+            margin-top: -2rem;
+
+            &.prev{
+                border: none;
+            }
+
+        }
+        .progress-dots{
+            margin: 0 17rem 0 17rem;
+            font-size: 1rem;
+            margin-top: -2rem;
+
+            .dot-active{
+                background-color: #027f80;
             }
         }
 
-        .window-4{
-            display: flex;
-            flex-direction: column;
-            justify-content: end;
+    }
+    .window-3{
+        margin-bottom: 2rem;
+        margin-right: 2rem;
+        padding-right: 0rem;
+        max-width: 100%;
 
-            .footer{
+        .title2{
+            p{
+                font-size: 1.9rem;
+                color: #707070;
+            }
+        }
+        .btn{
+            display: flex;
+            flex-direction: row;
+           justify-content: baseline;
+            margin-top: 2rem;
+
+            &.Prev{
+                border: none;
+                height: 1rem;
+            }
+            &.Next{
+                border: none;
+                height: 1rem;
+            }
+
+        }
+        .form-group{
+            input{
+                margin: 0.2rem;
+            }
+        }
+        .progress-dots{
+            margin: 0 17rem 0rem 17rem;
+            font-size: 1rem;
+            margin-top: -2rem;
+
+            .dot-active{
+                background-color: #027f80;
+            }
+        }
+
+    }
+    .window-4{
+        margin-bottom: 2rem;
+        margin-right: 2rem;
+        padding-right: 0rem;
+        max-width: 100%;
+
+        .title-3{
+            h1{
+                color: #027F80;
+            }
+            p{
+                font-size: 1.9rem;
+                color: #707070;
+                font-weight: 500;
                 margin-bottom: 5rem;
             }
+        }
 
-            .finished{
-                border-radius: 3rem;
-                background-color: #027F80;
-                color: #fff;
+        .role{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
 
-                &::after{
-                    content: '';
-                }
-                
+            label{
+               margin-left: -5rem;
+            }
+            select{
+                color: #707070;
+                border-radius: 0.5rem;
+
+            }
+        }
+        .role-details{
+            color: #027F80;
+            display: flex;
+            flex-direction: column;
+            margin-left: 18rem;
+            margin-top: 3rem;
+            font-size: 1.8rem;
+            font-weight: 500;
+            line-height: 2rem;
+
+ 
+        }
+        .btn{
+            display: flex;
+            flex-direction: row;
+             
+            margin-top: 2rem;
+
+            &.prev{
+                border: none;
             }
 
         }
-
+        .form-group{
+            input{
+                margin: 0.2rem;
+            }
+        }
         .progress-dots{
-            .dot{
-                background-color: #eee;
-                width: 1rem;
-                height: 1rem;
-                border-radius: 1rem;
+            margin: 0 17rem 0rem 17rem;
+            font-size: 1rem;
+            margin-top: -2rem;
 
+            .dot-active{
+                background-color: #027f80;
             }
         }
+
+
+
     }
 
-    .footer{
-        display: flex;
-        align-items: center;
-        button{
-            font-size: 1.6rem;
-            text-transform: capitalize;
-            font-family: var(--primary-font);
-            
-            &:nth-child(1)::before{
-                content: "<";
+     .title{
+            h1{
+              color: #027F80;
             }
-
-            &:nth-child(3)::after{
-                content: ">";
+            p{
+                color: #707070;
             }
         }
-    }
-    
-    
 
+        .footer{
+            display: flex;
+            flex-direction: column;
+        }
 
+        
 }
-
-@for $i from 1 to 10{
-
-    
-    .slide-container[active="#{$i}"]{
-        .progress-dots{
-            .dot:nth-child(#{$i - 1}){
-                background-color: #027F80;
-                
-            }
-        }
-    }
 }
 
 

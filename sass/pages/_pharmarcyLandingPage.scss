@@ -6,12 +6,12 @@ $secondary: #ff8c42;
 $dark: #222;
 $light: #fff;
 
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background: #f9f9f9;
-  color: $dark;
-}
+// body {
+//   font-family: Arial, sans-serif;
+//   margin: 0;
+//   background: #f9f9f9;
+//   color: $dark;
+// }
 
 /* Navbar */
 .navbar {
@@ -20,6 +20,7 @@ body {
   align-items: center;
   padding: 1rem 2rem;
   background: $light;
+  border-radius: 0.5rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 
   .nav-links {
@@ -82,6 +83,9 @@ body {
 }
 
    
+.contactBtns{
+  display: flex;
+  flex-direction: row;
 
   .btn {
     display: flex;
@@ -101,6 +105,7 @@ body {
       color: $primary;
     }
   }
+}
 
   .contact-card {
     position: absolute;
@@ -333,7 +338,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    top: 150%;
+    margin-top: 7rem;
     left: 50%;
     transform: translate(-50%,-50%);
     border-radius: 5rem;
@@ -342,6 +347,7 @@ body {
         display: flex;
         justify-content: center;
         color: #1E1E1E;
+        background: none;
         font-family: "Red Hat Display";
         font-size: 18px;
         font-style: normal;
@@ -405,6 +411,7 @@ body {
         height: 31.3535rem;
         border-radius: 1.7236rem;
         background: #004848;
+        transform: rotate(-10deg); 
         
             .stars{
                 display: flex;
@@ -493,6 +500,7 @@ body {
         height: 31.3535rem;
         border-radius: 1.7236rem;
         background: #000;
+        transform: rotate(10deg); 
         
             .stars{
                 display: flex;
@@ -580,7 +588,9 @@ body {
         width: 25rem;
         height: 31.3535rem;
         border-radius: 1.7236rem;
-        background: #000;
+        background: #313131;
+        transform: rotate(-10deg); 
+        z-index: 10;
         
             .stars{
                 display: flex;
@@ -669,6 +679,7 @@ body {
         height: 31.3535rem;
         border-radius: 1.7236rem;
         background: #004848;
+        transform: rotate(10deg); 
         
             .stars{
                 display: flex;
@@ -761,9 +772,9 @@ body {
   height: 30rem;
   background: #08374F;
   color: #fff;
+  width: 98%;
   padding: 5rem 7rem 0rem 7rem;
 
-  margin: -3%;
 
   .footer-content {
     display: flex;

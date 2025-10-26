@@ -15,16 +15,31 @@
             <img class="logopic" src="/public/logo/logo.svg" alt="logo">
             <p class="logoname">PharmaNet</p>
         </div>
+        <ul class="nav-links">
+            <li><a href="/pharmacy/landingPage.html">Store</a></li>
+            <li><a href="/pharmacy/pharmacy-member-intro.html" class="active">Staff</a></li>
+            <li><a href="#">Cashier</a></li>
+        </ul>
 
         <div id="toggle-placeholder"></div>
 
     </nav>
   </header>
 
+  <div class="container">
+    <div class="container1">
+   <div class="sideBar">
+
+    <ul class="menu">
+      <a href="/pharmacy/pharmacy-member-intro.html" class="members">Members</a>
+      <a href="/systemAdmin/pharmacy.html" class="requests">Requests</a>
+      
+    </ul>
+  </div>
+  </div>
 
 
-
-
+<div class="container2">
   <section class="all-staff">
     <div class="menu"></div>
     <div class="members">
@@ -49,7 +64,7 @@
               </div>
 
         </div>
-
+        
         </div>
       </div>
 
@@ -61,6 +76,7 @@
             new staff member +
           </popup-open>
       </div>
+    </div>
     </div>
   </section>
 
@@ -75,18 +91,18 @@
                     <div class="head-section">
 
                         <div class="title">
-                            New Staff Member<p>Do you need to add new Staff member ?</p>
+                            <h1>New Staff Member</h1>
+                            <p>Do you need to add new Staff member ?</p>
                         </div>
                     </div>
 
-                    <div class="buttons">
+                    <div class="btn">
                         <popup-close       
                         for="new-staff-member-window"
-                        class="popup-close"
-                        >
+                        class="btn Close">
                             back
                         </popup-close>
-                        <slide-next class="new-member-button">
+                        <slide-next class="btn Forward">
                             New Member
                         </slide-next>
                     </div>
@@ -97,9 +113,9 @@
                 <slide-window class="window-2">
                     <div class="title2">
                         Primary Details
-                        <span>
+                        <p>
                             Let’s give them a proper intro—share the basics of your staff member.
-                        </span>
+                        </p>
                     </div>
                     <div name="primary-details">
                         <div class="form-row">
@@ -146,12 +162,13 @@
                     </div>
 
                     <div class="footer">
-                        <slide-previous class="previous-button">
+                    <div class="btn">
+                        <slide-previous class="btn Pre">
                             Previous
                         </slide-previous>
 
                         <div class="progress-dots">
-                            <span class="dot"></span>
+                            <span class="dot-active"></span>
                             <span class="dot"></span>
                             <span class="dot"></span>
                             <span class="dot"></span>
@@ -160,15 +177,120 @@
                             <span class="dot"></span>
                         </div>
 
-                        <slide-next class="next-button">
+                        <slide-next class="btn Next">
                             Next
                         </slide-next>
+                        </div>
                     </div>
 
                 </slide-window>
 
                 <slide-window class="window-3">
                     <div class="title2">
+                        Contact and Location Info
+                        <p>
+                            Drop the location and contact info so we know where to find Your Member
+                        </p>
+                    </div>
+                    <div class="contact-location" name="primary-details">
+                        <div class="left-grid">
+
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input type="text" id="address" name="m-address-no" placeholder="No">
+                                <input type="text" id="address" name="m-address-sreet" placeholder="Street">
+                                <input type="text" id="address" name="m-address-town" placeholder="Twon">
+                                <input type="text" id="address" name="m-address-Province" placeholder="Province">
+                                <input type="text" id="address" name="m-address-postal-code" placeholder="Postal Code">
+
+                            </div>
+    
+                        </div>
+                        
+                        <div class="right-grid">
+
+                            <div class="form-group">
+                                <label for="contact-number">NIC</label>
+                                <input type="text" id="contact-number" name="m-contact-numb-01" placeholder="076 XXX XXXX">
+                                <input type="text" id="contact-number" name="m-contact-numb-02" placeholder="071 XXX XXXX">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="btn">
+
+                        <slide-previous class="btn Prev">
+                            Previous
+                        </slide-previous>
+
+                        <div class="progress-dots">
+                            <div class="dot-active"></div>
+                            <span class="dot-active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+
+                        <slide-next class="btn Next">
+                            Next
+                        </slide-next>
+                    </div>
+
+                </slide-window>
+
+                <slide-window class="window-4">
+
+                     <div class="title-3">
+                            <h1>Choose role</h1>
+                            <p>Select Member's role so we can tailor the system to your and give you the right access.</p>
+                        </div>
+
+                        <div class="role">
+                            <label>Role</label>
+                            <select id="role">
+                                <option>Cashier</option>
+                                <option>Manager</option>
+                                <option>Pharmacist</option>
+                            </select>
+                        </div>
+
+                        <ul class="role-details">
+                            <li>Process customer sales and transactions.</li>
+                            <li>Handle prescription billing and payment records.</li>
+                            <li>View and update customer purchase details relevant to transactions.</li>
+                        </ul>
+
+                  <div class="btn">
+                        <slide-previous class="btn Prev">
+                            Previous
+                        </slide-previous>
+
+                        <div class="progress-dots">
+                            <span class="dot-active"></span>
+                            <span class="dot-active"></span>
+                            <span class="dot-active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+
+                        <slide-next class="btn Next">
+                            Next
+                        </slide-next>
+
+                        
+
+                        <!-- <slide-next class="next-button finished">
+                            finish :)
+                        </slide-next> -->
+
+
+               <slide-window class="window-5">
+                    <div class="title-4">
                         Contact and Location Info
                         <span>
                             Drop the location and contact info so we know where to find Your Member
@@ -200,48 +322,28 @@
                         </div>
                     </div>
 
-                    <div class="footer">
-                        <slide-previous class="previous-button">
+                    <div class="btn">
+
+                        <slide-previous class="btn prev">
                             Previous
                         </slide-previous>
 
                         <div class="progress-dots">
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
+                            <span class="dot-active"></span>
+                            <span class="dot-active"></span>
+                            <span class="dot-active"></span>
+                            <span class="dot-active"></span>
                             <span class="dot"></span>
                             <span class="dot"></span>
                             <span class="dot"></span>
                         </div>
 
-                        <slide-next class="next-button">
+                        <slide-next class="btn Next">
                             Next
                         </slide-next>
                     </div>
 
                 </slide-window>
-
-                <slide-window class="window-4">
-
-                  <div class="footer">
-                        <slide-previous class="previous-button">
-                            Previous
-                        </slide-previous>
-
-                        <div class="progress-dots">
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                        </div>
-
-                        <slide-next class="next-button finished">
-                            finish :)
-                        </slide-next>
                     </div>
 
 

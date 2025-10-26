@@ -3,18 +3,17 @@ const fs = require('fs');
 const { requestFile } = require('./fileServer');
 const AppRouter = require('./common/Router');
 const indexController = require('./controllers/index.controller');
+const blogController = require('./controllers/blogs/blog.controller');
 const adminController = require('./controllers/admins/admin.controller');
 const loginController = require('./controllers/auth/login.controller');
 const signupController = require('./controllers/auth/signup.controller');
 const contactUsController = require('./controllers/contactus.controller');
-
 const customerController = require("./controllers/customer/customer.controller");
 const pharmacyController = require('./controllers/pharmacy/pharmacy.controller');
 const customerPharmacyController = require('./controllers/customer/customer.pharmacies.controller');
 const { responseJson } = require('./common/response');
 const adminPharmacyController = require('./controllers/admins/admin.pharmacy.controller');
 const customerMedicineController = require('./controllers/customer/customer.medicines.controller');
-
 
 const server = http.createServer((req , res)=>{
     try{
@@ -45,7 +44,9 @@ const server = http.createServer((req , res)=>{
         AppRouter.pipe(req , res).route('/')
         ?.get(indexController.renderIndexPage);
 
-
+        AppRouter.pipe(req ,res).route('/signup')
+        AppRouter.pipe(req ,res).route('/antibiotics')
+        ?.get(blogController.antibiotics);
         AppRouter.pipe(req , res).route('/contactus')
         ?.get(contactUsController.renderContactus)
 
@@ -71,12 +72,56 @@ const server = http.createServer((req , res)=>{
         // :: ~~~~~~~~ ADMIN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         //**  admin/ */
-        AppRouter.pipe(req ,res).route('/admin')
-        ?.get(adminController.adminDashboard);
+        // AppRouter.pipe(req ,res).route('/admin')
+        // ?.get(adminController.adminDashboard);
 
-        AppRouter.pipe(req ,res).route('/admin/:adminId')
-        ?.authenticate(req.adminId)
-        ?.get(adminController.adminDashboard);
+        // AppRouter.pipe(req ,res).route('/admin/:adminId')
+        // ?.authenticate(req.adminId)
+        // ?.get(adminController.adminDashboard);
+
+        // AppRouter.pipe(req ,res).route('/admin/pharmacy/create')
+        // ?.get(adminController.adminAddPharmacy)
+        // ?.post(adminController.createPharmacy);
+
+        // AppRouter.pipe(req ,res).route('/admin/pharmacy/step/2')
+        // ?.get(adminController.adminAddPharmacyStep02);
+
+        // AppRouter.pipe(req ,res).route('/admin/pharmacy/step/3')
+        // ?.get(adminController.adminAddPharmacyStep03)
+ 
+        // AppRouter.pipe(req ,res).route('/admin/pharmacy/step/4')
+        // ?.get(adminController.adminAddPharmacyStep04);
+
+        AppRouter.pipe(req ,res).route('/blogManage')
+        ?.get(blogController.blogManage);
+
+        AppRouter.pipe(req ,res).route('/blogView')
+        ?.get(blogController.blogView);
+
+        AppRouter.pipe(req ,res).route('/createNewBlog')
+        ?.get(blogController.createNewBlog);
+
+        AppRouter.pipe(req ,res).route('/diabetics')
+        ?.get(blogController.diabetics);
+
+        AppRouter.pipe(req ,res).route('/editBlog1')
+        ?.get(blogController.editBlog1);
+
+        AppRouter.pipe(req ,res).route('/hypertension')
+        ?.get(blogController.hypertension);
+  
+        AppRouter.pipe(req ,res).route('/supplement')
+        ?.get(blogController.supplement);
+
+        AppRouter.pipe(req , res).route("/api/blogs")
+        ?.post(blogController.createBlog)
+        ?.get(blogController.getAllBlogs);
+
+        AppRouter.pipe(req ,res).route('/api/blogs/:id')
+        ?.delete(blogController.deleteBlog)
+
+        AppRouter.pipe(req ,res).route('/blog/delete/:id')
+        ?.get(blogController.delete);
 
         //* ==========================================
         ///* ADMIN PHARMACY
@@ -203,11 +248,7 @@ const server = http.createServer((req , res)=>{
         ?.get(renderCustomerOrderDetails);
 
 
-
-
-        /*
-
-         AppRouter.pipe(req ,res).route('/cashier-dashboard')
+        AppRouter.pipe(req ,res).route('/cashier-dashboard')
         ?.get(cashierController.renderCashierDashboard);
 
         AppRouter.pipe(req ,res).route('/cashier-customer')
@@ -216,7 +257,7 @@ const server = http.createServer((req , res)=>{
         AppRouter.pipe(req ,res).route('/cashier-createBill')
         ?.get(cashierController.renderCashierBillPage);
 
-         AppRouter.pipe(req ,res).route('/cashier-order')
+        AppRouter.pipe(req ,res).route('/cashier-order')
         ?.get(cashierController.renderCashierorder);
 
         AppRouter.pipe(req ,res).route('/cashier-sales')
@@ -254,8 +295,6 @@ const server = http.createServer((req , res)=>{
         ?.get(cashierController.getProductById)
         ?.update(cashierController.updateProduct)
         ?.delete(cashierController.deleteProduct);
-
-        */
 
         return AppRouter.pipe(req ,res).end();
 

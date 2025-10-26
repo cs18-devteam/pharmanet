@@ -8,7 +8,7 @@
 </head>
 <body class="createNewBlog">
   <header class="page-header">
-    <a href="blogView.html" class="back-btn">←</a>
+    <a href="/blogView" class="back-btn">←</a>
     <div class="title-group">
       <h1>Create New Blog Post</h1>
       <p>Share health tips and pharmacy insights with your community</p>
@@ -16,19 +16,19 @@
   </header>
 
   <main class="container">
-    <div class="form-section">
+    <form class="form-section" id="createBlog">
       <div class="card">
         <h3>Post Details</h3>
         <p class="subtitle">Enter the basic information for your blog post</p>
 
         <label>Post Title</label>
-        <input type="text" placeholder="e.g., 5 Tips for Managing Your Medications">
+        <input type="text" name="title" placeholder="e.g., 5 Tips for Managing Your Medications">
 
         <label>URL Slug</label>
-        <input type="text" placeholder="auto-generated from title">
+        <input type="text" name="slug" placeholder="">
 
         <label>Excerpt</label>
-        <textarea placeholder="Brief summary of your post (shown in listings)"></textarea>
+        <textarea name="excerpt" placeholder="Brief summary of your post (shown in listings)" name="excerpt"></textarea>
       </div>
 
       <div class="card">
@@ -36,7 +36,7 @@
         <p class="subtitle">Write your blog post content here</p>
 
         <label>Post Content</label>
-        <textarea placeholder="Write your blog post content here. You can use markdown formatting..."></textarea>
+        <textarea name="content" placeholder="Write your blog post content here. You can use markdown formatting..."></textarea>
       </div>
     </div>
 
@@ -45,23 +45,24 @@
         <h3>Publish Settings</h3>
 
         <label>Status</label>
-        <select>
+        <input type="date" name="status" placeholder="DD-MM-YYYY">
+        <!-- <select name="status">
           <option>Draft</option>
           <option>Published</option>
-        </select>
+        </select> -->
 
         <label>Category</label>
-        <select>
+        <select name="category">
           <option>Select a category</option>
           <option>Medicine</option>
           <option>Disease</option>
         </select>
 
         <label>Author</label>
-        <input type="text" placeholder="Your name">
+        <input type="text" name="author" placeholder="Your name">
 
         <label>Tags</label>
-        <input type="text" placeholder="Separate with commas">
+        <input type="text" name="tag" placeholder="Separate with commas">
       </div>
 
       <div class="buttons">
@@ -74,5 +75,24 @@
       </div>
     </aside>
   </main>
+  <script>
+    const  form = document.getElementById('createBlog');
+    form.addEventListener("submit" , (e)=>{
+	    e.preventDefault();
+	    const data = {}
+	    const formData = new FormData(form);
+      for(const  [key , value] of formData.entries()){
+        data[key] = value;
+      }
+
+      console.log(data);
+
+      fetch("/api/blogs" , {
+        method:"POST" , 
+        body : JSON.stringify(data),
+      }).then((respond)=>respond.json()).then(()=>window.location.href="/blogView").catch(e=>console.log(e));
+	
+})
+  </script>
 </body>
 </html>

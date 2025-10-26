@@ -6888,7 +6888,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   display: flex;
   gap: 30px;
   padding: 40px;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
 }
 .createNewBlog .form-section {
   flex: 2;

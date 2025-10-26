@@ -41,7 +41,6 @@ const server = http.createServer((req , res)=>{
             console.log(method , url  , path)
         }
 
-        
 
         AppRouter.pipe(req , res).route('/')
         ?.get(indexController.renderIndexPage);
@@ -50,15 +49,17 @@ const server = http.createServer((req , res)=>{
         AppRouter.pipe(req , res).route('/contactus')
         ?.get(contactUsController.renderContactus)
 
-        //:: USER ROUTES
+        //:: USER / LOGIN
         AppRouter.pipe(req , res).route('/login')
             ?.get(loginController.renderLogin)
             ?.post(loginController.login);
 
+        // :: USER / SIGNUP
         AppRouter.pipe(req , res).route('/signup')
             ?.get(signupController.renderSignup)
             ?.post(signupController.signup);
 
+        // :: USER / VERIFY EMAIL / MOBILE NUMBER
         AppRouter.pipe(req , res).route('/verify/email')
             ?.get(verifyEmailController.renderVerifyEmail);
 
@@ -66,71 +67,106 @@ const server = http.createServer((req , res)=>{
             ?.get(verifyNumberController.renderVerifyNumber);
 
         //////////////////////////////////////////
+        // :: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // :: ~~~~~~~~ ADMIN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+        //**  admin/ */
         AppRouter.pipe(req ,res).route('/admin')
         ?.get(adminController.adminDashboard);
 
+        AppRouter.pipe(req ,res).route('/admin/:adminId')
+        ?.authenticate(req.adminId)
+        ?.get(adminController.adminDashboard);
+
+        //* ==========================================
+        ///* ADMIN PHARMACY
+
+        //* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        ///* admin/pharmacy
+        AppRouter.pipe(req ,res).route('/admin/pharmacy')
+        ?.get(adminPharmacyController.pharmacy);
+
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //**  admin/pharmacy/create/step/1 */
         AppRouter.pipe(req ,res).route('/admin/:adminId/pharmacy/create')
         ?.authenticate(req.adminId)
         ?.get(adminPharmacyController.adminAddPharmacy)
         ?.post(adminPharmacyController.createPharmacy);
 
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        ///* admin/pharmacy/create/step/2 */
         AppRouter.pipe(req ,res).route('/admin/pharmacy/step/2')
+        // ?.authenticate(req.adminId)
         ?.get(adminPharmacyController.adminAddPharmacyStep02);
 
+        ///* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        ///* admin/pharmacy/create/step/3 */
         AppRouter.pipe(req ,res).route('/admin/pharmacy/step/3')
+        // ?.authenticate(req.adminId)
         ?.get(adminPharmacyController.adminAddPharmacyStep03)
  
+        ///* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        ///* admin/pharmacy/create/step/3 */
         AppRouter.pipe(req ,res).route('/admin/pharmacy/step/4')
         ?.get(adminPharmacyController.adminAddPharmacyStep04);
 
-        AppRouter.pipe(req ,res).route('/admin/:adminId')
-        ?.get(adminController.adminDashboard);
-
-
-        AppRouter.pipe(req ,res).route('/admin/medicines')
-        ?.get(adminController.medicines);
-
-        AppRouter.pipe(req ,res).route('/admin/assets')
-        ?.get(adminController.dataAssets);
-
-        AppRouter.pipe(req ,res).route('/admin/users')
-        ?.get(adminController.users);
-
-
-        ////////////////////////////////////////////////
-
-
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        ///* admin/pharmacy/update
         AppRouter.pipe(req ,res).route('/admin/pharmacy/:pharmacyId/update')
-        ?.update(adminPharmacyController.updatePharmacy)
+        ?.update(adminPharmacyController.updatePharmacy);
 
-
-        AppRouter.pipe(req ,res).route('/admin/pharmacy')
-        ?.get(adminPharmacyController.pharmacy);
-
-        AppRouter.pipe(req ,res).route('/admin/pharmacy/list')
-        ?.get(adminPharmacyController.pharmacyList);
-
-        AppRouter.pipe(req ,res).route('/admin/pharmacy/view/:pharmacyId')
-        ?.get(adminPharmacyController.getPharmacyDetails)
-        ?.delete(adminPharmacyController.deletePharmacy);
-
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        ///* admin/pharmacy/id/edit
         AppRouter.pipe(req ,res).route('/admin/pharmacy/:pharmacyId/edit')
         ?.get(adminPharmacyController.adminEditPharmacy)
         ?.update(adminPharmacyController.adminEditPharmacy);
 
-
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        ///* admin/pharmacy/edit/step/2
         AppRouter.pipe(req ,res).route('/admin/pharmacy/:pharmacyId/edit/step/2')
         ?.get(adminPharmacyController.adminEditPharmacyStep02);
 
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        ///* admin/pharmacy/edit/step/3
         AppRouter.pipe(req ,res).route('/admin/pharmacy/:pharmacyId/edit/step/3')
         ?.get(adminPharmacyController.adminEditPharmacyStep03);
 
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        ///* admin/pharmacy/edit/step/4
         AppRouter.pipe(req ,res).route('/admin/pharmacy/:pharmacyId/edit/step/4')
         ?.get(adminPharmacyController.adminEditPharmacyStep04)
 
 
-        //////////////////////////////
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        ///* admin/pharmacy/list
+        AppRouter.pipe(req ,res).route('/admin/pharmacy/list')
+        ?.get(adminPharmacyController.pharmacyList);
+
+        /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        ///* admin/pharmacy/view
+        AppRouter.pipe(req ,res).route('/admin/pharmacy/view/:pharmacyId')
+        ?.get(adminPharmacyController.getPharmacyDetails)
+        ?.delete(adminPharmacyController.deletePharmacy);
+
+        ///* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        // ADMIN/MEDICINE/MEDICINES
+        AppRouter.pipe(req ,res).route('/admin/medicines')
+        ?.get(adminController.medicines);
+
+        //ADMIN/ASSETS
+        AppRouter.pipe(req ,res).route('/admin/assets')
+        ?.get(adminController.dataAssets);
+
+        // ADMIN/USERS
+        AppRouter.pipe(req ,res).route('/admin/users')
+        ?.get(adminController.users);
+
+
+        AppRouter.pipe(req ,res).route('/admin/:adminId/writers');
+        AppRouter.pipe(req ,res).route('/admin/:adminId/writers/:writerId');
+        AppRouter.pipe(req ,res).route("/customers/:customerId/medicines")
+            ?.get(customerMedicineController.renderCustomerMedicines);
+
 
         //:: CUSTOMERS ROUTES
         AppRouter.pipe(req ,res).route("/customers/:customerId")
@@ -138,8 +174,7 @@ const server = http.createServer((req , res)=>{
         ?.get(customerController.renderCustomerHome);
 
 
-        AppRouter.pipe(req ,res).route("/customers/:customerId/medicines")
-            ?.get(customerMedicineController.renderCustomerMedicines);
+
 
         AppRouter.pipe(req ,res).route("/customers/:customerId/profile")
         ?.get(customerController.renderCustomerProfile);
@@ -168,14 +203,59 @@ const server = http.createServer((req , res)=>{
         ?.get(renderCustomerOrderDetails);
 
 
-        AppRouter.pipe(req ,res).route('/admin/:adminId/writers');
-        AppRouter.pipe(req ,res).route('/admin/:adminId/writers/:writerId');
-        AppRouter.pipe(req ,res).route('/admin/:adminId/writers/:writerId');
-        AppRouter.pipe(req ,res).route('/admin/:adminId/writers/:writerId');
-        AppRouter.pipe(req ,res).route('/admin/:adminId/writers/:writerId');
 
 
+        /*
 
+         AppRouter.pipe(req ,res).route('/cashier-dashboard')
+        ?.get(cashierController.renderCashierDashboard);
+
+        AppRouter.pipe(req ,res).route('/cashier-customer')
+        ?.get(cashierController.renderCashierCustomer);
+
+        AppRouter.pipe(req ,res).route('/cashier-createBill')
+        ?.get(cashierController.renderCashierBillPage);
+
+         AppRouter.pipe(req ,res).route('/cashier-order')
+        ?.get(cashierController.renderCashierorder);
+
+        AppRouter.pipe(req ,res).route('/cashier-sales')
+        ?.get(cashierController.renderCashierSale);
+
+        AppRouter.pipe(req ,res).route('/cashier-product')
+        ?.get(cashierController.renderCashierProduct);
+        
+        AppRouter.pipe(req ,res).route('/Product-management')
+        ?.get(cashierController.cashierProductManagement);
+
+        AppRouter.pipe(req, res).route('/api/products')
+        ?.post(cashierController.createProduct);
+
+        AppRouter.pipe(req, res).route('/cashier-payment-cash')
+        ?.post(cashierController.paymentcash);
+
+        AppRouter.pipe(req, res).route('/cashier-payment-card')
+        ?.post(cashierController.paymentcard);
+
+        AppRouter.pipe(req, res).route('/cashier-payment-QR')
+        ?.post(cashierController.paymentQR);
+        
+        AppRouter.pipe(req, res).route('/cashier-product')
+        ?.put(cashierController.renderCashierProduct);
+
+        AppRouter.pipe(req, res).route('/cashier-product')
+        ?.delete(cashierController.renderCashierProduct);
+
+        AppRouter.pipe(req , res).route('/api/products')
+        ?.get(cashierController.getAllProducts)
+        ?.post(cashierController.createProduct);
+
+        AppRouter.pipe(req , res).route('/api/products/:productId')
+        ?.get(cashierController.getProductById)
+        ?.update(cashierController.updateProduct)
+        ?.delete(cashierController.deleteProduct);
+
+        */
 
         return AppRouter.pipe(req ,res).end();
 

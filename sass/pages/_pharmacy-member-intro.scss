@@ -24,7 +24,7 @@
 
     container2{
         .all-staff{
-             justify-content: left;
+             justify-content: flex-start;
              margin-left: 0rem;
 
         }
@@ -52,12 +52,18 @@
 
         .members{
             padding: 1.5rem;
+            &.active{
+                color: white;
+            }
             &::before{
                 content: "👥";
             }
         }
         .requests{
             padding: 1.5rem;
+            &.active{
+                color: white;
+            }
             &::before{
                 content: "📄";
             }
@@ -73,14 +79,11 @@
       &.active,
       &:hover {
         background: #9ca3af;
-        color: $accent;
+        color: white;
       }
     }
   }
-
-
-        
-        }
+ }
     
 
     input,select{

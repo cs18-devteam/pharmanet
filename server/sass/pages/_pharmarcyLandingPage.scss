@@ -13,43 +13,19 @@ body {
   color: $dark;
 }
 
-/* Navbar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background: $light;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 
-  .nav-links {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-
-    a {
-      text-decoration: none;
-      color: $dark;
-      font-weight: bold;
-
-      &.active {
-        border-bottom: 2px solid $primary;
-      }
-    }
-  }
-}
 
 /* Header */
 .header {
     margin: 1rem ;
     position: relative;
+    padding: 4rem;
     
     .header-content{
     width: 100%;
-    height: 34.5rem;
     border-radius: 1rem;
     border: 0.1rem solid rgba(255, 255, 255, 0.21);
-    background: url(/public/images/pharmarcyLandingPage.png) lightgray 50% / cover no-repeat;
+    background: url("/images/pharmarcyLandingPage.png") lightgray 50% / cover no-repeat;
     padding: 2rem 2rem;
 
     h1{
@@ -349,6 +325,7 @@ body {
         line-height: 4rem; 
         letter-spacing: -0.018rem;
         border: none;
+        background-color: transparent;
 
 
         svg{

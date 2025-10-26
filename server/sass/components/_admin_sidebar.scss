@@ -1,0 +1,14 @@
+.sideBar{
+
+
+    .menu{
+        a{
+            color: #192420 !important;
+            &.selected{
+                background-image: linear-gradient(45deg, #027f80, #18978d);
+                font-weight: bold;
+                color: #fff;
+            }
+        }
+    }
+}

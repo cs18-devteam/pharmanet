@@ -1,45 +1,64 @@
-.spinner{
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #ffffff80;
-    background-image: linear-gradient(to bottom , #ffffff2a  50%, var(--color-green-01) ) ;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-size: 200%;
-    font-size: 2.4rem;
-    font-weight: 400;
-    font-family: var(--primary-font) , sans-serif;
-    color: #666;
-    text-transform: capitalize;
+// .spinner{
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     padding: 0;
+//     width: 100vw;
+//     height: 100vh;
+//     background-color: #ffffff80;
+//     background-image: linear-gradient(to bottom , #ffffff2a  50%, var(--color-green-01) ) ;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     background-size: 200%;
+//     font-size: 2.4rem;
+//     font-weight: 400;
+//     font-family: var(--primary-font) , sans-serif;
+//     color: #666;
+//     text-transform: capitalize;
 
     
     
-    &::before{
-        width: 4rem;
-        height: 4rem;
-        content: "";
-        margin-bottom: 2rem ;
-        // top: 50%;
-        // left: 50%;
+//     &::before{
+//         width: 4rem;
+//         height: 4rem;
+//         content: "";
+//         margin-bottom: 2rem ;
+//         // top: 50%;
+//         // left: 50%;
+//         display: inline-block;
+//         background-color: var(--color-yellow-01);
+//         animation:  animate 3s ease infinite;
+//     }
+// }
+
+
+// @keyframes animate {
+//     50%{
+//         transform: rotate(360deg);
+//     }
+// }
+
+
+
+.spinner{
+    mix-blend-mode: color-dodge;
+    width: 3rem;
+    object-fit: contain;
+    animation: loading 1s linear infinite;
+    margin-left: 1rem;
+    display: none;
+
+    &.visible{
         display: inline-block;
-        background-color: var(--color-yellow-01);
-        animation:  animate 3s ease infinite;
     }
+
 }
 
-
-@keyframes animate {
-    50%{
+@keyframes loading{
+    100%{
         transform: rotate(360deg);
     }
 }
-
-
-
 

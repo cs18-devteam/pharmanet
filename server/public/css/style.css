@@ -489,40 +489,31 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 
 .spinner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  padding: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(255, 255, 255, 0.5019607843);
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1647058824) 50%, var(--color-green-01));
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-size: 200%;
-  font-size: 2.4rem;
-  font-weight: 400;
-  font-family: var(--primary-font), sans-serif;
-  color: #666;
-  text-transform: capitalize;
+  mix-blend-mode: color-dodge;
+  width: 3rem;
+  object-fit: contain;
+  animation: loading 1s linear infinite;
+  margin-left: 1rem;
+  display: none;
 }
-.spinner::before {
-  width: 4rem;
-  height: 4rem;
-  content: "";
-  margin-bottom: 2rem;
+.spinner.visible {
   display: inline-block;
-  background-color: var(--color-yellow-01);
-  animation: animate 3s ease infinite;
 }
 
-@keyframes animate {
-  50% {
+@keyframes loading {
+  100% {
     transform: rotate(360deg);
   }
 }
+.sideBar .menu a {
+  color: #192420 !important;
+}
+.sideBar .menu a.selected {
+  background-image: linear-gradient(45deg, #027f80, #18978d);
+  font-weight: bold;
+  color: #fff;
+}
+
 @font-face {
   font-family: "red hat display";
   font-weight: 100;
@@ -712,8 +703,12 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   transition: all 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
+.utility-error {
+  color: rgb(255, 83, 83);
+}
+
 .utility-warn {
-  animation: warn 4s ease;
+  animation: warn 4s ease forwards;
   background-image: linear-gradient(120deg, white, #ffc3c3, white);
   background-size: 200%;
   background-repeat: no-repeat;
@@ -724,6 +719,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 @keyframes warn {
   100% {
     background-position-x: 200%;
+    outline: red 1px solid;
   }
 }
 .utility-success {
@@ -843,6 +839,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   outline: none;
   width: 100%;
   margin-top: 1rem;
+}
+.signup .signupForm #form [id^=feedback] {
+  color: red;
   margin-bottom: 2rem;
 }
 .signup .signupForm #form #submitButton {
@@ -1082,42 +1081,18 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   color: #222;
 }
 .landingPage {
-  /* Navbar */
-}
-.landingPage .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background: #fff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-.landingPage .navbar .nav-links {
-  display: flex;
-  list-style: none;
-  gap: 2rem;
-}
-.landingPage .navbar .nav-links a {
-  text-decoration: none;
-  color: #222;
-  font-weight: bold;
-}
-.landingPage .navbar .nav-links a.active {
-  border-bottom: 2px solid #0a8f8f;
-}
-.landingPage {
   /* Header */
 }
 .landingPage .header {
   margin: 1rem;
   position: relative;
+  padding: 4rem;
 }
 .landingPage .header .header-content {
   width: 100%;
-  height: 34.5rem;
   border-radius: 1rem;
   border: 0.1rem solid rgba(255, 255, 255, 0.21);
-  background: url(/public/images/pharmarcyLandingPage.png) lightgray 50%/cover no-repeat;
+  background: url("/images/pharmarcyLandingPage.png") lightgray 50%/cover no-repeat;
   padding: 2rem 2rem;
 }
 .landingPage .header .header-content h1 {
@@ -1387,6 +1362,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   line-height: 4rem;
   letter-spacing: -0.018rem;
   border: none;
+  background-color: transparent;
 }
 .landingPage .store .contactBtn button svg {
   margin-top: 0.4rem;
@@ -2960,6 +2936,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   padding: 1rem;
   margin-bottom: 1rem;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   border: 0.2rem solid #eeeeee;
@@ -3086,6 +3063,10 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .SearchPharmacy .similar-medicine-card .pill-tag, .SearchPharmacy .similar-medicine-card p {
   font-size: 1.4rem;
   display: flex;
+}
+
+.link {
+  color: #004e89;
 }
 
 .RegPharmacy .container {
@@ -4539,6 +4520,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   min-height: 95vh;
   background: #F7F7F7;
   border-radius: 1rem;
+  background-image: linear-gradient(45deg, rgba(2, 127, 128, 0.2392156863), rgba(2, 127, 128, 0));
 }
 .adminDashboard .container .container-1 .sideBar {
   width: 26rem;
@@ -7719,6 +7701,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .addPharmarcy01 .registration-container .form-card form .form-buttons .btn.next {
   background: #08374F;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .addPharmarcy01 .registration-container .form-card form .form-buttons .btn.next:hover {
   color: #FB8F21;
@@ -8900,6 +8885,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   min-height: 95vh;
   background: #F7F7F7;
   border-radius: 1rem;
+  background-image: linear-gradient(45deg, rgba(2, 127, 128, 0.2392156863), rgba(2, 127, 128, 0));
 }
 .pharmarcy .container .container-1 .sideBar {
   width: 26rem;
@@ -9184,6 +9170,51 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .pharmarcy .container .container-2 .main .dashboard .status.inactive {
   background-color: #424242;
   color: #ccc;
+}
+
+.text {
+  border: none;
+  font-size: 1.5rem;
+  background: none;
+  color: white;
+  cursor: pointer;
+  color: #FB8F21;
+}
+.text.setting::before {
+  content: "⚙";
+}
+.text.signOut::before {
+  content: "⎋";
+}
+
+.pharmacy-table {
+  width: max-content;
+  border-collapse: collapse;
+  height: fit-content;
+}
+.pharmacy-table tr {
+  border: 1px solid #888;
+}
+.pharmacy-table tr th {
+  text-transform: capitalize;
+  padding: 1rem 2rem;
+  text-align: left;
+  color: var(--color-green-01);
+  cursor: pointer;
+}
+.pharmacy-table tr:hover {
+  background-color: #eee;
+}
+.pharmacy-table tr td {
+  padding: 1rem 2rem;
+}
+.pharmacy-table tr td a .map-pin {
+  width: 3rem;
+}
+
+.pharmacy-grid {
+  width: 70vw;
+  overflow: scroll;
 }
 
 .users .container {

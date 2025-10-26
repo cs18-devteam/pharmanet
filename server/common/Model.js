@@ -74,24 +74,35 @@ class Model{
     }
 
     #createTableName(name){
-        //create table name
-        // ex : UserModel -to lower-> usermodel -replace last model-> user_table
-        return name.toLowerCase().replace(/model$/ , "_table");
+        try{
+
+            //create table name
+            // ex : UserModel -to lower-> usermodel -replace last model-> user_table
+            return name.toLowerCase().replace(/model$/ , "_table");
+        }catch(e){
+            throw e;
+        }
     }
 
 
     //save model to database (create table)
     async createTable(){
-        const createTableQuery = this.#buildCreateTableQuery();
-        await db.query(`use ${process.env.DATABASE_NAME}`);
-        await db.query(createTableQuery);
-        if(process.env.NODE_ENV == "development"){
-            console.log(`${this.#table} created`);
+        try{
+
+            const createTableQuery = this.#buildCreateTableQuery();
+            await db.query(`use ${process.env.DATABASE_NAME}`);
+            await db.query(createTableQuery);
+            if(process.env.NODE_ENV == "development"){
+                console.log(`${this.#table} created`);
+            }
+        }catch(e){
+            throw e;
         }
     }
 
     async save(data){
-        
+        try{
+
 
         let query = "INSERT INTO %%TABLE_NAME%%( %%COLUMNS%% ) VALUES( %%VALUES%% )";
 
@@ -131,11 +142,17 @@ class Model{
         const createdUser = await db.query(`select * from ${this.#table} where id=${results.insertId}`);
 
         return createdUser;
+        }catch(e){
+            throw e;
+        }
+
         
     }
 
 
     async update(data){
+        try{
+
         const id = data.id;
 
         if(!id) throw new Error("no id in request body");
@@ -171,27 +188,47 @@ class Model{
             data = await this.getById(id);
         }
         return data;
+        }catch(e){
+            throw e;
+        }
+
 
 
     }
     
     //get using id
     async getById(id){
+        try{
+
         const query = `SELECT * FROM ${this.#table} WHERE id=${id}`;
         const customer =await db.query(query);
         return customer;
+
+        }catch(e){
+            throw e;
+        }
+
     }
 
 
     //delete using id
     async deleteById(id){
+        try{
+
         const results =await db.query(`DELETE FROM ${this.#table} WHERE id=${id}`);
         console.log({deletedLog : results});
         return results;
+
+        }catch(e){
+            throw e;
+        }
+
     }
 
     //get data from database
     async get(data){
+        try{
+
         let query = `select * from  ${this.#table}`;
 
         if(data) query += " where ";
@@ -200,16 +237,29 @@ class Model{
             let filters = [];
     
             for(const [column , value] of Object.entries(data)){
-                filters.push(`${column}=${value}`);
+                if(typeof value == "string"){
+                    filters.push(`${column}="${value}"`);
+                    
+                }else{
+                    filters.push(`${column}=${value}`);
+                }
             }
             query += filters.join(" AND ");
         }
 
         const results = await db.query(query);        
         return results;
+
+        }catch(e){
+            throw e;
+        }
+
     }
 
+
     drop(){
+        try{
+
         const query = `drop table ${this.#table}`;
         // return data get from database as object
         const queryHandler = (error , data , fields)=>{
@@ -222,6 +272,11 @@ class Model{
         }
 
         db.query(query , queryHandler);
+
+        }catch(e){
+            throw e;
+        }
+
         
     }
 

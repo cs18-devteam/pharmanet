@@ -120,12 +120,37 @@
                 const result = await respond.json();
                 console.log(result);
 
-                document.body.classList.add('success');
-                setTimeout(()=>{
-                    console.log(result.data.id);
-                    window.location.href = `http://localhost:3000/customers/${result.data.id}`;
-                } , 3000)
 
+                if(result.status == "success"){
+                  document.querySelectorAll('input').forEach(el=>{
+                    el.classList.remove('utility-warn');
+                    el.classList.add('utility-success');
+                  });
+
+                  document.body.classList.add("success");
+                  let redirectUrl = "http://localhost:3000/login";
+                  switch(result.user.role){
+                    case "customer":
+                      redirectUrl = `/customers/${result.user.id}`;
+                      break;
+                      case "admin":
+                      redirectUrl = `http://localhost:3000/admin/${result.user.id}`;
+                      break;
+                        
+                  }
+
+                  setTimeout(()=>{
+
+                    window.location.href = redirectUrl;
+                  } , 3000);
+
+                  
+                }else{
+                  document.querySelectorAll('input').forEach(el=>{
+                    el.classList.add('utility-warn')
+                    el.classList.remove('utility-success')
+                  });
+                }
 
                 
             }catch(error){

@@ -14,6 +14,7 @@
             min-height: 95vh;
             background: $element-bg;
             border-radius: 1rem;
+            background-image: linear-gradient(45deg, #027f803d, #027f8000);
     
     .sideBar{
     
@@ -356,4 +357,71 @@
 }
 }
 }
-}   
+}
+
+.text{
+  border: none;
+  font-size: 1.5rem;
+  background: none;
+  color: white;
+  cursor: pointer;
+  color:  #FB8F21;
+  
+  &.setting{
+    &::before{content: "⚙";}
+  }
+  &.signOut{
+    &::before{content: "⎋";}
+  }
+  
+}
+
+
+
+.pharmacy-table{
+  width: max-content;
+  border-collapse: collapse;
+  height: fit-content;
+   
+
+  tr{
+    border: 1px solid #888;
+    th{
+      text-transform: capitalize;
+      padding: 1rem 2rem;
+      text-align: left;
+      color: var(--color-green-01);
+      cursor: pointer;
+    }
+
+
+    &:hover{
+      background-color: #eee;
+    }
+
+    
+
+
+    td{
+
+      padding: 1rem 2rem;
+
+      a{
+
+        .map-pin{
+          width: 3rem;
+          // height: 1rem;
+        }
+      }
+
+    }
+  }
+
+
+}
+
+
+.pharmacy-grid{
+  width: 70vw;
+  overflow: scroll;
+}

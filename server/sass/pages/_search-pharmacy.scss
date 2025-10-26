@@ -73,6 +73,7 @@
     padding: 1rem;
     margin-bottom: 1rem;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     border: 0.2rem solid #eeeeee;
@@ -227,4 +228,8 @@
     }
 
   }
+}
+
+.link{
+  color:#004e89;
 }

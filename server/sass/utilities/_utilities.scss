@@ -7,8 +7,12 @@
     transition: all .8s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
+.utility-error{
+    color:rgb(255, 83, 83);
+}
+
 .utility-warn{
-    animation: warn 4s ease;
+    animation: warn 4s ease forwards;
     background-image: linear-gradient(120deg, white, #ffc3c3, white);
     background-size: 200%;
     background-repeat: no-repeat;
@@ -19,6 +23,7 @@
 @keyframes warn{
     100%{
         background-position-x: 200% ;
+        outline: red 1px solid;
 
     }
 }

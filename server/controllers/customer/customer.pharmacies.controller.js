@@ -1,43 +1,60 @@
-const Bridge = require("../../common/Bridge");
 const { response } = require("../../common/response");
 const view = require("../../common/view");
+const Pharmacies = require("../../models/PharmacyModel");
+const Users = require("../../models/UserModel");
 
 
 exports.renderCustomerPharmacies = async (req , res)=>{
     try{
 
-        const response =await fetch(`${Bridge.registry.CUSTOMER_SERVICE}?id=${req.customerId}`);
-        const results = await response.json();
-        const customer = results.data[0];
-                
-        Bridge.pipe(req , res)
-        .connect(Bridge.registry.PHARMACY_SERVICE , {
-            method :"GET"
-        })
-        .request()
-        .json((data)=>{
-            console.log(data)
-        })
-        .resend((results)=>{
-            const medicines = results.data;
-            
-            if(!customer) return view('404');
-            return view('customer.search' , {
-                navbar : view('components/navbar.customer' , {
-                    name : `${customer?.firstName} ${customer?.lastName}`,
-                    id : customer.id,
-                }, 
-                customer) ,
-                results : medicines.map(medicine=>view('components/medicines.search.card' , medicine)).join(' ')
-            })
-        }).catch(error=>{
-            throw error;
-        })
+        const customer = (await Users.getById(req.customerId))[0];
+        const pharmacies = await Pharmacies.get();
+
+        if(!customer) return view('404');
+        return response(res , view('customer/customer.search.pharmacies' , {
+            ...customer,
+            count : pharmacies.length ,
+            navbar : view('customer/navbar.customer' ,customer) ,
+            results : pharmacies.map(pharmacy=>view('customer/pharmacy.search.card' , {
+                ...pharmacy , 
+                customerId : customer.id
+            })).join(' ')
+
+        }) , 200);
         
     }catch(error){
+        console.log(error);
         response(res , view('404') , 400);
     }
 
 }
+
+
+exports.renderCustomerPharmacy = async (req , res)=>{
+    try{
+    const customer = (await Users.getById(req.customerId))[0];
+        const [pharmacy] = await Pharmacies.getById(req.pharmacyId);
+
+        if(!customer) return view('404');
+        return response(res , view('pharmacy/pharmacy.profile' , {
+            ...customer,
+            ...pharmacy , 
+            navbar : view('customer/navbar.customer' ,customer) ,
+            customerId : customer.id
+        }) , 200);
+        
+    }catch(error){
+        console.log(error);
+        response(res , view('404') , 400);
+    }
+
+
+
+
+
+}
+
+
+
 
 

@@ -29,13 +29,13 @@
 
   <div class="container-2">
   <div class="main">
-    <header>
+    <!-- <header>
       <input type="text" id="searchInput" placeholder="Search pharmacies..." />
       <div class="user-section">
         <span class="bell"></span>
         <div class="admin">AD</div>
       </div>
-    </header>
+    </header> -->
 
     <section class="dashboard">
      <div class="sectionHeading">
@@ -51,7 +51,21 @@
     <div class="content-wrapper">
     <div class="pharmacy-grid">
     
-
+      <table class="pharmacy-table">
+        <thead>
+          <th>name</th>
+          <th>licenseNumber</th>
+          <th>email</th>
+          <th>address</th>
+          <th>location</th>
+          <th>contact</th>
+          <th>type</th>
+          <th>pharmacist</th>
+        </thead>
+        <tbody>
+          {rows}
+        </tbody>
+      </table>
   
     
 

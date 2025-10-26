@@ -12,38 +12,38 @@ const algorithm = "aes-256-cbc";
 const ENCRYPT_KEY = Buffer.from(process.env.ENCRYPT_KEY, "hex");
 const IV = Buffer.from(process.env.IV, "hex");
 
-exports.encrypt = (text) => {
-    const cipher = crypto.createCipheriv(algorithm, ENCRYPT_KEY , IV);
-    let encrypted = cipher.update(text, "utf8", "hex");
-    encrypted += cipher.final("hex");
+// exports.encrypt = (text) => {
+//     const cipher = crypto.createCipheriv(algorithm, ENCRYPT_KEY , IV);
+//     let encrypted = cipher.update(text, "utf8", "hex");
+//     encrypted += cipher.final("hex");
 
-    return {
-        iv: IV.toString("hex"),
-        content: encrypted,
-        key: ENCRYPT_KEY
-    };
-}
-
-
-exports.hashPassword =(password)=> {
-    return crypto.createHash("sha256").update(password).digest("hex");
-}
-
-exports.decrypt = (encryptedData) => {
-    const decipher = crypto.createDecipheriv(
-        algorithm,
-        Buffer.from(ENCRYPT_KEY, "hex"),
-        Buffer.from(IV, "hex")
-    );
-    let decrypted = decipher.update(encryptedData, "hex" , "utf-8");
-    decrypted += decipher.final("utf8");
-    return decrypted;
-}
+//     return {
+//         iv: IV.toString("hex"),
+//         content: encrypted,
+//         key: ENCRYPT_KEY
+//     };
+// }
 
 
-exports.verifyPassword = (password , storedPassword)=>{
-    return password == storedPassword; 
-}
+// exports.hashPassword =(password)=> {
+//     return crypto.createHash("sha256").update(password).digest("hex");
+// }
+
+// exports.decrypt = (encryptedData) => {
+//     const decipher = crypto.createDecipheriv(
+//         algorithm,
+//         Buffer.from(ENCRYPT_KEY, "hex"),
+//         Buffer.from(IV, "hex")
+//     );
+//     let decrypted = decipher.update(encryptedData, "hex" , "utf-8");
+//     decrypted += decipher.final("utf8");
+//     return decrypted;
+// }
+
+
+// exports.verifyPassword = (password , storedPassword)=>{
+//     return password == storedPassword; 
+// }
 
 
 exports.authenticate =async (req , res)=>{
@@ -70,21 +70,21 @@ exports.authenticate =async (req , res)=>{
 
 
 
-exports.hashPassword = (password)=> {
-    // return await bcrypt.hash(password, saltRounds);
-    return crypto.createHash("sha256").update(password).digest("hex");
+// exports.hashPassword = (password)=> {
+//     // return await bcrypt.hash(password, saltRounds);
+//     return crypto.createHash("sha256").update(password).digest("hex");
 
-}
-
-// exports.comparePasswords = async (hash,  storedHash) =>{
-//     return await bcrypt.compare(hash, storedHash);
 // }
 
-
-exports.createToken = (user)=>{
-    const en = this.encrypt(JSON.stringify({id : user.id , password : user.password}))
-    console.log(en);
-    return en.content; 
+// // exports.comparePasswords = async (hash,  storedHash) =>{
+// //     return await bcrypt.compare(hash, storedHash);
+// // }
 
 
-}
+// exports.createToken = (user)=>{
+//     const en = this.encrypt(JSON.stringify({id : user.id , password : user.password}))
+//     console.log(en);
+//     return en.content; 
+
+
+// }

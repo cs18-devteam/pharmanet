@@ -1,109 +1,114 @@
-// const Bridge = require("../common/Bridge");
-// const { getRequestData } = require("../common/getRequestData");
-// const { response } = require("../common/response");
-// const view = require("../common/view");
-
-// exports.renderSignup = async (req , res)=>{
-//     return response(res , view('signup') , 200);
-// }
-
-
-// exports.createUser = async (req , res)=>{
-//     Bridge.pipe(req , res)
-//     .connect(Bridge.registry.CUSTOMER_SERVICE , {
-//         method : "POST",
-
-//     }).request(async (req , res)=>{
-//         const userData = await getRequestData(req);
-//         return userData;
-//     }).json()
-//     .resend((data)=>{
-//         if(data){
-//             return view('customer.home' , {
-//                 navbar: view('components/navbar' , {
-//                     id: data.id,
-//                     name : `${data.firstName} ${data.lastName}`
-//                 })
-//             }  , {
-//                 id: data.id,
-//             });
-
-//         }
-
-//         return JSON.stringify({
-//             status : "error",
-//             message : "Invalid details",
-//         })
-
-//     });
-// }
 
 
 // --- Authenticate user (Login) ---
+const { hashPassword, encrypt, createToken, createCookie } = require("../../common/Auth");
 const Bridge = require("../../common/Bridge");
+const catchAsync = require("../../common/catchAsync");
 const customerFetch = require("../../common/controllers/customerFetch");
-const { createToken, hashPassword } = require("../../common/encrypt");
 const { getRequestData } = require("../../common/getRequestData");
 const { response, responseJson } = require("../../common/response");
 const view = require("../../common/view");
+const Users = require("../../models/UserModel");
 
 exports.renderSignup = async (req, res) => {
     return response(res, view("signup"), 200);
 };
 
-exports.createUser = async (req, res) => {
+exports.signup = async (req, res) => {
+
     try{
 
-    let token = undefined;
-    const userData = await getRequestData(req);
-    const { firstName, lastName, email, password , birthDay } = JSON.parse(userData);
-    const hashed = hashPassword(password);
 
-    const respond = await fetch(Bridge.registry.CUSTOMER_SERVICE ,{
-        method:"POST",
-        body:JSON.stringify({
-                firstName , 
-                lastName , 
-                email , 
-                password : hashed , 
-                birthDay,
+        const {email , password , firstName , lastName , nic , fullName , dateOfBirth  , addressNo , street , town , province , postalCode  , role} = JSON.parse(await getRequestData(req));
+
+        console.log({email , password , firstName , lastName , nic , fullName , dateOfBirth  , addressNo , street , town , province , postalCode , role })
+        
+        //check for duplicate email
+        const emailUser = await Users.get({
+            email : email
+        });
+        
+        if(emailUser[0]){
+            return responseJson(res , 400 , {
+                status :'error',
+                message :"Email already in use",
+                field:'email'
             })
-    });
-    const results = await respond.json();
-    console.log(results);
-    if(results?.data?.[0]?.id){
-        const newCustomer = results.data[0];
-
-        token = createToken(newCustomer);
-
-        const body = JSON.stringify({
-                status:"success",
-                data : newCustomer,
-                count:1,
-                token,
-            });
-
-
-        const headers = {
-            "Authorization" : token , 
-            "Set-Cookie" : `token=${token};path=/;expires=${Date.now()/1000 * 5}`
+        }
+        
+        //check for duplicate nic
+        const nicUser = await Users.get(nic);
+        if(nicUser[0]){
+            return responseJson(res , 400 , {
+                status :"error",
+                message : "Nic is already used",
+                field: 'nic',
+            })
+        }
+        
+        if(!password || !email){
+            return responseJson(res , 400 , {
+                status:'error',
+                message :"email or password invalid",
+                data : {
+                    email , 
+                    password , 
+                    firstName , 
+                    lastName , 
+                    addressNo , 
+                    nic,
+                    fullName , 
+                    dateOfBirth , 
+                    town , 
+                    province , 
+                    postalCode,
+                    role,
+                }
+            })
         }
 
-        return response(res , body , 201 , headers );
+        
+        const newUser = await Users.save({
+            email : email  || "" , 
+            password  : hashPassword(password), 
+            firstName : firstName || "", 
+            lastName  : lastName || "",
+            nic : nic || "unknown", 
+            fullName : fullName || "unknown" , 
+            dateOfBirth : dateOfBirth , 
+            addressNo : addressNo || "unknown" , 
+            street : street || "unknown" , 
+            town : street || "unknown" ,
+            province : province || "unknown", 
+            postalCode : postalCode,
+            role : role || "customer"
+        });
 
+        const token = createToken(newUser);
+        const cookie = createCookie(token);
 
-    }else{
-        return responseJson(res , 400 , {
-            "status":"error"
-        } )
-    }
+        return responseJson(res , 201 , {
+            status:"success",
+            results : { ...newUser , password : undefined },
+            message :"user account created successfully",
+            token : token,
+        } , {
+            "Set-Cookie" : cookie
+        })
+
     }catch(e){
         console.log(e);
-        return responseJson(res , 400 , {
-            status:"error"
+        return responseJson(res , 500 , {
+            status:"error",
+            message :"internal server error",
+            error :e,
         })
     }
+        
 
 
 };
+
+
+
 

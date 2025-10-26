@@ -3,32 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Amaya Pharmacy Center</title>
+  <title>{name}</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="landingPage">
 
   <!-- Navbar -->
-  <nav class="navbar">
-    <div class="logo">💊</div>
-    <ul class="nav-links">
-      <li><a href="#" class="active">Store</a></li>
-      <li><a href="#">Dashboard</a></li>
-      <li><a href="#">Cashier</a></li>
-    </ul>
-    <div class="user">Charutha Priyashan (Welcome)</div>
-  </nav>
+  {navbar}
 
   <!-- Header -->
   <header class="header">
     <div class="header-content">
-      <h1>Amaya Pharmacy Center +</h1>
-      <p><strong>Address</strong><br>6BXQ+38B,<br> Bandaranayaka Ave,<br> Kegalle</p>
-      <p><strong>Call</strong><br>+94 78 909 8987<br>+94 78 909 8988</p>
-      <button class="btn">Contact Now <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <h1>{name}</h1>
+      <p><strong>Address</strong><br>{addressNo}<br> {street},<br> {town}</p>
+
+      <br>
+      <br>
+      <br>
+      <p><strong>Call</strong><br>{contact}<br>{email}</p>
+      <div class="contactBtns">
+      <!-- <a href="mailto:{email}" class="btn">Contact Now <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"> -->
         <path d="M7 7L17 17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M7 17H17V7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg></button>
+        </svg></a>
+
+        <br>
       <button class="btn secondary"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="22" viewBox="0 0 21 22" fill="none">
         <g clip-path="url(#clip0_856_4252)">
             <path d="M12.1276 1.6697C11.4593 1.45887 10.7433 1.34351 10.0034 1.34351C7.84334 1.34351 5.91004 2.31812 4.61719 3.85362L7.93882 6.64618L12.1276 1.6697Z" fill="#1A73E8"/>
@@ -43,6 +42,7 @@
             </clipPath>
         </defs>
         </svg> Open in Maps</button>
+        </div>
     </div>
 
     <!-- Floating contact card -->
@@ -72,7 +72,7 @@
     <!-- Product Card -->
     <div class="product-card">
       <div class="img-container">
-        <img src="/public/images/mask.jpg" alt="Surgical Mask">
+        <img src="/images/mask.jpg" alt="Surgical Mask">
         <span class="price-badge">RS 130</span>
       </div>
       <h3>Surgical Mask</h3>
@@ -95,7 +95,7 @@
     <!-- Duplicate more product cards -->
     <div class="product-card">
       <div class="img-container">
-        <img src="/public/images/mask.jpg" alt="Surgical Mask">
+        <img src="/images/mask.jpg" alt="Surgical Mask">
         <span class="price-badge">RS 130</span>
       </div>
       <h3>Surgical Mask</h3>
@@ -114,7 +114,7 @@
 
     <div class="product-card">
       <div class="img-container">
-        <img src="/public/images/mask.jpg" alt="Surgical Mask">
+        <img src="/images/mask.jpg" alt="Surgical Mask">
         <span class="price-badge">RS 130</span>
       </div>
       <h3>Surgical Mask</h3>
@@ -133,7 +133,7 @@
 
     <div class="product-card">
       <div class="img-container">
-        <img src="/public/images/mask.jpg" alt="Surgical Mask">
+        <img src="/images/mask.jpg" alt="Surgical Mask">
         <span class="price-badge">RS 130</span>
       </div>
       <h3>Surgical Mask</h3>
@@ -153,7 +153,7 @@
 
     <div class="product-card">
       <div class="img-container">
-        <img src="/public/images/mask.jpg" alt="Surgical Mask">
+        <img src="/images/mask.jpg" alt="Surgical Mask">
         <span class="price-badge">RS 130</span>
       </div>
       <h3>Surgical Mask</h3>
@@ -255,7 +255,7 @@
   <div class="footer-content">
     <!-- Logo -->
     <div class="footer-logo">
-      <img src="/public/logo/logo.svg" alt="Pharmanet Logo">
+      <img src="/logo/logo.svg" alt="Pharmanet Logo">
       <h3>Pharmanet</h3>
     </div>
 
@@ -291,8 +291,7 @@
       <a href="#">Teams & Conditions</a>
     </div>
   </div>
-</footer>
+  </footer>
 
-
-</body>
-</html>
+  </body>
+  </html>

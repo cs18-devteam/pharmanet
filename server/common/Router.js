@@ -1,12 +1,15 @@
+const Users = require("../models/UserModel");
+const { verifyUser } = require("./Auth");
 const { authenticate } = require("./encrypt");
 const notFound = require("./notFound");
-const { response } = require("./response");
+const { response, responseJson } = require("./response");
 const view = require("./view");
 
 class Router{
     #user;
     #globalAccess = [];
-    #authenticate = false;
+    #authenticateUser = false;
+    #id = undefined;
 
     constructor(req , res){
         this.req = req ;
@@ -18,46 +21,92 @@ class Router{
         this.#globalAccess = [...access];
     }
 
+    async #authenticate(){
+        try{
 
-    authenticate(){
-        this.#authenticate = true;
+            console.log("is authentication on " , this.#authenticateUser);
+            if (!this.#authenticateUser) return true;
+            this.#authenticateUser =  await verifyUser(this.req  , this.res , this.#id);
+            console.log(  this.#id," auth" ,this.#authenticateUser)
+            return this.#authenticateUser;
+        }catch(e){
+            console.log(e);
+        }
+    }
+
+    authenticate(id){
+        this.#id = id;
+        this.#authenticateUser = true;
         return this;
     }
-
-    async #authentication(){        
-        this.#user =await authenticate(this.req  , this.res)
-        if(this.#user){
-            this.req.authenticate = true;
-            return this;
-        }
-        return null;
-    }
+    
 
 
 
-    async #verify(access){
+    async #verify(access , id){
         const localAccess = [...access];
+        if(!this.#id) return true;
+        this.#user = await Users.getById(id);
 
-        if(localAccess.length){
-            console.log(localAccess)
-            if(!localAccess.includes(this.#user?.role)) response(this.res , "Not Authenticated" , 408);
-            return false;
-        }else if(this.#globalAccess.length){
-            console.log('global')
-            if(!this.#globalAccess.includes(this.#user?.role)) response(this.res , "Not Authenticated" , 408);
-            return false;
+        try{
+
+            
+            if(localAccess.length){
+                console.log(localAccess)
+                if(!localAccess.includes(this.#user?.role)) response(this.res , "Not Authenticated" , 408);
+                return false;
+            }else if(this.#globalAccess.length){
+                console.log('global')
+                if(!this.#globalAccess.includes(this.#user?.role)) response(this.res , "Not Authenticated" , 408);
+                return false;
+            }
+        }catch(e){
+            console.log(e);
         }
 
         return true;
     }
 
     
-    get(handler , access = []){
+    get(handler = async ()=>{} , access = []){
+        try{
+
         if(this.req?.method != "GET") return this;
         this.getHandler = handler;
-        (this.#authenticate ? this.#authentication() : Promise.resolve(true))
-            .then((value) => value ? this.#verify(access)  : Promise.resolve(true))
-            .then((value)=>(value) && handler(this.req  , this.res));
+        
+
+        this.#authenticate().then(value=>{
+            console.log("authenticated " , value);
+            if(value){
+                console.log("authenticated correctly");
+                this.#verify(access , this.#id).then((value)=>{
+                    if(value){
+                        return handler(this.req  , this.res).catch(e=>{
+                            console.log(e)
+                            throw e;
+                        });
+                    }else{
+                        return response(this.res , "you don't have access" , 400);
+                    }
+                }).catch(e=>{
+                    console.log(e);
+                });
+            }else{
+                console.log("not authenticated");
+                return response(this.res , "authentication failed" , 302 , {
+                    location :"/login",
+                })
+            }
+        })
+        }catch(e){
+            console.log(e);
+            return responseJson(this.res , 500 , {
+                status:"error",
+                message :"internal server error",
+                error: e,
+            } )
+        }
+
     }
 
     delete(handler ,access  = []){

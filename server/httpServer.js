@@ -11,6 +11,9 @@ const contactUsController = require('./controllers/contactus.controller');
 const customerController = require("./controllers/customer/customer.controller");
 const pharmacyController = require('./controllers/pharmacy/pharmacy.controller');
 const customerPharmacyController = require('./controllers/customer/customer.pharmacies.controller');
+const { responseJson } = require('./common/response');
+const adminPharmacyController = require('./controllers/admins/admin.pharmacy.controller');
+const customerMedicineController = require('./controllers/customer/customer.medicines.controller');
 
 
 const server = http.createServer((req , res)=>{
@@ -54,7 +57,7 @@ const server = http.createServer((req , res)=>{
 
         AppRouter.pipe(req , res).route('/signup')
             ?.get(signupController.renderSignup)
-            ?.post(signupController.createUser);
+            ?.post(signupController.signup);
 
         AppRouter.pipe(req , res).route('/verify/email')
             ?.get(verifyEmailController.renderVerifyEmail);
@@ -67,65 +70,79 @@ const server = http.createServer((req , res)=>{
         AppRouter.pipe(req ,res).route('/admin')
         ?.get(adminController.adminDashboard);
 
-        AppRouter.pipe(req ,res).route('/admin/pharmacy/create')
-        ?.get(adminController.adminAddPharmacy)
-        ?.post(adminController.createPharmacy);
+        AppRouter.pipe(req ,res).route('/admin/:adminId/pharmacy/create')
+        ?.authenticate(req.adminId)
+        ?.get(adminPharmacyController.adminAddPharmacy)
+        ?.post(adminPharmacyController.createPharmacy);
 
         AppRouter.pipe(req ,res).route('/admin/pharmacy/step/2')
-        ?.get(adminController.adminAddPharmacyStep02);
+        ?.get(adminPharmacyController.adminAddPharmacyStep02);
 
         AppRouter.pipe(req ,res).route('/admin/pharmacy/step/3')
-        ?.get(adminController.adminAddPharmacyStep03)
+        ?.get(adminPharmacyController.adminAddPharmacyStep03)
  
         AppRouter.pipe(req ,res).route('/admin/pharmacy/step/4')
-        ?.get(adminController.adminAddPharmacyStep04);
+        ?.get(adminPharmacyController.adminAddPharmacyStep04);
+
+        AppRouter.pipe(req ,res).route('/admin/:adminId')
+        ?.get(adminController.adminDashboard);
 
 
+        AppRouter.pipe(req ,res).route('/admin/medicines')
+        ?.get(adminController.medicines);
+
+        AppRouter.pipe(req ,res).route('/admin/assets')
+        ?.get(adminController.dataAssets);
+
+        AppRouter.pipe(req ,res).route('/admin/users')
+        ?.get(adminController.users);
 
 
         ////////////////////////////////////////////////
 
 
         AppRouter.pipe(req ,res).route('/admin/pharmacy/:pharmacyId/update')
-        ?.update(adminController.updatePharmacy)
+        ?.update(adminPharmacyController.updatePharmacy)
 
 
         AppRouter.pipe(req ,res).route('/admin/pharmacy')
-        ?.get(adminController.pharmacy);
+        ?.get(adminPharmacyController.pharmacy);
 
         AppRouter.pipe(req ,res).route('/admin/pharmacy/list')
-        ?.get(adminController.pharmacyList);
+        ?.get(adminPharmacyController.pharmacyList);
 
         AppRouter.pipe(req ,res).route('/admin/pharmacy/view/:pharmacyId')
-        ?.get(adminController.getPharmacyDetails)
-        ?.delete(adminController.deletePharmacy);
+        ?.get(adminPharmacyController.getPharmacyDetails)
+        ?.delete(adminPharmacyController.deletePharmacy);
 
         AppRouter.pipe(req ,res).route('/admin/pharmacy/:pharmacyId/edit')
-        ?.get(adminController.adminEditPharmacy)
-        ?.update(adminController.adminEditPharmacy);
+        ?.get(adminPharmacyController.adminEditPharmacy)
+        ?.update(adminPharmacyController.adminEditPharmacy);
 
 
         AppRouter.pipe(req ,res).route('/admin/pharmacy/:pharmacyId/edit/step/2')
-        ?.get(adminController.adminEditPharmacyStep02);
+        ?.get(adminPharmacyController.adminEditPharmacyStep02);
 
         AppRouter.pipe(req ,res).route('/admin/pharmacy/:pharmacyId/edit/step/3')
-        ?.get(adminController.adminEditPharmacyStep03);
+        ?.get(adminPharmacyController.adminEditPharmacyStep03);
 
         AppRouter.pipe(req ,res).route('/admin/pharmacy/:pharmacyId/edit/step/4')
-        ?.get(adminController.adminEditPharmacyStep04)
+        ?.get(adminPharmacyController.adminEditPharmacyStep04)
 
 
         //////////////////////////////
 
         //:: CUSTOMERS ROUTES
         AppRouter.pipe(req ,res).route("/customers/:customerId")
-        ?.authenticate()
+        // ?.authenticate(req.customerId)
         ?.get(customerController.renderCustomerHome);
+
+
         AppRouter.pipe(req ,res).route("/customers/:customerId/medicines")
-            ?.get(renderCustomerMedicines);
+            ?.get(customerMedicineController.renderCustomerMedicines);
 
         AppRouter.pipe(req ,res).route("/customers/:customerId/profile")
-            ?.get(customerProfileController.renderCustomerProfile);
+        ?.get(customerController.renderCustomerProfile);
 
         AppRouter.pipe(req ,res).route("/customers/:customerId/pharmacy/register")
         ?.get(pharmacyController.renderPharmacyRegister);
@@ -136,7 +153,7 @@ const server = http.createServer((req , res)=>{
             ?.get(customerPharmacyController.renderCustomerPharmacies);
 
         AppRouter.pipe(req ,res).route("/customers/:customerId/pharmacies/:pharmacyId")
-        ?.get(renderCustomerPharmacyDetails);
+        ?.get(customerPharmacyController.renderCustomerPharmacy);
 
         AppRouter.pipe(req ,res).route("/customers/:customerId/history")
         ?.get(renderCustomerHistory);
@@ -151,21 +168,24 @@ const server = http.createServer((req , res)=>{
         ?.get(renderCustomerOrderDetails);
 
 
+        AppRouter.pipe(req ,res).route('/admin/:adminId/writers');
+        AppRouter.pipe(req ,res).route('/admin/:adminId/writers/:writerId');
+        AppRouter.pipe(req ,res).route('/admin/:adminId/writers/:writerId');
+        AppRouter.pipe(req ,res).route('/admin/:adminId/writers/:writerId');
+        AppRouter.pipe(req ,res).route('/admin/:adminId/writers/:writerId');
 
-        AppRouter.pipe(req ,res).route('/admin/medicines')
-        ?.get(adminController.medicines);
 
-        AppRouter.pipe(req ,res).route('/admin/assets')
-        ?.get(adminController.dataAssets);
-
-        AppRouter.pipe(req ,res).route('/admin/users')
-        ?.get(adminController.users);
 
 
         return AppRouter.pipe(req ,res).end();
 
     }catch(e){
         console.log(e);
+        responseJson(res  , 500 , {
+            status:"error",
+            message :"server not responding",
+            error :e,
+        })
         server.close(()=>{
             console.log("Server shutdown due to error");
         })
@@ -176,7 +196,6 @@ const server = http.createServer((req , res)=>{
 })
 
 
-/// line 135 & 137
 
 
 

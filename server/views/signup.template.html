@@ -64,8 +64,8 @@
         <img src="/signup/signup.jpg" alt="signup image">
         <div class="signupText">"Take Control of Your Medication Journey"</div>
     </div>
-    <div class = "signupForm">
-    <form  id="form" class="signup" autocomplete="off" action="/signup" method="post">
+    <div class = "signupForm" >
+    <form  id="form" class="signup" autocomplete="off" action="/signup" method="post" >
      
     <h1 class="signupTitle">Get Start Now</h1>
     <p class="signupMoto" >Your Digital Journey To Seamless Prescriptions, Smarter Inventory, And Happier Patients Begins Here.</p>
@@ -79,7 +79,7 @@
 
     <div>
     <label for="lName">Last Name</label><br>
-    <input type="text" id="lName" name="lastName" placeholder="Priyashan" required/><br>
+    <input type="text" value="" id="lName" name="lastName" placeholder="Priyashan" required/><br>
     <span id="feedbackname"></span><br>
     </div>     
 
@@ -92,6 +92,10 @@
     <label for="birthDay">BirthDay</label><br>
     <input type="date" id="birthDay" name="birthDay" placeholder="2003/07/11" required/><br>
     <span id="feedbackBirthDay"></span><br>
+
+    <label for="nic">National Identification Number(NIC)</label><br>
+    <input type="text" id="nic" name="nic" placeholder="200412309889" required/><br>
+    <span id="feedbackNic"></span><br>
     
     <label for="password">Password</label><br>
     <input type="password" id="password" name="password" placeholder="********" required/><br>
@@ -101,6 +105,7 @@
     <input type="password" id="confirmPassword" name="conformPassword" placeholder="********" required/><br>
     <span id="feedbackPassword"></span><br>
     
+    <span id="form-error" class="utility-error"></span>
     <button type="submit" id="submitButton">Create Account</button>
     <a type="submit" id="forgetPassword">Do you need any help ?</a><br>
     
@@ -128,20 +133,66 @@
 
 
     <script>
+        
+        let clearToSubmit = true;
+
+        const birthDay = document.getElementById('birthDay');
+        const birthDayFeedback = document.getElementById('feedbackBirthDay');
+        const submit_btn = document.getElementById('submitButton');
         const form = document.getElementById('form');
+        // form.addEventListener('submit' , (e)=>e.preventDefault());
+        birthDay.addEventListener('change' , ()=>{
+            const age = (new Date(Date.now()).getFullYear() - new Date(birthDay.value).getFullYear());
+
+            if(age < 16){
+                birthDay.classList.remove('utility-success');
+                birthDay.classList.add('utility-warn');
+                birthDayFeedback.textContent = "Sorry! This feature is only available for users aged 16 or above.";
+                clearToSubmit = clearToSubmit && false;
+            }else{
+                birthDay.classList.add('utility-success');
+                birthDay.classList.remove('utility-warn');
+                birthDayFeedback.textContent = ""
+                clearToSubmit = clearToSubmit && true;
+               
+            }
+        })
+
+
         form.addEventListener('submit' ,async (e)=>{
             try{
-
-                
                 e.preventDefault(e);
+                e.stopPropagation();
+
+
+                form.querySelectorAll('input').forEach(el=>{
+                    console.log(el.value);
+                    if(el?.hasAttribute('required') && el.value=='' ){
+                        el?.classList.remove('utility-success');
+                        el?.classList.add('utility-warn');
+                        console.log(el);
+                        clearToSubmit = clearToSubmit && false;
+                        document.getElementById('form-error').textContent ="Oops! It looks like some fields are missing 😝. Please fill out the form before submitting.";
+                        return;
+                    }else{
+                        el?.classList.add('utility-success');
+                        el?.classList.remove('utility-warn');
+                        clearToSubmit = clearToSubmit && true;
+                    }
+                })
                 
                 const data = {};
                 const formData = new FormData(form);
                 for(const [key , value] of formData.entries()){
+                    const el = document.querySelector(`[name="${value}"]`);
+
+                    
                     data[key] = value;
                 }
-                if(data.password != data.conformPassword) throw new Error("password doesn't match");
+                // if(data.password != data.conformPassword) throw new Error("password doesn't match");
                 
+                if(!clearToSubmit) return;
+                console.log({clearToSubmit});
                 const respond = await fetch("/signup" , {
                     method:"POST",
                     headers:{
@@ -153,14 +204,23 @@
 
                 const result = await respond.json();
                 console.log(result , respond);
-                if(result.status != "success" ) throw new Error("Input Details Invalid");
-
-                document.body.classList.add('success');
-                setTimeout(()=>{
-                    console.log(result.data.id);
-                    window.location.href = `http://localhost:3000/customers/${result.data.id}`;
-                } , 3000)
-
+                if(result.status != "success" ) {
+                    if(result.field == "email") {
+                        document.getElementById('feedbackEmail').textContent = "Oops! It looks like this email is already registered. Try logging in instead.";
+                        document.getElementById('email').classList.add('utilities-warn');
+                    }else if(result.field == "nic"){
+                        document.getElementById('feedbackNic').textContent = "Oops! It looks like this nic is already registered. Try logging in instead.";
+                        document.getElementById('nic').classList.add('utilities-warn');
+                    }
+                    
+                    // throw new Error(result.message)
+                }else{
+                    document.body.classList.add('success');
+                    setTimeout(()=>{
+                        window.location.href = `http://localhost:3000/customers/${result.results["0"].id}`;
+                    } , 3000)
+                    
+                }
 
                 
             }catch(error){

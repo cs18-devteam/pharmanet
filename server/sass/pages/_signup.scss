@@ -126,6 +126,11 @@ $secondary-font: 'Poppins', sans-serif;
         outline: none;
         width: 100%;
         margin-top: 1rem;
+        // margin-bottom: 2rem;
+      }
+
+      [id^="feedback"]{
+        color:red;
         margin-bottom: 2rem;
       }
 

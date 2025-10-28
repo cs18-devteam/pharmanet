@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PharmanetStock Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="stockDashboard">
+  <header class="navbar">
+    <div class="logo">
+      <h2>PharmanetStock Dashboard</h2>
+      <p>Manage your medicine inventory</p>
+    </div>
+    <a href="stocklogin.html"><button class="logout-btn">
+      <span>⇢</span> Logout
+    </button></a>
+  </header>
+
+  <main class="dashboard">
+    <div class="header-section">
+      <div>
+        <h3>Medicine Stock</h3>
+        <p>Total medicines: <strong>3</strong></p>
+      </div>
+      <button class="add-btn" id="addMedicineBtn">+ Add Medicine</button>
+    </div>
+
+    <div class="search-section">
+      <div class="search-box">
+        <span>🔍</span>
+        <input type="text" placeholder="Search by code..." />
+      </div>
+      <div class="filter-btns">
+        <button class="filter">By Name</button>
+        <button class="filter active">By Code</button>
+      </div>
+    </div>
+
+    <div class="medicine-list">
+      <div class="medicine-card">
+        <h4>Aspirin</h4>
+        <p class="code">Code: ASP001</p>
+        <div class="info">
+          <div class="item">
+            <small>Stock</small>
+            <p>150</p>
+          </div>
+          <div class="item">
+            <small>Price</small>
+            <p>$5.99</p>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="edit">Edit</button>
+          <button class="delete">Delete</button>
+        </div>
+      </div>
+
+      <div class="medicine-card">
+        <h4>Ibuprofen</h4>
+        <p class="code">Code: IBU002</p>
+        <div class="info">
+          <div class="item">
+            <small>Stock</small>
+            <p>200</p>
+          </div>
+          <div class="item">
+            <small>Price</small>
+            <p>$7.99</p>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="edit">Edit</button>
+          <button class="delete">Delete</button>
+        </div>
+      </div>
+
+      <div class="medicine-card">
+        <h4>Paracetamol</h4>
+        <p class="code">Code: PAR003</p>
+        <div class="info">
+          <div class="item">
+            <small>Stock</small>
+            <p>180</p>
+          </div>
+          <div class="item">
+            <small>Price</small>
+            <p>$4.99</p>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="edit">Edit</button>
+          <button class="delete">Delete</button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- popup section -->
+   <div class="popup-overlay" id="popup">
+    <div class="popup">
+      <div class="popup-header">
+        <h2>Update Medicine</h2>
+        <span class="close-btn" id="closeBtn">&times;</span>
+      </div>
+      <div class="popup-body">
+        <form>
+          <label>Medicine Name</label>
+          <input type="text" value="Ibuprof" />
+
+          <label>Medicine Code</label>
+          <input type="text" value="IBU002" readonly />
+
+          <div class="form-row">
+            <div class="input-group">
+              <label>Stock</label>
+              <input type="text" value="200" />
+            </div>
+            <div class="input-group">
+              <label>Price</label>
+              <input type="text" value="7.99" />
+            </div>
+          </div>
+
+          <div class="btn-group">
+            <button type="button" class="cancel-btn">Cancel</button>
+            <button type="submit" class="save-btn">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+   <!-- Add New Medicine Popup -->
+<div class="popup-overlay" id="addPopup">
+  <div class="popup">
+    <div class="popup-header">
+      <h2>Add New Medicine</h2>
+      <span class="close-btn" id="closeAddPopup">&times;</span>
+    </div>
+
+    <div class="popup-body">
+      <form id="addForm">
+        <label>Medicine Name</label>
+        <input type="text" id="addName" placeholder="e.g., Aspirin" />
+
+        <label>Medicine Code</label>
+        <input type="text" id="addCode" placeholder="e.g., ASP001" />
+
+        <div class="form-row">
+          <div class="input-group">
+            <label>Stock</label>
+            <input type="number" id="addStock" value="0" />
+          </div>
+          <div class="input-group">
+            <label>Price</label>
+            <input type="number" id="addPrice" value="0.00" step="0.01" />
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" class="cancel-btn" id="cancelAddBtn">Cancel</button>
+          <button type="submit" class="save-btn" id="saveAddBtn">Add Medicine</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+  <script>
+// Select all edit buttons
+const editButtons = document.querySelectorAll('.edit');
+const popupOverlay = document.getElementById('popup');
+const closeBtn = document.getElementById('closeBtn');
+const cancelBtn = document.querySelector('.cancel-btn');
+
+const addMedicineBtn = document.getElementById('addMedicineBtn');
+const addPopup = document.getElementById('addPopup');
+const closeAddPopup = document.getElementById('closeAddPopup');
+const cancelAddBtn = document.getElementById('cancelAddBtn');
+const addForm = document.getElementById('addForm');
+
+// Select popup input fields
+const nameInput = document.querySelector('.popup input[type="text"]:nth-of-type(1)');
+const codeInput = document.querySelector('.popup input[type="text"]:nth-of-type(2)');
+const stockInput = document.querySelector('.popup .form-row .input-group:nth-of-type(1) input');
+const priceInput = document.querySelector('.popup .form-row .input-group:nth-of-type(2) input');
+
+// Select search input and medicine cards
+const searchInput = document.querySelector('.search-box input');
+const medicineCards = document.querySelectorAll('.medicine-card');
+
+// Function to open popup
+function openPopup() {
+  popupOverlay.style.display = 'flex';
+}
+
+// Function to close popup
+function closePopup() {
+  popupOverlay.style.display = 'none';
+}
+
+// Add click listener for each Edit button
+editButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const card = button.closest('.medicine-card');
+
+    // ✅ Corrected selectors
+    const name = card.querySelector('h4').textContent;
+    const code = card.querySelector('.code').textContent.replace('Code: ', '');
+    const stock = card.querySelector('.info .item:nth-of-type(1) p').textContent;
+    const price = card.querySelector('.info .item:nth-of-type(2) p').textContent.replace('$', '');
+
+    // Fill popup form fields
+    nameInput.value = name;
+    codeInput.value = code;
+    stockInput.value = stock;
+    priceInput.value = price;
+
+    // Show popup
+    openPopup();
+  });
+});
+
+// Close popup on close button or cancel
+closeBtn.addEventListener('click', closePopup);
+cancelBtn.addEventListener('click', closePopup);
+
+// Close popup if user clicks outside the popup box
+window.addEventListener('click', e => {
+  if (e.target === popupOverlay) {
+    closePopup();
+  }
+});
+
+// Open popup
+addMedicineBtn.addEventListener('click', () => {
+  addPopup.style.display = 'flex';
+});
+
+// Close popup function
+function closeAddPopupWindow() {
+  addPopup.style.display = 'none';
+}
+
+// Close popup on X or Cancel
+closeAddPopup.addEventListener('click', closeAddPopupWindow);
+cancelAddBtn.addEventListener('click', closeAddPopupWindow);
+
+// Close popup when clicking outside
+window.addEventListener('click', e => {
+  if (e.target === addPopup) closeAddPopupWindow();
+});
+
+// (Optional) Handle form submit
+addForm.addEventListener('submit', e => {
+  e.preventDefault();
+  alert('New medicine added!'); // replace with actual logic later
+  closeAddPopupWindow();
+});
+
+// Add event listener to search input
+searchInput.addEventListener('input', () => {
+  const searchValue = searchInput.value.toLowerCase().trim();
+
+  medicineCards.forEach(card => {
+    const codeText = card.querySelector('.code').textContent.toLowerCase();
+
+    // If search field is empty, show all cards
+    if (searchValue === '') {
+      card.style.display = 'block';
+    } else {
+      // Show only matching cards
+      if (codeText.includes(searchValue)) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    }
+  });
+});
+</script>
+
+</body>
+</html>

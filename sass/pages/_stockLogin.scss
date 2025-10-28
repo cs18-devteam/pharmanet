@@ -1,0 +1,104 @@
+.stockLogin{
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+// Color palette
+$bg-light: #ecfdf5;
+$white: #fff;
+$text-dark: #073b28;
+$border: #c9f0dd;
+$primary: #0a8f8f;
+$secondary: #ff8c42;
+$dark: #222;
+
+
+
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-card {
+  background: $white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 40px 50px;
+  width: 380px;
+  text-align: center;
+  border: 1px solid $border;
+
+  .icon {
+    background: #e7faf0;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h2 {
+    color: $text-dark;
+    margin-bottom: 5px;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+    color: $text-dark;
+    margin-top: -0.70rem;
+    margin-bottom: 25px;
+    font-weight: 500;
+  }
+
+  form {
+    text-align: left;
+
+    label {
+      display: block;
+      font-size: 1.3rem;
+      margin-bottom: 5px;
+      color: $text-dark;
+      font-weight: 400;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid $primary;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      outline: none;
+      font-size: 0.95rem;
+
+      &:focus {
+        border-color: $primary;
+        box-shadow: 0 0 0 2px $primary, 0.8;
+      }
+    }
+
+    button {
+      width: 100%;
+      background-image: linear-gradient(to right, $primary, $secondary);
+      color: $white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+
+      &:hover {
+        background: $primary;
+      }
+    }
+  }
+}
+
+}

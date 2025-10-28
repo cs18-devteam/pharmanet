@@ -934,15 +934,15 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 
 .landingPage {
   margin-right: 0%;
-  /* Navbar */
-  /* Header */
-  /* Store */
 }
 .landingPage body {
   font-family: Arial, sans-serif;
   margin: 0;
   background: #f9f9f9;
   color: #222;
+}
+.landingPage {
+  /* Navbar */
 }
 .landingPage .navbar {
   display: flex;
@@ -964,6 +964,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .landingPage .navbar .nav-links a.active {
   border-bottom: 2px solid #0a8f8f;
+}
+.landingPage {
+  /* Header */
 }
 .landingPage .header {
   margin: 1rem;
@@ -1070,6 +1073,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .landingPage .header .contact-card .btn svg {
   margin-left: 0.4rem;
 }
+.landingPage {
+  /* Store */
+}
 .landingPage .store {
   padding: 2rem;
 }
@@ -1127,8 +1133,6 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   align-items: flex-start;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s;
-  /* Sizes */
-  /* Quantity */
 }
 .landingPage .store .product-card:hover {
   transform: translateY(-4px);
@@ -1168,6 +1172,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   font-size: 2rem;
   font-weight: 500;
 }
+.landingPage .store .product-card {
+  /* Sizes */
+}
 .landingPage .store .product-card .sizes {
   display: flex;
   justify-content: left;
@@ -1187,6 +1194,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   background: #0a8f8f;
   color: #fff;
   border-color: #0a8f8f;
+}
+.landingPage .store .product-card {
+  /* Quantity */
 }
 .landingPage .store .product-card .quantity {
   display: flex;
@@ -2212,9 +2222,6 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   color: #127EB5;
 }
 
-.staffMember {
-  /* -------------------- MEDIA QUERIES -------------------- */
-}
 .staffMember .page-container {
   display: flex;
   gap: 2rem;
@@ -2527,6 +2534,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .staffMember .page-container .column3 .attendance-card .documents ul li .download:hover {
   color: #d85a00;
+}
+.staffMember {
+  /* -------------------- MEDIA QUERIES -------------------- */
 }
 @media (max-width: 768px) {
   .staffMember .page-container {
@@ -4128,11 +4138,11 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   border-radius: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-.AddMedi .container .medicine-details {
-  flex: 1;
-}
 .AddMedi .container .medicine-details h2 {
   margin-bottom: 1rem;
+}
+.AddMedi .container .medicine-details {
+  flex: 1;
 }
 .AddMedi .container .medicine-details form {
   display: flex;
@@ -4279,6 +4289,392 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .AddMedi .container .medicine-inventory .inventory-body .actions button.delete-btn:hover {
   background: #a71d2a;
+}
+
+.stockLogin {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.stockLogin .login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.stockLogin .login-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 40px 50px;
+  width: 380px;
+  text-align: center;
+  border: 1px solid #c9f0dd;
+}
+.stockLogin .login-card .icon {
+  background: #e7faf0;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 15px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.stockLogin .login-card h2 {
+  color: #073b28;
+  margin-bottom: 5px;
+}
+.stockLogin .login-card .subtitle {
+  font-size: 0.9rem;
+  color: #073b28;
+  margin-top: -0.7rem;
+  margin-bottom: 25px;
+  font-weight: 500;
+}
+.stockLogin .login-card form {
+  text-align: left;
+}
+.stockLogin .login-card form label {
+  display: block;
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+  color: #073b28;
+  font-weight: 400;
+}
+.stockLogin .login-card form input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #0a8f8f;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  outline: none;
+  font-size: 0.95rem;
+}
+.stockLogin .login-card form input:focus {
+  border-color: #0a8f8f;
+  box-shadow: 0 0 0 2px #0a8f8f, 0.8;
+}
+.stockLogin .login-card form button {
+  width: 100%;
+  background-image: linear-gradient(to right, #0a8f8f, #ff8c42);
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.stockLogin .login-card form button:hover {
+  background: #0a8f8f;
+}
+
+.stockDashboard body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f8fdfa;
+  color: #063b2d;
+}
+.stockDashboard .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #c9f0dd;
+  padding: 15px 60px;
+  background: #ffffff;
+}
+.stockDashboard .navbar .logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.stockDashboard .navbar .logo h2 {
+  margin: 0;
+  font-size: 2rem;
+  color: #0a8f8f;
+}
+.stockDashboard .navbar .logo p {
+  font-size: 1.2rem;
+  color: #063b2d;
+  margin: 2px 0 0;
+  margin-top: -0.5rem;
+}
+.stockDashboard .navbar .logout-btn {
+  background: none;
+  border: 1px solid #0a8f8f;
+  color: #0a8f8f;
+  border-radius: 8px;
+  padding: 6px 16px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+.stockDashboard .navbar .logout-btn:hover {
+  background: #0a8f8f;
+  color: #ffffff;
+}
+.stockDashboard .dashboard {
+  max-width: 120rem;
+  margin: 40px auto;
+  padding: 0 30px;
+}
+.stockDashboard .header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.stockDashboard .header-section h3 {
+  margin: 0;
+}
+.stockDashboard .header-section .add-btn {
+  background: #0a8f8f;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.stockDashboard .header-section .add-btn:hover {
+  background: #ff8c42;
+}
+.stockDashboard .search-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  padding: 15px 20px;
+  border: 1px solid #c9f0dd;
+  border-radius: 10px;
+  margin-top: 20px;
+  height: 10rem;
+}
+.stockDashboard .search-section .search-box {
+  display: flex;
+  align-items: center;
+  width: 80%;
+}
+.stockDashboard .search-section .search-box span {
+  margin-right: 8px;
+  font-size: 1rem;
+}
+.stockDashboard .search-section .search-box input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #0a8f8f;
+  border-radius: 6px;
+  outline: none;
+}
+.stockDashboard .search-section .search-box input:focus {
+  border-color: #0a8f8f;
+  box-shadow: 0 0 0 2px #0a8f8f;
+}
+.stockDashboard .search-section .filter-btns {
+  display: flex;
+  gap: 8px;
+}
+.stockDashboard .search-section .filter-btns .filter {
+  border: 1px solid #0a8f8f;
+  background: none;
+  color: #0a8f8f;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.stockDashboard .search-section .filter-btns .filter.active, .stockDashboard .search-section .filter-btns .filter:hover {
+  background: #ff8c42;
+  color: #ffffff;
+}
+.stockDashboard .medicine-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 30px;
+}
+.stockDashboard .medicine-card {
+  background: #ffffff;
+  border: 1px solid #c9f0dd;
+  border-radius: 10px;
+  padding: 20px;
+  width: 31%;
+  height: fit-content;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+.stockDashboard .medicine-card h4 {
+  margin: 0;
+  color: #063b2d;
+}
+.stockDashboard .medicine-card .code {
+  font-size: 1.2rem;
+  color: #063b2d;
+  margin: 4px 0 12px;
+}
+.stockDashboard .medicine-card .info {
+  display: flex;
+  justify-content: space-between;
+  background: #e7faf0;
+  border-radius: 8px;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+}
+.stockDashboard .medicine-card .info .item {
+  text-align: center;
+}
+.stockDashboard .medicine-card .info .item small {
+  font-size: 1rem;
+  color: #063b2d;
+}
+.stockDashboard .medicine-card .info .item p {
+  margin: 3px 0 0;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.stockDashboard .medicine-card .actions {
+  display: flex;
+  justify-content: space-between;
+}
+.stockDashboard .medicine-card .actions .edit {
+  background: #0a8f8f;
+  color: #ffffff;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: 0.2s;
+}
+.stockDashboard .medicine-card .actions .edit:hover {
+  background: #0a8f8f;
+}
+.stockDashboard .medicine-card .actions .delete {
+  background: none;
+  border: 1px solid #e63946;
+  color: #e63946;
+  padding: 8px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: 0.2s;
+}
+.stockDashboard .medicine-card .actions .delete:hover {
+  background: #e63946;
+  color: #ffffff;
+}
+.stockDashboard .popup-overlay {
+  display: none; /* hidden initially */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.stockDashboard .popup {
+  background: #fff;
+  width: 396px;
+  border-radius: 10px;
+  padding: 20px 25px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  animation: popupFade 0.3s ease-in-out;
+}
+.stockDashboard .popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.stockDashboard .popup-header h2 {
+  font-size: 18px;
+  color: #007a5c;
+}
+.stockDashboard .popup-header .close-btn {
+  font-size: 22px;
+  cursor: pointer;
+  color: #444;
+  transition: 0.2s;
+}
+.stockDashboard .popup-header .close-btn:hover {
+  color: #007a5c;
+}
+.stockDashboard .popup-body {
+  margin-top: 15px;
+}
+.stockDashboard .popup-body form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.stockDashboard .popup-body form label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 4px;
+}
+.stockDashboard .popup-body form input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1.5px solid #007a5c;
+  border-radius: 6px;
+  outline: none;
+}
+.stockDashboard .popup-body form input:read-only {
+  background: #f0f0f0;
+}
+.stockDashboard .popup-body form input:focus {
+  border-color: #00a676;
+}
+.stockDashboard .popup-body form .form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.stockDashboard .popup-body form .form-row .input-group {
+  flex: 1;
+}
+.stockDashboard .popup-body form .btn-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+.stockDashboard .popup-body form .btn-group .cancel-btn,
+.stockDashboard .popup-body form .btn-group .save-btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.stockDashboard .popup-body form .btn-group .cancel-btn {
+  background: white;
+  border: 1.5px solid #00a676;
+  color: #00a676;
+}
+.stockDashboard .popup-body form .btn-group .cancel-btn:hover {
+  background: #f0fef9;
+}
+.stockDashboard .popup-body form .btn-group .save-btn {
+  background: #00a676;
+  color: white;
+  border: none;
+}
+.stockDashboard .popup-body form .btn-group .save-btn:hover {
+  background: #009066;
+}
+@keyframes popupFade {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

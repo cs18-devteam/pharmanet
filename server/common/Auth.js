@@ -90,8 +90,8 @@ exports.readCookies =(req)=> {
 exports.verifyUser =async (req , res , id)=>{
     try{
 
-        // const cookies = this.readCookies(req);
-        const cookies = JSON.parse(await getRequestData(req));
+        const cookies = this.readCookies(req);
+        // const cookies = JSON.parse(await getRequestData(req));
         const token = cookies.token;
         const decodedToken = JSON.parse(this.decrypt(token));
         if(id == decodedToken.id){

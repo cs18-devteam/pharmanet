@@ -236,7 +236,7 @@ const server = http.createServer((req , res)=>{
         
         //:: CUSTOMERS ROUTES
         AppRouter.pipe(req ,res).route("/customers/:customerId")
-        // ?.authenticate(req.customerId)
+        ?.authenticate(req.customerId)
         ?.get(customerController.renderCustomerHome);
         
         AppRouter.pipe(req ,res).route("/customers/:customerId/medicines")

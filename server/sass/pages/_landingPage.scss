@@ -270,15 +270,15 @@
 
 
 
-        .top-pharmacies {
-                padding: 8rem 0;
-            }
+   
 
             .pharmacies-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-                gap: 0;
-            justify-items: center;
+                margin: 0 auto;
+                width: 100%;
+                display: flex;
+                // grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+                gap: 2rem;
+                justify-content: center;
             }
 
             .pharmacy-card {
@@ -288,8 +288,13 @@
                 width:100%;
                 max-width: 24rem;
                 overflow: hidden;
+                position: relative;
                 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
                 transition: transform 0.3s ease;
+
+                &:hover > &::after{
+                    background-size: 100% 100%;
+                }
 
 
                 &:hover{
@@ -299,18 +304,21 @@
 
             .pharmacy-img {
                 width: 100%;
+                z-index: 0;
                 height: auto;
-                object-fit: cover;
+                object-fit: fill;
             }
 
             .pharmacy-info {
             // position:absolute;
                 padding: 1.2rem;
+                z-index: 10;
                 text-align: left;
             }
     
             .pharmacy-name {
                 font-size: 2rem;
+                z-index: 10;
                 //margin-bottom: 10px;
                 color:var(--color-green-02) ;
                 font-weight: 600;
@@ -333,8 +341,12 @@
     .joinus{
         margin: 8rem;
         padding: 2rem;
+        
         .header-title{
-            color:var(--secondary-color);
+            background-clip: text;
+            color:transparent;
+            background-image: linear-gradient(120deg , var(--color-green-01) , var(--color-green-02) 50%);
+            // color:var(--secondary-color);
         }
         .header-discription{
             color:var(--tertiary-color)
@@ -353,6 +365,7 @@
                     border-radius: 0.6rem;
                     border: 0.2rem solid var(--color-yellow-01);
                     display: flex;
+                    background-image: none;
                     gap:0.5rem;
                     cursor: pointer;
                     transition:all 0.3s ease;
@@ -377,12 +390,15 @@
     //footer
 
     .footer{
-        background-color: var(--color-green-02);
+        // background-color: var(--color-green-02);
         color:var(--white);
         font-family: var(--primary-font);
         padding:3rem;
         height:57.9rem;
-        clip-path:polygon(0% 0%, 100% 20%, 100% 100%, 0% 100% );
+        background-image: linear-gradient(183deg, transparent 12%, var(--color-green-02) 10%) , linear-gradient(178deg, transparent 10%, var(--color-green-01) 10%);
+        // clip-path:polygon(0% 0%, 100% 20%, 100% 100%, 0% 100% );
+
+
         
 
         .main {
@@ -400,6 +416,7 @@
         font-family: var(--secondary-font);
         display: flex;
         align-items: center;
+        mix-blend-mode: plus-lighter;
 
             .logopic {
                 height: 4.6rem;
@@ -423,7 +440,7 @@
             line-height: 5rem;
             text-decoration: none;
             color:#bdc6cb;
-            font-size:2.4rem;
+            font-size:1.8rem;
             font-family: var(--primary-font);
             }
         }
@@ -437,6 +454,7 @@
             p{
                 color:#bdc6cb;
                 margin:2rem 0;
+                font-size: 1.8rem;
             }
         
         }
@@ -446,16 +464,18 @@
             
             nav{
                 display:flex;
-                justify-content: space-between;
+                justify-content: flex-start;
                 align-items: center;
                 padding: 1rem 2rem;
                 color:#75a6cd;
-                font-size: 2.4rem;
+                gap: 2rem;
+                font-size: 1.4rem;
+                
                 
                 >a{
                     text-decoration: none;
                     color:var(--white);
-                    font-size:2.4rem;
+                    font-size:1.4rem;
                     font-family: var(--primary-font);
 
                 }
@@ -467,6 +487,14 @@
 
 }    
 
+// section top pharmacies
+.top-pharmacy {
+        padding: 8rem 0;
+        margin: 0 auto;
+        // background-color: red;
+        // background-color: red;
+
+    }
         
 
         

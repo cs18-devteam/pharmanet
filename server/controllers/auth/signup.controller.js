@@ -89,9 +89,9 @@ exports.signup = async (req, res) => {
             emailOTPCreatedAt : new Date(Date.now()).toISOString().slice(0, 19).replace("T", " ") //5 min
         });
 
-        const token = createToken(newUser);
+        const token = createToken(newUser[0]);
         const cookie = createCookie(token);
-        console.log(newUser);
+        // console.log(newUser);
         otpController.sendEmailOTP(newUser[0]);
         
 

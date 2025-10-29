@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PharmaNet Registration</title>
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
+{header}
 <body  class="addPharmarcy04">
+
+  
 
   <div class="registration-container">
     <header>
@@ -46,11 +40,13 @@
         <div class="form-row">
           <label>Head Pharmacist Name *</label>
           <input type="text"  name="pharmacist" placeholder="Enter pharmacist name" required>
+          <p></p>
         </div>
 
         <div class="form-row">
           <label>Pharmacist License Number *</label>
-          <input type="text" name="pharmacistlicense" placeholder="Eg: RPH-2024-001" required>
+          <input type="text" name="pharmacistLicense" placeholder="Eg: RPH-2024-001" required>
+          <p></p>
         </div>
 
         <div class="form-row">
@@ -61,6 +57,7 @@
             <option value="hospital">Hospital Pharamarcy</option>
             <option value="clinical">Clinical Pharamrcy</option>
             <option value="mail">Mail Pharamrcy</option>
+            <p></p>
           </select>
         </div>
 
@@ -78,51 +75,111 @@
     </footer>
   </div>
 
-   <script>
+  <script>
+    // import "/js/utilities/Popup.js";
+// import Notify from "/js/view/Notify.js";
+try{
+
     const form = document.getElementById('form');
     const btn_submit = document.querySelector('.btn-submit');
 
-    const data = {}
+    const data = JSON.parse(localStorage.getItem('pharmacy')) || {};
+    console.log(data);
+    for(const [key,value] of Object.entries(data)){
+      const field = document.querySelector(`[name='${key}']`);
+      if(field){
+        field.value = value;
+      }
+    }
+
+
+
     btn_submit.addEventListener('click' , (e)=>{
       e.preventDefault();
       const formData = new FormData(form);
 
       for( const [key , value] of formData.entries()){
+        const field = document.querySelector(`[name='${key}']`);
+
+        if(/[^A-Za-z0-9 ]/.test(value)){
+          field.classList.remove('utility-success');
+          field.classList.add('utility-warn');
+          field.parentElement.querySelector('p').textContent = "letters and numbers are only allowed";
+          return;
+        }
+        if(key=="pharmacist" && /[^A-Za-z ]/.test(value)){
+          field.classList.remove('utility-success');
+          field.classList.add('utility-warn');
+          field.parentElement.querySelector('p').textContent = "letters are only allowed";
+          return;
+        }
+
         
         if(!value){
-          document.querySelector(`[name=${key}]`).classList.add('utility-warn');
-          document.querySelector(`[name="${key}"]`).classList.remove('utility-success');
-          console.log(document.querySelector(`[name=${key}]`));
+          field.classList.add('utility-warn');
+          field.classList.remove('utility-success');
+          console.log(field);
           return;
         }else{
-          document.querySelector(`[name="${key}"]`).classList.add('utility-success');
-          document.querySelector(`[name="${key}"]`).classList.remove('utility-warn');
+          field.classList.add('utility-success');
+          field.classList.remove('utility-warn');
         }
         data[key] = value;
       }
       
       //save to storage
       const previous = JSON.parse(localStorage.getItem('pharmacy'));
-      if(!previous) window.location.href = "/admin/pharmacy/step/4";
+      if(!previous) window.location.href = "/admin/pharmacy/step/3";
       localStorage.setItem("pharmacy" , JSON.stringify({...previous , ...data }));
 
       fetch("/admin/pharmacy/create" , {
         method:"POST",
         body: localStorage.getItem("pharmacy"),
       }).then(data=>data.json()).then(data=>{
-        if(typeof (data?.data?.[0]) == "object"){
-
-          window.location.href = "/admin/pharmacy";
+        if(data.status == "error"){
+          throw new Error(data.message);
+          return;
         }
-      }).catch(e=>console.log(e)).finally(()=>console.log(localStorage.getItem("pharmacy")))      
+        
+        if(typeof (data?.[0]) == "object"){
+          localStorage.setItem('pharmacy' , JSON.stringify({}));
+          Swal.fire({
+              title: "Pharmacy Created Successfully",
+              icon: "success",
+              draggable: true
+          }).then(()=>{
+            window.location.href = "/admin/pharmacy";
+          });
+          // Notify.showSuccess('/admin/pharmacy');
+          
 
+        }
+      }).catch(e=>{
+        console.log(e);
+        Swal.fire({
+        icon: "error",
+        title: "something went wrong",
+        text: e.message,
+        footer: '<a href="/contactus">Why do I have this issue?</a>'
+    }); 
 
+        
 
+      }).finally(()=>{
+        console.log(localStorage.getItem("pharmacy"))
+      });      
+    });
 
-
-
-
-    })</script>
+    }catch(e){
+      console.log(e);
+      Swal.fire({
+        icon: "error",
+        title: "something went wrong",
+        text: e.message,
+        footer: '<a href="/contactus">Why do I have this issue?</a>'
+    }); 
+    }
+  </script>
 
 
 </body>

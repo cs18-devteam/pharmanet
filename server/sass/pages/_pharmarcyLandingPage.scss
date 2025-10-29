@@ -309,7 +309,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    top: 150%;
+    top: 170%;
     left: 50%;
     transform: translate(-50%,-50%);
     border-radius: 5rem;
@@ -378,6 +378,7 @@ body {
         position :relative;
         padding: 2rem;
         align-items: center;
+        transform: rotate(-20deg);
         width: 25rem;
         height: 31.3535rem;
         border-radius: 1.7236rem;
@@ -467,6 +468,7 @@ body {
         padding: 2rem;
         align-items: center;
         width: 25rem;
+        transform: rotate(30deg);
         height: 31.3535rem;
         border-radius: 1.7236rem;
         background: #000;
@@ -554,6 +556,7 @@ body {
         position :relative;
         padding: 2rem;
         align-items: center;
+        transform: rotate(-30deg);
         width: 25rem;
         height: 31.3535rem;
         border-radius: 1.7236rem;
@@ -646,6 +649,7 @@ body {
         height: 31.3535rem;
         border-radius: 1.7236rem;
         background: #004848;
+        transform: rotate(30deg);
         
             .stars{
                 display: flex;

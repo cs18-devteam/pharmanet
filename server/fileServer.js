@@ -64,7 +64,7 @@ const refreshCache = (filePath)=>{
         }
     }
 
-    console.log(cache)
+    // console.log(cache)
 }
 
 exports.requestFile = (filePath) =>{

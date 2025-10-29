@@ -44,7 +44,7 @@ $secondary-font: 'Poppins', sans-serif;
       top: 1.4rem;
       left: 4.6rem;
       border-radius: 3rem;
-      background-image: url('/images/signupImage.png');
+      // background-image: url('/images/signupImage.png');
       background-size: cover;
       background-position: center;
       filter: brightness(70%);
@@ -219,3 +219,42 @@ $secondary-font: 'Poppins', sans-serif;
 
 
 }
+
+.success{
+            animation: animateFade 2s ease forwards;
+        }
+
+        .congrats{
+            position: fixed;
+            top: 100%;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            opacity: 0;
+            z-index: -10;
+            transition: all 2s ease;
+            color: #888;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .congrats > span{
+            color: transparent;
+            background-image: linear-gradient(var(--color-green-01) , var(--color-green-02));
+            background-clip: text;
+        }
+
+        .success .congrats {
+            top: 0;
+            z-index: 10;
+            opacity: 1;
+        }
+
+        @keyframes animateFade{
+            100%{
+                opacity: 0; 
+                transform: translateY(-100px); 
+            }
+        }

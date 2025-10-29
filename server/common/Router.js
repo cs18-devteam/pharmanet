@@ -3,7 +3,6 @@ const { verifyUser } = require("./Auth");
 const { authenticate } = require("./encrypt");
 const notFound = require("./notFound");
 const { response, responseJson } = require("./response");
-const view = require("./view");
 
 class Router{
     #user;
@@ -15,7 +14,6 @@ class Router{
         this.req = req ;
         this.res = res;
     }
-
 
     access(access = []){
         this.#globalAccess = [...access];

@@ -12,6 +12,9 @@ exports.renderCustomerPharmacies = async (req , res)=>{
 
         if(!customer) return view('404');
         return response(res , view('customer/customer.search.pharmacies' , {
+            header : view('component.header' , {
+                name:"Antibiotics",
+            }),
             ...customer,
             count : pharmacies.length ,
             navbar : view('customer/navbar.customer' ,customer) ,
@@ -24,7 +27,11 @@ exports.renderCustomerPharmacies = async (req , res)=>{
         
     }catch(error){
         console.log(error);
-        response(res , view('404') , 400);
+        response(res , view('404' , {
+            header : view('component.header' , {
+          name:"Antibiotics",
+        })
+        }) , 400);
     }
 
 }

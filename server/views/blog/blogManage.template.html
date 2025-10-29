@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PharmaCare Blog</title>
-  <link rel="stylesheet" href="/css/style.css">
-</head>
+{header}
 <body class="blogManage">
-  {navbar}
+  
 
 
   <div class="container">
@@ -16,6 +9,8 @@
       <p>View, edit, and manage all blog posts</p>
       <a href="/createNewBlog"><button class="btn-create">+ Create New Blog</button></a>
     </header>
+
+    {sidebar}
 
     <section class="blog-table">
       <table>
@@ -43,7 +38,7 @@
             </td>
           </tr> -->
           {blogs}
-          <tr>
+          <!-- <tr>
             <td>
               <strong>Antibiotics: When and How to Use Them Safely</strong>
               <p>Learn about antibiotic resistance and the proper usage guidelines...</p>
@@ -81,7 +76,7 @@
               <a href="/editBlog1" class="edit"> Edit</a>
               <a href="#" class="delete"> Delete</a>
             </td>
-          </tr>
+          </tr> -->
         </tbody>
       </table>
     </section>
@@ -105,22 +100,28 @@
 
 
   <script>
-    document.addEventListener('click',async(e)=>{
-      const target = e.target;
-      if(target.closest('.delete')){
-        <!-- window.location.href = `/delete/${target.dataset.id}`; -->
-        const id = target.dataset.id;
-      
-        const respond = await fetch(`/api/blogs/${id}`, {
-          method:'DELETE'
-        })
+    try{
 
-        if(respond.status == 204){
-          window.location.href = "/blogManage";
+      document.addEventListener('click',async(e)=>{
+        const target = e.target;
+        if(target.closest('.delete')){
+          // window.location.href = `/blogs${target.dataset.id}/delete`;
+          const id = target.dataset.id;
+          
+          const respond = await fetch(`/api/blogs/${id}`, {
+            method:'DELETE'
+          })
+          
+          if(respond.status == 204){
+            window.location.href = "/blogManage";
+          }
+          
         }
-        
-      }
-    })
+      })
+    }catch(e){
+      console.log(e);
+      Notify.showError(e.message);
+    }
   </script>
 
   </body>

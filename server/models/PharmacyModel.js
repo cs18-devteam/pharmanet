@@ -17,6 +17,10 @@ class PharmacyModel extends Model{
             type:"VARCHAR(100)",
         }
 
+        this.expireDate = {
+            type:"DATE"
+        }
+
         this.addressNo = {
             type:"VARCHAR(20)",
         }
@@ -53,6 +57,14 @@ class PharmacyModel extends Model{
             type:"VARCHAR(100)"
         }
         this.type = {
+            type:"VARCHAR(100)"
+        }
+
+        this.owner = {
+            type:"VARCHAR(100)"
+        }
+
+        this.pharmacistLicense = {
             type:"VARCHAR(100)"
         }
 

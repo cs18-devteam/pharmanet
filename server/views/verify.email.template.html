@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verify Email Address</title>
-        <link rel="shortcut icon" href="/logo/favicon.png" type="image/png">
-    <link rel="icon" href="/logo/favicon.svg" type="image/svg+xml">
-    <link rel="alternate icon" href="/logo/favicon.png" type="image/png">
-    <link rel="stylesheet" href="/css/style.css">
-</head>
+{header}
 <body class="verify_email">
    <header>
         <nav>
         <div class="logo">
-            <img class="logopic" src="/public/logo/logo.svg" alt="logo">
+            <img class="logopic" src="/logo/logo.svg" alt="logo">
             <p class="logoname">PharmaNet</p>
         </div>
         
@@ -22,14 +12,123 @@
     <main class="wrapper">
     <div class="verify-email-container">
         <p class="title">Verify Email</p>
-        <p class="discription">We have sent a verification code to example@gmail.com. Please check your inbox.</p>
+        <p class="discription">We have sent a verification code to  {email} Please check your inbox.</p>
+        <button id="resend">resend otp</button>
         <p class="second-title">Verification Code</p>
-        <input type="text" id="code" maxlength="6" placeholder="XXXXXX">
+        <input type="number" id="code" maxlength="6" placeholder="XXXXXX">
         <button class="verify-button">Verify <img src=""></button>
-         <a href="#" class="change-email">Need to change email ?</a>
+         <!-- <a href="" class="change-email">Need to change email ?</a> -->
     </div>
     </main>
-    <script type="module" src="/js/controller/controller.js"></script>
+    <!-- <script type="module" src="/js/controller/controller.js"></script> -->
+
+
+    <script>
+        try{
+            const resendBtn = document.querySelector('#resend');
+
+            resendBtn.addEventListener('click' , (e)=>{
+                fetch('/verify/{id}/email/otp' , {
+                    method:"GET"
+                }).then(data=>data.json())
+                .then(data=>{
+                    if(data.status == "success"){
+                        Swal?.fire({
+                            icon:"success",
+                            title :"OTP sent",
+                            body:"please check your inbox",
+                        })
+                    }else{
+                        Swal?.fire({
+                            icon:"error",
+                            title:"OTP Failed",
+                            body:"something went wrong",
+                        })
+                    }
+                })
+            })
+
+        }catch(e){
+            console.log(e);
+            Swal?.fire({
+                icon:"error",
+                message:"can't send otp again",
+                body:e.message,
+            })
+        }
+
+
+
+
+
+
+        try{
+            document.querySelector('.verify-button').addEventListener('click' , ()=>{
+                const input = document.querySelector('#code')
+
+                if(!input.value) {
+                    input.classList.add('utility-warn');
+                    input.classList.remove('utility-success')
+                }else{
+                    input.classList.remove('utility-warn');
+                    input.classList.add('utility-success')
+                }
+
+
+                
+                
+                fetch("/verify/{id}/email" , {
+                    method:"POST",
+                    body: JSON.stringify({
+                        otp: input.value,
+                    })
+                }).then(data=> data.json()).then(data=>{
+                    if(data.status == "success"){
+                        Swal?.fire({
+                            icon:"success",
+                            title:"email verified",
+                        }).then(()=>{
+
+                            switch("{role}"){
+                                case "customer":
+                                    window.location.href = "/customers/{id}"
+                                    return;
+                                case "admin":
+                                    window.location.href = "/admin/{id}"
+                                    return;
+                                default:
+                                    window.location.href = "/login";
+                            }
+                        })
+                    }else{
+                        Swal?.fire({
+                            icon:"error",
+                            title:data.message || "email not verified",
+                            body:"retry"
+                        })
+                    }
+                }).catch(e=>{
+                    console.log(e);
+                    Swal?.fire({
+                        status:"error",
+                        title:"Internal server error",
+                        body:"try after some time!"
+                    })
+                })
+            })
+
+        }catch(e){
+            console.log(e);
+            Swal?.fire({
+                status:"error",
+                title:"Internal server error",
+                body:e.message,
+            })
+        }
+
+
+
+    </script>
 
 </body>
 </html>

@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
+{header}
 <body class="users">
     <div class="container">
     <div class="container-1">
@@ -207,21 +200,27 @@
   </div>
 
   <script>
-    // Toggle dropdown menu
-    document.querySelectorAll('.dots').forEach(btn => {
-      btn.addEventListener('click', e => {
-        e.stopPropagation();
-        document.querySelectorAll('.dropdown').forEach(dropdownMenu => dropdownMenu.classList.remove('show'));
-        const dropdownMenu = btn.nextElementSibling;
-        dropdownMenu.classList.toggle('show');
+    try{
+
+      // Toggle dropdown menu
+      document.querySelectorAll('.dots').forEach(btn => {
+        btn.addEventListener('click', e => {
+          e.stopPropagation();
+          document.querySelectorAll('.dropdown').forEach(dropdownMenu => dropdownMenu.classList.remove('show'));
+          const dropdownMenu = btn.nextElementSibling;
+          dropdownMenu.classList.toggle('show');
+        });
       });
-    });
-
-    // Hide dropdown when clicking outside
-    document.addEventListener('click', () => {
-      document.querySelectorAll('.dropdown').forEach(dropdownMenu => dropdownMenu.classList.remove('show'));
-    });
-
+      
+      // Hide dropdown when clicking outside
+      document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown').forEach(dropdownMenu => dropdownMenu.classList.remove('show'));
+      });
+      
+    }catch(e){
+      console.log(e);
+      Notify.showError(e.message);
+    }
     
     
   </script>

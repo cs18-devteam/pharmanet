@@ -6,15 +6,15 @@ const { response, responseJson } = require("../../common/response");
 const view = require("../../common/view");
 const Users = require("../../models/UserModel");
 
-exports.renderLogin = async (req , res)=>{
-    return response(res , view("login") , 200);
-}
-
 
 
 // Render login page
 exports.renderLogin = async (req, res) => {
-    return response(res, view("login"), 200);
+    return response(res, view("login",{
+        header : view('component.header' , {
+          name:"Login || Pharmanet Pharmacy Management",
+        })
+    }), 200);
 };
 
 // Login function

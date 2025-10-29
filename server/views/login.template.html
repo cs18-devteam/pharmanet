@@ -99,6 +99,8 @@
 
 
     <script>
+      try{
+
         const form = document.getElementById('loginForm');
         form.addEventListener('submit' ,async (e)=>{
             try{
@@ -160,14 +162,27 @@
 
                 
             }catch(error){
-                alert(error.message);
-                console.log(error);
+              console.log(error);
+              throw error;  
+                
             }
             
 
 
             
         })
+
+    }catch(e){
+      console.log(e);
+      Swal.fire({
+          icon: "error",
+          title: "something went wrong",
+          theme:"bulma",
+          text: e.message,
+          footer: '<a href="/contactus">Why do I have this issue?</a>'
+          });    
+    }
+
 
 
     </script>

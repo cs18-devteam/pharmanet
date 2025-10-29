@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sales</title>
-  <link rel="stylesheet" href="/css/style.css" />
-     <link rel="shortcut icon" href="/logo/logo.svg" 
-    type="image/svg+xml">
-        <link rel="icon" href="/logo/favicon.svg" type="image/svg+xml">
-    <link rel="alternate icon" href="/logo/favicon.png" type="image/png">
-</head>
+{header}
 
 <body class="cashier-sales-page">
   <!-- ---------------- Header ---------------- -->
@@ -284,105 +273,112 @@
         </div>
       </div>
 
-      <!-- Charts Section (Optional) -->
-      <!-- 
-      <div class="chart-row">
-        <div class="card graph-report">
-          <h3>Graph Report</h3>
-          <div class="donut">
-            <div class="center">
-              <p>Total</p>
-              <h2>755K</h2>
-            </div>
-          </div>
-          <div class="legend">
-            <span class="item purchases">Purchases</span>
-            <span class="item suppliers">Suppliers</span>
-            <span class="item sales">Sales</span>
-            <span class="item no-sales">No Sales</span>
-          </div>
-        </div>
-
-        <div class="card total-sales">
-          <h3>Total Sales Overview</h3>
-          <div class="bars">
-            <div class="bar mon"><div class="fill"></div><p>Mon</p></div>
-            <div class="bar tue"><div class="fill"></div><p>Tue</p></div>
-            <div class="bar wed active"><div class="fill"></div><p>Wed</p></div>
-            <div class="bar thu"><div class="fill"></div><p>Thu</p></div>
-            <div class="bar fri"><div class="fill"></div><p>Fri</p></div>
-            <div class="bar sat"><div class="fill"></div><p>Sat</p></div>
-          </div>
-          <div class="tooltip">
-            <p>Apr, 2025</p>
-            <h4>$298.00K</h4>
-          </div>
-        </div>
-      </div>
-      -->
     </div>
   </div>
 
   <script>
     // Notification functionality
 function toggleNotificationPopup() {
-  const popup = document.getElementById('notificationPopup');
-  const overlay = document.createElement('div');
-  overlay.className = 'notification-overlay active';
-  document.body.appendChild(overlay);
-  
-  popup.classList.add('active');
-  
-  // Close when clicking overlay
-  overlay.addEventListener('click', closeNotificationPopup);
+  try{
+
+    const popup = document.getElementById('notificationPopup');
+    const overlay = document.createElement('div');
+    overlay.className = 'notification-overlay active';
+    document.body.appendChild(overlay);
+    
+    popup.classList.add('active');
+    
+    // Close when clicking overlay
+    overlay.addEventListener('click', closeNotificationPopup);
+  }catch(e){
+    console.log(e);
+    Notify.showError(e.message);
+  }
 }
 
 function closeNotificationPopup() {
-  const popup = document.getElementById('notificationPopup');
-  const overlay = document.querySelector('.notification-overlay');
-  
-  popup.classList.remove('active');
-  if (overlay) {
-    overlay.remove();
+  try{
+
+    const popup = document.getElementById('notificationPopup');
+    const overlay = document.querySelector('.notification-overlay');
+    
+    popup.classList.remove('active');
+    if (overlay) {
+      overlay.remove();
+    }
+  }catch(e){
+    console.log(e);
+    Notify.showError(e.message);
   }
 }
 
 // Order actions
 function acceptOrder(orderId) {
-  if (confirm(`Accept order ${orderId}?`)) {
-    alert(`Order ${orderId} accepted!`);
-    // Add your API call here
-    updateNotificationCount();
-  }
+  try{
+
+    if (confirm(`Accept order ${orderId}?`)) {
+      alert(`Order ${orderId} accepted!`);
+      // Add your API call here
+      updateNotificationCount();
+    }
+  }catch(e){
+    console.log(e);
+    Notify.showError(e.message);
+  } 
 }
 
 function rejectOrder(orderId) {
-  if (confirm(`Reject order ${orderId}?`)) {
-    alert(`Order ${orderId} rejected!`);
-    // Add your API call here
-    updateNotificationCount();
+  try{
+
+    if (confirm(`Reject order ${orderId}?`)) {
+      alert(`Order ${orderId} rejected!`);
+      // Add your API call here
+      updateNotificationCount();
+    }
+  }catch(e){
+    console.log(e);
+    Notify.showError(e.message);
   }
 }
 
 function startChat(orderId) {
-  alert(`Starting chat for order ${orderId}`);
-  // Implement chat functionality
+  try{
+
+    alert(`Starting chat for order ${orderId}`);
+    // Implement chat functionality
+  }catch(e){
+    console.log(e);
+    Notify.showError(e.message);
+  }
 }
 
 function updateNotificationCount() {
-  const countElement = document.getElementById('notificationCount');
-  let currentCount = parseInt(countElement.textContent);
-  if (currentCount > 0) {
-    countElement.textContent = currentCount - 1;
+  try{
+
+    const countElement = document.getElementById('notificationCount');
+    let currentCount = parseInt(countElement.textContent);
+    if (currentCount > 0) {
+      countElement.textContent = currentCount - 1;
+    }
+  }catch(e){
+    console.log(e);
+    Notify.showError(e.message);
   }
 }
 
-// Close popup when pressing Escape key
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    closeNotificationPopup();
-  }
-});
+try{
+
+  
+  // Close popup when pressing Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeNotificationPopup();
+    }
+  });
+}catch(e){
+  console.log(e)
+  Notify.showError(e.message);
+}
   </script>
 </body>
 </html>

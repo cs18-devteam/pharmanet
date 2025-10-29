@@ -284,19 +284,25 @@
   </div>
 
   <script>
-    let processing = false;
-    const deleteBtn = document.getElementById('delete-btn');
-    if(deleteBtn && !processing ){
-      processing = true;
-      deleteBtn.addEventListener('click' ,async ()=>{
-        deleteBtn.style.opacity = ".5";
-        const respond =await  fetch(`/admin/pharmacy/view/${deleteBtn.dataset.id}` , {
-          method:"DELETE",
-        });
+    try{
 
-        deleteBtn.style.opacity = 1;
-        window.location.href = "/admin/pharmacy"
-      })
+      let processing = false;
+      const deleteBtn = document.getElementById('delete-btn');
+      if(deleteBtn && !processing ){
+        processing = true;
+        deleteBtn.addEventListener('click' ,async ()=>{
+          deleteBtn.style.opacity = ".5";
+          const respond =await  fetch(`/admin/pharmacy/view/${deleteBtn.dataset.id}` , {
+            method:"DELETE",
+          });
+          
+          deleteBtn.style.opacity = 1;
+          window.location.href = "/admin/pharmacy"
+        })
+      }
+    }catch(e){
+      console.log(e);
+      Notify.showError(e.message);
     }
 
 

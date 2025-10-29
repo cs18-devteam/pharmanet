@@ -1,16 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/logo/favicon.png" type="image/png">
-    <link rel="icon" href="/logo/favicon.svg" type="image/svg+xml">
-    <link rel="alternate icon" href="/logo/favicon.png" type="image/png">
-    <link rel="stylesheet" href="./css/style.css">
-    
-    <title>Pharmanet || search medicine easily</title>
-</head>
+{header}
 <body class="landing">
+
+<!--         
+    <popup-window id="popup" class="notify-window popup-window-error" status="open">
+            <p class="popup-window-content">
+                this is message from popup
+
+            </p>
+            <popup-close class="popup-close-btn" for="popup">
+                close
+            </popup-close>
+        </popup-window> -->
 
     <!--nav bar for all page-->
     <header>
@@ -19,6 +19,11 @@
 
     </header>
 <!--header section-->
+
+
+    
+
+
     <header>
         <div class="container">
             <div class="header-content">
@@ -244,6 +249,9 @@
             </div>
 
         </div>
+
+
+
         <div class="bottom">
             <nav class="footerlinks">
                 <span>Alright Reserved ©Pharmanet 2025</span>
@@ -254,40 +262,55 @@
                 <a href="#">Teams & Conditions</a>
             </nav>
         </div>
+
+
+
     </section>
 
     
 
 
         <script>
+            try{
+
+                const allElements = Array.from(document.querySelector('body').children);
+                
+                const intersectionObserver = new IntersectionObserver((entries)=>{
+                    const [entry] = entries;
+                    entry.target.classList.remove("utility-hidden");
+                } , {
+                    root:null,
+                    threshold: .1,
+                })
+                
+                
+                
+                allElements.forEach(( el ,index)=>{
+                    // if(index < 2) return;
+                    
+                    if(el.tagName == "script") return;
+                    
+                    // Check if element is initially visible
+                    const rect = el.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                    if(isVisible) return;
+                    
+                    intersectionObserver.observe(el);
+                    el.classList.add('utility-transition')
+                    el.classList.add('utility-hidden');
+                    
+                    
+                })
+            }catch(e){
+                console.log(e);
+                    Swal.fire({
+                    icon: "error",
+                    title: "something went wrong",
+                    text: e.message,
+                    footer: '<a href="#">Why do I have this issue?</a>'
+                    });    
+            }
         
-        const allElements = Array.from(document.querySelector('body').children);
-
-        const intersectionObserver = new IntersectionObserver((entries)=>{
-            const [entry] = entries;
-            entry.target.classList.remove("utility-hidden");
-        } , {
-            root:null,
-            threshold: .1,
-        })
-
-
-
-        allElements.forEach(( el ,index)=>{
-            // if(index < 2) return;
-
-            if(el.tagName == "script") return;
-
-            // Check if element is initially visible
-            const rect = el.getBoundingClientRect();
-            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-            if(isVisible) return;
-
-            intersectionObserver.observe(el);
-            el.classList.add('utility-transition')
-            el.classList.add('utility-hidden');
-            
-        })
         
 
 

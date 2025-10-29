@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="styleSheet" href="/css/style.css">
-    <title>Manage medicines</title>
-    <link rel="shortcut icon" href="/logo/logo.svg" type="image/svg+xml">
-</head>
+{header}
 <body class="medicines">
     <div class="container">
     <div class="container-1">
@@ -195,6 +187,8 @@
   </div>
   
   <script>
+    try{
+
     //Search filter
     document.getElementById('searchInput').addEventListener('keyup', function () {
   const filter = this.value.toLowerCase(); // what user types
@@ -225,6 +219,10 @@
       document.querySelectorAll('.dropdown').forEach(dropdownMenu => dropdownMenu.classList.remove('show'));
     });
 
+    }catch(e){
+      console.log(e);
+      Notify.showError(e.message);
+    }
     
     
   </script>

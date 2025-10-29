@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Create Bill</title>
-  <link rel="stylesheet" href="/css/style.css" />
-     <link rel="shortcut icon" href="/logo/logo.svg" 
-    type="image/svg+xml">
-        <link rel="icon" href="/logo/favicon.svg" type="image/svg+xml">
-    <link rel="alternate icon" href="/logo/favicon.png" type="image/png">
-</head>
-
+{header}
 <body class="cashier-create-bill">
   <!-- ---------------- Header ---------------- -->
   <header>
@@ -317,24 +305,26 @@
   </div>
 </div>
 <script>
-  const paymentBtn = document.querySelector(".payment-btn");
-  const paymentPopup = document.getElementById("paymentPopup");
-  const closePopup = document.getElementById("closePopup");
+  try{
 
-  paymentBtn.addEventListener("click", () => {
-  paymentPopup.classList.add("active");
-  });
-
-  closePopup.addEventListener("click", () => {
-    paymentPopup.classList.remove("active");
-  });
-
-  // Optional: Close when clicking outside popup
-  window.addEventListener("click", (e) => {
-    if (e.target === paymentPopup) {
+    const paymentBtn = document.querySelector(".payment-btn");
+    const paymentPopup = document.getElementById("paymentPopup");
+    const closePopup = document.getElementById("closePopup");
+    
+    paymentBtn.addEventListener("click", () => {
+      paymentPopup.classList.add("active");
+    });
+    
+    closePopup.addEventListener("click", () => {
       paymentPopup.classList.remove("active");
-    }
-  });
+    });
+    
+    // Optional: Close when clicking outside popup
+    window.addEventListener("click", (e) => {
+      if (e.target === paymentPopup) {
+        paymentPopup.classList.remove("active");
+      }
+    });
 
   // Notification functionality
 function toggleNotificationPopup() {
@@ -395,6 +385,12 @@ document.addEventListener('keydown', function(e) {
     closeNotificationPopup();
   }
 });
+
+  }catch(e){
+    console.log(e)
+    Notify.showError(e.message);
+
+  }
   
 </script>
 

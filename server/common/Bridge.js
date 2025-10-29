@@ -102,7 +102,7 @@ class Bridge{
     }
 }
 
-Bridge.registry.health();
+// Bridge.registry.health(); 
 
 
 module.exports = Bridge;

@@ -101,13 +101,14 @@ class Popup{
 
 
 
-
-
-const popupTags = document.querySelectorAll('popup-window');
-
-popupTags.forEach((tag)=>{
-
-    const popup = new Popup(tag);
-
+window.addEventListener('load' , ()=>{
+    const popupTags = document.querySelectorAll('popup-window');
+    popupTags.forEach((tag)=>{
+    
+        const popup = new Popup(tag);
+    
+    
+    })
 
 })
+

@@ -1,42 +1,34 @@
-const { response } = require("../common/response")
-const view = require("../common/view")
-const Bridge = require("../common/Bridge");
+const { response } = require("../../common/response");
+const view = require("../../common/view");
+const Users = require("../../models/UserModel");
 
-// Bridge.registry.health();
 
 
 exports.renderPharmacyStaff = async( req , res) =>{
-    Bridge.pipe(req , res).connect(Bridge.registry.STAFF_SERVICE , {
-        method : "GET",
-        headers : {
-            "Content-type" : "application/json",
-        }
+    try{
 
-    }).request( async (req , res , error)=>{
-        return JSON.stringify({
-            pharmacyId : req.pharmacyId,
-        });
-
-    }).json(async (data , req , res)=>{
-        return data;
-    }).resend((data)=>{
-        return view('pharmacy.staff' , {
-            members : data.data.map(m => {
+        
+        return view('pharmacy/pharmacy.member.intro' , {
+            members : [].map(m => {
                 return view('/components/member.card' , {
-                    memberId: m.id,
-                    firstName : m.firstName,
-                    lastName : m.lastName,
-                    pharmacyId : m.pharmacyId,
-                    role: m.role,
+                    memberId: 1,
+                    firstName : 'chathura',
+                    lastName : 'priyashan',
+                    pharmacyId : 1,
+                    role: 'pharmacist',
+                    header : view('component.header' , {
+                        name:"Antibiotics",
+                    })
                 });
-
+                
             }
-
-            ).join(' '),
-        });
-
-    } , 200)
-    .catch(e=>console.log(e));
+            
+        ).join(' '),
+    });
+    }catch(e){
+        console.log(e);
+        return response(res , view('404') , 404);
+    }
 
 }
 
@@ -44,24 +36,7 @@ exports.renderPharmacyStaff = async( req , res) =>{
 
 
 exports.renderPharmacyStaffProfile = async( req , res) =>{
-    Bridge.pipe(req , res).connect(Bridge.registry.STAFF_SERVICE , {
-        method : "GET",
-        headers : {
-            "Content-type" : "application/json",
-        }
-
-    }).request( async (req , res , error)=>{
-        return JSON.stringify({
-            pharmacyId : req.pharmacyId,
-            id : req.staffId,
-        });
-
-    }).json(async (data , req , res)=>{
-        return data;
-    }).resend((res)=>{
-        const [data] = res.data;
+        const [data] = await Users.getById(req.staffId);
         return view('pharmacy.staff.profile' , data);
 
-    } , 200)
-    .catch(e=>console.log(e));
 }

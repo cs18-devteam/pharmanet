@@ -6,58 +6,157 @@ const Products = require("../../models/BillModel");
 
 
 exports.renderCashierBillPage = async(req , res)=>{
-    return response(res, view('Cashier/Cashier-createBill', {
-        
-    }), 200);
+    try{
+
+        return response(res, view('Cashier/Cashier-createBill', {
+            header : view('component.header' , {
+                name:"Create Bill",
+            })
+        }), 200);
+    }catch(e){
+        console.log(e);
+        return response(res , view('404') , 404);
+    }
 }
 
 exports.renderCashierCustomer = async(req, res) => {
-    return response(res, view('cashier/cashier-customer'), 200);
+    try{
+
+        return response(res, view('cashier/cashier-customer',{
+            header : view('component.header' , {
+                name:"Processing Orders || Pharmanet",
+            })
+        }), 200);
+    }catch(e){
+        console.log(e);
+        return response(res , view('404') , 404);
+    }
     
 }
 
 exports.renderCashierDashboard = async(req, res) => {
-    return response(res, view('Cashier/cashier-dashboard'), 200);
+    try{
+
+        return response(res, view('Cashier/cashier-dashboard',{
+            header : view('component.header' , {
+                name:"Dashboard",
+            })
+        }), 200);
+    }catch(e){
+        console.log(e);
+        return response(res , view('404') , 404);
+    }
     
 }
 
 exports.renderCashierorder = async(req, res) => {
-    return response(res, view('cashier/cashier-order'), 200);
+    try{
+
+        return response(res, view('cashier/cashier-order',{
+            header : view('component.header' , {
+                name:"Orders || Manage all Orders here",
+            })
+        }), 200);
+    }catch(e){
+        console.log(e);
+        return response(res , view('404') , 404);
+    }
     
 }
 
 exports.renderCashierPaymentCard = async(req, res) => {
-    return response(res, view('cashier/cashier-payment-card'), 200);
+    try{
+
+        return response(res, view('cashier/cashier-payment-card' , {
+            header : view('component.header' , {
+                name:"Payment by Card",
+            })
+        }), 200);
+    }catch(e){
+        console.log(e);
+        return response(res , view('404') , 404);
+    }
     
 }
 
 exports.renderCashierPaymentCash = async(req, res) => {
-    return response(res, view('cashier/cashier-payment-cash'), 200);
-    
+    try{
+
+        return response(res, view('cashier/cashier-payment-cash' , {
+            header : view('component.header' , {
+                name:"Payment by cash",
+            })
+        }), 200);
+        
+    }catch(e){
+        console.log(e);
+        return response(res , view('404') , 404);
+    }
 }
 
 exports.renderCashierPaymentQR = async(req, res) => {
-    return response(res, view('cashier/cashier-payment-QR'), 200);
+    try{
+
+        return response(res, view('cashier/cashier-payment-QR',{
+            header : view('component.header' , {
+                name:"Payment by QR",
+            })
+        }), 200);
+    }catch(e){
+        console.log(e);
+        return response(res , view('404') , 404);
+    }
     
 }
 
 exports.renderCashierProduct = async(req, res) => {
-    const allProducts = await Products.get();
-    console.log(allProducts);
+    try{
 
-    return response(res, view('cashier/cashier-product' , {
-        rows: allProducts.map(product => view('Cashier/component.product' , product)).join(' ')
-    }), 200);
+        const allProducts = await Products.get();
+        console.log(allProducts);
+        
+        return response(res, view('cashier/cashier-product' , {
+            rows: allProducts.map(product => view('Cashier/component.product' , {
+                header : view('component.header' , {
+                    name:"Products || Pharmanet",
+                }),
+                ...product
+            })).join(' ')
+        }), 200);
+    }catch(e){
+        console.log(e);
+        return response(res , view('404') , 404);
+    }
     
 }
 
 exports.renderCashierSale = async(req, res) => {
-    return response(res, view('cashier/cashier-sales'), 200);
+    try{
+
+        return response(res, view('cashier/cashier-sales',{
+            header : view('component.header' , {
+                name:"Sales Management",
+            })
+        }), 200);
+    }catch(e){
+        console.log(e);
+        return response(res , view('404') , 404);
+    }
     
 }
 
 exports.cashierProductManagement = async(req, res) => {
-    return response(res, view('cashier/Product-management'), 200);
+    try{
+
+        return response(res, view('cashier/Product-management',{
+            header : view('component.header' , {
+                name:"Product management",
+            })
+        }), 200);
+    }catch(e){
+        console.log(e);
+        return response(res , view('404') , 404);
+    }
     
 }
 

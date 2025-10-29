@@ -14,7 +14,12 @@ const customerPharmacyController = require('./controllers/customer/customer.phar
 const { responseJson } = require('./common/response');
 const adminPharmacyController = require('./controllers/admins/admin.pharmacy.controller');
 const customerMedicineController = require('./controllers/customer/customer.medicines.controller');
-const cashierController = require('./controllers/Cashier/cashier.contreller');
+const cashierController = require('./controllers/Cashier/cashier.controller');
+const pharmacyAttendanceController = require('./controllers/pharmacy/pharmacy.attendance.controller');
+const pharmacyStaffController = require('./controllers/pharmacy/pharmacy.staff.controller');
+const verifyEmailController = require('./controllers/auth/verify.email.controller');
+const verifyNumberController = require('./controllers/auth/verify.number.controller');
+const otpController = require('./controllers/auth/sendOTP.controller');
 
 
 const server = http.createServer((req , res)=>{
@@ -53,11 +58,15 @@ const server = http.createServer((req , res)=>{
             ?.post(signupController.signup);
 
         // :: USER / VERIFY EMAIL / MOBILE NUMBER
-        AppRouter.pipe(req , res).route('/verify/email')
-            ?.get(verifyEmailController.renderVerifyEmail);
+        AppRouter.pipe(req , res).route('/verify/:userId/email')
+            ?.get(verifyEmailController.renderVerifyEmail)
+            ?.post(verifyEmailController.verifyEmail);
 
         AppRouter.pipe(req , res).route('/verify/number')
             ?.get(verifyNumberController.renderVerifyNumber);
+
+        AppRouter.pipe(req , res).route('/verify/:userId/email/otp')
+        ?.get(otpController.resendEmailOTP)
 
 
 
@@ -81,18 +90,18 @@ const server = http.createServer((req , res)=>{
 
 
 
-        // AppRouter.pipe(req ,res).route('/admin/pharmacy/create')
-        // ?.get(adminController.adminAddPharmacy)
-        // ?.post(adminController.createPharmacy);
+        AppRouter.pipe(req ,res).route('/admin/pharmacy/create')
+        ?.get(adminPharmacyController.adminAddPharmacy)
+        ?.post(adminPharmacyController.createPharmacy);
 
         // AppRouter.pipe(req ,res).route('/admin/pharmacy/step/2')
-        // ?.get(adminController.adminAddPharmacyStep02);
+        // ?.get(adminPharmacyController.adminAddPharmacyStep02);
 
         // AppRouter.pipe(req ,res).route('/admin/pharmacy/step/3')
-        // ?.get(adminController.adminAddPharmacyStep03)
+        // ?.get(adminPharmacyController.adminAddPharmacyStep03)
  
         // AppRouter.pipe(req ,res).route('/admin/pharmacy/step/4')
-        // ?.get(adminController.adminAddPharmacyStep04);
+        // ?.get(adminPharmacyController.adminAddPharmacyStep04);
 
         AppRouter.pipe(req ,res).route('/blogManage')
         ?.get(blogController.blogManage);
@@ -122,8 +131,17 @@ const server = http.createServer((req , res)=>{
         AppRouter.pipe(req ,res).route('/api/blogs/:id')
         ?.delete(blogController.deleteBlog)
 
+        AppRouter.pipe(req ,res).route('/blog/:blogId/delete')
+        ?.get(blogController.renderDeleteConform);
+
+        AppRouter.pipe(req ,res).route('/blog/:blogId/edit')
+        ?.get(blogController.renderEditView)
+
+        AppRouter.pipe(req ,res).route('/api/blog/:blogId/edit')
+        ?.update(blogController.update);
+
         AppRouter.pipe(req ,res).route('/delete/:id')
-        ?.get(blogController.delete);
+        ?.delete(blogController.delete);
 
         //* ==========================================
         ///* ADMIN PHARMACY
@@ -300,6 +318,15 @@ const server = http.createServer((req , res)=>{
         ?.update(cashierController.updateProduct)
         ?.delete(cashierController.deleteProduct);
 
+        AppRouter.pipe(req ,res).route('/pharmacies/:pharmacyId/pharmacist/:pharmacistId/attendance')
+        ?.get(pharmacyAttendanceController.renderAttendance);
+
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/pharmacist/:pharmacistId')
+        ?.get(pharmacyController.renderPharmacyDashboard);
+
+        AppRouter.pipe(req ,res).route('/pharmacies/:pharmacyId/pharmacist/:pharmacistId/staff')
+        ?.get(pharmacyStaffController.renderPharmacyStaff);
+
         return AppRouter.pipe(req ,res).end();
 
     }catch(e){
@@ -309,9 +336,9 @@ const server = http.createServer((req , res)=>{
             message :"server not responding",
             error :e,
         })
-        server.close(()=>{
-            console.log("Server shutdown due to error");
-        })
+        // server.close(()=>{
+        //     console.log("Server shutdown due to error");
+        // })
     }
     
 

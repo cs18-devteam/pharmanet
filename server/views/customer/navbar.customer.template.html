@@ -28,10 +28,72 @@
                 <div class="welcome">Welcome</div>
             </div>
             </div>
-        </div>        
+        </div>     
+        
+        
+        <div class="setting-dropdown">
+            <ul>
+                <li><a href="/customers/{id}/profile">Profile</a></li>
+                <li><div id="signout">signout</div></li>
+            </ul>
+
+        </div>
 
     </nav>
 
     <script>
         const search = document.querySelector('.search-bar');
+        const signOutBtn = document.getElementById('signout');
+        const profile = document.querySelector('.profile');
+        const settingDropdown = document.querySelector('.setting-dropdown');
+
+        profile.addEventListener('mouseenter' , ()=>{
+            settingDropdown.style.display = "inline-block";
+        })
+
+        settingDropdown.addEventListener('mouseleave' , ()=>{
+            settingDropdown.style.display = "none";
+        });
+
+        function signout(){
+            document.cookie = `token="";path="/";expire=${Date.now()}`;
+        }
+
+        function redirect(){
+            window.location.href = "/login";
+        }
+
+        signOutBtn.addEventListener('click' , ()=>{
+            if(Swal){
+                Swal?.fire({
+                    title: "Do you want signout?",
+                    showDenyButton: true,
+                    // showCancelButton: true,
+                    confirmButtonText: "Signout",
+                    denyButtonText: "cancel",
+                    icon:"question"
+                }).then(results=>{
+                    signout();
+                    if(results.isConfirmed){
+                        Swal?.fire({
+                            icon:"success",
+                            title:"You're signout"
+                        }).then(()=>{
+                            redirect();
+                        })
+                    }
+                })
+            }else{
+                const confirmSignout = confirm('do you want to signout ?');
+                if(confirmSignout){
+                    signout();
+                    alert("you're signout");
+                    setTimeout(()=>{
+                        redirect();
+                    } , 2000);
+                }
+            }
+        })
+
+
     </script>

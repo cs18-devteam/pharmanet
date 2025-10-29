@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PharmaNet Registration</title>
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
+{header}
+
 <body class="addPharmarcy01">
 <a href="/admin/pharmacy"><button class="closeBtn"></button></a>
   <div class="registration-container">
@@ -15,7 +8,6 @@
       <h1>PharmaNet</h1>
       <p>Register your pharmacy to get started</p>
     </header>
-
 
     <div class="steps">
       <div class="step active">
@@ -43,16 +35,16 @@
         <p>Enter your pharmacy details and license information</p>
       </div>
 
-      <form id="form" method="post" action="/admin/pharmacy/edit/step/2">
+      <form id="form" method="post" action="/admin/pharmacy/step/2">
         <div class="form-row">
           <label>Pharmacy Name *</label>
-          <input type="text" name="name" value="{name}" placeholder="Enter pharmacy name" required>
+          <input type="text" name="name" placeholder="Enter pharmacy name" required>
         </div>
 
         <div class="form-row two-cols">
           <div>
             <label>License Number *</label>
-            <input type="text" name="licenseNumber" placeholder="e.g., PH-2024-001" value="{licenseNumber}" required>
+            <input type="text" name="licenseNumber" placeholder="e.g., PH-2024-001" required>
           </div>
           <div>
             <label>License Expiry Date *</label>
@@ -62,9 +54,7 @@
 
         <div class="form-buttons">
           <!-- <button type="button" class="btn prev">Previous</button> -->
-          <button data-href="/admin/pharmacy/{id}/edit/step/2" type="button" class="btn next btn-next">Next
-            <img class="spinner" src="/logo/spinner.png"/>
-          </button>
+          <button data-href="/admin/pharmacy/step/2" type="button" class="btn next btn-next">Next <img class="spinner" src="/logo/spinner.png"/></button>
         </div>
       </form>
     </div>
@@ -74,40 +64,97 @@
     </footer>
   </div>
 
-
   <script>
-    const form = document.getElementById('form');
-    const btn_next = document.querySelector('.btn-next');
+    try{
+
+
+
+
+const form = document.getElementById('form');
+const btn_next = document.querySelector('.btn-next');
+
+localStorage.setItem("pharmacy" ,JSON.stringify({
+  name : "{name}",
+  id: "{id}",
+  street : "{street}",
+  town : "{town}",
+  type:"{type}",
+  email : "{email}",
+  province: "{province}",
+  postalCode : "{postalCode}",
+  pharmacist : "{pharmacist}",
+  contact : "{contact}",
+  licenseNumber:"{licenseNumber}",
+  expireDate: "{expireDate}",
+  owner:"{owner}",
+  pharmacistLicense:"{pharmacistLicense}"
+
+
+}))
+
+
+const data = JSON.parse(localStorage.getItem('pharmacy')) || {};
+console.log(data);
+for(const [key,value] of Object.entries(data)){
+    const field = document.querySelector(`[name=${key}]`);
+    if(field){
+    field.value = value;
+    }
+}
+
+btn_next.addEventListener('click' , (e)=>{
+    e.preventDefault();
+    const formData = new FormData(form);
+
+    for( const [key , value] of formData.entries()){
+    const field = document.querySelector(`[name='${key}']`);
+
+    if(key != "email" && new RegExp(value).test(/^[a-zA-Z]/)){
+        field.classList.add('utility-warn');
+        return;
+    }else{
+        field.classList.remove('utility-warn');
+    }
+
+    if(key=="email" && new RegExp(value).test(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)){
+        field.classList.add('utility-warn');
+
+    }else{
+        field.classList.remove('utility-warn');
+    }
+    
+    if(!value){
+        field.classList.add('utility-warn');
+        field.classList.remove('utility-success');
+        return;
+    }else{
+        field.classList.add('utility-success')
+        field.classList.remove('utility-warn')
+    }
+    data[key] = value;
+    }
+    
+    //save to storage
+    localStorage.setItem("pharmacy" , JSON.stringify(data));
+    window.location.href = "/admin/pharmacy/{id}/edit/step/2";
 
     
 
-    const data = {}
-    btn_next.addEventListener('click' , (e)=>{
-      e.preventDefault();
-      const formData = new FormData(form);
 
-      for( const [key , value] of formData.entries()){
-        
-        if(!value){
-          document.querySelector(`input[name=${key}]`).classList.add('utility-warn');
-          document.querySelector(`input[name="${key}"]`).classList.remove('utility-success');
-          console.log(document.querySelector(`input[name=${key}]`));
-          return;
-        }else{
-          document.querySelector(`input[name="${key}"]`).classList.add('utility-success')
-          document.querySelector(`input[name="${key}"]`).classList.remove('utility-warn')
-        }
-        data[key] = value;
-      }
-      
-      //save to storage
-      localStorage.setItem("pharmacy" , JSON.stringify(data));
-      window.location.href = "/admin/pharmacy/{id}/edit/step/2";
+})
+}catch(e){
+    console.log(e);
+    Swal.fire({
+      icon: "error",
+      title: "something went wrong",
+      text: e.message,
+      footer: '<a href="/contactus">Why do I have this issue?</a>'
     })
-    
+}
 
 
   </script>
+
 
 </body>
 </html>

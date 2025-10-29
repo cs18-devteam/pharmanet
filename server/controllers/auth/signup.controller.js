@@ -2,16 +2,19 @@
 
 // --- Authenticate user (Login) ---
 const { hashPassword, encrypt, createToken, createCookie } = require("../../common/Auth");
-const Bridge = require("../../common/Bridge");
-const catchAsync = require("../../common/catchAsync");
-const customerFetch = require("../../common/controllers/customerFetch");
+const generateOTP = require("../../common/generateOTP");
 const { getRequestData } = require("../../common/getRequestData");
 const { response, responseJson } = require("../../common/response");
 const view = require("../../common/view");
 const Users = require("../../models/UserModel");
+const otpController = require("./sendOTP.controller");
 
 exports.renderSignup = async (req, res) => {
-    return response(res, view("signup"), 200);
+    return response(res, view("signup" , {
+        header : view('component.header' , {
+            name:"Signup || Pharmacy Management System",
+        })
+    }), 200);
 };
 
 exports.signup = async (req, res) => {
@@ -75,21 +78,31 @@ exports.signup = async (req, res) => {
             lastName  : lastName || "",
             nic : nic || "unknown", 
             fullName : fullName || "unknown" , 
-            dateOfBirth : dateOfBirth , 
+            dateOfBirth : new Date(dateOfBirth).toISOString().slice(0, 19).replace('T', ' ') , 
             addressNo : addressNo || "unknown" , 
             street : street || "unknown" , 
-            town : street || "unknown" ,
+            town : town || "unknown" ,
             province : province || "unknown", 
             postalCode : postalCode,
-            role : role || "customer"
+            role : role || "customer",
+            emailOTP : generateOTP(),
+            emailOTPCreatedAt : new Date(Date.now()).toISOString().slice(0, 19).replace("T", " ") //5 min
         });
 
         const token = createToken(newUser);
         const cookie = createCookie(token);
+        console.log(newUser);
+        otpController.sendEmailOTP(newUser[0]);
+        
+
 
         return responseJson(res , 201 , {
-            status:"success",
-            results : { ...newUser , password : undefined },
+                status:"success",
+                results : {...newUser,
+                    password:undefined ,
+                    emailOTP :undefined , 
+                    emailOTPCreatedAt : undefined,
+                },
             message :"user account created successfully",
             token : token,
         } , {

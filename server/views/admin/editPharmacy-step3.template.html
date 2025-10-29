@@ -1,108 +1,9 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PharmaNet Registration</title>
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
-<body  class="addPharmarcy02">
-
-  <div class="registration-container">
-    <header>
-      <img class="logopic" src="/public/logo/logo.svg" alt="logo">
-      <h1>PharmaNet</h1>
-      <p>Register your pharmacy to get started</p>
-    </header>
-
-    <div class="steps">
-      <div class="step">
-        <div class="circle">1</div>
-        <span>Pharmacy Details</span>
-      </div>
-      <div class="step  active">
-        <div class="circle">2</div>
-        <span>Owner Information</span>
-      </div>
-      <div class="step">
-        <div class="circle">3</div>
-        <span>Location</span>
-      </div>
-      <div class="step">
-        <div class="circle">4</div>
-        <span>Pharmacist & Services</span>
-      </div>
-    </div>
-
-    <div class="form-card">
-      <div class="form-header">
-        <h2><span class="icon"></span> Location</h2>
-        <p>Enter your pharmacy location</p>
-      </div>
-
-      <form>
-        <div class="form-group">
-          <label>Street Address *</label>
-          <input type="text" placeholder="123 Main Street" required />
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label>City *</label>
-            <input type="text" placeholder="New York" required />
-          </div>
-          <div class="form-group">
-            <label>State *</label>
-            <select required>
-              <option>Select state</option>
-              <option>New York</option>
-              <option>California</option>
-              <option>Texas</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label>Zip Code *</label>
-            <input type="text" placeholder="10001" required />
-          </div>
-          <div class="form-group">
-            <label>Country</label>
-            <input type="text" value="United States" readonly />
-          </div>
-        </div>
-
-
-    <div class="form-buttons">
-         <a href="addPharmarcy02.html"><button type="button" class="btn prev">Previous</button></a>
-          <a href="addPharmarcy04.html"><button type="submit" class="btn next">Next</button></a>
-        </div>
-      </form>
-    </div>
-
-    <footer>
-      Need help? <a href="#">Contact support</a>
-    </footer>
-    </div>
-
-</body>
-</html> -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PharmaNet Registration</title>
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
+{header}
 <body  class="addPharmarcy03">
 
   <div class="registration-container">
     <header>
-      <img class="logopic" src="/public/logo/logo.svg" alt="logo">
+      <img class="logopic" src="/logo/logo.svg" alt="logo">
       <h1>PharmaNet</h1>
       <p>Register your pharmacy to get started</p>
     </header>
@@ -137,44 +38,50 @@
         <div class="form-row">
           <label>Street Address *</label>
           <input name="street" type="text" placeholder="123 Main Street" required>
+          <p></p>
         </div>
 
         <div class="form-row two-cols">
           <div>
             <label>Province *</label>
             <input name="province" type="text" placeholder="Western" required>
+            <p></p>
           </div>
           <div>
             <label>District *</label>
             <!-- <input type="telephoneNo." placeholder="+94 78 141 3123" required> -->
-             <select name="town" required>
+             <select name="road" required>
               <option>Select 'District'</option>
               <option value="gampaha">Gampaha</option>
               <option value="colombo">Colombo</option>
               <option value="kaluthara">Kaluthara</option>
              </select>
+             <p></p>
           </div>
         </div>
 
         <div class="form-row two-cols">
           <div>
             <label>Zip Code *</label>
-            <input type="text" placeholder="1001" required>
+            <input type="number" placeholder="1001" name="postalCode" required>
+            <p></p>
           </div>
+
           <div>
             <label>City *</label>
             <!-- <input type="telephoneNo." placeholder="+94 78 141 3123" required> -->
-             <select required>
+             <select name="town" required>
               <option>Select City</option>
               <option>Gampaha</option>
               <option>Colombo</option>
               <option>Kaluthara</option>
              </select>
+             <p></p>
           </div>
         </div>
 
         <div class="form-buttons">
-         <a href="/admin/pharmacy/edit/step/2"><button type="button" class="btn prev btn-previous">Previous</button></a>
+         <a href="/admin/pharmacy/{id}/edit/step/2"><button type="button" class="btn prev btn-previous">Previous</button></a>
           <button type="button" class="btn next btn-next">Next
             <img class="spinner" src="/logo/spinner.png"/>
           </button>
@@ -188,40 +95,90 @@
   </div>
 
   <script>
-    const form = document.getElementById('form');
-    const btn_next = document.querySelector('.btn-next');
+    // import "/js/utilities/Popup.js";
+// import Notify from "/js/view/Notify.js";
+try{
 
-    const data = {}
-    btn_next.addEventListener('click' , (e)=>{
-      e.preventDefault();
-      const formData = new FormData(form);
 
-      for( const [key , value] of formData.entries()){
+
+const form = document.getElementById('form');
+const btn_next = document.querySelector('.btn-next');
+
+const data = JSON.parse(localStorage.getItem('pharmacy')) || {};
+console.log(data);
+for(const [key,value] of Object.entries(data)){
+    const field = document.querySelector(`[name=${key}]`);
+    if(field){
+    field.value = value;
+    }
+}
+
+function renderError(input , msg){
+    input.parentElement.querySelector('p').textContent = "";
+    input.classList.remove('utility-success');
+    input.classList.add('utility-warn');
+    input.parentElement.querySelector('p').textContent = msg;
+}
+function renderSuccess(input , msg){
+  input.parentElement.querySelector('p').textContent = "";
+    input.classList.remove('utility-success');
+    input.classList.add('utility-warn');
+    input.parentElement.querySelector('p').textContent = msg;
+}
+
+btn_next.addEventListener('click' , (e)=>{
+    e.preventDefault();
+    const formData = new FormData(form);
+
+    for( const [key , value] of formData.entries()){
+    const field = document.querySelector(`[name=${key}]`);
+    if(key != "street" &&/[^A-Za-z0-9]/.test(value)){
+      console.log(key)
+        renderError( field,"letter and number are only allowed")
+        return;
+    }
+    if(key=="province" && !/[A-Za-z]/.test(value)){
+      console.log(key);
+        renderError( field ,"letters are only allowed");
+        return;
+    }
+    if(key == "street"  &&  /[@#$%^&*()!;?]/.test(value)){
+      renderError(field ,"'@#$%^&*()!;?' don't  allowed");
+      console.log(key);
+        return;
+    }
+
+    
+    if(!value){
+        renderError(field , "values can't be empty")
+        return;
+    }else{
+        renderSuccess(field );
         
-        if(!value){
-          document.querySelector(`[name=${key}]`).classList.add('utility-warn');
-          document.querySelector(`[name="${key}"]`).classList.remove('utility-success');
-          console.log(document.querySelector(`input[name=${key}]`));
-          return;
-        }else{
-          document.querySelector(`[name="${key}"]`).classList.add('utility-success')
-          document.querySelector(`[name="${key}"]`).classList.remove('utility-warn')
-        }
-        data[key] = value;
-      }
-      
-      //save to storage
-      const previous = JSON.parse(localStorage.getItem('pharmacy'));
-      if(!previous) window.location.href = "/admin/pharmacy/{id}/edit/step/3";
-      localStorage.setItem("pharmacy" , JSON.stringify({...previous , ...data }));
+    }
+    data[key] = value;
+    }
+    
+    //save to storage
+    const previous = JSON.parse(localStorage.getItem('pharmacy'));
+    if(!previous) window.location.href = "/admin/pharmacy/{id}/edit/step/3";
+    localStorage.setItem("pharmacy" , JSON.stringify({...previous , ...data }));
 
-      window.location.href = "/admin/pharmacy/{id}/edit/step/4"
-      
+    window.location.href = "/admin/pharmacy/{id}/edit/step/4"
+    
 
+})
+}catch(e){
+    console.log(e);
+    Swal.fire({
+      icon: "error",
+      title: "something went wrong",
+      text: e.message,
+      footer: '<a href="/contactus">Why do I have this issue?</a>'
+    })
+}
 
-
-
-    })</script>
+  </script>
 
 </body>
 </html>

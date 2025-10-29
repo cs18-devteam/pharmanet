@@ -3,6 +3,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 0rem 2rem;
+  position: relative;
 }
 
 .auth-btns{
@@ -192,3 +193,62 @@ nav {
   }
 }
 
+
+
+.setting-dropdown{
+  position: absolute;
+  min-width: 10rem;
+  height: fit-content;
+  background-color: #fff;
+  box-shadow: 0px 5px 5px 0px rgba(0,0,0,.15);
+  top: 3rem;
+  right: 3rem;
+  display: none;
+
+  ul{
+    list-style-type: none;
+    padding: 2rem;
+
+
+    li{
+      border-bottom: 1px solid #eee;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+
+      &:last-child{
+        border: none;
+      }
+
+      a , div{
+        --fill-color : var(--color-green-02);
+        text-transform: capitalize;
+        background-color: transparent;
+        color:#000;
+        border: none;
+        outline: none;
+        font-size: 1.8rem;
+        text-align: left;
+        padding: 1rem;
+        box-sizing: content-box;
+        cursor: pointer;
+
+        background-clip: padding-box;
+        background-image: linear-gradient(90deg, var(--fill-color)  70%, transparent 70%);
+        background-size: 50%  10%;
+        background-position: bottom left;
+        background-repeat: no-repeat;
+        transition: all .2s ease;
+
+        &:hover{
+          color:var(--fill-color);
+          background-size: 200% 10% ;
+        }
+      }
+
+      #signout{
+        --fill-color:crimson;
+      }
+    }
+  }
+
+}

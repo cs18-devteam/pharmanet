@@ -30,7 +30,7 @@ class UserModel extends Model{
         }
 
         this.dateOfBirth = {
-            type:"DATE"
+            type:"DATETIME"
         }
 
         this.addressNo = {
@@ -71,6 +71,14 @@ class UserModel extends Model{
 
         this.role = {
             type : "VARCHAR(50)",
+        }
+
+        this.emailOTP = {
+            type:"INT",
+        }
+
+        this.emailOTPCreatedAt = {
+            type:"DATETIME",
         }
 
     }

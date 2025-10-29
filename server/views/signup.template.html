@@ -1,57 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href = "/css/style.css">
-        <link rel="icon" href="/logo/favicon.svg" type="image/svg+xml">
-    <link rel="alternate icon" href="/logo/favicon.png" type="image/png">
-    <link rel="stylesheet" href="./css/style.css">
-
-    <style>
-        .success{
-            animation: animateFade 2s ease forwards;
-        }
-
-        .congrats{
-            position: fixed;
-            top: 100%;
-            width: 100%;
-            height: 100%;
-            left: 0;
-            opacity: 0;
-            z-index: -10;
-            transition: all 2s ease;
-            color: #888;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-        }
-
-        .congrats > span{
-            color: transparent;
-            background-image: linear-gradient(var(--color-green-01) , var(--color-green-02));
-            background-clip: text;
-        }
-
-        .success .congrats {
-            top: 0;
-            z-index: 10;
-            opacity: 1;
-        }
-
-        @keyframes animateFade{
-            100%{
-                opacity: 0; 
-                transform: translateY(-100px); 
-            }
-        }
-
-    </style>
-
-</head>
+{header}
 <body class="signup">
     <header>
         <nav class="nav">
@@ -68,7 +15,7 @@
         <div class="signupText">"Take Control of Your Medication Journey"</div>
     </div>
     <div class = "signupForm" >
-    <form  id="form" class="signup" autocomplete="off" action="/signup" method="post" >
+    <form autocomplete="off"  id="form" class="signup" autocomplete="off" action="/signup" method="post" novalidate aria-autocomplete="none" >
      
     <h1 class="signupTitle">Get Start Now</h1>
     <p class="signupMoto" >Your Digital Journey To Seamless Prescriptions, Smarter Inventory, And Happier Patients Begins Here.</p>
@@ -93,8 +40,8 @@
     <span id="feedbackEmail"></span><br>
     
     <label for="birthDay">BirthDay</label><br>
-    <input type="date" id="birthDay" name="birthDay" placeholder="2003/07/11" required/><br>
-    <span id="feedbackBirthDay"></span><br>
+    <input type="date" id="birthDay" name="dateOfBirth" placeholder="2003/07/11" required/><br>
+    <span id="feedbackdateOfBirth"></span><br>
 
     <label for="nic">National Identification Number(NIC)</label><br>
     <input type="text" id="nic" name="nic" placeholder="200412309889" required/><br>
@@ -128,23 +75,25 @@
 
       
     </header>  
-    
+<!--     
     <div class="congrats">
         Welcome to <span>Pharmanet</span>
-    </div>
+    </div> -->
 
 
 
     <script>
-        
-        let clearToSubmit = true;
+        try{
 
-        const birthDay = document.getElementById('birthDay');
-        const birthDayFeedback = document.getElementById('feedbackBirthDay');
-        const submit_btn = document.getElementById('submitButton');
-        const form = document.getElementById('form');
-        // form.addEventListener('submit' , (e)=>e.preventDefault());
-        birthDay.addEventListener('change' , ()=>{
+        
+            let clearToSubmit = true;
+            
+            const birthDay = document.getElementById('birthDay');
+            const birthDayFeedback = document.getElementById('feedbackdateOfBirth');
+            const submit_btn = document.getElementById('submitButton');
+            const form = document.getElementById('form');
+            // form.addEventListener('submit' , (e)=>e.preventDefault());
+            birthDay.addEventListener('change' , ()=>{
             const age = (new Date(Date.now()).getFullYear() - new Date(birthDay.value).getFullYear());
 
             if(age < 16){
@@ -152,12 +101,13 @@
                 birthDay.classList.add('utility-warn');
                 birthDayFeedback.textContent = "Sorry! This feature is only available for users aged 16 or above.";
                 clearToSubmit = clearToSubmit && false;
+                console.log('from date');
+                return;
             }else{
                 birthDay.classList.add('utility-success');
                 birthDay.classList.remove('utility-warn');
-                birthDayFeedback.textContent = ""
+                birthDayFeedback.textContent = '';
                 clearToSubmit = clearToSubmit && true;
-               
             }
         })
 
@@ -166,6 +116,7 @@
             try{
                 e.preventDefault(e);
                 e.stopPropagation();
+                clearToSubmit = true;
 
 
                 form.querySelectorAll('input').forEach(el=>{
@@ -174,8 +125,8 @@
                         el?.classList.remove('utility-success');
                         el?.classList.add('utility-warn');
                         console.log(el);
-                        clearToSubmit = clearToSubmit && false;
                         document.getElementById('form-error').textContent ="Oops! It looks like some fields are missing 😝. Please fill out the form before submitting.";
+                        console.log(el);
                         return;
                     }else{
                         el?.classList.add('utility-success');
@@ -193,6 +144,12 @@
                     data[key] = value;
                 }
                 // if(data.password != data.conformPassword) throw new Error("password doesn't match");
+
+                if(!clearToSubmit) Swal.fire({
+                    icon:"error",
+                    title:"Invalid Form Data",
+                    body:"can't submit , please check again",
+                })
                 
                 console.log({clearToSubmit});
                 if(!clearToSubmit) return;
@@ -207,6 +164,9 @@
 
                 const result = await respond.json();
                 console.log(result , respond);
+
+
+
                 if(result.status != "success" ) {
                     if(result.field == "email") {
                         document.getElementById('feedbackEmail').textContent = "Oops! It looks like this email is already registered. Try logging in instead.";
@@ -214,27 +174,53 @@
                     }else if(result.field == "nic"){
                         document.getElementById('feedbackNic').textContent = "Oops! It looks like this nic is already registered. Try logging in instead.";
                         document.getElementById('nic').classList.add('utilities-warn');
+                    }else{
+                        Swal.fire({
+                            icon:"error",
+                            title:"internal server error",
+                            body:'please try again',
+                        })
                     }
                     
                     // throw new Error(result.message)
                 }else{
-                    document.body.classList.add('success');
+                    // document.body.classList.add('success');
+                    console.log(result);
+                    Swal.fire({
+                        icon:"success",
+                        title:"Account Created Successfully",
+                    }).then(()=>{
+                        window.location.href = `http://localhost:3000/verify/${result.results["0"].id}/email`;
+                    })
+
                     setTimeout(()=>{
-                        window.location.href = `http://localhost:3000/customers/${result.results["0"].id}`;
+                        window.location.href = `http://localhost:3000/verify/${result.results["0"].id}/email`;
                     } , 3000)
                     
                 }
 
                 
             }catch(error){
-                alert(error.message);
+                
                 console.log(error);
+                throw error;
             }
             
 
 
             
         })
+
+    }catch(e){
+        console.log(e);
+        Swal.fire({
+            icon: "error",
+            title: "something went wrong",
+            text: e.message,
+            footer: '<a href="contactus">Why do I have this issue?</a>'
+        });    
+    }
+
 
 
     </script>

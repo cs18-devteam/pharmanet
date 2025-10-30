@@ -81,6 +81,10 @@ class UserModel extends Model{
             type:"DATETIME",
         }
 
+        this.verified = {
+            type:"BOOLEAN",
+        }
+
     }
 }
 

@@ -19,7 +19,7 @@ try{
 }
 
 
-module.exports = function sendMail({to , subject , text , html}){
+function sendMail({to , subject , text , html}){
     try{
         if(!transport) throw new Error('email transport not initialized');
         transport.sendMail({
@@ -42,6 +42,8 @@ module.exports = function sendMail({to , subject , text , html}){
         throw e;
     }
 }
+
+module.exports = sendMail;
 
 
 

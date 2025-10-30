@@ -38,7 +38,7 @@ exports.sendEmailOTP = (user)=>{
         </p>
 
         <div style="text-align: center; margin: 30px 0;">
-            <div style="display: inline-block; background-color: #007BFF; color: #ffffff; padding: 14px 30px; border-radius: 8px; font-size: 24px; font-weight: bold; letter-spacing: 3px;">
+            <div style="display: inline-block; background-color: #18978D; color: #ffffff; padding: 14px 30px; border-radius: 8px; font-size: 24px; font-weight: bold; letter-spacing: 3px;">
             ${user.emailOTP}
             </div>
         </div>

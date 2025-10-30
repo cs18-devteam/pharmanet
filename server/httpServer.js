@@ -327,6 +327,10 @@ const server = http.createServer((req , res)=>{
         AppRouter.pipe(req ,res).route('/pharmacies/:pharmacyId/pharmacist/:pharmacistId/staff')
         ?.get(pharmacyStaffController.renderPharmacyStaff);
 
+
+        AppRouter.pipe(req ,res).route('/users/recovery/:recoveryLink')
+        ?.get()
+
         return AppRouter.pipe(req ,res).end();
 
     }catch(e){

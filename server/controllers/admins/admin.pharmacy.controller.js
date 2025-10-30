@@ -234,7 +234,7 @@ exports.adminEditPharmacyStep02 = async (req ,res)=>{
         try{
         if(req.pharmacyId){
 
-            const [pharmacy] = await Pharmacies.getById(req.pharmacyId);
+            const pharmacy = await Pharmacies.getById(req.pharmacyId);
 
 
             return response(res , view('admin/editPharmacy-step2' , {
@@ -257,7 +257,7 @@ exports.adminEditPharmacyStep03 = async (req ,res)=>{
          try{
         if(req.pharmacyId){
 
-           const [pharmacy] = await Pharmacies.getById(req.pharmacyId);
+           const pharmacy = await Pharmacies.getById(req.pharmacyId);
             return response(res , view('admin/editPharmacy-step3' , {
                 header : view('component.header' , {
                     name:"Edit Pharmacy | step 03",

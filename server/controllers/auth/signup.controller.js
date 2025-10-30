@@ -86,7 +86,8 @@ exports.signup = async (req, res) => {
             postalCode : postalCode,
             role : role || "customer",
             emailOTP : generateOTP(),
-            emailOTPCreatedAt : new Date(Date.now()).toISOString().slice(0, 19).replace("T", " ") //5 min
+            emailOTPCreatedAt : new Date(Date.now()).toISOString().slice(0, 19).replace("T", " "), //5 min
+            verified: 0,
         });
 
         const token = createToken(newUser[0]);

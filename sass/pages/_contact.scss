@@ -1,0 +1,216 @@
+.contactUS{
+   background-color: #0b1220;
+
+
+
+$text-color: #c9d1d9;
+$accent-color: #1f6feb;
+$card-bg: #111a2d;
+$border-radius: 8px;
+$primary-color: #18978D;
+$secondary-color: #083851;
+$tertiary-color: #FB8F21;
+
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+
+.contact-section {
+  .contact-header {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    h1 {
+      font-size: 3rem;
+      color: white;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: $text-color;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+  }
+
+  .contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-info {
+      background: none;
+      padding: 2rem;
+      border-radius: $border-radius;
+
+      h2 {
+        margin-bottom: 1rem;
+        color: white;
+      }
+
+      .info-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1.2rem;
+
+        .icon{
+          width: 2rem;
+          height: 2rem;
+          margin-right: 0.8rem;
+          stroke: $tertiary-color;
+          filter: invert(50%) sepia(100%) saturate(200%) hue-rotate(180deg);
+
+        }
+
+        h3 {
+          margin: 0;
+          font-size: 1rem;
+          color: white;
+        }
+
+        p {
+          margin: 0;
+          color: $text-color;
+        }
+      }
+
+      .social-links {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+        margin-top: 1rem;
+
+        a {
+          display: inline-block;
+          text-align: center;
+          padding: 0.6rem 0;
+          background: $card-bg;
+          border-radius: $border-radius;
+          color: white;
+          text-decoration: none;
+          transition: background 0.3s;
+
+          &:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba($tertiary-color, 0.3);
+            // box-shadow: 0 0 15px rgba($tertiary-color, 0.2);
+            border: 1px solid $tertiary-color;
+          }
+        }
+      }
+    }
+
+    .contact-form {
+      background: $card-bg;
+      padding: 2rem;
+      border-radius: $border-radius;
+
+      h2 {
+        margin-bottom: 1rem;
+        color: white;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+
+        label {
+          margin-top: 1rem;
+          margin-bottom: 0.3rem;
+          font-weight: 600;
+          color: $text-color;
+        }
+
+        input,
+        textarea {
+          background: transparent;
+          border: 1px solid #30363d;
+          border-radius: $border-radius;
+          padding: 0.8rem;
+          color: white;
+          font-size: 0.95rem;
+
+          &:focus {
+            border-color: $accent-color;
+            outline: none;
+          }
+        }
+
+        button {
+          margin-top: 1.5rem;
+          padding: 0.9rem;
+          background-image: linear-gradient(to right, $primary-color, $secondary-color);
+          color: white;
+          font-weight: 600;
+          border: none;
+          border-radius: $border-radius;
+          cursor: pointer;
+          transition: background 0.3s;
+
+          &:hover {
+            background:$accent-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+
+.faq-section {
+  text-align: left;
+
+  h1 {
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 2rem;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .faq-item {
+      background: $card-bg;
+      border-radius: $border-radius;
+      padding: 1.2rem 1.5rem;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+
+      h2 {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.5rem;
+        color: white;
+      }
+
+      p {
+        margin: 0;
+        line-height: 1.5;
+        color: $text-color;
+      }
+
+      &:hover {
+        border-color: $tertiary-color;
+        transform: translateY(-3px);
+        box-shadow: 0 4px 10px rgba(31, 111, 235, 0.15);
+      }
+    }
+  }
+}
+
+
+}

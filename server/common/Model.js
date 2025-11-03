@@ -280,6 +280,27 @@ class Model{
         
     }
 
+    async query(query){
+        try{
+            // const query = `drop table ${this.#table}`;
+            // return data get from database as object
+            const queryHandler = (error , data , fields)=>{
+                if(error){
+                    console.log(error );
+                    throw error;
+                }
+                return data;
+        
+            }
+
+            const results = await  db.query(query.replace("this.table" , this.#table) , queryHandler);
+            return results;
+
+        }catch(e){
+            throw e;
+        }
+    }
+
 
 
 

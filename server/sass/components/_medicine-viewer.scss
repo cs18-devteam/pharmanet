@@ -1,0 +1,179 @@
+.medicine-viewer{
+    .topbar{
+        margin: 6rem 6rem 1rem 6rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        .mini-header{
+
+            .medicine_name{
+                color:#333;
+                font-weight: 400;
+                word-spacing: 1.5rem;
+            }
+
+            .tag{
+                padding: 1rem 2rem;
+                border-radius: 3rem;
+                color:#333;
+                display: inline-block;
+                border: 1px dashed #eee;
+                text-transform: capitalize;
+                letter-spacing: 2px;
+                
+                
+                &.available{
+                    color: #fff;
+                    background-color: var(--color-green-01);
+                    border: none;
+                }
+                
+                &.low_stock{
+                    color: #fff;
+                    background-color: var(--color-yellow-01);
+                    border: none;
+                }
+                
+                &.out_of_stock{
+                    color: #fff;
+                    border: none;
+                    background-color: var(--color-red-01);
+                }
+            }
+
+        }
+
+
+        @mixin btn{
+            padding: 1rem 2rem;
+            border-radius: 3rem;
+            text-transform: capitalize;
+            cursor: pointer;
+            transition: all .2s ease;
+
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+
+        .actions{
+            display: flex;
+            gap: 1rem;
+ 
+            .close{
+                @include btn();
+                color:#fff;
+                background-color: #000;
+
+
+            }
+            
+            .edit{
+                @include btn();
+                color:#000;
+                border: 1px solid #000;
+            }
+        }
+    }
+
+    .content{
+        display: flex;
+        .left{
+            flex-grow: 3;
+            .details{
+                border-collapse: collapse;
+                margin:1rem 6rem;
+                overflow-y: scroll;
+                scrollbar-color: transparent;
+                height: 55vh;
+
+                &::-webkit-scrollbar{
+                    opacity: 0;
+                }
+
+                &:hover{
+                    &::-webkit-scrollbar{
+                        opacity: 1;
+                    }
+                }
+
+                tbody {
+
+                    tr{
+                        min-height: 3rem;
+                        td{
+                            padding: 2rem;
+                            text-wrap-mode:wrap ;
+                            min-height: 3rem;
+                            max-width: 40%;
+                        }
+                    }
+                }
+            }
+        }
+        .right{
+            flex-grow: 2;
+        }
+    }
+}
+
+
+.pharmacy_medicine_stock_content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .medicine_name{
+        font-size: 2rem;
+        font-weight: 400;
+        margin: 2rem;
+        min-height: 80vh;
+
+    }
+
+    .buttons{
+        display: flex;
+        width: 100%;
+        gap: 1rem;
+        padding: 2rem 4rem;
+        justify-content: flex-end;
+        
+        button{
+            padding: 1.5rem 2rem;
+            min-width: 14rem;
+            font-size: 1.8rem;
+            // max-width: fit-content;
+            text-transform: capitalize;
+            border: 1px solid #666;
+            color: #666;
+            background-color: #fff;
+            border-radius: 3rem;
+            cursor:  pointer;
+            
+
+            @mixin success_Btn{
+                background-color: var(--color-green-01);
+                color:#fff;
+                border: none
+            }
+
+            &.btn_cancel{
+                &:hover{
+                    border: 1px solid #000;
+                    color: #000;
+                }
+            }
+            &.btn_add_to_stock{
+                display: none;
+                @include success_Btn();
+                
+            }
+            &.btn_save{
+                @include success_Btn();
+
+            }
+            
+        }
+    }
+}

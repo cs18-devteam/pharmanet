@@ -3,19 +3,25 @@ const Model = require("../common/Model");
 class MedicineModel extends Model{
     constructor(){
         super();
-        this.serialNumber = {
-            type:"VARCHAR(100)",
-            null: false,
-        }
-
-        this.countryCode = {
-            type:"VARCHAR(100)",
-        }
-
+        
         this.geneticName = {
+            type:"VARCHAR(200)",
+        }
+
+        this.brand = {
+            type:"VARCHAR(100)",
+        }
+        
+        // this.serialNumber = {
+        //     type:"VARCHAR(100)",
+        //     null: false,
+        // }
+
+        this.country = {
             type:"VARCHAR(100)",
         }
 
+        
         this.schedule = {
             type:"VARCHAR(10)",
         }
@@ -24,21 +30,35 @@ class MedicineModel extends Model{
             type:"VARCHAR(100)",
         }
 
-        this.agentCode = {
+        this.agent = {
             type:"VARCHAR(100)"
         }
 
-        this.menuCode = {
+        this.registrationDate = {
+            type:"DATE"
+        }
+
+        this.manufacture = {
             type:"VARCHAR(100)"
         }
         this.packType = {
             type:"VARCHAR(100)"
         }
-        this.dosageCode = {
+        this.packSize = {
+            type:"VARCHAR(100)"
+        }
+        this.dosage = {
             type:"VARCHAR(100)"
         }
         this.category = {
             type:"VARCHAR(100)"
+        }
+        this.validation = {
+            type:"VARCHAR(25)"
+        }
+
+        this.dossierNo = {
+            type:"VARCHAR(25)"
         }
 
     }

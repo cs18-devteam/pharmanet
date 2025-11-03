@@ -1,47 +1,58 @@
-@forward "signup";
-@forward "attendance";
-@forward "./pharmarcyLandingPage";
-@forward "./landingPage";
-@forward "./verify-email";
-@forward "./verify-number";
-@forward "./staffMember";
-@forward "./search-medicine";
-@forward "./search-pharmacy";
-@forward "./pharmacy-registration";
-@forward "./productManagement";
-@forward "./contactUs";
-@forward "./login";
-@forward "./userUpdate";
-@forward "./pharmacy-member-intro";
-@forward "./allStaff";
-@forward "./memberDetails";
-@forward "./medicineAdd";
-@forward "./adminDashboard";
-@forward "./cashier-create-bill";
-@forward "./cashier-customer";
-@forward "./cashier-dashboard";
-@forward "./cashier-order";
-@forward "./cashier-payment-card";
-@forward "./cashier-payment-cash";
-@forward "./cashier-payment-qr";
-@forward "./cashier-product";
-@forward "./cashier-sales";
-@forward "./antibiotics";
-@forward "./blogManage";
-@forward "./blogView";
-@forward "./createNewBlog";
-@forward "./diabetics";
-@forward "./editBlog";
-@forward "./hypertension";
-@forward "./supplement";
-@forward "./addPharmarcy";
-@forward "./addPharmarcy01";
-@forward "./addPharmarcy02";
-@forward "./addPharmarcy03";
-@forward "./addPharmarcy04";
-@forward "./dataAssets";
-@forward "./medicines";
-@forward "./pharmarcy";
-@forward "./users";
-@forward "./stockDashboard";
-@forward "./stockLogin";
+/* auth */
+@forward "./auth/signup";
+@forward "./auth/verify-email";
+@forward "./auth/verify-number";
+@forward "./auth/pharmacy-registration";
+@forward "./auth/login";
+
+/* customer */
+@forward "./customer/landingPage";
+@forward "./customer/search-medicine";
+@forward "./customer/search-pharmacy";
+@forward "./customer/contactUs";
+@forward "./customer/userUpdate";
+
+/* pharmacy */
+@forward "./pharmacy/staff/attendance";
+@forward "./pharmacy/pharmarcyLandingPage";
+@forward "./pharmacy/staff/staffMember";
+@forward "./pharmacy/stock/productManagement";
+@forward "./pharmacy/staff/pharmacy-member-intro";
+@forward "./pharmacy/staff/memberDetails";
+@forward "./pharmacy/cashier/cashier-create-bill";
+@forward "./pharmacy/cashier/cashier-customer";
+@forward "./pharmacy/cashier/cashier-dashboard";
+@forward "./pharmacy/cashier/cashier-order";
+@forward "./pharmacy/cashier/cashier-payment-card";
+@forward "./pharmacy/cashier/cashier-payment-cash";
+@forward "./pharmacy/cashier/cashier-payment-qr";
+@forward "./pharmacy/cashier/cashier-product";
+@forward "./pharmacy/cashier/cashier-sales";
+@forward "./pharmacy/pharmarcy";
+@forward "./pharmacy/stock/stockDashboard";
+@forward "./pharmacy/stock/stockLogin";
+@forward "./pharmacy/pharmacyDashboard";
+
+/* admin */
+@forward "./admin/allStaff";
+@forward "./admin/adminDashboard";
+@forward "./admin/users";
+@forward "./admin/dataAssets";
+
+@forward "./admin/medicines/medicineAdd";
+@forward "./admin/medicines/medicines";
+
+@forward "./admin/blogs/antibiotics";
+@forward "./admin/blogs/blogManage";
+@forward "./admin/blogs/blogView";
+@forward "./admin/blogs/createNewBlog";
+@forward "./admin/blogs/diabetics";
+@forward "./admin/blogs/editBlog";
+@forward "./admin/blogs/hypertension";
+@forward "./admin/blogs/supplement";
+
+@forward "./admin/pharmacy/addPharmarcy";
+@forward "./admin/pharmacy/addPharmarcy01";
+@forward "./admin/pharmacy/addPharmarcy02";
+@forward "./admin/pharmacy/addPharmarcy03";
+@forward "./admin/pharmacy/addPharmarcy04";

@@ -2,6 +2,11 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+
+    &::selection{
+        background-color: var(--color-green-01);
+        color: #222;
+    }
 }
 
 html{
@@ -14,7 +19,9 @@ body{
     color: var(--text-color);
     font-family: var(--primary-font);
     padding: 2rem;
-    transition: background-color 0.3s, color 0.3s
+    transition: background-color 0.3s, color 0.3s;
+    // user-select: var(--color-green-01);
+    
 }
 
 
@@ -72,3 +79,18 @@ img{
     font-size: 1.8rem !important;
 }
 
+
+
+
+
+                
+// .available{
+//     background-color: var(--color-green-01);
+// }
+// .low_stock{
+//     background-color: var(--color-yellow-01);
+// }
+// .out_of_stock{
+//     background-color: var(--color-red-01);
+
+// }

@@ -1,0 +1,99 @@
+.horizontal_bar_chart{
+    width: 100%;
+    max-width: 80rem;
+    // margin:2rem;
+    padding: 2rem;
+
+    .chart{
+        &__bars{
+            display: flex;
+            justify-content: space-between;
+            gap: .5rem;
+
+            .bar{
+                height: 5rem;
+                border-radius: 3rem;
+                background-color: #eee;
+                width: 100%;
+                $gap : 5px;
+                background-image: repeating-linear-gradient(
+                    120deg ,
+                    transparent $gap ,
+                    #ffffff7d $gap , 
+                    #ffffff7d calc($gap * 2) , 
+                    transparent  calc($gap * 2),
+                    transparent  calc($gap * 3)
+                );
+                
+                &.available{
+                    background-color: var(--color-green-01);
+                    // width: 60%;
+                }
+                &.low_stock{
+                    // width: 15%;
+                    background-color: var(--color-yellow-01);
+                }
+                &.out_of_stock{
+                    // width: 25%;
+                    background-color: var(--color-red-01);
+
+                }
+            }
+
+        }
+
+        &__labels{
+            display: flex;
+            justify-content: flex-end;
+            gap: 6rem;
+            margin: 1rem 0;
+            text-transform: capitalize;
+
+            .label{
+                font-size: 2rem;
+                display: flex;
+                gap: 1rem;
+                color: #000;
+                align-items: center;
+
+                &.available{
+                    .dot{
+                        background-color: var(--color-green-01);
+                    }
+                }
+                &.low_stock{
+                    .dot{
+                        background-color: var(--color-yellow-01);
+                    }
+                }
+                &.out_of_stock{
+                    .dot{
+                        background-color: var(--color-red-01);
+                    }
+                }
+
+                .dot{
+                    width: 2rem;
+                    height: 2rem;
+                    border-radius: 50%;
+
+                }
+
+                .label{
+                    &__text{
+                        
+                        
+                        .text{
+                            color:#000000ab;
+                            font-size: 1.6rem;
+                        }
+
+                        // .amount{
+                        // }
+                    }
+
+                }
+            }
+        }
+    }
+}

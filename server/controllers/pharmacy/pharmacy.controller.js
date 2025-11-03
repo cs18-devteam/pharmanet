@@ -36,7 +36,7 @@ exports.renderPharmacyRegister = async (req , res)=>{
 
 }
 
-exports.renderPharmacyDashboard = async (req , res)=>{
+exports.renderPharmacyProfile = async (req , res)=>{
     try{
 
         const [staff] = (await Users.getById(req.pharmacistId));
@@ -64,3 +64,13 @@ exports.renderPharmacyDashboard = async (req , res)=>{
 }
 
 
+
+
+exports.renderPharmacyDashboard = async (req , res)=>{
+
+    return response(res , view('pharmacy/pharmacy.dashboard' , {
+        header : view('component.header' , {
+                name:"Pharmacy Dashboard",
+        }),
+    }) , 200)
+}

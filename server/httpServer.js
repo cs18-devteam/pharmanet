@@ -20,6 +20,8 @@ const pharmacyStaffController = require('./controllers/pharmacy/pharmacy.staff.c
 const verifyEmailController = require('./controllers/auth/verify.email.controller');
 const verifyNumberController = require('./controllers/auth/verify.number.controller');
 const otpController = require('./controllers/auth/sendOTP.controller');
+const pharmacyMedicinesController = require('./controllers/pharmacy/pharmacy.medicines.controller');
+const pharmacyMedicinesApiController = require('./controllers/pharmacy/pharmacy.medicines.api.controller');
 
 
 const server = http.createServer((req , res)=>{
@@ -324,9 +326,21 @@ const server = http.createServer((req , res)=>{
         AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/pharmacist/:pharmacistId')
         ?.get(pharmacyController.renderPharmacyDashboard);
 
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId')
+        ?.get(pharmacyController.renderPharmacyDashboard);
+
         AppRouter.pipe(req ,res).route('/pharmacies/:pharmacyId/pharmacist/:pharmacistId/staff')
         ?.get(pharmacyStaffController.renderPharmacyStaff);
 
+        AppRouter.pipe(req , res).route('/pharmacies/:pharmacyId/medicines')
+        ?.get(pharmacyMedicinesController.getAllMedicines);
+
+
+        AppRouter.pipe(req , res).route('/api/medicines')
+        ?.get(pharmacyMedicinesApiController.searchMedicinesByName);
+
+        AppRouter.pipe(req , res).route('/api/pharmacies/:pharmacyId/medicines/info')
+        ?.get(pharmacyMedicinesApiController.getMedicineStockInfo)
 
         AppRouter.pipe(req ,res).route('/users/recovery/:recoveryLink')
         ?.get()

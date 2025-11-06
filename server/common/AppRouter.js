@@ -198,9 +198,3 @@ class AppRouter{
 }
 
 module.exports = AppRouter;
-
-
-AppRouter.pipe(req ,res)
-    .subroute().router()
-    .subroute().router()
-    .subroute().router()

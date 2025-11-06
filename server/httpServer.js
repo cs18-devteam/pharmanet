@@ -23,6 +23,9 @@ const pharmacyMedicinesController = require('./controllers/pharmacy/pharmacy.med
 const pharmacyMedicinesApiController = require('./controllers/pharmacy/pharmacy.medicines.api.controller');
 const SubRouter = require('./common/SubRouter');
 const customerRoutes = require('./routes/web/customers.Routes');
+const Router = require('./common/Router');
+const customerController = require('./controllers/customer/customer.controller');
+const { subscribe } = require('diagnostics_channel');
 
 
 const server = http.createServer((req , res)=>{
@@ -50,25 +53,12 @@ const server = http.createServer((req , res)=>{
             console.log(method , url  , path)
         }
 
-
-
-
-        SubRouter.pipe(req , res).route('/customers/:customerId')
-        .subRoute('/' , customerRoutes.homeRouter)
-        .subRoute('/medicines' , customerRoutes.medicineRouter)
-        .subRoute('/pharmacy/register' , customerRoutes.pharmacyRegister)
-        .subRoute('')
-        
-        
-
-
-
-
-        //////////////////////////////////////////
-        // :: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        // :: ~~~~~~~~ ADMIN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        
-        
+        ////////////////////////////////////////////////
+        ///////////////////////////////////////////////
+        // :: START ROUTING
+        SubRouter.pipe('/' , {
+            get : indexController.renderIndexPage
+        });
 
 
 
@@ -76,11 +66,6 @@ const server = http.createServer((req , res)=>{
 
 
 
- 
-
-
-
-        AppRouter.pipe(req , res).route('/user/:userId/').router(userRouter)
 
 
 
@@ -102,6 +87,34 @@ const server = http.createServer((req , res)=>{
 
 
 })
+
+        // :: CUSTOMER ROUTES
+        const customerRouter = SubRouter.pipe().route('/customers/:customerId')
+        .subRoute('/' , {
+            get: customerController.renderCustomerHome
+        })
+        .subRoute('/profile' , {
+            get: customerController.renderCustomerProfile
+        })
+        .subRoute('/medicines' , {
+            get : customerMedicineController.renderCustomerMedicines
+        })
+        .subRoute('/pharmacy/register' , {
+            get : pharmacyController.renderPharmacyRegister,
+        })
+        .subRoute('/profile/edit')
+        .subRoute('/pharmacies' , {
+            get : customerPharmacyController.renderCustomerPharmacies,
+        })
+        .subRoute('/pharmacies/:pharmacyId' , {
+            get : customerPharmacyController.renderCustomerPharmacy,
+        })
+        .subRoute('/history')
+        .subRoute('/transaction')
+        .subRoute('/orders')
+        .subRoute('/orders/:orderId');
+
+        customerRouter.print(true);
 
 
 

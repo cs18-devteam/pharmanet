@@ -5,8 +5,8 @@ class Router{
     postHandler =async ()=>{};
     updateHandler =async ()=>{};
     deleteHandler =async ()=>{};
-
-    path(path){
+    
+    route(path){
         this.path = path;
         return this;
     }

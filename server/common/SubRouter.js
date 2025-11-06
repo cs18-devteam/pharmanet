@@ -1,3 +1,5 @@
+const Router = require("./Router");
+
 class SubRouter{
     #req = undefined;
     #res = undefined;
@@ -14,15 +16,41 @@ class SubRouter{
         return this;
     }
 
+    print(absolute = false){
 
-    subRoute(path , router){
-        router.path(path);
-        this.#routes.push(router);
+        if(!absolute){
+
+            this.#routes.forEach(route=>{
+                console.log(route);
+            })
+            
+        }else{
+            this.#routes.forEach(route=>{
+                let path = [ ...this.#path.split('/') , ...route.path.split('/')].filter(key=> key != "").join('/');
+                
+                console.log(path);
+            })
+        }
         return this;
     }
 
-    execute(req , res){
 
+
+
+    subRoute(path , {
+        get = async()=>{} , 
+        post = async ()=>{} , 
+        update = async ()=>{} , 
+        delete:del = async () => {}
+    } = {}){
+        const router = Router.create();
+        router.route(path);
+        router.get(get);
+        router.post(post);
+        router.delete(del);
+        router.update(update);
+        this.#routes.push(router);
+        return this;
     }
 
     static pipe(req , res){

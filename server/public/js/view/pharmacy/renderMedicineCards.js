@@ -1,4 +1,6 @@
-const medicineCardTemplate = `
+import html from "./../html.js";
+
+const medicineCardTemplate = html`
 <div class="medicine_card" data-id="{id}">
     <div class="dosage-icon {type}" >
         
@@ -32,7 +34,7 @@ const medicineCardTemplate = `
                 <span>price</span>
                 <span class="price">
                     <div class="price__value">{price}</div>
-                    <span class="price__identifier">(average)</span>
+                    <!-- <span class="price__identifier">(average)</span> -->
                 </span>
             </div>
         </div>
@@ -53,13 +55,36 @@ export function createMedicineCards (data = []){
     try{
 
         return data.map(medicine=>{
+            let status = "not_available";
+            let fullStockCount = medicine.stock.stock;
+            if(fullStockCount){
+                status = "available"
+
+                if(medicine.stock.publicStock < 10){
+                    status = "low_stock";
+                }
+            }else if(fullStockCount == 0){
+                status = "out_of_stock";
+            }
+
+            if(fullStockCount == undefined){
+                fullStockCount = ' ';
+            }
+
+            let price = 'not available';
+            if(status != 'not_available'){
+                price = medicine.stock.price;
+            }
+
+
+
             return medicineCardTemplate
             .replaceAll('{type}' , 'syringe')
             .replaceAll('{variety}' , 'pills')
             .replace('{geneticName}' , medicine.geneticName)
-            .replace('{price}' , '250.00')
-            .replace('{status}' , 'available')
-            .replace('{count}' , '08')
+            .replace('{price}' , price )
+            .replace('{status}' , status)
+            .replace('{count}' , fullStockCount)
             .replace('{id}' , medicine.id);
             
         });

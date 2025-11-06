@@ -1,7 +1,14 @@
 import html from "../html.js";
+// import {html} from 'lit-html';
 
 export function createMedicineViewerContent(medicine){
     if(!medicine) return "";
+
+    const isAvailable = medicine.stock.stock;
+
+
+
+
     return html`
         <div class="medicine-viewer" data-id="${medicine.id}">
 
@@ -10,7 +17,7 @@ export function createMedicineViewerContent(medicine){
                     <h1 class="medicine_name">
                         ${medicine.geneticName}
                     </h1>
-                    <div class="tag available" >available</div>
+                    <div class="tag ${isAvailable ? "available" : "not_available"}"> ${isAvailable ? "available" : "not available"} </div>
                 </div>
                 
                 <div class="actions">
@@ -85,14 +92,11 @@ export function createMedicineViewerContent(medicine){
 
                 </div>
                 <div class="right">
-                    <div class="price">
-                        <h2>price details<h2>
-                        <div>${medicine.price}</div>
-                    </div>
+                    
                 
                 </div>
             </div>
 
         </div>
     `    
-}
+};

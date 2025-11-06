@@ -19,13 +19,34 @@ exports.searchMedicinesByName = async (req , res)=>{
     try{
         const searchName = req.params.get('search');
         const limit = req.params.get('limit');
+        const pharmacyId = req.pharmacyId;
 
         const medicines = await Medicines.query(`select * from this.table ${searchName ? `where geneticName like '%${searchName}%' ` : '' } limit ${limit || 100}`);
-        
-        return responseJson(res , 200 , {
-            status:"success",
-            count: medicines.length,
-            results: medicines,
+
+
+        const stockMedicines = medicines.map(async med=>{
+            try{
+
+                const stock = await PharmacyMedicines.get({
+                    medicineId : med.id,
+                    pharmacyId : pharmacyId,
+                })
+                return {...med , stock};
+            }catch(e){
+                console.log(e);
+                return med;
+            }
+        })
+
+        Promise.all(stockMedicines).then((data)=>{
+
+            console.log(data);
+            
+            return responseJson(res , 200 , {
+                status:"success",
+                count: data.length,
+                results: data,
+            });
         });
 
     }catch(e){

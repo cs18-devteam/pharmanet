@@ -21,9 +21,21 @@ function searchAndRenderMedicineCard(value , limit){
             openDrawer(); 
             const closeBtn = document.querySelector('.drawer .close');
             const editBtn = document.querySelector('.drawer .edit');
-            console.log(editBtn);
             closeBtn?.addEventListener('click' , closeDrawer);
-            editBtn?.addEventListener('click' , openSidebar);
+            editBtn?.addEventListener('click' , ()=>{
+                openSidebar();
+                const form = document.querySelector('.medicine-edit-form');
+                console.log(selectedMedicine);
+                form.addEventListener('submit' , e=>{
+                    e.preventDefault();
+
+                    const formData = new FormData(form);
+                    const closeBtn = e.target.closest('.btn_cancel');
+                    const saveBtn = e.target.closest('.btn_save')
+                    const addToStockBtn = e.target.closest('.btn_add_to_stock')
+                    console.log(formData);
+                })
+            });
             
 
         }))

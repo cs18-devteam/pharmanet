@@ -1,7 +1,7 @@
-export async function fetchMedicineData(name , limit){
+export async function fetchMedicineData(name , limit , pharmacyId = 1){
     try{
 
-        const respond = await fetch(`/api/medicines${name ? `?search=${name}&`:'?'} ${limit ? `limit=${limit}`: ' '}`);
+        const respond = await fetch(`/api/pharmacies/${pharmacyId}/medicines${name ? `?search=${name}&`:'?'} ${limit ? `limit=${limit}`: ' '}`);
         const data = await respond.json();
         return data;
 

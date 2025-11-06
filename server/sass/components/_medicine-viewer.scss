@@ -114,66 +114,195 @@
         }
         .right{
             flex-grow: 2;
+            justify-content: flex-end;
+            // background-color: #000;
+            height: 100%;
+            border-radius: 3rem 0 0 3rem;
+            // background-image: linear-gradient(120deg , transparent 50% , #ffffff34 50% , #ffffff34 60% , transparent 60% );
+
+
+            .notice{
+                width: 40rem;
+                margin: 3rem;
+                display: inline-block;
+                height: 20rem;
+                border-radius: 3rem;
+                // background-color: #555;
+                background-image: linear-gradient(120deg , transparent , #000);
+                padding: 2rem;
+                color: var(--color-yellow-01);
+                border: 1px solid var(--color-yellow-01);
+                font-size: 2.8rem;
+                text-transform: capitalize;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                display: none;
+
+                button.add_to_stock{
+                    padding: 1rem 2rem;
+                    font-size: 2rem;
+                    width: fit-content;
+                    align-self: flex-end;
+                    text-transform: capitalize;
+                    font-family: var(--primary-font);
+                    border-radius: 3rem;
+                    border: none;
+                    outline: none;
+                    cursor: pointer;
+                    background-color: #000;
+                    // outline: 1px solid #fff;
+                    transition: all .2s ease;
+                    color:#fff;
+                    background-color: var(--color-green-01);
+                    &:hover{
+                        color: var(--color-green-01);
+                        background-color: #fff;
+                        transform: scale(1.1);
+                    }
+
+
+
+                }
+            }
+
+
+
+            .stock{
+                width: 40rem;
+                background-color: var(--color-green-01);
+                min-height: 50vh;
+                border-radius: 3rem;
+                .price{
+                    height: fit-content;
+                    margin: 3rem;
+                    justify-content: center;
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    padding: 3rem;
+                    text-transform: capitalize;
+
+                    border-bottom: 1px solid #fff;
+                    
+                    .text{
+                        color: #fff;
+                        font-size: 2.8rem;
+                    }
+                    
+                    .value{
+                        color:#fff;
+                        font-size: 4rem;
+                        font-weight: 600;
+                        
+                        &::before{
+                            content: 'Rs ';
+                        }
+                        
+                    }
+                }
+            }
         }
     }
 }
 
 
 .pharmacy_medicine_stock_content{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
+    
     .medicine_name{
         font-size: 2rem;
         font-weight: 400;
         margin: 2rem;
+        
+    }
+    
+    form{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         min-height: 80vh;
 
-    }
-
-    .buttons{
-        display: flex;
-        width: 100%;
-        gap: 1rem;
-        padding: 2rem 4rem;
-        justify-content: flex-end;
-        
-        button{
-            padding: 1.5rem 2rem;
-            min-width: 14rem;
-            font-size: 1.8rem;
-            // max-width: fit-content;
+        .input_field_container{
+            margin: 3rem;
             text-transform: capitalize;
-            border: 1px solid #666;
-            color: #666;
-            background-color: #fff;
-            border-radius: 3rem;
-            cursor:  pointer;
-            
 
-            @mixin success_Btn{
-                background-color: var(--color-green-01);
-                color:#fff;
-                border: none
-            }
 
-            &.btn_cancel{
-                &:hover{
-                    border: 1px solid #000;
-                    color: #000;
+
+            .field{
+                // height: 5rem;
+                margin: 1rem;
+                display: flex;
+                flex-direction: column;
+                gap: .5rem;
+
+                + h3{
+                    margin-top: 4rem;
+                }
+                
+                
+                label , input{
+                    margin-bottom: 1rem;
+                    display: inline;
+                    width: 100%;
+                }
+
+                input{
+                    height: 5.5rem;
+
+                    &:focus-visible{
+                        outline: 2px solid var(--color-green-01);
+                        border: none;
+                        box-shadow: none;
+                    }
                 }
             }
-            &.btn_add_to_stock{
-                display: none;
-                @include success_Btn();
+        }
+
+
+        
+        .buttons{
+            display: flex;
+            width: 100%;
+            gap: 1rem;
+            padding: 2rem 4rem;
+            justify-content: flex-end;
+            
+            button{
+                padding: 1.5rem 2rem;
+                min-width: 14rem;
+                font-size: 1.8rem;
+                // max-width: fit-content;
+                text-transform: capitalize;
+                border: 1px solid #666;
+                color: #666;
+                background-color: #fff;
+                border-radius: 3rem;
+                cursor:  pointer;
+                
+                
+                @mixin success_Btn{
+                    background-color: var(--color-green-01);
+                    color:#fff;
+                    border: none
+                }
+                
+                &.btn_cancel{
+                    &:hover{
+                        border: 1px solid #000;
+                        color: #000;
+                    }
+                }
+                &.btn_add_to_stock{
+                    display: none;
+                    @include success_Btn();
+                    
+                }
+                &.btn_save{
+                    @include success_Btn();
+                    
+                }
                 
             }
-            &.btn_save{
-                @include success_Btn();
-
-            }
-            
         }
     }
 }

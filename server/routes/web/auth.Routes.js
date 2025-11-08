@@ -1,29 +1,26 @@
-const AppRouter = require("../../common/AppRouter");
+const SubRouter = require("../../common/SubRouter");
+const loginController = require('../../controllers/auth/login.controller');
+const signupController = require('../../controllers/auth/signup.controller');
+const verifyEmailController = require('../../controllers/auth/verify.email.controller');
+const verifyNumberController = require('../../controllers/auth/verify.number.controller');
+const otpController = require('../../controllers/auth/sendOTP.controller');
+
 
 //:: USER / LOGIN
-AppRouter.pipe(req , res).route('/login')
-    ?.get(loginController.renderLogin)
-    ?.post(loginController.login);
+const authRouter = SubRouter.route('/')
+.subRoute('/login' , {
+    get : loginController.renderLogin,
+})
+.subRoute('/signup' , {
+    get : signupController.renderSignup,
+    post : signupController.signup,
+})
+.subRoute('/verify/:userId/email' , {
+    get: verifyEmailController.renderVerifyEmail,
+    post : verifyEmailController.verifyEmail,
+})
+.subRoute('/verify/:userId/email/otp' , {
+    get : otpController.resendEmailOTP,
+})
 
-// :: USER / SIGNUP
-AppRouter.pipe(req , res).route('/signup')
-    ?.get(signupController.renderSignup)
-    ?.post(signupController.signup);
-
-// :: USER / VERIFY EMAIL / MOBILE NUMBER
-AppRouter.pipe(req , res).route('/verify/:userId/email')
-    ?.get(verifyEmailController.renderVerifyEmail)
-    ?.post(verifyEmailController.verifyEmail);
-
-
-//:: USER / VERIFY NUMBER
-AppRouter.pipe(req , res).route('/verify/number')
-    ?.get(verifyNumberController.renderVerifyNumber);
-
-
-// :: USER / VERIFY EMAIL
-AppRouter.pipe(req , res).route('/verify/:userId/email/otp')
-?.get(otpController.resendEmailOTP);
-
-AppRouter.pipe(req ,res).route('/users/recovery/:recoveryLink')
-?.get()
+module.exports =  authRouter; 

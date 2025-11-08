@@ -1,6 +1,7 @@
 
 class Router{
     path = undefined;
+    absPath = undefined;
     getHandler =async ()=>{};
     postHandler =async ()=>{};
     updateHandler =async ()=>{};
@@ -9,6 +10,10 @@ class Router{
     route(path){
         this.path = path;
         return this;
+    }
+
+    absRoute(root,path){
+        this.absPath = "/"+[ ...root.split('/') , ...path.split('/')].filter(key=> key != "").join('/');
     }
 
     get(handler){

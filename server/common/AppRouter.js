@@ -48,8 +48,6 @@ class Router{
         this.#user = await Users.getById(id);
 
         try{
-
-            
             if(localAccess.length){
                 console.log(localAccess)
                 if(!localAccess.includes(this.#user?.role)) response(this.res , "Not Authenticated" , 408);
@@ -80,8 +78,10 @@ class Router{
                 console.log("authenticated correctly");
                 this.#verify(access , this.#id).then((value)=>{
                     if(value){
+                        
                         return handler(this.req  , this.res).catch(e=>{
                             console.log(e)
+                            
                             throw e;
                         });
                     }else{
@@ -89,6 +89,7 @@ class Router{
                     }
                 }).catch(e=>{
                     console.log(e);
+
                 });
             }else{
                 console.log("not authenticated");
@@ -98,6 +99,8 @@ class Router{
             }
         })
         }catch(e){
+            
+            
             console.log(e);
             return responseJson(this.res , 500 , {
                 status:"error",

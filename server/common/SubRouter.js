@@ -1,37 +1,42 @@
+const AppRouter = require("./AppRouter");
 const Router = require("./Router");
 
 class SubRouter{
+    static #Routers = [];
     #req = undefined;
     #res = undefined;
     #path = undefined;
     #routes = [];
 
-    constructor(req , res){
-        this.#req = req;
-        this.#res = res;
+
+    static route(path){
+        const subRouter = new SubRouter();
+        subRouter.#path = path;
+        SubRouter.#Routers.push(subRouter);
+        return subRouter;
+        
     }
 
-    route(path){
-        this.#path = path;
-        return this;
+
+    static print(absolute = true){
+        SubRouter.#Routers.forEach((router , )=>{
+            router.print(absolute);
+            
+        })        
     }
+
 
     print(absolute = false){
-
-        if(!absolute){
-
-            this.#routes.forEach(route=>{
-                console.log(route);
-            })
-            
-        }else{
-            this.#routes.forEach(route=>{
-                let path = [ ...this.#path.split('/') , ...route.path.split('/')].filter(key=> key != "").join('/');
+        this.#routes.forEach(e=>{
+            if(absolute){
+                console.log(e.absPath);
                 
-                console.log(path);
-            })
-        }
-        return this;
+                
+            }else{
+                console.log(e.path);   
+            }
+        
+        })
     }
 
 
@@ -49,12 +54,28 @@ class SubRouter{
         router.post(post);
         router.delete(del);
         router.update(update);
+        router.absRoute(this.#path , path);
         this.#routes.push(router);
+        
         return this;
     }
 
-    static pipe(req , res){
-        return new SubRouter(req , res);
+    pipe(req , res){
+        this.#req = req;
+        this.#res = res;
+
+        this.#routes.forEach(router=>{            
+            AppRouter.pipe(this.#req , this.#res).route(router.absPath)
+            ?.get(router.getHandler)
+            ?.post(router.postHandler)
+            ?.update(router.updateHandler)
+            ?.delete(router.deleteHandler);
+        })
+
+
+
+
+        return this;
     }
 
 }

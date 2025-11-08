@@ -5,12 +5,12 @@
 $containers : 'bills' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 'staff';
 
 .pharmacyDashboard{
-        background: #127EB5;
-        background: linear-gradient(120deg,#68accf 0% , rgba(18, 126, 181, 1) 20% , rgba(24, 151, 141, 1) 50%, rgba(8, 55, 79, 1) 100%);
+        // background: #127EB5;
+        background-image: linear-gradient(120deg,#68accf 0% , rgba(18, 126, 181, 1) 20% , rgba(24, 151, 141, 1) 50%, rgba(8, 55, 79, 1) 100%);
         background-repeat: no-repeat;
         background-size: 100% 100%;
         min-height: 100vh;
-        z-index: -100;
+        z-index: 0;
         position: relative;
         // overflow: hidden;
         // height: max-content;
@@ -19,7 +19,7 @@ $containers : 'bills' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'produ
     .dashboards{
         // padding-top: 4rem;
         overflow-y: clip;
-        z-index: -100;
+        z-index: 10;
     }
 
 

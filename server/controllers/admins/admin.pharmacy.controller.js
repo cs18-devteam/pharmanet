@@ -3,7 +3,7 @@ const { responseJson, response } = require("../../common/response");
 const view = require("../../common/view");
 const Pharmacies = require("../../models/PharmacyModel");
 
-exports.pharmacy = async (req ,res)=>{
+exports.renderAllPharmacies = async (req ,res)=>{
     const pharmacies = await Pharmacies.get();
 
 
@@ -114,7 +114,7 @@ exports.updatePharmacy = async (req , res)=>{
 
 }
 
-exports.pharmacyList = async (req , res)=>{
+exports.sendJsonPharmaciesList = async (req , res)=>{
     try{
         const allPharmacies = await Pharmacies.get();
         return response(res , JSON.stringify(allPharmacies) , 200);
@@ -124,7 +124,7 @@ exports.pharmacyList = async (req , res)=>{
     }
 }
 
-exports.getPharmacyDetails = async (req , res)=>{
+exports.renderPharmacyDetailsView = async (req , res)=>{
     try{
         if(req.pharmacyId){
 
@@ -170,7 +170,7 @@ exports.deletePharmacy = async (req , res)=>{
 }
 
 
-exports.adminAddPharmacy = async (req ,res)=>{
+exports.renderAdminCreatePharmacyViewStep01 = async (req ,res)=>{
     return response(res , view('admin/addPharmacy',{
         header : view('component.header' , {
             name:"Add new Pharmacy | step 01",
@@ -179,7 +179,7 @@ exports.adminAddPharmacy = async (req ,res)=>{
 
     }) , 200);
 }
-exports.adminAddPharmacyStep02 = async (req ,res)=>{
+exports.renderAdminCreatePharmacyViewStep02 = async (req ,res)=>{
     return response(res , view('admin/addPharmacy-step2',{
         header : view('component.header' , {
           name:"Add new Pharmacy | step 02",
@@ -188,7 +188,7 @@ exports.adminAddPharmacyStep02 = async (req ,res)=>{
         previous:"/admin/pharmacy/create"
     }) , 200);
 }
-exports.adminAddPharmacyStep03 = async (req ,res)=>{
+exports.renderAdminCreatePharmacyViewStep03 = async (req ,res)=>{
     return response(res , view('admin/addPharmacy-step3',{
         header : view('component.header' , {
           name:"Add new Pharmacy | step 03",
@@ -197,7 +197,7 @@ exports.adminAddPharmacyStep03 = async (req ,res)=>{
         previous:"/admin/pharmacy/step/2"
     }) , 200);
 }
-exports.adminAddPharmacyStep04 = async (req ,res)=>{
+exports.renderAdminCreatePharmacyViewStep04 = async (req ,res)=>{
     return response(res , view('admin/addPharmacy-step4',{
         header : view('component.header' , {
           name:"Add new Pharmacy | step 04",
@@ -207,7 +207,7 @@ exports.adminAddPharmacyStep04 = async (req ,res)=>{
     }) , 200);
 }
 
-exports.adminEditPharmacy = async (req ,res)=>{
+exports.renderAdminEditPharmacyViewStep01 = async (req ,res)=>{
      try{
         if(req.pharmacyId){
 
@@ -230,7 +230,7 @@ exports.adminEditPharmacy = async (req ,res)=>{
             return response(res , JSON.stringify(e) , 400);
         }
 }
-exports.adminEditPharmacyStep02 = async (req ,res)=>{
+exports.renderAdminEditPharmacyViewStep02 = async (req ,res)=>{
         try{
         if(req.pharmacyId){
 
@@ -253,7 +253,7 @@ exports.adminEditPharmacyStep02 = async (req ,res)=>{
             return response(res , JSON.stringify(e) , 400);
         }
 }
-exports.adminEditPharmacyStep03 = async (req ,res)=>{
+exports.renderAdminEditPharmacyViewStep03 = async (req ,res)=>{
          try{
         if(req.pharmacyId){
 
@@ -274,7 +274,7 @@ exports.adminEditPharmacyStep03 = async (req ,res)=>{
             return response(res , JSON.stringify(e) , 400);
         }
 }
-exports.adminEditPharmacyStep04 = async (req ,res)=>{
+exports.renderAdminEditPharmacyViewStep04 = async (req ,res)=>{
     try{
         if(req.pharmacyId){
             const [pharmacy] = await Pharmacies.getById(req.pharmacyId);

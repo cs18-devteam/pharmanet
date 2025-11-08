@@ -8531,17 +8531,16 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 
 /* paging effect */
 .pharmacyDashboard {
-  background: #127EB5;
-  background: linear-gradient(120deg, #68accf 0%, rgb(18, 126, 181) 20%, rgb(24, 151, 141) 50%, rgb(8, 55, 79) 100%);
+  background-image: linear-gradient(120deg, #68accf 0%, rgb(18, 126, 181) 20%, rgb(24, 151, 141) 50%, rgb(8, 55, 79) 100%);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   min-height: 100vh;
-  z-index: -100;
+  z-index: 0;
   position: relative;
 }
 .pharmacyDashboard .dashboards {
   overflow-y: clip;
-  z-index: -100;
+  z-index: 10;
 }
 .pharmacyDashboard .container {
   top: 1rem;

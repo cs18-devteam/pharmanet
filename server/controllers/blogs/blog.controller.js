@@ -19,7 +19,7 @@ exports.antibiotics = async (req ,res)=>{
   }
 }
 
-exports.blogManage = async (req ,res)=>{
+exports.renderBlogManageView = async (req ,res)=>{
     try{
       const blogs = await Blogs.get();
 
@@ -38,7 +38,7 @@ exports.blogManage = async (req ,res)=>{
   }
 }
 
-exports.blogView = async (req ,res)=>{
+exports.renderBlogView = async (req ,res)=>{
   try{
 
     
@@ -168,7 +168,7 @@ exports.deleteBlog = async (req, res) => {
   }
 }
 // CREATE
-exports.update = async (req, res) => {
+exports.updateBlog = async (req, res) => {
   try{
 
     const { title, category, author, excerpt, content } = JSON.parse(await getRequestData(req)); 
@@ -202,7 +202,7 @@ exports.getAllBlogs = async (req, res) => {
 }
 
 
-exports.delete = async (req , res)=>{
+exports.renderDeleteView = async (req , res)=>{
   try{
 
     return response(res , view('delete',{

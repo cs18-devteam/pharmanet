@@ -1,5 +1,12 @@
-AppRouter.pipe(req , res).route('/')
-?.get(indexController.renderIndexPage);
+const SubRouter = require("../../common/SubRouter");
+const indexController = require('../../controllers/index.controller');
+const contactUsController = require('../../controllers/contactus.controller');
 
-AppRouter.pipe(req , res).route('/contactus')
-?.get(contactUsController.renderContactus)
+
+exports.indexRouter = SubRouter.route('/')
+.subRoute('/' , {
+    get: indexController.renderIndexPage,
+})
+.subRoute('/contactus' , {
+    get : contactUsController.renderContactus,
+})

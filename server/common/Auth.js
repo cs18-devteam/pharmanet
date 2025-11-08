@@ -93,7 +93,10 @@ exports.verifyUser =async (req , res , id)=>{
         const cookies = this.readCookies(req);
         // const cookies = JSON.parse(await getRequestData(req));
         const token = cookies.token;
+        if(!token) return false; 
         const decodedToken = JSON.parse(this.decrypt(token));
+        if(!decodedToken.id) return false;
+
         if(id == decodedToken.id){
             const user = (await Users.getById(id))[0];
             return decodedToken.email == user.email;

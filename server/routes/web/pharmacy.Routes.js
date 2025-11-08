@@ -24,11 +24,16 @@ exports.pharmacyRouter = SubRouter.route('/pharmacies/:pharmacyId')
     get : pharmacyMedicinesController.getAllMedicines
 })
 
-
 exports.pharmacyApiRouter = SubRouter.route('/api/v1/pharmacies/:pharmacyId')
 .subRoute('/medicines' , {
-    get : pharmacyMedicinesApiController.getAllMedicines
+    get : pharmacyMedicinesApiController.searchMedicinesByName
 })
 .subRoute('/medicines/info', {
     get : pharmacyMedicinesApiController.getMedicineStockInfo,
+})
+.subRoute('/stock/medicines' , {
+    post : pharmacyMedicinesApiController.createMedicineStock,
+})
+.subRoute('/stock/medicines/:stockId' , {
+    get: pharmacyMedicinesApiController.getMedicineDetailsByStockId
 })

@@ -117,6 +117,8 @@
             justify-content: flex-end;
             // background-color: #000;
             height: 100%;
+            padding: 3rem;
+            max-width: 50rem;
             border-radius: 3rem 0 0 3rem;
             // background-image: linear-gradient(120deg , transparent 50% , #ffffff34 50% , #ffffff34 60% , transparent 60% );
 
@@ -127,8 +129,6 @@
                 display: inline-block;
                 height: 20rem;
                 border-radius: 3rem;
-                // background-color: #555;
-                background-image: linear-gradient(120deg , transparent , #000);
                 padding: 2rem;
                 color: var(--color-yellow-01);
                 border: 1px solid var(--color-yellow-01);
@@ -137,7 +137,11 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                display: none;
+
+                &:hover{
+                    background-color: #000;
+                }
+
 
                 button.add_to_stock{
                     padding: 1rem 2rem;
@@ -166,42 +170,144 @@
                 }
             }
 
-
-
-            .stock{
-                width: 40rem;
-                background-color: var(--color-green-01);
-                min-height: 50vh;
-                border-radius: 3rem;
-                .price{
-                    height: fit-content;
-                    margin: 3rem;
+            .price_container{
+                display: flex;
+                width : 100%;
+                justify-content: space-between;
+                padding:1rem;
+                border-bottom : 1px solid #999;
+                margin-bottom: 2rem;
+                
+                .text{
+                font-size:1.8rem;
+                display :flex;
+                align-items:center;
+                gap: 1rem;
+                opacity: .6;
+                text-transform: capitalize;
+                color: #000;
+                
+                
+                .label-icon{
+                    transform:translatey(.3rem);
+                    width: 2rem;
+                    display:flex;
                     justify-content: center;
-                    display: flex;
-                    align-items: center;
-                    flex-direction: column;
-                    padding: 3rem;
-                    text-transform: capitalize;
+                    align-items:center;
+                }
+                }
+                
+                .price{
+                font-size: 2.8rem;
+                font-weight : 500;
+                
+                &::before{
+                    content:"Rs "
+                }
+                
+                &::after{
+                    content:"";
+                }
+                }
+                
+                
+            }
 
-                    border-bottom: 1px solid #fff;
-                    
-                    .text{
-                        color: #fff;
-                        font-size: 2.8rem;
+
+            .stock_details_container {
+                h2 {
+                    font-size: 2rem;
+                    text-transform: capitalize;
+                    color: var(--color-green-01);
+                    font-weight: 100;
+                }
+
+                .full_stock{
+                    font-size: 3.2rem;
+                    text-transform: capitalize;
+                }
+
+                .stock_card {
+                    width: 100%;
+                    padding: 1rem;
+                    border: 1px solid #eee;
+                    margin: 1rem 0;
+                    border-radius:  1rem;
+
+                    .title {
+                        font-size: 1.8rem;
+                        text-transform: capitalize;
                     }
-                    
-                    .value{
-                        color:#fff;
-                        font-size: 4rem;
-                        font-weight: 600;
-                        
-                        &::before{
-                            content: 'Rs ';
+
+                    p {
+                        font-size: 1.8rem;
+                        color: rgba(0, 0, 0, .6);
+                        margin: 2rem 0rem;
+
+                    }
+
+
+                    .content {
+                        display: flex;
+                        justify-content: space-between;
+                        width: 100%;
+
+                        .bar_graph {
+                            width: 70%;
+                            background-color: #eee;
+                            border-radius: 3rem;
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                            padding: .5rem;
+
+                            .row {
+                                width: 50%;
+                                display: flex;
+                                align-items: center;
+                                padding:0 1rem;
+                                height: 100%;
+                                border-radius: inherit;
+                                background-image: repeating-linear-gradient(120deg, transparent 5px, rgba(255, 255, 255, .1) 5px, rgba(255, 255, 255, .1) 10px, transparent 10px, transparent 15px);
+                                font-size:  1.8rem;
+                                font-weight: 600;
+                                color: #fff;
+                                &::after{
+                                    content: "%";
+                                }
+                            }
                         }
-                        
+
+                        .quantity {
+                            font-size: 1.6rem;
+                            text-align: right;
+                            text-transform: capitalize;
+
+                            .count {
+                                font-size: 2.8rem;
+
+                            }
+                        }
+                    }
+                }
+
+                .public_stock_container{
+
+                    .bar_graph{
+                        .row{
+                            background-color: var(--color-green-01);
+                        }
+                    }
+                }
+                .private_stock_container{
+                    .bar_graph{
+                        .row{
+                            background-color: var(--color-yellow-01);
+                        }
                     }
                 }
             }
+
         }
     }
 }
@@ -293,7 +399,6 @@
                     }
                 }
                 &.btn_add_to_stock{
-                    display: none;
                     @include success_Btn();
                     
                 }

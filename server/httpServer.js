@@ -50,7 +50,7 @@ const server = http.createServer((req , res)=>{
         pharmacyApiRouter.pipe(req , res);
         pharmacyRouter.pipe(req , res);
 
-        SubRouter.print();
+        // SubRouter.print();
 
         return AppRouter.pipe(req ,res).end();
 

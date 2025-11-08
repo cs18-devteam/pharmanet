@@ -1372,7 +1372,8 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   box-shadow: 0px 5px 60px 0px rgba(0, 0, 0, 0.25);
   transition: all 0.8s cubic-bezier(0.82, 0.01, 0.22, 0.99);
   top: 100vh;
-  z-index: 0;
+  overflow: scroll;
+  z-index: 10;
 }
 .drawer[status=open] {
   top: 10vh;
@@ -1521,6 +1522,8 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   flex-grow: 2;
   justify-content: flex-end;
   height: 100%;
+  padding: 3rem;
+  max-width: 50rem;
   border-radius: 3rem 0 0 3rem;
 }
 .medicine-viewer .content .right .notice {
@@ -1529,7 +1532,6 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   display: inline-block;
   height: 20rem;
   border-radius: 3rem;
-  background-image: linear-gradient(120deg, transparent, #000);
   padding: 2rem;
   color: var(--color-yellow-01);
   border: 1px solid var(--color-yellow-01);
@@ -1538,7 +1540,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  display: none;
+}
+.medicine-viewer .content .right .notice:hover {
+  background-color: #000;
 }
 .medicine-viewer .content .right .notice button.add_to_stock {
   padding: 1rem 2rem;
@@ -1561,34 +1565,108 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   background-color: #fff;
   transform: scale(1.1);
 }
-.medicine-viewer .content .right .stock {
-  width: 40rem;
-  background-color: var(--color-green-01);
-  min-height: 50vh;
-  border-radius: 3rem;
+.medicine-viewer .content .right .price_container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #999;
+  margin-bottom: 2rem;
 }
-.medicine-viewer .content .right .stock .price {
-  height: fit-content;
-  margin: 3rem;
-  justify-content: center;
+.medicine-viewer .content .right .price_container .text {
+  font-size: 1.8rem;
   display: flex;
   align-items: center;
-  flex-direction: column;
-  padding: 3rem;
+  gap: 1rem;
+  opacity: 0.6;
   text-transform: capitalize;
-  border-bottom: 1px solid #fff;
+  color: #000;
 }
-.medicine-viewer .content .right .stock .price .text {
+.medicine-viewer .content .right .price_container .text .label-icon {
+  transform: translatey(0.3rem);
+  width: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.medicine-viewer .content .right .price_container .price {
+  font-size: 2.8rem;
+  font-weight: 500;
+}
+.medicine-viewer .content .right .price_container .price::before {
+  content: "Rs ";
+}
+.medicine-viewer .content .right .price_container .price::after {
+  content: "";
+}
+.medicine-viewer .content .right .stock_details_container h2 {
+  font-size: 2rem;
+  text-transform: capitalize;
+  color: var(--color-green-01);
+  font-weight: 100;
+}
+.medicine-viewer .content .right .stock_details_container .full_stock {
+  font-size: 3.2rem;
+  text-transform: capitalize;
+}
+.medicine-viewer .content .right .stock_details_container .stock_card {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #eee;
+  margin: 1rem 0;
+  border-radius: 1rem;
+}
+.medicine-viewer .content .right .stock_details_container .stock_card .title {
+  font-size: 1.8rem;
+  text-transform: capitalize;
+}
+.medicine-viewer .content .right .stock_details_container .stock_card p {
+  font-size: 1.8rem;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 2rem 0rem;
+}
+.medicine-viewer .content .right .stock_details_container .stock_card .content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.medicine-viewer .content .right .stock_details_container .stock_card .content .bar_graph {
+  width: 70%;
+  background-color: #eee;
+  border-radius: 3rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.5rem;
+}
+.medicine-viewer .content .right .stock_details_container .stock_card .content .bar_graph .row {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  height: 100%;
+  border-radius: inherit;
+  background-image: repeating-linear-gradient(120deg, transparent 5px, rgba(255, 255, 255, 0.1) 5px, rgba(255, 255, 255, 0.1) 10px, transparent 10px, transparent 15px);
+  font-size: 1.8rem;
+  font-weight: 600;
   color: #fff;
+}
+.medicine-viewer .content .right .stock_details_container .stock_card .content .bar_graph .row::after {
+  content: "%";
+}
+.medicine-viewer .content .right .stock_details_container .stock_card .content .quantity {
+  font-size: 1.6rem;
+  text-align: right;
+  text-transform: capitalize;
+}
+.medicine-viewer .content .right .stock_details_container .stock_card .content .quantity .count {
   font-size: 2.8rem;
 }
-.medicine-viewer .content .right .stock .price .value {
-  color: #fff;
-  font-size: 4rem;
-  font-weight: 600;
+.medicine-viewer .content .right .stock_details_container .public_stock_container .bar_graph .row {
+  background-color: var(--color-green-01);
 }
-.medicine-viewer .content .right .stock .price .value::before {
-  content: "Rs ";
+.medicine-viewer .content .right .stock_details_container .private_stock_container .bar_graph .row {
+  background-color: var(--color-yellow-01);
 }
 
 .pharmacy_medicine_stock_content .medicine_name {
@@ -1651,7 +1729,6 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   color: #000;
 }
 .pharmacy_medicine_stock_content form .buttons button.btn_add_to_stock {
-  display: none;
   background-color: var(--color-green-01);
   color: #fff;
   border: none;

@@ -44,8 +44,9 @@ export function createMedicineViewerContent(medicine){
                 <div class="actions">
                     <!-- <div class="bookmark"></div> -->
                     <div class="edit">edit</div>
-                    <div class="close">close</div>
+                    <div class="close" onclick="this.closest('.drawer').setAttribute('status' , 'close')">close</div>
                 </div>
+
                 
             </div>
 
@@ -194,7 +195,9 @@ export function createMedicineViewerContent(medicine){
                             This product is only visible to you.
                             </p>
                             <div class="content">
-                            <div class="bar_graph" style="opacity:${stock.private ? 1 : 0};>
+                            <div 
+                                class="bar_graph" 
+                                style="opacity:${stock.private ? 1 : 0};">
                                 <div style="width:${stock.privatePercentage || '0'}%;" class="row">${stock.privatePercentage}</div>
                             </div>
                             

@@ -33,7 +33,10 @@ exports.pharmacyApiRouter = SubRouter.route('/api/v1/pharmacies/:pharmacyId')
 })
 .subRoute('/stock/medicines' , {
     post : pharmacyMedicinesApiController.createMedicineStock,
+    update: pharmacyMedicinesApiController.updateMedicineStock
 })
 .subRoute('/stock/medicines/:stockId' , {
-    get: pharmacyMedicinesApiController.getMedicineDetailsByStockId
+    get: pharmacyMedicinesApiController.getMedicineDetailsByStockId,
+    delete:pharmacyMedicinesApiController.deleteMedicineStock,
 })
+

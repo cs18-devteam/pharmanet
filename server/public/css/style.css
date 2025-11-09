@@ -1700,6 +1700,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .pharmacy_medicine_stock_content form .input_field_container .field input {
   height: 5.5rem;
+  font-size: 1.8rem;
 }
 .pharmacy_medicine_stock_content form .input_field_container .field input:focus-visible {
   outline: 2px solid var(--color-green-01);
@@ -1737,6 +1738,32 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   background-color: var(--color-green-01);
   color: #fff;
   border: none;
+}
+.pharmacy_medicine_stock_content form .delete {
+  border-top: 1px solid #eee;
+  font-size: 1.8rem;
+  text-transform: capitalize;
+  padding: 3rem;
+}
+.pharmacy_medicine_stock_content form .delete h2 {
+  font-size: 2.8rem;
+  margin-bottom: 0rem;
+  color: var(--color-red-01);
+}
+.pharmacy_medicine_stock_content form .delete p {
+  color: #888;
+}
+.pharmacy_medicine_stock_content form .delete button {
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  text-transform: inherit;
+  font-size: inherit;
+  background-color: var(--color-red-01);
+  color: white;
+  border-radius: 3rem;
+  outline: none;
+  border: none;
+  cursor: pointer;
 }
 
 @font-face {

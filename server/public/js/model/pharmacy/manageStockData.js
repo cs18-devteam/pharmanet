@@ -12,6 +12,7 @@ async function handleStockMedicines( pharmacyId ,method , stock){
                 stock : stock.stock,
                 publicStock : stock.publicStock,
                 price : stock.price,
+                stockId : stock.stockId,
 
             })
         })
@@ -72,14 +73,40 @@ export async function createStockMedicine({pharmacyId , stock}){
 
 export async function updateMedicineStock({pharmacyId , stock}){
     try{
-
-        const data = await handleStockMedicines(pharmacyId ,"UPDATE" ,stock)
+        const data = await handleStockMedicines(pharmacyId ,"PATCH" ,stock)
         return data;
     }catch(e){
         console.log(e);
         return {
             status:"error",
             error : e,
+        }
+        
+    }
+}
+
+
+export async function deleteMedicineFromStock({pharmacyId , stockId}){
+    try{
+        const respond = await fetch(`/api/v1/pharmacies/${pharmacyId}/stock/medicines/${stockId}`, {
+            method:"DELETE",
+        })
+
+        if(respond.status == 204){
+            return {
+                status:"success",
+            }
+        }else{
+            return {
+                status:"error",
+            }
+        }
+    }catch(e){
+        console.log(e);
+        return {
+            status:"error",
+            error:e,
+            message:"something went wrong",
         }
         
     }

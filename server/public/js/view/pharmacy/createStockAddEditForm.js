@@ -27,6 +27,8 @@ const sidebar = html`
 
 
             {buttons}
+
+            {delete}
         </form>
     </div>
 `;
@@ -52,4 +54,12 @@ export function createStockAddEditForm(medicine){
                 <button class="btn_save">save</button>`: html`
                 <button class="btn_add_to_stock">add to stock</button>`}
         </div>`)
+    .replace('{delete}' , medicine?.stock?.id ? 
+        html`
+            <div class="delete">
+                <h2>remove stock</h2>
+                <p>delete your stock information</p>
+                <button>delete</button>
+            </div>    
+        ` : " ");
 }

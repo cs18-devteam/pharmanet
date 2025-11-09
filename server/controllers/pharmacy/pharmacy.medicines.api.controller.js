@@ -96,7 +96,6 @@ exports.searchMedicinesByName = async (req , res)=>{
 
         Promise.all(stockMedicines).then((data)=>{
 
-            console.log(data);
             
 
             return responseJson(res , 200 , {
@@ -149,7 +148,6 @@ exports.getMedicineStockInfo = async (req , res)=>{
 exports.createMedicineStock = async (req , res)=>{
     try{
         const medicine =  JSON.parse(await getRequestData(req));
-        console.log(medicine);
         
         const [newStock] = await PharmacyMedicines.save({
             medicineId : medicine.medicineId,
@@ -163,6 +161,60 @@ exports.createMedicineStock = async (req , res)=>{
         return responseJson(res , 201 , {
             status:"success",
             stock : newStock,
+        })
+        
+        
+
+    }catch(e){
+        console.log(e);
+        return responseJson(res , 400 , {
+            status:"error",
+            error:e,
+        });
+        
+    }
+}
+exports.updateMedicineStock = async (req , res)=>{
+    try{
+        const medicine =  JSON.parse(await getRequestData(req));
+        console.log({medicine});
+        
+        const [updated] = await PharmacyMedicines.update({
+            id: medicine.stockId,
+            medicineId : medicine.medicineId,
+            pharmacyId : medicine.pharmacyId , 
+            price : medicine.price,
+            stock : medicine.stock,
+            publicStock: medicine.publicStock
+        });
+
+
+        return responseJson(res , 201 , {
+            status:"success",
+            stock : updated,
+        })
+        
+        
+
+    }catch(e){
+        console.log(e);
+        return responseJson(res , 400 , {
+            status:"error",
+            error:e,
+        });
+        
+    }
+}
+exports.deleteMedicineStock = async (req , res)=>{
+    try{
+        const stockId =  req.stockId;
+        const pharmacyId = req.pharmacyId;
+        
+        const deleted = await PharmacyMedicines.deleteById(stockId);
+
+        return responseJson(res , 204 , {
+            status:"success",
+            stock : 'item deleted successfully',
         })
         
         

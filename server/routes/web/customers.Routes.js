@@ -3,27 +3,28 @@ const customerMedicineController = require('../../controllers/customer/customer.
 const customerController = require('../../controllers/customer/customer.controller');
 const customerPharmacyController = require('../../controllers/customer/customer.pharmacies.controller');
 const pharmacyController = require('../../controllers/pharmacy/pharmacy.controller');
+const { authenticate } = require("../../middlewares/authenticate");
 
  // :: CUSTOMER ROUTES
 const customerRouter = SubRouter.route('/customers/:customerId')
 .subRoute('/' , {
-    get: customerController.renderCustomerHome
+    get: [ authenticate('customerId') ,customerController.renderCustomerHome]
 })
 .subRoute('/profile' , {
-    get: customerController.renderCustomerProfile
+    get: [authenticate('customerId')  ,customerController.renderCustomerProfile]
 })
 .subRoute('/medicines' , {
-    get : customerMedicineController.renderCustomerMedicines
+    get : [authenticate('customerId') , customerMedicineController.renderCustomerMedicines ]
 })
 .subRoute('/pharmacy/register' , {
-    get : pharmacyController.renderPharmacyRegister,
+    get : [authenticate('customerId')  ,pharmacyController.renderPharmacyRegister],
 })
 .subRoute('/profile/edit')
 .subRoute('/pharmacies' , {
-    get : customerPharmacyController.renderCustomerPharmacies,
+    get : [authenticate('customerId')  , customerPharmacyController.renderCustomerPharmacies]
 })
 .subRoute('/pharmacies/:pharmacyId' , {
-    get : customerPharmacyController.renderCustomerPharmacy,
+    get : [authenticate('customerId')  , customerPharmacyController.renderCustomerPharmacy]
 })
 .subRoute('/history')
 .subRoute('/transaction')

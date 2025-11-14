@@ -6,7 +6,7 @@ const server = require('./httpServer');
 const DB = require("./database/Database");
 DB.getInstance();
 
-fileServer("./public");
+fileServer("./public" , "./storage"); // for static files
 
 server.listen(process.env.PORT , process.env.HOSTNAME , ()=>{
     console.log(`${process.env.DATABASE_NAME} running on http://${process.env.HOSTNAME}:${process.env.PORT}`);

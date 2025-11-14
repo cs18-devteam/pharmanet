@@ -16,91 +16,103 @@ class Router{
     }
 
 
-    access(access = []){
-        this.#globalAccess = [...access];
-    }
+    // access(access = []){
+    //     this.#globalAccess = [...access];
+    // }
 
-    async #authenticate(){
-        try{
+    // async #authenticate(){
+    //     try{
 
-            console.log("is authentication on " , this.#authenticateUser);
-            if (!this.#authenticateUser) return true;
-            this.#authenticateUser =  await verifyUser(this.req  , this.res , this.#id);
-            console.log(  this.#id," auth" ,this.#authenticateUser)
-            return this.#authenticateUser;
-        }catch(e){
-            console.log(e);
-        }
-    }
+    //         console.log("is authentication on " , this.#authenticateUser);
+    //         if (!this.#authenticateUser) return true;
+    //         this.#authenticateUser =  await verifyUser(this.req  , this.res , this.#id);
+    //         console.log(  this.#id," auth" ,this.#authenticateUser)
+    //         return this.#authenticateUser;
+    //     }catch(e){
+    //         console.log(e);
+    //     }
+    // }
 
-    authenticate(id){
-        this.#id = id;
-        this.#authenticateUser = true;
-        return this;
-    }
+    // authenticate(id){
+    //     this.#id = id;
+    //     this.#authenticateUser = true;
+    //     return this;
+    // }
     
 
 
 
-    async #verify(access , id){
-        const localAccess = [...access];
-        if(!this.#id) return true;
-        this.#user = await Users.getById(id);
+    // async #verify(access , id){
+    //     const localAccess = [...access];
+    //     if(!this.#id) return true;
+    //     this.#user = await Users.getById(id);
 
-        try{
-            if(localAccess.length){
-                console.log(localAccess)
-                if(!localAccess.includes(this.#user?.role)) response(this.res , "Not Authenticated" , 408);
-                return false;
-            }else if(this.#globalAccess.length){
-                console.log('global')
-                if(!this.#globalAccess.includes(this.#user?.role)) response(this.res , "Not Authenticated" , 408);
-                return false;
-            }
-        }catch(e){
-            console.log(e);
-        }
+    //     try{
+    //         if(localAccess.length){
+    //             console.log(localAccess)
+    //             if(!localAccess.includes(this.#user?.role)) response(this.res , "Not Authenticated" , 408);
+    //             return false;
+    //         }else if(this.#globalAccess.length){
+    //             console.log('global')
+    //             if(!this.#globalAccess.includes(this.#user?.role)) response(this.res , "Not Authenticated" , 408);
+    //             return false;
+    //         }
+    //     }catch(e){
+    //         console.log(e);
+    //     }
 
-        return true;
-    }
+    //     return true;
+    // }
 
     
-    get(handler = async ()=>{} , access = []){
-        try{
 
-        if(this.req?.method != "GET") return this;
-        this.getHandler = handler;
-        
 
-        this.#authenticate().then(value=>{
-            console.log("authenticated " , value);
-            if(value){
-                console.log("authenticated correctly");
-                this.#verify(access , this.#id).then((value)=>{
-                    if(value){
-                        
-                        return handler(this.req  , this.res).catch(e=>{
-                            console.log(e)
+
+    execute(functions){ 
+        try{          
+            if(!(functions instanceof Array)){
+                functions = [functions];
+            }            
+            
+            let promise =  Promise.resolve(functions[0]);
+            
+            for(let i = 0 ; i < functions.length ; i++){        
+                promise = promise.then(next=>{    
+                    try{                    
+                        if(!next || typeof next != "function")  {
+                            throw new Error('BROKEN_CHAIN');
+                            error.code = "BROKEN_CHAIN";
+                            throw error;
+                        }else{
                             
-                            throw e;
-                        });
-                    }else{
-                        return response(this.res , "you don't have access" , 400);
-                    }
+                            return next(this.req , this.res , ()=>functions[i+1])
+                        }               
+                    } catch(e){
+                        throw e;
+                    }     
+                    
                 }).catch(e=>{
-                    console.log(e);
-
+                    if(e.message == "BROKEN_CHAIN"){
+                        return;
+                    }else{
+                        throw e;
+                    }
                 });
-            }else{
-                console.log("not authenticated");
-                return response(this.res , "authentication failed" , 302 , {
-                    location :"/login",
-                })
             }
-        })
+            
+            return promise;
         }catch(e){
-            
-            
+            if(e.message == "BROKEN_CHAIN"){
+                return undefined;
+            };
+        }     
+    }
+
+    get(handler){
+        try{                     
+            if(this.req?.method != "GET") return this;
+            this.execute(handler);
+        }catch(e){
             console.log(e);
             return responseJson(this.res , 500 , {
                 status:"error",
@@ -111,34 +123,61 @@ class Router{
 
     }
 
-    delete(handler ,access  = []){
-        if(this.req?.method != "DELETE") return this;
-        this.deleteHandler = handler;
-        this.#verify(access).then(()=>handler(this.req  , this.res));
+
+    delete(handler){
+        try{
+            if(this.req?.method != "DELETE") return this;
+            this.deleteHandler = handler;
+            this.execute(handler)
+        }catch(e){
+            console.log(e);
+            return responseJson(this.res , 500 , {
+                status: 'error',
+                message : 'internal server error',
+                error: e,
+            } )
+            
+        }
     }
 
-    update(handler , access = []){
-        if(this.req?.method != "PATCH") return this;
-        this.updateHandler = handler;
-        this.#verify(access).then(()=>handler(this.req  , this.res));
-    }
+    update(handler){
+        try{
 
-    post(handler , access = []){
-        if(this.req?.method != "POST") return this;
-        this.postHandler = handler;
-        this.#verify(access).then(()=>handler(this.req  , this.res));
-    }
-
-    middleware(middlewareFunc){
-        middlewareFunc(this.req , this.res);
-        return this;
-    }
-
-    extend(path){
+            if(this.req?.method != "PATCH") return this;
+            this.updateHandler = handler;
+            this.execute(handler)
+        }catch(e){
+            console.log(e);
+            return responseJson(res , 500 , {
+                status:'error',
+                message: 'internal server error',
+                error: e,
+            });
+            
+        }
 
     }
 
+    post(handler){
+        try{
+
+            if(this.req?.method != "POST") return this;
+            this.postHandler = handler;
+            this.execute(handler)
+        }catch(e){
+            console.log(e);
+            return responseJson(res , 500 , {
+                status:'error',
+                message: 'internal server error',
+                error : e,
+            })
+            
+        }
+
+    }
 }
+
+
 
 class AppRouter{
     constructor(req , res){

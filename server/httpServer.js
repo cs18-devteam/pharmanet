@@ -12,6 +12,9 @@ const adminBlogsRouter = require('./routes/web/admin.blogs.Routes');
 const adminRouter = require('./routes/web/admin.Routes');
 const { adminPharmacyRouter, adminApiPharmacyRouter } = require('./routes/web/admin.pharmacy.Routes');
 const { pharmacistRouter, pharmacyApiRouter, pharmacyRouter } = require('./routes/web/pharmacy.Routes');
+const { cashiersBillsApiRouter, cashiersBillsRouter, pharmacistBillsRouter, pharmacistBillsApiRouter, pharmacyOwnersBillsRouter, pharmacyOwnersBillsApiRouter } = require('./routes/web/pharmacy.bills.Routes');
+const { cashierRouter, cashierApiRouter } = require('./routes/web/cashier.Routes');
+const path = require('path');
 
 
 const server = http.createServer((req , res)=>{
@@ -49,8 +52,15 @@ const server = http.createServer((req , res)=>{
         pharmacistRouter.pipe(req , res);
         pharmacyApiRouter.pipe(req , res);
         pharmacyRouter.pipe(req , res);
+        cashiersBillsApiRouter.pipe(req , res);
+        cashiersBillsRouter.pipe(req ,res);
+        pharmacistBillsRouter.pipe(req , res);
+        pharmacistBillsApiRouter.pipe(req , res);
+        pharmacyOwnersBillsRouter.pipe(req, res);
+        pharmacyOwnersBillsApiRouter.pipe(req, res);
+        cashierRouter.pipe(req , res);
+        cashierApiRouter.pipe(req , res);
 
-        // SubRouter.print();
 
         return AppRouter.pipe(req ,res).end();
 
@@ -67,9 +77,11 @@ const server = http.createServer((req , res)=>{
 
 })
 
-// SubRouter.print()
 
-       
+
+SubRouter.save("./routes.ReadME.md");
+
+
 
 
 module.exports = server;

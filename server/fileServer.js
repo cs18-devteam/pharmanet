@@ -18,53 +18,55 @@ const MIME_TYPES = {
 }
 
 
-const refreshCache = (filePath)=>{
+const refreshCache = (filePaths)=>{
     
-    cache = fs.readdirSync(filePath , {
-        withFileTypes :true,
-        recursive:true,
+    cache = filePaths.map(filePath=>{
+        return fs.readdirSync(filePath , {
+            withFileTypes :true,
+            recursive:true,
+        })
     });
 
     // console.log(cache)
     
     
 
-    cache = cache.map(file =>{
-
+    cache = cache.map((fileSet , setId) =>{
         
+        const fileObjectSet = fileSet.map(file=>{
 
-        const fileObj =  {
-            ...file , 
-            type : MIME_TYPES[file.name.split('.').slice(-1)] || 'text/plain',
-            name : path.relative(filePath , path.join(file.parentPath , file.name)).replaceAll("\\","/"),
-            path : path.join(__dirname , file.parentPath.replaceAll("\\","/"), file.name).replaceAll('\\' , "/"),
+            const fileObj =  {
+                ...file , 
+                type : MIME_TYPES[file.name.split('.').slice(-1)] || 'text/plain',
+                name : path.relative(filePaths[setId] , path.join(file.parentPath , file.name)).replaceAll("\\","/"),
+                path : path.join(__dirname , file.parentPath.replaceAll("\\","/"), file.name).replaceAll('\\' , "/"),
+                
+            }
+            
+            const stat = fs.statSync(fileObj.path);
+            if(stat.isDirectory()){
+                fileObj.type = 'dir';
+            }
 
-        }
+            return fileObj;
+            
+        })
 
-        // console.log(cache);
+        return fileObjectSet;
 
-        const stat = fs.statSync(fileObj.path);
-        if(stat.isDirectory()){
-            fileObj.type = 'dir';
-        }
-
-
-        return fileObj;
-
-    });
+    }).flat();
 
 
 
     if(process.env.NODE_ENV == "development"){
         if(typeof refreshCache.initialize === 'undefined'){
-            console.log(filePath , ": serve as public resource");
+            console.log(...filePaths , ": serve as public resource");
             refreshCache.initialize = true;
         }else{
-            console.log(filePath , ": change detected");
+            console.log(...filePaths , ": change detected");
         }
     }
 
-    // console.log(cache)
 }
 
 exports.requestFile = (filePath) =>{
@@ -86,10 +88,12 @@ exports.requestFile = (filePath) =>{
     return null;
 }
 
-exports.fileServer = (filePath)=>{
-    refreshCache(filePath);
+exports.fileServer = (...filePaths)=>{
+    refreshCache(filePaths);
 
-    fs.watch(filePath , ()=>{
-        refreshCache(filePath);
-    });
+    filePaths.forEach(filePath=>{
+        fs.watch(filePath , ()=>{
+            refreshCache(filePath);
+        }
+    )});
 }

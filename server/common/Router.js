@@ -2,10 +2,15 @@
 class Router{
     path = undefined;
     absPath = undefined;
+    authId = undefined;
     getHandler =async ()=>{};
     postHandler =async ()=>{};
     updateHandler =async ()=>{};
     deleteHandler =async ()=>{};
+
+    auth(authId){
+        this.authId = authId;
+    }
     
     route(path){
         this.path = path;
@@ -17,6 +22,7 @@ class Router{
     }
 
     get(handler){
+        
         this.getHandler = handler;
         return this;
     }

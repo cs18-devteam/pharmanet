@@ -49,7 +49,7 @@ exports.renderCashierDashboard = async(req, res) => {
     
 }
 
-exports.renderCashierorder = async(req, res) => {
+exports.renderCashierOrder = async(req, res) => {
     try{
 
         return response(res, view('cashier/cashier-order',{

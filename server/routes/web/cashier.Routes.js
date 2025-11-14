@@ -1,38 +1,46 @@
-AppRouter.pipe(req ,res).route('/cashier-dashboard')
-?.get(cashierController.renderCashierDashboard);
+const SubRouter = require("../../common/SubRouter");
+const cashierController = require("../../controllers/Cashier/cashier.controller");
 
-AppRouter.pipe(req ,res).route('/cashier-customer')
-?.get(cashierController.renderCashierCustomer);
+exports.cashierRouter = SubRouter.route('/pharmacies/:pharmacyId/cashiers/:cashierId')
+.subRoute('/' , {
+    get: cashierController.renderCashierDashboard,
+})
+.subRoute('/bills/create' , {
+    get : cashierController.renderCashierBillPage
+})
+.subRoute('/orders' , {
+    get : cashierController.renderCashierOrder
+})
+.subRoute('/customers' , {
+    get : cashierController.renderCashierCustomer
+})
+.subRoute('/sales' , {
+    get : cashierController.renderCashierSale
+})
+.subRoute('/products' , {
+    get : cashierController.renderCashierProduct
+})
+.subRoute('/products/management' , {
+    get : cashierController.cashierProductManagement,
+})
 
-AppRouter.pipe(req ,res).route('/cashier-createBill')
-?.get(cashierController.renderCashierBillPage);
 
-AppRouter.pipe(req ,res).route('/cashier-order')
-?.get(cashierController.renderCashierorder);
+exports.cashierApiRouter = SubRouter.route('/api/v1/pharmacies/:pharmacyId/cashiers/:cashierId')
+.subRoute('/products' , {
+    post : cashierController.createProduct
+})
+.subRoute('/payments/cash' , {
+    post : cashierController.paymentCash
+})
+.subRoute('/payments/card' , {
+    post : cashierController.paymentCard
+})
+.subRoute('/payments/qr' , {
+    post : cashierController.paymentQR,
+})
+.subRoute('/products/:productId' , {
+    update : cashierController.renderCashierProduct,
+    delete : cashierController.renderCashierProduct
+});
 
-AppRouter.pipe(req ,res).route('/cashier-sales')
-?.get(cashierController.renderCashierSale);
 
-AppRouter.pipe(req ,res).route('/cashier-product')
-?.get(cashierController.renderCashierProduct);
-
-AppRouter.pipe(req ,res).route('/Product-management')
-?.get(cashierController.cashierProductManagement);
-
-AppRouter.pipe(req, res).route('/api/products')
-?.post(cashierController.createProduct);
-
-AppRouter.pipe(req, res).route('/cashier-payment-cash')
-?.post(cashierController.paymentcash);
-
-AppRouter.pipe(req, res).route('/cashier-payment-card')
-?.post(cashierController.paymentcard);
-
-AppRouter.pipe(req, res).route('/cashier-payment-QR')
-?.post(cashierController.paymentQR);
-
-AppRouter.pipe(req, res).route('/cashier-product')
-?.put(cashierController.renderCashierProduct);
-
-AppRouter.pipe(req, res).route('/cashier-product')
-?.delete(cashierController.renderCashierProduct);

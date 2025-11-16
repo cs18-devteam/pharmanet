@@ -299,6 +299,8 @@ $containers : 'bills' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'produ
                             border-radius: 2rem;
                             padding: 1rem;
                             color:white;
+                            width: 15rem;
+                            justify-content: center;
                             
 
                             &:hover{
@@ -311,6 +313,9 @@ $containers : 'bills' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'produ
                             border-radius: 2rem;
                             color: white;
                             padding: 1rem;
+                            width:15rem;
+                            justify-content: center;
+
 
                             &:hover{
                                 background-color: #136863;
@@ -333,7 +338,7 @@ $containers : 'bills' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'produ
                     span{
 
                         display: flex;
-                        background:linear-gradient(to bottom,var(--color-green-01) 0 ,#136863 75% ) ;
+                        background:linear-gradient(to right,var(--color-green-01) 0 ,#136863 75% ) ;
                         border-radius: 3rem;
                         margin: 0rem 1rem 3rem 3rem;
                     
@@ -345,6 +350,8 @@ $containers : 'bills' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'produ
                         color: white;
                         width: 10rem;
                         text-align: center;
+                        z-index: 100;
+                        cursor: pointer;
                     }
 
                     .payment-btn{
@@ -354,6 +361,8 @@ $containers : 'bills' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'produ
                         margin: 1rem ;
                         width:10rem;
                         text-align: center;
+                        cursor: pointer;
+                        z-index: 1;
                     }
                     }
                     
@@ -417,6 +426,92 @@ $containers : 'bills' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'produ
 
 
 
+
+
+            }
+
+            
+            .order-right-side{
+                margin: 1rem;
+                .order_summery__description{
+                    display: flex;
+                    justify-content: space-between;
+                    .total_sales, .total_orders{
+                        border:0.1rem solid #ccc; 
+                        border-radius: 2rem;
+                        padding: 1rem;
+                        margin: 1rem;
+                        display: flex;
+                        justify-content: space-between;
+                        width: 25rem;
+                    }
+
+                }
+
+                
+                .cart_summery_box{
+                    position: relative;
+                    
+                    .quick_access_2{
+                        width: 100%;
+                        height: 24rem;
+                        border-radius: 3rem;
+                        background-image: linear-gradient(120deg , rgba(0, 186, 172 , .8) , rgba(18, 126, 181 , .8)) ,url("/images/med.jpg");
+                        background-position: center;
+                        display: flex;
+                        justify-content: space-between;
+
+                        .cart_summery, .total_cart_summery, .proceed_to_payment{
+                            
+                            border-radius: 3rem;
+                            margin:1rem;
+                            padding: 1.5rem;
+                            width: 20rem;
+                            height: 13rem;
+                            display:grid;
+                            gap:1.5rem;
+                            font-size: 2rem;
+                            
+                        }
+
+                        .cart_summery{
+                             background-color: white;
+                             border: 0.1rem solid #ccc;
+                             
+                        }
+
+                        .total_cart_summery{
+                            background-color: var(--color-green-02);
+                            color: white;
+                            
+                        }
+
+                        .proceed_to_payment{
+                            background-color: black;
+                            color: white;
+                            font-size: 1.5rem;
+
+                        }
+
+                        
+                    }
+
+                    .cart_list{
+                        position: absolute;
+                        top:65%;
+                        width: 100%;
+                        background-color: #eeeeee;
+                        border-radius: 3rem;
+                        padding:1rem;
+                        
+                        .medicine_card{
+                        
+                            margin:1rem;
+                            background-color: white;
+                        }
+                    }
+                }    
+                    
 
 
             }

@@ -9327,6 +9327,24 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   margin: 1rem;
   background-color: white;
 }
+.pharmacyDashboard .dashboards .product_container {
+  display: grid;
+  grid-template-columns: 40rem 1fr;
+  grid-template-rows: 8rem 1fr;
+}
+.pharmacyDashboard .dashboards .product_container .left-side {
+  background-color: #eee;
+  border-radius: 3rem;
+}
+.pharmacyDashboard .dashboards .product_container .left-side .search-bar {
+  margin: 1rem;
+}
+.pharmacyDashboard .dashboards .product_container .product-list {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 1rem;
+  margin-top: 1rem;
+}
 
 /* admin */
 .PharmacyMemberIntro .all-staff {

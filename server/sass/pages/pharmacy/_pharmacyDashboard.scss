@@ -516,8 +516,33 @@ $containers : 'bills' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'produ
 
             }
 
-        }
+            
 
+        }
+        .product_container {
+            
+                
+                display: grid;
+                grid-template-columns: 40rem 1fr;
+                grid-template-rows: 8rem 1fr;
+
+                .left-side{
+                    background-color: #eee;
+                    border-radius: 3rem;
+
+                    .search-bar{
+                        margin: 1rem;
+                    }
+                }
+
+                .product-list{
+                    display: grid;
+                    grid-template-columns: auto auto;
+                    gap:1rem;
+                    margin-top: 1rem;
+                }
+            
+            }
 
 
     }

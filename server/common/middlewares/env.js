@@ -15,8 +15,7 @@ class Env{
                 console.log("environment variables defined");
             }
         }
-
-        
+   
     }
 }
 

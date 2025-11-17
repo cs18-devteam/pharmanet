@@ -79,7 +79,7 @@ exports.getAllBlogs = async (req, res) => {
 }
 
 
-exports.delete = async (res , res)=>{
+exports.delete = async (req , res)=>{
   return response(res , view('delete') , 200)
 }
 

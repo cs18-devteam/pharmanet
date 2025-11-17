@@ -3,9 +3,7 @@ const fs = require('fs');
 const { requestFile } = require('./fileServer');
 const AppRouter = require('./common/Router');
 const indexController = require('./controllers/index.controller');
-<<<<<<< HEAD
 const blogController = require('./controllers/blogs/blog.controller');
-=======
 const adminController = require('./controllers/admins/admin.controller');
 const loginController = require('./controllers/auth/login.controller');
 const signupController = require('./controllers/auth/signup.controller');
@@ -14,7 +12,6 @@ const contactUsController = require('./controllers/contactus.controller');
 const customerController = require("./controllers/customer/customer.controller");
 const pharmacyController = require('./controllers/pharmacy/pharmacy.controller');
 const customerPharmacyController = require('./controllers/customer/customer.pharmacies.controller');
->>>>>>> d10f6cc76916fc7cc9d686a51d3aff02475f5552
 
 
 const server = http.createServer((req , res)=>{
@@ -68,11 +65,9 @@ const server = http.createServer((req , res)=>{
         ?.get(indexController.renderIndexPage);
 
 
-<<<<<<< HEAD
         AppRouter.pipe(req ,res).route('/signup')
         AppRouter.pipe(req ,res).route('/antibiotics')
         ?.get(blogController.antibiotics);
-=======
         AppRouter.pipe(req , res).route('/contactus')
         ?.get(contactUsController.renderContactus)
 
@@ -108,7 +103,6 @@ const server = http.createServer((req , res)=>{
  
         AppRouter.pipe(req ,res).route('/admin/pharmacy/step/4')
         ?.get(adminController.adminAddPharmacyStep04);
->>>>>>> d10f6cc76916fc7cc9d686a51d3aff02475f5552
 
         AppRouter.pipe(req ,res).route('/blogManage')
         ?.get(blogController.blogManage);

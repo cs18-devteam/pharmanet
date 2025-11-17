@@ -148,6 +148,121 @@
 
 
 
+/* ---------- 1024px (Large Tablets) ---------- */
+@media (max-width: 1150px){
+  .login .image-wrapper img:nth-child(2){
+    width: 50rem;
+  }
+}
+@media (max-width: 1024px) {
+  .login-container {
+    width: 95vw;
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  .quote {
+    font-size: 3rem;
+  }
+
+  form,
+  .links {
+    max-width: 60vw;
+  }
+}
+
+/* ---------- 768px (Tablets – Switch to Single Column) ---------- */
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+    width: 100vw;
+    height: auto;
+    padding: 2rem 0;
+  }
+
+  .left-panel,
+  .right-panel {
+    width: 100%;
+    height: auto;
+  }
+
+  .left-panel {
+    order: 1;
+    padding-bottom: 3rem;
+  }
+
+  .right-panel {
+    order: 2;
+    padding-top: 2rem;
+  }
+
+  .image-wrapper img:first-child {
+    width: 10rem;
+  }
+
+  .image-wrapper img:nth-child(2) {
+    width: 40rem;
+  }
+
+  .quote {
+    top: 30%;
+    font-size: 2.8rem;
+    left: 2rem;
+    right: 2rem;
+  }
+
+  form,
+  .links {
+    max-width: 80vw;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+  }
+}
+
+/* ---------- 480px (Mobile Phones) ---------- */
+@media (min-width: 480px) {
+  .login-container {
+    padding: 1rem 0;
+  }
+
+  .image-wrapper img:first-child {
+    width: 7rem;
+  }
+
+  .image-wrapper img:nth-child(2) {
+    width: 20rem;
+  }
+
+  .quote {
+    font-size: 2.2rem;
+    top: 35%;
+    left: 3rem;
+    right: 5rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  label, input, button {
+    font-size: 1.6rem;
+  }
+
+  .links {
+    font-size: 1.5rem;
+  }
+
+  .footer {
+    font-size: 1.4rem;
+    gap: 2rem;
+  }
+}
+
+
 
 }
 

@@ -16,19 +16,19 @@
   </header>
 
   <main class="container">
-    <form class="form-section" id="createBlog">
+    <form class="form-section" id="createBlogForm">
       <div class="card">
         <h3>Post Details</h3>
         <p class="subtitle">Enter the basic information for your blog post</p>
 
         <label>Post Title</label>
-        <input type="text" name="title" placeholder="e.g., 5 Tips for Managing Your Medications">
+        <input type="text" id="title" name="title" placeholder="e.g., 5 Tips for Managing Your Medications">
 
         <label>URL Slug</label>
-        <input type="text" name="slug" placeholder="">
+        <input type="text" id="slug" name="slug" placeholder="">
 
         <label>Excerpt</label>
-        <textarea name="excerpt" placeholder="Brief summary of your post (shown in listings)" name="excerpt"></textarea>
+        <textarea id="excerpt" name="excerpt" placeholder="Brief summary of your post (shown in listings)" name="excerpt"></textarea>
       </div>
 
       <div class="card">
@@ -36,7 +36,7 @@
         <p class="subtitle">Write your blog post content here</p>
 
         <label>Post Content</label>
-        <textarea name="content" placeholder="Write your blog post content here. You can use markdown formatting..."></textarea>
+        <textarea id="content" name="content" placeholder="Write your blog post content here. You can use markdown formatting..."></textarea>
       </div>
     </div>
 
@@ -45,24 +45,24 @@
         <h3>Publish Settings</h3>
 
         <label>Status</label>
-        <input type="date" name="status" placeholder="DD-MM-YYYY">
+        <input id="date" type="date" name="status" placeholder="DD-MM-YYYY">
         <!-- <select name="status">
           <option>Draft</option>
           <option>Published</option>
         </select> -->
 
         <label>Category</label>
-        <select name="category">
+        <select id="category" name="category">
           <option>Select a category</option>
           <option>Medicine</option>
           <option>Disease</option>
         </select>
 
         <label>Author</label>
-        <input type="text" name="author" placeholder="Your name">
+        <input id="author" type="text" name="author" placeholder="Your name">
 
         <label>Tags</label>
-        <input type="text" name="tag" placeholder="Separate with commas">
+        <input id="tag" type="text" name="tag" placeholder="Separate with commas">
       </div>
 
       <div class="buttons">

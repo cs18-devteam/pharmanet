@@ -374,6 +374,10 @@ $containers : 'bills' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'produ
                 padding: 1rem;
                 grid-area: right-side;
 
+                img {
+                    object-fit: cover;
+                }
+
                 .medicine_summery{
 
                     &__description{
@@ -396,36 +400,6 @@ $containers : 'bills' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'produ
                     background-image: linear-gradient(120deg , rgba(0, 186, 172 , .8) , rgba(18, 126, 181 , .8)) ,url("/images/med.jpg");
                     background-position: center;
                 }
-
-                .bookmarks{
-                    width: 100%;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    margin: 2rem 0;
-                    padding: 0 1rem;
-                    
-                    & .bookmarks__title{
-                        // background-color: red;
-                        font-size: 2rem;
-                        display: flex;
-                        gap: 1rem;
-                        align-items: center;
-                        align-self: flex-end;
-
-                        svg{
-                            width: 2rem;
-                        }
-                        
-                    }
-
-                    // & .bookmarks__content{
-                    //     // background-color: yellow;
-                    // }
-                }
-
-
-
 
 
             }
@@ -451,6 +425,13 @@ $containers : 'bills' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'produ
                 
                 .cart_summery_box{
                     position: relative;
+
+                    img {
+                        object-fit: cover;
+                        display: flex;
+                        justify-content:center;
+                        align-items: center;
+                    }
                     
                     .quick_access_2{
                         width: 100%;
@@ -475,21 +456,45 @@ $containers : 'bills' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'produ
                         }
 
                         .cart_summery{
+
+                            div{
+                                display: flex;
+                                align-items: center;
+                                gap:1rem;
+                            }
                              background-color: white;
                              border: 0.1rem solid #ccc;
                              
                         }
 
                         .total_cart_summery{
+
+                            div{
+                                display: flex;
+                                align-items: center;
+                                gap:1rem;
+                            }
                             background-color: var(--color-green-02);
                             color: white;
                             
                         }
 
                         .proceed_to_payment{
+                            
                             background-color: black;
                             color: white;
                             font-size: 1.5rem;
+
+                            .pay_button{
+                                background-color: var(--color-yellow-01);
+                                border-radius: 3rem;
+                                border: 0.2rem solid white;
+                                color: #000;
+                                //padding: 1rem;
+                                align-items: center;
+                                display: flex;
+                                justify-content: center;
+                            }
 
                         }
 

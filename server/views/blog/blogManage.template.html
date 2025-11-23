@@ -9,7 +9,7 @@
 <body class="blogManage">
   <header class="navbar">
     <div class="logo">
-      <img class="logopic" src="/public/logo/logo.svg" alt="logo">
+      <img class="logopic" src="/logo/logo.svg" alt="logo">
       <span>PharmaNet</span>
     </div>
     <div class="nav-buttons">
@@ -18,14 +18,43 @@
     </div>
   </header>
 
-
   <div class="container">
+    <div class="container-1">
+    <div class="sideBar">
+    <div class="logo">
+      <img class="logopic" src="/logo/logo.svg" alt="logo">
+      <div>
+        <h3>System Admin</h3>
+        <p>Management System</p>
+      </div>
+    </div>
+
+    <ul class="menu">
+      <a href="/admin" >Dashboard</a>
+      <a href="/admin/pharmacy">Pharmacies</a>
+      <a href="/admin/medicines">Medicines</a>
+      <a href="/admin/users">Users</a>
+      <!-- <a href="">Analytics</a> -->
+      <a href="/admin/dataAssets">Data Assets</a>
+      <a href="/blogManage">Blogs</a>
+    </ul>
+
+    <div class="menuItem">
+        <button class="text setting"> Settings</button>
+        <button class="text signOut"> Sign Out</button>
+    </div>
+  </div>
+  </div>
+
+  
+  <div class="container-2">
     <header>
       <h1>Manage Blogs</h1>
       <p>View, edit, and manage all blog posts</p>
       <a href="/createNewBlog"><button class="btn-create">+ Create New Blog</button></a>
     </header>
 
+    
     <section class="blog-table">
       <table>
         <thead>
@@ -109,6 +138,7 @@
         <p>2</p>
       </div>
     </section>
+  </div>
   </div>
 
 

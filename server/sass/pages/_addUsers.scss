@@ -1,0 +1,150 @@
+.addUsers{
+  padding: 2rem;
+  font-family: "Poppins", sans-serif;
+  color: #08374F;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+$primary: #008c7a;
+$border: #e5e5e5;
+$text-dark: #08374F;
+$text-light: #777;
+$radius: 8px;
+$card-radius: 16px;
+
+  
+
+  // .backLink {
+  //   font-size: 14px;
+  //   color: $text-light;
+  //   text-decoration: none;
+  //   display: inline-block;
+  //   margin-bottom: 12px;
+
+  //   &:hover {
+  //     text-decoration: underline;
+  //   }
+  // }
+
+  .page-title {
+    font-size: 32px;
+    margin: 0;
+  }
+
+  .page-subtitle {
+    margin-top: 1px;
+    margin-bottom: 24px;
+    color: $text-light;
+  }
+
+  .card {
+    background: white;
+    padding: 32px;
+    border-radius: $card-radius;
+    border: 1px solid $border;
+    max-width: 800px;
+  }
+
+  .section {
+    margin-bottom: 32px;
+
+    .section-title {
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+  }
+
+  .row {
+    display: flex;
+    gap: 20px;
+
+    .input-group {
+      flex: 1;
+    }
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+
+    &.full {
+      width: 100%;
+    }
+
+    label {
+      font-size: 14px;
+      margin-bottom: 6px;
+
+      span {
+        color: red;
+      }
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid $border;
+      border-radius: $radius;
+      font-size: 14px;
+
+      &:focus {
+        outline: none;
+        border-color: $primary;
+      }
+    }
+  }
+
+  .btn-row {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 10px;
+
+    .btn {
+      padding: 12px 24px;
+      border-radius: $radius;
+      border: 1px solid $border;
+      cursor: pointer;
+      font-size: 15px;
+
+      &.cancel {
+        background: #f8f8f8;
+        color: $text-dark;
+
+        &:hover {
+          background: #eee;
+        }
+      }
+
+      &.primary {
+        background: $primary;
+        color: white;
+        border: none;
+
+        &:hover {
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .add-user-page {
+    padding: 20px;
+
+    .row {
+      flex-direction: column;
+    }
+
+    .card {
+      padding: 24px;
+    }
+  }
+}
+}

@@ -91,6 +91,28 @@ const server = http.createServer((req , res)=>{
         AppRouter.pipe(req ,res).route('/admin')
         ?.get(adminController.adminDashboard);
 
+        AppRouter.pipe(req,res).route('/admin/pharmacy')
+        ?.get(adminController.adminPharmacy);
+
+        AppRouter.pipe(req,res).route('/admin/medicines')
+        ?.get(adminController.medicines);
+
+        AppRouter.pipe(req,res).route('/admin/users')
+        ?.get(adminController.users);
+
+        AppRouter.pipe(req ,res).route('/admin/addUsers')
+        ?.get(adminController.addUsers);
+
+        AppRouter.pipe(req, res).route('/api/admin/users')
+        ?.post(adminController.createUser)
+        ?.get(adminController.getAllBlogs);
+
+        AppRouter.pipe(req ,res).route('/admin/dataAssets')
+        ?.get(adminController.dataAssets);
+
+        AppRouter.pipe(req,res).route('/admin/viewProfile')
+        ?.get(adminController.viewProfile);
+
         AppRouter.pipe(req ,res).route('/admin/pharmacy/create')
         ?.get(adminController.adminAddPharmacy)
         ?.post(adminController.createPharmacy);
@@ -221,11 +243,13 @@ const server = http.createServer((req , res)=>{
         AppRouter.pipe(req ,res).route('/admin/medicines')
         ?.get(adminController.medicines);
 
-        AppRouter.pipe(req ,res).route('/admin/assets')
-        ?.get(adminController.dataAssets);
+        
 
         AppRouter.pipe(req ,res).route('/admin/users')
         ?.get(adminController.users);
+
+        AppRouter.pipe(req ,res).route('/admin/addUsers')
+        ?.get(adminController.addUsers);
 
 
         return AppRouter.pipe(req ,res).end();

@@ -44,7 +44,7 @@
       <p>Manage medicine inventory across all pharmacies.</p>
       </div>
       <div>
-      <button class="addBtn">Add Users</button>
+      <button class="addBtn">Add Medicines</button>
       </div>
       </div>
 </section>
@@ -76,16 +76,16 @@
             <div class="dropdownMenu">
               <button class="dots">⋮</button>
               <ul class="dropdown">
-                <a href="">View Details</a>
-                <a href="">Edit</a>
-                <a href="">Update Stock</a>
-                <a href="" class="danger">Delete</a>
+                <button id="viewDetailsBtn">View Details</button>
+                <button id="editBtn">Edit</button>
+                <button>Update Stock</button>
+                <button class="danger">Delete</button>
               </ul>
             </div>
           </td>
         </tr>
 
-        <tr>
+        <!-- <tr>
           <td>Ibuprofen<br><small>400mg</small></td>
           <td><span class="tag pain-relief">Pain Relief</span></td>
           <td>MediLife</td>
@@ -188,11 +188,96 @@
               </ul>
             </div>
           </td>
-        </tr>
+        </tr> -->
       </tbody>
     </table>
   </div>
-  
+
+  <!-- view medicine details modal -->
+  <!-- Overlay -->
+<div id="viewModalOverlay" class="viewModal-overlay hidden"></div>
+
+<!-- Modal -->
+<div id="productModal" class="modal hidden">
+  <div class="modal-header">
+    <div class="title-block">
+      <div>
+        <h2>Amoxicillin</h2>
+        <p>500mg</p>
+      </div>
+    </div>
+
+    <button id="closeModal" class="close-icon">✕</button>
+  </div>
+
+  <div class="alert-box">
+    <span class="alert-icon">⚠</span>
+    <div>
+      <strong>Expiry Alert</strong>
+      <p>Expires on <span>2025-08-15</span></p>
+    </div>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <p class="label">Category</p>
+      <h4>Antibiotics</h4>
+    </div>
+
+    <div class="info-card">
+      <p class="label">Manufacturer</p>
+      <h4>PharmaCorp</h4>
+    </div>
+
+    <div class="info-card">
+      <p class="label">Current Stock</p>
+      <h4 class="highlight">847 units</h4>
+    </div>
+
+    <div class="info-card">
+      <p class="label">Price Per Unit</p>
+      <h4>$12.99</h4>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="label">Batch Number</p>
+    <div class="field">PC-2024-001</div>
+  </div>
+
+  <div class="section">
+    <p class="label">Storage Temperature</p>
+    <p>15–25°C</p>
+  </div>
+
+  <div class="section">
+    <p class="label">Description</p>
+    <p>Broad-spectrum antibiotic for bacterial infections</p>
+  </div>
+
+  <div class="section">
+    <p class="label">Status</p>
+    <span class="status in-stock">In Stock</span>
+  </div>
+
+  <div class="modal-footer">
+    <button id="closeFooterBtn" class="footer-close">Close</button>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="editModal" class="modal hidden">
+  <div class="modal-header">
+    <div>
+      <h2>Edit Medicine</h2>
+    </div>
+  </div>
+</div>
+
+
+ 
   <script>
     //Search filter
     document.getElementById('searchInput').addEventListener('keyup', function () {
@@ -223,6 +308,42 @@
     document.addEventListener('click', () => {
       document.querySelectorAll('.dropdown').forEach(dropdownMenu => dropdownMenu.classList.remove('show'));
     });
+
+
+    //view details window
+    const modal = document.getElementById("productModal");
+    const overlay = document.getElementById("modalOverlay");
+
+    document.getElementById("viewDetailsBtn").addEventListener("click", () => {
+      modal.classList.remove("hidden");
+      overlay.classList.remove("hidden");
+    });
+
+    function closeModal() {
+      modal.classList.add("hidden");
+      overlay.classList.add("hidden");
+    }
+
+    document.getElementById("closeModal").addEventListener("click", closeModal);
+    document.getElementById("closeFooterBtn").addEventListener("click", closeModal);
+    overlay.addEventListener("click", closeModal);
+
+
+    //edit medicine details model
+    const editModal = document.getElementById('editModal');
+    const editOverlay = document.getElementById('editOverlay');
+
+    function openEditModel(){ 
+      editModal.classList.remove('hidden');
+      editOverlay.classList.remove('hidden');
+    }
+    function closeEditModel() {
+      editModal.classList.add('hidden');
+      editModal.classList.add('hidden');
+    }
+    document.getElementById("editBtn").addEventListener("click", openEditModel);
+    document.getElementById("closeEditBtn").addEventListener("click", closeEditModel);
+
 
     
     

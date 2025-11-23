@@ -1,5 +1,5 @@
 .blogManage{
-   background: #F7F7F7;
+   background: white;
 
     $text-muted: #9ca3af;
     $element-bg: #F7F7F7;
@@ -73,14 +73,138 @@
   }
 }
 
+  .container{
+        display: flex;
+        flex-direction: row;
+     .container-1{
+            flex: -2;
+            margin-right: 0rem;
+            align-items: stretch;
+            min-height: 95vh;
+            background: $element-bg;
+            border-radius: 1rem;
+    
+    .sideBar{
+    
+        width: 26rem;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+       
+        
+        
 
-.container {
+        .logo{
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            .logopic{
+                font-size: 2.4rem;
+            }
+            div{
+            h3{
+                font-size: 1.8rem;
+                margin-bottom: -0.5rem;
+                color: $primary;
+            }   
+
+            p{
+                font-size: 1.2rem;
+                color: $text-muted;
+            }
+           }
+        }
+    }
+}
+ 
+    .menu {
+        flex: 2;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 4rem;
+
+    a {
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      color: $text-muted;
+      transition: all 0.3s;
+
+      &.active,
+      &:hover {
+        background: #768190;
+        color: $accent;
+      }
+    }
+  }
+
+    .menuItem{
+        display: flex;
+        border-radius: 0.5rem;
+        .text1{
+            font-size: 1rem;
+            text-decoration: none;
+            border: none;
+            
+
+            &::before{
+                content: "⚙";
+            }
+        }
+        .text2{
+            font-size: 1rem;
+            
+            &::before{
+                content: "⎋";
+            } 
+        }
+    }
+  .menuItem{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: -2rem;
+        padding: 2rem;
+        width: 26rem;
+        background-color: $primary;
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+        position: absolute;
+        top: 75rem;
+
+       
+        .text{
+            border: none;
+            font-size: 1.5rem;
+            background: none;
+            color: white;
+            cursor: pointer;
+
+            &:hover{color: $accent;}
+
+            &.setting{
+              &::before{content: "⚙";}
+            }
+            &.signOut{
+              &::before{content: "⎋";}
+            }
+  }
+}
+
+
+.container-2 {
+  flex: 2;
   max-width: 1200px;
   margin: 5rem auto;
-  background: white;
+  margin-left: 2rem;
+  // background: $element-bg;
   padding: 2rem;
   border-radius: $radius;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
 }
 
 header {
@@ -89,6 +213,7 @@ header {
   align-items: flex-start;
   margin-bottom: 2rem;
   position: relative;
+  
 
   h1 {
     font-size: 2.5rem;
@@ -123,6 +248,7 @@ header {
 }
 
 .blog-table {
+  background: $element-bg;
   table {
     width: 100%;
     border-collapse: collapse;
@@ -162,7 +288,7 @@ header {
         text-decoration: none;
         font-weight: 500;
 
-        &.edit {
+        &.edit-btn {
           color: #0a7b83;
 
           &::before{

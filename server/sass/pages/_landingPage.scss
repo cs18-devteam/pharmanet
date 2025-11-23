@@ -75,18 +75,22 @@
     }
 
     .side-words{
-        position:absolute;
-        top:60%;
-        right:-5%;
+        // position:absolute;
+        // top:60%;
+        // right:-5%;
+        display: flex;
+        justify-content: flex-end;
         rotate: -90deg;
         letter-spacing: 0.7rem;
         font-size: 1.6rem;
     }
 
     .upload-container {
-    position:absolute;
-    bottom:-30%;
-    right:39%;
+    // position:absolute;
+    // bottom:-30%;
+    // right:39%;
+    display: flex;
+    justify-content: center;
     z-index: 10;
 
     .upload-box {
@@ -101,7 +105,6 @@
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
         transition: all 0.3s ease;
         border: 1.7rem solid var(--tertiary-color);
-
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -116,11 +119,14 @@
         font-size: 2.4rem;
         font-weight: bold;
         margin: 0;
+        
         }
 
         &:hover {
         transform: scale(1.05);
         }
+
+        
     }
 
     }
@@ -203,6 +209,7 @@
     .stat-blue {
         position: relative;
         top:-10rem;
+        left: -10%;
         width: 30rem;
         height: 30rem;
         display: flex;
@@ -464,12 +471,168 @@
 
         }
     }
+    /* ============================================
+   📌 MEDIA QUERIES – Fully Responsive 
+   ============================================ */
+
+/* ----------- Large Tablets / Small Laptop ----------- */
+@media (max-width: 1200px) {
+  .landing {
+
+    .header-title {
+      font-size: 5rem;
+    }
+
+    .header-background {
+      margin-left: 8rem;
+      margin-right: 8rem;
+      height: 36rem;
+    }
+
+    .upload-box {
+      width: 28rem;
+      height: 28rem;
+    }
+
+    .mid-title {
+      font-size: 6.4rem;
+    }
+  }
+}
+
+/* ----------- Tablets ----------- */
+@media (max-width: 992px) {
+  .landing {
+
+    .header-title {
+      font-size: 4.2rem;
+      margin-top: 3rem;
+    }
+
+    .header-discription {
+      font-size: 2rem;
+    }
+
+    .header-background {
+      margin-left: 4rem;
+      margin-right: 4rem;
+    }
+
+    .pills,
+    .pillBW,
+    .pillwhite,
+    .pillblue,
+    .fb-call-msg {
+      display: none; // hides floating images
+    }
+
+    .side-words {
+      display: none;
+    }
+
+    .upload-container {
+      .upload-box {
+        width: 26rem;
+        height: 26rem;
+      }
+    }
+
+    .stats-container {
+      flex-direction: column;
+      gap: 8rem;
+    }
+  }
+}
+
+/* ----------- Mobile (Landscape & Portrait) ----------- */
+@media (max-width: 768px) {
+  .landing {
+
+    .header-title {
+      font-size: 3.4rem;
+    }
+
+    .header-discription {
+      font-size: 1.8rem;
+      line-height: 2.6rem;
+    }
+
+    .header-background {
+      margin: 0 2rem;
+      height: 30rem;
+      clip-path: none; // remove angled shape for clean mobile layout
+    }
+
+    .advantages-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .mid-title {
+      font-size: 4.8rem;
+    }
+
+    .joinus {
+      margin: 3rem 0;
+
+      .button-group {
+        flex-direction: column;
+
+        .btn {
+          width: 100%;
+        }
+      }
+    }
+
+    .footer {
+      height: auto;
+      clip-path: none;
+
+      .main {
+        flex-direction: column;
+        gap: 3rem;
+      }
+
+      .bottom nav {
+        flex-direction: column;
+        gap: 2rem;
+      }
+    }
+  }
+}
+
+/* ----------- Very Small Phones (≤ 480px) ----------- */
+@media (max-width: 480px) {
+  .landing {
+
+    .header-title {
+      font-size: 2.8rem;
+    }
+
+    .header-discription {
+      font-size: 1.6rem;
+    }
+
+    .upload-container {
+      .upload-box {
+        width: 22rem;
+        height: 22rem;
+
+        p {
+          font-size: 1.8rem;
+        }
+      }
+    }
+
+    .advantage-card {
+      padding: 0 1rem;
+    }
+
+    .pharmacy-card {
+      max-width: 100%;
+    }
+  }
+}
 
 }    
 
-        
-
-        
-
-
-        

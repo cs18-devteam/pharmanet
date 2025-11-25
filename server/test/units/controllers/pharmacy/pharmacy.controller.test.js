@@ -1,76 +1,105 @@
-const Bridge = require("../../common/Bridge");
-const { response, responseJson } = require("../../common/response");
-const view = require("../../common/view");
-const Pharmacies = require("../../models/PharmacyModel");
-const Users = require("../../models/UserModel");
+// D:\pharmanet\pharmanet\server\test\units\controllers\pharmacy\pharmacy.controller.test.js
 
+const PharmacyController = require("../../../../controllers/pharmacy/pharmacy.controller");
+const Users = require("../../../../models/UserModel");
+const Pharmacies = require("../../../../models/PharmacyModel");
+const view = require("../../../../common/view");
+const { response, responseJson } = require("../../../../common/response");
 
-exports.renderPharmacy = async (req , res)=>{
-    try{
+jest.mock("../../../../models/UserModel");
+jest.mock("../../../../models/PharmacyModel");
+jest.mock("../../../../common/view");
+jest.mock("../../../../common/response");
 
-        return response(res , view("pharmacy") , 200);
-    }catch(e){
-        console.log(e);
-        return response(res , view('404') , 404);
-    }
-}
+describe("Pharmacy Controller Unit Tests", () => {
+  let req;
+  let res;
 
+  beforeEach(() => {
+    req = {};
+    res = {
+      send: jest.fn(),
+      json: jest.fn(),
+      status: jest.fn().mockReturnThis(),
+    };
+    jest.clearAllMocks();
+  });
 
-exports.renderPharmacyRegister = async (req , res)=>{
-    try{
-        if(!req.customerId) return responseJson(res  , 302 , {status:"error"})
-        const customer = (await Users.getById(req.customerId))[0];
+  describe("renderPharmacy", () => {
+    it("should call view and response with 200", async () => {
+      view.mockReturnValue("<pharmacy-view>");
+      response.mockImplementation((res, html, status) => res.send({ html, status }));
 
-        return response(res,view('customer/pharmacy.register' , {
-            header : view('component.header' , {
-                name:"Antibiotics",
-            }),
-            navbar : view('customer/navbar.customer' , customer) , 
-            id : customer.id
-        }),200);
+      await PharmacyController.renderPharmacy(req, res);
 
-    }catch(e){
-        console.log(e);
-        return response(200 , view('404') , 400);
-    }
+      expect(view).toHaveBeenCalledWith("pharmacy");
+      expect(response).toHaveBeenCalledWith(res, "<pharmacy-view>", 200);
+    });
+  });
 
-}
+  describe("renderPharmacyRegister", () => {
+    it("should return 302 if no customerId", async () => {
+      req.customerId = null;
+      responseJson.mockImplementation((res, status, obj) => res.json({ status, obj }));
 
-exports.renderPharmacyProfile = async (req , res)=>{
-    try{
+      await PharmacyController.renderPharmacyRegister(req, res);
 
-        const [staff] = (await Users.getById(req.pharmacistId));
-        const [pharmacy] = await Pharmacies.getById(req.pharmacyId);
-        console.log(staff , pharmacy)
-        
-        if(!staff) return '404 : No Staff Member';
-        
-        return  response( res ,view('pharmacy/pharmacy.profile' , {
-            navbar : view('navbar.staff' , {...staff , name:`${staff.firstName} ${staff.lastName}`}) , 
-            ownerId : staff.id,
-            pharmacyId: staff.id,
-            name :"lanka pharmacy",
-            addressNo:'B124',
-            street: 'kandy road',
-            town:"abilipitiya",
-            contact :"078123 2123 ",
-            email: 'xyz@gmail.com',
-            pharmacistId:staff.id,
-        }))
-    }catch(e){
-        console.log(e);
-        return response(res , view('404') , 404);
-    }
-}
+      expect(responseJson).toHaveBeenCalledWith(res, 302, { status: "error" });
+    });
 
+    it("should return pharmacy register view if customer exists", async () => {
+      req.customerId = 1;
+      const customer = [{ id: 1, firstName: "John", lastName: "Doe" }];
+      Users.getById.mockResolvedValue(customer);
+      view.mockReturnValue("<register-view>");
+      response.mockImplementation((res, html, status) => res.send({ html, status }));
 
+      await PharmacyController.renderPharmacyRegister(req, res);
 
+      expect(Users.getById).toHaveBeenCalledWith(1);
+      expect(response).toHaveBeenCalledWith(res, "<register-view>", 200);
+    });
+  });
 
-exports.renderPharmacyDashboard = async (req , res)=>{
+  describe("renderPharmacyProfile", () => {
+    it("should return error if staff not found", async () => {
+      req.pharmacistId = 1;
+      req.pharmacyId = 2;
+      Users.getById.mockResolvedValue([]);
+      Pharmacies.getById.mockResolvedValue([{ id: 2 }]);
 
-    return response(res , view('pharmacy/pharmacy.dashboard' , {
-        header : view('component.header' , {
-                name:"Pharmacy Dashboard",
-        }),
-    }) , 200)
-}
+      const result = await PharmacyController.renderPharmacyProfile(req, res);
+
+      expect(result).toBe("404 : No Staff Member");
+    });
+
+    it("should return pharmacy profile view if staff exists", async () => {
+      req.pharmacistId = 1;
+      req.pharmacyId = 2;
+      const staff = { id: 1, firstName: "John", lastName: "Doe" };
+      const pharmacy = { id: 2, name: "Lanka Pharmacy" };
+      Users.getById.mockResolvedValue([staff]);
+      Pharmacies.getById.mockResolvedValue([pharmacy]);
+      view.mockReturnValue("<profile-view>");
+      response.mockImplementation((res, html) => res.send({ html }));
+
+      await PharmacyController.renderPharmacyProfile(req, res);
+
+      expect(response).toHaveBeenCalledWith(res, "<profile-view>");
+    });
+  });
+
+  describe("renderPharmacyDashboard", () => {
+    it("should return dashboard view with header", async () => {
+      view.mockReturnValue("<dashboard-view>");
+      response.mockImplementation((res, html, status) => res.send({ html, status }));
+
+      await PharmacyController.renderPharmacyDashboard(req, res);
+
+      expect(view).toHaveBeenCalledWith("pharmacy/pharmacy.dashboard", {
+        header: view("component.header", { name: "Pharmacy Dashboard" }),
+      });
+      expect(response).toHaveBeenCalledWith(res, "<dashboard-view>", 200);
+    });
+  });
+});

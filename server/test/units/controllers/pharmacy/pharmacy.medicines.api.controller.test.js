@@ -1,230 +1,155 @@
-const { publicca } = require("googleapis/build/src/apis/publicca");
-const { response, responseJson } = require("../../common/response");
-const view = require("../../common/view");
-const Medicines = require("../../models/MedicineModel");
-const PharmacyMedicines = require("../../models/PharmacyMedicinesModel");
-const { getRequestData } = require("../../common/getRequestData");
+// D:\pharmanet\pharmanet\server\test\units\controllers\pharmacy\medicine.controller.test.js
 
-exports.getAllMedicines = async (req , res)=>{
-    try{
-        
-        const data = await PharmacyMedicines.get();
-        return responseJson(res , 200 , data);
-        
-
-    }catch(e){
-        console.log(e);
-        return response(res , view('404') , 404);
-    }
-}
+const MedicineController = require("../../../../controllers/pharmacy/pharmacy.medicines.api.controller");
+const Medicines = require("../../../../models/MedicineModel");
+const PharmacyMedicines = require("../../../../models/PharmacyMedicinesModel");
+const { getRequestData } = require("../../../../common/getRequestData");
+const view = require("../../../../common/view");
+const { response, responseJson } = require("../../../../common/response");
 
 
-exports.getMedicineDetailsByStockId = async (req , res)=>{
+jest.mock("../../../../models/MedicineModel");
+jest.mock("../../../../models/PharmacyMedicinesModel");
+jest.mock("../../../../common/getRequestData");
+jest.mock("../../../../common/view");
+jest.mock("../../../../common/response");
 
-    
-    try{
-        const id = req.stockId;
-        if(!id) return responseJson(res , 400 , {
-            status:"error",
-            error :"no medicine found",
-            id: id,
+describe("Medicine Controller Unit Tests", () => {
+  let req;
+  let res;
 
-        })
-        const [stock] = await PharmacyMedicines.getById(id);
-        if(!stock){
-            return responseJson(res , 404 , {
-                status:"error",
-                error:"medicine not found in stock",
-            })
-        }
+  beforeEach(() => {
+    req = {};
+    res = {
+      send: jest.fn(),
+      json: jest.fn(),
+      status: jest.fn().mockReturnThis(),
+    };
+    jest.clearAllMocks();
+  });
 
-        const [medicine] = await Medicines.getById(stock.medicineId);
-        if(!medicine){
-            return responseJson(res , 404 , {
-                status:"error",
-                error: "stock found but medicine not found in database",
-            })
-        } 
-        
+  describe("getAllMedicines", () => {
+    it("should return all medicines", async () => {
+      const medicines = [{ id: 1, name: "Paracetamol" }];
+      PharmacyMedicines.get.mockResolvedValue(medicines);
+      responseJson.mockImplementation((res, status, data) => res.json({ status, data }));
 
-        return responseJson(res , 200 , {
-            status:"success",
-            results : {
-                ...medicine , 
-                stock ,
-            }
-        })
-    
+      await MedicineController.getAllMedicines(req, res);
 
-    }catch(e){
-        console.log(e);
-        return responseJson(res , 400 , {
-            status:"error",
-            error:e,
-        })
-        
-    }
-}
+      expect(PharmacyMedicines.get).toHaveBeenCalled();
+      expect(responseJson).toHaveBeenCalledWith(res, 200, medicines);
+    });
+  });
 
-exports.searchMedicinesByName = async (req , res)=>{
-    try{
-        const searchName = req.params.get('search');
-        const limit = req.params.get('limit');
-        const pharmacyId = req.pharmacyId;
+  describe("getMedicineDetailsByStockId", () => {
+    it("should return 400 if no stockId", async () => {
+      req.stockId = null;
+      responseJson.mockImplementation((res, status, obj) => res.json({ status, obj }));
 
-        
+      await MedicineController.getMedicineDetailsByStockId(req, res);
 
-        const medicines = await Medicines.query(`select * from this.table ${searchName ? `where geneticName like '%${searchName}%' ` : '' } limit ${limit || 100}`);
+      expect(responseJson).toHaveBeenCalledWith(res, 400, {
+        status: "error",
+        error: "no medicine found",
+        id: null,
+      });
+    });
 
+    it("should return medicine and stock details if found", async () => {
+      req.stockId = 1;
+      const stock = { id: 1, medicineId: 1 };
+      const medicine = { id: 1, name: "Paracetamol" };
+      PharmacyMedicines.getById.mockResolvedValue([stock]);
+      Medicines.getById.mockResolvedValue([medicine]);
+      responseJson.mockImplementation((res, status, obj) => res.json({ status, obj }));
 
-        const stockMedicines = medicines.map(async med=>{
-            try{
+      await MedicineController.getMedicineDetailsByStockId(req, res);
 
-                const stock = await PharmacyMedicines.get({
-                    medicineId : med.id,
-                    pharmacyId : pharmacyId,
-                })
-                // console.log(stock[0]);
-                
+      expect(responseJson).toHaveBeenCalledWith(res, 200, {
+        status: "success",
+        results: { ...medicine, stock },
+      });
+    });
+  });
 
-                return {...med , stock : stock[0] || {}};
-            }catch(e){
-                console.log(e);
-                return med;
-            }
-        })
+  describe("createMedicineStock", () => {
+    it("should create new medicine stock", async () => {
+      const stockData = {
+        medicineId: 1,
+        pharmacyId: 1,
+        price: 100,
+        stock: 50,
+        publicStock: 30,
+      };
+      req.body = JSON.stringify(stockData);
+      getRequestData.mockResolvedValue(JSON.stringify(stockData));
+      PharmacyMedicines.save.mockResolvedValue([stockData]);
+      responseJson.mockImplementation((res, status, obj) => res.json({ status, obj }));
 
-        Promise.all(stockMedicines).then((data)=>{
+      await MedicineController.createMedicineStock(req, res);
 
-            
+      expect(getRequestData).toHaveBeenCalledWith(req);
+      expect(PharmacyMedicines.save).toHaveBeenCalledWith({
+        medicineId: 1,
+        pharmacyId: 1,
+        price: 100,
+        stock: 50,
+        publicStock: 30,
+      });
+      expect(responseJson).toHaveBeenCalledWith(res, 201, {
+        status: "success",
+        stock: stockData,
+      });
+    });
+  });
 
-            return responseJson(res , 200 , {
-                status:"success",
-                count: data.length,
-                results: data,
-            });
-        });
+  describe("updateMedicineStock", () => {
+    it("should update medicine stock", async () => {
+      const stockData = {
+        stockId: 1,
+        medicineId: 1,
+        pharmacyId: 1,
+        price: 120,
+        stock: 60,
+        publicStock: 40,
+      };
+      req.body = JSON.stringify(stockData);
+      getRequestData.mockResolvedValue(JSON.stringify(stockData));
+      PharmacyMedicines.update.mockResolvedValue([stockData]);
+      responseJson.mockImplementation((res, status, obj) => res.json({ status, obj }));
 
-    }catch(e){
-        console.log(e);
-        return responseJson(res , 500 , {
-            status:"error",
-            message:e.message,
-            error: e,
-        })
-    }
-}
+      await MedicineController.updateMedicineStock(req, res);
 
+      expect(PharmacyMedicines.update).toHaveBeenCalledWith({
+        id: 1,
+        medicineId: 1,
+        pharmacyId: 1,
+        price: 120,
+        stock: 60,
+        publicStock: 40,
+      });
+      expect(responseJson).toHaveBeenCalledWith(res, 201, {
+        status: "success",
+        stock: stockData,
+      });
+    });
+  });
 
+  describe("deleteMedicineStock", () => {
+    it("should delete medicine stock", async () => {
+      req.stockId = 1;
+      req.pharmacyId = 1;
+      PharmacyMedicines.deleteById.mockResolvedValue(true);
+      responseJson.mockImplementation((res, status, obj) => res.json({ status, obj }));
 
-exports.getMedicineStockInfo = async (req , res)=>{
-    try{
-        const [{'count(medicineId)' :count}] = await PharmacyMedicines.query(`select count(medicineId)from this.table where pharmacyId=${req.pharmacyId}`)
-        const [{'count(medicineId)' :sufficient}] = await PharmacyMedicines.query(`select count(medicineId)from this.table where pharmacyId=${req.pharmacyId} and publicStock >= 10`);
-        const [{'count(medicineId)' :low}] = await PharmacyMedicines.query(`select count(medicineId)from this.table where pharmacyId=${req.pharmacyId} and publicStock < 10`)
-        const [{'count(medicineId)' :out}] = await PharmacyMedicines.query(`select count(medicineId)from this.table where pharmacyId=${req.pharmacyId} and publicStock < 1`);
+      await MedicineController.deleteMedicineStock(req, res);
 
+      expect(PharmacyMedicines.deleteById).toHaveBeenCalledWith(1);
+      expect(responseJson).toHaveBeenCalledWith(res, 204, {
+        status: "success",
+        stock: "item deleted successfully",
+      });
+    });
+  });
 
-        return responseJson(res , 200 , {
-            status:"success",
-            results:{
-                count,
-                sufficient,
-                low,
-                out,
-            }
-        });
-
-    }catch(e){
-        return responseJson(res , 500 , {
-            status:"error",
-            message: e.message,
-            error:e,
-        })
-    }
-}
-
-
-exports.createMedicineStock = async (req , res)=>{
-    try{
-        const medicine =  JSON.parse(await getRequestData(req));
-        
-        const [newStock] = await PharmacyMedicines.save({
-            medicineId : medicine.medicineId,
-            pharmacyId : medicine.pharmacyId , 
-            price : medicine.price,
-            stock : medicine.stock,
-            publicStock: medicine.publicStock
-        });
-
-
-        return responseJson(res , 201 , {
-            status:"success",
-            stock : newStock,
-        })
-        
-        
-
-    }catch(e){
-        console.log(e);
-        return responseJson(res , 400 , {
-            status:"error",
-            error:e,
-        });
-        
-    }
-}
-exports.updateMedicineStock = async (req , res)=>{
-    try{
-        const medicine =  JSON.parse(await getRequestData(req));
-        console.log({medicine});
-        
-        const [updated] = await PharmacyMedicines.update({
-            id: medicine.stockId,
-            medicineId : medicine.medicineId,
-            pharmacyId : medicine.pharmacyId , 
-            price : medicine.price,
-            stock : medicine.stock,
-            publicStock: medicine.publicStock
-        });
-
-
-        return responseJson(res , 201 , {
-            status:"success",
-            stock : updated,
-        })
-        
-        
-
-    }catch(e){
-        console.log(e);
-        return responseJson(res , 400 , {
-            status:"error",
-            error:e,
-        });
-        
-    }
-}
-exports.deleteMedicineStock = async (req , res)=>{
-    try{
-        const stockId =  req.stockId;
-        const pharmacyId = req.pharmacyId;
-        
-        const deleted = await PharmacyMedicines.deleteById(stockId);
-
-        return responseJson(res , 204 , {
-            status:"success",
-            stock : 'item deleted successfully',
-        })
-        
-        
-
-    }catch(e){
-        console.log(e);
-        return responseJson(res , 400 , {
-            status:"error",
-            error:e,
-        });
-        
-    }
-}
+});

@@ -1,11 +1,8 @@
 const SubRouter = require("../../common/SubRouter");
 const pharmacyAttendanceController = require('../../controllers/pharmacy/pharmacy.attendance.controller');
 const pharmacyStaffController = require('../../controllers/pharmacy/pharmacy.staff.controller');
-const pharmacyMedicinesController = require('../../controllers/pharmacy/pharmacy.medicines.controller');
 const pharmacyMedicinesApiController = require('../../controllers/pharmacy/pharmacy.medicines.api.controller');
 const pharmacyController = require("../../controllers/pharmacy/pharmacy.controller");
-
-
 
 
 exports.pharmacistRouter = SubRouter.route('/pharmacies/:pharmacyId/pharmacist/:pharmacistId')
@@ -21,7 +18,7 @@ exports.pharmacistRouter = SubRouter.route('/pharmacies/:pharmacyId/pharmacist/:
 
 exports.pharmacyRouter = SubRouter.route('/pharmacies/:pharmacyId')
 .subRoute('/medicines' , {
-    get : pharmacyMedicinesController.getAllMedicines
+    get : pharmacyMedicinesApiController.getAllMedicines
 })
 
 exports.pharmacyApiRouter = SubRouter.route('/api/v1/pharmacies/:pharmacyId')

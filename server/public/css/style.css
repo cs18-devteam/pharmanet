@@ -1372,7 +1372,8 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   box-shadow: 0px 5px 60px 0px rgba(0, 0, 0, 0.25);
   transition: all 0.8s cubic-bezier(0.82, 0.01, 0.22, 0.99);
   top: 100vh;
-  z-index: 0;
+  overflow: scroll;
+  z-index: 10;
 }
 .drawer[status=open] {
   top: 10vh;
@@ -1519,27 +1520,201 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .medicine-viewer .content .right {
   flex-grow: 2;
+  justify-content: flex-end;
+  height: 100%;
+  padding: 3rem;
+  max-width: 50rem;
+  border-radius: 3rem 0 0 3rem;
 }
-
-.pharmacy_medicine_stock_content {
+.medicine-viewer .content .right .notice {
+  width: 40rem;
+  margin: 3rem;
+  display: inline-block;
+  height: 20rem;
+  border-radius: 3rem;
+  padding: 2rem;
+  color: var(--color-yellow-01);
+  border: 1px solid var(--color-yellow-01);
+  font-size: 2.8rem;
+  text-transform: capitalize;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
+.medicine-viewer .content .right .notice:hover {
+  background-color: #000;
+}
+.medicine-viewer .content .right .notice button.add_to_stock {
+  padding: 1rem 2rem;
+  font-size: 2rem;
+  width: fit-content;
+  align-self: flex-end;
+  text-transform: capitalize;
+  font-family: var(--primary-font);
+  border-radius: 3rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #000;
+  transition: all 0.2s ease;
+  color: #fff;
+  background-color: var(--color-green-01);
+}
+.medicine-viewer .content .right .notice button.add_to_stock:hover {
+  color: var(--color-green-01);
+  background-color: #fff;
+  transform: scale(1.1);
+}
+.medicine-viewer .content .right .price_container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #999;
+  margin-bottom: 2rem;
+}
+.medicine-viewer .content .right .price_container .text {
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0.6;
+  text-transform: capitalize;
+  color: #000;
+}
+.medicine-viewer .content .right .price_container .text .label-icon {
+  transform: translatey(0.3rem);
+  width: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.medicine-viewer .content .right .price_container .price {
+  font-size: 2.8rem;
+  font-weight: 500;
+}
+.medicine-viewer .content .right .price_container .price::before {
+  content: "Rs ";
+}
+.medicine-viewer .content .right .price_container .price::after {
+  content: "";
+}
+.medicine-viewer .content .right .stock_details_container h2 {
+  font-size: 2rem;
+  text-transform: capitalize;
+  color: var(--color-green-01);
+  font-weight: 100;
+}
+.medicine-viewer .content .right .stock_details_container .full_stock {
+  font-size: 3.2rem;
+  text-transform: capitalize;
+}
+.medicine-viewer .content .right .stock_details_container .stock_card {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #eee;
+  margin: 1rem 0;
+  border-radius: 1rem;
+}
+.medicine-viewer .content .right .stock_details_container .stock_card .title {
+  font-size: 1.8rem;
+  text-transform: capitalize;
+}
+.medicine-viewer .content .right .stock_details_container .stock_card p {
+  font-size: 1.8rem;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 2rem 0rem;
+}
+.medicine-viewer .content .right .stock_details_container .stock_card .content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.medicine-viewer .content .right .stock_details_container .stock_card .content .bar_graph {
+  width: 70%;
+  background-color: #eee;
+  border-radius: 3rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.5rem;
+}
+.medicine-viewer .content .right .stock_details_container .stock_card .content .bar_graph .row {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  height: 100%;
+  border-radius: inherit;
+  background-image: repeating-linear-gradient(120deg, transparent 5px, rgba(255, 255, 255, 0.1) 5px, rgba(255, 255, 255, 0.1) 10px, transparent 10px, transparent 15px);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #fff;
+}
+.medicine-viewer .content .right .stock_details_container .stock_card .content .bar_graph .row::after {
+  content: "%";
+}
+.medicine-viewer .content .right .stock_details_container .stock_card .content .quantity {
+  font-size: 1.6rem;
+  text-align: right;
+  text-transform: capitalize;
+}
+.medicine-viewer .content .right .stock_details_container .stock_card .content .quantity .count {
+  font-size: 2.8rem;
+}
+.medicine-viewer .content .right .stock_details_container .public_stock_container .bar_graph .row {
+  background-color: var(--color-green-01);
+}
+.medicine-viewer .content .right .stock_details_container .private_stock_container .bar_graph .row {
+  background-color: var(--color-yellow-01);
+}
+
 .pharmacy_medicine_stock_content .medicine_name {
   font-size: 2rem;
   font-weight: 400;
   margin: 2rem;
+}
+.pharmacy_medicine_stock_content form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   min-height: 80vh;
 }
-.pharmacy_medicine_stock_content .buttons {
+.pharmacy_medicine_stock_content form .input_field_container {
+  margin: 3rem;
+  text-transform: capitalize;
+}
+.pharmacy_medicine_stock_content form .input_field_container .field {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.pharmacy_medicine_stock_content form .input_field_container .field + h3 {
+  margin-top: 4rem;
+}
+.pharmacy_medicine_stock_content form .input_field_container .field label, .pharmacy_medicine_stock_content form .input_field_container .field input {
+  margin-bottom: 1rem;
+  display: inline;
+  width: 100%;
+}
+.pharmacy_medicine_stock_content form .input_field_container .field input {
+  height: 5.5rem;
+  font-size: 1.8rem;
+}
+.pharmacy_medicine_stock_content form .input_field_container .field input:focus-visible {
+  outline: 2px solid var(--color-green-01);
+  border: none;
+  box-shadow: none;
+}
+.pharmacy_medicine_stock_content form .buttons {
   display: flex;
   width: 100%;
   gap: 1rem;
   padding: 2rem 4rem;
   justify-content: flex-end;
 }
-.pharmacy_medicine_stock_content .buttons button {
+.pharmacy_medicine_stock_content form .buttons button {
   padding: 1.5rem 2rem;
   min-width: 14rem;
   font-size: 1.8rem;
@@ -1550,20 +1725,45 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   border-radius: 3rem;
   cursor: pointer;
 }
-.pharmacy_medicine_stock_content .buttons button.btn_cancel:hover {
+.pharmacy_medicine_stock_content form .buttons button.btn_cancel:hover {
   border: 1px solid #000;
   color: #000;
 }
-.pharmacy_medicine_stock_content .buttons button.btn_add_to_stock {
-  display: none;
+.pharmacy_medicine_stock_content form .buttons button.btn_add_to_stock {
   background-color: var(--color-green-01);
   color: #fff;
   border: none;
 }
-.pharmacy_medicine_stock_content .buttons button.btn_save {
+.pharmacy_medicine_stock_content form .buttons button.btn_save {
   background-color: var(--color-green-01);
   color: #fff;
   border: none;
+}
+.pharmacy_medicine_stock_content form .delete {
+  border-top: 1px solid #eee;
+  font-size: 1.8rem;
+  text-transform: capitalize;
+  padding: 3rem;
+}
+.pharmacy_medicine_stock_content form .delete h2 {
+  font-size: 2.8rem;
+  margin-bottom: 0rem;
+  color: var(--color-red-01);
+}
+.pharmacy_medicine_stock_content form .delete p {
+  color: #888;
+}
+.pharmacy_medicine_stock_content form .delete button {
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  text-transform: inherit;
+  font-size: inherit;
+  background-color: var(--color-red-01);
+  color: white;
+  border-radius: 3rem;
+  outline: none;
+  border: none;
+  cursor: pointer;
 }
 
 @font-face {
@@ -8435,17 +8635,16 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 
 /* paging effect */
 .pharmacyDashboard {
-  background: #127EB5;
-  background: linear-gradient(120deg, #68accf 0%, rgb(18, 126, 181) 20%, rgb(24, 151, 141) 50%, rgb(8, 55, 79) 100%);
+  background-image: linear-gradient(120deg, #68accf 0%, rgb(18, 126, 181) 20%, rgb(24, 151, 141) 50%, rgb(8, 55, 79) 100%);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   min-height: 100vh;
-  z-index: -100;
+  z-index: 0;
   position: relative;
 }
 .pharmacyDashboard .dashboards {
   overflow-y: clip;
-  z-index: -100;
+  z-index: 10;
 }
 .pharmacyDashboard .container {
   top: 1rem;

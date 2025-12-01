@@ -4,7 +4,7 @@ const { response, responseJson } = require("../../common/response");
 const view = require("../../common/view");
 
 
-exports.adminDashboard = async (req , res)=>{
+exports.renderAdminDashboardView = async (req , res)=>{
     return response(res , view('admin/adminDashboard' , {
         sidebar : view('admin/component.sidebar'),
 
@@ -14,7 +14,7 @@ exports.adminDashboard = async (req , res)=>{
     }) , 200);
 }
 
-exports.medicines = async (req ,res)=>{
+exports.renderAdminMedicinesView = async (req ,res)=>{
     return response(res , view('admin/medicines',{
         header : view('component.header' , {
           name:"Medicines || Pharmanet - Manage all medicines here",
@@ -23,7 +23,7 @@ exports.medicines = async (req ,res)=>{
     }) , 200)
 }
 
-exports.dataAssets = async (req ,res)=>{
+exports.renderAdminDataAssetsView = async (req ,res)=>{
     return response(res , view('admin/dataAssets',{
         header : view('component.header' , {
           name:"Data assets || Pharmanet - Data Collection",
@@ -34,7 +34,7 @@ exports.dataAssets = async (req ,res)=>{
 
 
 
-exports.users = async (req ,res)=>{
+exports.renderAdminUsersView = async (req ,res)=>{
     return response(res , view('admin/users',{
         sidebar : view('admin/component.sidebar'),
         header : view('component.header' , {

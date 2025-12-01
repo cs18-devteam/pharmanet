@@ -1,14 +1,14 @@
-const { readCookies, decrypt } = require("../common/Auth");
+const readCookies = require("../common/readCookies");
 const { response } = require("../common/response")
 const view = require("../common/view");
 const Users = require("../models/UserModel");
 
 exports.renderIndexPage =  async (req , res)=>{
     try{
-
-        
+                        
         const {token} = readCookies(req);
         if(token){
+            
             let redirectURL = undefined;
             const tokenData = JSON.parse( decrypt(token));
             if(tokenData?.id){
@@ -35,6 +35,8 @@ exports.renderIndexPage =  async (req , res)=>{
 
             }
         }
+
+        
         
         // if(cookies.token) return response(res , "redirect to home page" , )
 

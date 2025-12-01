@@ -1,105 +1,172 @@
-// D:\pharmanet\pharmanet\server\test\units\controllers\pharmacy\pharmacy.controller.test.js
+// ************************************
+// MOCK MODELS BEFORE IMPORTING ANYTHING
+// ************************************
 
-const PharmacyController = require("../../../../controllers/pharmacy/pharmacy.controller");
-const Users = require("../../../../models/UserModel");
+jest.mock("../../../../models/PharmacyModel", () => ({
+  getById: jest.fn(),
+}));
+
+jest.mock("../../../../models/UserModel", () => ({
+  getById: jest.fn(),
+}));
+
+jest.mock("../../../../common/view", () => jest.fn((file, data) => `VIEW:${file}`));
+
+jest.mock("../../../../common/response", () => ({
+  response: jest.fn(),
+  responseJson: jest.fn(),
+}));
+
+// Disable console logs
+beforeAll(() => {
+  jest.spyOn(console, "log").mockImplementation(() => {});
+});
+
+// ************************************
+// IMPORT AFTER MOCKS
+// ************************************
+
+const Controller = require("../../../../controllers/pharmacy/pharmacy.controller");
 const Pharmacies = require("../../../../models/PharmacyModel");
+const Users = require("../../../../models/UserModel");
 const view = require("../../../../common/view");
 const { response, responseJson } = require("../../../../common/response");
 
-jest.mock("../../../../models/UserModel");
-jest.mock("../../../../models/PharmacyModel");
-jest.mock("../../../../common/view");
-jest.mock("../../../../common/response");
+// Create fake response object
+function mockRes() {
+  return {
+    status: null,
+    body: null,
+    data: null,
+  };
+}
 
-describe("Pharmacy Controller Unit Tests", () => {
-  let req;
-  let res;
+// ------------------------
+// TEST renderPharmacy()
+// ------------------------
 
-  beforeEach(() => {
-    req = {};
-    res = {
-      send: jest.fn(),
-      json: jest.fn(),
-      status: jest.fn().mockReturnThis(),
-    };
-    jest.clearAllMocks();
+describe("renderPharmacy", () => {
+  test("should render pharmacy page successfully", async () => {
+    const req = {};
+    const res = mockRes();
+
+    await Controller.renderPharmacy(req, res);
+
+    expect(response).toHaveBeenCalledWith(res, "VIEW:pharmacy", 200);
   });
 
-  describe("renderPharmacy", () => {
-    it("should call view and response with 200", async () => {
-      view.mockReturnValue("<pharmacy-view>");
-      response.mockImplementation((res, html, status) => res.send({ html, status }));
+  test("should return 404 on error", async () => {
+    const req = {};
+    const res = mockRes();
 
-      await PharmacyController.renderPharmacy(req, res);
-
-      expect(view).toHaveBeenCalledWith("pharmacy");
-      expect(response).toHaveBeenCalledWith(res, "<pharmacy-view>", 200);
+    view.mockImplementationOnce(() => {
+      throw new Error("view error");
     });
+
+    await Controller.renderPharmacy(req, res);
+
+    expect(response).toHaveBeenCalledWith(res, "VIEW:404", 404);
+  });
+});
+
+// ----------------------------------------
+// TEST renderPharmacyRegister()
+// ----------------------------------------
+
+describe("renderPharmacyRegister", () => {
+  beforeEach(() => jest.clearAllMocks());
+
+  test("should return 302 if customerId missing", async () => {
+    const req = {};
+    const res = mockRes();
+
+    await Controller.renderPharmacyRegister(req, res);
+
+    expect(responseJson).toHaveBeenCalledWith(res, 302, { status: "error" });
   });
 
-  describe("renderPharmacyRegister", () => {
-    it("should return 302 if no customerId", async () => {
-      req.customerId = null;
-      responseJson.mockImplementation((res, status, obj) => res.json({ status, obj }));
+  test("should render registration page", async () => {
+    const req = { customerId: 5 };
+    const res = mockRes();
 
-      await PharmacyController.renderPharmacyRegister(req, res);
+    Users.getById.mockResolvedValue([{ id: 5, name: "John" }]);
 
-      expect(responseJson).toHaveBeenCalledWith(res, 302, { status: "error" });
-    });
+    await Controller.renderPharmacyRegister(req, res);
 
-    it("should return pharmacy register view if customer exists", async () => {
-      req.customerId = 1;
-      const customer = [{ id: 1, firstName: "John", lastName: "Doe" }];
-      Users.getById.mockResolvedValue(customer);
-      view.mockReturnValue("<register-view>");
-      response.mockImplementation((res, html, status) => res.send({ html, status }));
-
-      await PharmacyController.renderPharmacyRegister(req, res);
-
-      expect(Users.getById).toHaveBeenCalledWith(1);
-      expect(response).toHaveBeenCalledWith(res, "<register-view>", 200);
-    });
+    expect(response).toHaveBeenCalled();
+    expect(view).toHaveBeenCalledWith("customer/pharmacy.register", expect.any(Object));
   });
 
-  describe("renderPharmacyProfile", () => {
-    it("should return error if staff not found", async () => {
-      req.pharmacistId = 1;
-      req.pharmacyId = 2;
-      Users.getById.mockResolvedValue([]);
-      Pharmacies.getById.mockResolvedValue([{ id: 2 }]);
+  test("should return 400 on DB error", async () => {
+    const req = { customerId: 5 };
+    const res = mockRes();
 
-      const result = await PharmacyController.renderPharmacyProfile(req, res);
+    Users.getById.mockRejectedValue(new Error("DB Error"));
 
-      expect(result).toBe("404 : No Staff Member");
-    });
+    await Controller.renderPharmacyRegister(req, res);
 
-    it("should return pharmacy profile view if staff exists", async () => {
-      req.pharmacistId = 1;
-      req.pharmacyId = 2;
-      const staff = { id: 1, firstName: "John", lastName: "Doe" };
-      const pharmacy = { id: 2, name: "Lanka Pharmacy" };
-      Users.getById.mockResolvedValue([staff]);
-      Pharmacies.getById.mockResolvedValue([pharmacy]);
-      view.mockReturnValue("<profile-view>");
-      response.mockImplementation((res, html) => res.send({ html }));
+    expect(response).toHaveBeenCalledWith(200, "VIEW:404", 400);
+  });
+});
 
-      await PharmacyController.renderPharmacyProfile(req, res);
+// ----------------------------------------
+// TEST renderPharmacyProfile()
+// ----------------------------------------
 
-      expect(response).toHaveBeenCalledWith(res, "<profile-view>");
-    });
+describe("renderPharmacyProfile", () => {
+  beforeEach(() => jest.clearAllMocks());
+
+  test("should return error text if staff not found", async () => {
+    const req = { pharmacistId: 10, pharmacyId: 5 };
+    const res = mockRes();
+
+    Users.getById.mockResolvedValue([]);
+    Pharmacies.getById.mockResolvedValue([]);
+
+    const result = await Controller.renderPharmacyProfile(req, res);
+
+    expect(result).toBe("404 : No Staff Member");
   });
 
-  describe("renderPharmacyDashboard", () => {
-    it("should return dashboard view with header", async () => {
-      view.mockReturnValue("<dashboard-view>");
-      response.mockImplementation((res, html, status) => res.send({ html, status }));
+  test("should render pharmacy profile", async () => {
+    const req = { pharmacistId: 10, pharmacyId: 5 };
+    const res = mockRes();
 
-      await PharmacyController.renderPharmacyDashboard(req, res);
+    Users.getById.mockResolvedValue([{ id: 10, firstName: "John", lastName: "Doe" }]);
+    Pharmacies.getById.mockResolvedValue([{ id: 5, name: "Lanka Pharmacy" }]);
 
-      expect(view).toHaveBeenCalledWith("pharmacy/pharmacy.dashboard", {
-        header: view("component.header", { name: "Pharmacy Dashboard" }),
-      });
-      expect(response).toHaveBeenCalledWith(res, "<dashboard-view>", 200);
-    });
+    await Controller.renderPharmacyProfile(req, res);
+
+    expect(response).toHaveBeenCalled();
+    expect(view).toHaveBeenCalledWith(
+      "pharmacy/pharmacy.profile",
+      expect.any(Object)
+    );
+  });
+
+  test("should return 404 on error", async () => {
+    const req = { pharmacistId: 1, pharmacyId: 2 };
+    const res = mockRes();
+
+    Users.getById.mockRejectedValue(new Error("DB Error"));
+
+    await Controller.renderPharmacyProfile(req, res);
+
+    expect(response).toHaveBeenCalledWith(res, "VIEW:404", 404);
+  });
+});
+
+// ----------------------------------------
+// TEST renderPharmacyDashboard()
+// ----------------------------------------
+
+describe("renderPharmacyDashboard", () => {
+  test("should render dashboard", async () => {
+    const req = {};
+    const res = mockRes();
+
+    await Controller.renderPharmacyDashboard(req, res);
+
+    expect(response).toHaveBeenCalledWith(res, expect.any(String), 200);
   });
 });

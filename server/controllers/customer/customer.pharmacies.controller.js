@@ -1,5 +1,7 @@
 const { response } = require("../../common/response");
 const view = require("../../common/view");
+const Medicines = require("../../models/MedicineModel");
+const PharmacyMedicines = require("../../models/PharmacyMedicinesModel");
 const Pharmacies = require("../../models/PharmacyModel");
 const Users = require("../../models/UserModel");
 
@@ -59,6 +61,59 @@ exports.renderCustomerPharmacy = async (req , res)=>{
 
 
 
+}
+
+
+exports.renderPharmacyLandingPage = async (req , res)=>{
+    try{
+        const [pharmacy] = await Pharmacies.getById(req.pharmacyId);
+        console.log(pharmacy);
+
+
+        const pharmacyData = {
+            ...pharmacy , 
+            contact1 : pharmacy.contact , 
+            contact2 : "****"
+        }
+
+
+        const medicines = await PharmacyMedicines.get({
+            pharmacyId : pharmacy.id,
+        })
+
+     
+
+        const medicineCards = medicines.map(async m=>{
+            const [medicine] = await Medicines.getById(m.medicineId);
+
+
+
+            return view('customer/component.medicine.card' , {
+                id: m.id,
+                price : m.price , 
+                publicStock : m.publicStock,
+                name : medicine.geneticName
+            })
+        })
+
+        const medicineCardsText = await Promise.all(medicineCards)
+
+        return response(res , view("customer/customer.pharmacy.landingPage" , {
+            navbar : view('customer/navbar.customer' ,{}) ,
+            header : view('component.header' , {
+                name:"Antibiotics",
+            }),
+            ...pharmacyData,
+            medicineCards : medicineCardsText.join(' '),
+
+            // {...pharmacy , contact1 : pharmacy.contact , contact2 : ""}
+            
+        }) , 200);
+        
+    }catch(error){
+        console.log(error);
+        response(res , view('404') , 400);
+    }
 }
 
 

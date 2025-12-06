@@ -27,12 +27,13 @@ const customerRouter = SubRouter.route('/customers/:customerId')
     get : customerPharmacyController.renderCustomerPharmacies,
 })
 .subRoute('/pharmacies/:pharmacyId' , {
-    get : customerPharmacyController.renderCustomerPharmacy,
+    get : customerPharmacyController.renderPharmacyLandingPage,
 })
 .subRoute('/history')
 .subRoute('/transaction')
 .subRoute('/orders')
-.subRoute('/orders/:orderId');
+.subRoute('/orders/:orderId')
+
 
 
 module.exports = customerRouter;

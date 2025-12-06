@@ -7,6 +7,10 @@ const { authenticate } = require("../../middlewares/authenticate");
 
  // :: CUSTOMER ROUTES
 const customerRouter = SubRouter.route('/customers/:customerId')
+//new adding part to view medicine
+.subRoute('/' , {
+    get : customerController.renderPharmacyView,
+})
 .subRoute('/' , {
     get: [ authenticate('customerId') ,customerController.renderCustomerHome]
 })
@@ -24,12 +28,13 @@ const customerRouter = SubRouter.route('/customers/:customerId')
     get : [authenticate('customerId')  , customerPharmacyController.renderCustomerPharmacies]
 })
 .subRoute('/pharmacies/:pharmacyId' , {
-    get : [authenticate('customerId')  , customerPharmacyController.renderCustomerPharmacy]
+    get : customerPharmacyController.renderPharmacyLandingPage,
 })
 .subRoute('/history')
 .subRoute('/transaction')
 .subRoute('/orders')
-.subRoute('/orders/:orderId');
+.subRoute('/orders/:orderId')
+
 
 
 module.exports = customerRouter;

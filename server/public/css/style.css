@@ -2063,9 +2063,15 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .signup .signupForm #form .signupTitle,
 .signup .signupForm #form .signupMoto {
   font-family: "Red Hat Display", sans-serif;
-  padding: 0.5rem;
+}
+.signup .signupForm #form .signupTitle {
+  font-size: 4rem;
+  color: #000000;
+  text-align: center;
+  padding: 1rem;
 }
 .signup .signupForm #form .signupMoto {
+  padding: 1rem 0rem;
   font-weight: 600;
   font-style: ExtraBold;
   font-size: 1.5rem;
@@ -2082,12 +2088,17 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   flex: 1;
   width: fit-content;
 }
+.signup .signupForm #form label {
+  margin-bottom: 0.8rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
 .signup .signupForm #form input {
-  border: 2px solid #787676;
   border-radius: 0.5rem;
+  border: 0.1rem solid lightgray;
   padding: 0.5rem;
   font-family: "Red Hat Display", sans-serif;
-  font-size: 1em;
+  font-size: 2rem;
   outline: none;
   width: 100%;
   margin-top: 1rem;
@@ -2127,23 +2138,36 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   opacity: 45%;
   color: #000;
 }
+.signup .signupForm #form .links {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 45vw;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+.signup .signupForm #form .links a {
+  color: var(--font-linear-secondary-color);
+  text-decoration: none;
+  margin-bottom: 5rem;
+}
+.signup .signupForm #form .links p {
+  text-align: center;
+  width: 100%;
+}
 .signup .signupForm #form .logInButton {
-  width: 7rem;
-  height: 3rem;
-  border-radius: 6rem;
-  border: 0.2rem solid #FB8F21;
-  background-color: rgba(249, 165, 80, 0.14);
-  font-family: "Red Hat Display", sans-serif;
-  font-weight: 600;
-  font-size: 1.3rem;
-  line-height: 100%;
-  align-items: center;
-  color: #FB8F21;
+  padding: 0.5rem 1rem;
+  border-radius: 1.2rem;
+  margin-left: 0.2rem;
+  font-size: 1.8rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
 }
 .signup .signupForm #form .logInButton:hover {
-  background-color: #FB8F21;
-  color: #fff;
-  transition: all 0.2s ease-out;
+  transform: scale(2) rotate(1deg);
+  color: var(--color-green-01);
 }
 
 .success {
@@ -2794,6 +2818,246 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .landing .upload-container .upload-box:hover {
   transform: scale(1.05);
+  cursor: pointer;
+}
+.landing .map-container .radius-btn {
+  background-color: var(--color-green-02);
+  border-radius: 2rem;
+  padding: 1rem 2rem;
+  color: white;
+  font-weight: 500;
+  font-size: 1.8rem;
+  max-width: fit-content;
+  margin-right: 8rem;
+  float: right;
+}
+.landing .map-container .radius-btn:hover {
+  transform: scale(1.05);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.landing .medicine-section .section-title {
+  margin-top: 25rem;
+}
+.landing .medicine-section .header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin: 3rem;
+  border-top: 0.1rem solid #ccc;
+  border-bottom: 0.1rem solid #ccc;
+}
+.landing .medicine-section .header-section .active-page .title {
+  margin-bottom: 1rem;
+  font-size: 3rem;
+  font-weight: 600;
+}
+.landing .medicine-section .header-section .active-page .buttons {
+  display: flex;
+  gap: 1rem;
+}
+.landing .medicine-section .header-section .active-page .buttons div {
+  width: 20rem;
+  padding: 1rem;
+  border-radius: 2rem;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 500;
+}
+.landing .medicine-section .header-section .active-page .buttons .active-btn {
+  color: white;
+  background-image: linear-gradient(to right, var(--font-linear-secondary-color), var(--color-green-01));
+}
+.landing .medicine-section .header-section .active-page .buttons .active-btn .circle {
+  background-color: var(--color-yellow-01);
+  border-radius: 50%;
+  width: 1rem;
+  height: 1rem;
+}
+.landing .medicine-section .header-section .active-page .buttons .active-btn:hover {
+  transform: scale(1.05);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.landing .medicine-section .header-section .active-page .buttons .btn {
+  color: white;
+  background-color: var(--color-blue-01);
+}
+.landing .medicine-section .header-section .active-page .buttons .btn:hover {
+  transform: scale(1.05);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.landing .medicine-section .header-section .addToCart {
+  color: var(--color-blue-01);
+  background-color: var(--color-yellow-01);
+  width: 15rem;
+  height: 7rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 600;
+}
+.landing .medicine-section .header-section .addToCart:hover {
+  transition: background-color 0.3s ease;
+  background-color: var(--color-red-01);
+  cursor: pointer;
+}
+.landing .medicine-section .Medicines_grid {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(4, 32rem); /* 4 columns */
+  margin: 5rem 10rem 10rem 10rem;
+  justify-content: center;
+  max-width: fit-content;
+  border: 0.1rem solid #ccc;
+}
+.landing .medicine-section .Medicines_grid .medicine-card {
+  padding: 2rem;
+  border: 0.1rem solid #ccc;
+  width: 100%;
+}
+.landing .medicine-section .Medicines_grid .medicine-card .medi-img {
+  text-align: center;
+}
+.landing .medicine-section .Medicines_grid .medicine-card .med_infomation .medicine_name {
+  font-weight: 500;
+}
+.landing .medicine-section .Medicines_grid .medicine-card .med_infomation .medicine_name .name {
+  font-weight: 600;
+  color: #979696;
+}
+.landing .medicine-section .Medicines_grid .medicine-card .med_infomation .medicine__info__price {
+  display: flex;
+  gap: 2rem;
+  color: #1A7F89;
+  padding: 1rem 0;
+  font-weight: 600;
+}
+.landing .medicine-section .Medicines_grid .medicine-card .med_infomation .medicine__info__price span {
+  display: flex;
+}
+.landing .medicine-section .Medicines_grid .medicine-card .results .map-serach {
+  display: flex;
+  background-color: #E8F7FF;
+  border-radius: 3rem;
+  padding: 1rem;
+  font-size: 1.6rem;
+  color: #08374F;
+  font-weight: 500;
+  max-width: fit-content;
+  justify-content: center;
+  align-items: center;
+}
+.landing .medicine-section .Medicines_grid .medicine-card .results .map-serach .world_img {
+  margin-right: 1rem;
+}
+.landing .medicine-section .Medicines_grid .medicine-card:hover {
+  transform: scale(1.05);
+  transition: all 0.3s;
+  background-color: white;
+  box-shadow: #ccc;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+.landing .pharmacy-section .section-title {
+  margin-top: 5rem;
+}
+.landing .pharmacy-section .section-title .title-one {
+  font-size: 2rem;
+  font-weight: 600;
+  color: black;
+  text-align: left;
+  margin: 1rem 7rem;
+}
+.landing .pharmacy-section .pharmacy_grid {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(4, 32rem); /* 4 columns */
+  margin: 3rem 10rem;
+  max-width: fit-content;
+  justify-content: center;
+  font-family: var(--primary-font);
+  border: 0.1rem solid #ccc;
+}
+.landing .pharmacy-section .pharmacy_grid .pharmacy-card {
+  padding: 2rem;
+  border: 0.1rem solid #ccc;
+  width: 100%;
+}
+.landing .pharmacy-section .pharmacy_grid .pharmacy-card .pharmacy_infomation .pharmacy_name_info .name {
+  font-weight: 600;
+  color: #979696;
+  font-size: 1.6rem;
+}
+.landing .pharmacy-section .pharmacy_grid .pharmacy-card .pharmacy_infomation .pharmacy_name_info .pharmacy_name {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+.landing .pharmacy-section .pharmacy_grid .pharmacy-card .pharmacy_infomation .pharmacy_address {
+  font-size: 1.6rem;
+  color: #1A7F89;
+  padding: 1.6rem 0;
+  font-weight: 600;
+}
+.landing .pharmacy-section .pharmacy_grid .pharmacy-card .results {
+  display: flex;
+  justify-content: space-between;
+}
+.landing .pharmacy-section .pharmacy_grid .pharmacy-card .results .distance {
+  display: flex;
+  background-color: #E8F7FF;
+  border-radius: 3rem;
+  font-size: 1.6rem;
+  color: #08374F;
+  font-weight: 500;
+  margin: 1rem;
+  max-width: fit-content;
+  justify-content: center;
+  align-items: center;
+}
+.landing .pharmacy-section .pharmacy_grid .pharmacy-card .results .distance .distance_img {
+  margin: 1rem;
+}
+.landing .pharmacy-section .pharmacy_grid .pharmacy-card .results .distance .distance__value {
+  margin: 1rem;
+}
+.landing .pharmacy-section .pharmacy_grid .pharmacy-card .results .view-btn {
+  display: flex;
+  background-color: #006395;
+  align-items: center;
+  border-radius: 3rem;
+  padding: 1rem;
+  font-size: 1.6rem;
+  color: white;
+  font-weight: 500;
+  margin: 1rem;
+  max-width: fit-content;
+  gap: 1rem;
+  justify-content: center;
+}
+.landing .pharmacy-section .pharmacy_grid .pharmacy-card .results .view-btn .view_pharmacy {
+  margin-left: 1rem;
+}
+.landing .pharmacy-section .pharmacy_grid .pharmacy-card .results .view-btn .view_img {
+  margin-right: 1rem;
+}
+.landing .pharmacy-section .pharmacy_grid .pharmacy-card:hover {
+  transform: scale(1.05);
+  transition: all 0.3s;
+  background-color: white;
+  box-shadow: #ccc;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+.landing .pharmacy-section .pharamcy-img {
+  object-fit: none;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  align-content: center;
 }
 .landing .advantages-section {
   margin-top: 22rem;
@@ -2913,58 +3177,6 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .landing .stats-container .stat-blue .arc::before {
   background-color: var(--color-blue-01);
 }
-.landing .pharmacies-grid {
-  margin: 0 auto;
-  width: 100%;
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-}
-.landing .pharmacy-card {
-  background-color: white;
-  border-radius: 1.6rem;
-  width: 100%;
-  max-width: 24rem;
-  overflow: hidden;
-  position: relative;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-.landing .pharmacy-card:hover > .landing .pharmacy-card::after {
-  background-size: 100% 100%;
-}
-.landing .pharmacy-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-}
-.landing .pharmacy-card .pharmacy-img {
-  width: 100%;
-  z-index: 0;
-  height: auto;
-  object-fit: fill;
-}
-.landing .pharmacy-card .pharmacy-info {
-  padding: 1.2rem;
-  z-index: 10;
-  text-align: left;
-}
-.landing .pharmacy-card .pharmacy-name {
-  font-size: 2rem;
-  z-index: 10;
-  color: var(--color-green-02);
-  font-weight: 600;
-  font-size: 2rem;
-}
-.landing .pharmacy-card .pharmacy-rating {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  margin-bottom: 10px;
-}
-.landing .pharmacy-card .pharmacy-address {
-  color: var(--color-green-02);
-  font-size: 1.4rem;
-}
 .landing .joinus {
   margin: 8rem;
   padding: 2rem;
@@ -3074,6 +3286,97 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   color: var(--white);
   font-size: 1.4rem;
   font-family: var(--primary-font);
+}
+@media screen and (max-width: 790px) {
+  .landing .header-title {
+    font-size: 3.6rem;
+    margin-top: 2rem;
+  }
+  .landing .header-discription {
+    font-size: 1.8rem;
+    line-height: 2.8rem;
+    padding: 0 1rem;
+  }
+  .landing .header-background {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    height: 28rem;
+    clip-path: none;
+    border-radius: 2rem;
+  }
+  .landing {
+    /* Position corrections because absolute elements break in mobile */
+  }
+  .landing .fb-call-msg,
+  .landing .pills,
+  .landing .pillBW,
+  .landing .pillwhite,
+  .landing .pillblue,
+  .landing .side-words {
+    display: none; /* Hide for mobile */
+  }
+  .landing .upload-container {
+    bottom: -12%;
+    right: 50%;
+    transform: translateX(50%);
+  }
+  .landing .upload-container .upload-box {
+    width: 18rem;
+    height: 18rem;
+    border-width: 1rem;
+  }
+  .landing .upload-container .upload-box p {
+    font-size: 1.4rem;
+  }
+  .landing .advantages-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1rem;
+  }
+  .landing .mid-title {
+    font-size: 4rem;
+  }
+  .landing .stats-container {
+    flex-direction: column;
+    gap: 4rem;
+  }
+  .landing .stats-container .stat-orange,
+  .landing .stats-container .stat-blue {
+    width: 20rem;
+    height: 20rem;
+  }
+  .landing .stats-container .progress-text {
+    top: 10rem !important;
+    left: 3rem !important;
+  }
+  .landing .stats-container .progress-text .value {
+    font-size: 4rem;
+  }
+  .landing .stats-container .progress-text .label {
+    font-size: 1.8rem;
+  }
+  .landing .pharmacies-grid {
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  .landing .pharmacy-card {
+    max-width: 100%;
+    width: 100%;
+  }
+  .landing .joinus .button-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  .landing .joinus .button-group .btn {
+    width: 90%;
+    margin: auto;
+  }
+}
+@media screen and (min-width: 790px) and (max-width: 1090px) {
+  .landing .header-title {
+    font-size: 4.5rem;
+    margin-top: 2rem;
+  }
 }
 
 .top-pharmacy {
@@ -3701,198 +4004,12 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   border: 1px solid #008080;
 }
 
-/* pharmacy */
-.page-container {
-  display: flex;
-  gap: 2rem;
-  flex-direction: row;
-  height: 100vh;
-  margin-top: 2rem;
-}
-.page-container .col1-sidebar {
-  flex: 1;
-  background-color: #F7F7F7;
-  height: 75rem;
-  padding: 2rem 3rem;
-  align-items: flex-start;
-  gap: 2.2rem;
-  border-radius: 0 1rem 0 0;
-  max-width: 33.4rem;
-  flex-shrink: 0;
-  margin-left: -2rem;
-}
-.page-container .col1-sidebar h5 {
-  color: var(--color-yellow-02);
-  margin: 2rem 0rem 1rem 0rem;
-}
-.page-container .col1-sidebar h5::before {
-  content: "-";
-  color: var(--color-yellow-02);
-  margin-right: 0.5rem;
-  font-weight: 600;
-  font-size: large;
-}
-.page-container .col1-sidebar .barcode-container {
-  display: grid;
-  grid-template-columns: 20% 80%;
-  align-items: center;
-  padding: 1rem 2rem;
-  border: 1px solid rgba(8, 55, 79, 0.2);
-  border-radius: 1rem;
-  margin-bottom: 1rem;
-}
-.page-container .col1-sidebar ul li a {
-  color: var(--color-gray);
-  font-size: 1.8rem;
-  font-weight: 400;
-  text-decoration: none;
-  line-height: 2;
-  padding: 1rem 0rem;
-}
-.page-container .col2-content {
-  flex: 3;
-  padding: 2rem 3rem;
-  height: 75rem;
-  overflow-y: auto;
-  border-radius: 0 0 1rem 0;
-}
-.page-container .col2-content h5 {
-  height: 2rem;
-  color: var(--color-gray);
-}
-.page-container .col2-content .progress-container {
-  flex: 1;
-  width: 25.3rem;
-  height: 15.3rem;
-  background-color: #FFFFFF;
-  border-radius: 0.5rem;
-  position: relative;
-  margin-top: 2rem;
-  padding: 1rem 3rem 1rem 3rem;
-  border: 0.1rem solid rgba(0, 0, 0, 0.2);
-}
-.page-container .col2-content .progress-text {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  font-size: 1.6rem;
-  color: var(--color-gray);
-}
-.page-container .col2-content .daily-attendance {
-  position: absolute;
-  top: 20rem;
-  left: 53rem;
-  font-size: 2.8rem;
-  color: var(--color-gray);
-}
-.page-container .col2-content .circle {
-  position: absolute;
-  left: 2rem;
-  width: 10rem;
-  height: 10rem;
-  background-color: var(--color-yellow-02);
-  border-radius: 50%;
-  margin-top: 2rem;
-  background-image: conic-gradient(var(--color-yellow-02) 74%, white 0%);
-}
-.page-container .col2-content .circle::after {
-  position: absolute;
-  background-color: white;
-  display: inline-block;
-  width: 8rem;
-  top: 12%;
-  left: 9.8%;
-  height: 8rem;
-  content: "74%";
-  text-align: center;
-  line-height: 8rem;
-  border-radius: 50%;
-}
-.page-container .col2-content .staff-management-button {
-  flex: 2;
-  flex-direction: row;
-  margin-top: 2rem;
-  gap: 1rem;
-}
-.page-container .col2-content .create {
-  position: absolute;
-  background: var(--green-gradient, linear-gradient(91deg, #18978D 0%, #083851 100%));
-  top: 10rem;
-  left: 104rem;
-  color: white;
-  padding: 1rem 0rem;
-  border: none;
-  border-radius: 1rem;
-  width: 18.4rem;
-  height: 4.3rem;
-  cursor: pointer;
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-.page-container .col2-content .attend {
-  position: absolute;
-  top: 10rem;
-  left: 122rem;
-  background-color: var(--color-yellow-02);
-  color: white;
-  padding: 1rem 0rem;
-  border: none;
-  border-radius: 1rem;
-  width: 18.4rem;
-  height: 4.3rem;
-  cursor: pointer;
-  font-size: 1.6rem;
-  margin-left: 1rem;
-}
-.page-container .col2-content table {
-  position: absolute;
-  border: 0.1rem solid rgba(0, 0, 0, 0.2);
-  border-radius: 0.5rem;
-  width: 75%;
-  left: 35rem;
-}
-.page-container .col2-content table th {
-  background-color: rgba(0, 0, 0, 0.2);
-  color: var(--color-gray);
-  padding: 2rem;
-}
-.page-container .col2-content table td {
-  position: relative;
-  padding: 2rem;
-  left: 6rem;
-}
-.page-container .popup-top {
-  display: flex;
-  justify-content: space-between;
-}
-.page-container .attendance-form input {
-  width: 30rem;
-}
-.page-container .loading {
-  background-color: #eee;
-  color: #111;
-}
-.page-container .error {
-  background-color: var(--color-yellow-02);
-}
-.page-container .complete {
-  background-color: var(--color-green-01);
-}
-
 .landingPage {
   margin-right: 0%;
-}
-.landingPage body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background: #f9f9f9;
-  color: #222;
-}
-.landingPage {
   /* Header */
 }
 .landingPage .header {
-  margin: 1rem;
+  margin: 3rem 5rem 1rem 5rem;
   position: relative;
   padding: 4rem;
 }
@@ -3945,8 +4062,8 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .landingPage .header .contact-card {
   position: absolute;
-  right: 2rem;
-  top: 23rem;
+  right: 7rem;
+  top: 30rem;
   color: #fff;
   padding: 2.5rem;
   border-radius: 20px;
@@ -4001,17 +4118,29 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .landingPage .store {
   padding: 2rem;
+  margin: 0 3rem;
 }
-.landingPage .store h2 {
+.landingPage .store .store-shape {
   display: flex;
+  width: 12rem;
+  height: 40px;
+  background-color: var(--color-yellow-01);
   color: #000;
-  background: linear-gradient(98deg, rgba(255, 255, 255, 0) 83.19%, #faf9f9 80.48%), linear-gradient(82deg, #F9A550 83.19%, rgba(249, 165, 80, 0) 83.48%);
-  height: 3.6rem;
-  width: 12.9rem;
   padding: 1rem;
   align-items: center;
   justify-content: left;
-  gap: 1rem;
+  position: relative;
+}
+.landingPage .store .store-shape:before {
+  content: " ";
+  position: absolute;
+  right: -20px;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 20px solid var(--color-yellow-01);
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
 }
 .landingPage .store p {
   color: #004848;
@@ -4025,125 +4154,110 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   height: 8rem;
 }
 .landingPage .store .search-bar {
+  display: flex;
   margin: 1rem 0;
+  justify-content: space-between;
+  align-items: baseline;
 }
 .landingPage .store .search-bar input {
-  display: flex;
   width: 64rem;
   height: 4rem;
-  justify-content: space-between;
   align-items: center;
   padding: 1rem 1.5rem;
   border-radius: 1rem;
   border: 0.1rem solid #ccc;
 }
-.landingPage .store .products {
+.landingPage .store .search-bar .cartbtn {
   display: flex;
-  gap: 3.5rem;
-  flex-wrap: nowrap;
-  width: 100%;
-  margin-top: 4rem;
-}
-.landingPage .store .product-card {
-  background: #fff;
-  border-radius: 1rem;
-  border: 0.1rem solid #EEE;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+  background-color: var(--color-blue-01);
+  border-radius: 2rem;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 500;
   padding: 1rem;
-  width: 25.4rem;
-  gap: 2rem;
-  height: 39rem;
-  text-align: left;
-  align-items: flex-start;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s;
-}
-.landingPage .store .product-card:hover {
-  transform: translateY(-4px);
-}
-.landingPage .store .product-card .img-container {
   position: relative;
-  width: 100%;
-  height: 24.4rem;
-  gap: 2rem;
 }
-.landingPage .store .product-card .img-container img {
-  width: 100%;
-  border-radius: 8px;
-  height: 23rem;
-}
-.landingPage .store .product-card .img-container .price-badge {
+.landingPage .store .search-bar .cartbtn.addToCart::before {
+  content: " ";
   position: absolute;
-  bottom: 2rem;
-  right: 0.8rem;
-  background: #fff;
-  border-radius: 8px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--font-linear-secondary-color);
+  border-radius: 2rem;
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms ease-in-out;
+}
+.landingPage .store .search-bar .cartbtn.addToCart:hover::before {
+  transform: scaleX(1);
+  cursor: pointer;
+}
+.landingPage .store .search-bar .cartbtn.addToCart {
+  transition: color 300ms easy-in-out;
+  z-index: 1;
+}
+.landingPage .store .Medicines_grid {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(4, 32rem); /* 4 columns */
+  margin: 5rem;
+  justify-content: center;
+  max-width: fit-content;
+  border: 0.1rem solid #ccc;
+}
+.landingPage .store .Medicines_grid .medicine-card {
+  padding: 2rem;
+  border: 0.1rem solid #ccc;
+  width: 100%;
+}
+.landingPage .store .Medicines_grid .medicine-card .medi-img {
+  text-align: center;
+}
+.landingPage .store .Medicines_grid .medicine-card .med_infomation .medicine_name {
+  font-weight: 500;
+}
+.landingPage .store .Medicines_grid .medicine-card .med_infomation .medicine_name .name {
+  font-weight: 600;
+  color: #979696;
+}
+.landingPage .store .Medicines_grid .medicine-card .med_infomation .medicine__info__price {
+  display: flex;
+  gap: 2rem;
+  color: #1A7F89;
+  padding: 1rem 0;
+  font-weight: 600;
+}
+.landingPage .store .Medicines_grid .medicine-card .med_infomation .medicine__info__price span {
+  display: flex;
+}
+.landingPage .store .Medicines_grid .medicine-card .results .map-serach {
+  display: flex;
+  background-color: #E8F7FF;
+  border-radius: 3rem;
   padding: 1rem;
+  font-size: 1.6rem;
+  color: #08374F;
+  font-weight: 500;
+  max-width: fit-content;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
-  line-height: normal;
-  font-style: normal;
-  font-weight: 500;
-  border-radius: 1rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
-.landingPage .store .product-card h3 {
-  margin: 0.8rem 0;
-  font-family: "Red Hat Display";
-  font-style: normal;
-  line-height: normal;
-  font-size: 2rem;
-  font-weight: 500;
+.landingPage .store .Medicines_grid .medicine-card .results .map-serach .world_img {
+  margin-right: 1rem;
 }
-.landingPage .store .product-card {
-  /* Sizes */
-}
-.landingPage .store .product-card .sizes {
-  display: flex;
-  justify-content: left;
-  gap: 0.5rem;
-  margin: 0.8rem 0rem;
-}
-.landingPage .store .product-card .sizes button {
-  background: none;
-  border: 1px solid #222;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
+.landingPage .store .Medicines_grid .medicine-card:hover {
+  transform: scale(1.05);
+  transition: all 0.3s;
+  background-color: white;
+  box-shadow: #ccc;
+  border-radius: 2rem;
   cursor: pointer;
-  font-weight: bold;
-}
-.landingPage .store .product-card .sizes button:hover {
-  background: #0a8f8f;
-  color: #fff;
-  border-color: #0a8f8f;
-}
-.landingPage .store .product-card {
-  /* Quantity */
-}
-.landingPage .store .product-card .quantity {
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  gap: 4.5rem;
-}
-.landingPage .store .product-card .quantity button {
-  background: #0a8f8f;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  width: 32px;
-  height: 32px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.landingPage .store .product-card .quantity button:hover {
-  background: #0a8f8f;
-}
-.landingPage .store .product-card .quantity .count {
-  font-size: 1rem;
-  font-weight: bold;
 }
 .landingPage .store .contactBtn {
   display: flex;
@@ -4176,7 +4290,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   margin-top: 0.4rem;
 }
 .landingPage .feedback {
-  margin-top: 15rem;
+  margin: 10rem;
 }
 .landingPage .feedback .feedbackHeading {
   color: #000;
@@ -4187,19 +4301,19 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   line-height: normal;
   text-align: center;
   text-transform: capitalize;
+  margin: 5rem;
 }
 .landingPage .feedback .feedbackCards {
   display: flex;
-  position: absolute;
   top: 180%;
   left: 12%;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  width: 118.6rem;
   height: 37.8rem;
   background: #FFE5CA;
+  margin: 2rem 10rem;
 }
 .landingPage .feedback .feedbackCards .cardOne {
   position: relative;
@@ -4525,116 +4639,335 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .landingPage .feedback .feedbackCards .cardFour .cardFooter .lWord {
   opacity: 0.7;
 }
-.landingPage .footer {
-  position: absolute;
-  top: 240%;
-  width: 100%;
-  height: 30rem;
-  background: #08374F;
-  color: #fff;
-  padding: 5rem 7rem 0rem 7rem;
-  margin: -3%;
+.landingPage .meetOurTeam {
+  margin: 5rem;
+  margin-bottom: 15rem;
+  text-align: center;
 }
-.landingPage .footer .footer-content {
+.landingPage .meetOurTeam .header-section .header-row {
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-bottom: 5rem;
-}
-.landingPage .footer .footer-content .footer-logo {
-  display: flex;
-  flex-direction: row;
+  justify-content: center;
   align-items: center;
 }
-.landingPage .footer .footer-content .footer-logo img {
-  width: 50px;
-  margin-bottom: 0.5rem;
+.landingPage .meetOurTeam .header-section .header-row .line {
+  width: 50rem;
+  height: 0.1rem;
+  background-color: #000;
 }
-.landingPage .footer .footer-content .footer-logo h3 {
-  margin: 0;
-  font-size: 1.2rem;
-}
-.landingPage .footer .footer-content .footer-links h4 {
-  margin-bottom: 0.5rem;
-  color: #FFF;
-  width: 23.8rem;
-  height: 2.6rem;
-  font-family: "Red Hat Display";
-  font-size: 2rem;
-  font-style: normal;
+.landingPage .meetOurTeam .header-section .header-row .header {
+  font-size: 3rem;
+  text-transform: capitalize;
   font-weight: 500;
-  line-height: normal;
+  padding: 1rem;
+  text-align: center;
+  margin: 1rem;
 }
-.landingPage .footer .footer-content .footer-links ul {
-  list-style: none;
-  padding: 0;
-}
-.landingPage .footer .footer-content .footer-links ul li {
-  margin: 0.3rem 0;
-}
-.landingPage .footer .footer-content .footer-links ul li a {
-  color: #FFF;
-  font-family: "Red Hat Display";
-  font-size: 1.8rem;
-  font-style: normal;
-  text-decoration: none;
-  font-weight: 200;
-  line-height: 3rem;
-  opacity: 0.78;
-}
-.landingPage .footer .footer-content .footer-links ul li a:hover {
-  color: #00c3ff;
-}
-.landingPage .footer .footer-content .footer-description {
-  max-width: 25rem;
-}
-.landingPage .footer .footer-content .footer-description h4 {
-  margin-bottom: 0.5rem;
-  color: #FFF;
-  font-family: "Red Hat Display";
+.landingPage .meetOurTeam .header-section .description {
   font-size: 2rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  height: 2.6rem;
+  text-transform: capitalize;
+  text-align: center;
+  padding: 1rem;
+  margin: 1rem;
 }
-.landingPage .footer .footer-content .footer-description p {
-  font-size: 0.9rem;
-  line-height: 1.4;
-  color: #FFF;
-  font-family: "Red Hat Display";
+.landingPage .meetOurTeam .teamMembers {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  text-align: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 500;
+}
+.landingPage .meetOurTeam .teamMembers .owner {
   font-size: 1.5rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  height: 12.8rem;
-  opacity: 0.78;
-}
-.landingPage .footer .footer-bottom {
-  border-top: 1px solid #4c6a84;
-  padding-top: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
   align-items: center;
 }
-.landingPage .footer .footer-bottom p {
-  margin: 0;
-  font-size: 0.85rem;
+.landingPage .meetOurTeam .teamMembers .owner img {
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
 }
-.landingPage .footer .footer-bottom .footer-nav {
+.landingPage .meetOurTeam .teamMembers .owner .title {
+  color: var(--color-green-01);
+  text-transform: capitalize;
+}
+.landingPage .meetOurTeam .teamMembers .owner .owner-name {
+  font-size: 2rem;
+}
+.landingPage .meetOurTeam .teamMembers .contac-information {
+  font-size: 2rem;
+  align-items: center;
+}
+.landingPage .meetOurTeam .teamMembers .contac-information .title {
+  color: var(--color-green-01);
+  text-transform: capitalize;
+}
+.landingPage .meetOurTeam .teamMembers .contac-information .email {
+  font-size: 2rem;
+}
+.landingPage .meetOurTeam .teamMembers .pharmacist {
+  font-size: 1.5rem;
+  align-items: center;
+}
+.landingPage .meetOurTeam .teamMembers .pharmacist img {
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+}
+.landingPage .meetOurTeam .teamMembers .pharmacist .title {
+  color: var(--color-green-01);
+  text-transform: capitalize;
+}
+.landingPage .meetOurTeam .teamMembers .pharmacist .pharmacist-name {
+  font-size: 2rem;
+}
+.landingPage .footer {
+  color: var(--white);
+  font-family: var(--primary-font);
+  padding: 3rem;
+  height: 57.9rem;
+  clip-path: polygon(0% 0%, 100% 10%, 100% 100%, 0% 100%);
+  background-color: var(--color-green-02);
+}
+.landingPage .footer .main {
+  padding: 8rem 3rem;
+  color: #cfd8dc;
   display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: self-start;
+  color: var(--white);
+  font-size: 2.4rem;
 }
-.landingPage .footer .footer-bottom .footer-nav a {
-  font-size: 0.85rem;
-  color: #fff;
+.landingPage .footer .logo {
+  font-family: var(--secondary-font);
+  display: flex;
+  align-items: center;
+  mix-blend-mode: plus-lighter;
+}
+.landingPage .footer .logo .logopic {
+  height: 4.6rem;
+  margin-right: 1rem;
+}
+.landingPage .footer .logo .logoname {
+  font-weight: bold;
+  color: var(--white);
+  font-size: 1.6rem;
+}
+.landingPage .footer .site-map li {
+  list-style: none;
+}
+.landingPage .footer .site-map a {
+  color: #bdc6cb;
+  line-height: 5rem;
   text-decoration: none;
-  transition: color 0.3s;
+  color: #bdc6cb;
+  font-size: 1.8rem;
+  font-family: var(--primary-font);
 }
-.landingPage .footer .footer-bottom .footer-nav a:hover {
-  color: #00c3ff;
+.landingPage .footer .footer-title {
+  color: var(--white);
+  margin: 5rem 0;
+}
+.landingPage .footer .footer-discription p {
+  color: #bdc6cb;
+  margin: 2rem 0;
+  font-size: 1.8rem;
+}
+.landingPage .footer .bottom {
+  margin: 10rem 0 2rem 0;
+}
+.landingPage .footer .bottom nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  color: #75a6cd;
+  gap: 2rem;
+  font-size: 1.6rem;
+}
+.landingPage .footer .bottom nav > a {
+  text-decoration: none;
+  color: var(--white);
+  font-size: 1.6rem;
+  font-family: var(--primary-font);
+}
+
+/* pharmacy */
+.page-container {
+  display: flex;
+  gap: 2rem;
+  flex-direction: row;
+  height: 100vh;
+  margin-top: 2rem;
+}
+.page-container .col1-sidebar {
+  flex: 1;
+  background-color: #F7F7F7;
+  height: 75rem;
+  padding: 2rem 3rem;
+  align-items: flex-start;
+  gap: 2.2rem;
+  border-radius: 0 1rem 0 0;
+  max-width: 33.4rem;
+  flex-shrink: 0;
+  margin-left: -2rem;
+}
+.page-container .col1-sidebar h5 {
+  color: var(--color-yellow-02);
+  margin: 2rem 0rem 1rem 0rem;
+}
+.page-container .col1-sidebar h5::before {
+  content: "-";
+  color: var(--color-yellow-02);
+  margin-right: 0.5rem;
+  font-weight: 600;
+  font-size: large;
+}
+.page-container .col1-sidebar .barcode-container {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  align-items: center;
+  padding: 1rem 2rem;
+  border: 1px solid rgba(8, 55, 79, 0.2);
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+.page-container .col1-sidebar ul li a {
+  color: var(--color-gray);
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-decoration: none;
+  line-height: 2;
+  padding: 1rem 0rem;
+}
+.page-container .col2-content {
+  flex: 3;
+  padding: 2rem 3rem;
+  height: 75rem;
+  overflow-y: auto;
+  border-radius: 0 0 1rem 0;
+}
+.page-container .col2-content h5 {
+  height: 2rem;
+  color: var(--color-gray);
+}
+.page-container .col2-content .progress-container {
+  flex: 1;
+  width: 25.3rem;
+  height: 15.3rem;
+  background-color: #FFFFFF;
+  border-radius: 0.5rem;
+  position: relative;
+  margin-top: 2rem;
+  padding: 1rem 3rem 1rem 3rem;
+  border: 0.1rem solid rgba(0, 0, 0, 0.2);
+}
+.page-container .col2-content .progress-text {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 1.6rem;
+  color: var(--color-gray);
+}
+.page-container .col2-content .daily-attendance {
+  position: absolute;
+  top: 20rem;
+  left: 53rem;
+  font-size: 2.8rem;
+  color: var(--color-gray);
+}
+.page-container .col2-content .circle {
+  position: absolute;
+  left: 2rem;
+  width: 10rem;
+  height: 10rem;
+  background-color: var(--color-yellow-02);
+  border-radius: 50%;
+  margin-top: 2rem;
+  background-image: conic-gradient(var(--color-yellow-02) 74%, white 0%);
+}
+.page-container .col2-content .circle::after {
+  position: absolute;
+  background-color: white;
+  display: inline-block;
+  width: 8rem;
+  top: 12%;
+  left: 9.8%;
+  height: 8rem;
+  content: "74%";
+  text-align: center;
+  line-height: 8rem;
+  border-radius: 50%;
+}
+.page-container .col2-content .staff-management-button {
+  flex: 2;
+  flex-direction: row;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+.page-container .col2-content .create {
+  position: absolute;
+  background: var(--green-gradient, linear-gradient(91deg, #18978D 0%, #083851 100%));
+  top: 10rem;
+  left: 104rem;
+  color: white;
+  padding: 1rem 0rem;
+  border: none;
+  border-radius: 1rem;
+  width: 18.4rem;
+  height: 4.3rem;
+  cursor: pointer;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.page-container .col2-content .attend {
+  position: absolute;
+  top: 10rem;
+  left: 122rem;
+  background-color: var(--color-yellow-02);
+  color: white;
+  padding: 1rem 0rem;
+  border: none;
+  border-radius: 1rem;
+  width: 18.4rem;
+  height: 4.3rem;
+  cursor: pointer;
+  font-size: 1.6rem;
+  margin-left: 1rem;
+}
+.page-container .col2-content table {
+  position: absolute;
+  border: 0.1rem solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+  width: 75%;
+  left: 35rem;
+}
+.page-container .col2-content table th {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: var(--color-gray);
+  padding: 2rem;
+}
+.page-container .col2-content table td {
+  position: relative;
+  padding: 2rem;
+  left: 6rem;
+}
+.page-container .popup-top {
+  display: flex;
+  justify-content: space-between;
+}
+.page-container .attendance-form input {
+  width: 30rem;
+}
+.page-container .loading {
+  background-color: #eee;
+  color: #111;
+}
+.page-container .error {
+  background-color: var(--color-yellow-02);
+}
+.page-container .complete {
+  background-color: var(--color-green-01);
 }
 
 .staffMember .page-container {
@@ -9121,9 +9454,96 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   height: 100%;
   overflow-y: scroll;
 }
+.pharmacyDashboard .dashboards .container .orderleft-side {
+  position: relative;
+}
+.pharmacyDashboard .dashboards .container .orderleft-side .L-side {
+  --r: 2rem; /* the radius */
+  --s: 3rem; /* size of inner curve */
+  --x: 22rem; /* horizontal offset (no percentage) */
+  --y: 2rem; /* vertical offset (no percentage) */
+  aspect-ratio: 1;
+  border: 0.1rem solid #ccc;
+  background-color: white;
+  border-radius: var(--r);
+  --_m:/calc(2*var(--r)) calc(2*var(--r)) radial-gradient(#000 70%,#0000 72%);
+  --_g:conic-gradient(at calc(100% - var(--r)) var(--r),#0000 25%,#000 0);
+  --_d:(var(--s) + var(--r));
+  mask: calc(100% - var(--_d) - var(--x)) 0 var(--_m), 100% calc(var(--_d) + var(--y)) var(--_m), radial-gradient(var(--s) at 100% 0, rgba(0, 0, 0, 0) 99%, #000 calc(100% + 1px)) calc(-1 * var(--r) - var(--x)) calc(var(--r) + var(--y)), var(--_g) calc(-1 * var(--_d) - var(--x)) 0, var(--_g) 0 calc(var(--_d) + var(--y));
+  mask-repeat: no-repeat;
+}
+.pharmacyDashboard .dashboards .container .orderleft-side .L-side .search-bar {
+  padding: 1rem;
+}
+.pharmacyDashboard .dashboards .container .orderleft-side .L-side .medicine_card {
+  margin: 1rem;
+}
+.pharmacyDashboard .dashboards .container .orderleft-side .L-side .medicine_card .stock__amount__out {
+  background-color: #fb5821;
+  border-radius: 2rem;
+  padding: 1rem;
+  color: white;
+  width: 15rem;
+  justify-content: center;
+}
+.pharmacyDashboard .dashboards .container .orderleft-side .L-side .medicine_card .stock__amount__out:hover {
+  background-color: #c64013;
+}
+.pharmacyDashboard .dashboards .container .orderleft-side .L-side .medicine_card .stock__amount__available {
+  background-color: var(--color-green-01);
+  border-radius: 2rem;
+  color: white;
+  padding: 1rem;
+  width: 15rem;
+  justify-content: center;
+}
+.pharmacyDashboard .dashboards .container .orderleft-side .L-side .medicine_card .stock__amount__available:hover {
+  background-color: #136863;
+}
+.pharmacyDashboard .dashboards .container .orderleft-side .right-btns {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  padding: 1rem;
+  background-color: black;
+  font-size: 1.5rem;
+  font-weight: 500;
+  border-top-right-radius: 3rem;
+  z-index: -1;
+}
+.pharmacyDashboard .dashboards .container .orderleft-side .right-btns span {
+  display: flex;
+  background: linear-gradient(to right, var(--color-green-01) 0, #136863 75%);
+  border-radius: 3rem;
+  margin: 0rem 1rem 3rem 3rem;
+}
+.pharmacyDashboard .dashboards .container .orderleft-side .right-btns span .search-btn {
+  background-color: black;
+  border-radius: 2rem;
+  padding: 0.7rem;
+  margin: 1rem;
+  color: white;
+  width: 10rem;
+  text-align: center;
+  z-index: 100;
+  cursor: pointer;
+}
+.pharmacyDashboard .dashboards .container .orderleft-side .right-btns span .payment-btn {
+  background-color: white;
+  border-radius: 2rem;
+  padding: 0.7rem;
+  margin: 1rem;
+  width: 10rem;
+  text-align: center;
+  cursor: pointer;
+  z-index: 1;
+}
 .pharmacyDashboard .dashboards .container .right-side {
   padding: 1rem;
   grid-area: right-side;
+}
+.pharmacyDashboard .dashboards .container .right-side img {
+  object-fit: cover;
 }
 .pharmacyDashboard .dashboards .container .right-side .medicine_summery__description {
   text-align: center;
@@ -9138,23 +9558,211 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   background-image: linear-gradient(120deg, rgba(0, 186, 172, 0.8), rgba(18, 126, 181, 0.8)), url("/images/med.jpg");
   background-position: center;
 }
-.pharmacyDashboard .dashboards .container .right-side .bookmarks {
+.pharmacyDashboard .dashboards .container .order-right-side {
+  margin: 1rem;
+}
+.pharmacyDashboard .dashboards .container .order-right-side .order_summery__description {
+  display: flex;
+  justify-content: space-between;
+}
+.pharmacyDashboard .dashboards .container .order-right-side .order_summery__description .total_sales, .pharmacyDashboard .dashboards .container .order-right-side .order_summery__description .total_orders {
+  border: 0.1rem solid #ccc;
+  border-radius: 2rem;
+  padding: 1rem;
+  margin: 1rem;
+  display: flex;
+  justify-content: space-between;
+  width: 25rem;
+}
+.pharmacyDashboard .dashboards .container .order-right-side .cart_summery_box {
+  position: relative;
+}
+.pharmacyDashboard .dashboards .container .order-right-side .cart_summery_box img {
+  object-fit: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pharmacyDashboard .dashboards .container .order-right-side .cart_summery_box .quick_access_2 {
   width: 100%;
+  height: 24rem;
+  border-radius: 3rem;
+  background-image: linear-gradient(120deg, rgba(0, 186, 172, 0.8), rgba(18, 126, 181, 0.8)), url("/images/med.jpg");
+  background-position: center;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2rem 0;
-  padding: 0 1rem;
+  justify-content: space-between;
 }
-.pharmacyDashboard .dashboards .container .right-side .bookmarks .bookmarks__title {
+.pharmacyDashboard .dashboards .container .order-right-side .cart_summery_box .quick_access_2 .cart_summery, .pharmacyDashboard .dashboards .container .order-right-side .cart_summery_box .quick_access_2 .total_cart_summery, .pharmacyDashboard .dashboards .container .order-right-side .cart_summery_box .quick_access_2 .proceed_to_payment {
+  border-radius: 3rem;
+  margin: 1rem;
+  padding: 1.5rem;
+  width: 20rem;
+  height: 13rem;
+  display: grid;
+  gap: 1.5rem;
   font-size: 2rem;
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  align-self: flex-end;
 }
-.pharmacyDashboard .dashboards .container .right-side .bookmarks .bookmarks__title svg {
-  width: 2rem;
+.pharmacyDashboard .dashboards .container .order-right-side .cart_summery_box .quick_access_2 .cart_summery div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.pharmacyDashboard .dashboards .container .order-right-side .cart_summery_box .quick_access_2 .cart_summery {
+  background-color: white;
+  border: 0.1rem solid #ccc;
+}
+.pharmacyDashboard .dashboards .container .order-right-side .cart_summery_box .quick_access_2 .total_cart_summery div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.pharmacyDashboard .dashboards .container .order-right-side .cart_summery_box .quick_access_2 .total_cart_summery {
+  background-color: var(--color-green-02);
+  color: white;
+}
+.pharmacyDashboard .dashboards .container .order-right-side .cart_summery_box .quick_access_2 .proceed_to_payment {
+  background-color: black;
+  color: white;
+  font-size: 1.5rem;
+}
+.pharmacyDashboard .dashboards .container .order-right-side .cart_summery_box .quick_access_2 .proceed_to_payment .pay_button {
+  background-color: var(--color-yellow-01);
+  border-radius: 3rem;
+  border: 0.2rem solid white;
+  color: #000;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.pharmacyDashboard .dashboards .container .order-right-side .cart_summery_box .cart_list {
+  position: absolute;
+  top: 65%;
+  width: 100%;
+  background-color: #eeeeee;
+  border-radius: 3rem;
+  padding: 1rem;
+}
+.pharmacyDashboard .dashboards .container .order-right-side .cart_summery_box .cart_list .medicine_card {
+  margin: 1rem;
+  background-color: white;
+}
+.pharmacyDashboard .dashboards .product_container {
+  display: grid;
+  grid-template-columns: 40rem 1fr;
+  grid-template-rows: 8rem 1fr;
+}
+.pharmacyDashboard .dashboards .product_container .left-side {
+  background-color: #eee;
+  border-radius: 3rem;
+  height: 70rem;
+}
+.pharmacyDashboard .dashboards .product_container .left-side .search-bar {
+  margin: 1rem;
+}
+.pharmacyDashboard .dashboards .product_container .left-side .pagination {
+  display: flex;
+  gap: 0.7rem;
+  background: white;
+  padding: 0.8rem 1.2rem;
+  border-radius: 2rem;
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+}
+.pharmacyDashboard .dashboards .product_container .left-side .pagination .page {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #e9e9e9;
+  font-family: sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.pharmacyDashboard .dashboards .product_container .left-side .pagination .page:hover {
+  background: #dcdcdc;
+}
+.pharmacyDashboard .dashboards .product_container .left-side .pagination .page.active {
+  background: #0b334b;
+  color: white;
+}
+.pharmacyDashboard .dashboards .product_container .left-side .pagination .page.next {
+  font-size: 20px;
+  font-weight: bold;
+}
+.pharmacyDashboard .dashboards .product_container .right-side .top_bar {
+  display: flex;
+  justify-content: space-between;
+}
+.pharmacyDashboard .dashboards .product_container .right-side .top_bar .view-toggle {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, #2bc4c8, #0b527a);
+  padding: 4px;
+  width: fit-content;
+  border-radius: 40px;
+}
+.pharmacyDashboard .dashboards .product_container .right-side .top_bar .view-toggle .toggle-btn {
+  width: 55px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: 0.3s ease;
+}
+.pharmacyDashboard .dashboards .product_container .right-side .top_bar .view-toggle .list-active {
+  background-color: white;
+}
+.pharmacyDashboard .dashboards .product_container .right-side .top_bar .view-toggle .list-active.active {
+  background: var(--color-green-02);
+}
+.pharmacyDashboard .dashboards .product_container .right-side .top_bar .view-toggle .list-active.active i {
+  color: white;
+}
+.pharmacyDashboard .dashboards .product_container .right-side .top_bar .view-toggle .grid {
+  background-color: var(--color-green-02);
+}
+.pharmacyDashboard .dashboards .product_container .product-list {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.pharmacyDashboard .dashboards .product_container .medicine_card {
+  border: none;
+  width: 30rem;
+  height: 15rem;
+  margin: 1rem;
+}
+.pharmacyDashboard .dashboards .product_container .medicine_card .details .medicine__name .name {
+  font-weight: 500;
+  color: #979696;
+}
+.pharmacyDashboard .dashboards .product_container .medicine_card .results img {
+  margin-right: 1rem;
+}
+.pharmacyDashboard .dashboards .product_container .medicine_card .results .map-serach {
+  background-color: #E8F7FF;
+  border-radius: 2rem;
+  padding: 1rem;
+  font-size: 2rem;
+  color: #08374F;
+  font-weight: 500;
+  margin: 1rem;
+}
+.pharmacyDashboard .dashboards .product_container .medicine_card .results .lock_result {
+  background-color: #FFE0C0;
+  border-radius: 2rem;
+  padding: 1rem;
+  font-size: 2rem;
+  color: #7A4C1D;
+  font-weight: 500;
+  margin: 1rem;
 }
 
 /* admin */

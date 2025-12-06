@@ -10,6 +10,7 @@ const otpController = require('../../controllers/auth/sendOTP.controller');
 const authRouter = SubRouter.route('/')
 .subRoute('/login' , {
     get : loginController.renderLogin,
+    post : loginController.login,
 })
 .subRoute('/signup' , {
     get : signupController.renderSignup,

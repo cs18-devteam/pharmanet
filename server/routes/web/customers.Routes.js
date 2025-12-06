@@ -6,6 +6,10 @@ const pharmacyController = require('../../controllers/pharmacy/pharmacy.controll
 
  // :: CUSTOMER ROUTES
 const customerRouter = SubRouter.route('/customers/:customerId')
+//new adding part to view medicine
+.subRoute('/' , {
+    get : customerController.renderPharmacyView,
+})
 .subRoute('/' , {
     get: customerController.renderCustomerHome
 })

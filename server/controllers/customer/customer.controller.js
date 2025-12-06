@@ -43,3 +43,14 @@ exports.renderCustomerProfile = async (req , res)=>{
         }
 }
 
+//new adding to medicine view
+exports.renderPharmacyView = async (req , res)=>{
+
+    return response(res , view('customer/customer.pharmacy.landingPage' , {
+        navbar : view('customer/navbar.customer' , {}),
+        header : view('component.header' , {
+                name:"medicine view",
+        }),
+    }) , 200)
+}
+

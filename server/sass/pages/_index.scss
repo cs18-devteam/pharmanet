@@ -11,10 +11,12 @@
 @forward "./customer/search-pharmacy";
 @forward "./customer/contactUs";
 @forward "./customer/userUpdate";
+@forward "./customer/medicine_view_page";
+@forward "./customer/pharmacyLandingPage";
 
 /* pharmacy */
 @forward "./pharmacy/staff/attendance";
-@forward "./pharmacy/pharmarcyLandingPage";
+//@forward "./pharmacy/pharmarcyLandingPage";
 @forward "./pharmacy/staff/staffMember";
 @forward "./pharmacy/stock/productManagement";
 @forward "./pharmacy/staff/pharmacy-member-intro";

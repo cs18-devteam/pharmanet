@@ -15,6 +15,8 @@ const { pharmacistRouter, pharmacyApiRouter, pharmacyRouter } = require('./route
 const { cashiersBillsApiRouter, cashiersBillsRouter, pharmacistBillsRouter, pharmacistBillsApiRouter, pharmacyOwnersBillsRouter, pharmacyOwnersBillsApiRouter } = require('./routes/web/pharmacy.bills.Routes');
 const { cashierRouter, cashierApiRouter } = require('./routes/web/cashier.Routes');
 const path = require('path');
+const Payment = require('./payhere/Payment');
+const { paymentApiRouter } = require('./routes/api/api.payment.Routes');
 
 
 const server = http.createServer((req , res)=>{
@@ -60,6 +62,7 @@ const server = http.createServer((req , res)=>{
         pharmacyOwnersBillsApiRouter.pipe(req, res);
         cashierRouter.pipe(req , res);
         cashierApiRouter.pipe(req , res);
+        paymentApiRouter.pipe(req , res);
 
 
         return AppRouter.pipe(req ,res).end();
@@ -80,6 +83,8 @@ const server = http.createServer((req , res)=>{
 
 
 SubRouter.save("./routes.ReadME.md");
+
+
 
 
 

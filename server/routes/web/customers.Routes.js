@@ -4,6 +4,7 @@ const customerController = require('../../controllers/customer/customer.controll
 const customerPharmacyController = require('../../controllers/customer/customer.pharmacies.controller');
 const pharmacyController = require('../../controllers/pharmacy/pharmacy.controller');
 const { authenticate } = require("../../middlewares/authenticate");
+const customerPaymentController = require("../../controllers/customer/customer.payments.controller");
 
  // :: CUSTOMER ROUTES
 const customerRouter = SubRouter.route('/customers/:customerId')
@@ -34,6 +35,9 @@ const customerRouter = SubRouter.route('/customers/:customerId')
 .subRoute('/transaction')
 .subRoute('/orders')
 .subRoute('/orders/:orderId')
+.subRoute('/orders/:orderId/checkout' , {
+    get : customerPaymentController.redirectToPaymentGateWay
+});
 
 
 

@@ -12,6 +12,9 @@ class MedicineModel extends Model{
             type:"VARCHAR(100)",
         }
         
+        this.image = {
+            type:"VARCHAR(100)"
+        }
         // this.serialNumber = {
         //     type:"VARCHAR(100)",
         //     null: false,

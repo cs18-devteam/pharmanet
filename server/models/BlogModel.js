@@ -37,6 +37,9 @@ class BlogModel extends Model{
             type:"VARCHAR(20)"
         }
 
+        this.links = {
+            type : "VARCHAR(200)",
+        }
         
 
     }

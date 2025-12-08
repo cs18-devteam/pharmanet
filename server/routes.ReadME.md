@@ -1,5 +1,6 @@
 /
 /contactus
+/aboutus
 /login
 /signup
 /verify/:userId/email

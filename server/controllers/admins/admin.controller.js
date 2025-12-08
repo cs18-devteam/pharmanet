@@ -1,9 +1,8 @@
-const Bridge = require("../../common/Bridge");
 const { getRequestData } = require("../../common/getRequestData");
 const { response, responseJson } = require("../../common/response");
 const view = require("../../common/view");
 const Database = require("../../database/Database");
-const Users = require("../../model/UserModel");
+const Users = require("../../models/UserModel");
 const db = Database.getInstance();
 
 

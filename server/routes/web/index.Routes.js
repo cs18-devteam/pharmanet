@@ -10,3 +10,6 @@ exports.indexRouter = SubRouter.route('/')
 .subRoute('/contactus' , {
     get : contactUsController.renderContactus,
 })
+.subRoute('/aboutus' , {
+    get : contactUsController.renderAboutUs,
+})

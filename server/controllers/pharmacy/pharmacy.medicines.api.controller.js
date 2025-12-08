@@ -1,4 +1,3 @@
-const { publicca } = require("googleapis/build/src/apis/publicca");
 const { response, responseJson } = require("../../common/response");
 const view = require("../../common/view");
 const Medicines = require("../../models/MedicineModel");

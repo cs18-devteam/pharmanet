@@ -14,3 +14,16 @@ exports.renderContactus = async (req , res)=>{
         return response(res , view('404') , 404);
     }
 }
+
+exports.renderAboutUs = async (req , res)=>{
+    try{
+
+        return response(res , view("aboutus" , {
+            header : view('component.header' , {
+                name:"Who are We ? || Pharmanet",
+            })
+        }) , 200);
+    }catch(e){
+        return response(res , view('404') , 404);
+    }
+}

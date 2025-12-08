@@ -1768,6 +1768,75 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   cursor: pointer;
 }
 
+.footer {
+  background-color: var(--color-green-02);
+  color: var(--white);
+  font-family: var(--primary-font);
+  padding: 3rem;
+  height: 57.9rem;
+  clip-path: polygon(0% 0%, 100% 20%, 100% 100%, 0% 100%);
+}
+.footer .main {
+  padding: 8rem 3rem;
+  color: #cfd8dc;
+  display: flex;
+  justify-content: space-between;
+  align-items: self-start;
+  color: var(--white);
+  font-size: 1.8rem;
+}
+.footer .logo {
+  font-family: var(--secondary-font);
+  display: flex;
+  align-items: center;
+}
+.footer .logo .logopic {
+  height: 4.6rem;
+  margin-right: 1rem;
+  mix-blend-mode: screen;
+}
+.footer .logo .logoname {
+  font-weight: bold;
+  color: var(--white);
+  font-size: 1.6rem;
+}
+.footer .site-map li {
+  list-style: none;
+}
+.footer .site-map a {
+  color: #bdc6cb;
+  line-height: 5rem;
+  text-decoration: none;
+  color: #bdc6cb;
+  font-size: 1.8rem;
+  font-family: var(--primary-font);
+}
+.footer .footer-title {
+  color: var(--white);
+  margin: 5rem 0;
+}
+.footer .footer-discription p {
+  color: #bdc6cb;
+  margin: 2rem 0;
+}
+.footer .bottom {
+  margin: 10rem 0 2rem 0;
+}
+.footer .bottom nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  color: #75a6cd;
+  font-size: 1.4rem;
+}
+.footer .bottom nav > a {
+  text-decoration: none;
+  color: var(--white);
+  font-size: 1.4rem;
+  font-family: var(--primary-font);
+}
+
 @font-face {
   font-family: "red hat display";
   font-weight: 100;
@@ -13828,73 +13897,6 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   background-color: var(--color-yellow-01);
   color: var(--white);
 }
-.landing .footer {
-  background-color: var(--color-green-02);
-  color: var(--white);
-  font-family: var(--primary-font);
-  padding: 3rem;
-  height: 57.9rem;
-  clip-path: polygon(0% 0%, 100% 20%, 100% 100%, 0% 100%);
-}
-.landing .footer .main {
-  padding: 8rem 3rem;
-  color: #cfd8dc;
-  display: flex;
-  justify-content: space-between;
-  align-items: self-start;
-  color: var(--white);
-  font-size: 2.4rem;
-}
-.landing .footer .logo {
-  font-family: var(--secondary-font);
-  display: flex;
-  align-items: center;
-}
-.landing .footer .logo .logopic {
-  height: 4.6rem;
-  margin-right: 1rem;
-}
-.landing .footer .logo .logoname {
-  font-weight: bold;
-  color: var(--white);
-  font-size: 1.6rem;
-}
-.landing .footer .site-map li {
-  list-style: none;
-}
-.landing .footer .site-map a {
-  color: #bdc6cb;
-  line-height: 5rem;
-  text-decoration: none;
-  color: #bdc6cb;
-  font-size: 2.4rem;
-  font-family: var(--primary-font);
-}
-.landing .footer .footer-title {
-  color: var(--white);
-  margin: 5rem 0;
-}
-.landing .footer .footer-discription p {
-  color: #bdc6cb;
-  margin: 2rem 0;
-}
-.landing .footer .bottom {
-  margin: 10rem 0 2rem 0;
-}
-.landing .footer .bottom nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  color: #75a6cd;
-  font-size: 2.4rem;
-}
-.landing .footer .bottom nav > a {
-  text-decoration: none;
-  color: var(--white);
-  font-size: 2.4rem;
-  font-family: var(--primary-font);
-}
 .landing {
   /* ============================================
   📌 MEDIA QUERIES – Fully Responsive 
@@ -14845,6 +14847,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
   overflow-x: none;
   overlay: none;
+  object-position: top;
 }
 .manageBill .footer {
   background: #08374F;

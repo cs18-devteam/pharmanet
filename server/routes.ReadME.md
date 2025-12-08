@@ -17,6 +17,7 @@
 /customers/:customerId/orders
 /customers/:customerId/orders/:orderId
 /customers/:customerId/orders/:orderId/checkout
+/customers/:customerId/products/pharmacy_management_system
 /admin/:adminId/blogs
 /admin/:adminId/blogs/manage
 /admin/:adminId/blogs/:blogId/edit
@@ -88,3 +89,4 @@
 /api/v1/pharmacies/:pharmacyId/cashiers/:cashierId/payments/qr
 /api/v1/pharmacies/:pharmacyId/cashiers/:cashierId/products/:productId
 /payments/hash
+/products/pharmacy_management_system

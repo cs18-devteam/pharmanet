@@ -7,8 +7,9 @@ exports.renderUpdateProfile = async (req , res)=>{
 
         return response(res , view("customer.update" , {
             header : view('component.header' , {
-                name:"Antibiotics",
-            })
+                name:"Update Your Account",
+            }),
+            footer: view('footer'),
         }) , 200);
     }catch(e){
         return response(res , view('404') , 404);

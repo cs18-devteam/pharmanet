@@ -7,8 +7,9 @@ exports.renderCustomerOrders = async (req , res)=>{
 
         return response(res , view("customer.orders" , {
             header : view('component.header' , {
-                name:"Antibiotics",
-            })
+                name:"Orders || Pharmanet",
+            }),
+            footer: view('footer'),
         }) , 200);
     }catch(e){
         console.log(e);

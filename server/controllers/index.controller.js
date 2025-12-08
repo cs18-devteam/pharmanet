@@ -46,7 +46,8 @@ exports.renderIndexPage =  async (req , res)=>{
                 header : view('component.header' , {
                     name:"Pharmanet || Welcome to pharmanet",
                 }),
-                navbar : view('components/navbar.user')
+                navbar : view('components/navbar.user'),
+                footer: view('footer'),
             }) , 200);
     }catch(e){
         console.log(e);

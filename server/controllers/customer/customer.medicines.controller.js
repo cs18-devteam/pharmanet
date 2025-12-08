@@ -20,6 +20,7 @@ exports.renderCustomerMedicines = async (req , res)=>{
             medicine_cards : medicines.map(m=>view('customer/component.medicine.card' , {...m , name : m.geneticName , price : "not available" , publicStock : "not available"})),
             count: medicines.length,
             navbar : view('customer/navbar.customer', customer) ,
+            footer: view('footer'),
             results : medicines.map(medicine=>view('customer/medicine.search.card' , medicine)).join(' ')
         }) , 200)
 
@@ -37,7 +38,8 @@ exports.renderCustomerSelectedMedicine = async (req , res)=>{
         return response(res , view("customer.search" , {
             header : view('component.header' , {
                 name:"Antibiotics",
-            })
+            }),
+            footer: view('footer'),
         }) , 200);
     }catch(e){
         console.log(e);

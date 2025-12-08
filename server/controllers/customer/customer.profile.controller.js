@@ -11,7 +11,8 @@ exports.renderCustomerProfile = async (req , res)=>{
         if(!customer) return view('404' , {
             header : view('component.header' , {
                 name:"Antibiotics",
-            })
+            }),
+            footer: view('footer'),
         });
         
         for(const [key , value] of Object.entries(customer)){

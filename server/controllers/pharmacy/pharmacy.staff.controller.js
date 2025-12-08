@@ -18,7 +18,8 @@ exports.renderPharmacyStaff = async( req , res) =>{
                     role: 'pharmacist',
                     header : view('component.header' , {
                         name:"Antibiotics",
-                    })
+                    }),
+                    footer: view('footer'),
                 });
                 
             }

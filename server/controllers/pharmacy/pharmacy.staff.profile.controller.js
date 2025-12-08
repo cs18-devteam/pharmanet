@@ -15,12 +15,13 @@ exports.getStaffProfile = async (req , res)=>{
                 navbar: view('components/navbar' , {
                     id: data.id,
                     name : `${data.firstName} ${data.lastName}`
-                })})
-            }
-        }catch(e){
-            console.log(e);
-            return response(res , view('404') , 404);
+                }),
+                footer: view('footer'),})
         }
+    }catch(e){
+        console.log(e);
+        return response(res , view('404') , 404);
+    }
 }
 
 

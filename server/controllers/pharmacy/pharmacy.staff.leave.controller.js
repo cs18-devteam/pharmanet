@@ -7,7 +7,8 @@ exports.renderPharmacyStaffLeave = async (req, res) =>{
         return response(res,view("pharmacy.staff.leave" , {
             header : view('component.header' , {
                 name:"Antibiotics",
-            })
+            }),
+            footer: view('footer'),
         }),200)
     }catch(e){
         console.log(e);

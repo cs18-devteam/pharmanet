@@ -20,6 +20,7 @@ exports.renderCustomerPharmacies = async (req , res)=>{
             ...customer,
             count : pharmacies.length ,
             navbar : view('customer/navbar.customer' ,customer) ,
+            footer: view('footer'),
             results : pharmacies.map(pharmacy=>view('customer/pharmacy.search.card' , {
                 ...pharmacy , 
                 customerId : customer.id

@@ -10,7 +10,8 @@ exports.renderAttendance = async (req ,res)=>{
             header : view('component.header' , {
                 name:"Antibiotics",
             }),
-            ...staff , name:`${staff.firstName} ${staff.lastName}`})
+            ...staff , name:`${staff.firstName} ${staff.lastName}`}),
+            footer: view('footer'),
         }) , 200);
 
     }catch(e){

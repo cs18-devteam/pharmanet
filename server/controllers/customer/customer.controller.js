@@ -17,6 +17,7 @@ exports.renderCustomerHome = async (req , res)=>{
                         header : view('component.header' , {
                                 name:"Pharmanet || Home",
                         }),
+                        footer: view('footer'),
                 }) , 200)
         }catch(e){
                 console.log(e);

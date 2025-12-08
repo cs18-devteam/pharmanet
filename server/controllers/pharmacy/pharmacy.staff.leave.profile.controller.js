@@ -1,5 +1,5 @@
-const { response } = require("../common/response")
-const view = require("../common/view")
+const { response } = require("../../common/response")
+const view = require("../../common/view")
 
 exports.renderPharmacyStaffLeaveProfile = async (req,res) => {
     try{

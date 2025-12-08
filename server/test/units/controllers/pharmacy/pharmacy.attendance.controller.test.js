@@ -1,43 +1,92 @@
-// Correct paths from test file to controller & common files
-const Controller = require("../../../../controllers/pharmacy/pharmacy.attendance.controller");
-const Users = require("../../../../models/UserModel");
-const { response } = require("../../../../common/response");
-const view = require("../../../../common/view");
+// ************************************
+// MOCKS
+// ************************************
+jest.mock("../../../../common/view", () => jest.fn());
+jest.mock("../../../../common/response", () => ({
+  response: jest.fn()
+}));
+jest.mock("../../../../models/UserModel", () => ({
+  getById: jest.fn()
+}));
 
-// Mock dependencies
-jest.mock("../../../../models/UserModel");
-jest.mock("../../../../common/response");
-jest.mock("../../../../common/view");
+// ---------------------------------------
+// IMPORT AFTER MOCKS
+// ---------------------------------------
+const view = require("../../../../common/view");
+const { response } = require("../../../../common/response");
+const Users = require("../../../../models/UserModel");
+const Controller = require("../../../../controllers/pharmacy/pharmacy.attendance.controller");
+
+// Silence console.log
+beforeAll(() => {
+  jest.spyOn(global.console, "log").mockImplementation(() => {});
+});
 
 describe("Pharmacy Attendance Controller", () => {
 
-    let req, res;
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
-    beforeEach(() => {
-        req = { pharmacistId: 1 };
-        res = { send: jest.fn() };
-        response.mockImplementation((res, data, status) => ({ res, data, status }));
-        view.mockImplementation((template, data) => ({ template, data }));
+  test("renderAttendance → should return HTML successfully", async () => {
+    // Mock user data
+    const staffData = { id: 1, firstName: "John", lastName: "Doe", role: "pharmacist" };
+    Users.getById.mockResolvedValue([staffData]);
+
+    // Mock view rendering
+    view.mockImplementation((template, data) => `${template}_HTML`);
+
+    const req = { pharmacistId: 1 };
+    const res = {};
+
+    const result = await Controller.renderAttendance(req, res);
+
+    // Check Users.getById called correctly
+    expect(Users.getById).toHaveBeenCalledWith(1);
+
+    // Check view calls
+    expect(view).toHaveBeenCalledWith('component.header', { name: "Antibiotics" });
+    expect(view).toHaveBeenCalledWith('navbar.staff', {
+      header: `${'component.header'}_HTML`,
+      ...staffData,
+      name: `${staffData.firstName} ${staffData.lastName}`
+    });
+    expect(view).toHaveBeenCalledWith('pharmacy/attendance', {
+      navbar: `${'navbar.staff'}_HTML`
     });
 
-    it("should render attendance page for valid pharmacist", async () => {
-        // Mock Users.getById to return a staff object
-        Users.getById.mockResolvedValue([{ firstName: "John", lastName: "Doe" }]);
+    // Check response called correctly
+    expect(response).toHaveBeenCalledWith(res, 'pharmacy/attendance_HTML', 200);
 
-        const result = await Controller.renderAttendance(req, res);
+    // The function returns whatever response returns
+    expect(result).toBeUndefined(); // Since response() usually doesn't return anything
+  });
 
-        expect(Users.getById).toHaveBeenCalledWith(1);
-        expect(view).toHaveBeenCalled(); // view should be called
-        expect(response).toHaveBeenCalledWith(res, expect.any(Object), 200);
-        expect(result.status).toBe(200);
-    });
+  test("renderAttendance → should return 404 view if Users.getById fails", async () => {
+    Users.getById.mockRejectedValue(new Error("DB Failed"));
+    view.mockReturnValue("404_VIEW");
 
-    it("should render 404 page on error", async () => {
-        Users.getById.mockRejectedValue(new Error("Database error"));
+    const req = { pharmacistId: 1 };
+    const res = {};
 
-        const result = await Controller.renderAttendance(req, res);
+    await Controller.renderAttendance(req, res);
 
-        expect(response).toHaveBeenCalledWith(res, expect.objectContaining({ template: '404' }), 200);
-        expect(result.status).toBe(200);
-    });
+    expect(response).toHaveBeenCalledWith(res, "404_VIEW", 200);
+  });
+
+  test("renderAttendance → should return 404 view if view fails", async () => {
+    const staffData = { id: 1, firstName: "John", lastName: "Doe", role: "pharmacist" };
+    Users.getById.mockResolvedValue([staffData]);
+
+    view.mockImplementationOnce(() => { throw new Error("View Failed"); });
+    view.mockImplementationOnce(() => "404_VIEW"); // fallback for error handling
+
+    const req = { pharmacistId: 1 };
+    const res = {};
+
+    await Controller.renderAttendance(req, res);
+
+    expect(response).toHaveBeenCalledWith(res, "404_VIEW", 200);
+  });
+
 });

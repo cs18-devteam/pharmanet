@@ -5,22 +5,30 @@ const Medicines = require("../../models/MedicineModel");
 const PharmacyMedicines = require("../../models/PharmacyMedicinesModel");
 const { getRequestData } = require("../../common/getRequestData");
 
-exports.getAllMedicines = async (req , res)=>{
-    try{
-        
-        const data = await PharmacyMedicines.get();
-        return responseJson(res , 200 , data);
-        
 
-    }catch(e){
-        console.log(e);
-        return response(res , view('404') , 404);
+
+exports.getAllMedicines = async (req, res) => {
+  try {
+    const data = await PharmacyMedicines.get();
+
+    // Check if data is empty
+    if (!data || data.length === 0) {
+      // return 404 if no medicines
+      return responseJson(res, 404, { error: "No medicines found" });
     }
-}
+
+    // Return 200 if medicines exist
+    return responseJson(res, 200, data);
+
+  } catch (e) {
+    console.log(e);
+    return response(res, view('404'), 500); // Internal Server Error for exceptions
+  }
+};
+
 
 
 exports.getMedicineDetailsByStockId = async (req , res)=>{
-
     
     try{
         const id = req.stockId;
@@ -94,7 +102,7 @@ exports.searchMedicinesByName = async (req , res)=>{
             }
         })
 
-        Promise.all(stockMedicines).then((data)=>{
+        return Promise.all(stockMedicines).then((data)=>{
 
             
 
@@ -147,6 +155,7 @@ exports.getMedicineStockInfo = async (req , res)=>{
 
 exports.createMedicineStock = async (req , res)=>{
     try{
+        
         const medicine =  JSON.parse(await getRequestData(req));
         
         const [newStock] = await PharmacyMedicines.save({

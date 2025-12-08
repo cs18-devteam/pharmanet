@@ -1,7 +1,7 @@
 const { response } = require("../../common/response");
-const Bridge = require("../common/Bridge");
-const { getRequestData } = require("../common/getRequestData");
-const view = require("../common/view");
+const Bridge = require("../../common/Bridge");
+const { getRequestData } = require("../../common/getRequestData");
+const view = require("../../common/view");
 
 exports.getStaffProfile = async (req , res)=>{
     try{

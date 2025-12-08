@@ -1,75 +1,76 @@
-// D:\pharmanet\pharmanet\server\test\units\controllers\pharmacy\pharmacy.staff.leave.controller.test.js
+// ************************************
+// MOCKS
+// ************************************
+jest.mock("../../../../common/view", () => jest.fn());
+jest.mock("../../../../common/response", () => ({
+  response: jest.fn()
+}));
 
-const StaffLeaveController = require(
-  "../../../../controllers/pharmacy/pharmacy.staff.leave.controller"
-);
-
+// ************************************
+// IMPORT AFTER MOCKS
+// ************************************
 const view = require("../../../../common/view");
 const { response } = require("../../../../common/response");
+const Controller = require("../../../../controllers/pharmacy/pharmacy.staff.leave.controller");
 
-// Mocks
-jest.mock("../../../../common/view");
-jest.mock("../../../../common/response");
+// Silence console.log
+beforeAll(() => {
+  jest.spyOn(global.console, "log").mockImplementation(() => {});
+});
 
 describe("Pharmacy Staff Leave Controller", () => {
-  let req;
-  let res;
 
   beforeEach(() => {
-    req = {};
-    res = {
-      send: jest.fn(),
-      status: jest.fn().mockReturnThis(),
-      json: jest.fn(),
-    };
     jest.clearAllMocks();
   });
 
-  describe("renderPharmacyStaffLeave", () => {
-    it("should render pharmacy staff leave view", async () => {
-      // Mock nested view calls
-      view.mockReturnValueOnce("<header-view>");   // header
-      view.mockReturnValueOnce("<leave-view>");    // main view
+  test("renderPharmacyStaffLeave → should return HTML successfully", async () => {
 
-      response.mockImplementation((res, html, status) =>
-        res.send({ html, status })
-      );
 
-      const result = await StaffLeaveController.renderPharmacyStaffLeave(
-        req,
-        res
-      );
+    view
+      .mockImplementationOnce(() => "HEADER_HTML")          // component.header
+      .mockImplementationOnce(() => "LEAVE_PAGE_HTML");     // pharmacy.staff.leave
 
-      // header call
-      expect(view).toHaveBeenCalledWith("component.header", {
-        name: "Antibiotics",
-      });
+    const req = {};
+    const res = {};
 
-      // main view call
-      expect(view).toHaveBeenCalledWith("pharmacy.staff.leave", {
-        header: "<header-view>",
-      });
+    const result = await Controller.renderPharmacyStaffLeave(req, res);
 
-      expect(result).toBe("<leave-view>");
+    expect(view).toHaveBeenCalledWith("component.header", { name: "Antibiotics" });
+    expect(view).toHaveBeenCalledWith("pharmacy.staff.leave", {
+      header: "HEADER_HTML"
     });
 
-    it("should handle errors and return 404", async () => {
-      // Throw error on any view() call
-      view.mockImplementation(() => {
-        throw new Error("View Error");
-      });
-
-      response.mockImplementation((res, html, status) =>
-        res.send({ html, status })
-      );
-
-      await StaffLeaveController.renderPharmacyStaffLeave(req, res);
-
-      expect(response).toHaveBeenCalledWith(
-        res,
-        expect.any(String), // "view('404')" mocked return
-        404
-      );
-    });
+    expect(response).toHaveBeenCalledWith(res, "LEAVE_PAGE_HTML", 200);
+    expect(result).toBeUndefined();
   });
+
+  test("renderPharmacyStaffLeave → should return 404 view if main view fails", async () => {
+    
+    view
+      .mockImplementationOnce(() => { throw new Error("View Failed"); })
+      .mockImplementationOnce(() => "404_VIEW"); 
+
+    const req = {};
+    const res = {};
+
+    await Controller.renderPharmacyStaffLeave(req, res);
+
+    expect(response).toHaveBeenCalledWith(res, "404_VIEW", 404);
+  });
+
+  test("renderPharmacyStaffLeave → should return 404 view if header view fails", async () => {
+    
+    view
+      .mockImplementationOnce(() => { throw new Error("Header Failed"); })
+      .mockImplementationOnce(() => "404_VIEW"); 
+
+    const req = {};
+    const res = {};
+
+    await Controller.renderPharmacyStaffLeave(req, res);
+
+    expect(response).toHaveBeenCalledWith(res, "404_VIEW", 404);
+  });
+
 });

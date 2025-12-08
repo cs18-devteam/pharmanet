@@ -64,6 +64,9 @@ const server = http.createServer((req , res)=>{
         cashierApiRouter.pipe(req , res);
         paymentApiRouter.pipe(req , res);
 
+        AppRouter.pipe(req ,res).route('/admin/addUsers')
+        ?.get(adminController.addUsers);
+
 
         return AppRouter.pipe(req ,res).end();
 

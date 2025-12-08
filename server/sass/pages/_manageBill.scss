@@ -1,0 +1,376 @@
+.manageBill{
+   padding: 0;
+   padding-top: 2rem;
+  
+   
+
+    $primary: #08374F;
+    $secondary: #F9A550;
+    $dark: #0b1b2b;
+    $light: #f5faff;
+    $text: #333;
+
+
+.user-section {
+display: flex;
+align-items: center;
+gap: 20px;
+
+
+.avatar {
+width: 40px;
+height: 40px;
+border-radius: 50%;
+}
+}
+
+.hero {
+text-align: center;
+padding: 40px 0;
+font-family: sans-serif;
+font-size: 28px;
+font-weight: 500;
+}
+
+.main-content {
+display: flex;
+padding: 40px 0px;
+gap: 0px;
+
+
+.side-box {
+width: 30%;
+height: 50%;
+margin-top: 20rem;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+background: $primary;
+color: white;
+padding: 25px;
+margin-left: 0;
+box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+
+
+h3 {
+font-size: 20px;
+margin-bottom: 10px;
+}
+
+
+.start-btn {
+background: $secondary;
+color: white;
+padding: 12px 18px;
+border: none;
+border-radius: 6px;
+cursor: pointer;
+margin: 15px 0;
+}
+
+
+ul {
+list-style: none;
+li {
+padding: 6px 0;
+
+}
+}
+}
+
+
+
+.billing-card {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+   img{
+    width: 105%;
+    height: 100vh;
+    border: solid 1.8rem black;
+    border-radius: 30px ;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    overflow-x: none;
+   overlay: none;
+}
+
+}
+}
+
+.footer {
+background: $primary;
+color: white;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+margin-left: 0;
+padding: 40px 60px;
+margin-top: 40px;
+height: 379px;
+padding-top: 4rem;
+
+width: 100%;
+position: relative;
+overflow: hidden;
+clip-path: polygon(
+      0 8%,     // top-left goes down
+      100% 0,   // top-right stays high
+      100% 100%, 
+      0 100%
+  );
+
+.footer-topSection{
+    flex: 1;
+    gap: 25rem;
+    display: flex;
+    flex-direction: row;
+
+.footer-left{
+    width: 50rem;
+    display: flex;
+
+
+    .footer-logo{
+        width: 46px;
+        height: 46px;
+
+    }
+
+    p{
+        margin-top: 1rem;
+        font-weight: 400;
+    }
+    
+}
+.footer-center{
+    width: 95rem;
+}
+.footer-right{
+    width: 280rem;
+}
+
+h4 {
+margin-bottom: 8px;
+}
+
+
+ul {
+list-style: none;
+li {
+padding: 4px 0;
+opacity: 0.8;
+}
+}
+}
+.footer-bottomSection{
+    display: flex;
+    flex-direction: row;
+    color: red;
+    font-size: 1.5rem;
+    gap: 15rem;
+
+         button {
+            padding: 0;
+            background: none;
+            color: white;
+            border: none;
+
+            a{
+                color: white;
+            }
+    }
+ 
+}
+}
+
+  /* ================================
+      1024px (Tablet)
+  =================================== */
+  @media (max-width: 1024px) {
+    .user-section{
+        .avatar{
+            margin-right: 2rem;
+        }
+        span{
+            display: none;
+        }
+    }   
+    .main-content {
+      flex-direction: column;
+      padding: 0px 0;
+
+      .side-box {
+        width: 100%;
+        margin-top: 3rem;
+        height: auto;
+        align-items: center;
+      }
+
+      .billing-card {
+        width: 100%;
+        margin-top: 2rem;
+
+        img {
+          width: 120%;
+          height: auto;
+          left: -10%;
+        }
+      }
+    }
+
+    .footer {
+      height: auto;
+      padding: 40px;
+      gap: 6rem;
+
+      .footer-topSection {
+        flex-direction: row;
+        gap: 3rem;
+
+        .footer-left,
+        .footer-center,
+        .footer-right {
+          width: 100%;
+        }
+      }
+
+      .footer-bottomSection {
+        gap: 4rem;
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+
+  /* ================================
+      768px (Small Tablet / Mobile)
+  =================================== */
+  @media (max-width: 768px) {
+
+    .user-section{
+        
+        span{
+            display: none;
+        }
+    }
+
+    .hero {
+      font-size: 24px;
+      padding: 20px 0;
+    }
+
+    .user-section {
+      gap: 12px;
+
+      .avatar {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    .main-content {
+
+      .side-box {
+        padding: 18px;
+      }
+
+      .billing-card img {
+        width: 140%;
+        left: -20%;
+      }
+    }
+
+    .footer {
+      
+      padding: 50px 20px;
+      gap: 4rem;
+
+      .footer-topSection {
+        gap: 2rem;
+      }
+
+      .footer-bottomSection {
+        flex-direction: row;
+        gap: 1.2rem;
+      }
+    }
+  }
+
+  /* ================================
+      480px (Mobile)
+  =================================== */
+  @media (max-width: 480px) {
+
+    .logo{
+        display: flex;
+        flex-direction: column;
+        max-width: 8rem;
+    }
+    .search{
+        max-width: 20rem;
+        margin-left: 1rem;
+    }
+    .dropdown{
+        margin-right: 1rem;
+    }
+    .user-section{
+        .avatar{
+            margin-right: 0rem;
+        }
+
+        .hero {
+        font-size: 20px;
+        }
+   }
+
+    .user-section {
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .main-content {
+        margin-right: 0;
+        padding-right: 0;
+        
+
+      .side-box {
+        text-align: center;
+        align-items: center;
+        width: 100%;
+        
+
+        h3 {
+          font-size: 18px;
+        }
+      }
+
+      .billing-card {
+        width: 100%;
+        overflow: hidden;
+        
+        img {
+        width: 160%;
+        left: -30%;
+      }}
+    }
+
+    .footer {
+      padding: 20px 10px;
+      clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 100%);
+
+      .footer-topSection{
+        font-size: 1.2rem;
+      }
+
+      .footer-bottomSection {
+        font-size: 1rem;
+        button a{
+        font-size: 1rem;
+    }
+      }
+    }
+  }
+}
+
+
+

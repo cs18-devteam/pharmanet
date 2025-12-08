@@ -1,27 +1,28 @@
 {header}
 <body class="createNewBlog">
   <header class="page-header">
-    <a href="/blogView" class="back-btn">←</a>
+    <a href="/blogManage" class="back-btn">←</a>
     <div class="title-group">
       <h1>Create New Blog Post</h1>
       <p>Share health tips and pharmacy insights with your community</p>
     </div>
   </header>
 
-  <main class="container">
-    <form class="form-section" id="createBlog">
+  <div class="container">
+  <div class="container1">
+    <form class="form-section" id="createBlogForm">
       <div class="card">
         <h3>Post Details</h3>
         <p class="subtitle">Enter the basic information for your blog post</p>
 
         <label>Post Title</label>
-        <input type="text" name="title" placeholder="e.g., 5 Tips for Managing Your Medications">
+        <input type="text" id="title" name="title" placeholder="e.g., 5 Tips for Managing Your Medications">
 
         <label>URL Slug</label>
-        <input type="text" name="slug" placeholder="">
+        <input type="text" id="slug" name="slug" placeholder="">
 
         <label>Excerpt</label>
-        <textarea name="excerpt" placeholder="Brief summary of your post (shown in listings)" name="excerpt"></textarea>
+        <textarea id="excerpt" name="excerpt" placeholder="Brief summary of your post (shown in listings)" name="excerpt"></textarea>
       </div>
 
       <div class="card">
@@ -29,33 +30,33 @@
         <p class="subtitle">Write your blog post content here</p>
 
         <label>Post Content</label>
-        <textarea name="content" placeholder="Write your blog post content here. You can use markdown formatting..."></textarea>
+        <textarea id="content" name="content" placeholder="Write your blog post content here. You can use markdown formatting..."></textarea>
       </div>
     </div>
 
-    <aside class="sidebar">
+    <div class="sidebar">
       <div class="card">
         <h3>Publish Settings</h3>
 
         <label>Status</label>
-        <input type="date" name="status" placeholder="DD-MM-YYYY">
+        <input id="date" type="date" name="status" placeholder="DD-MM-YYYY">
         <!-- <select name="status">
           <option>Draft</option>
           <option>Published</option>
         </select> -->
 
         <label>Category</label>
-        <select name="category">
+        <select id="category" name="category">
           <option>Select a category</option>
           <option>Medicine</option>
           <option>Disease</option>
         </select>
 
         <label>Author</label>
-        <input type="text" name="author" placeholder="Your name">
+        <input id="author" type="text" name="author" placeholder="Your name">
 
         <label>Tags</label>
-        <input type="text" name="tag" placeholder="Separate with commas">
+        <input id="tag" type="text" name="tag" placeholder="Separate with commas">
       </div>
 
       <div class="buttons">
@@ -66,10 +67,11 @@
       <div class="tip">
         <p><strong>Tip:</strong> Write clear, informative content that helps your customers. Include relevant keywords for better search visibility.</p>
       </div>
-    </aside>
-  </main>
+    </div>
+    </div>
+  </div>
   <script>
-    const  form = document.getElementById('createBlog');
+    const  form = document.getElementById('createBlogForm');
     form.addEventListener("submit" , (e)=>{
 	    e.preventDefault();
 	    const data = {}
@@ -83,11 +85,7 @@
       fetch("/api/blogs" , {
         method:"POST" , 
         body : JSON.stringify(data),
-      }).then((respond)=>respond.json()).then((data)=>{
-        if(data.status != "error"){
-          window.location.href="/blogView"
-        }
-      }).catch(e=>console.log(e));
+      }).then((respond)=>respond.json()).then(()=>window.location.href="/blogManage").catch(e=>console.log(e));
 	
 })
   </script>

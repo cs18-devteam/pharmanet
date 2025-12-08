@@ -1,0 +1,175 @@
+.userProfile {
+  font-family: "Poppins", sans-serif;
+  padding: 20px;
+  color: #222;
+
+  .backLink {
+    font-size: 14px;
+    color: #555;
+    text-decoration: none;
+
+    &:hover { text-decoration: underline; }
+  }
+
+  .page-title {
+    margin: 10px 0 20px;
+    font-size: 28px;
+  }
+
+  .profile-wrapper {
+    display: flex;
+    gap: 24px;
+  }
+
+  /* LEFT CARD */
+  .left-card {
+    width: 280px;
+    background: #fff;
+    padding: 24px;
+    border: 1px solid #eee;
+    border-radius: 16px;
+    text-align: center;
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 0 auto;
+      background: #222;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      font-weight: 600;
+    }
+
+    .user-name {
+      margin-top: 16px;
+      font-size: 22px;
+    }
+
+    .user-email {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 10px;
+    }
+
+    .role-badge {
+      display: inline-block;
+      background: #01a46f;
+      color: white;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .status-box {
+      background: #f6f6f6;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 18px;
+
+      label {
+        color: #777;
+      }
+
+      .active {
+        float: right;
+        background: #d9f7e8;
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-size: 13px;
+        color: #00946a;
+      }
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 15px;
+      cursor: pointer;
+      border: none;
+      margin-top: 8px;
+
+      &.primary {
+        background: #000;
+        color: white;
+
+        &:hover { opacity: 0.85; }
+      }
+
+      &.secondary {
+        background: #eee;
+        color: #333;
+
+        &:hover { background: #ddd; }
+      }
+    }
+  }
+
+  /* RIGHT SIDE */
+  .right-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .card {
+      background: #fff;
+      padding: 24px;
+      border-radius: 16px;
+      border: 1px solid #eee;
+
+      h3 { margin-bottom: 16px; }
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+
+      .item {
+        .label {
+          display: block;
+          font-size: 12px;
+          color: #888;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          margin-bottom: 4px;
+        }
+      }
+    }
+
+    /* ACTIVITY */
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+
+        span {
+          color: #777;
+          font-size: 13px;
+        }
+      }
+    }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .profile-wrapper {
+      flex-direction: column;
+    }
+
+    .left-card {
+      width: 100%;
+    }
+  }
+}

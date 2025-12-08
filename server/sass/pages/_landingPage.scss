@@ -1,0 +1,638 @@
+.landing{
+
+
+    .hedder-content{
+        width: 100%;
+        max-width: 1200px;        
+        padding: 0 20px;
+    }
+
+    .header-title{
+        text-align: center;
+        font-size: 6.4rem;
+        color: var(--color-green-02);
+        line-height: 1.2;
+        margin-top: 5rem;
+    }
+
+    .highlight{
+        color: var(--color-yellow-01);
+    }
+
+    .header-discription{
+        position: relative;
+        line-height:3.5rem ;
+        text-align: center;
+        font-size: 2.6rem;
+        color: var(--color-green-02);
+        font-weight: 400;
+        top: 1rem;
+    }
+
+
+    .header-background{
+        background: radial-gradient(#00BAAC, #083851);
+        height:42rem;
+        margin-top: 2rem;
+        margin-left: 16rem;
+        margin-right: 16rem;
+        clip-path:polygon(0% 15%, 80% 15%, 80% 0% , 100% 0% , 100% 100% , 0% 100%);
+    }
+
+    .fb-call-msg{
+        position:absolute;
+        top:21rem;
+        left:7rem;
+    }
+
+    .pills{
+        position:absolute;
+        top: 7%;
+        right:38%;
+        z-index: 10;
+    }
+
+    .pillBW{
+        position: absolute;
+        top:30%;
+        left:25%;
+        z-index: 10;
+    }
+
+    .pillwhite{
+        position:absolute;
+        top: 17rem;
+        right: 27rem;
+        z-index: 10;
+    }
+
+
+    .pillblue{
+        position:absolute;
+        left: 23%;
+        bottom:-1.68%;
+        z-index: 10;
+    }
+
+    .side-words{
+        // position:absolute;
+        // top:60%;
+        // right:-5%;
+        display: flex;
+        justify-content: flex-end;
+        rotate: -90deg;
+        letter-spacing: 0.7rem;
+        font-size: 1.6rem;
+    }
+
+    .upload-container {
+    // position:absolute;
+    // bottom:-30%;
+    // right:39%;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+
+    .upload-box {
+        width: 33rem;
+        height: 33rem;
+        border-radius: 50%;
+        background: #127eb5; 
+        color: var(--white);
+        font-family: var(--primary-font);
+        text-align: center;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        transition: all 0.3s ease;
+        border: 1.7rem solid var(--tertiary-color);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+
+        .icon {
+        margin-bottom: 1.2rem;
+        }
+
+        p {
+        font-size: 2.4rem;
+        font-weight: bold;
+        margin: 0;
+        
+        }
+
+        &:hover {
+        transform: scale(1.05);
+        }
+
+        
+    }
+
+    }
+
+    //advantages 
+
+    .advantages-section{
+        margin-top: 22rem;
+        margin-bottom: 15rem;
+    }
+
+    .section-title{
+        margin: 4rem;
+        text-align: center;
+        color:var(--color-green-02);
+        text-transform: capitalize;
+        
+        .section-first-title{
+            font-size: 3.2rem;
+            background: linear-gradient(to right, var(--font-linear-primary-color), var(--font-linear-secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .section-second-title{
+            font-size: 1.6rem;
+            font-weight: 500;
+            color:#127eb5;
+        }
+    }
+
+    .advantages-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        max-width: 1200px;
+        margin: 60px auto;
+        padding: 0 20px;
+        color:var(--color-green-02);
+    }
+
+    .advantage-card{
+        padding: 0 3.2rem;
+    }
+
+    .advantage-title{
+        display: flex;
+        color: var(--tertiary-color);
+        font-size: 2rem;
+        margin: 0 0 2rem 0;
+    }
+
+    .advantage-disc{
+        font-size: 1.6rem;
+        line-height:150%;
+    }
+
+    .mid-title{
+        font-size: 8.4rem;
+        color: #e6e6e6;
+        text-align: center;
+        font-family: var(--primary-font);
+        text-transform: capitalize;
+    }
+
+
+    //status
+    .stats-container {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        flex-wrap: wrap;
+        
+        .section-title{
+            position: relative;
+            top:8rem;
+        }
+
+    .stat-orange,
+    .stat-blue {
+        position: relative;
+        top:-10rem;
+        left: -10%;
+        width: 30rem;
+        height: 30rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+            .arc::before{
+                content: " ";
+                height: 100%;
+                width: 100%;
+                background-color:var(--color-yellow-01);
+                position:absolute;
+                border-radius: 50%;
+
+            }
+
+            .arc::after{
+                content: " ";
+                height: 91%;
+                width: 81%;
+                rotate: -30deg;
+                background-color: white;
+                position:absolute;
+                border-radius: 50%;
+                transform: translate(13%,23%);
+
+
+            }
+
+        
+
+        .progress-text {
+        position: relative;
+        top:15rem;
+        left:7rem;
+        text-align: center;
+        font-family: var(--primary-font);
+        color:var(--color-green-02);
+        
+        .value {
+            font-size: 6.4rem;
+            font-weight: bold;
+        
+        }
+
+        .label {
+            font-size: 2.4rem;
+            font-weight:500;
+        }
+
+        .section-title{
+            position:absolute;
+            bottom:30rem;
+        }
+        }
+    }
+
+    .stat-blue {
+        .arc::before {
+        background-color:var(--color-blue-01); // blue instead of orange
+        }
+    }
+    }
+
+
+
+        .top-pharmacies {
+                padding: 8rem 0;
+            }
+
+            .pharmacies-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+                gap: 0;
+            justify-items: center;
+            }
+
+            .pharmacy-card {
+                //position:relative;
+                background-color: white;
+                border-radius: 1.6rem;
+                width:100%;
+                max-width: 24rem;
+                overflow: hidden;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease;
+
+
+                &:hover{
+                transform: translateY(-5px);
+                box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .pharmacy-img {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
+
+            .pharmacy-info {
+            // position:absolute;
+                padding: 1.2rem;
+                text-align: left;
+            }
+    
+            .pharmacy-name {
+                font-size: 2rem;
+                //margin-bottom: 10px;
+                color:var(--color-green-02) ;
+                font-weight: 600;
+                font-size: 2rem;
+            }
+            .pharmacy-rating {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                margin-bottom: 10px;
+            }
+
+            .pharmacy-address {
+                color: var(--color-green-02);
+                font-size: 1.4rem;
+            }
+
+            }
+
+    .joinus{
+        margin: 8rem;
+        padding: 2rem;
+        .header-title{
+            color:var(--secondary-color);
+        }
+        .header-discription{
+            color:var(--tertiary-color)
+        }
+        .button-group{
+            display:flex;
+            justify-content: center;
+            gap:1rem;
+            margin:4rem;
+                .btn{
+                    font-weight: bold;
+                    font-size: 2.4rem;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 1.2rem 2rem;
+                    border-radius: 0.6rem;
+                    border: 0.2rem solid var(--color-yellow-01);
+                    display: flex;
+                    gap:0.5rem;
+                    cursor: pointer;
+                    transition:all 0.3s ease;
+                    width:40rem;
+
+                    &.demo{
+                        background-color: transparent;
+                        color:var(--color-yellow-01);
+                    }
+
+                    &.reg{
+                        background-color: var(--color-yellow-01);
+                        color:var(--white);
+                    }
+
+
+                }
+        }
+        
+    }
+
+    //footer
+
+    .footer{
+        background-color: var(--color-green-02);
+        color:var(--white);
+        font-family: var(--primary-font);
+        padding:3rem;
+        height:57.9rem;
+        clip-path:polygon(0% 0%, 100% 20%, 100% 100%, 0% 100% );
+        
+
+        .main {
+
+        padding:8rem 3rem;
+        color: #cfd8dc;
+        display: flex;
+        justify-content: space-between;
+        align-items:self-start;
+        color:var(--white);
+        font-size: 2.4rem;;
+        }
+
+        .logo {
+        font-family: var(--secondary-font);
+        display: flex;
+        align-items: center;
+
+            .logopic {
+                height: 4.6rem;
+                margin-right: 1rem;
+            }
+
+            .logoname {
+                font-weight: bold;
+                color: var(--white);
+                font-size: 1.6rem;
+            }
+        }
+
+        .site-map{
+        
+            li{
+                list-style: none;
+            }
+            a{
+            color:#bdc6cb;
+            line-height: 5rem;
+            text-decoration: none;
+            color:#bdc6cb;
+            font-size:2.4rem;
+            font-family: var(--primary-font);
+            }
+        }
+
+        .footer-title{
+            color:var(--white);
+            margin:5rem 0;
+        }
+
+        .footer-discription{
+            p{
+                color:#bdc6cb;
+                margin:2rem 0;
+            }
+        
+        }
+
+        .bottom{
+            margin: 10rem 0 2rem 0;
+            
+            nav{
+                display:flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem 2rem;
+                color:#75a6cd;
+                font-size: 2.4rem;
+                
+                >a{
+                    text-decoration: none;
+                    color:var(--white);
+                    font-size:2.4rem;
+                    font-family: var(--primary-font);
+
+                }
+
+            }
+
+        }
+    }
+    /* ============================================
+   📌 MEDIA QUERIES – Fully Responsive 
+   ============================================ */
+
+/* ----------- Large Tablets / Small Laptop ----------- */
+@media (max-width: 1200px) {
+  .landing {
+
+    .header-title {
+      font-size: 5rem;
+    }
+
+    .header-background {
+      margin-left: 8rem;
+      margin-right: 8rem;
+      height: 36rem;
+    }
+
+    .upload-box {
+      width: 28rem;
+      height: 28rem;
+    }
+
+    .mid-title {
+      font-size: 6.4rem;
+    }
+  }
+}
+
+/* ----------- Tablets ----------- */
+@media (max-width: 992px) {
+  .landing {
+
+    .header-title {
+      font-size: 4.2rem;
+      margin-top: 3rem;
+    }
+
+    .header-discription {
+      font-size: 2rem;
+    }
+
+    .header-background {
+      margin-left: 4rem;
+      margin-right: 4rem;
+    }
+
+    .pills,
+    .pillBW,
+    .pillwhite,
+    .pillblue,
+    .fb-call-msg {
+      display: none; // hides floating images
+    }
+
+    .side-words {
+      display: none;
+    }
+
+    .upload-container {
+      .upload-box {
+        width: 26rem;
+        height: 26rem;
+      }
+    }
+
+    .stats-container {
+      flex-direction: column;
+      gap: 8rem;
+    }
+  }
+}
+
+/* ----------- Mobile (Landscape & Portrait) ----------- */
+@media (max-width: 768px) {
+  .landing {
+
+    .header-title {
+      font-size: 3.4rem;
+    }
+
+    .header-discription {
+      font-size: 1.8rem;
+      line-height: 2.6rem;
+    }
+
+    .header-background {
+      margin: 0 2rem;
+      height: 30rem;
+      clip-path: none; // remove angled shape for clean mobile layout
+    }
+
+    .advantages-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .mid-title {
+      font-size: 4.8rem;
+    }
+
+    .joinus {
+      margin: 3rem 0;
+
+      .button-group {
+        flex-direction: column;
+
+        .btn {
+          width: 100%;
+        }
+      }
+    }
+
+    .footer {
+      height: auto;
+      clip-path: none;
+
+      .main {
+        flex-direction: column;
+        gap: 3rem;
+      }
+
+      .bottom nav {
+        flex-direction: column;
+        gap: 2rem;
+      }
+    }
+  }
+}
+
+/* ----------- Very Small Phones (≤ 480px) ----------- */
+@media (max-width: 480px) {
+  .landing {
+
+    .header-title {
+      font-size: 2.8rem;
+    }
+
+    .header-discription {
+      font-size: 1.6rem;
+    }
+
+    .upload-container {
+      .upload-box {
+        width: 22rem;
+        height: 22rem;
+
+        p {
+          font-size: 1.8rem;
+        }
+      }
+    }
+
+    .advantage-card {
+      padding: 0 1rem;
+    }
+
+    .pharmacy-card {
+      max-width: 100%;
+    }
+  }
+}
+
+}    
+

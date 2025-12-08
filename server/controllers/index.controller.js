@@ -1,3 +1,4 @@
+const { decrypt } = require("../common/encrypt");
 const readCookies = require("../common/readCookies");
 const { response } = require("../common/response")
 const view = require("../common/view");

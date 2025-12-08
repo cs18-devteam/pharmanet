@@ -261,7 +261,16 @@
 
             .med_infomation{
                 .medicine_name{
-                    font-weight: 500;
+                    > div:nth-child(2){
+
+                        font-weight: 500;
+                        overflow: hidden;
+                        text-wrap-mode: nowrap;
+                        text-overflow: ellipsis ;
+                        width: 100%;
+                        height: 4rem;
+                    }
+
                     .name{
                         font-weight: 600;
                         color: #979696;
@@ -307,11 +316,12 @@
                     }
 
                     &:hover{
-                            transform: scale(1.05);
+                            // transform: scale(1.05);
                             transition: all 0.3s;
                             background-color: white;
-                            box-shadow:#ccc;
-                            border-radius: 2rem;
+                            // box-shadow:#ccc;
+                            // border-radius: 2rem;
+                            border: 1px solid black;
                             cursor: pointer;
                         }
         }

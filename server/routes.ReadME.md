@@ -5,7 +5,6 @@
 /verify/:userId/email
 /verify/:userId/email/otp
 /customers/:customerId
-/customers/:customerId
 /customers/:customerId/profile
 /customers/:customerId/medicines
 /customers/:customerId/pharmacy/register

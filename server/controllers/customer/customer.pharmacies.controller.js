@@ -72,7 +72,7 @@ exports.renderPharmacyLandingPage = async (req , res)=>{
 
         const pharmacyData = {
             ...pharmacy , 
-            contact1 : pharmacy.contact , 
+            contact1 : pharmacy.contact ,
             contact2 : "****"
         }
 
@@ -85,14 +85,12 @@ exports.renderPharmacyLandingPage = async (req , res)=>{
 
         const medicineCards = medicines.map(async m=>{
             const [medicine] = await Medicines.getById(m.medicineId);
-
-
-
             return view('customer/component.medicine.card' , {
                 id: m.id,
                 price : m.price , 
                 publicStock : m.publicStock,
-                name : medicine.geneticName
+                name : medicine.geneticName,
+                image : medicine.image,
             })
         })
 

@@ -8,15 +8,16 @@ exports.renderCustomerMedicines = async (req , res)=>{
 
     try{
         const customer = (await Users.getById(req.customerId))[0];
-        const medicines = await Medicines.get();
+        const medicines = await Medicines.query("select * from this.table where id > 0 limit 20");
         console.log(medicines  , customer);
         
         if(!customer) return view('404');
-        return response(res ,view('customer/customer.search.medicines' , {
+        return response(res ,view('customer/customer.medicine.view' , {
             ...customer,
             header : view('component.header' , {
                 name:"Antibiotics",
             }),
+            medicine_cards : medicines.map(m=>view('customer/component.medicine.card' , {...m , name : m.geneticName , price : "not available" , publicStock : "not available"})),
             count: medicines.length,
             navbar : view('customer/navbar.customer', customer) ,
             results : medicines.map(medicine=>view('customer/medicine.search.card' , medicine)).join(' ')

@@ -2922,8 +2922,13 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .landing .medicine-section .Medicines_grid .medicine-card .medi-img {
   text-align: center;
 }
-.landing .medicine-section .Medicines_grid .medicine-card .med_infomation .medicine_name {
+.landing .medicine-section .Medicines_grid .medicine-card .med_infomation .medicine_name > div:nth-child(2) {
   font-weight: 500;
+  overflow: hidden;
+  text-wrap-mode: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+  height: 4rem;
 }
 .landing .medicine-section .Medicines_grid .medicine-card .med_infomation .medicine_name .name {
   font-weight: 600;
@@ -2955,11 +2960,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   margin-right: 1rem;
 }
 .landing .medicine-section .Medicines_grid .medicine-card:hover {
-  transform: scale(1.05);
   transition: all 0.3s;
   background-color: white;
-  box-shadow: #ccc;
-  border-radius: 2rem;
+  border: 1px solid black;
   cursor: pointer;
 }
 .landing .pharmacy-section .section-title {

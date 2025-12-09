@@ -192,7 +192,7 @@ $light: #fff;
       justify-content: center;
       gap:1rem;
       align-items:center;
-      background-color: var(--color-blue-01);
+      background-color: var(--color-blue-02);
       border-radius: 2rem;
       color: white;
       font-size: 1.5rem;
@@ -202,7 +202,7 @@ $light: #fff;
       
     }
 
-    .cartbtn.addToCart::before{
+    .cartbtn.viewCart::before{
 
       content: ' ';
       position: absolute;
@@ -219,14 +219,14 @@ $light: #fff;
       
     }
 
-    .cartbtn.addToCart:hover::before{
+    .cartbtn.viewCart:hover::before{
       transform: scaleX(1);
       cursor: pointer;
     }
 
     
 
-    .cartbtn.addToCart{
+    .cartbtn.viewCart{
       transition: color 300ms easy-in-out;
       z-index: 1;
     }
@@ -235,26 +235,31 @@ $light: #fff;
   }
 
 //medicine grid
-
- .Medicines_grid {
+.medicine-section{
+    display: flex;
+    justify-content: center;
+    .Medicines_grid {
             display: grid;
             align-items: center;
             grid-template-columns: repeat(4, 32rem);  /* 4 columns */
             margin: 5rem ;
             justify-content: center;
             max-width: fit-content;
-            border: 0.1rem solid #ccc;
+            border-top: 0.1rem solid #ccc;
+            border-right: 0.1rem solid #ccc;
             
 
         .medicine-card{
             padding:2rem;
-            border: 0.1rem solid #ccc;
+            border-left: 0.1rem solid #ccc;
+            border-bottom: 0.1rem solid #ccc;
             width: 100%;
             //height: 15rem;
             //margin: 1rem;
 
             .medi-img{
                 text-align: center;
+
             }
 
             .med_infomation{
@@ -263,6 +268,22 @@ $light: #fff;
                     .name{
                         font-weight: 600;
                         color: #979696;
+                    }
+
+                    div{
+                        text-overflow: ellipsis;
+                        width: 100%;
+                        height: 2rem;
+                        overflow: hidden;
+                        text-wrap-mode: nowrap;
+
+                        @media screen and (max-width:890px){
+                            text-overflow: ellipsis;
+                            width: 60rem;
+                            height: 2rem;
+                            overflow: hidden;
+                            text-wrap-mode: nowrap;
+                        }
                     }
                 }
 
@@ -280,7 +301,8 @@ $light: #fff;
 
 
                     .results{
-
+                        display: flex;
+                        justify-content: space-between;
                         
                         .map-serach{
                             display: flex;
@@ -302,20 +324,55 @@ $light: #fff;
                         }
                         }
 
+                        .add-to-cart{
+                            display: flex;
+                            justify-content: center;
+                            gap:1rem;
+                            align-items:center;
+                            background-color: var(--color-blue-02);
+                            border-radius: 3rem;
+                            color: white;
+                            font-size: 1.5rem;
+                            font-weight: 500;
+                            padding: 1rem;
+                            //position: relative;
+                        }
+
                     }
 
                     &:hover{
-                            transform: scale(1.05);
                             transition: all 0.3s;
-                            background-color: white;
-                            box-shadow:#ccc;
-                            border-radius: 2rem;
                             cursor: pointer;
+                            border: 0.1rem solid black;
+                        }
+
+                    
+
+                        @media screen and (max-width:890px){
+                            display: flex;
+                            justify-content: center;
+                            //gap: 3rem;
+                            padding: 1rem;
                         }
         }
+        @media screen and (max-width:1297px){
+            grid-template-columns: repeat(4, 26rem);
+        }
 
+        @media  (min-width:890px) and (max-width:1100px) {
+            grid-template-columns: repeat(3, 30rem);
+        }
+
+         @media (min-width:0px) and (max-width:890px){
+            display: block;
+            margin: 5rem;
+             //grid-template-columns: repeat(2, 30rem);
+
+         }
          
         }
+}
+ 
 
 .contactBtn{
     display: flex;

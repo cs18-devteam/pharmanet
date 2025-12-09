@@ -4172,7 +4172,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   justify-content: center;
   gap: 1rem;
   align-items: center;
-  background-color: var(--color-blue-01);
+  background-color: var(--color-blue-02);
   border-radius: 2rem;
   color: white;
   font-size: 1.5rem;
@@ -4180,7 +4180,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   padding: 1rem;
   position: relative;
 }
-.landingPage .store .search-bar .cartbtn.addToCart::before {
+.landingPage .store .search-bar .cartbtn.viewCart::before {
   content: " ";
   position: absolute;
   top: 0;
@@ -4194,49 +4194,75 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   transform-origin: left;
   transition: transform 300ms ease-in-out;
 }
-.landingPage .store .search-bar .cartbtn.addToCart:hover::before {
+.landingPage .store .search-bar .cartbtn.viewCart:hover::before {
   transform: scaleX(1);
   cursor: pointer;
 }
-.landingPage .store .search-bar .cartbtn.addToCart {
+.landingPage .store .search-bar .cartbtn.viewCart {
   transition: color 300ms easy-in-out;
   z-index: 1;
 }
-.landingPage .store .Medicines_grid {
+.landingPage .store .medicine-section {
+  display: flex;
+  justify-content: center;
+}
+.landingPage .store .medicine-section .Medicines_grid {
   display: grid;
   align-items: center;
   grid-template-columns: repeat(4, 32rem); /* 4 columns */
   margin: 5rem;
   justify-content: center;
   max-width: fit-content;
-  border: 0.1rem solid #ccc;
+  border-top: 0.1rem solid #ccc;
+  border-right: 0.1rem solid #ccc;
 }
-.landingPage .store .Medicines_grid .medicine-card {
+.landingPage .store .medicine-section .Medicines_grid .medicine-card {
   padding: 2rem;
-  border: 0.1rem solid #ccc;
+  border-left: 0.1rem solid #ccc;
+  border-bottom: 0.1rem solid #ccc;
   width: 100%;
 }
-.landingPage .store .Medicines_grid .medicine-card .medi-img {
+.landingPage .store .medicine-section .Medicines_grid .medicine-card .medi-img {
   text-align: center;
 }
-.landingPage .store .Medicines_grid .medicine-card .med_infomation .medicine_name {
+.landingPage .store .medicine-section .Medicines_grid .medicine-card .med_infomation .medicine_name {
   font-weight: 500;
 }
-.landingPage .store .Medicines_grid .medicine-card .med_infomation .medicine_name .name {
+.landingPage .store .medicine-section .Medicines_grid .medicine-card .med_infomation .medicine_name .name {
   font-weight: 600;
   color: #979696;
 }
-.landingPage .store .Medicines_grid .medicine-card .med_infomation .medicine__info__price {
+.landingPage .store .medicine-section .Medicines_grid .medicine-card .med_infomation .medicine_name div {
+  text-overflow: ellipsis;
+  width: 100%;
+  height: 2rem;
+  overflow: hidden;
+  text-wrap-mode: nowrap;
+}
+@media screen and (max-width: 890px) {
+  .landingPage .store .medicine-section .Medicines_grid .medicine-card .med_infomation .medicine_name div {
+    text-overflow: ellipsis;
+    width: 60rem;
+    height: 2rem;
+    overflow: hidden;
+    text-wrap-mode: nowrap;
+  }
+}
+.landingPage .store .medicine-section .Medicines_grid .medicine-card .med_infomation .medicine__info__price {
   display: flex;
   gap: 2rem;
   color: #1A7F89;
   padding: 1rem 0;
   font-weight: 600;
 }
-.landingPage .store .Medicines_grid .medicine-card .med_infomation .medicine__info__price span {
+.landingPage .store .medicine-section .Medicines_grid .medicine-card .med_infomation .medicine__info__price span {
   display: flex;
 }
-.landingPage .store .Medicines_grid .medicine-card .results .map-serach {
+.landingPage .store .medicine-section .Medicines_grid .medicine-card .results {
+  display: flex;
+  justify-content: space-between;
+}
+.landingPage .store .medicine-section .Medicines_grid .medicine-card .results .map-serach {
   display: flex;
   background-color: #E8F7FF;
   border-radius: 3rem;
@@ -4248,16 +4274,48 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   justify-content: center;
   align-items: center;
 }
-.landingPage .store .Medicines_grid .medicine-card .results .map-serach .world_img {
+.landingPage .store .medicine-section .Medicines_grid .medicine-card .results .map-serach .world_img {
   margin-right: 1rem;
 }
-.landingPage .store .Medicines_grid .medicine-card:hover {
-  transform: scale(1.05);
+.landingPage .store .medicine-section .Medicines_grid .medicine-card .results .add-to-cart {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+  background-color: var(--color-blue-02);
+  border-radius: 3rem;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 1rem;
+}
+.landingPage .store .medicine-section .Medicines_grid .medicine-card:hover {
   transition: all 0.3s;
-  background-color: white;
-  box-shadow: #ccc;
-  border-radius: 2rem;
   cursor: pointer;
+  border: 0.1rem solid black;
+}
+@media screen and (max-width: 890px) {
+  .landingPage .store .medicine-section .Medicines_grid .medicine-card {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+  }
+}
+@media screen and (max-width: 1297px) {
+  .landingPage .store .medicine-section .Medicines_grid {
+    grid-template-columns: repeat(4, 26rem);
+  }
+}
+@media (min-width: 890px) and (max-width: 1100px) {
+  .landingPage .store .medicine-section .Medicines_grid {
+    grid-template-columns: repeat(3, 30rem);
+  }
+}
+@media (min-width: 0px) and (max-width: 890px) {
+  .landingPage .store .medicine-section .Medicines_grid {
+    display: block;
+    margin: 5rem;
+  }
 }
 .landingPage .store .contactBtn {
   display: flex;
@@ -4789,6 +4847,119 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   text-decoration: none;
   color: var(--white);
   font-size: 1.6rem;
+  font-family: var(--primary-font);
+}
+
+.medicine-review .medicine {
+  margin: 5rem;
+}
+.medicine-review .medicine .main-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.medicine-review .medicine .main-info img {
+  margin: 1rem;
+}
+.medicine-review .medicine .main-info .right-side {
+  padding: 1rem;
+  margin: 1rem;
+  font-weight: 500;
+  font-size: 1.8rem;
+}
+.medicine-review .medicine .title {
+  color: var(--color-green-01);
+  font-size: 2rem;
+  text-transform: capitalize;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+.medicine-review .medicine .para {
+  font-size: 1.8rem;
+  margin: 1rem;
+}
+.medicine-review .medicine ul {
+  list-style-type: disc;
+  font-size: 1.8rem;
+  margin-left: 5rem;
+}
+.medicine-review .medicine .refference {
+  font-size: 2rem;
+  font-weight: 500;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+.medicine-review .medicine .refference a {
+  color: var(--color-green-01);
+  font-size: 1.8rem;
+}
+.medicine-review .footer {
+  color: var(--white);
+  font-family: var(--primary-font);
+  padding: 3rem;
+  height: 57.9rem;
+  background-image: linear-gradient(183deg, transparent 12%, var(--color-green-02) 10%), linear-gradient(178deg, transparent 10%, var(--color-green-01) 10%);
+}
+.medicine-review .footer .main {
+  padding: 8rem 3rem;
+  color: #cfd8dc;
+  display: flex;
+  justify-content: space-between;
+  align-items: self-start;
+  color: var(--white);
+  font-size: 2.4rem;
+}
+.medicine-review .footer .logo {
+  font-family: var(--secondary-font);
+  display: flex;
+  align-items: center;
+  mix-blend-mode: plus-lighter;
+}
+.medicine-review .footer .logo .logopic {
+  height: 4.6rem;
+  margin-right: 1rem;
+}
+.medicine-review .footer .logo .logoname {
+  font-weight: bold;
+  color: var(--white);
+  font-size: 1.6rem;
+}
+.medicine-review .footer .site-map li {
+  list-style: none;
+}
+.medicine-review .footer .site-map a {
+  color: #bdc6cb;
+  line-height: 5rem;
+  text-decoration: none;
+  color: #bdc6cb;
+  font-size: 1.8rem;
+  font-family: var(--primary-font);
+}
+.medicine-review .footer .footer-title {
+  color: var(--white);
+  margin: 5rem 0;
+}
+.medicine-review .footer .footer-discription p {
+  color: #bdc6cb;
+  margin: 2rem 0;
+  font-size: 1.8rem;
+}
+.medicine-review .footer .bottom {
+  margin: 10rem 0 2rem 0;
+}
+.medicine-review .footer .bottom nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  color: #75a6cd;
+  gap: 2rem;
+  font-size: 1.4rem;
+}
+.medicine-review .footer .bottom nav > a {
+  text-decoration: none;
+  color: var(--white);
+  font-size: 1.4rem;
   font-family: var(--primary-font);
 }
 

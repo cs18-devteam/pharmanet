@@ -30,12 +30,18 @@ exports.renderCustomerProfile = async (req , res)=>{
         try{
 
                 const customer = (await Users.getById(req.customerId))[0];
-                if(!customer) response(res , "your are not authorized" , 302);
+                if(!customer) return response(res , "your are not authorized" , 302);
+
+                console.log(customer);
                 
-                return response(res , view('customer/customer.profile' , {
+                return response(res , view('customer/profile' , {
                         header : view('component.header' , {
-                                name:"Antibiotics",
+                                name:`${customer?.firstName  } ${customer?.lastName } || Account Setting`,
                         }),
+                        navbar : view('customer/navbar.customer' , {
+                                        name : `${customer?.firstName  } ${customer?.lastName }`
+                                    }) ,
+                        footer : view('footer'),
                         ...customer
                 }) , 200);
         }catch(e){

@@ -29,6 +29,7 @@ class Model{
                 const constraints = [];
                 if(value.unique == true) constraints.push("UNIQUE");
                 if(value.null == false) constraints.push("NOT NULL");
+                if(value.default) constraints.push(`DEFAULT "${value.default}"`)
                     
                 if(value.primaryKey == true){
                     tableConstraints.push(`PRIMARY KEY(${name})`);

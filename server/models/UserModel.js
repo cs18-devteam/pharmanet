@@ -85,11 +85,18 @@ class UserModel extends Model{
             type:"BOOLEAN",
         }
 
+        this.profile = {
+            type:"VARCHAR(100)",
+            default :"/users/profile-general.jpg",
+            
+        }
+
     }
 }
 
 const Users = new UserModel();
 Users.createTable().catch(e=>{
+    console.log(e);
     console.log('user table not created');
 })
 module.exports = Users;

@@ -6,12 +6,14 @@ const view = require("../common/view");
 
 exports.renderCustomerProfile = async (req , res)=>{
     try{
-
         const customer = await Users.get(req.customerId)[0];
         if(!customer) return view('404' , {
             header : view('component.header' , {
                 name:"Antibiotics",
             }),
+            navbar : view('components/navbar.customer' , {
+                name : `${customer?.firstName  } ${customer?.lastName }`
+            }) ,
             footer: view('footer'),
         });
         
@@ -23,7 +25,7 @@ exports.renderCustomerProfile = async (req , res)=>{
         
         return view("customer.profile" , {
             header : view('component.header' , {
-                name:"Antibiotics",
+                name:`${customer.firstName} ${customer.lastName} || Account - Pharmanet`,
             }),
             navbar : view('components/navbar.customer' , {
                 name : `${customer?.firstName  } ${customer?.lastName }`

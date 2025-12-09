@@ -110,7 +110,7 @@
                 and happier patients begins here.
             </p>
             
-                <form id="pharmacy-form" method="POST" >
+                <form id="pharmacy-form" method="GET" action="/pharmacies/1/pharmacist/1" >
                     <div class="FormGroup">
 
                         <h3 class="title">
@@ -147,7 +147,7 @@
                         
                         <label for="map">Google Map Location Link</label><br>
                         <div class="description">Paste the Google Maps link so customers can easily find your pharmacy’s exact location.</div>
-                        <input type="url" name="map" id="map" placeholder="https://maps.app.goo.gl/RRaKYtBqVNnwgwCN9" required><br><br>
+                        <input type="url" name="map" id="map" placeholder="https://maps.app.goo.gl/RRaKYtBqVNnwgwCN9"><br><br>
                         
                         <div class="longitude-latitude">    
                             
@@ -162,7 +162,7 @@
                                     <li>The first number is the Latitude.</li>
                                 </Ol>
                             </div>
-                                <input type="text" name="latitude" id="latitude" placeholder="80.341595" required>
+                                <input type="text" name="latitude" id="latitude" placeholder="80.341595">
 
                                 <label for="longitude">Longitude</label>
                             <div class="description">Enter the longitude value of your pharmacy’s location.To find it easily:
@@ -173,7 +173,7 @@
                                     <li>The second number is the longitude.</li>
                                 </Ol>
                             </div>
-                            <input type="text" name="longitude" id="longitude" placeholder="7.268932" required>
+                            <input type="text" name="longitude" id="longitude" placeholder="7.268932" >
                         </div>
                     </div>
 
@@ -197,21 +197,21 @@
                                 <label for="upload-p-reg-certificate">Pharmacy Registration Certificate</label>
                                 <div class="description">Upload the official registration certificate issued for your pharmacy. This document proves that your pharmacy is legally registered and authorized to operate.</div>
                                 <label class="upload-btn" for="upload-p-reg-certificate">Upload File</label>
-                                <input type="file" id="upload-p-reg-certificate" name="p-reg-certificate" required>
+                                <input type="file" id="upload-p-reg-certificate" name="p-reg-certificate">
                             </div>
 
                             <div class="custom-upload">
                                 <label for="OwnerProof">Owner/Manager Proof</label>
                                 <div class="description">Upload a document that verifies you are the owner or manager of the pharmacy. This can be an ID card, appointment letter, or any official document showing your authority to manage the pharmacy.</div>
                                 <label class="upload-btn" for="OwnerProof">Upload File</label>
-                                <input type="file" id="OwnerProof" name="OwnerProof" required>
+                                <input type="file" id="OwnerProof" name="OwnerProof">
                             </div>
 
                             <div class="custom-upload">
                                 <label for="P-AddressProof">Pharmacy Address Proof</label>
                                 <div class="description">Upload a document that confirms the pharmacy’s address, such as a utility bill, lease agreement, or any official document showing the pharmacy location.</div>
                                 <label class="upload-btn" for="P-AddressProof">Upload File</label>
-                                <input type="file" id="P-AddressProof" name="P-AddressProof" required>
+                                <input type="file" id="P-AddressProof" name="P-AddressProof">
                             </div>
 
 

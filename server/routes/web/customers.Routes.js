@@ -41,6 +41,9 @@ const customerRouter = SubRouter.route('/customers/:customerId')
 .subRoute('/products/pharmacy_management_system' , {
     get : productManagementController.renderPharmacyManagementSystemIntro
 })
+.subRoute('/products/pharmacy_management_system/register' , {
+    get : productManagementController.renderPharmanetRegistrationPage
+})
 
 
 

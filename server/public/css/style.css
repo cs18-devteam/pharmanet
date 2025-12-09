@@ -56,7 +56,6 @@ a {
 }
 a:hover {
   color: var(--color-green-01);
-  background-size: 100% 10%;
 }
 
 input {
@@ -2625,22 +2624,31 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   vertical-align: middle;
 }
 .RegPharmacy .container .FormGroup label {
-  font-size: 2.4rem;
+  font-size: 2rem;
   color: var(--font-linear-primary-color);
-  font-weight: 600;
+  font-weight: 500;
+  margin-top: 3rem;
+}
+.RegPharmacy .container .FormGroup .description {
+  color: #4f4f4f;
 }
 .RegPharmacy .container .FormGroup input {
-  font-size: 2.4rem;
+  font-size: 1.8rem;
   width: 100%;
   height: 5rem;
   padding: 2rem;
   border-radius: 1rem;
   margin: 1rem 0rem;
   font-weight: 400;
+  font-family: var(--primary-font);
   border: 0.1rem solid #ccc;
+  color: black !important;
 }
 .RegPharmacy .container .FormGroup input:hover {
   border-color: #007bff;
+}
+.RegPharmacy .container .FormGroup input::placeholder {
+  font-size: 1.8rem;
 }
 .RegPharmacy .container .FormGroup .info-label {
   background-color: rgba(249, 165, 80, 0.062745098);
@@ -2676,6 +2684,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   color: #999;
   cursor: pointer;
   transition: border-color 0.3s ease;
+  font-size: 1.8rem;
+  font-weight: 100;
+  color: black;
 }
 .RegPharmacy .container .FormGroup .UploadSection .custom-upload .upload-btn:hover {
   border-color: #007bff;

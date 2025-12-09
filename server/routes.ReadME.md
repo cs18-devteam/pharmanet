@@ -19,6 +19,7 @@
 /customers/:customerId/orders/:orderId
 /customers/:customerId/orders/:orderId/checkout
 /customers/:customerId/products/pharmacy_management_system
+/customers/:customerId/products/pharmacy_management_system/register
 /admin/:adminId/blogs
 /admin/:adminId/blogs/manage
 /admin/:adminId/blogs/:blogId/edit

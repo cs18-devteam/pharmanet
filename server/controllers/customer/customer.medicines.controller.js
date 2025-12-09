@@ -34,18 +34,26 @@ exports.renderCustomerMedicines = async (req , res)=>{
 }
 exports.renderCustomerSelectedMedicine = async (req , res)=>{
     try{
+        const [medicine] = await Medicines.getById(req.medicineId);
+        const [customer] = await Users.getById(req.customerId);
 
-        return response(res , view("customer.search" , {
+        console.log(medicine);
+
+        return response(res , view("customer/customer.medicine.blog" , {
             header : view('component.header' , {
-                name:"Antibiotics",
+                name:medicine.geneticName,
             }),
+            navbar : view('customer/navbar.customer', customer) ,
             footer: view('footer'),
+            ...medicine,
         }) , 200);
     }catch(e){
         console.log(e);
         return response(res , view('404') , 404);
     }
 }
+
+
 
 
 

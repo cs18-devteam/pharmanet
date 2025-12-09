@@ -5120,11 +5120,12 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .medicine-review .medicine .main-info {
   display: flex;
-  justify-content: space-between;
   gap: 2rem;
 }
 .medicine-review .medicine .main-info img {
   margin: 1rem;
+  object-fit: contain;
+  object-position: center;
 }
 .medicine-review .medicine .main-info .right-side {
   padding: 1rem;

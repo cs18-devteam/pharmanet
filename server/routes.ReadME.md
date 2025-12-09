@@ -8,6 +8,7 @@
 /customers/:customerId
 /customers/:customerId/profile
 /customers/:customerId/medicines
+/customers/:customerId/medicines/:medicineId
 /customers/:customerId/pharmacy/register
 /customers/:customerId/profile/edit
 /customers/:customerId/pharmacies

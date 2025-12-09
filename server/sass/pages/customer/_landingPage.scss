@@ -242,21 +242,26 @@
             display: grid;
             align-items: center;
             grid-template-columns: repeat(4, 32rem);  /* 4 columns */
-            margin: 5rem 10rem 10rem 10rem;
+            // margin: 5rem 10rem 10rem 10rem;
             justify-content: center;
             max-width: fit-content;
-            border: 0.1rem solid #ccc;
-            
-
+            border: 1px solid #e8e8e8;
+            margin: auto;
         .medicine-card{
             padding:2rem;
-            border: 0.1rem solid #ccc;
+            background-color: white;
             width: 100%;
+            border: 1px solid #e8e8e8;
+            box-shadow:0px 2px 6px rgba(0,0,0,0.05);
             //height: 15rem;
             //margin: 1rem;
 
             .medi-img{
-                text-align: center;
+                width: 15rem;
+                height: 15rem;
+                object-fit: contain;
+                display: block;
+                margin: auto;
             }
 
             .med_infomation{
@@ -354,17 +359,19 @@
             display: grid;
             align-items: center;
             grid-template-columns: repeat(4, 32rem);  /* 4 columns */
-            margin: 3rem 10rem;
-            max-width: fit-content;
+            // margin: 5rem 10rem 10rem 10rem;
             justify-content: center;
-            font-family: var(--primary-font);
-            border: 0.1rem solid #ccc;
+            max-width: fit-content;
+            border: 1px solid #e8e8e8;
+            margin: auto;
             
 
         .pharmacy-card{
             padding:2rem;
-            border: 0.1rem solid #ccc;
+            background-color: white;
             width: 100%;
+            border: 1px solid #e8e8e8;
+            box-shadow:0px 2px 6px rgba(0,0,0,0.05);
             //height: 15rem;
             //margin: 1rem;
 
@@ -848,15 +855,7 @@
         }
     }
 
-    .pharmacies-grid {
-        flex-wrap: wrap;
-        gap: 2rem;
-    }
-
-    .pharmacy-card {
-        max-width: 100%;
-        width: 100%;
-    }
+   
 
     .joinus .button-group {
         flex-direction: column;

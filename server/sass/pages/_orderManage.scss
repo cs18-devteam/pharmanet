@@ -1,0 +1,250 @@
+.orderManage{
+    padding: 6rem;
+    padding-top: 2rem;
+
+
+$order-primary: #08374F;
+$order-secondary: #F9A550;
+$order-border: #e5e5e5;
+$order-light: #f5faff;
+$order-text: #333;
+$completed-color: #006f69;
+$active-color: #f4a640;
+$pending-color: #cccccc;
+
+.topTabs{
+  display: flex;
+  gap: 15px;
+  margin-top: 4rem;
+  justify-content: center;
+
+  .tab {
+    padding: 8px 18px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+
+    &.active {
+      background: #000;
+      color: #fff;
+    }
+  }
+}
+
+.order-header{
+    margin-bottom: 1.5rem;
+
+    h2 { 
+        margin-bottom: .3rem; 
+    }
+
+    .status-btn {
+      display: flex;
+      width: 148px;
+      padding: 10px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50px;
+      border: none;
+      margin-top: 0.8rem;
+      gap: 10px;
+
+      &.processing { 
+        background: #1A7F78; 
+        color: white; 
+    }
+    }
+}
+
+.mainContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 0rem;
+    .leftContainer{
+        flex: 2;
+        margin-bottom: 1rem;
+        padding: 1.5rem;
+        border-radius: 2px;
+        border: 1px solid $order-border;
+       .order-id {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        margin-bottom: 1rem;
+      }
+
+  .step-progress {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 2e0px;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .bar {
+        width: 12rem;
+        height: 8px;
+        border-radius: 12px;
+        margin-bottom: 4px;
+    }
+
+    .content {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 6px;
+
+        .label {
+            color: #000;
+            font-family: "Red Hat Display";
+            font-size: 1.3rem;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+    }
+
+    &.completed {
+        .bar {
+            background: $completed-color;
+        }
+        .content {
+            color: $completed-color;
+        }
+    }
+
+    &.active {
+        .bar {
+            background: $order-secondary;
+        }
+        .content {
+            color: $order-secondary;
+            font-weight: 600;
+        }
+    }
+
+    &.pending {
+        .bar {
+            background: $pending-color;
+        }
+        .content {
+            color: $pending-color;
+        }
+    }
+}
+
+      .section {
+        margin-top: 2rem;
+        margin-bottom: 1.4rem;
+
+        h3 {
+          color: #000;
+          font-family: "Red Hat Display";
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 2.5rem;
+        }
+
+        p {
+          margin: .2rem 0;
+          border-left: 7px solid #1A7F78;
+          padding-left: 14px;
+          line-height: 2.5rem;
+          
+        }
+
+        .pending { 
+            color: red; 
+        }
+      }
+
+      .products {
+        .product {
+          display: grid;
+          grid-template-columns: 40px 1fr 120px 80px 40px 80px 100px;
+          padding: .8rem 0;
+          border-bottom: 1px solid $order-border;
+
+          p{
+            border: none;
+            gap: 2rem;
+          }
+
+          .price { 
+            font-weight: bold; 
+         }
+        }
+      }
+    }
+    .rightContainer{
+        flex: 1;
+        .card-box {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 2px;
+        border: 1px solid $order-border;
+
+        .pending-badge {
+          background: #ffe3d9;
+          color: #cc5200;
+          padding: 6px 12px;
+          display: inline-block;
+          border-radius: 6px;
+          margin-bottom: 1.2rem;
+        }
+
+        .order-values {
+          p, h3 {
+            display: flex;
+            justify-content: space-between;
+            margin: .4rem 0;
+          }
+
+          h3 {
+            margin-top: 1rem;
+            font-size: 20px;
+            color: $order-primary;
+          }
+        }
+
+        .payment-options {
+          margin: 1rem 0;
+          display: flex;
+          gap: 1rem;
+
+          .btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: 1px solid $order-border;
+            background: $order-light;
+            cursor: pointer;
+
+            &:hover {
+              background: $order-secondary;
+              color: white;
+            }
+          }
+        }
+
+        .note-blue {
+          background: #e7f4ff;
+          padding: .9rem;
+          border-radius: 6px;
+          font-size: 14px;
+          margin-bottom: 1rem;
+        }
+
+        .special-notes {
+          h4 { color: $order-primary; margin-bottom: .3rem; }
+          p { color: red; font-size: 14px; }
+        }
+      }
+    }
+    }
+}

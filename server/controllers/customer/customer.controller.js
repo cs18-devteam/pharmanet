@@ -1,5 +1,8 @@
+const { getRequestData } = require("../../common/getRequestData");
+const { response, responseJson } = require("../../common/response");
 const Bridge = require("../../common/Bridge");
 const view = require("../../common/view");
+
 
 
 exports.renderCustomerHome = async (req , res)=>{
@@ -27,3 +30,6 @@ exports.renderCustomerHome = async (req , res)=>{
     })
 }
 
+exports.orderManage = async (req ,res)=>{
+    return response(res , view('customer/orderManage'))
+}

@@ -11094,4 +11094,275 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   }
 }
 
+.viewBlog {
+  font-family: Arial, sans-serif;
+  background: #fff;
+  color: #333;
+}
+.viewBlog .container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+.viewBlog .title {
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: #0b4a7c;
+  margin-bottom: 20px;
+}
+.viewBlog .medicine-header {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 30px;
+}
+.viewBlog .medicine-header .medicine-img {
+  width: 90px;
+  height: auto;
+}
+.viewBlog .medicine-header .details {
+  line-height: 1.6;
+}
+.viewBlog .medicine-header .details .Gname, .viewBlog .medicine-header .details .tylenol {
+  text-decoration: underline;
+}
+.viewBlog .section-title {
+  font-size: 2.4rem;
+  font-weight: 500;
+  color: #1A7F78;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+.viewBlog h3 {
+  font-size: 1.5rem;
+  color: #0b4a7c;
+  margin-top: 20px;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+.viewBlog ul {
+  padding-left: 20px;
+}
+.viewBlog ul li {
+  margin-bottom: 6px;
+}
+.viewBlog .ref-link {
+  color: #1A7F78;
+  text-decoration: none;
+}
+.viewBlog .ref-link:hover {
+  text-decoration: underline;
+}
+.viewBlog {
+  /* Responsive */
+}
+@media (max-width: 600px) {
+  .viewBlog .medicine-header {
+    flex-direction: column;
+  }
+}
+
+.orderManage {
+  padding: 6rem;
+  padding-top: 2rem;
+}
+.orderManage .topTabs {
+  display: flex;
+  gap: 15px;
+  margin-top: 4rem;
+  justify-content: center;
+}
+.orderManage .topTabs .tab {
+  padding: 8px 18px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+}
+.orderManage .topTabs .tab.active {
+  background: #000;
+  color: #fff;
+}
+.orderManage .order-header {
+  margin-bottom: 1.5rem;
+}
+.orderManage .order-header h2 {
+  margin-bottom: 0.3rem;
+}
+.orderManage .order-header .status-btn {
+  display: flex;
+  width: 148px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  border: none;
+  margin-top: 0.8rem;
+  gap: 10px;
+}
+.orderManage .order-header .status-btn.processing {
+  background: #1A7F78;
+  color: white;
+}
+.orderManage .mainContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 0rem;
+}
+.orderManage .mainContainer .leftContainer {
+  flex: 2;
+  margin-bottom: 1rem;
+  padding: 1.5rem;
+  border-radius: 2px;
+  border: 1px solid #e5e5e5;
+}
+.orderManage .mainContainer .leftContainer .order-id {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.orderManage .mainContainer .leftContainer .step-progress {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding: 2px;
+}
+.orderManage .mainContainer .leftContainer .step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.orderManage .mainContainer .leftContainer .step .bar {
+  width: 12rem;
+  height: 8px;
+  border-radius: 12px;
+  margin-bottom: 4px;
+}
+.orderManage .mainContainer .leftContainer .step .content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+}
+.orderManage .mainContainer .leftContainer .step .content .label {
+  color: #000;
+  font-family: "Red Hat Display";
+  font-size: 1.3rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.orderManage .mainContainer .leftContainer .step.completed .bar {
+  background: #006f69;
+}
+.orderManage .mainContainer .leftContainer .step.completed .content {
+  color: #006f69;
+}
+.orderManage .mainContainer .leftContainer .step.active .bar {
+  background: #F9A550;
+}
+.orderManage .mainContainer .leftContainer .step.active .content {
+  color: #F9A550;
+  font-weight: 600;
+}
+.orderManage .mainContainer .leftContainer .step.pending .bar {
+  background: #cccccc;
+}
+.orderManage .mainContainer .leftContainer .step.pending .content {
+  color: #cccccc;
+}
+.orderManage .mainContainer .leftContainer .section {
+  margin-top: 2rem;
+  margin-bottom: 1.4rem;
+}
+.orderManage .mainContainer .leftContainer .section h3 {
+  color: #000;
+  font-family: "Red Hat Display";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.5rem;
+}
+.orderManage .mainContainer .leftContainer .section p {
+  margin: 0.2rem 0;
+  border-left: 7px solid #1A7F78;
+  padding-left: 14px;
+  line-height: 2.5rem;
+}
+.orderManage .mainContainer .leftContainer .section .pending {
+  color: red;
+}
+.orderManage .mainContainer .leftContainer .products .product {
+  display: grid;
+  grid-template-columns: 40px 1fr 120px 80px 40px 80px 100px;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+.orderManage .mainContainer .leftContainer .products .product p {
+  border: none;
+  gap: 2rem;
+}
+.orderManage .mainContainer .leftContainer .products .product .price {
+  font-weight: bold;
+}
+.orderManage .mainContainer .rightContainer {
+  flex: 1;
+}
+.orderManage .mainContainer .rightContainer .card-box {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 2px;
+  border: 1px solid #e5e5e5;
+}
+.orderManage .mainContainer .rightContainer .card-box .pending-badge {
+  background: #ffe3d9;
+  color: #cc5200;
+  padding: 6px 12px;
+  display: inline-block;
+  border-radius: 6px;
+  margin-bottom: 1.2rem;
+}
+.orderManage .mainContainer .rightContainer .card-box .order-values p, .orderManage .mainContainer .rightContainer .card-box .order-values h3 {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.4rem 0;
+}
+.orderManage .mainContainer .rightContainer .card-box .order-values h3 {
+  margin-top: 1rem;
+  font-size: 20px;
+  color: #08374F;
+}
+.orderManage .mainContainer .rightContainer .card-box .payment-options {
+  margin: 1rem 0;
+  display: flex;
+  gap: 1rem;
+}
+.orderManage .mainContainer .rightContainer .card-box .payment-options .btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid #e5e5e5;
+  background: #f5faff;
+  cursor: pointer;
+}
+.orderManage .mainContainer .rightContainer .card-box .payment-options .btn:hover {
+  background: #F9A550;
+  color: white;
+}
+.orderManage .mainContainer .rightContainer .card-box .note-blue {
+  background: #e7f4ff;
+  padding: 0.9rem;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-bottom: 1rem;
+}
+.orderManage .mainContainer .rightContainer .card-box .special-notes h4 {
+  color: #08374F;
+  margin-bottom: 0.3rem;
+}
+.orderManage .mainContainer .rightContainer .card-box .special-notes p {
+  color: red;
+  font-size: 14px;
+}
+
 /*# sourceMappingURL=style.css.map */

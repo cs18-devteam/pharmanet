@@ -161,6 +161,9 @@ const server = http.createServer((req , res)=>{
         AppRouter.pipe(req ,res).route('/delete/:id')
         ?.get(blogController.delete);
 
+        AppRouter.pipe(req ,res).route('/customer/orderManage')
+        ?.get(customerController.orderManage);
+
 
 
 

@@ -1,0 +1,92 @@
+.viewBlog{
+    font-family: Arial, sans-serif;
+    background: #fff;
+    color: #333;
+    // padding: 40px;
+
+
+    $primary: #1A7F78;
+    $heading: #0b4a7c;
+    $text: #333;
+    $light-gray: #f7f7f7;
+
+
+    .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: $heading;
+    margin-bottom: 20px;
+}
+
+.medicine-header {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 30px;
+
+    .medicine-img {
+        width: 90px;
+        height: auto;
+    }
+
+    .details {
+        line-height: 1.6;
+
+        .Gname, .tylenol{
+            text-decoration: underline;
+        }
+        
+    }
+}
+
+.section-title {
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: $primary;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: $heading;
+    margin-top: 20px;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+ul {
+    padding-left: 20px;
+
+    li {
+        margin-bottom: 6px;
+    }
+}
+
+.ref-link {
+    color: $primary;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+
+
+
+/* Responsive */
+@media (max-width: 600px) {
+    .medicine-header {
+        flex-direction: column;
+    }
+}
+
+
+}

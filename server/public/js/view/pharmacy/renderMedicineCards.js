@@ -48,7 +48,50 @@ const medicineCardTemplate = html`
         <div class="stock__amount">{count}</div>
     </div>
 
+    <div class="order-add-form {status}">
+        <div class="input">
+            <label>
+                <span>Units</span>
+                <input name="units" type="number" min="0" max="{count}" value={units}/>
+            </label>
+        </div>
+        <div class="input">
+            <label>
+                <span>Days</span>
+                <input name="days" type="number" min="0" value="{days}"/>
+            </label>
+        </div>
+
+        <div class="input">
+            <label>
+                <span>Discounts</span>
+                <input name="discounts" type="number" min="0" max="{price}" value="{discounts}"/>
+            </label>
+        </div>
+
+        <button class="add">Add</button>
+    </div>
+    
+    
+        
+    <div class="cart_item_details">
+        <div class="cart_item_details__summery">    
+            <span>Rs {price}</span>
+            <span>x</span>
+            <span>{units} (Units)</span>
+            <span>&nbsp;</span>
+            <span> - Rs {discounts} (Discounts)</span>
+            
+        </div>
+
+        <div class="cart_item_details__total">Rs {total}</div>
+        
+        
+    </div>
+    
 </div> 
+
+
 `;
 
 export function createMedicineCards (data = []){
@@ -76,17 +119,21 @@ export function createMedicineCards (data = []){
                 price = medicine.stock.price;
             }
 
+            const total = price * medicine.units - medicine.discounts;
 
 
             return medicineCardTemplate
             .replaceAll('{type}' , 'syringe')
             .replaceAll('{variety}' , 'pills')
             .replace('{geneticName}' , medicine.geneticName)
-            .replace('{price}' , price )
-            .replace('{status}' , status)
+            .replaceAll('{price}' , price )
+            .replaceAll('{status}' , status)
             .replace('{count}' , fullStockCount)
-            .replace('{id}' , medicine.id);
-            
+            .replaceAll('{units}' , medicine.units || 1)
+            .replaceAll('{discounts}' , medicine.discounts || 0)
+            .replaceAll('{days}' , medicine.days || 1)
+            .replace('{id}' , medicine.id || 0)
+            .replace('{total}' , total || 0);
         });
     }catch(e){
         console.log(e);

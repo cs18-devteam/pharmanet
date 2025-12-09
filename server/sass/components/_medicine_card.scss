@@ -1,10 +1,11 @@
 .medicine_card{
     border: 1px solid #eee;
     display: flex;
+    flex-wrap: wrap;
     border-radius: 3rem;
     position: relative;
     padding: 2rem;
-    height: 10rem;
+    min-height: 10rem;
     gap: 1rem;
     transition: all .3s ease;
     cursor: pointer;
@@ -285,7 +286,108 @@
 
 
     }
+
+
+    &.show-order-add-form{
+        .order-add-form{
+            height: 3rem;
+            opacity: 1;
+
+        }
+    }
+
+
+    .order-add-form{
+        width: 100%;
+        transition: all .3s ease;
+        display:  flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-left: 3rem;
+        opacity: 0;
+        height: 1px;
+        display: none;
+
+        &.available{
+            display: flex;
+        }
+
+
+        .input{
+            width: 30%;
+
+            label{
+
+                display: flex;
+                align-items: center;
+                
+                input{
+                    width: 100%;
+                    margin:0 1rem;
+                }
+            }
+        }
+
+
+        .add{
+            padding: 1rem 2.5rem ;
+            border-radius: 3rem;
+            color: #fff;
+            background-color: var(--color-green-01);
+            border: none;
+        }
+    }
+
+    .cart_item_details{
+        opacity: 0;
+        height: 1px;
+        width: 100%;
+        margin-left: 3rem;
+    }
 }
+
+
+.orders  .cart_list .medicine_card {
+
+    .details{
+        .medicine__info__store-as{
+            display: none;
+        }
+
+        .medicine__info__price{
+            display: none;
+        }
+    }
+
+
+    .stock{
+        display: none;
+    }
+
+    .cart_item_details{
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        justify-content: space-between;
+        opacity: 1;
+        height: 3rem;
+        margin-top: -3rem;
+
+        .cart_item_details__summery{
+            > * {
+                margin-right: 1rem;  
+            }
+
+            span:nth-child(1) , span:nth-child(5){
+                color : var(--color-green-01)
+            }
+        }
+
+        .cart_item_details__total{
+            font-size: 2rem;
+        }
+    }
+} 
 
 @keyframes medi_card_Popup{
     100%{

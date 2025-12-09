@@ -924,10 +924,11 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .medicine_card {
   border: 1px solid #eee;
   display: flex;
+  flex-wrap: wrap;
   border-radius: 3rem;
   position: relative;
   padding: 2rem;
-  height: 10rem;
+  min-height: 10rem;
   gap: 1rem;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -1200,6 +1201,76 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   padding: 1rem;
   background-color: var(--color-yellow-01);
   border-radius: 3rem;
+}
+.medicine_card.show-order-add-form .order-add-form {
+  height: 3rem;
+  opacity: 1;
+}
+.medicine_card .order-add-form {
+  width: 100%;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 3rem;
+  opacity: 0;
+  height: 1px;
+  display: none;
+}
+.medicine_card .order-add-form.available {
+  display: flex;
+}
+.medicine_card .order-add-form .input {
+  width: 30%;
+}
+.medicine_card .order-add-form .input label {
+  display: flex;
+  align-items: center;
+}
+.medicine_card .order-add-form .input label input {
+  width: 100%;
+  margin: 0 1rem;
+}
+.medicine_card .order-add-form .add {
+  padding: 1rem 2.5rem;
+  border-radius: 3rem;
+  color: #fff;
+  background-color: var(--color-green-01);
+  border: none;
+}
+.medicine_card .cart_item_details {
+  opacity: 0;
+  height: 1px;
+  width: 100%;
+  margin-left: 3rem;
+}
+
+.orders .cart_list .medicine_card .details .medicine__info__store-as {
+  display: none;
+}
+.orders .cart_list .medicine_card .details .medicine__info__price {
+  display: none;
+}
+.orders .cart_list .medicine_card .stock {
+  display: none;
+}
+.orders .cart_list .medicine_card .cart_item_details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 1;
+  height: 3rem;
+  margin-top: -3rem;
+}
+.orders .cart_list .medicine_card .cart_item_details .cart_item_details__summery > * {
+  margin-right: 1rem;
+}
+.orders .cart_list .medicine_card .cart_item_details .cart_item_details__summery span:nth-child(1), .orders .cart_list .medicine_card .cart_item_details .cart_item_details__summery span:nth-child(5) {
+  color: var(--color-green-01);
+}
+.orders .cart_list .medicine_card .cart_item_details .cart_item_details__total {
+  font-size: 2rem;
 }
 
 @keyframes medi_card_Popup {
@@ -9648,8 +9719,15 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   height: 100%;
   overflow-y: scroll;
 }
+.pharmacyDashboard .dashboards .container.payment-mode .order-right-side {
+  transform: translateX(110%);
+}
+.pharmacyDashboard .dashboards .container.payment-mode .orderleft-side {
+  transform: translateX(-110%);
+}
 .pharmacyDashboard .dashboards .container .orderleft-side {
   position: relative;
+  transition: all 0.8s cubic-bezier(0.97, 0.01, 0.3, 0.97);
 }
 .pharmacyDashboard .dashboards .container .orderleft-side .L-side {
   --r: 2rem; /* the radius */
@@ -9732,28 +9810,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   cursor: pointer;
   z-index: 1;
 }
-.pharmacyDashboard .dashboards .container .right-side {
-  padding: 1rem;
-  grid-area: right-side;
-}
-.pharmacyDashboard .dashboards .container .right-side img {
-  object-fit: cover;
-}
-.pharmacyDashboard .dashboards .container .right-side .medicine_summery__description {
-  text-align: center;
-  font-family: var(--primary-font);
-  font-size: 2rem;
-  font-weight: 300;
-}
-.pharmacyDashboard .dashboards .container .right-side .quick_access {
-  width: 100%;
-  height: 20rem;
-  border-radius: 3rem;
-  background-image: linear-gradient(120deg, rgba(0, 186, 172, 0.8), rgba(18, 126, 181, 0.8)), url("/images/med.jpg");
-  background-position: center;
-}
 .pharmacyDashboard .dashboards .container .order-right-side {
   margin: 1rem;
+  transition: all 0.8s cubic-bezier(0.97, 0.01, 0.3, 0.97);
 }
 .pharmacyDashboard .dashboards .container .order-right-side .order_summery__description {
   display: flex;
@@ -9835,10 +9894,31 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   background-color: #eeeeee;
   border-radius: 3rem;
   padding: 1rem;
+  min-height: 100%;
 }
 .pharmacyDashboard .dashboards .container .order-right-side .cart_summery_box .cart_list .medicine_card {
   margin: 1rem;
   background-color: white;
+}
+.pharmacyDashboard .dashboards .container .right-side {
+  padding: 1rem;
+  grid-area: right-side;
+}
+.pharmacyDashboard .dashboards .container .right-side img {
+  object-fit: cover;
+}
+.pharmacyDashboard .dashboards .container .right-side .medicine_summery__description {
+  text-align: center;
+  font-family: var(--primary-font);
+  font-size: 2rem;
+  font-weight: 300;
+}
+.pharmacyDashboard .dashboards .container .right-side .quick_access {
+  width: 100%;
+  height: 20rem;
+  border-radius: 3rem;
+  background-image: linear-gradient(120deg, rgba(0, 186, 172, 0.8), rgba(18, 126, 181, 0.8)), url("/images/med.jpg");
+  background-position: center;
 }
 .pharmacyDashboard .dashboards .product_container {
   display: grid;

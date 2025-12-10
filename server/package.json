@@ -21,7 +21,7 @@
   "main": "index.js",
   "scripts": {
     "compile-sass": "sass ./sass/main.scss ./public/css/style.css --watch",
-    "serve": "nodemon -e process.env.NODE_ENV=development index.js",
+    "serve": "nodemon index.js --watch",
     "dev": "npm-run-all --parallel compile-sass serve",
     "test": "jest"
   },
@@ -29,7 +29,7 @@
     "csvtojson": "^2.0.14",
     "jest": "^30.2.0",
     "lit-html": "^3.3.1",
-    "nodemon": "^3.1.10",
+    "nodemon": "^3.1.11",
     "npm-run-all": "^4.1.5",
     "sass": "^1.93.2",
     "typescript": "^5.9.2",

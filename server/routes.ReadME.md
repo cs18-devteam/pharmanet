@@ -92,3 +92,5 @@
 /api/v1/pharmacies/:pharmacyId/cashiers/:cashierId/products/:productId
 /payments/hash
 /products/pharmacy_management_system
+/api/v1/pharmacies/:pharmacyId/staff
+/api/v1/transactions

@@ -1,6 +1,7 @@
 @use "sass:list";
 @use "sass:math";
 @use "./pharmacyDashboard__oders" as dashboard_orders;
+@use "./pharmacyDashboard__transactions" as dashboard_transactions;
 
 /* paging effect */
 $containers : 'bills' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 'staff';
@@ -33,6 +34,8 @@ $containers : 'bills' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'produ
         position: absolute;
         // opacity: .1;
         overflow: hidden;
+
+
 
 
     }
@@ -435,3 +438,10 @@ $containers : 'bills' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'produ
 
 
 
+
+
+.pharmacyDashboard .dashboards .container{
+    @include dashboard_transactions.transactions;
+
+
+}

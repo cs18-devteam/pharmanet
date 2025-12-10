@@ -100,3 +100,4 @@ Users.createTable().catch(e=>{
     console.log('user table not created');
 })
 module.exports = Users;
+

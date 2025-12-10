@@ -1,43 +1,95 @@
-const { response } = require("../../common/response");
-const view = require("../../common/view");
+const { getRequestData } = require("../../common/getRequestData");
+const { response, responseJson } = require("../../common/response");
+const PharmacyStaff = require("../../models/PharmacyStaffModel");
 const Users = require("../../models/UserModel");
 
-
-
-exports.renderPharmacyStaff = async( req , res) =>{
+exports.createStaffMember = async (req , res)=>{
+    await Users.query("start transaction");
     try{
+        const reqData = JSON.parse(await getRequestData(req));
+        const userData = {
+            firstName: reqData.firstName,
+            lastName : reqData.lastName,
+            email : reqData.email,
+            password: reqData.password,
+            nic: reqData.nic,
+            fullName: reqData.fullName,
+            dateOfBirth: reqData.dateOfBirth,
+            addressNo : reqData.addressNo,
+            street : reqData.street,
+            town : reqData.town,
+            province : reqData.province,
+            postalCode : reqData.postalCode,
+            bank : reqData.bank,
+            accountNo : reqData.accountNo,
+            bankBranch : reqData.bankBranch,
+            userName : reqData.userName,
+            role : reqData.role,
+            pharmacyId : reqData.pharmacyId,
+        };
 
-        
-        return view('pharmacy/pharmacy.member.intro' , {
-            members : [].map(m => {
-                return view('/components/member.card' , {
-                    memberId: 1,
-                    firstName : 'chathura',
-                    lastName : 'priyashan',
-                    pharmacyId : 1,
-                    role: 'pharmacist',
-                    header : view('component.header' , {
-                        name:"Antibiotics",
-                    }),
-                    footer: view('footer'),
-                });
-                
-            }
-            
-        ).join(' '),
-    });
+        const [user] = await Users.save(userData);
+
+        if(!user.id){
+            throw new Error("user not created");
+        }else{
+            userData.userId = user.id;
+        }
+
+        const [newStaffMember] = await PharmacyStaff.save(userData);
+
+        await Users.query('commit');
+
+
+        return responseJson(res , 200 , {
+            status:"success",
+            results: {...user , userId : user.id ,...newStaffMember},
+        })
     }catch(e){
         console.log(e);
-        return response(res , view('404') , 404);
+        await Users.query('rollback');
+        return responseJson(res , 400 , {
+            status:"error",
+            message:"staff member not created",
+            error:e,
+        })
     }
-
 }
 
 
+exports.getStaffMembers = async (req , res)=>{
+    try{
+        const id = req.params.get('id');
 
+        let members = [];
 
-exports.renderPharmacyStaffProfile = async( req , res) =>{
-        const [data] = await Users.getById(req.staffId);
-        return view('pharmacy.staff.profile' , data);
+        if(!id){
+            members = await PharmacyStaff.get();
+        }else{
+            members = await PharmacyStaff.getById(id);
+        }
 
+        members = members.map(async m=>{
+            console.log(m);
+            const user = await Users.getById(m.userId);
+            return {...user , userId : user.id , ...m};
+        })
+
+        members = await Promise.all(members);
+
+        return responseJson(res , 200 , {
+            status:"success",
+            results:members,
+            count: members.length,
+        })
+
+    }catch(e){
+        console.log(e);
+        return responseJson(res , 400 , {
+            status:"error",
+            message :"something went wrong",
+            error:e,
+
+        })
+    }
 }

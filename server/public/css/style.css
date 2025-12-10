@@ -9414,6 +9414,21 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   background: #0a8f8f;
 }
 
+@keyframes progress-bar {
+  0% {
+    width: 0%;
+  }
+}
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
 /* paging effect */
 .pharmacyDashboard {
   background-image: linear-gradient(120deg, #68accf 0%, rgb(18, 126, 181) 20%, rgb(24, 151, 141) 50%, rgb(8, 55, 79) 100%);
@@ -10220,6 +10235,304 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   color: #7A4C1D;
   font-weight: 500;
   margin: 1rem;
+}
+
+.pharmacyDashboard .dashboards .container.transactions {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 0.5fr 1fr 1fr;
+  grid-template-areas: "income incomeSummery search" "staffWise transactions transactions" "methodWise transactions transactions";
+}
+.pharmacyDashboard .dashboards .container.transactions .income {
+  grid-area: income;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.6rem;
+  justify-content: center;
+  text-transform: capitalize;
+}
+.pharmacyDashboard .dashboards .container.transactions .income p {
+  opacity: 0.6;
+}
+.pharmacyDashboard .dashboards .container.transactions .income__value {
+  font-size: 3.2rem;
+  font-weight: 500;
+}
+.pharmacyDashboard .dashboards .container.transactions .income__value::before {
+  content: "Rs  ";
+}
+.pharmacyDashboard .dashboards .container.transactions .income_stat {
+  grid-area: incomeSummery;
+}
+.pharmacyDashboard .dashboards .container.transactions .income_stat .bars {
+  width: 100%;
+  display: flex;
+}
+.pharmacyDashboard .dashboards .container.transactions .income_stat .bars .bar {
+  flex-grow: 1;
+  height: 4.8rem;
+  background-color: #eee;
+  border-radius: 3rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.3rem;
+  margin: 0.2rem;
+}
+.pharmacyDashboard .dashboards .container.transactions .income_stat .bars .bar .percentage {
+  background-color: rgba(255, 255, 255, 0.3764705882);
+  height: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+.pharmacyDashboard .dashboards .container.transactions .income_stat .bars .bar-cash__offline {
+  background-color: #1A7F78;
+}
+.pharmacyDashboard .dashboards .container.transactions .income_stat .bars .bar-cash__online {
+  background-color: #22A59B;
+}
+.pharmacyDashboard .dashboards .container.transactions .income_stat .bars .bar-card__offline {
+  background-color: #006394;
+}
+.pharmacyDashboard .dashboards .container.transactions .income_stat .bars .bar-card__online {
+  background-color: #0081c2;
+}
+.pharmacyDashboard .dashboards .container.transactions .income_stat .descriptions {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+.pharmacyDashboard .dashboards .container.transactions .income_stat .descriptions .stat {
+  display: flex;
+  align-items: center;
+}
+.pharmacyDashboard .dashboards .container.transactions .income_stat .descriptions .stat .topic {
+  font-size: 1.4rem;
+  opacity: 0.7;
+}
+.pharmacyDashboard .dashboards .container.transactions .income_stat .descriptions .stat .results {
+  display: flex;
+  font-size: 1.6rem;
+  align-items: center;
+}
+.pharmacyDashboard .dashboards .container.transactions .income_stat .descriptions .stat .results > * {
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+  margin: 1rem 0.5rem;
+}
+.pharmacyDashboard .dashboards .container.transactions .income_stat .descriptions .stat .results > * span {
+  margin-left: 0.5rem;
+}
+.pharmacyDashboard .dashboards .container.transactions .income_stat .descriptions .stat .results > * span::before {
+  content: "Rs ";
+}
+.pharmacyDashboard .dashboards .container.transactions .searchbar {
+  grid-area: search;
+  display: flex;
+  justify-content: center;
+}
+.pharmacyDashboard .dashboards .container.transactions .searchbar input {
+  width: 90%;
+  height: 6.5rem;
+  border: 1px solid #eee;
+  border-radius: 3rem;
+}
+.pharmacyDashboard .dashboards .container.transactions .summery_block {
+  border: 1px solid #eee;
+  padding: 2rem;
+  margin: 1rem 0;
+  border-radius: 2rem;
+  font-size: 1.6rem;
+}
+.pharmacyDashboard .dashboards .container.transactions .summery_block .group-by {
+  display: flex;
+}
+.pharmacyDashboard .dashboards .container.transactions .summery_block .group-by > * {
+  margin-right: 1rem;
+}
+.pharmacyDashboard .dashboards .container.transactions .summery_block .analytics {
+  margin: 2rem 0;
+}
+.pharmacyDashboard .dashboards .container.transactions .summery_block .analytics .description {
+  display: flex;
+  width: 100%;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+.pharmacyDashboard .dashboards .container.transactions .summery_block .analytics .description .amount {
+  justify-self: flex-end;
+  margin-left: auto;
+}
+.pharmacyDashboard .dashboards .container.transactions .summery_block .analytics .bar {
+  width: 100%;
+  height: 2px;
+  background-color: #eee;
+  position: relative;
+}
+.pharmacyDashboard .dashboards .container.transactions .summery_block .analytics .bar::before {
+  position: absolute;
+  content: " ";
+  width: 50%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: black;
+  animation: progress-bar 0.8s ease;
+}
+.pharmacyDashboard .dashboards .container.transactions .summery_block.summery_staff_wise {
+  grid-area: staffWise;
+}
+.pharmacyDashboard .dashboards .container.transactions .summery_block.summery_payment_method_wise {
+  grid-area: methodWise;
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container {
+  grid-area: transactions;
+  padding: 2rem;
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .captions {
+  display: flex;
+  justify-content: space-between;
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .captions .heading--2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .captions .date_range {
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .captions .date_range > * {
+  margin: 0 1rem;
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table {
+  width: 100%;
+  margin-top: 2rem;
+  font-size: 1.6rem;
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table thead tr th {
+  padding: 1rem 0;
+  text-align: left;
+  margin: 1rem;
+  border-bottom: 1px solid #eee;
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr td {
+  padding: 1rem 0;
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr td.card > .card {
+  display: flex;
+  align-items: center;
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr td.card > .card > * {
+  margin-right: 1rem;
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr td.card > .cash {
+  display: none;
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr td.cash > .card {
+  display: none;
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr td.cash > .cash {
+  display: flex;
+  align-items: center;
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr td.cash > .cash > * {
+  margin-right: 1rem;
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr td.online > .online {
+  display: inline-block;
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr td.online > .offline {
+  display: none;
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr td.offline > .offline {
+  display: inline-block;
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr td.offline > .online {
+  display: none;
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr:nth-child(1) {
+  animation: fade-in-up 0.3s ease;
+  animation-duration: calc(0.3s * 1);
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr:nth-child(2) {
+  animation: fade-in-up 0.3s ease;
+  animation-duration: calc(0.3s * 2);
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr:nth-child(3) {
+  animation: fade-in-up 0.3s ease;
+  animation-duration: calc(0.3s * 3);
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr:nth-child(4) {
+  animation: fade-in-up 0.3s ease;
+  animation-duration: calc(0.3s * 4);
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr:nth-child(5) {
+  animation: fade-in-up 0.3s ease;
+  animation-duration: calc(0.3s * 5);
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr:nth-child(6) {
+  animation: fade-in-up 0.3s ease;
+  animation-duration: calc(0.3s * 6);
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr:nth-child(7) {
+  animation: fade-in-up 0.3s ease;
+  animation-duration: calc(0.3s * 7);
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr:nth-child(8) {
+  animation: fade-in-up 0.3s ease;
+  animation-duration: calc(0.3s * 8);
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr:nth-child(9) {
+  animation: fade-in-up 0.3s ease;
+  animation-duration: calc(0.3s * 9);
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr:nth-child(10) {
+  animation: fade-in-up 0.3s ease;
+  animation-duration: calc(0.3s * 10);
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr:nth-child(11) {
+  animation: fade-in-up 0.3s ease;
+  animation-duration: calc(0.3s * 11);
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr:nth-child(12) {
+  animation: fade-in-up 0.3s ease;
+  animation-duration: calc(0.3s * 12);
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr:nth-child(13) {
+  animation: fade-in-up 0.3s ease;
+  animation-duration: calc(0.3s * 13);
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr:nth-child(14) {
+  animation: fade-in-up 0.3s ease;
+  animation-duration: calc(0.3s * 14);
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr:nth-child(15) {
+  animation: fade-in-up 0.3s ease;
+  animation-duration: calc(0.3s * 15);
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr:nth-child(16) {
+  animation: fade-in-up 0.3s ease;
+  animation-duration: calc(0.3s * 16);
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr:nth-child(17) {
+  animation: fade-in-up 0.3s ease;
+  animation-duration: calc(0.3s * 17);
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr:nth-child(18) {
+  animation: fade-in-up 0.3s ease;
+  animation-duration: calc(0.3s * 18);
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr:nth-child(19) {
+  animation: fade-in-up 0.3s ease;
+  animation-duration: calc(0.3s * 19);
 }
 
 /* admin */

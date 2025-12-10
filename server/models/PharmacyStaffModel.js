@@ -1,6 +1,7 @@
-const UserModel = require("./UserModel");
+const Model = require("../common/Model");
 
-class PharmacyStaffModel extends UserModel{
+
+class PharmacyStaffModel extends Model{
     constructor(){
         super();
 
@@ -12,7 +13,13 @@ class PharmacyStaffModel extends UserModel{
             type:"INT",
             null:false,
         }
+
+        this.userId  = {
+            type :"INT" , 
+            null : false,
+        }
     }
+
 }
 
 

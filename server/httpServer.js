@@ -18,6 +18,8 @@ const path = require('path');
 const Payment = require('./payhere/Payment');
 const { paymentApiRouter } = require('./routes/api/api.payment.Routes');
 const { productsRouter } = require('./routes/web/products.Routes');
+const { pharmacyApiStaffRouter } = require('./routes/api/api.pharmacy.Routes');
+const { transactionsRouter } = require('./routes/api/api.transactions.Routes');
 
 
 const server = http.createServer((req , res)=>{
@@ -65,6 +67,8 @@ const server = http.createServer((req , res)=>{
         cashierApiRouter.pipe(req , res);
         paymentApiRouter.pipe(req , res);
         productsRouter.pipe(req , res);
+        pharmacyApiStaffRouter.pipe(req , res);
+        transactionsRouter.pipe(req, res);
 
         AppRouter.pipe(req ,res).route('/admin/addUsers')
         ?.get(adminController.addUsers);

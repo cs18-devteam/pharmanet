@@ -3,19 +3,38 @@ const Model = require("../common/Model");
 class Transaction extends Model{
     constructor(){
         super();
-        this.name = {
-            type:"VARCHAR(50)",
-            null: false,
+        this.orderId = {
+            type : "INT",
         }
 
-        this.value = {
+        this.pharmacyId = {
+            type :"INT"
+        }
+
+        this.amount = {
             type:"FLOAT",
-            null : false,
         }
 
-        this.description = {
-            type:"VARCHAR(500)",
+        this.userId = {
+            type :"INT",
         }
+
+        this.type = {
+            type :"VARCHAR(50)",
+        }
+
+        this.staffID = {
+            type :"INT",
+        }
+
+        this.method = {
+            type:"VARCHAR(100)"
+        }
+
+        this.transactionDateTime = {
+            type :"DATETIME",
+        }
+
 
     }
 }
@@ -23,6 +42,6 @@ class Transaction extends Model{
 const Transactions = new Transaction();
 Transactions.createTable().catch(e=>{
     console.log(e);
-    console.log("error in product model");
+    console.log("Transaction Table not Created model");
 });
 module.exports = Transactions;

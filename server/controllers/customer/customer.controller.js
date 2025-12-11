@@ -33,3 +33,11 @@ exports.renderCustomerHome = async (req , res)=>{
 exports.orderManage = async (req ,res)=>{
     return response(res , view('customer/orderManage'))
 }
+
+exports.loyaltyPoints = async(req, res) => {
+    return response(res, view('customer/loyaltyPoints'))
+}
+
+exports.userProfileManage = async (req, res)=>{
+    return response(res, view('customer/userProfileManage'))
+}

@@ -10336,6 +10336,8 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   justify-content: center;
 }
 .userProfileManage .topTabs .tab {
+  display: flex;
+  align-items: center;
   padding: 8px 18px;
   border-radius: 25px;
   border: 1px solid #ccc;
@@ -10345,6 +10347,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .userProfileManage .topTabs .tab.active {
   background: #000;
   color: #fff;
+}
+.userProfileManage .topTabs .tab:hover {
+  border-left: 1px solid rgba(0, 0, 0, 0.5);
 }
 .userProfileManage .mainContainer {
   display: flex;
@@ -10363,7 +10368,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   font-family: Poppins;
   font-size: 32px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   line-height: normal;
   background: linear-gradient(90deg, #000 0%, #666 100%);
   background-clip: text;
@@ -10557,6 +10562,103 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .userProfileManage .mainContainer .rightContainer .switch input:checked + .slider:before {
   transform: translateX(24px);
+}
+.userProfileManage .update-account {
+  width: 350px;
+  margin: 0rem auto;
+  padding: 1rem;
+  font-family: "Poppins", sans-serif;
+  position: fixed;
+  top: 0;
+  right: -350px;
+  width: 350px;
+  height: 100%;
+  background: #fff;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: right 0.4s ease;
+  z-index: 999;
+}
+.userProfileManage .update-account.active {
+  right: 0;
+}
+.userProfileManage .update-account h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 0.3rem;
+}
+.userProfileManage .update-account .uid {
+  color: #777;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+.userProfileManage .update-account .profile-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.userProfileManage .update-account .profile-section .profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.userProfileManage .update-account .profile-section .change-btn {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 8px 14px;
+  font-size: 1.1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+.userProfileManage .update-account .profile-section .change-btn:hover {
+  border-color: #0b7a71;
+  color: #0b7a71;
+}
+.userProfileManage .update-account .account-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.userProfileManage .update-account .account-form label {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #444;
+}
+.userProfileManage .update-account .account-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+.userProfileManage .update-account .account-form input:focus {
+  border-color: #0b7a71;
+  outline: none;
+}
+.userProfileManage .update-account .account-form .hint {
+  font-size: 0.8rem;
+  color: #888;
+  margin: -3px 0 5px;
+  line-height: 1.2rem;
+}
+.userProfileManage .update-account .account-form .save-btn {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 12px;
+  background: #0b7a71;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.userProfileManage .update-account .account-form .save-btn:hover {
+  background: #095f57;
 }
 .userProfileManage .footer {
   background: #08374F;
@@ -11163,7 +11265,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 
 .orderManage {
-  padding: 6rem;
+  padding: 10rem;
   padding-top: 2rem;
 }
 .orderManage .topTabs {
@@ -11173,6 +11275,8 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   justify-content: center;
 }
 .orderManage .topTabs .tab {
+  display: flex;
+  align-items: center;
   padding: 8px 18px;
   border-radius: 25px;
   border: 1px solid #ccc;
@@ -11182,6 +11286,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .orderManage .topTabs .tab.active {
   background: #000;
   color: #fff;
+}
+.orderManage .topTabs .tab:hover {
+  border: 1px solid black;
 }
 .orderManage .order-header {
   margin-bottom: 1.5rem;
@@ -11316,9 +11423,12 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   border: 1px solid #e5e5e5;
 }
 .orderManage .mainContainer .rightContainer .card-box .pending-badge {
-  background: #ffe3d9;
-  color: #cc5200;
-  padding: 6px 12px;
+  background: #FB8F21;
+  color: white;
+  font-weight: 500;
+  padding: 10px 20px;
+  justify-content: center;
+  gap: 10px;
   display: inline-block;
   border-radius: 6px;
   margin-bottom: 1.2rem;
@@ -11331,7 +11441,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .orderManage .mainContainer .rightContainer .card-box .order-values h3 {
   margin-top: 1rem;
   font-size: 20px;
-  color: #08374F;
+  font-weight: 500;
+  color: #1A7F78;
+  margin-bottom: 5rem;
 }
 .orderManage .mainContainer .rightContainer .card-box .payment-options {
   margin: 1rem 0;
@@ -11346,11 +11458,11 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   cursor: pointer;
 }
 .orderManage .mainContainer .rightContainer .card-box .payment-options .btn:hover {
-  background: #F9A550;
-  color: white;
+  border: 1px solid black;
 }
 .orderManage .mainContainer .rightContainer .card-box .note-blue {
-  background: #e7f4ff;
+  background: none;
+  color: #1A7F78;
   padding: 0.9rem;
   border-radius: 6px;
   font-size: 14px;
@@ -11359,10 +11471,489 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .orderManage .mainContainer .rightContainer .card-box .special-notes h4 {
   color: #08374F;
   margin-bottom: 0.3rem;
+  font-weight: 600;
 }
 .orderManage .mainContainer .rightContainer .card-box .special-notes p {
   color: red;
   font-size: 14px;
+  margin-bottom: 3.3rem;
+}
+.orderManage {
+  /* Tablets (≤ 768px) */
+}
+@media (max-width: 768px) {
+  .orderManage .orderManage {
+    padding: 2rem;
+  }
+  .orderManage .orderManage .topTabs {
+    flex-wrap: wrap;
+  }
+  .orderManage .orderManage .topTabs .tab {
+    padding: 6px 14px;
+    font-size: 14px;
+  }
+  .orderManage .orderManage .mainContainer {
+    flex-direction: column;
+  }
+  .orderManage .orderManage .mainContainer .leftContainer,
+  .orderManage .orderManage .mainContainer .rightContainer {
+    width: 100%;
+  }
+  .orderManage .orderManage .mainContainer .products .product {
+    grid-template-columns: 20px 1fr 80px 60px 30px 60px 70px;
+  }
+  .orderManage .orderManage .mainContainer .step-progress {
+    gap: 15px;
+  }
+  .orderManage .orderManage .mainContainer .step .label {
+    font-size: 1.1rem;
+  }
+}
+.orderManage {
+  /* Phones (≤ 576px) */
+}
+@media (max-width: 576px) {
+  .orderManage .orderManage {
+    padding: 1.5rem;
+    padding-top: 1rem;
+  }
+  .orderManage .orderManage h2 {
+    font-size: 1.6rem;
+  }
+  .orderManage .orderManage {
+    /* Step Progress vertical */
+  }
+  .orderManage .orderManage .step-progress {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .orderManage .orderManage .step {
+    width: 100%;
+  }
+  .orderManage .orderManage .step .bar {
+    width: 100%;
+  }
+  .orderManage .orderManage .step .content {
+    font-size: 1.1rem;
+  }
+  .orderManage .orderManage .products .product {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 8px;
+  }
+  .orderManage .orderManage .products .product p {
+    padding: 0;
+  }
+  .orderManage .orderManage .rightContainer .card-box {
+    padding: 1rem;
+  }
+  .orderManage .orderManage .rightContainer .card-box .order-values h3 {
+    font-size: 18px;
+    margin-bottom: 2rem;
+  }
+}
+.orderManage {
+  /* Small phones (≤ 400px) */
+}
+@media (max-width: 400px) {
+  .orderManage .orderManage {
+    padding: 1rem;
+  }
+  .orderManage .orderManage .topTabs .tab {
+    flex: 1;
+    text-align: center;
+  }
+  .orderManage .orderManage .products .product {
+    grid-template-columns: 1fr;
+  }
+  .orderManage .orderManage .payment-options {
+    flex-direction: column;
+  }
+}
+@media (max-width: 1024px) {
+  .orderManage .mainContainer {
+    gap: 0rem;
+  }
+  .orderManage .mainContainer .leftContainer {
+    padding: 1rem;
+  }
+  .orderManage .mainContainer .rightContainer {
+    margin-right: 4rem;
+    padding-right: 1rem;
+  }
+  .orderManage .mainContainer .products .product {
+    grid-template-columns: 30px 1fr 100px 70px 30px 70px 80px;
+  }
+}
+
+.loyaltyPoints .topTabs {
+  display: flex;
+  gap: 15px;
+  margin-top: 4rem;
+  justify-content: center;
+}
+.loyaltyPoints .topTabs .tab {
+  display: flex;
+  align-items: center;
+  padding: 8px 18px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+}
+.loyaltyPoints .topTabs .tab.active {
+  background: #000;
+  color: #fff;
+}
+.loyaltyPoints .topTabs .tab:hover {
+  border: 1px solid black;
+}
+.loyaltyPoints .loyalty-banner {
+  max-width: 100%;
+  background: #ffffff;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  border: 3px solid #e4e4e4;
+  margin: 2rem 8%;
+}
+.loyaltyPoints .loyalty-banner .left {
+  padding: 2rem 2rem;
+  width: 55%;
+}
+.loyaltyPoints .loyalty-banner .left h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+}
+.loyaltyPoints .loyalty-banner .left h2 span {
+  color: #333;
+}
+.loyaltyPoints .loyalty-banner .left p {
+  font-size: 1.2rem;
+  color: #666;
+  line-height: 1.5rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+.loyaltyPoints .loyalty-banner .right {
+  width: 45%;
+  background: linear-gradient(90deg, #0b7a71, #0d9287);
+  color: #fff;
+  padding: 3.5rem 3rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  border-left: none;
+  clip-path: polygon(8% 0%, 100% 0, 100% 100%, 0 100%);
+}
+.loyaltyPoints .loyalty-banner .right .label {
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+.loyaltyPoints .loyalty-banner .right .points {
+  font-size: 2.5rem;
+  margin-top: 0rem;
+  font-weight: 600;
+}
+.loyaltyPoints .loyalty-banner .right .shape {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+}
+.loyaltyPoints .loyalty-banner .right .shape-1 {
+  width: 180px;
+  height: 180px;
+  bottom: -30px;
+  left: -40px;
+}
+.loyaltyPoints .loyalty-banner .right .shape-2 {
+  width: 260px;
+  height: 260px;
+  top: -80px;
+  right: -80px;
+  opacity: 0.2;
+}
+.loyaltyPoints .loyalty-info {
+  width: 100%;
+  padding: 1rem 12rem;
+}
+.loyaltyPoints .loyalty-info .header h2 {
+  color: #0b7a71;
+  font-size: 2.4rem;
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+  align-self: stretch;
+}
+.loyaltyPoints .loyalty-info .header p {
+  color: #000;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 2.5rem;
+  align-self: stretch;
+}
+.loyaltyPoints .loyalty-info .header ul {
+  margin: 0.8rem 0 0.5rem 1.2rem;
+}
+.loyaltyPoints .loyalty-info .header ul li {
+  color: #000;
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin-bottom: 0.2rem;
+}
+.loyaltyPoints .loyalty-info .cards-row {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+.loyaltyPoints .loyalty-info .cards-row .card {
+  flex: 1;
+  background: #fff;
+  padding: 1.8rem;
+  border: 1px solid #e4e4e4;
+  border-radius: 10px;
+}
+.loyaltyPoints .loyalty-info .cards-row .card .title {
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.loyaltyPoints .loyalty-info .cards-row .card .row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.loyaltyPoints .loyalty-info .cards-row .card .row a {
+  color: #0b7a71;
+  text-decoration: underline;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.loyaltyPoints .loyalty-info .cards-row .card .row span {
+  font-size: 1.5rem;
+  color: #000;
+  font-weight: 500;
+}
+.loyaltyPoints .loyalty-info .cards-row .card .row span.positive {
+  color: #0b7a71;
+  font-weight: 500;
+}
+.loyaltyPoints .loyalty-info .cards-row .card .row span.negative {
+  color: #db463d;
+  font-weight: 500;
+}
+.loyaltyPoints .loyalty-info .cards-row .card .end {
+  text-align: center;
+  color: #777;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+}
+.loyaltyPoints .loyalty-info .cards-row {
+  /* Title alignment for transactions */
+}
+.loyaltyPoints .loyalty-info .cards-row .transactions .title-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.loyaltyPoints .loyalty-info .cards-row .transactions .title-row .small {
+  font-size: 0.8rem;
+  color: #777;
+}
+.loyaltyPoints .footer {
+  background: #08374F;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 0;
+  padding: 40px 60px;
+  margin-top: 40px;
+  height: 379px;
+  padding-top: 4rem;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+}
+.loyaltyPoints .footer .footer-topSection {
+  flex: 1;
+  gap: 25rem;
+  display: flex;
+  flex-direction: row;
+}
+.loyaltyPoints .footer .footer-topSection .footer-left {
+  width: 50rem;
+  display: flex;
+}
+.loyaltyPoints .footer .footer-topSection .footer-left .footer-logo {
+  width: 46px;
+  height: 46px;
+}
+.loyaltyPoints .footer .footer-topSection .footer-left p {
+  margin-top: 1rem;
+  font-weight: 400;
+}
+.loyaltyPoints .footer .footer-topSection .footer-center {
+  width: 95rem;
+}
+.loyaltyPoints .footer .footer-topSection .footer-right {
+  width: 280rem;
+}
+.loyaltyPoints .footer .footer-topSection h4 {
+  margin-bottom: 8px;
+}
+.loyaltyPoints .footer .footer-topSection ul {
+  list-style: none;
+}
+.loyaltyPoints .footer .footer-topSection ul li {
+  padding: 4px 0;
+  opacity: 0.8;
+}
+.loyaltyPoints .footer .footer-bottomSection {
+  display: flex;
+  flex-direction: row;
+  color: red;
+  font-size: 1.5rem;
+  gap: 15rem;
+}
+.loyaltyPoints .footer .footer-bottomSection button {
+  padding: 0;
+  background: none;
+  color: white;
+  border: none;
+}
+.loyaltyPoints .footer .footer-bottomSection button a {
+  color: white;
+}
+@media (max-width: 600px) {
+  .loyaltyPoints nav .logoname {
+    font-size: 1.2rem;
+  }
+  .loyaltyPoints nav .search {
+    font-size: 1rem;
+    max-width: 18rem;
+  }
+  .loyaltyPoints nav .search form input {
+    font-size: 1rem;
+    height: 3rem;
+  }
+  .loyaltyPoints nav .user-section span {
+    display: none;
+  }
+  .loyaltyPoints .topTabs {
+    flex-direction: row;
+    gap: 10px;
+  }
+  .loyaltyPoints .topTabs .tab {
+    justify-content: center;
+  }
+  .loyaltyPoints .loyalty-banner {
+    flex-direction: column;
+    margin: 1rem;
+  }
+  .loyaltyPoints .loyalty-banner .left, .loyaltyPoints .loyalty-banner .right {
+    width: 100%;
+    padding: 1.5rem;
+  }
+  .loyaltyPoints .loyalty-banner .left h2 {
+    font-size: 1.8rem;
+  }
+  .loyaltyPoints .loyalty-banner .right {
+    align-items: flex-start;
+    clip-path: none;
+  }
+  .loyaltyPoints .loyalty-info {
+    padding: 1rem;
+  }
+  .loyaltyPoints .loyalty-info .header h2 {
+    font-size: 1.8rem;
+  }
+  .loyaltyPoints .loyalty-info .header p, .loyaltyPoints .loyalty-info .header ul li {
+    font-size: 1rem;
+    line-height: 1.6rem;
+  }
+  .loyaltyPoints .loyalty-info .cards-row {
+    flex-direction: column;
+  }
+  .loyaltyPoints .loyalty-info .cards-row .card .row a,
+  .loyaltyPoints .loyalty-info .cards-row .card .row span {
+    font-size: 1.2rem;
+  }
+  .loyaltyPoints .footer {
+    height: auto;
+    padding: 2rem 1.5rem;
+    clip-path: none;
+  }
+  .loyaltyPoints .footer .footer-topSection {
+    flex-direction: row;
+    gap: 2rem;
+    font-size: 1rem;
+  }
+  .loyaltyPoints .footer .footer-topSection .footer-left,
+  .loyaltyPoints .footer .footer-topSection .footer-center,
+  .loyaltyPoints .footer .footer-topSection .footer-right {
+    width: 100%;
+  }
+  .loyaltyPoints .footer .footer-bottomSection {
+    flex-direction: row;
+    gap: 2rem;
+    margin-top: 2rem;
+    font-size: 1rem;
+  }
+  .loyaltyPoints .footer .footer-bottomSection button {
+    font-size: 1rem;
+  }
+}
+.loyaltyPoints {
+  /* TABLET — 600px to 900px */
+}
+@media (max-width: 900px) and (min-width: 601px) {
+  .loyaltyPoints .loyalty-banner {
+    margin: 1rem 3rem;
+  }
+  .loyaltyPoints .loyalty-banner .left h2 {
+    font-size: 2rem;
+  }
+  .loyaltyPoints .loyalty-banner .right .points {
+    font-size: 2rem;
+  }
+  .loyaltyPoints .loyalty-info {
+    padding: 1rem 4rem;
+  }
+  .loyaltyPoints .loyalty-info .cards-row {
+    flex-direction: column;
+  }
+  .loyaltyPoints .footer {
+    clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+    padding: 3rem;
+  }
+  .loyaltyPoints .footer .footer-topSection {
+    gap: 5rem;
+  }
+  .loyaltyPoints .footer .footer-bottomSection {
+    gap: 6rem;
+    font-size: 1.2rem;
+  }
+}
+.loyaltyPoints {
+  /* SMALL DESKTOP — 901px to 1200px */
+}
+@media (max-width: 1200px) and (min-width: 901px) {
+  .loyaltyPoints .loyalty-info {
+    padding: 1rem 6rem;
+  }
+  .loyaltyPoints .footer .footer-topSection {
+    gap: 10rem;
+  }
+  .loyaltyPoints .footer .footer-bottomSection {
+    gap: 10rem;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

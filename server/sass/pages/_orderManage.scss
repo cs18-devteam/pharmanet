@@ -1,5 +1,5 @@
 .orderManage{
-    padding: 6rem;
+    padding: 10rem;
     padding-top: 2rem;
 
 
@@ -19,6 +19,8 @@ $pending-color: #cccccc;
   justify-content: center;
 
   .tab {
+    display: flex;
+    align-items: center;
     padding: 8px 18px;
     border-radius: 25px;
     border: 1px solid #ccc;
@@ -28,6 +30,9 @@ $pending-color: #cccccc;
     &.active {
       background: #000;
       color: #fff;
+    }
+    &:hover{
+      border: 1px solid black;
     }
   }
 }
@@ -191,9 +196,12 @@ $pending-color: #cccccc;
         border: 1px solid $order-border;
 
         .pending-badge {
-          background: #ffe3d9;
-          color: #cc5200;
-          padding: 6px 12px;
+          background: #FB8F21;
+          color: white;
+          font-weight: 500;
+          padding: 10px 20px;
+          justify-content: center;
+          gap: 10px;
           display: inline-block;
           border-radius: 6px;
           margin-bottom: 1.2rem;
@@ -209,7 +217,9 @@ $pending-color: #cccccc;
           h3 {
             margin-top: 1rem;
             font-size: 20px;
-            color: $order-primary;
+            font-weight: 500;
+            color: #1A7F78;
+            margin-bottom: 5rem;
           }
         }
 
@@ -226,14 +236,16 @@ $pending-color: #cccccc;
             cursor: pointer;
 
             &:hover {
-              background: $order-secondary;
-              color: white;
+              // background: $order-secondary;
+              // color: white;
+              border: 1px solid black;
             }
           }
         }
 
         .note-blue {
-          background: #e7f4ff;
+          background: none;
+          color: #1A7F78;
           padding: .9rem;
           border-radius: 6px;
           font-size: 14px;
@@ -241,10 +253,145 @@ $pending-color: #cccccc;
         }
 
         .special-notes {
-          h4 { color: $order-primary; margin-bottom: .3rem; }
-          p { color: red; font-size: 14px; }
+          h4 { 
+            color: $order-primary; 
+            margin-bottom: .3rem; 
+            font-weight: 600;
+          }
+          p { 
+            color: red; 
+            font-size: 14px; 
+            margin-bottom: 3.3rem;
+          }
         }
       }
     }
     }
+    
+
+
+/* Tablets (≤ 768px) */
+@media (max-width: 768px) {
+  .orderManage {
+    padding: 2rem;
+
+    .topTabs {
+      flex-wrap: wrap;
+
+      .tab {
+        padding: 6px 14px;
+        font-size: 14px;
+      }
+    }
+
+    .mainContainer {
+      flex-direction: column;
+
+      .leftContainer,
+      .rightContainer {
+        width: 100%;
+      }
+
+      .products .product {
+        grid-template-columns: 20px 1fr 80px 60px 30px 60px 70px;
+      }
+
+      .step-progress {
+        gap: 15px;
+      }
+
+      .step .label {
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
+
+/* Phones (≤ 576px) */
+@media (max-width: 576px) {
+  .orderManage {
+    padding: 1.5rem;
+    padding-top: 1rem;
+
+    h2 {
+      font-size: 1.6rem;
+    }
+
+    /* Step Progress vertical */
+    .step-progress {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .step {
+      width: 100%;
+
+      .bar {
+        width: 100%;
+      }
+
+      .content {
+        font-size: 1.1rem;
+      }
+    }
+
+    .products .product {
+      grid-template-columns: 1fr 1fr;
+      row-gap: 8px;
+
+      p {
+        padding: 0;
+      }
+    }
+
+    .rightContainer .card-box {
+      padding: 1rem;
+
+      .order-values h3 {
+        font-size: 18px;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}
+
+/* Small phones (≤ 400px) */
+@media (max-width: 400px) {
+  .orderManage {
+    padding: 1rem;
+
+    .topTabs .tab {
+      flex: 1;
+      text-align: center;
+    }
+
+    .products .product {
+      grid-template-columns: 1fr;
+    }
+
+    .payment-options {
+      flex-direction: column;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+
+    .mainContainer {
+      gap: 0rem;
+
+      .leftContainer {
+        padding: 1rem;
+      }
+      .rightContainer{
+        margin-right: 4rem;
+      padding-right: 1rem;
+      }
+
+      .products .product {
+        grid-template-columns: 30px 1fr 100px 70px 30px 70px 80px;
+      }
+    }
+  }
 }

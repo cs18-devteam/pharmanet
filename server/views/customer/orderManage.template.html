@@ -41,9 +41,30 @@
     </header>
 
     <div class="topTabs">
-        <button class="tab">Account</button>
-        <button class="tab active">Orders</button>
-        <button class="tab">Loyalty Points</button>
+        <button class="tab" onclick="account()"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="15" viewBox="0 0 26 26" fill="none">
+  <g clip-path="url(#clip0_140_2418)">
+    <path d="M12.9998 2.16663C7.01984 2.16663 2.1665 7.01996 2.1665 13C2.1665 18.98 7.01984 23.8333 12.9998 23.8333C18.9798 23.8333 23.8332 18.98 23.8332 13C23.8332 7.01996 18.9798 2.16663 12.9998 2.16663ZM7.96234 20.0416C9.3815 19.0233 11.1148 18.4166 12.9998 18.4166C14.8848 18.4166 16.6182 19.0233 18.0373 20.0416C16.6182 21.06 14.8848 21.6666 12.9998 21.6666C11.1148 21.6666 9.3815 21.06 7.96234 20.0416ZM19.6515 18.5466C17.8207 17.1166 15.5132 16.25 12.9998 16.25C10.4865 16.25 8.179 17.1166 6.34817 18.5466C5.0915 17.0408 4.33317 15.1125 4.33317 13C4.33317 8.21163 8.2115 4.33329 12.9998 4.33329C17.7882 4.33329 21.6665 8.21163 21.6665 13C21.6665 15.1125 20.9082 17.0408 19.6515 18.5466Z" fill="black"/>
+    <path d="M12.9997 6.5C10.9088 6.5 9.20801 8.20083 9.20801 10.2917C9.20801 12.3825 10.9088 14.0833 12.9997 14.0833C15.0905 14.0833 16.7913 12.3825 16.7913 10.2917C16.7913 8.20083 15.0905 6.5 12.9997 6.5ZM12.9997 11.9167C12.1005 11.9167 11.3747 11.1908 11.3747 10.2917C11.3747 9.3925 12.1005 8.66667 12.9997 8.66667C13.8988 8.66667 14.6247 9.3925 14.6247 10.2917C14.6247 11.1908 13.8988 11.9167 12.9997 11.9167Z" fill="black"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_140_2418">
+      <rect width="26" height="25" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>Account</button>
+        <button class="tab active" onclick="order()"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="15" viewBox="0 0 28 28" fill="none">
+  <path d="M12.8333 22.6625V14.6709L5.83333 10.6167V18.6084L12.8333 22.6625ZM15.1667 22.6625L22.1667 18.6084V10.6167L15.1667 14.6709V22.6625ZM12.8333 25.3459L4.66667 20.65C4.29722 20.4362 4.01042 20.1542 3.80625 19.8042C3.60208 19.4542 3.5 19.0653 3.5 18.6375V9.36254C3.5 8.93476 3.60208 8.54587 3.80625 8.19587C4.01042 7.84587 4.29722 7.56393 4.66667 7.35004L12.8333 2.65421C13.2028 2.44032 13.5917 2.33337 14 2.33337C14.4083 2.33337 14.7972 2.44032 15.1667 2.65421L23.3333 7.35004C23.7028 7.56393 23.9896 7.84587 24.1938 8.19587C24.3979 8.54587 24.5 8.93476 24.5 9.36254V18.6375C24.5 19.0653 24.3979 19.4542 24.1938 19.8042C23.9896 20.1542 23.7028 20.4362 23.3333 20.65L15.1667 25.3459C14.7972 25.5598 14.4083 25.6667 14 25.6667C13.5917 25.6667 13.2028 25.5598 12.8333 25.3459ZM18.6667 9.94587L20.9125 8.66254L14 4.66671L11.725 5.97921L18.6667 9.94587ZM14 12.6584L16.275 11.3459L9.3625 7.35004L7.0875 8.66254L14 12.6584Z" fill="white"/>
+</svg>Order</button>
+        <button class="tab" onclick="loyaltyPoints()"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="15" viewBox="0 0 28 28" fill="none">
+  <g clip-path="url(#clip0_140_2431)">
+    <path d="M2.33333 14C2.33333 10.745 4.24667 7.93333 7.01167 6.62667V4.10667C2.94 5.55333 0 9.43833 0 14C0 18.5617 2.94 22.4467 7.01167 23.8933V21.3733C4.24667 20.0667 2.33333 17.255 2.33333 14ZM17.5 3.5C11.7133 3.5 7 8.21333 7 14C7 19.7867 11.7133 24.5 17.5 24.5C23.2867 24.5 28 19.7867 28 14C28 8.21333 23.2867 3.5 17.5 3.5ZM17.5 22.1667C12.9967 22.1667 9.33333 18.5033 9.33333 14C9.33333 9.49667 12.9967 5.83333 17.5 5.83333C22.0033 5.83333 25.6667 9.49667 25.6667 14C25.6667 18.5033 22.0033 22.1667 17.5 22.1667Z" fill="black"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_140_2431">
+      <rect width="28" height="28" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>Loyalty Points</button>
     </div>
 
 <div class = "order-header">'
@@ -182,6 +203,8 @@
        <div class="card-box">
         <h4 class="pending-badge">Pending Payment</h4>
 
+        <h4><span style="color: #000; opacity:0.4; font-size: 16px; font-weight:500">Order Details</span></h4>
+
         <div class="order-values">
           <p>Order Value <span>Rs 1230.00</span></p>
           <p>Discounts <span>Rs 100.00</span></p>
@@ -189,13 +212,34 @@
           <h3>Total Amount <span>Rs 1119.00</span></h3>
         </div>
 
-        <h4>Choose Prefer Payment Option</h4>
-        <p>You can choose any payment method to complete your order.</p>
+        <h4><span style="color: #000; opacity:0.4; font-size: 16px; font-weight:500;line-height:4rem">Checkout Details</span></h4>
+        <h4><span style="font-weight: 600;">Choose Prefer Payment Option</span></h4>
+        <p><span style="color: #000; opacity:0.4">You can choose any payment method to complete your order.</span></p>
 
         <div class="payment-options">
-          <button class="btn cash">Cash</button>
-          <button class="btn bank">Bank</button>
-          <button class="btn card">Card</button>
+          <button class="btn cash"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 18" fill="none">
+<path d="M3.7 18V15.85C2.81667 15.65 2.05433 15.2667 1.413 14.7C0.771 14.1333 0.3 13.3333 0 12.3L1.85 11.55C2.1 12.35 2.471 12.9583 2.963 13.375C3.45433 13.7917 4.1 14 4.9 14C5.58333 14 6.16267 13.846 6.638 13.538C7.11267 13.2293 7.35 12.75 7.35 12.1C7.35 11.5167 7.16667 11.054 6.8 10.712C6.43333 10.3707 5.58333 9.98333 4.25 9.55C2.81667 9.1 1.83333 8.56267 1.3 7.938C0.766667 7.31267 0.5 6.55 0.5 5.65C0.5 4.56667 0.85 3.725 1.55 3.125C2.25 2.525 2.96667 2.18333 3.7 2.1V0H5.7V2.1C6.53333 2.23333 7.221 2.53733 7.763 3.012C8.30433 3.48733 8.7 4.06667 8.95 4.75L7.1 5.55C6.9 5.01667 6.61667 4.61667 6.25 4.35C5.88333 4.08333 5.38333 3.95 4.75 3.95C4.01667 3.95 3.45833 4.11267 3.075 4.438C2.69167 4.76267 2.5 5.16667 2.5 5.65C2.5 6.2 2.75 6.63333 3.25 6.95C3.75 7.26667 4.61667 7.6 5.85 7.95C7 8.28333 7.871 8.81233 8.463 9.537C9.05433 10.2623 9.35 11.1 9.35 12.05C9.35 13.2333 9 14.1333 8.3 14.75C7.6 15.3667 6.73333 15.75 5.7 15.9V18H3.7Z" fill="black"/>
+</svg>Cash</button>
+          <button class="btn bank"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 21" fill="none">
+  <g clip-path="url(#clip0_584_3894)">
+    <path d="M5.6875 8.75H3.9375V14.875H5.6875V8.75ZM10.9375 8.75H9.1875V14.875H10.9375V8.75ZM18.375 16.625H1.75V18.375H18.375V16.625ZM16.1875 8.75H14.4375V14.875H16.1875V8.75ZM10.0625 2.8525L14.6212 5.25H5.50375L10.0625 2.8525ZM10.0625 0.875L1.75 5.25V7H18.375V5.25L10.0625 0.875Z" fill="black"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_584_3894">
+      <rect width="21" height="21" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>Bank</button>
+          <button class="btn card"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="12" viewBox="0 0 23 23" fill="none">
+  <g clip-path="url(#clip0_584_3899)">
+    <path d="M19.1667 3.83325H3.83341C2.76966 3.83325 1.92633 4.68617 1.92633 5.74992L1.91675 17.2499C1.91675 18.3137 2.76966 19.1666 3.83341 19.1666H19.1667C20.2305 19.1666 21.0834 18.3137 21.0834 17.2499V5.74992C21.0834 4.68617 20.2305 3.83325 19.1667 3.83325ZM19.1667 17.2499H3.83341V11.4999H19.1667V17.2499ZM19.1667 7.66659H3.83341V5.74992H19.1667V7.66659Z" fill="black"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_584_3899">
+      <rect width="23" height="23" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>Card</button>
         </div>
 
         <p class="note-blue">
@@ -210,8 +254,16 @@
       </div>
     </div>
 </div>
-
-
-
 </body>
+<script>
+    function order(){
+        window.location.href = "/customer/orderManage";
+    }
+    function loyaltyPoints(){
+        window.location.href = "/customer/loyaltyPoints";
+    }
+    function account(){
+        window.location.href = "/customer/userProfileManage";
+    }
+</script>
 </html>

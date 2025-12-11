@@ -164,6 +164,11 @@ const server = http.createServer((req , res)=>{
         AppRouter.pipe(req ,res).route('/customer/orderManage')
         ?.get(customerController.orderManage);
 
+        AppRouter.pipe(req,res).route('/customer/loyaltyPoints')
+        ?.get(customerController.loyaltyPoints);
+
+        AppRouter.pipe(req, res).route('/customer/userProfileManage')
+        ?.get(customerController.userProfileManage);
 
 
 

@@ -5,6 +5,9 @@ const server = new WebSocket();
 
 class PharmacyClient{
     constructor(id , client){
+        /**
+         * @type {WebSocket}
+         */
         this.client = client;
         this.id = id;
         this.updateDb(true);
@@ -33,6 +36,22 @@ class CustomerClient{
 const connectedPharmacies = {};
 const connectedCustomers = {};
 
+/**
+ * 
+ * @param {PharmacyClient[]} pharmacies 
+ */
+function sendChatBoxRequest(pharmacies=[] , customerId){
+    pharmacies.map(pClient=>{
+        pClient.client.send(`REQ_CLIENT=${JSON.stringify({
+            customerId, 
+        })}`);
+    })
+
+
+}
+
+
+
 server.onClientConnect(( client)=>{
     console.log('new client connected');
 
@@ -59,21 +78,30 @@ server.onClientMessage((message , client)=>{
         }else if(message.startsWith("REQ_PHR=")){
             const stabObj = JSON.parse(message.replace("REQ_PHR=" , ''));
             // checking pharmacy;
-            console.log(connectedPharmacies[stabObj.id]);
+            const pharmacy = connectedPharmacies[`${stabObj.pharmacyId}`];
+            sendChatBoxRequest([pharmacy] , stabObj.customerId);
+        }else if(message.startsWith("RES_CLIENT=")){
+            const reqClientObj = JSON.parse(message.replace("RES_CLIENT=" , ''));
+            if(reqClientObj.accept == true){
+                const customer = connectedCustomers[`${reqClientObj.customerId}`];
+                customer.client.send(`RES_PHR=${JSON.stringify({
+                    accept :true,
+                })}`)
+
+                server.fullDuplexConnection(client , customer.client )
+            }
         }
-
-
-
-
 
 
     }catch(e){
         client.send(`STABLISH=${JSON.stringify({
                 status:"error",
-            })}`)
+        })}`)
 
     }
 })
+
+
 
 
 

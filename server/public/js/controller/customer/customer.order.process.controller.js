@@ -6,8 +6,6 @@ import cart from "./customer.cart.controller.js";
 const nearByPharmaciesContainer = document.querySelector('.pharmacyRequestContainer--nearby');
 
 
-let connection = undefined;
-Application.requestPharmacyId = undefined;
 
 const cartContinueButton = document.querySelector('.overlay-cart__continue.continue');
 
@@ -19,31 +17,38 @@ cartContinueButton?.addEventListener('click' ,async ()=>{
 })
 
 
+
+
 nearByPharmaciesContainer?.addEventListener('click' , async (e)=>{
     const {target} =  e;
 
     const requestBtn = target.closest('.request-btn')
     if(requestBtn){
-        Application.requestPharmacyId = target.dataset.id;
+        Application.requestPharmacyId = requestBtn.dataset.id;
         cart.setLeftSideContent('');
-        connection = await openLiveConnection();
-        connection.addEventListener('message' , handleConnection)
+        Application.connection = await openLiveConnection();
+        Application.connection.addEventListener('message' , handleConnection)
     }
 })
 
 
 
-async function handleConnection(msg){
+function handleConnection(msg){
     const content = msg.data;
 
     if(content.startsWith('STABLISH=')){
         const {status} = JSON.parse(content.replace("STABLISH=" , ''));
 
         if(status == "success"){
-            alert("connected with server")
-            requestConnectionWithPharmacy(Application.requestPharmacyId)
+            console.log("connected with server")
+            requestConnectionWithPharmacy(Application.requestPharmacyId);
+            
         }else{
             alert("connection feild")
         }
+    }else if(content.startsWith('RES_PHR=')){
+        const resObj = JSON.parse(content.replace("RES_PHR=" , ''));
+        console.log(resObj);
     }
+
 }

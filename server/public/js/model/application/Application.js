@@ -152,9 +152,9 @@ class OrderItem{
 }
 
 window.cookieStore.getAll().then(cookies=>{
-    Application.pharmacyId = cookies.find(c=>c.name == "pharmacyId").value;
-    Application.staffId = cookies.find(c=>c.name == "staffId").value;
-    Application.id = cookies.find(c=>c.name == "id").value;
+    Application.pharmacyId = cookies.find(c=>c.name == "pharmacyId")?.value;
+    Application.staffId = cookies.find(c=>c.name == "staffId")?.value;
+    Application.id = cookies.find(c=>c.name == "id")?.value;
 })
 
 
@@ -166,6 +166,8 @@ export default class Application{
     static pharmacyId = undefined;
     static userId = undefined
     static staffId = undefined
+    static requestPharmacyId = undefined;
+    static connection = undefined;
 
     static #orderMedicineResultsStack = [];
 

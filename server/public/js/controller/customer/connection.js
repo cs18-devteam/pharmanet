@@ -14,9 +14,8 @@ function stablishConnection(socket){
 export async function requestConnectionWithPharmacy(pharmacyId){
     try{
         if(!socket) throw new Error("connection is not opened");
-        socket.send(`REQ_PHR=${
-            JSON.stringify({id : pharmacyId})
-        }`)
+        const reqString = `REQ_PHR=${JSON.stringify({pharmacyId , customerId : Application.userId})}`;
+        socket.send(reqString);
 
     
     }catch(e){

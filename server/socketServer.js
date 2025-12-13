@@ -57,7 +57,6 @@ server.onClientConnect(( client)=>{
 
 })
 
-
 server.onClientMessage((message , client)=>{
     try{
 
@@ -77,23 +76,49 @@ server.onClientMessage((message , client)=>{
             }
         }else if(message.startsWith("REQ_PHR=")){
             const stabObj = JSON.parse(message.replace("REQ_PHR=" , ''));
+            console.log(stabObj);
             // checking pharmacy;
             const pharmacy = connectedPharmacies[`${stabObj.pharmacyId}`];
             sendChatBoxRequest([pharmacy] , stabObj.customerId);
         }else if(message.startsWith("RES_CLIENT=")){
             const reqClientObj = JSON.parse(message.replace("RES_CLIENT=" , ''));
+
             if(reqClientObj.accept == true){
                 const customer = connectedCustomers[`${reqClientObj.customerId}`];
+
+
                 customer.client.send(`RES_PHR=${JSON.stringify({
                     accept :true,
+                    pharmacyId : reqClientObj.id,
+    
                 })}`)
 
-                server.fullDuplexConnection(client , customer.client )
+                // server.halfDuplexConnection(client , customer.client )
+            }
+        }else if(message.startsWith("MSG=")){
+            const msgObj = JSON.parse(message.replace("MSG=" , ''));
+            console.log(msgObj);
+
+            if(msgObj.to == "pharmacy"){
+                connectedPharmacies[msgObj.toId].client.send(`MSG=${JSON.stringify({
+                    message: msgObj.message,
+                    type:"customer",
+                    id:msgObj.id,
+                
+                })}`)
+            }else if(msgObj.to == "customer"){
+                connectedCustomers[msgObj.toId].client.send(`MSG=${JSON.stringify({
+                    message: msgObj.message,
+                    type:"pharmacy",
+                    id:msgObj.id,
+                
+                })}`)
             }
         }
 
 
     }catch(e){
+        console.log(e);
         client.send(`STABLISH=${JSON.stringify({
                 status:"error",
         })}`)
@@ -102,7 +127,7 @@ server.onClientMessage((message , client)=>{
 })
 
 
-
+ 
 
 
 

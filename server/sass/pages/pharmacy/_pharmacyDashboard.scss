@@ -1,11 +1,8 @@
 @use "sass:list";
 @use "sass:math";
-<<<<<<< HEAD
 @use "./pharmacyDashboard__oders" as dashboard_orders;
 @use "./pharmacyDashboard__transactions" as dashboard_transactions;
-=======
 @use "./pharmacyDashboard_chat" as chat;
->>>>>>> chamani/frontend/pharmy-chat-page
 
 /* paging effect */
 $containers : 'docs' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 'staff';
@@ -267,12 +264,10 @@ $containers : 'docs' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'produc
                 height: 100%;
                 overflow-y: scroll;
             }
-<<<<<<< HEAD
 
           @include dashboard_orders.orders;
 
             
-=======
 
             
             &.payment-mode{
@@ -514,7 +509,6 @@ $containers : 'docs' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'produc
 
 
             }
->>>>>>> chamani/frontend/pharmy-chat-page
 
             
 

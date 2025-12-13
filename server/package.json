@@ -21,11 +21,7 @@
   "main": "index.js",
   "scripts": {
     "compile-sass": "sass ./sass/main.scss ./public/css/style.css --watch",
-<<<<<<< HEAD
-    "serve": "nodemon index.js --watch",
-=======
     "serve": "nodemon",
->>>>>>> chamani/frontend/pharmy-chat-page
     "dev": "npm-run-all --parallel compile-sass serve",
     "test": "jest"
   },

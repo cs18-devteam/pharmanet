@@ -1,5 +1,6 @@
 import Application from "../../model/application/Application.js";
 import { fetchOnlinePharmacies } from "../../model/customer/fetchPharmacies.js";
+import { renderChatBox, renderReply } from "../../view/customer/chatBox.js";
 import { createRequestCards, renderRequestCards } from "../../view/customer/pharmacyRequestCard.js";
 import { openLiveConnection, requestConnectionWithPharmacy } from "./connection.js";
 import cart from "./customer.cart.controller.js";
@@ -35,6 +36,7 @@ nearByPharmaciesContainer?.addEventListener('click' , async (e)=>{
 
 function handleConnection(msg){
     const content = msg.data;
+    console.log(content);
 
     if(content.startsWith('STABLISH=')){
         const {status} = JSON.parse(content.replace("STABLISH=" , ''));
@@ -48,7 +50,19 @@ function handleConnection(msg){
         }
     }else if(content.startsWith('RES_PHR=')){
         const resObj = JSON.parse(content.replace("RES_PHR=" , ''));
-        console.log(resObj);
+        Application.connectedWith = resObj.pharmacyId;
+        if(resObj.accept){
+            renderChatBox();
+
+        }
+    }else if(content.startsWith("MSG=")){
+        const msgObj = JSON.parse(content.replace("MSG=" , ''));
+
+        renderReply(msgObj.message);
     }
 
 }
+
+
+
+

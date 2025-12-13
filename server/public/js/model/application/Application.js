@@ -128,7 +128,6 @@ class OrderItem{
     #medicine = undefined;
 
 
-
     constructor(units , days , discounts , medicineId){
         if(!medicineId) throw new Error('medicine id must be defined');
         if(!units) throw new Error("number of units are must be grater than 0");
@@ -170,12 +169,6 @@ export default class Application{
     static connection = undefined;
 
     static #orderMedicineResultsStack = [];
-
-
-    constructor(){
-
-    }
-
 
     /**
      * @type {Order[]}

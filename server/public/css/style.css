@@ -1,10 +1,11 @@
-/* Error: Can't find stylesheet to import.
- *    ,
- * 17 | @forward "./overlay_cart";
- *    | ^^^^^^^^^^^^^^^^^^^^^^^^^
- *    '
- *   sass/components/_index.scss 17:1  @use
- *   sass/main.scss 3:1                root stylesheet */
+/* Error: expected "{".
+ *   ,
+ * 4 | @use "./pharmacyDashboard__oders" as dashboard_orders;
+ *   |                                                      ^
+ *   '
+ *   sass/pages/pharmacy/_pharmacyDashboard.scss 4:54  @forward
+ *   sass/pages/_index.scss 37:1                       @use
+ *   sass/main.scss 7:1                                root stylesheet */
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
@@ -14,5 +15,5 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a    \2577 \a 17 \2502  @forward \"./overlay_cart\";\a    \2502  ^^^^^^^^^^^^^^^^^^^^^^^^^\a    \2575 \a   sass/components/_index.scss 17:1  @use\a   sass/main.scss 3:1                root stylesheet";
+  content: 'Error: expected "{".\a   \2577 \a 4 \2502  @use "./pharmacyDashboard__oders" as dashboard_orders;\a   \2502                                                       ^\a   \2575 \a   sass/pages/pharmacy/_pharmacyDashboard.scss 4:54  @forward\a   sass/pages/_index.scss 37:1                       @use\a   sass/main.scss 7:1                                root stylesheet';
 }

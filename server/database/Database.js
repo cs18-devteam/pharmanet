@@ -13,12 +13,15 @@ class Database{
 
             return new Promise((resolve , reject)=>{
                 try{
-                    this.connection.query(queryString , (error , data , fields)=>{
-                        if(error) reject ({
-                            status:"error",
-                            error,
-                        });
-                        resolve(data , fields);
+                    this.connection?.query(queryString , (error , data , fields)=>{
+            
+
+                            if(error) reject ({
+                                status:"error",
+                                error,
+                            });
+                            resolve(data , fields);
+        
                     });
                 }catch(e){
                     reject({

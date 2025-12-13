@@ -5,7 +5,7 @@ const pharmacyMedicinesApiController = require('../../controllers/pharmacy/pharm
 const pharmacyController = require("../../controllers/pharmacy/pharmacy.controller");
 
 
-exports.pharmacistRouter = SubRouter.route('/pharmacies/:pharmacyId/pharmacist/:pharmacistId')
+exports.pharmacistRouter = SubRouter.route('/pharmacies/:pharmacyId/pharmacist/:staffId')
 .subRoute('/' , {
     get : pharmacyController.renderPharmacyDashboard,
 })
@@ -19,21 +19,5 @@ exports.pharmacistRouter = SubRouter.route('/pharmacies/:pharmacyId/pharmacist/:
 exports.pharmacyRouter = SubRouter.route('/pharmacies/:pharmacyId')
 .subRoute('/medicines' , {
     get : pharmacyMedicinesApiController.getAllMedicines
-})
-
-exports.pharmacyApiRouter = SubRouter.route('/api/v1/pharmacies/:pharmacyId')
-.subRoute('/medicines' , {
-    get : pharmacyMedicinesApiController.searchMedicinesByName
-})
-.subRoute('/medicines/info', {
-    get : pharmacyMedicinesApiController.getMedicineStockInfo,
-})
-.subRoute('/stock/medicines' , {
-    post : pharmacyMedicinesApiController.createMedicineStock,
-    update: pharmacyMedicinesApiController.updateMedicineStock
-})
-.subRoute('/stock/medicines/:stockId' , {
-    get: pharmacyMedicinesApiController.getMedicineDetailsByStockId,
-    delete:pharmacyMedicinesApiController.deleteMedicineStock,
 })
 

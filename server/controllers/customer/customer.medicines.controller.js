@@ -12,7 +12,7 @@ exports.renderCustomerMedicines = async (req , res)=>{
         console.log(medicines  , customer);
         
         if(!customer) return view('404');
-        return response(res ,view('customer/customer.medicine.view' , {
+        return response(res ,view('customer/customer.medicines.view' , {
             ...customer,
             header : view('component.header' , {
                 name:"Antibiotics",

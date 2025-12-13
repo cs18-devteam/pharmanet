@@ -1,0 +1,83 @@
+    <div class="overlay-cart">
+        <div class="popup"></div>
+        <div class="left-side">
+            <div class="map-container" id="map">
+          <iframe
+            src="https://maps.google.com/maps?q=Colombo&z=13&output=embed"
+            width="100%"
+            height="300"
+            frameborder="0"
+            style="border:0;"
+            allowfullscreen=""
+          ></iframe>
+        </div>
+
+        <h3 class="near_by_pharmacies">near by pharmacies</h3>
+        
+        <div class="pharmacyRequestContainer pharmacyRequestContainer--nearby"></div>
+        
+        
+        <h3>base on availability</h3>
+        <div class="pharmacyRequestContainer pharmacyRequestContainer--availibility"></div>
+
+
+          <!-- <div class="pharmacy-request">
+            <div class="request-btn">
+              <button>request</button>
+            </div>
+
+            <div class="pharmacy-details">
+              <div class="name">
+                amaya pharmacy center
+              </div>
+              
+              
+              <div class="address">
+                athurugiriya , kegalle , colombo
+              </div>
+              
+              <div class="additional-details">
+                <div class="status">open</div>
+                <div class="distance">2.4km</div>
+              </div>
+              
+            </div>
+            
+            <div class="available">available</div>
+            <div class="points">
+              <img src="/cart/coin.svg">
+              32 points
+            </div>
+          </div>
+          -->
+
+        </div>
+
+
+
+
+        <div class="right-side">
+          <div class="header">
+            <h2>Your cart</h2>
+            <p>
+              Here’s the list of medicines you selected. Nothing is saved until you continue with the process.
+            </p>
+
+          </div>
+
+          <div class="carts_container">
+            {carts}
+          </div>
+
+          <div class="cart-footer">
+            <p class="info">Click Continue to see pharmacies that offer your selected medicines. Your information won’t be saved until you pick a pharmacy. If any medicine requires a prescription, you’ll be asked to upload it.</p>
+
+            <button class="overlay-cart__continue continue">continue</button>
+          </div>
+
+
+
+        </div>
+    </div>
+
+<script type="module" src="/js/controller/customer/customer.order.process.controller.js"></script>

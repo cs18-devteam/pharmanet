@@ -1,7 +1,9 @@
 const Bridge = require("../../common/Bridge");
+const { createCookie } = require("../../common/cookie");
 const { response, responseJson } = require("../../common/response");
 const view = require("../../common/view");
 const Pharmacies = require("../../models/PharmacyModel");
+const PharmacyStaff = require("../../models/PharmacyStaffModel");
 const Users = require("../../models/UserModel");
 
 
@@ -67,11 +69,58 @@ exports.renderPharmacyProfile = async (req , res)=>{
 
 
 exports.renderPharmacyDashboard = async (req , res)=>{
+    try{
 
-    return response(res , view('pharmacy/pharmacy.dashboard' , {
-        transactionsView : view('pharmacy/views/dashboard.transactions.view'),
-        header : view('component.header' , {
+        const pharmacyId = req.pharmacyId;
+        const staffId = req.staffId;
+        
+        const [pharmacy] =await Pharmacies.getById(pharmacyId);
+        const [staffMember] =await PharmacyStaff.getById(staffId);
+        
+        if(!pharmacy){
+            throw new Error("pharmacy not found");
+        }
+        
+        if(!staffMember){
+            throw new Error("staff not found");
+        }
+        
+        return response(res , view('pharmacy/pharmacy.dashboard' , {
+            transactionsView : view('pharmacy/views/dashboard.transactions.view'),
+            header : view('component.header' , {
                 name:"Pharmacy Dashboard",
-        }),
-    }) , 200)
+            }),
+        }) , 200 , {
+            "Set-Cookie" : [
+                createCookie('staffId' , staffMember.id) ,
+                createCookie('pharmacyId' , pharmacy.id) ,
+                createCookie('id' , staffMember.userId) ,
+            ] 
+        })
+    }catch(e){
+        console.log(e);
+        return response(res , view('404') , 404);
+    }
+}
+
+
+
+exports.sendOnlinePharmacies = async (req , res)=>{
+    try{
+        const pharmacies = await Pharmacies.get({alive:true});
+        return responseJson(res, 200 , {
+            status:"success",
+            results: pharmacies,
+            count: pharmacies.length,
+        })
+
+
+    }catch(e){
+        console.log(e);
+        return responseJson(res , 400 , {
+            status:'error',
+            message:"something wrong",
+            error:e,
+        })
+    }
 }

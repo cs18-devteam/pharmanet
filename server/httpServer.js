@@ -11,17 +11,18 @@ const customerRouter = require('./routes/web/customers.Routes');
 const adminBlogsRouter = require('./routes/web/admin.blogs.Routes');
 const adminRouter = require('./routes/web/admin.Routes');
 const { adminPharmacyRouter, adminApiPharmacyRouter } = require('./routes/web/admin.pharmacy.Routes');
-const { pharmacistRouter, pharmacyApiRouter, pharmacyRouter } = require('./routes/web/pharmacy.Routes');
+const { pharmacistRouter, pharmacyRouter } = require('./routes/web/pharmacy.Routes');
 const { cashiersBillsApiRouter, cashiersBillsRouter, pharmacistBillsRouter, pharmacistBillsApiRouter, pharmacyOwnersBillsRouter, pharmacyOwnersBillsApiRouter } = require('./routes/web/pharmacy.bills.Routes');
 const { cashierRouter, cashierApiRouter } = require('./routes/web/cashier.Routes');
 const path = require('path');
 const Payment = require('./payhere/Payment');
 const { paymentApiRouter } = require('./routes/api/api.payment.Routes');
 const { productsRouter } = require('./routes/web/products.Routes');
-const { pharmacyApiStaffRouter } = require('./routes/api/api.pharmacy.Routes');
+const { pharmacyApiStaffRouter, pharmacyApiRouter, pharmaciesApiRouter } = require('./routes/api/api.pharmacy.Routes');
 const { transactionsRouter } = require('./routes/api/api.transactions.Routes');
 const { customerCartApiRouter } = require('./routes/api/api.customer.cart.Routes');
 const { customerApiRouter } = require('./routes/api/api.customer.Routes');
+const Pharmacies = require('./models/PharmacyModel');
 
 
 const server = http.createServer((req , res)=>{
@@ -76,6 +77,7 @@ const server = http.createServer((req , res)=>{
         customerCartApiRouter.pipe(req , res);
         adminApiPharmacyRouter.pipe(req , res);
         customerApiRouter.pipe(req , res);
+        pharmaciesApiRouter.pipe(req ,res);
 
         AppRouter.pipe(req ,res).route('/admin/addUsers')
         ?.get(adminController.addUsers);
@@ -99,7 +101,6 @@ const server = http.createServer((req , res)=>{
 
 
 SubRouter.save("./routes.ReadME.md");
-
 
 
 

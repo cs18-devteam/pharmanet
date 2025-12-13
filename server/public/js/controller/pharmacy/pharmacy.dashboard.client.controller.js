@@ -1,10 +1,13 @@
 import {  fetchMedicineStockSummery } from "../../model/pharmacy/fetchMedicineData.js";
+import html from "../../view/html.js";
+import { openDrawer, openSidebar, setSidebarContent } from "../../view/pharmacy/drawerView.js";
 import { renderMedicineStockSummery } from "../../view/pharmacy/renderMedicineCards.js";
 import medicines__searchAndRenderMedicineCard from "./medicines__searchAndRenderMedicines.js";
 import orders__searchAndRenderMedicineCard from "./orders__searchAndRenderMedicineCards.js";
 import { createTransactionsRow } from "/js/controller/pharmacy/transactions__searchAndRender.js";
 const medicinesSearchBar = document.querySelector(".medicines .search-bar");
 const ordersSearchBar = document.querySelector(".orders .search-bar > input");
+const setting_btn = document.getElementById("settings");
 
 
 
@@ -52,5 +55,21 @@ ordersSearchBar?.addEventListener('input' , e=>{
     
 })
 
-
 createTransactionsRow();
+
+
+const signoutBtn = html`<button class="signout" id="signout">signout</button>`;
+
+
+setting_btn?.addEventListener("click" , ()=>{
+    setSidebarContent(signoutBtn);
+    openSidebar();
+
+    document.querySelector('.signout#signout').addEventListener('click' , ()=>{
+    window.cookieStore.getAll().then((cookies)=>{
+        cookies.forEach(c=>window.cookieStore.delete(c.name));
+    })
+    window.location.href = "http://localhost:3000";
+})
+
+})

@@ -24,6 +24,7 @@ exports.renderCustomerHome = async (req , res)=>{
                                         name:"Pharmanet || Home",
                                 }),
                                 footer: view('footer'),
+                                cart : view('customer/component.cart'),
                         }) , 200)
                 }else{
                         return response(res , 'redirect' , 301 , {

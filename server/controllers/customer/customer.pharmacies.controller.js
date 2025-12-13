@@ -13,22 +13,23 @@ const Users = require("../../models/UserModel");
 exports.renderCustomerPharmacies = async (req , res)=>{
     try{
 
-        const customer = (await Users.getById(req.customerId))[0];
+        const [customer] = await Users.getById(req.customerId);
         const pharmacies = await Pharmacies.get();
 
         if(!customer) return view('404');
-        return response(res , view('customer/customer.search.pharmacies' , {
+        return response(res , view('customer/customer.pharmacies.view' , {
             header : view('component.header' , {
-                name:"Antibiotics",
+                name:"Pharmacies",
             }),
             ...customer,
             count : pharmacies.length ,
             navbar : view('customer/navbar.customer' ,customer) ,
             footer: view('footer'),
-            results : pharmacies.map(pharmacy=>view('customer/pharmacy.search.card' , {
+            topRatedPharmacies : pharmacies.map(pharmacy=>view('customer/component.pharmacy.card' , {
                 ...pharmacy , 
                 customerId : customer.id
-            })).join(' ')
+            })).join(' '),
+            nearByPharmacyCards : ''
 
         }) , 200);
         
@@ -90,6 +91,8 @@ exports.renderCustomerPharmacy = async (req , res)=>{
 exports.renderPharmacyLandingPage = async (req , res)=>{
     try{
         const [pharmacy] = await Pharmacies.getById(req.pharmacyId);
+        const [customer] = await Users.getById(req.customerId);
+        if(!customer) throw new Error("customer not found");
 
 
         const pharmacyData = {
@@ -118,14 +121,18 @@ exports.renderPharmacyLandingPage = async (req , res)=>{
 
         const medicineCardsText = await Promise.all(medicineCards)
 
+
+
         return response(res , view("customer/customer.pharmacy.landingPage" , {
-            navbar : view('customer/navbar.customer' ,{}) ,
+            navbar : view('customer/navbar.customer' , customer) ,
             header : view('component.header' , {
                 name:"Antibiotics",
             }),
             carts: view('components/component.cart.card'),
             ...pharmacyData,
             medicineCards : medicineCardsText.join(' '),
+            cart : view('customer/component.cart'),
+            status:pharmacy.alive ? "online" : "offline",
 
             // {...pharmacy , contact1 : pharmacy.contact , contact2 : ""}
             
@@ -166,13 +173,14 @@ exports.createPharmacy = async (req , res)=>{
             googleMapLink : pharmacyData.googleMapLink,
             contact : pharmacyData.contact , 
             postalCode : pharmacyData.postalCode,
-            pharmacist : pharmacyData.pharmacist , 
+            pharmacist : pharmacyData.pharmacist || `${customer.firstName} ${customer.lastName}` , 
             type : pharmacyData.type,
-            owner : pharmacyData.owner,
+            owner : pharmacyData.owner || `${customer.firstName} ${customer.lastName}`,
             pharmacistLicense : pharmacyData.pharmacistLicense,
             registrationDoc : undefined,
             ownerDoc : undefined,
             addressDoc : undefined,
+            img : '/pharmacyImages/general-pharmacy.png',
         };
 
 
@@ -187,6 +195,9 @@ exports.createPharmacy = async (req , res)=>{
         if(pharmacyData.addressDoc instanceof File){
             const file = await saveFile(pharmacyData.addressDoc , "/pharmacyOwners");
             pharmacyObj.addressDoc = file.destination;
+        }if(pharmacyData.image instanceof File){
+            const file = await saveFile(pharmacyData.image , "/pharmacyImages");
+            pharmacyObj.img = file.destination;
         }
         const [pharmacy]  = await Pharmacies.save(pharmacyObj);
         

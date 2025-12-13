@@ -28,6 +28,7 @@ class ProductModel extends Model{
             type:"VARCHAR(100)",
         }
 
+
     }
 }
 

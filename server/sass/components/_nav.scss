@@ -25,6 +25,13 @@ nav {
   
 }
 
+.action-btn{
+  padding: 1rem 2rem;
+  border: 1px solid #000;
+  border-radius: 3rem;
+  text-transform: capitalize;
+}
+
 //logo section
 .logo {
   font-family: var(--secondary-font);
@@ -214,6 +221,13 @@ nav {
       border-bottom: 1px solid #eee;
       margin-bottom: 1rem;
       padding-bottom: 1rem;
+
+      &.cart-btn{
+        padding: 1rem;
+        text-transform: capitalize;
+        font-family: 500;
+        cursor: pointer;
+      }
 
       &:last-child{
         border: none;

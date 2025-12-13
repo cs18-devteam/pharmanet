@@ -1,0 +1,38 @@
+<div class="pharmacy-card" data-id="{id}">
+        <div class="pharmacy-img" >
+            <img    src="{img}" alt=" p1" width="250rem" class="pharmacy-image">  
+        </div>
+
+
+        <div class="pharmacy_infomation">
+
+
+            <div class="pharmacy_name_info">
+                <div class="name">Name</div>
+                <div class="pharmacy_name">{name}</div>
+            </div>
+
+            
+            <div class="pharmacy_address">
+                {addressNo} , {street} , {town}
+            </div>
+
+            
+            <div class="results">
+                <div class="distance">
+                    <img src="/images/double-arrow.svg" class="distance_img" width="27px" >
+                    <span class="distance__value">{distance}Km</span>
+                </div>
+                <a href="/customers/{customerId}/pharmacies/{id}"  class="view-btn">
+                    <div class="view_pharmacy">
+                        View
+                    </div>
+                    <img src="/images/views-img.svg" class="view_img" width="27px">
+                </a>
+            </div>
+
+
+        </div>
+        
+
+</div>

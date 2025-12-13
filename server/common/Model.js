@@ -1,11 +1,19 @@
 const DB = require("../database/Database");
+/**
+ * @type {DB}
+ */
 const db = DB.getInstance();
 
 class Model{
     #table = undefined;
 
     constructor(){
-        this.#table = (this.#createTableName(this.constructor.name));   
+        try{
+
+            this.#table = (this.#createTableName(this.constructor.name));  
+        }catch(e){
+            throw e;
+        }
     }
 
     #buildCreateTableQuery(){
@@ -96,6 +104,89 @@ class Model{
             if(process.env.NODE_ENV == "development"){
                 console.log(`${this.#table} created`);
             }
+
+            this.#autoStructureTable().then(async (q)=>{
+                try{
+                    if(!q) return;
+                    await db.query(q);
+                    console.log(`${this.#table} updated`);
+                }catch(e){
+                    throw e;
+                }
+            }).catch(e=>{
+                console.log(e);
+            }); 
+        }catch(e){
+            throw e;
+        }
+    }
+
+    async #autoStructureTable(){
+        try{
+            const desc = `DESCRIBE ${this.#table}`;
+            const results = await db.query(desc);
+            let columns = [];
+
+            for(const [key , value] of Object.entries(this)){
+                columns.push({Field: key , value});
+            }
+
+            // check deference
+            results.forEach(rf=>{
+                columns = columns.filter(cf => cf.Field != rf.Field);
+            })
+
+            if(!columns.length){
+                return;
+            }
+
+            let query = "ALTER TABLE %%TABLE_NAME%% ADD %%MODIFICATION%%"
+            const tableConstraints = [];
+            let columnQueryTemplate;
+
+
+            columns.forEach(({Field:name , value   })=>{
+                columnQueryTemplate = " %%COLUMN_NAME%% %%DATA_TYPE%% %%CONSTRAINTS%%";
+                
+                columnQueryTemplate = columnQueryTemplate.replace("%%COLUMN_NAME%%" , name);
+                if(!value.type) throw new Error(`${name} data type not defined`);
+                columnQueryTemplate = columnQueryTemplate.replace("%%DATA_TYPE%%" , value.type);
+                
+                // add column constraints
+                const constraints = [];
+                if(value.unique == true) constraints.push("UNIQUE");
+                if(value.null == false) constraints.push("NOT NULL");
+                if(value.default) constraints.push(`DEFAULT "${value.default}"`)
+                    
+                if(value.primaryKey == true){
+                    tableConstraints.push(`PRIMARY KEY(${name})`);
+                    hasPrimaryKey = true;
+                }
+
+                if(value.foreignKey){
+                    //generate foreign key constraints
+                    let foreignKey = 'id';
+                    let tableName = ' ';
+                    
+                    if(typeof value.foreignKey == "string"){
+                        tableName = this.#createTableName(value.foreignKey);
+                    }else if(value.foreignKey.value){
+                        foreignKey = value.foreignKey.value;
+                    }else{
+                        tableName = this.#createTableName(value.foreignKey.Model);
+                    }
+
+                    tableConstraints.push(`FOREIGN KEY (${name}) REFERENCES ${tableName}(${foreignKey})`)
+                }
+
+                columnQueryTemplate = columnQueryTemplate.replace("%%CONSTRAINTS%%" , constraints.join(", "));
+            })
+
+            query = query.replace("%%TABLE_NAME%%" , this.#table);
+            query = query.replace("%%MODIFICATION%%" , columnQueryTemplate);
+
+
+            return query;
         }catch(e){
             throw e;
         }

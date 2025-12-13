@@ -80,6 +80,16 @@ class PharmacyModel extends Model{
             type :"TEXT"
         }
 
+        this.alive = {
+            type:"bool",
+            default :false,
+        }
+
+        this.img = {
+            type : "VARCHAR(100)",
+            default : '/pharmacyImages/general-pharmacy.png'
+        }
+
     }
 }
 

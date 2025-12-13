@@ -128,6 +128,7 @@ class OrderItem{
     #medicine = undefined;
 
 
+
     constructor(units , days , discounts , medicineId){
         if(!medicineId) throw new Error('medicine id must be defined');
         if(!units) throw new Error("number of units are must be grater than 0");
@@ -150,11 +151,21 @@ class OrderItem{
     }
 }
 
+window.cookieStore.getAll().then(cookies=>{
+    Application.pharmacyId = cookies.find(c=>c.name == "pharmacyId").value;
+    Application.staffId = cookies.find(c=>c.name == "staffId").value;
+    Application.id = cookies.find(c=>c.name == "id").value;
+})
+
+
 
 export default class Application{
     static #orders = [];
     static OrderItem = OrderItem; 
     static onOrderPushCallBack = (orderItem , orderItems)=>{};
+    static pharmacyId = undefined;
+    static userId = undefined
+    static staffId = undefined
 
     static #orderMedicineResultsStack = [];
 

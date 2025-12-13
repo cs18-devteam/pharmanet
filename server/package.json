@@ -21,7 +21,7 @@
   "main": "index.js",
   "scripts": {
     "compile-sass": "sass ./sass/main.scss ./public/css/style.css --watch",
-    "serve": "nodemon -e process.env.NODE_ENV=development index.js",
+    "serve": "nodemon",
     "dev": "npm-run-all --parallel compile-sass serve",
     "test": "jest"
   },

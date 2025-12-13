@@ -1,6 +1,7 @@
 import Application from "../../model/application/Application.js";
 import { fetchOnlinePharmacies } from "../../model/customer/fetchPharmacies.js";
-import { renderChatBox, renderReply } from "../../view/customer/chatBox.js";
+import { createChatBox, createReplyAndRender } from "../../view/chatbox.js";
+import { renderChatBox } from "../../view/customer/chatBox.js";
 import { createRequestCards, renderRequestCards } from "../../view/customer/pharmacyRequestCard.js";
 import { openLiveConnection, requestConnectionWithPharmacy } from "./connection.js";
 import cart from "./customer.cart.controller.js";
@@ -52,13 +53,13 @@ function handleConnection(msg){
         const resObj = JSON.parse(content.replace("RES_PHR=" , ''));
         Application.connectedWith = resObj.pharmacyId;
         if(resObj.accept){
-            renderChatBox();
+            cart.setLeftSideContent(createChatBox());
 
         }
     }else if(content.startsWith("MSG=")){
         const msgObj = JSON.parse(content.replace("MSG=" , ''));
 
-        renderReply(msgObj.message);
+        createReplyAndRender(msgObj.message);
     }
 
 }

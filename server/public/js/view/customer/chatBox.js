@@ -3,27 +3,7 @@ import Application from "../../model/application/Application.js";
 import html from "../html.js";
 
 
-const chatBoxTemplate = html`
-<div class="chat-box">                    
-    <div class="header-section">
-        <div class="customer-name">Chathura Priyashan</div>
-        <div class="discount">Discount</div>
-    </div>
 
-    <div class="body-section">
-
-        
-        
-    </div>
-
-    <div class="footer-section">
-        <form class="type-bar-container">
-            <input type="text" placeholder="Type Here" class="type-msg">
-            <button><img src="/images/message-icon.svg" alt="message-icon"></button>
-
-        </form>
-    </div>
-</div>`
 
 
 

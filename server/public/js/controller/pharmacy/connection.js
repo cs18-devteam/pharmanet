@@ -6,6 +6,7 @@ const chatbox = document.querySelector('.chats .chat-box');
 const chatboxBody = chatbox.querySelector('.body-section');
 
 
+
 /**
  * @type {WebSocket}
  */
@@ -72,7 +73,7 @@ socket.addEventListener('message' , (msgEvent)=>{
         Application.connectedWith = msgObj.id;
 
 
-        const templateReply = `<div class="message"><span class="profile-pic"><img src="/users/1.jpg" alt="" width="40rem" height="40rem"></span>${msgObj.message}</div>`;
+       
 
         chatboxBody.insertAdjacentHTML('beforeend',templateReply);
     }

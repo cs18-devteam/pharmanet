@@ -9101,6 +9101,103 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   color: #9ca3af;
   margin-bottom: 3rem;
 }
+.medicines .addMedicine {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+}
+.medicines .addMedicine .modal {
+  width: 520px;
+  background: #fff;
+  border-radius: 12px;
+}
+.medicines .addMedicine .modal .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1.5rem 1.8rem;
+  border-top-left-radius: 1.2rem;
+  border-top-right-radius: 1.2rem;
+  background: linear-gradient(to right, #18978D, #083851);
+}
+.medicines .addMedicine .modal .modal-header h2 {
+  margin: 0;
+  color: white;
+  font-size: 22px;
+}
+.medicines .addMedicine .modal .modal-header p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: white;
+}
+.medicines .addMedicine .modal .modal-header .close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+}
+.medicines .addMedicine .modal .modal-header .close-btn:hover {
+  color: red;
+}
+.medicines .addMedicine .modal .medicine-form {
+  margin-top: 1.5rem;
+  padding: 1.5rem 1.8rem;
+}
+.medicines .addMedicine .modal .medicine-form .form-row {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.medicines .addMedicine .modal .medicine-form .form-row label {
+  font-size: 14px;
+  font-weight: 500;
+}
+.medicines .addMedicine .modal .medicine-form .form-row input, .medicines .addMedicine .modal .medicine-form .form-row select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  font-size: 14px;
+}
+.medicines .addMedicine .modal .medicine-form .form-row input:focus, .medicines .addMedicine .modal .medicine-form .form-row select:focus {
+  outline: none;
+  border-color: #000;
+}
+.medicines .addMedicine .modal .medicine-form .modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 1.5rem;
+}
+.medicines .addMedicine .modal .medicine-form .modal-footer .cancel-btn {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  padding: 9px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.medicines .addMedicine .modal .medicine-form .modal-footer .cancel-btn:hover {
+  color: red;
+  border: 1px solid red;
+}
+.medicines .addMedicine .modal .medicine-form .modal-footer .save-btn {
+  background: #083851;
+  color: #fff;
+  padding: 9px 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+.medicines .addMedicine .modal .medicine-form .modal-footer .save-btn:hover {
+  border: 1px solid black;
+}
 .medicines .table-container {
   width: 100%;
   background: #F7F7F7;
@@ -9228,60 +9325,50 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   margin-bottom: 0.6rem;
   box-shadow: 0 -0.4rem 1rem rgba(0, 0, 0, 0.4);
 }
-.medicines {
-  /* ---------- GLOBAL MODAL ---------- */
-}
-.medicines .viewModal-overlay {
+.medicines .viewMedicine {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(3px);
-  z-index: 90;
-}
-.medicines .hidden {
+  background: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  z-index: 1000;
   display: none;
+  align-items: center;
 }
-.medicines .modal {
+.medicines .viewMedicine .modal {
   width: 520px;
-  height: 98vh;
   background: #fff;
-  border-radius: 14px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 100;
-  overflow: hidden;
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
 }
-.medicines .modal .modal-header {
+.medicines .viewMedicine .modal .modal-header {
   padding: 18px 20px;
   display: flex;
+  border-top-left-radius: 1.2rem;
+  border-top-right-radius: 1.2rem;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(90deg, #008b79, #00a58a);
+  background: linear-gradient(to right, #18978D, #083851);
   color: #fff;
 }
-.medicines .modal .modal-header h2 {
+.medicines .viewMedicine .modal .modal-header h2 {
   margin: 0;
   font-size: 18px;
 }
-.medicines .modal .modal-header p {
+.medicines .viewMedicine .modal .modal-header p {
   margin: 0;
   font-size: 13px;
   opacity: 0.9;
 }
-.medicines .modal .close-icon {
+.medicines .viewMedicine .modal .close-icon {
   background: transparent;
   border: none;
   color: #fff;
   font-size: 18px;
   cursor: pointer;
 }
-.medicines .modal .close-icon:hover {
+.medicines .viewMedicine .modal .close-icon:hover {
   color: red;
 }
-.medicines .modal .alert-box {
+.medicines .viewMedicine .modal .alert-box {
   margin: 14px;
   padding: 14px;
   border-radius: 8px;
@@ -9291,42 +9378,42 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   gap: 12px;
   align-items: center;
 }
-.medicines .modal .alert-box .alert-icon {
+.medicines .viewMedicine .modal .alert-box .alert-icon {
   color: #c40000;
   font-size: 18px;
 }
-.medicines .modal .info-grid {
+.medicines .viewMedicine .modal .info-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
   padding: 0 18px;
 }
-.medicines .modal .info-card {
+.medicines .viewMedicine .modal .info-card {
   background: #f6f9fb;
   padding: 14px;
   border-radius: 10px;
 }
-.medicines .modal .info-card .label {
+.medicines .viewMedicine .modal .info-card .label {
   font-size: 11px;
   color: #666;
   text-transform: uppercase;
 }
-.medicines .modal .info-card h4 {
+.medicines .viewMedicine .modal .info-card h4 {
   margin: 8px 0 0;
 }
-.medicines .modal .section {
+.medicines .viewMedicine .modal .section {
   padding: 14px 18px;
 }
-.medicines .modal .field {
+.medicines .viewMedicine .modal .field {
   background: #f2f4f5;
   padding: 10px;
   border-radius: 8px;
 }
-.medicines .modal .modal-footer {
+.medicines .viewMedicine .modal .modal-footer {
   display: flex;
   justify-content: flex-end;
 }
-.medicines .modal .footer-close {
+.medicines .viewMedicine .modal .footer-close {
   margin: 12px;
   padding: 8px 14px;
   border-radius: 8px;
@@ -9334,42 +9421,101 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   border: none;
   cursor: pointer;
 }
+.medicines .viewMedicine .modal .footer-close:hover {
+  color: red;
+}
 .medicines .editModal {
-  width: 520px;
-  height: 98vh;
-  background: #fff;
-  border-radius: 14px;
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 100;
-  overflow: hidden;
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+}
+.medicines .editModal .modal {
+  width: 520px;
+  background: #fff;
+  border-radius: 12px;
 }
 .medicines .editModal .modal-header {
   padding: 18px 20px;
   display: flex;
+  border-top-left-radius: 1.2rem;
+  border-top-right-radius: 1.2rem;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(90deg, #008b79, #00a58a);
+  background: linear-gradient(to right, #18978D, #083851);
   color: #fff;
 }
-.medicines .editModal .modal-header .modal-header {
-  padding: 18px 20px;
+.medicines .editModal .modal-header h2 {
+  margin: 0;
+  font-size: 2rem;
+}
+.medicines .editModal .modal-header p {
+  margin: 0;
+  font-size: 13px;
+  opacity: 0.9;
+}
+.medicines .editModal .close-icon {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+}
+.medicines .editModal .close-icon:hover {
+  color: red;
+}
+.medicines .editModal .form {
+  padding: 2rem;
+}
+.medicines .editModal .form .row {
   display: flex;
-  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.medicines .editModal .form .field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.medicines .editModal .form .field label {
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+.medicines .editModal .form .field input,
+.medicines .editModal .form .field select {
+  padding: 8px 10px;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.medicines .editModal .toggle {
+  display: flex;
   align-items: center;
-  background: linear-gradient(90deg, #008b79, #00a58a);
+  justify-content: space-between;
+  margin: 20px 0;
+}
+.medicines .editModal .actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.medicines .editModal .actions .cancel {
+  background: none;
+  border: 1px solid #e5e5e5;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.medicines .editModal .actions .save {
+  background: #08374F;
   color: #fff;
-}
-.medicines .editModal .modal-header .modal-header h2 {
-  font-size: 5rem;
-}
-.medicines .editModal .modal-header .grid-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 .pharmarcy .container {
@@ -10927,6 +11073,12 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   font-size: 28px;
   font-weight: 500;
 }
+.manageBill .hero h1 {
+  background: linear-gradient(90deg, #000 0%, #666 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 .manageBill .main-content {
   display: flex;
   padding: 40px 0px;
@@ -10952,11 +11104,12 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .manageBill .main-content .side-box .start-btn {
   background: #F9A550;
   color: white;
-  padding: 12px 18px;
+  padding: 12px 20px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   margin: 15px 0;
+  font-size: 1.8rem;
 }
 .manageBill .main-content .side-box ul {
   list-style: none;

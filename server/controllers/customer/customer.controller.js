@@ -41,3 +41,7 @@ exports.loyaltyPoints = async(req, res) => {
 exports.userProfileManage = async (req, res)=>{
     return response(res, view('customer/userProfileManage'))
 }
+
+exports.manageBill = async(req, res)=>{
+    return response(res, view('customer/manageBill'))
+}

@@ -170,6 +170,8 @@ const server = http.createServer((req , res)=>{
         AppRouter.pipe(req, res).route('/customer/userProfileManage')
         ?.get(customerController.userProfileManage);
 
+        AppRouter.pipe(req, res).route('/customer/manageBill')
+        ?.get(customerController.manageBill);
 
 
      

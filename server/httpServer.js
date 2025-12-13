@@ -20,6 +20,8 @@ const { paymentApiRouter } = require('./routes/api/api.payment.Routes');
 const { productsRouter } = require('./routes/web/products.Routes');
 const { pharmacyApiStaffRouter } = require('./routes/api/api.pharmacy.Routes');
 const { transactionsRouter } = require('./routes/api/api.transactions.Routes');
+const { customerCartApiRouter } = require('./routes/api/api.customer.cart.Routes');
+const { customerApiRouter } = require('./routes/api/api.customer.Routes');
 
 
 const server = http.createServer((req , res)=>{
@@ -47,28 +49,33 @@ const server = http.createServer((req , res)=>{
             console.log(method , url  , path)
         }
 
+        // web routes
         indexRouter.pipe(req , res);
         authRouter.pipe(req,res);
         customerRouter.pipe(req , res);
         adminRouter.pipe(req , res);
         adminBlogsRouter.pipe(req , res);
         adminPharmacyRouter.pipe(req , res);
-        adminApiPharmacyRouter.pipe(req , res);
         pharmacistRouter.pipe(req , res);
-        pharmacyApiRouter.pipe(req , res);
         pharmacyRouter.pipe(req , res);
-        cashiersBillsApiRouter.pipe(req , res);
         cashiersBillsRouter.pipe(req ,res);
         pharmacistBillsRouter.pipe(req , res);
-        pharmacistBillsApiRouter.pipe(req , res);
         pharmacyOwnersBillsRouter.pipe(req, res);
-        pharmacyOwnersBillsApiRouter.pipe(req, res);
         cashierRouter.pipe(req , res);
+        productsRouter.pipe(req , res);
+        transactionsRouter.pipe(req, res);
+
+        //api routes
+        pharmacistBillsApiRouter.pipe(req , res);
+        pharmacyOwnersBillsApiRouter.pipe(req, res);
+        cashiersBillsApiRouter.pipe(req , res);
+        pharmacyApiRouter.pipe(req , res);
         cashierApiRouter.pipe(req , res);
         paymentApiRouter.pipe(req , res);
-        productsRouter.pipe(req , res);
         pharmacyApiStaffRouter.pipe(req , res);
-        transactionsRouter.pipe(req, res);
+        customerCartApiRouter.pipe(req , res);
+        adminApiPharmacyRouter.pipe(req , res);
+        customerApiRouter.pipe(req , res);
 
         AppRouter.pipe(req ,res).route('/admin/addUsers')
         ?.get(adminController.addUsers);

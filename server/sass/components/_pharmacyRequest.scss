@@ -1,0 +1,89 @@
+.pharmacy-request{
+    display: grid;
+    grid-template-columns: 10rem 1fr 10rem 10rem;
+    grid-template-rows: 1fr;
+    grid-template-areas: "request content med-status loyalty";
+    text-transform: capitalize;
+    column-gap: 1rem;
+    border-bottom: 1px solid #eee;
+    padding: 2rem 1rem;
+
+    .request-btn{
+        grid-area: request;   
+        display: grid; 
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        justify-items: center;
+        
+        
+        button{
+            padding: 1rem 2rem;
+            border: 1px solid #000;
+            background-color: #fff;
+            border-radius: 3rem;
+            text-transform: capitalize;
+        }
+
+
+    }
+
+
+    .pharmacy-details{
+        grid-area: content;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows:1fr 1fr 1fr ;
+        grid-template-areas: "name" "address" "additional";
+
+        .name{
+                font-size: 2rem;
+                font-weight: 400;
+            }
+
+        .address{
+            font-size: 1.4rem;
+            opacity: .6;
+        }
+
+
+        .additional-details{
+            display: grid;
+            grid-template-columns: 10rem 1fr;
+            grid-template-rows: 1fr;
+            grid-template-areas: "status distance";
+
+            
+
+
+                
+            .status{
+                grid-area: status;
+                color: var(--color-green-01);
+                font-weight: 500;
+                text-transform: capitalize;
+            }
+            
+            .distance{
+                grid-area: distance;
+            }
+        }
+        
+    }
+    .available{
+        grid-area: med-status;
+        color: var(--color-green-01);
+        font-weight: 500;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+
+    }
+    
+    .points{
+        grid-area: loyalty;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

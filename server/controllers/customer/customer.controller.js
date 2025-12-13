@@ -1,6 +1,8 @@
+const { createCookie } = require("../../common/Auth");
 const Bridge = require("../../common/Bridge");
 const { response } = require("../../common/response");
 const view = require("../../common/view");
+const PharmacyStaff = require("../../models/PharmacyStaffModel");
 const Users = require("../../models/UserModel");
 
 
@@ -8,17 +10,27 @@ exports.renderCustomerHome = async (req , res)=>{
         try{    
                 const customer = (await Users.getById(req.customerId))[0];
                 
-                console.log(!customer);
-                console.log(customer)
-                if(!customer) return view('404');
-                return  response(res ,view('customer/customer.home' , {
-                        ...customer,
-                        navbar : view('customer/navbar.customer' , customer) , 
-                        header : view('component.header' , {
-                                name:"Pharmanet || Home",
-                        }),
-                        footer: view('footer'),
-                }) , 200)
+                
+                if(!customer) throw new Error("customer not found");
+
+                const [staffMember] = await PharmacyStaff.get({userId : customer.id});
+                
+                
+                if(!staffMember){
+                        return  response(res ,view('customer/customer.home' , {
+                                ...customer,
+                                navbar : view('customer/navbar.customer' , customer) , 
+                                header : view('component.header' , {
+                                        name:"Pharmanet || Home",
+                                }),
+                                footer: view('footer'),
+                        }) , 200)
+                }else{
+                        return response(res , 'redirect' , 301 , {
+                                location :`/pharmacies/${staffMember.pharmacyId}/${staffMember.role}/${staffMember.id}`,
+                                "Set-Cookie" : `staffId=${staffMember.id};expires=${Date.now()+300};path="/"`
+                        })
+                }
         }catch(e){
                 console.log(e);
                 return response(res , view('404') , 404);

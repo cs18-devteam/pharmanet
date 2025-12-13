@@ -4,7 +4,7 @@
 @use "./pharmacyDashboard__transactions" as dashboard_transactions;
 
 /* paging effect */
-$containers : 'bills' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 'staff';
+$containers : 'docs' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 'staff';
 
 .pharmacyDashboard{
         // background: #127EB5;

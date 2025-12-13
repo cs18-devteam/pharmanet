@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 let cache = [];
+let filePathsContainer = [];
 
 
 const MIME_TYPES = {
@@ -19,8 +20,9 @@ const MIME_TYPES = {
 
 
 const refreshCache = (filePaths)=>{
+    try{
     
-    cache = filePaths.map(filePath=>{
+    cache = filePaths?.map(filePath=>{
         return fs.readdirSync(filePath , {
             withFileTypes :true,
             recursive:true,
@@ -66,6 +68,11 @@ const refreshCache = (filePaths)=>{
             console.log(...filePaths , ": change detected");
         }
     }
+    }catch(e){
+        console.log(e);
+        // refreshCache();
+    }
+
 
 }
 
@@ -89,11 +96,16 @@ exports.requestFile = (filePath) =>{
 }
 
 exports.fileServer = (...filePaths)=>{
-    refreshCache(filePaths);
+    if(filePaths){
+        filePathsContainer = filePaths;
+    }
 
-    filePaths.forEach(filePath=>{
+
+    refreshCache(filePathsContainer);
+
+    filePathsContainer.forEach(filePath=>{
         fs.watch(filePath , ()=>{
-            refreshCache(filePath);
+            refreshCache(filePathsContainer);
         }
     )});
 }

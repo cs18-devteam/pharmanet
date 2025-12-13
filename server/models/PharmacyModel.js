@@ -10,7 +10,6 @@ class PharmacyModel extends Model{
 
         this.licenseNumber = {
             type:"VARCHAR(100)",
-            null : false,
         }
 
         this.email = {
@@ -57,7 +56,8 @@ class PharmacyModel extends Model{
             type:"VARCHAR(100)"
         }
         this.type = {
-            type:"VARCHAR(100)"
+            type:"VARCHAR(100)",
+            default:"retailer"
         }
 
         this.owner = {
@@ -66,6 +66,18 @@ class PharmacyModel extends Model{
 
         this.pharmacistLicense = {
             type:"VARCHAR(100)"
+        }
+
+        this.registrationDoc = {
+            type : "TEXT",
+        }
+
+        this.ownerDoc = {
+            type : "TEXT",
+        }
+
+        this.addressDoc = {
+            type :"TEXT"
         }
 
     }

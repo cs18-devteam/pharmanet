@@ -2,6 +2,7 @@ import {  fetchMedicineStockSummery } from "../../model/pharmacy/fetchMedicineDa
 import { renderMedicineStockSummery } from "../../view/pharmacy/renderMedicineCards.js";
 import medicines__searchAndRenderMedicineCard from "./medicines__searchAndRenderMedicines.js";
 import orders__searchAndRenderMedicineCard from "./orders__searchAndRenderMedicineCards.js";
+import { createTransactionsRow } from "/js/controller/pharmacy/transactions__searchAndRender.js";
 const medicinesSearchBar = document.querySelector(".medicines .search-bar");
 const ordersSearchBar = document.querySelector(".orders .search-bar > input");
 
@@ -50,3 +51,6 @@ ordersSearchBar?.addEventListener('input' , e=>{
     
     
 })
+
+
+createTransactionsRow();

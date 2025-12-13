@@ -1907,6 +1907,321 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   font-family: var(--primary-font);
 }
 
+.overlay-cart {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.25);
+  inset: 0 0 0 0;
+  backdrop-filter: blur(3px);
+  display: flex;
+  overflow: scroll;
+  opacity: 0;
+  z-index: -1000;
+  transition: all 0.3s ease;
+  perspective: 1000px;
+}
+.overlay-cart.open {
+  opacity: 1;
+  z-index: 1000;
+}
+.overlay-cart [class*=-side] {
+  background-color: #fff;
+  margin: 1rem;
+  height: 98%;
+  border-radius: 2rem;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.overlay-cart [class*=-side].open {
+  transform: translateX(0%);
+}
+.overlay-cart .left-side {
+  width: 60%;
+  transform: translate(-150%);
+}
+.overlay-cart .right-side {
+  width: 40%;
+  transform: translateX(150%);
+}
+.overlay-cart .popup {
+  position: fixed;
+  z-index: 100;
+  right: 20%;
+  top: 20%;
+  transform: translateY(400%) rotateY(180deg);
+  transition: all 0.8s ease;
+  min-width: 40rem;
+  min-height: 60rem;
+  background-color: #fff;
+  border-radius: 2rem;
+  box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.25);
+  border: 1px solid #eee;
+}
+.overlay-cart .popup.open {
+  transition: all 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transform: translateY(0) rotateY(0);
+}
+
+.cart_item {
+  flex-grow: 1;
+  border: 1px solid #eee;
+  border-radius: 2rem;
+  margin: 1rem;
+  overflow: hidden;
+  display: flex;
+}
+.cart_item .content {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  overflow: hidden;
+  gap: 1rem;
+}
+.cart_item .content img {
+  width: 10rem;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+.cart_item .content .description h4 div:first-child {
+  font-size: 1.4rem;
+  font-weight: 100;
+  opacity: 0.6;
+}
+.cart_item .content .description h4 div:nth-child(2) {
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+.cart_item .content .description .price {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.cart_item .content .description .price .label {
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.cart_item .content .description .price .label img {
+  width: 1.6rem;
+  aspect-ratio: 1;
+}
+.cart_item .content .description .price .amount {
+  color: var(--color-green-01);
+}
+.cart_item .content .description .price .amount::before {
+  content: "Rs ";
+}
+.cart_item .action-box:not(.select) > .select {
+  display: none;
+}
+.cart_item .action-box .select {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+}
+.cart_item .action-box .select .text {
+  font-size: 1.4rem;
+  padding: 1rem 2rem;
+  border: 1px solid #000;
+  color: #000;
+  display: flex;
+  flex-wrap: nowrap;
+  border-radius: 3rem;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+.cart_item .action-box .select input[type=checkbox]:checked ~ .text {
+  background-color: #000;
+  color: #fff;
+  border: none;
+}
+.cart_item .action-box:not(.remove) > .remove {
+  display: none;
+}
+.cart_item .action-box .remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+}
+.cart_item .action-box .remove .text {
+  font-size: 1.4rem;
+  padding: 1rem 2rem;
+  border: 1px solid #000;
+  color: #000;
+  display: flex;
+  flex-wrap: nowrap;
+  border-radius: 3rem;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+.cart_item .action-box .remove input[type=checkbox]:checked ~ .text {
+  background-color: #FE7743;
+  color: #fff;
+  border: none;
+}
+.cart_item .action-box:not(.available) > .available {
+  display: none;
+}
+.cart_item .action-box .available {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+}
+.cart_item .action-box .available .text {
+  font-size: 1.4rem;
+  padding: 1rem 2rem;
+  border: 1px solid #000;
+  color: #000;
+  display: flex;
+  flex-wrap: nowrap;
+  border-radius: 3rem;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+.cart_item .action-box .available input[type=checkbox]:checked ~ .text {
+  background-color: #1A7F78;
+  color: #fff;
+  border: none;
+}
+.cart_item .action-box:not(.added) > .added {
+  display: none;
+}
+.cart_item .action-box .added {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+}
+.cart_item .action-box .added .text {
+  font-size: 1.4rem;
+  padding: 1rem 2rem;
+  border: 1px solid #000;
+  color: #000;
+  display: flex;
+  flex-wrap: nowrap;
+  border-radius: 3rem;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+.cart_item .action-box .added input[type=checkbox]:checked ~ .text {
+  background-color: #127EB5;
+  color: #fff;
+  border: none;
+}
+.cart_item .action-box:not(.removed) > .removed {
+  display: none;
+}
+.cart_item .action-box .removed {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+}
+.cart_item .action-box .removed .text {
+  font-size: 1.4rem;
+  padding: 1rem 2rem;
+  border: 1px solid #000;
+  color: #000;
+  display: flex;
+  flex-wrap: nowrap;
+  border-radius: 3rem;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+.cart_item .action-box .removed input[type=checkbox]:checked ~ .text {
+  background-color: #000;
+  color: #fff;
+  border: none;
+}
+
+.map-container {
+  width: 100%;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+
+.pharmacy-request {
+  display: grid;
+  grid-template-columns: 10rem 1fr 10rem 10rem;
+  grid-template-rows: 1fr;
+  grid-template-areas: "request content med-status loyalty";
+  text-transform: capitalize;
+  column-gap: 1rem;
+  border-bottom: 1px solid #eee;
+  padding: 2rem 1rem;
+}
+.pharmacy-request .request-btn {
+  grid-area: request;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  justify-items: center;
+}
+.pharmacy-request .request-btn button {
+  padding: 1rem 2rem;
+  border: 1px solid #000;
+  background-color: #fff;
+  border-radius: 3rem;
+  text-transform: capitalize;
+}
+.pharmacy-request .pharmacy-details {
+  grid-area: content;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "name" "address" "additional";
+}
+.pharmacy-request .pharmacy-details .name {
+  font-size: 2rem;
+  font-weight: 400;
+}
+.pharmacy-request .pharmacy-details .address {
+  font-size: 1.4rem;
+  opacity: 0.6;
+}
+.pharmacy-request .pharmacy-details .additional-details {
+  display: grid;
+  grid-template-columns: 10rem 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "status distance";
+}
+.pharmacy-request .pharmacy-details .additional-details .status {
+  grid-area: status;
+  color: var(--color-green-01);
+  font-weight: 500;
+  text-transform: capitalize;
+}
+.pharmacy-request .pharmacy-details .additional-details .distance {
+  grid-area: distance;
+}
+.pharmacy-request .available {
+  grid-area: med-status;
+  color: var(--color-green-01);
+  font-weight: 500;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+.pharmacy-request .points {
+  grid-area: loyalty;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @font-face {
   font-family: "red hat display";
   font-weight: 100;
@@ -5124,6 +5439,62 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   color: var(--white);
   font-size: 1.6rem;
   font-family: var(--primary-font);
+}
+.landingPage .overlay-cart .right-side .header {
+  padding: 0rem;
+  display: flex;
+  flex-direction: column;
+}
+.landingPage .overlay-cart .right-side .header h2 {
+  font-size: 3.2rem;
+  font-weight: 500;
+}
+.landingPage .overlay-cart .right-side .header p {
+  font-size: 1.8rem;
+  font-weight: 400;
+  width: 100%;
+  line-height: 1.3;
+}
+.landingPage .overlay-cart .right-side .carts_container {
+  margin: 1rem;
+}
+.landingPage .overlay-cart .right-side .cart-footer {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+}
+.landingPage .overlay-cart .right-side .cart-footer p.info {
+  font-size: 1.6rem;
+  font-weight: 400;
+  width: 100%;
+  text-wrap: wrap;
+  line-height: 1.5;
+}
+.landingPage .overlay-cart .right-side .cart-footer .continue {
+  padding: 2rem 3rem;
+  outline: none;
+  border: none;
+  border-radius: 3rem;
+  text-transform: capitalize;
+  margin-left: auto;
+  background-color: var(--color-green-01);
+  color: #fff;
+  font-size: 1.8rem;
+  justify-content: flex-end;
+}
+.landingPage .overlay-cart .left-side {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+.landingPage .overlay-cart .left-side h3 {
+  font-size: 2.4rem;
+  margin-top: 3rem;
+  width: fit-content;
+  text-transform: capitalize;
+  background-image: linear-gradient(to right, #000, #666);
+  background-clip: text;
+  color: transparent;
 }
 
 .medicine-review .medicine {
@@ -9451,10 +9822,10 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   position: absolute;
   overflow: hidden;
 }
-.pharmacyDashboard input[type=radio]#bills {
+.pharmacyDashboard input[type=radio]#docs {
   display: none;
 }
-.pharmacyDashboard input[type=radio]#bills ~ .dashboards > .bills {
+.pharmacyDashboard input[type=radio]#docs ~ .dashboards > .docs {
   transform: translateY(0rem) scale(1);
   z-index: 0;
   transform-origin: top;
@@ -9462,41 +9833,41 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   transition: all 0.8s ease;
   transition-delay: 0.7s;
 }
-.pharmacyDashboard input[type=radio]#bills:checked ~ .nav > ul > li > label[for=bills] {
+.pharmacyDashboard input[type=radio]#docs:checked ~ .nav > ul > li > label[for=docs] {
   background-image: linear-gradient(120deg, var(--color-green-01), var(--color-green-02));
   color: #fff;
 }
-.pharmacyDashboard input[type=radio]#bills:checked ~ .dashboards .container:nth-child(1) {
+.pharmacyDashboard input[type=radio]#docs:checked ~ .dashboards .container:nth-child(1) {
   transition-delay: 0s;
   opacity: 1;
   transform: translate(0) scale(1);
 }
-.pharmacyDashboard input[type=radio]#bills:checked ~ .dashboards .container:nth-child(2) {
+.pharmacyDashboard input[type=radio]#docs:checked ~ .dashboards .container:nth-child(2) {
   opacity: 0.8;
   transform: translateY(calc(-0.5rem * 1)) scale(calc(1 - 0.1 * 1));
   transition-delay: 0.1s;
 }
-.pharmacyDashboard input[type=radio]#bills:checked ~ .dashboards .container:nth-child(3) {
+.pharmacyDashboard input[type=radio]#docs:checked ~ .dashboards .container:nth-child(3) {
   opacity: 0.6;
   transform: translateY(calc(-0.5rem * 2)) scale(calc(1 - 0.1 * 2));
   transition-delay: 0.2s;
 }
-.pharmacyDashboard input[type=radio]#bills:checked ~ .dashboards .container:nth-child(4) {
+.pharmacyDashboard input[type=radio]#docs:checked ~ .dashboards .container:nth-child(4) {
   opacity: 0.4;
   transform: translateY(calc(-0.5rem * 3)) scale(calc(1 - 0.1 * 3));
   transition-delay: 0.3s;
 }
-.pharmacyDashboard input[type=radio]#bills:checked ~ .dashboards .container:nth-child(5) {
+.pharmacyDashboard input[type=radio]#docs:checked ~ .dashboards .container:nth-child(5) {
   opacity: 0.2;
   transform: translateY(calc(-0.5rem * 4)) scale(calc(1 - 0.1 * 4));
   transition-delay: 0.4s;
 }
-.pharmacyDashboard input[type=radio]#bills:checked ~ .dashboards .container:nth-child(6) {
+.pharmacyDashboard input[type=radio]#docs:checked ~ .dashboards .container:nth-child(6) {
   opacity: 0;
   transform: translateY(calc(-0.5rem * 5)) scale(calc(1 - 0.1 * 5));
   transition-delay: 0.5s;
 }
-.pharmacyDashboard input[type=radio]#bills:checked ~ .dashboards .container:nth-child(7) {
+.pharmacyDashboard input[type=radio]#docs:checked ~ .dashboards .container:nth-child(7) {
   opacity: -0.2;
   transform: translateY(calc(-0.5rem * 6)) scale(calc(1 - 0.1 * 6));
   transition-delay: 0.6s;

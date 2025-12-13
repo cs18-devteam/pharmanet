@@ -94,3 +94,5 @@
 /products/pharmacy_management_system
 /api/v1/pharmacies/:pharmacyId/staff
 /api/v1/transactions
+/api/v1/customers/:customerId/carts
+/api/v1/customers/:customerId/pharmacy/register

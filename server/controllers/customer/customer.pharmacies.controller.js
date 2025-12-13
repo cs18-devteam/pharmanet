@@ -1,8 +1,12 @@
-const { response } = require("../../common/response");
+const File = require("../../common/File");
+const getMultipartData = require("../../common/getMultipartData");
+const { getRequestData } = require("../../common/getRequestData");
+const { response, responseJson } = require("../../common/response");
 const view = require("../../common/view");
 const Medicines = require("../../models/MedicineModel");
 const PharmacyMedicines = require("../../models/PharmacyMedicinesModel");
 const Pharmacies = require("../../models/PharmacyModel");
+const PharmacyStaff = require("../../models/PharmacyStaffModel");
 const Users = require("../../models/UserModel");
 
 
@@ -40,6 +44,24 @@ exports.renderCustomerPharmacies = async (req , res)=>{
 }
 
 
+async function saveFile(name , file , destination){
+    try{
+
+        const fileName = `${name}-${Date.now()}-${file.fileName}`;
+        file.rename(fileName);
+        const regSaveData = await file.save(destination);
+        if(regSaveData.status == "success"){
+            regSaveData.destination = destination+"/"+fileName;
+            return regSaveData;
+        }else{
+            throw new Error("address proof file cannot saved");
+        }
+    }catch(e){
+        throw e;
+    }
+}
+
+
 exports.renderCustomerPharmacy = async (req , res)=>{
     try{
     const customer = (await Users.getById(req.customerId))[0];
@@ -68,7 +90,6 @@ exports.renderCustomerPharmacy = async (req , res)=>{
 exports.renderPharmacyLandingPage = async (req , res)=>{
     try{
         const [pharmacy] = await Pharmacies.getById(req.pharmacyId);
-        console.log(pharmacy);
 
 
         const pharmacyData = {
@@ -102,6 +123,7 @@ exports.renderPharmacyLandingPage = async (req , res)=>{
             header : view('component.header' , {
                 name:"Antibiotics",
             }),
+            carts: view('components/component.cart.card'),
             ...pharmacyData,
             medicineCards : medicineCardsText.join(' '),
 
@@ -115,6 +137,89 @@ exports.renderPharmacyLandingPage = async (req , res)=>{
     }
 }
 
+
+
+exports.createPharmacy = async (req , res)=>{
+    await Pharmacies.query("start transaction");
+
+
+    try{
+        const pharmacyData = await getMultipartData(req);
+        const [customer] = await Users.getById(req.customerId);
+
+        if(!customer){
+            throw new Error('customer is not found');
+        }
+
+        
+        const pharmacyObj = {
+            name : pharmacyData.name,
+            licenseNumber : pharmacyData.licenseNumber,
+            email : pharmacyData.email,
+            expireDate : pharmacyData.expireDate,
+            addressNo : pharmacyData.addressNo,
+            street : pharmacyData.street,
+            town : pharmacyData.street,
+            province : pharmacyData.province,
+            latitude : pharmacyData.latitude,
+            longitude : pharmacyData.longitude,
+            googleMapLink : pharmacyData.googleMapLink,
+            contact : pharmacyData.contact , 
+            postalCode : pharmacyData.postalCode,
+            pharmacist : pharmacyData.pharmacist , 
+            type : pharmacyData.type,
+            owner : pharmacyData.owner,
+            pharmacistLicense : pharmacyData.pharmacistLicense,
+            registrationDoc : undefined,
+            ownerDoc : undefined,
+            addressDoc : undefined,
+        };
+
+
+        if(pharmacyData.registrationDoc instanceof File){
+            const file = await saveFile(pharmacyData.name ,pharmacyData.registrationDoc , "/pharmacyRegistrations");
+            pharmacyObj.registrationDoc = file.destination;
+        }
+        if(pharmacyData.ownerDoc instanceof File){
+           const file = await saveFile( pharmacyData.name , pharmacyData.registrationDoc , "/pharmacyOwners");
+            pharmacyObj.ownerDoc = file.destination;
+        }
+        if(pharmacyData.addressDoc instanceof File){
+            const file = await saveFile(pharmacyData.addressDoc , "/pharmacyOwners");
+            pharmacyObj.addressDoc = file.destination;
+        }
+        const [pharmacy]  = await Pharmacies.save(pharmacyObj);
+        
+        //create pharmacist
+        const [pharmacist] = await PharmacyStaff.save({
+            role:"pharmacist",
+            userId : customer.id,
+            pharmacyId : pharmacy.id,
+        })
+
+        pharmacy.pharmacist = pharmacist,
+
+
+        
+
+        await Pharmacies.query("commit");
+
+        return responseJson(res , 200 , {
+            status:"success",
+            results : pharmacy,
+        });
+
+
+    }catch(e){
+        console.log(e);
+        await Pharmacies.query('rollback');
+        return responseJson(res , 400 , {
+            status:"error",
+            message:"pharmacy not created",
+            error:e,
+        })
+    }
+}
 
 
 

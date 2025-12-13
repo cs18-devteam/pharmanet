@@ -15,8 +15,13 @@ server.listen(process.env.PORT , process.env.HOSTNAME , ()=>{
 })
 
 socketServer.listen(process.env.SOCKET_PORT , process.env.HOSTNAME ,async ()=>{
-    console.log( await Pharmacies.query("update this.table set alive=false where id > 0"));
-    console.log(`web socket is running on ws://${process.env.HOSTNAME}:${process.env.SOCKET_PORT}`);
+    try{
+        console.log( await Pharmacies.query("update this.table set alive=false where id > 0"));
+        console.log(`web socket is running on ws://${process.env.HOSTNAME}:${process.env.SOCKET_PORT}`);
+
+    }catch(e){
+        console.log(e);
+    }
 })
 
 

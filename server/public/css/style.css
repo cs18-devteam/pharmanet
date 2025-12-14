@@ -566,23 +566,16 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   color: #888;
 }
 
-.spinner {
-  mix-blend-mode: color-dodge;
-  width: 3rem;
-  object-fit: contain;
-  animation: loading 1s linear infinite;
-  margin-left: 1rem;
-  display: none;
-}
-.spinner.visible {
-  display: inline-block;
-}
-
 @keyframes loading {
   100% {
     transform: rotate(360deg);
   }
 }
+.spinner {
+  animation: loading 1s linear infinite;
+  scale: 0.1;
+}
+
 .sideBar .menu a {
   color: #192420 !important;
 }
@@ -2602,6 +2595,43 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   justify-content: center;
 }
 
+.toast {
+  min-width: 30rem;
+  width: fit-content;
+  border-radius: 3rem;
+  min-height: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -40rem;
+  left: 50vw;
+  box-shadow: 4px 0 7px rgba(0, 0, 0, 0.25);
+  transform: translateX(-50%);
+  text-transform: capitalize;
+  font-size: 1.8rem;
+  background-color: var(--color-green-02);
+  color: #fff;
+  animation: move-down 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+}
+.toast.error {
+  background-color: var(--color-red-01);
+  z-index: 1500;
+}
+.toast.warn {
+  background-color: var(--color-yellow-01);
+  z-index: 1500;
+}
+.toast.success {
+  background-color: var(--color-green-01);
+  z-index: 1500;
+}
+
+@keyframes move-down {
+  100% {
+    top: 10rem;
+  }
+}
 @font-face {
   font-family: "red hat display";
   font-weight: 100;

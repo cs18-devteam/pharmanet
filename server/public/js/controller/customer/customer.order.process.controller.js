@@ -1,11 +1,13 @@
 import Application from "../../model/application/Application.js";
+import ChatTemplates from "../../model/application/ChatTemplates.js";
 import { fetchOnlinePharmacies } from "../../model/customer/fetchPharmacies.js";
-import { createChatBox, createReplyAndRender } from "../../view/chatbox.js";
-import { renderChatBox } from "../../view/customer/chatBox.js";
+import { activateOnSubmitMessageCallback, createChatBox, renderMessage, renderReply, setOnSubmitMessageCallback, spinner } from "../../view/chatbox.js";
 import { createRequestCards, renderRequestCards } from "../../view/customer/pharmacyRequestCard.js";
+import { renderToast } from "../../view/renderToast.js";
 import { openLiveConnection, requestConnectionWithPharmacy } from "./connection.js";
 import cart from "./customer.cart.controller.js";
 const nearByPharmaciesContainer = document.querySelector('.pharmacyRequestContainer--nearby');
+const Chat = Application.MessageTemplates;
 
 
 
@@ -36,33 +38,49 @@ nearByPharmaciesContainer?.addEventListener('click' , async (e)=>{
 
 
 function handleConnection(msg){
-    const content = msg.data;
-    console.log(content);
+    const message = msg.data;
+    console.log(message);
 
-    if(content.startsWith('STABLISH=')){
-        const {status} = JSON.parse(content.replace("STABLISH=" , ''));
+    if(Chat.isRequestConnection(message)){
+        const {status} = Chat.readStablishConn(message)
 
         if(status == "success"){
-            console.log("connected with server")
+            renderToast("connected  :)" , "success");
             requestConnectionWithPharmacy(Application.requestPharmacyId);
-            
+            cart.setLeftSideContent(spinner())
         }else{
-            alert("connection feild")
+            console.log('connection unsuccessful');
         }
-    }else if(content.startsWith('RES_PHR=')){
-        const resObj = JSON.parse(content.replace("RES_PHR=" , ''));
+
+
+    }else if(Chat.isChatBoxResponseFromPharmacy(message)){
+        const resObj = Chat.readChatBoxAcceptRequestFromServerToClient(message);
+        console.log(resObj);
+
         Application.connectedWith = resObj.pharmacyId;
         if(resObj.accept){
             cart.setLeftSideContent(createChatBox());
+            activateOnSubmitMessageCallback();
 
         }
-    }else if(content.startsWith("MSG=")){
-        const msgObj = JSON.parse(content.replace("MSG=" , ''));
 
-        createReplyAndRender(msgObj.message);
+
+    }else if(Chat.isMessage(message)){
+        const msgObj = Chat.readMessage(message);
+
+        renderMessage(msgObj.message);
     }
 
 }
+
+
+
+
+
+setOnSubmitMessageCallback((e , value)=>{
+    Application.connection.send(ChatTemplates.message(value));  
+    renderReply(value);
+})
 
 
 

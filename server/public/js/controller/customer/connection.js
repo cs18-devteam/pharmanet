@@ -1,12 +1,11 @@
 import Application from "../../model/application/Application.js";
+import ChatTemplates from "../../model/application/ChatTemplates.js";
+import { renderToast } from "../../view/renderToast.js";
 
 let socket = undefined;
 
 function stablishConnection(socket){
-    socket.send(`STABLISH=${JSON.stringify({
-            type:'customer',
-            id : Application.userId,
-        })}`);
+    socket.send(ChatTemplates.requestConnection());
 }
 
 
@@ -14,9 +13,8 @@ function stablishConnection(socket){
 export async function requestConnectionWithPharmacy(pharmacyId){
     try{
         if(!socket) throw new Error("connection is not opened");
-        console.log(Application.userId);
-        const reqString = `REQ_PHR=${JSON.stringify({pharmacyId , customerId : Application.userId})}`;
-        console.log(reqString);
+
+        const reqString = Application.MessageTemplates.requestPharmacy(pharmacyId);
         socket.send(reqString);
 
     
@@ -33,8 +31,8 @@ export function openLiveConnection(){
 
     return new Promise((resolve ,reject)=>{
         try{
-
             socket.addEventListener('open' , ()=>{
+                renderToast("connecting");
                 stablishConnection(socket);
                 resolve(socket);  
             })

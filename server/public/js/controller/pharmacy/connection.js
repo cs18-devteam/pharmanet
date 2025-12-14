@@ -1,9 +1,9 @@
-import Application  from "../../model/application/Application.js";
 import { changeWindowTo } from "../../view/pharmacy/changeWindow.js";
-import { removeIncomingMessage, showIncomingMessage } from "../../view/pharmacy/chatBoxView.js";
-const incomingMessage = document.querySelector('.incoming_messege_box');
-const chatbox = document.querySelector('.chats .chat-box');
-const chatboxBody = chatbox.querySelector('.body-section');
+import ChatTemplates from "../../model/application/ChatTemplates.js";
+import { activateOnSubmitMessageCallback, onAcceptIncomingMessage, onAnyCaseIncomingMessage, onRejectIncomingMessage, removeIncomingMessage, renderMessage, renderReply, setOnSubmitMessageCallback, showIncomingMessage } from "../../view/chatbox.js";
+import {renderToast} from "../../view/renderToast.js";
+import Application from "../../model/application/Application.js";
+
 
 
 
@@ -15,16 +15,14 @@ const socket = new WebSocket('ws://localhost:3001');
 
 
 function stablishConnection(){
-    socket.send(`STABLISH=${JSON.stringify({
-        type:'pharmacy',
-        id : Application.pharmacyId,
-    })}`)
+    socket.send(ChatTemplates.requestConnection());
 }
 
 
 
 socket.addEventListener('open' , ()=>{
     stablishConnection();
+    renderToast('requesting connection')
 })
 
 
@@ -32,74 +30,46 @@ socket.addEventListener('message' , (msgEvent)=>{
     const message = msgEvent.data;
     console.log(message);
 
-    if(message.startsWith("REQ_CLIENT=")){
-        const reqObj = JSON.parse(message.replace("REQ_CLIENT=" , ''));
+    if(ChatTemplates.isConnectionResponse(message)){
+        const stabObj = ChatTemplates.readStablishConn(message);
+        
+        if(stabObj.status == "success"){
+            renderToast('connected :)' , 'success');
+        }else{
+            renderToast("connection error" , "error");
+        }
+    }
+
+
+    if(ChatTemplates.isChatBoxRequestFromClient(message)){
+        const reqObj = ChatTemplates.readChatBoxRequest(message);
 
         showIncomingMessage(reqObj);
 
-
-        incomingMessage.addEventListener('click' , (e)=>{
-            const target = e.target;
-
-            const acceptButton = target.closest('.accept');
-            const rejectButton = target.closest('.reject');
-
-            if(acceptButton){
-                socket.send(`RES_CLIENT=${JSON.stringify({
-                    accept: true,
-                    customerId : reqObj.customerId,
-                    id : Application.pharmacyId,
-                    type :"pharmacy"
-                })}`);
-                removeIncomingMessage();
-                changeWindowTo('chats');
-            }else if(rejectButton){
-                socket.send(`RES_CLIENT=${JSON.stringify({
-                    accept: false,
-                    customerId : reqObj.customerId,
-                    id : Application.pharmacyId,
-                    type:"pharmacy"
-                })}`);
-                removeIncomingMessage();
-                
-            }
+        onAcceptIncomingMessage(()=>{
+            Application.connectedWith = reqObj.customerId;
+            socket.send(ChatTemplates.acceptClient(true , reqObj.customerId));
+            changeWindowTo('chats');
         })
 
+        onRejectIncomingMessage(()=>{
+            socket.send(ChatTemplates.acceptClient(false , reqObj.customerId));
+        })
 
+        onAnyCaseIncomingMessage(()=>{
+            removeIncomingMessage();
+        })
 
-
-    }else if(message.startsWith("MSG=")){
-        const msgObj = JSON.parse(message.replace("MSG=" , ''));
-        Application.connectedWith = msgObj.id;
-
-
-       
-
-        chatboxBody.insertAdjacentHTML('beforeend',templateReply);
+    }else if(ChatTemplates.isMessage(message)){
+        const msgObj = ChatTemplates.readMessage(message)
+        renderMessage(msgObj.message);
     }
 })
 
-
-
-
-const form = chatbox.querySelector('form');
-form.addEventListener('submit' , (e)=>{
+setOnSubmitMessageCallback((e , value)=>{
     e.preventDefault();
+    socket.send(ChatTemplates.message(value));
+    renderReply(value);
+})
 
-    const input = form.querySelector('input');
-    const value = input.value;
-    socket.send(`MSG=${JSON.stringify({
-        message: value,
-        type: 'pharmacy',
-        to :"customer",
-        id : Application.pharmacyId,
-        toId : Application.connectedWith,
-    })}`)
-     const templateReply = `<div class="message reply"><span class="profile-pic"><img src="/users/1.jpg" alt="" width="40rem" height="40rem"></span>${value}</div>`;
-    
-    input.value = '';
-    chatboxBody.insertAdjacentHTML('beforeend' , templateReply);
-
-
-
-}) 
+activateOnSubmitMessageCallback();

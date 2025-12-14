@@ -273,7 +273,6 @@ class Model{
         }
 
         query = query.replace("%%COLUMNS%%" , dataArray.join(","));
-        console.log(query);
         data =await db.query(query);
 
         if(data){
@@ -308,7 +307,6 @@ class Model{
         try{
 
         const results =await db.query(`DELETE FROM ${this.#table} WHERE id=${id}`);
-        console.log({deletedLog : results});
         return results;
 
         }catch(e){
@@ -359,7 +357,6 @@ class Model{
                 console.log(error );
                 throw error;
             }
-            console.log(data , fields)
             return data;
         }
 

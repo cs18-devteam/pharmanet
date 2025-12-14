@@ -12,6 +12,8 @@ class ChatTemplates{
     static #RES_PHR = "RES_PHR="
     static #STAT_PRSC = "STAT_PRSC="
     static requestPrescription = this.#REQ_PRSC.replace('=','');
+    static #MINOR_ERROR = "MINOR_ERROR="
+
 
 
     static message(msg){
@@ -56,10 +58,18 @@ class ChatTemplates{
 
 
     static requestPharmacy(pharmacyId){
+        console.log({userID : Application.userId});
+
+
+
         return `${this.#REQ_PHR}${JSON.stringify({
             pharmacyId , 
             customerId : Application.userId}
         )}`
+    }
+
+    static isMinorError(message){
+        return message.startsWith(this.#MINOR_ERROR);
     }
 
     static requestConnection(){

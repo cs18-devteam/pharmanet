@@ -64,7 +64,7 @@ function sendChatBoxRequest(pharmacies=[] , customerId){
 server.onClientMessage((message , client)=>{
     try{
 
-        console.log(message);
+        console.log({message});
         // create connection with server
         if(ChatTemplates.isRequestConnection(message)){
             const stabObj = ChatTemplates.readStablishConn(message);
@@ -90,11 +90,6 @@ server.onClientMessage((message , client)=>{
 
             if(!pharmacy) return client.send(ChatTemplates.acceptClient(false , reqObj.customerId));
 
-            // while(1){
-            //     console.log('sent');
-            //     pharmacy.client.send("checking");
-            // }
-
             sendChatBoxRequest([pharmacy] , reqObj.customerId);
 
             return;
@@ -109,12 +104,6 @@ server.onClientMessage((message , client)=>{
                 const pharmacy = connectedCustomers[`${reqClientObj.id}`];
                 customer.client.send(ChatTemplates.chatBoxAcceptRequestFromServerToClient(true , reqClientObj.id , reqClientObj.customerId));
 
-                /**
-                 * @type {WebSocket}
-                 */
-    
-
-                // server.halfDuplexConnection(client , customer.client )
             }
 
             return;
@@ -122,6 +111,16 @@ server.onClientMessage((message , client)=>{
         }else{
             const {opcode , data: msgObj} = ChatTemplates.decodeString(message);
 
+            if(opcode == "ERROR"){ 
+                client.send(ChatTemplates.minorError({
+                    msg:"decode error : some thing wrong with last frame" ,
+                    to:"customer",
+                    from:"server",
+                    toId : "-1",
+                }))
+
+                return;
+            }
             if(!msgObj.toId || !msgObj.id || !msgObj.to) return; 
 
             if(msgObj.to == "pharmacy"){
@@ -129,6 +128,7 @@ server.onClientMessage((message , client)=>{
             }else if(msgObj.to == "customer"){
                 connectedCustomers[`${msgObj.toId}`].client.send(message)
             }
+
         }
 
 

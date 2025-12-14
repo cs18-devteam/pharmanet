@@ -1,6 +1,7 @@
 
-const {  verifyPassword, createCookie, createToken } = require("../../common/Auth");
+const {  verifyPassword, createCookie : createCookieToken, createToken } = require("../../common/Auth");
 const Bridge = require("../../common/Bridge");
+const { createCookie } = require("../../common/cookie");
 const { getRequestData } = require("../../common/getRequestData");
 const { response, responseJson } = require("../../common/response");
 const view = require("../../common/view");
@@ -51,7 +52,7 @@ exports.login = async (req, res) => {
         }
 
         const token = createToken(user[0]);
-        const cookie = createCookie(token);
+        const cookie = createCookieToken(token);
 
 
         console.log(cookie)
@@ -61,7 +62,7 @@ exports.login = async (req, res) => {
             token : token ,
             user : {...user[0] , password : undefined}
         } , {
-            "Set-Cookie" : cookie
+            "Set-Cookie" : [cookie , createCookie('id' , user[0].id) ]
         })
 
     } catch (err) {

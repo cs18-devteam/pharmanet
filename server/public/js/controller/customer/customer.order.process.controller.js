@@ -55,7 +55,6 @@ function handleConnection(msg){
 
     }else if(Chat.isChatBoxResponseFromPharmacy(message)){
         const resObj = Chat.readChatBoxAcceptRequestFromServerToClient(message);
-        console.log(resObj);
 
         Application.connectedWith = resObj.pharmacyId;
         if(resObj.accept){
@@ -67,6 +66,12 @@ function handleConnection(msg){
         const msgObj = Chat.readMessage(message);
 
         renderMessage(msgObj.message);
+
+    
+    
+    }else if(Chat.isMinorError(message)){
+        renderToast("something wrong with connection" , "error");
+        return;
     }else{
         const {opcode , data} = ChatTemplates.decodeString(message);
         console.log(opcode , data);
@@ -124,6 +129,7 @@ function handleConnection(msg){
 
 
 setOnSubmitMessageCallback((e , value)=>{
+    console.log(ChatTemplates.message(value));
     Application.connection.send(ChatTemplates.message(value));  
     renderReply(value);
 })

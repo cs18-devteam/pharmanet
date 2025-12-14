@@ -89,6 +89,7 @@ socket.addEventListener('message' , (msgEvent)=>{
         showIncomingMessage(reqObj);
 
         onAcceptIncomingMessage(()=>{
+            console.log("customer = " , reqObj);
             Application.connectedWith = reqObj.customerId;
         
             socket.send(ChatTemplates.acceptClient(true , reqObj.customerId));
@@ -126,6 +127,7 @@ socket.addEventListener('message' , (msgEvent)=>{
 
 setOnSubmitMessageCallback((e , value)=>{
     e.preventDefault();
+    console.log(ChatTemplates.message(value));
     socket.send(ChatTemplates.message(value));
     renderReply(value);
 })

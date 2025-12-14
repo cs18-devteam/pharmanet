@@ -10,6 +10,7 @@ class ChatTemplates{
     static #STAT_PAY = "STAT_PAY="
     static #RES_PHR = "RES_PHR="
     static #STAT_PRSC = "RES_PHR="
+    static #MINOR_ERROR = "MINOR_ERROR="
 
 
     static message({msg ,from , to , toId , fromId}){
@@ -44,10 +45,23 @@ class ChatTemplates{
 
 
     static decodeString(message){
-        const opcode = message.split('=')[0];
-        return {
-            opcode,
-            data : JSON.parse(message.replace(`${opcode}=` , '')),
+        try{
+
+            const opcode = message.split('=')[0];
+            console.log(message , opcode ,message.replace(`${opcode}=` , '') );
+            
+            
+            return {
+                opcode,
+                data : JSON.parse(message.replace(`${opcode}=` , '')),
+            }
+        }catch(e){
+            return {
+                opcode :"ERROR",
+                data : {
+                    message:"frame can not decode",
+                }
+            }
         }
     }
 
@@ -65,6 +79,17 @@ class ChatTemplates{
             })}`
 
         }
+    }
+
+    static minorError({msg , from , to , toId , fromId} ){
+        return `${this.#MINOR_ERROR}${JSON.stringify({
+                error: msg,
+                message: msg,
+                type: from,
+                to :to,
+                id : fromId,
+                toId : toId,
+            })}`
     }
 
     static createConnection(status){

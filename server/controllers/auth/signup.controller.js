@@ -1,7 +1,8 @@
 
 
 // --- Authenticate user (Login) ---
-const { hashPassword, encrypt, createToken, createCookie } = require("../../common/Auth");
+const { hashPassword, encrypt, createToken, createCookieToken } = require("../../common/Auth");
+const { createCookie } = require("../../common/cookie");
 const generateOTP = require("../../common/generateOTP");
 const { getRequestData } = require("../../common/getRequestData");
 const { response, responseJson } = require("../../common/response");
@@ -91,7 +92,7 @@ exports.signup = async (req, res) => {
         });
 
         const token = createToken(newUser[0]);
-        const cookie = createCookie(token);
+        const cookie = createCookieToken(token);
         // console.log(newUser);
         otpController.sendEmailOTP(newUser[0]);
         
@@ -107,7 +108,7 @@ exports.signup = async (req, res) => {
             message :"user account created successfully",
             token : token,
         } , {
-            "Set-Cookie" : cookie
+            "Set-Cookie" : [cookie , createCookie('id' , newUser.id)],
         })
 
     }catch(e){

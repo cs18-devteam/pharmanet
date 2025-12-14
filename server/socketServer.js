@@ -125,21 +125,9 @@ server.onClientMessage((message , client)=>{
             if(!msgObj.toId || !msgObj.id || !msgObj.to) return; 
 
             if(msgObj.to == "pharmacy"){
-                connectedPharmacies[`${msgObj.toId}`].client.send(ChatTemplates.message({
-                    to :"pharmacy",
-                    from :"customer",
-                    toId : msgObj.toId,
-                    fromId : msgObj.id,
-                    msg : msgObj.message,
-                }))
+                connectedPharmacies[`${msgObj.toId}`].client.send(message)
             }else if(msgObj.to == "customer"){
-                connectedCustomers[`${msgObj.toId}`].client.send(ChatTemplates.message({
-                    to :"customer",
-                    from :"pharmacy",
-                    toId : msgObj.toId,
-                    fromId : msgObj.id,
-                    msg : msgObj.message,
-                }))
+                connectedCustomers[`${msgObj.toId}`].client.send(message)
             }
         }
 

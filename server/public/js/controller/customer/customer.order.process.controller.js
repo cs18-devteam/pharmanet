@@ -1,7 +1,7 @@
 import Application from "../../model/application/Application.js";
 import ChatTemplates from "../../model/application/ChatTemplates.js";
 import { fetchOnlinePharmacies } from "../../model/customer/fetchPharmacies.js";
-import { activateOnSubmitMessageCallback, createChatBox, renderMessage, renderReply, setOnSubmitMessageCallback, spinner } from "../../view/chatbox.js";
+import { activateOnSubmitMessageCallback, createChatBox, createPrescriptionUploadCardContent, onSelectPrescription, renderMessage, renderReply, setOnSubmitMessageCallback, spinner } from "../../view/chatbox.js";
 import { createRequestCards, renderRequestCards } from "../../view/customer/pharmacyRequestCard.js";
 import { renderToast } from "../../view/renderToast.js";
 import { openLiveConnection, requestConnectionWithPharmacy } from "./connection.js";
@@ -63,12 +63,58 @@ function handleConnection(msg){
             activateOnSubmitMessageCallback();
 
         }
-
-
     }else if(Chat.isMessage(message)){
         const msgObj = Chat.readMessage(message);
 
         renderMessage(msgObj.message);
+    }else{
+        const {opcode , data} = ChatTemplates.decodeString(message);
+        console.log(opcode , data);
+
+        if(opcode == ChatTemplates.requestPrescription){
+            cart.setPopupContent(createPrescriptionUploadCardContent())
+            cart.openPopup();
+
+            onSelectPrescription(async (e , input , card , skip)=>{
+                try{
+                    skip.addEventListener('click' ,()=>cart.closePopup());
+
+
+
+                    const file = input.files[0];
+                    const formData = new FormData();
+                    formData.append('prescription' , file);
+
+                    const cartUploadButton = card.querySelector('label[for="prescription-upload-input"]');
+                    const response = await fetch(`/api/v1/customers/${Application.userId}/chats/assets/prescriptions` , {
+                        method:"POST",
+                        body : formData,
+                    });
+
+                    const data = await response.json();
+                    if(data.status == "success"){
+                        Application.connection.send(ChatTemplates.statusPrescription(data.path , data.status));
+                    }else{
+                        renderToast("prescription upload failed" , 'error');    
+                    }
+                    cart.closePopup();
+
+
+
+                    cartUploadButton.textContent = "uploading...";
+
+
+
+
+                }catch(e){
+                    console.log(e);
+                }
+
+
+            })
+
+        }
+
     }
 
 }
@@ -85,3 +131,7 @@ setOnSubmitMessageCallback((e , value)=>{
 
 
 
+
+
+
+ 

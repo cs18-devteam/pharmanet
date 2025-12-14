@@ -10,7 +10,8 @@ class ChatTemplates{
     static #REQ_PRSC = "REQ_PRSC="
     static #STAT_PAY = "STAT_PAY="
     static #RES_PHR = "RES_PHR="
-    static #STAT_PRSC = "RES_PHR="
+    static #STAT_PRSC = "STAT_PRSC="
+    static requestPrescription = this.#REQ_PRSC.replace('=','');
 
 
     static message(msg){
@@ -41,6 +42,16 @@ class ChatTemplates{
             id : Application.pharmacyId,
             type :"pharmacy"
         })}`
+    }
+
+    static defaultOptions(){
+        return {
+            type : Application.pharmacyId ? "pharmacy" : "customer",
+            to : Application.pharmacyId ? "customer" : "pharmacy",
+            toId : Application.connectedWith,
+            id : Application.pharmacyId ? Application.pharmacyId : Application.userId,
+            
+        }
     }
 
 
@@ -106,18 +117,25 @@ class ChatTemplates{
         })}`
     }
 
-    static statusPrescription(path){
+    static statusPrescription(path,status){
         return `${this.#STAT_PRSC}${JSON.stringify({
             type:"customer",
             to : "pharmacy",
             id : Application.userId,
             toId : Application.connectedWith,
             path : path,
+            status ,
         })}`
     }
 
     static readChatBoxAcceptRequestFromServerToClient(message){
         return JSON.parse(message.replace(this.#RES_CLIENT , ''))
+    }
+
+    static requestPrescriptionFromClient(){
+        return `${this.#REQ_PRSC}${JSON.stringify({
+            ...this.defaultOptions(),
+        })}`
     }
 
 
@@ -197,6 +215,10 @@ class ChatTemplates{
         return JSON.parse(message.replace(this.#REQ_PAY , ''));
     }
 
+    static readPrescriptionStat(message){
+        return JSON.parse(message.replace(this.#STAT_PRSC , ''));
+    }
+
     static readMessage(message){
         return  JSON.parse(message.replace(this.#MSG , ''));
     }
@@ -223,5 +245,13 @@ class ChatTemplates{
     static readStatPrescription(message){
         return  JSON.parse(message.replace(this.#STAT_PRSC , ''));
     }   
+
+    static decodeString(message){
+        const opcode = message.split('=')[0];
+        return {
+            opcode,
+            data : JSON.parse(message.replace(`${opcode}=` , '')),
+        }
+    }
 }
-export default ChatTemplates;
+export default ChatTemplates; 

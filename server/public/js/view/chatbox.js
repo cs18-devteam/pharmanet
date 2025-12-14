@@ -164,3 +164,31 @@ export function spinner(){
 
      return template;
 }
+
+
+
+export function createPrescriptionUploadCardContent(){
+     return html`
+          <div class="card-prescription-upload">
+               <h4>please upload prescription</h4>
+               <p>Please upload your prescription so we can accurately verify your medication details and process your order safely.</p>
+
+               <input type="file" id="prescription-upload-input" accept="image/*">
+               <label for="prescription-upload-input"  >Upload</label>
+               <button class="skip">skip</button>
+          </div>
+
+     `;
+}
+
+
+export function onSelectPrescription(func=()=>{}){
+     const uploadCard = document.querySelector('.card-prescription-upload');
+     const input = uploadCard.querySelector('#prescription-upload-input');
+     const skip = uploadCard.querySelector('.skip');
+
+     input.addEventListener('change' , (e)=>func(e , input , uploadCard , skip));
+   
+}
+
+

@@ -1950,8 +1950,10 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   top: 20%;
   transform: translateY(400%) rotateY(180deg);
   transition: all 0.8s ease;
-  min-width: 40rem;
-  min-height: 60rem;
+  min-width: fit-content;
+  min-height: fit-content;
+  width: fit-content;
+  height: fit-content;
   background-color: #fff;
   border-radius: 2rem;
   box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.25);
@@ -1960,6 +1962,74 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .overlay-cart .popup.open {
   transition: all 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
   transform: translateY(0) rotateY(0);
+  opacity: 1;
+}
+
+.card-prescription-upload {
+  display: grid;
+  grid-template-rows: 1fr 2fr 1fr 1fr;
+  grid-template-columns: 1fr;
+  grid-template-areas: "topic" "desc" "upload" "skip";
+  width: 20rem;
+  height: 30rem;
+  margin: 3rem 2rem;
+}
+.card-prescription-upload h4 {
+  grid-area: topic;
+  width: 100%;
+  text-wrap-mode: wrap;
+  text-align: center;
+  font-weight: 400;
+  text-transform: capitalize;
+  color: var(--color-green-01);
+  font-size: 2.4rem;
+}
+.card-prescription-upload p {
+  grid-area: desc;
+  width: 100%;
+  text-wrap-mode: wrap;
+  text-align: center;
+  opacity: 0.8;
+}
+.card-prescription-upload input {
+  display: none;
+}
+.card-prescription-upload label {
+  grid-area: upload;
+  width: fit-content;
+  padding: 1rem 3rem;
+  background-color: var(--color-green-01);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  border-radius: 3rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.card-prescription-upload label:hover {
+  outline: 1px solid var(--color-green-01);
+  outline-offset: 2px;
+}
+.card-prescription-upload button {
+  grid-area: skip;
+  border: none;
+  width: fit-content;
+  height: fit-content;
+  background-color: transparent;
+  color: #aaa;
+  font-size: 1.8rem;
+  margin: 1rem auto 0 auto;
+  text-transform: capitalize;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.card-prescription-upload button:hover {
+  background-color: #eee;
+  border-radius: 3rem;
+  color: #000;
 }
 
 .cart_item {
@@ -11158,8 +11228,6 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .pharmacyDashboard .dashboards .container .right .prescription {
   margin: 1rem;
-}
-.pharmacyDashboard .dashboards .container .right .prescription .request-prescription-btn {
   width: 100%;
   height: 20rem;
   background-color: #eeeeee;
@@ -11170,6 +11238,18 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.pharmacyDashboard .dashboards .container .right .prescription .request-prescription-btn {
+  padding: 1rem 2rem;
+  border-radius: 3rem;
+  background-color: var(--color-green-01);
+  color: #fff;
+  scale: 1;
+  fill: #fff;
+}
+.pharmacyDashboard .dashboards .container .right .prescription .request-prescription-btn .spinner {
+  width: 3rem;
+  scale: 1;
 }
 .pharmacyDashboard .dashboards .container .right .payment-details {
   display: block;

@@ -1,6 +1,7 @@
-const { response } = require("../common/response")
-const view = require("../common/view")
-const Bridge = require("../common/Bridge");
+const { response, responseJson } = require("../../common/response");
+const view = require("../../common/view");
+const Bridge = require("../../common/Bridge");
+const { pharmacy } = require("../admins/admin.controller");
 
 // Bridge.registry.health();
 
@@ -64,4 +65,12 @@ exports.renderPharmacyStaffProfile = async( req , res) =>{
 
     } , 200)
     .catch(e=>console.log(e));
+}
+
+exports.createStaff = async(req, res) => {
+    return response(res, view('staff/createStaff'))
+}
+
+exports.staffOptions = async(req,res) => {
+    return response(res, view('staff/staffOptions'))
 }

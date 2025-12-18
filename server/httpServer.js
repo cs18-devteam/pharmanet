@@ -12,6 +12,7 @@ const contactUsController = require('./controllers/contactus.controller');
 const customerController = require("./controllers/customer/customer.controller");
 const pharmacyController = require('./controllers/pharmacy/pharmacy.controller');
 const customerPharmacyController = require('./controllers/customer/customer.pharmacies.controller');
+const pharmacyStaffController = require('./controllers/pharmacy/pharmacy.staff.controller');
 
 
 const server = http.createServer((req , res)=>{
@@ -173,6 +174,11 @@ const server = http.createServer((req , res)=>{
         AppRouter.pipe(req, res).route('/customer/manageBill')
         ?.get(customerController.manageBill);
 
+        AppRouter.pipe(req, res).route('/staff/createStaff')
+        ?.get(pharmacyStaffController.createStaff);
+
+        AppRouter.pipe(req,res).route('/staff/staffOptions')
+        ?.get(pharmacyStaffController.staffOptions);
 
      
 

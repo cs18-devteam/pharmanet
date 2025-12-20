@@ -2060,6 +2060,10 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .cart_item .content .description h4 div:nth-child(2) {
   font-size: 1.6rem;
   font-weight: 400;
+  text-wrap-mode: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 25rem;
 }
 .cart_item .content .description .price {
   display: flex;
@@ -2516,6 +2520,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   padding: 2rem;
   background-color: white;
   width: 100%;
+  height: 100%;
   border: 1px solid #e8e8e8;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05);
 }
@@ -2526,12 +2531,13 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   display: block;
   margin: auto;
 }
-.medicine-section .Medicines_grid .medicine-card .med_infomation .medicine_name > div:nth-child(2) {
+.medicine-section .Medicines_grid .medicine-card .med_infomation .medicine_name > a {
   font-weight: 500;
   overflow: hidden;
   text-wrap-mode: nowrap;
   text-overflow: ellipsis;
   width: 100%;
+  display: inline-block;
   height: 4rem;
 }
 .medicine-section .Medicines_grid .medicine-card .med_infomation .medicine_name .name {
@@ -2562,6 +2568,20 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .medicine-section .Medicines_grid .medicine-card .results .map-serach .world_img {
   margin-right: 1rem;
+}
+.medicine-section .Medicines_grid .medicine-card .results.add-to-cart .map-serach:first-child {
+  display: none;
+}
+.medicine-section .Medicines_grid .medicine-card .results.add-to-cart .map-serach:last-child {
+  background-color: #08374F;
+  padding: 1.5rem 2rem;
+  margin-left: auto;
+  color: white;
+  text-transform: capitalize;
+  transition: all 0.2s ease;
+}
+.medicine-section .Medicines_grid .medicine-card .results.add-to-cart .map-serach:last-child:hover {
+  scale: 1.1;
 }
 .medicine-section .Medicines_grid .medicine-card:hover {
   transition: all 0.3s;
@@ -16298,9 +16318,6 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   }
 }
 
-.aboutUs {
-  background-color: #0b1220;
-}
 .aboutUs .about {
   max-width: 1100px;
   margin: 0 auto;
@@ -16315,9 +16332,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   justify-content: center;
 }
 .aboutUs .about .intro {
-  font-size: 1.3rem;
+  font-size: 1.8rem;
   margin-bottom: 4rem;
-  color: #e0e0e0;
+  color: #111;
   text-align: center;
 }
 .aboutUs .about .content {
@@ -16329,13 +16346,13 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   flex: 1 1 450px;
 }
 .aboutUs .about .content .column h2 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: #ffffff;
   margin-bottom: 1rem;
 }
 .aboutUs .about .content .column p {
   margin-bottom: 1.5rem;
-  color: #e0e0e0;
+  color: #111;
 }
 .aboutUs .about .content .column ul {
   list-style: none;
@@ -16354,14 +16371,13 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   color: #FB8F21;
 }
 .aboutUs .values {
-  background: #0b1220;
-  color: #e0e0e0;
+  color: var(--color-green-01);
   padding: 4rem 2rem;
   font-family: "Inter", sans-serif;
   text-align: center;
 }
 .aboutUs .values h2 {
-  color: #ffffff;
+  color: var(--color-green-01);
   font-size: 3rem;
   font-weight: 700;
   margin-bottom: 2rem;
@@ -16374,7 +16390,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .aboutUs .values .value-card {
   background: #111a2d;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #111;
   border-radius: 10px;
   padding: 2rem;
   width: 300px;
@@ -16382,7 +16398,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   transition: all 0.3s ease;
 }
 .aboutUs .values .value-card .icon {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: #FB8F21;
   margin-bottom: 1rem;
 }
@@ -16397,19 +16413,20 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .aboutUs .values .value-card h3 {
   color: #ffffff;
-  font-size: 1.8rem;
-  font-weight: 600;
-  margin-bottom: 0.8rem;
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
 }
 .aboutUs .values .value-card p {
-  font-size: 1.2rem;
-  color: #e0e0e0;
+  font-size: 1.8rem;
+  color: #fff;
   line-height: 1.5;
+  font-weight: 100;
 }
 .aboutUs .values .value-card:hover {
   transform: translateY(-5px);
-  border-color: #FB8F21;
-  box-shadow: 0 0 15px rgba(251, 143, 33, 0.2);
+  border-color: var(--color-green-01);
+  box-shadow: 0 0 15px rgba(var(--color-green-01), 0.2);
 }
 .aboutUs .team-section {
   text-align: center;
@@ -16421,7 +16438,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   font-weight: 700;
 }
 .aboutUs .team-section .section-subtitle {
-  color: #e0e0e0;
+  color: #111;
   max-width: 600px;
   margin: 10px auto 50px;
 }
@@ -16432,7 +16449,6 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   justify-items: center;
 }
 .aboutUs .team-section .team-cards .team-card {
-  background: #111a2d;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   padding: 30px 20px;
@@ -16446,15 +16462,15 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   border: 1px solid #FB8F21;
 }
 .aboutUs .team-section .team-cards .team-card .team-icon img {
-  width: 50px;
-  height: 50px;
+  width: 10rem;
+  height: 10rem;
   border-radius: 50%;
   margin-bottom: 20px;
 }
 .aboutUs .team-section .team-cards .team-card h3 {
-  color: #ffffff;
+  color: #000;
   margin-bottom: 5px;
-  font-size: 1.1rem;
+  font-size: 1.6rem;
 }
 .aboutUs .team-section .team-cards .team-card .role {
   color: #FB8F21;
@@ -16462,9 +16478,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   margin-bottom: 10px;
 }
 .aboutUs .team-section .team-cards .team-card .desc {
-  font-size: 0.9rem;
+  font-size: 1.6rem;
   line-height: 1.5;
-  color: #e0e0e0;
+  color: #222;
 }
 .aboutUs .contact-section {
   text-align: center;
@@ -16476,7 +16492,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   font-weight: 700;
 }
 .aboutUs .contact-section p {
-  color: #e0e0e0;
+  color: #111;
   max-width: 600px;
   margin: 10px auto 30px;
 }
@@ -16485,7 +16501,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   border: none;
   border-radius: 8px;
   padding: 12px 30px;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: #fff;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;

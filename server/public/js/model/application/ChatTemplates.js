@@ -13,6 +13,7 @@ class ChatTemplates{
     static #STAT_PRSC = "STAT_PRSC="
     static requestPrescription = this.#REQ_PRSC.replace('=','');
     static #MINOR_ERROR = "MINOR_ERROR="
+    static #SYNC = "SYNC="
 
 
 
@@ -87,6 +88,14 @@ class ChatTemplates{
 
         }
     }
+
+    static syncConnection(orderId){
+        return `${this.#SYNC}${JSON.stringify({
+            id : orderId,
+        })}`
+    }
+
+
 
     static createConnection(){
         // const stabObj = JSON.parse(message.replace("STABLISH=",''));

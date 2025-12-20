@@ -125,7 +125,7 @@ class Cart{
 
 }
 
+const cart = new Cart('.overlay-cart');
 
+export default cart;
 
-
-export default Cart;

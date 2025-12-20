@@ -15,6 +15,7 @@ exports.renderCustomerProfile = async (req , res)=>{
                 name : `${customer?.firstName  } ${customer?.lastName }`
             }) ,
             footer: view('footer'),
+            cart : view('customer/component.cart'),
         });
         
         for(const [key , value] of Object.entries(customer)){
@@ -33,6 +34,7 @@ exports.renderCustomerProfile = async (req , res)=>{
             ...customer ,
             role: 'Customer',
             mobileNumber : " " ,
+            cart : view('customer/component.cart'),
         })
     }catch(e){
         console.log(e);

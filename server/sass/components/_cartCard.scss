@@ -68,6 +68,10 @@
                 div:nth-child(2){
                     font-size: 1.6rem;
                     font-weight: 400;
+                    text-wrap-mode: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    max-width: 25rem;
                 }
             }
 

@@ -1,6 +1,8 @@
 const WebSocket = require('multiclient-websocket');
 const Pharmacies = require('./models/PharmacyModel');
 const ChatTemplates = require('./common/ChatTemplates');
+const connectedPharmacies = require('./memory/pharmacies.memory.temp');
+const connectedCustomers = require('./memory/customers.memory.temp');
 
 const server = new WebSocket();
 
@@ -33,9 +35,8 @@ class CustomerClient{
     }
 }
 
-
-const connectedPharmacies = {};
-const connectedCustomers = {};
+// const connectedPharmacies = {};
+// const connectedCustomers = {};
 
 /**
  * 

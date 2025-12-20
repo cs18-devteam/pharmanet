@@ -10,6 +10,7 @@ exports.renderCustomerHistory = async (req , res)=>{
                 name:"History || Pharmanet",
             }),
             footer: view('footer'),
+            cart : view('customer/component.cart'),
         }) , 200);
     }catch(e){
         console.log(e);

@@ -21,6 +21,10 @@ class OrderProductsModel extends Model{
         this.discount = {
             type:"FLOAT",
         }
+
+        this.quantity = {
+            type :"FLOAT"
+        }
     }
 }
 

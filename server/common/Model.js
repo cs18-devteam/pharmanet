@@ -391,6 +391,36 @@ class Model{
     }
 
 
+    async startTransact(){
+        try{
+            await this.query('start transaction');
+        }catch(e){
+            console.log(e);
+            throw e;
+        }
+    }
+
+    async rollback(){
+        try{
+            await this.query('rollback');
+
+        }catch(e){
+            console.log(e);
+            throw e;
+        }
+    }
+
+    async commit(){
+        try{
+            await this.query('commit');
+
+        }catch(e){
+            console.log(e);
+            throw e;
+        }
+    }
+
+
 
 
 }

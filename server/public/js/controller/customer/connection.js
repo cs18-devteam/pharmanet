@@ -12,10 +12,10 @@ function stablishConnection(socket){
 
 export async function requestConnectionWithPharmacy(pharmacyId){
     try{
-        if(!socket) throw new Error("connection is not opened");
+        if(!Application.connection) throw new Error("connection is not opened");
 
         const reqString = Application.MessageTemplates.requestPharmacy(pharmacyId);
-        socket.send(reqString);
+        Application.connection.send(reqString);
 
     
     }catch(e){
@@ -27,15 +27,31 @@ export async function requestConnectionWithPharmacy(pharmacyId){
 
 
 export function openLiveConnection(){
-    socket = new WebSocket('ws://localhost:3001/');
+    /**
+ * @type {WebSocket}
+ */
+
+const socket = new Promise((resolve , reject)=>{
+    window.cookieStore.getAll().then(cookies=>{
+            const ip = cookies.find(c=>c.name == "ip")?.value;
+
+            if(ip){
+                resolve(new WebSocket(`wss://${ip}:3001`));
+            }else{
+                reject(undefined);
+            }
+        });
+    })
+
+
 
     return new Promise((resolve ,reject)=>{
         try{
-            socket.addEventListener('open' , ()=>{
+            socket.then(socket=>socket.addEventListener('open' , ()=>{
                 renderToast("connecting");
                 stablishConnection(socket);
                 resolve(socket);  
-            })
+            }))
         }catch(e){
             reject(e);
         }

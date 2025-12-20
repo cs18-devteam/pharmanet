@@ -5,6 +5,7 @@ const { hashPassword, encrypt, createToken, createCookieToken } = require("../..
 const { createCookie } = require("../../common/cookie");
 const generateOTP = require("../../common/generateOTP");
 const { getRequestData } = require("../../common/getRequestData");
+const ipaddress = require("../../common/ipaddress");
 const { response, responseJson } = require("../../common/response");
 const view = require("../../common/view");
 const Users = require("../../models/UserModel");
@@ -108,7 +109,7 @@ exports.signup = async (req, res) => {
             message :"user account created successfully",
             token : token,
         } , {
-            "Set-Cookie" : [cookie , createCookie('id' , newUser.id)],
+            "Set-Cookie" : [cookie , createCookie('id' , newUser.id) , createCookie('ip' , ipaddress)],
         })
 
     }catch(e){

@@ -31,6 +31,7 @@ window.cookieStore.getAll().then(cookies=>{
     Application.pharmacyId = cookies.find(c=>c.name == "pharmacyId")?.value;
     Application.staffId = cookies.find(c=>c.name == "staffId")?.value;
     Application.userId = cookies.find(c=>c.name == "id")?.value;
+    Application.ip = cookies.find(c=>c.name == "ip")?.value;
 
 })
 
@@ -42,10 +43,11 @@ export default class Application{
     static pharmacyId = undefined;
     static userId = undefined
     static staffId = undefined
+    static ip = undefined;
     static requestPharmacyId = undefined;
     static connection = undefined;
     static connectedWith = undefined;
-
+    static remoteOrderId = undefined;
     static #orderMedicineResultsStack = [];
     static MessageTemplates = ChatTemplates;
 

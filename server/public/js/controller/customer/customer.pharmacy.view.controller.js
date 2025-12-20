@@ -6,8 +6,9 @@ const btn_cartContinue = document.querySelector('.overlay-cart__continue');
 const btn_messagePharmacy = document.querySelector('.contact-card .btn');
 
 
-function startOrderProcess(e){
-    console.log(e);
+async function startOrderProcess(e){
+    const data = await fetchCustomerCartData();
+    console.log(data);
     cart.openLeftPanel();
 }
 

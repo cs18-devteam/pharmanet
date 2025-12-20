@@ -14,24 +14,36 @@ const chatBoxBtnsAttributes = {
 }
 
 
-
-
 /**
  * @type {WebSocket}
  */
-const socket = new WebSocket('ws://localhost:3001');
+
+let socket = new Promise((resolve , reject)=>{
+    window.cookieStore.getAll().then(cookies=>{
+        const ip = cookies.find(c=>c.name == "ip")?.value;
+
+        if(ip){
+            resolve(new WebSocket(`wss://${ip}:3001`));
+        }else{
+            reject(undefined);
+        }
+    });
+
+
+    
+})
 
 
 
-// function listener_prescriptionRequestBtn(socket){
-//     // return ()=>{
-//         requestPrescriptionBtn.textContent = ''
-//         requestPrescriptionBtn.innerHTML = spinner(); 
-//         socket.send(ChatTemplates.requestPrescriptionFromClient());
+function listener_prescriptionRequestBtn(socket){
+    // return ()=>{
+        requestPrescriptionBtn.textContent = ''
+        requestPrescriptionBtn.innerHTML = spinner(); 
+        Application.connection.send(ChatTemplates.requestPrescriptionFromClient());
 
         
-//     // }
-// }
+    // }
+}
 
 
 /**
@@ -47,7 +59,7 @@ function activateChatBoxButtons(){
         if(chatBoxBtnsAttributes.prescriptionRequestBtn.clickable){
             requestPrescriptionBtn.textContent = ''
             requestPrescriptionBtn.innerHTML = spinner(); 
-            socket.send(ChatTemplates.requestPrescriptionFromClient());
+            Application.connection.send(ChatTemplates.requestPrescriptionFromClient());
         }else{
             console.log('please wait...');
         }
@@ -56,79 +68,85 @@ function activateChatBoxButtons(){
 }
 
 
-function stablishConnection(){
+function stablishConnection(socket){
     socket.send(ChatTemplates.requestConnection());
 }
 
 
 
-socket.addEventListener('open' , ()=>{
-    stablishConnection();
-    renderToast('requesting connection')
-})
+socket.then(socket=>socket.addEventListener('open' , ()=>{
+    Application.connection = socket;
+    stablishConnection(socket);
+    renderToast('requesting connection');
+    startSocketListening(socket);
+}))
 
 
-socket.addEventListener('message' , (msgEvent)=>{
-    const message = msgEvent.data;
-    console.log(message);
+function startSocketListening(socket){
+    socket.addEventListener('message' , (msgEvent)=>{
+        const message = msgEvent.data;
+        console.log(message);
 
-    if(ChatTemplates.isConnectionResponse(message)){
-        const stabObj = ChatTemplates.readStablishConn(message);
-        
-        if(stabObj.status == "success"){
-            renderToast('connected :)' , 'success');
-        }else{
-            renderToast("connection error" , "error");
+        if(ChatTemplates.isConnectionResponse(message)){
+            const stabObj = ChatTemplates.readStablishConn(message);
+            
+            if(stabObj.status == "success"){
+                renderToast('connected :)' , 'success');
+            }else{
+                renderToast("connection error" , "error");
+            }
         }
-    }
 
 
-    if(ChatTemplates.isChatBoxRequestFromClient(message)){
-        const reqObj = ChatTemplates.readChatBoxRequest(message);
+        if(ChatTemplates.isChatBoxRequestFromClient(message)){
+            const reqObj = ChatTemplates.readChatBoxRequest(message);
 
-        showIncomingMessage(reqObj);
+            showIncomingMessage(reqObj);
 
-        onAcceptIncomingMessage(()=>{
-            console.log("customer = " , reqObj);
-            Application.connectedWith = reqObj.customerId;
-        
-            socket.send(ChatTemplates.acceptClient(true , reqObj.customerId));
-            changeWindowTo('chats');
-            activateChatBoxButtons(socket);
-        })
-
-        onRejectIncomingMessage(()=>{
-            socket.send(ChatTemplates.acceptClient(false , reqObj.customerId));
-        })
-
-        onAnyCaseIncomingMessage(()=>{
-            removeIncomingMessage();
-        })
-
-    }else if(ChatTemplates.isMessage(message)){
-        const msgObj = ChatTemplates.readMessage(message)
-        renderMessage(msgObj.message);
-
-    }else if(ChatTemplates.isStatPrescription(message)){
-        const {data} = ChatTemplates.decodeString(message);
-
-        if(data.status == "success"){
-            const prescription = document.querySelector(".pharmacyDashboard .dashboards .container .right .prescription");
-
-            const image = document.createElement('img');
-            image.setAttribute('class' , prescription.getAttribute('class'));
-            image.src = `/${data.path}`;
-            image.addEventListener('load' , ()=>{
-                prescription.replaceWith(image);
+            onAcceptIncomingMessage(()=>{
+                console.log("customer = " , reqObj);
+                Application.connectedWith = reqObj.customerId;
+            
+                socket.send(ChatTemplates.acceptClient(true , reqObj.customerId));
+                changeWindowTo('chats');
+                activateChatBoxButtons(socket);
             })
+
+            onRejectIncomingMessage(()=>{
+                socket.send(ChatTemplates.acceptClient(false , reqObj.customerId));
+            })
+
+            onAnyCaseIncomingMessage(()=>{
+                removeIncomingMessage();
+            })
+
+        }else if(ChatTemplates.isMessage(message)){
+            const msgObj = ChatTemplates.readMessage(message)
+            renderMessage(msgObj.message);
+
+        }else if(ChatTemplates.isStatPrescription(message)){
+            const {data} = ChatTemplates.decodeString(message);
+
+            if(data.status == "success"){
+                const prescription = document.querySelector(".pharmacyDashboard .dashboards .container .right .prescription");
+
+                const image = document.createElement('img');
+                image.setAttribute('class' , prescription.getAttribute('class'));
+                image.src = `/${data.path}`;
+                image.addEventListener('load' , ()=>{
+                    prescription.replaceWith(image);
+                })
+            }
         }
-    }
-})
+    })
+
+}
+
 
 setOnSubmitMessageCallback((e , value)=>{
     e.preventDefault();
     console.log(ChatTemplates.message(value));
-    socket.send(ChatTemplates.message(value));
+    Application.connection.send(ChatTemplates.message(value));
     renderReply(value);
 })
 

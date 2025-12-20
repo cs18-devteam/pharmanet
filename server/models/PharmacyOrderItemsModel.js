@@ -1,4 +1,4 @@
-import Model from "../common/Model.js";
+const Model = require("../common/Model");
 
 class PharmacyOrderItemsModel extends Model{
     constructor(){
@@ -17,9 +17,27 @@ class PharmacyOrderItemsModel extends Model{
         this.itemType = {
             type:"VARCHAR(50)",
         }
+
+        this.price = {
+            type:"FLOAT",
+        }
+
+        this.discount = {
+            type:"FLOAT"
+        }
+
+        this.quantity = {
+            type:"FLOAT",
+        }
     }
 }
 
 
-const PharmacyOrders = new PharmacyOrderItemsModel();
-module.exports = PharmacyOrders;
+const PharmacyOrdersItems = new PharmacyOrderItemsModel();
+PharmacyOrdersItems.createTable().then(()=>{
+    console.log("✅ pharmacy order items table created");
+}).catch(e=>{
+    console.log("🚫 pharmacy order items table not created");
+    console.log(e);
+})
+module.exports = PharmacyOrdersItems;

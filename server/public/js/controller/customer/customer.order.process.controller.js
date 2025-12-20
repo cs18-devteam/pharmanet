@@ -1,24 +1,34 @@
 import Application from "../../model/application/Application.js";
 import ChatTemplates from "../../model/application/ChatTemplates.js";
-import { fetchOnlinePharmacies } from "../../model/customer/fetchPharmacies.js";
+import { getPharmacies } from "../../model/customer/pharmacies.model.js";
 import { activateOnSubmitMessageCallback, createChatBox, createPrescriptionUploadCardContent, onSelectPrescription, renderMessage, renderReply, setOnSubmitMessageCallback, spinner } from "../../view/chatbox.js";
 import { createRequestCards, renderRequestCards } from "../../view/customer/pharmacyRequestCard.js";
 import { renderToast } from "../../view/renderToast.js";
 import { openLiveConnection, requestConnectionWithPharmacy } from "./connection.js";
-import cart from "./customer.cart.controller.js";
+import cart from "./../../view/customer/Cart.js";
+import { createOrder } from "../../model/customer/orders.js";
 const nearByPharmaciesContainer = document.querySelector('.pharmacyRequestContainer--nearby');
 const Chat = Application.MessageTemplates;
+const navCartButton = document.querySelector('nav .setting-dropdown .cart-btn');
 
 
+// async function startOrderProcess(e){
+//     const data = await fetchCustomerCartData();
+//     console.log(data);
+//     cart.openLeftPanel();
+// }
 
 const cartContinueButton = document.querySelector('.overlay-cart__continue.continue');
 
 cartContinueButton?.addEventListener('click' ,async ()=>{
     cart.openLeftPanel();
-    const {results: pharmacies} = await fetchOnlinePharmacies();
+    const {results: pharmacies} = await getPharmacies({mode :'online'});
     const pharmacyRequestCards = createRequestCards(pharmacies);
     renderRequestCards(nearByPharmaciesContainer , pharmacyRequestCards);
 })
+
+
+
 
 
 
@@ -37,6 +47,29 @@ nearByPharmaciesContainer?.addEventListener('click' , async (e)=>{
 
 
 
+async function getCartsIdsAndCreateOrder() {
+    const carts = document.querySelectorAll('.carts_container > .cart_item .action-box .select input[type="checkbox"]');
+    const cartsIds = new Set();
+    Array.from(carts).forEach(el=>{
+        if(el.checked){
+            cartsIds.add(el.dataset.id);
+        }
+    });
+
+    const data = await createOrder(Array.from(cartsIds));
+    Application.remoteOrderId = data.orderId;    
+    return Application.requestPharmacyId;
+
+
+}
+
+function syncOrder(){
+    Application.connection.send(ChatTemplates.syncConnection(Application.remoteOrderId))
+}
+
+
+
+
 function handleConnection(msg){
     const message = msg.data;
     console.log(message);
@@ -52,13 +85,15 @@ function handleConnection(msg){
             console.log('connection unsuccessful');
         }
 
-
     }else if(Chat.isChatBoxResponseFromPharmacy(message)){
         const resObj = Chat.readChatBoxAcceptRequestFromServerToClient(message);
 
         Application.connectedWith = resObj.pharmacyId;
         if(resObj.accept){
+            getCartsIdsAndCreateOrder();
             cart.setLeftSideContent(createChatBox());
+            getCartsIdsAndCreateOrder();
+            syncOrder(Application.remoteOrderId);
             activateOnSubmitMessageCallback();
 
         }
@@ -98,7 +133,7 @@ function handleConnection(msg){
 
                     const data = await response.json();
                     if(data.status == "success"){
-                        Application.connection.send(ChatTemplates.statusPrescription(data.path , data.status));
+                        Application.connection.send(ChatTemplates.syncConnection(data.orderId));
                     }else{
                         renderToast("prescription upload failed" , 'error');    
                     }
@@ -125,14 +160,17 @@ function handleConnection(msg){
 }
 
 
-
-
-
 setOnSubmitMessageCallback((e , value)=>{
     console.log(ChatTemplates.message(value));
     Application.connection.send(ChatTemplates.message(value));  
     renderReply(value);
 })
+
+
+
+
+
+
 
 
 

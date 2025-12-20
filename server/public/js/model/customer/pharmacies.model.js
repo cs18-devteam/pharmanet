@@ -1,4 +1,4 @@
-export async function fetchOnlinePharmacies(mode="online"){
+export async function getPharmacies({mode="online"}={}){
     try{
 
         const response = await fetch(`/api/v1/pharmacies?mode=${mode}`);

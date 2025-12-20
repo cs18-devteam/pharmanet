@@ -29,6 +29,7 @@ exports.renderCustomerPharmacies = async (req , res)=>{
                 ...pharmacy , 
                 customerId : customer.id
             })).join(' '),
+            cart : view('customer/component.cart'),
             nearByPharmacyCards : ''
 
         }) , 200);

@@ -1,5 +1,5 @@
 .aboutUs{
-  background-color: #0b1220;
+  // background-color: #0b1220;
 
 
 $primary-color: #18978D;
@@ -9,11 +9,11 @@ $primary-font: 'Red Hat Display', sans-serif;
 $secondary-font: 'Poppins', sans-serif;
 $light-gray: #f9f9f9;
 $text-color: #333;
-$border-color: #e0e0e0;
+$border-color: #111;
 $max-width: 1000px;
 $font-family: 'Georgia', serif;
 $shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-$text-color: #e0e0e0;
+$text-color: #111;
 $heading-color: #ffffff;
 $card-bg: #111a2d;
 $font-stack: 'Inter', sans-serif;
@@ -35,7 +35,7 @@ $font-stack: 'Inter', sans-serif;
   }
 
   .intro {
-    font-size: 1.3rem;
+    font-size: 1.8rem;
     margin-bottom: 4rem;
     color: $text-color;
     text-align: center;
@@ -50,7 +50,7 @@ $font-stack: 'Inter', sans-serif;
       flex: 1 1 450px;
 
       h2 {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         color: $heading-color;
         margin-bottom: 1rem;
       }
@@ -83,14 +83,14 @@ $font-stack: 'Inter', sans-serif;
 }
 
 .values {
-  background: #0b1220;
-  color: $text-color;
+  // background: #0b1220;
+  color: var(--color-green-01);
   padding: 4rem 2rem;
   font-family: $font-stack;
   text-align: center;
 
   h2 {
-    color: $heading-color;
+    color: var(--color-green-01);
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 2rem;
@@ -113,7 +113,7 @@ $font-stack: 'Inter', sans-serif;
     transition: all 0.3s ease;
 
     .icon {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       color: $tertiary-color;
       margin-bottom: 1rem;
       &.Code{
@@ -132,25 +132,27 @@ $font-stack: 'Inter', sans-serif;
         }
       }
 
+
     }
 
     h3 {
       color: $heading-color;
-      font-size: 1.8rem;
-      font-weight: 600;
-      margin-bottom: 0.8rem;
+      font-size: 2rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
     }
 
     p {
-      font-size: 1.2rem;
-      color: $text-color;
+      font-size: 1.8rem;
+      color: #fff;
       line-height: 1.5;
+      font-weight: 100;
     }
 
     &:hover {
       transform: translateY(-5px);
-      border-color: $tertiary-color;
-      box-shadow: 0 0 15px rgba($tertiary-color, 0.2);
+      border-color: var(--color-green-01);
+      box-shadow: 0 0 15px rgba(var(--color-green-01), 0.2);
     }
   }
 }
@@ -179,7 +181,6 @@ $font-stack: 'Inter', sans-serif;
     justify-items: center;
 
     .team-card {
-      background: $card-bg;
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 10px;
       padding: 30px 20px;
@@ -195,16 +196,16 @@ $font-stack: 'Inter', sans-serif;
       }
 
       .team-icon img{
-        width: 50px;
-        height: 50px;
+        width: 10rem;
+        height: 10rem;
         border-radius: 50%;
         margin-bottom: 20px;
       }
 
       h3 {
-        color: $heading-color;
+        color: #000;
         margin-bottom: 5px;
-        font-size: 1.1rem;
+        font-size: 1.6rem;
       }
 
       .role {
@@ -214,9 +215,9 @@ $font-stack: 'Inter', sans-serif;
       }
 
       .desc {
-        font-size: 0.9rem;
+        font-size: 1.6rem;
         line-height: 1.5;
-        color: $text-color;
+        color: #222;
       }
     }
   }
@@ -244,7 +245,7 @@ $font-stack: 'Inter', sans-serif;
     border: none;
     border-radius: 8px;
     padding: 12px 30px;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: #fff;
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;

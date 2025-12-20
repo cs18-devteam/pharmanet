@@ -52,5 +52,10 @@ export function createRequestCards(data=[]){
 
 
 export function renderRequestCards(el , cards){
+    if(!cards.length){
+        el.innerHTML = `<p style="opacity: .6; margin: 2rem auto; text-align: center;">oops , no available pharmacies this time</p>`;
+        return;
+    }
+
     el.innerHTML = cards.join(' ');
 }

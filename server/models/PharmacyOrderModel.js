@@ -1,4 +1,4 @@
-import Model from "../common/Model.js";
+const Model  = require("../common/Model.js");
 
 class PharmacyOrderModel extends Model{
     constructor(){
@@ -7,10 +7,16 @@ class PharmacyOrderModel extends Model{
 
         this.pharmacyId = {
             type : "INT" , 
-            null : false,
         }
 
+        this.userId = {
+            type:"INT",
+            null: false,
+        }
 
+        this.status = {
+            type:"VARCHAR(100)"
+        }
     }
 }
 

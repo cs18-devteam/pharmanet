@@ -1,5 +1,8 @@
 const WebSocket = require('multiclient-websocket');
 const Pharmacies = require('./models/PharmacyModel');
+const ChatTemplates = require('./common/ChatTemplates');
+const connectedPharmacies = require('./memory/pharmacies.memory.temp');
+const connectedCustomers = require('./memory/customers.memory.temp');
 
 const server = new WebSocket();
 
@@ -32,19 +35,19 @@ class CustomerClient{
     }
 }
 
-
-const connectedPharmacies = {};
-const connectedCustomers = {};
+// const connectedPharmacies = {};
+// const connectedCustomers = {};
 
 /**
  * 
  * @param {PharmacyClient[]} pharmacies 
  */
 function sendChatBoxRequest(pharmacies=[] , customerId){
+
     pharmacies.map(pClient=>{
-        pClient.client.send(`REQ_CLIENT=${JSON.stringify({
-            customerId, 
-        })}`);
+        const reqString = ChatTemplates.requestPharmacyChatBox(customerId);
+        pClient.client.send(reqString);
+        console.log('send request to ' , pClient.id);
     })
 
 
@@ -52,68 +55,81 @@ function sendChatBoxRequest(pharmacies=[] , customerId){
 
 
 
-server.onClientConnect(( client)=>{
-    console.log('new client connected');
 
-})
+
+// server.onClientConnect(()=>{
+//     console.log('new client connected');
+
+// })
 
 server.onClientMessage((message , client)=>{
     try{
 
-        //handle connection identification message
-        if(message.startsWith("STABLISH=")){
-            const stabObj = JSON.parse(message.replace("STABLISH=",''));
-            if(stabObj.type == "pharmacy"){
-                connectedPharmacies[stabObj.id] = (new PharmacyClient(stabObj.id ,client))
-                client.send(`STABLISH=${JSON.stringify({
-                    status:"success",
-                })}`)
-            }else if(stabObj.type == "customer"){
-                connectedCustomers[stabObj.id] = (new CustomerClient(stabObj.id , client));
-                client.send(`STABLISH=${JSON.stringify({
-                    status:"success",
-                })}`);
-            }
-        }else if(message.startsWith("REQ_PHR=")){
-            const stabObj = JSON.parse(message.replace("REQ_PHR=" , ''));
+        console.log({message});
+        // create connection with server
+        if(ChatTemplates.isRequestConnection(message)){
+            const stabObj = ChatTemplates.readStablishConn(message);
             console.log(stabObj);
-            // checking pharmacy;
-            const pharmacy = connectedPharmacies[`${stabObj.pharmacyId}`];
-            sendChatBoxRequest([pharmacy] , stabObj.customerId);
-        }else if(message.startsWith("RES_CLIENT=")){
-            const reqClientObj = JSON.parse(message.replace("RES_CLIENT=" , ''));
+
+            if(stabObj.type == "pharmacy"){
+                connectedPharmacies[`${stabObj.id}`] = new PharmacyClient(stabObj.id ,client)
+                client.send(ChatTemplates.createConnection(true));
+                console.log(stabObj.type ,connectedPharmacies);
+                
+            }else if(stabObj.type == "customer"){
+                connectedCustomers[`${stabObj.id}`] = new CustomerClient(stabObj.id , client);
+                client.send(ChatTemplates.createConnection(true));
+                console.log(stabObj.type ,connectedCustomers);
+            }
+
+            return;
+        // request pharmacy
+        }else if(ChatTemplates.isPharmacyRequest(message)){
+            const reqObj = ChatTemplates.readPharmacyRequest(message);
+            const pharmacy = connectedPharmacies[`${reqObj.pharmacyId}`];
+
+
+            if(!pharmacy) return client.send(ChatTemplates.acceptClient(false , reqObj.customerId));
+
+            sendChatBoxRequest([pharmacy] , reqObj.customerId);
+
+            return;
+
+        }else if(ChatTemplates.isAcceptClient(message)){
+            const reqClientObj = ChatTemplates.readChatBoxAcceptRequestFromServer(message);
+            console.log(reqClientObj);
 
             if(reqClientObj.accept == true){
+            
                 const customer = connectedCustomers[`${reqClientObj.customerId}`];
+                const pharmacy = connectedCustomers[`${reqClientObj.id}`];
+                customer.client.send(ChatTemplates.chatBoxAcceptRequestFromServerToClient(true , reqClientObj.id , reqClientObj.customerId));
 
-
-                customer.client.send(`RES_PHR=${JSON.stringify({
-                    accept :true,
-                    pharmacyId : reqClientObj.id,
-    
-                })}`)
-
-                // server.halfDuplexConnection(client , customer.client )
             }
-        }else if(message.startsWith("MSG=")){
-            const msgObj = JSON.parse(message.replace("MSG=" , ''));
-            console.log(msgObj);
+
+            return;
+        
+        }else{
+            const {opcode , data: msgObj} = ChatTemplates.decodeString(message);
+
+            if(opcode == "ERROR"){ 
+                client.send(ChatTemplates.minorError({
+                    msg:"decode error : some thing wrong with last frame" ,
+                    to:"customer",
+                    from:"server",
+                    toId : "-1",
+                }))
+
+                return;
+            }
+            if(!msgObj.toId || !msgObj.id || !msgObj.to) return; 
 
             if(msgObj.to == "pharmacy"){
-                connectedPharmacies[msgObj.toId].client.send(`MSG=${JSON.stringify({
-                    message: msgObj.message,
-                    type:"customer",
-                    id:msgObj.id,
-                
-                })}`)
+                connectedPharmacies[`${msgObj.toId}`].client.send(message)
             }else if(msgObj.to == "customer"){
-                connectedCustomers[msgObj.toId].client.send(`MSG=${JSON.stringify({
-                    message: msgObj.message,
-                    type:"pharmacy",
-                    id:msgObj.id,
-                
-                })}`)
+                connectedCustomers[`${msgObj.toId}`].client.send(message)
             }
+
         }
 
 

@@ -42,19 +42,19 @@
 
 
 
-.spinner{
-    mix-blend-mode: color-dodge;
-    width: 3rem;
-    object-fit: contain;
-    animation: loading 1s linear infinite;
-    margin-left: 1rem;
-    display: none;
+// .spinner{
+//     mix-blend-mode: color-dodge;
+//     width: 3rem;
+//     object-fit: contain;
+//     animation: loading 1s linear infinite;
+//     margin-left: 1rem;
+//     display: none;
 
-    &.visible{
-        display: inline-block;
-    }
+//     &.visible{
+//         display: inline-block;
+//     }
 
-}
+// }
 
 @keyframes loading{
     100%{
@@ -62,3 +62,9 @@
     }
 }
 
+
+
+.spinner{
+    animation: loading 1s linear infinite;
+    scale: .1;
+}

@@ -1,23 +1,21 @@
 import Application from "../../model/application/Application.js";
+import ChatTemplates from "../../model/application/ChatTemplates.js";
+import { renderToast } from "../../view/renderToast.js";
 
 let socket = undefined;
 
 function stablishConnection(socket){
-    socket.send(`STABLISH=${JSON.stringify({
-            type:'customer',
-            id : Application.userId,
-        })}`);
+    socket.send(ChatTemplates.requestConnection());
 }
 
 
 
 export async function requestConnectionWithPharmacy(pharmacyId){
     try{
-        if(!socket) throw new Error("connection is not opened");
-        console.log(Application.userId);
-        const reqString = `REQ_PHR=${JSON.stringify({pharmacyId , customerId : Application.userId})}`;
-        console.log(reqString);
-        socket.send(reqString);
+        if(!Application.connection) throw new Error("connection is not opened");
+
+        const reqString = Application.MessageTemplates.requestPharmacy(pharmacyId);
+        Application.connection.send(reqString);
 
     
     }catch(e){
@@ -29,15 +27,31 @@ export async function requestConnectionWithPharmacy(pharmacyId){
 
 
 export function openLiveConnection(){
-    socket = new WebSocket('ws://localhost:3001/');
+    /**
+ * @type {WebSocket}
+ */
+
+const socket = new Promise((resolve , reject)=>{
+    window.cookieStore.getAll().then(cookies=>{
+            const ip = cookies.find(c=>c.name == "ip")?.value;
+
+            if(ip){
+                resolve(new WebSocket(`wss://${ip}:3001`));
+            }else{
+                reject(undefined);
+            }
+        });
+    })
+
+
 
     return new Promise((resolve ,reject)=>{
         try{
-
-            socket.addEventListener('open' , ()=>{
+            socket.then(socket=>socket.addEventListener('open' , ()=>{
+                renderToast("connecting");
                 stablishConnection(socket);
                 resolve(socket);  
-            })
+            }))
         }catch(e){
             reject(e);
         }

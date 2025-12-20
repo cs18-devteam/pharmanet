@@ -55,6 +55,7 @@ exports.renderCustomerProfile = async (req , res)=>{
                                         name : `${customer?.firstName  } ${customer?.lastName }`
                                     }) ,
                         footer : view('footer'),
+                        cart : view('customer/component.cart'),
                         ...customer
                 }) , 200);
         }catch(e){
@@ -71,6 +72,7 @@ exports.renderPharmacyView = async (req , res)=>{
         header : view('component.header' , {
                 name:"medicine view",
         }),
+        cart : view('customer/component.cart'),
     }) , 200)
 }
 

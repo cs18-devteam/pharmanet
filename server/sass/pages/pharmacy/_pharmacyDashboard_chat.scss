@@ -270,17 +270,29 @@
 
             .prescription{
                 margin: 1rem;
+                width: 100%;
+                height: 20rem;
+                background-color: #eeeeee;
+                border: 0.1rem solid #afafaf;
+                color: #afafaf;
+                font-size: 1.5rem;
+                border-radius: 3rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 .request-prescription-btn{
-                    width: 100%;
-                    height: 20rem;
-                    background-color: #eeeeee;
-                    border: 0.1rem solid #afafaf;
-                    color: #afafaf;
-                    font-size: 1.5rem;
+                    padding: 1rem 2rem;
                     border-radius: 3rem;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
+                    background-color: var(--color-green-01);
+                    color: #fff;
+                    scale: 1;
+                    fill: #fff;
+                    
+
+                    .spinner{
+                        width: 3rem;
+                        scale: 1;
+                    }
                 }
             }
 

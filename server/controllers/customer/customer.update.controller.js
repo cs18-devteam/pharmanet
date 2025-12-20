@@ -9,6 +9,7 @@ exports.renderUpdateProfile = async (req , res)=>{
             header : view('component.header' , {
                 name:"Update Your Account",
             }),
+            cart : view('customer/component.cart'),
             footer: view('footer'),
         }) , 200);
     }catch(e){

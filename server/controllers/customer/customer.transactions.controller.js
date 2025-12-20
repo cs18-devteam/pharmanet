@@ -10,6 +10,7 @@ exports.renderCustomerTransactions = async (req , res)=>{
                 name:"Antibiotics",
             }),
             footer: view('footer'),
+            cart : view('customer/component.cart'),
         }) , 200);
     }catch(e){
         console.log(e);

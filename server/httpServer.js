@@ -1,4 +1,5 @@
 const http = require('http');
+const https = require("https");
 const fs = require('fs');
 const { requestFile } = require('./fileServer');
 const AppRouter = require('./common/AppRouter');
@@ -20,15 +21,23 @@ const { paymentApiRouter } = require('./routes/api/api.payment.Routes');
 const { productsRouter } = require('./routes/web/products.Routes');
 const { pharmacyApiStaffRouter, pharmacyApiRouter, pharmaciesApiRouter } = require('./routes/api/api.pharmacy.Routes');
 const { transactionsRouter } = require('./routes/api/api.transactions.Routes');
-const { customerCartApiRouter } = require('./routes/api/api.customer.cart.Routes');
+// const { customerCartApiRouter } = require('./routes/api/api.customer.cart.Routes');
 const { customerApiRouter } = require('./routes/api/api.customer.Routes');
 const Pharmacies = require('./models/PharmacyModel');
+const { ordersApiRouter } = require('./routes/api/api.oder.Routes');
 
 
-const server = http.createServer((req , res)=>{
+const options = {
+  key: fs.readFileSync('key.pem'),
+  cert: fs.readFileSync('cert.pem')
+};
+
+
+// const server = http.createServer((req , res)=>{
+const server = https.createServer(options,(req , res)=>{
     try{
         const {url , method} = req;
-        const URI = new URL(url , `http://${process.env.HOSTNAME}:${process.env.PORT}`);
+        const URI = new URL(url , `https://${process.env.HOSTNAME}:${process.env.PORT}`);
         const params = URI.searchParams;
         const path = URI.pathname;
 
@@ -74,7 +83,8 @@ const server = http.createServer((req , res)=>{
         cashierApiRouter.pipe(req , res);
         paymentApiRouter.pipe(req , res);
         pharmacyApiStaffRouter.pipe(req , res);
-        customerCartApiRouter.pipe(req , res);
+        ordersApiRouter.pipe(req ,res);
+        // customerCartApiRouter.pipe(req , res);
         adminApiPharmacyRouter.pipe(req , res);
         customerApiRouter.pipe(req , res);
         pharmaciesApiRouter.pipe(req ,res);

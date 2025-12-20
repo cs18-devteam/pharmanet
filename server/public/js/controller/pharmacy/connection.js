@@ -3,6 +3,7 @@ import ChatTemplates from "../../model/application/ChatTemplates.js";
 import { activateOnSubmitMessageCallback, onAcceptIncomingMessage, onAnyCaseIncomingMessage, onRejectIncomingMessage, removeIncomingMessage, renderMessage, renderReply, setOnSubmitMessageCallback, showIncomingMessage, spinner } from "../../view/chatbox.js";
 import {renderToast} from "../../view/renderToast.js";
 import Application from "../../model/application/Application.js";
+import { getOrderData } from "../../view/pharmacy/orders.js";
 
 
 
@@ -137,6 +138,14 @@ function startSocketListening(socket){
                     prescription.replaceWith(image);
                 })
             }
+        }else if(ChatTemplates.isSyncRequest(message)){
+            const {data} = ChatTemplates.decodeString(message);
+            if(data.oderId){
+                getOrderData(data.orderId).then(data=>{
+                    console.log(data);
+                })
+            }
+
         }
     })
 

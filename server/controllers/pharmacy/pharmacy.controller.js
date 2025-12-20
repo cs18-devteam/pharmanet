@@ -1,5 +1,6 @@
 const Bridge = require("../../common/Bridge");
 const { createCookie } = require("../../common/cookie");
+const ipaddress = require("../../common/ipaddress");
 const { response, responseJson } = require("../../common/response");
 const view = require("../../common/view");
 const connectedPharmacies = require("../../memory/pharmacies.memory.temp");
@@ -96,6 +97,7 @@ exports.renderPharmacyDashboard = async (req , res)=>{
                 createCookie('staffId' , staffMember.id) ,
                 createCookie('pharmacyId' , pharmacy.id) ,
                 createCookie('id' , staffMember.userId) ,
+                createCookie('ip' , ipaddress)
             ] 
         })
     }catch(e){
@@ -108,8 +110,6 @@ exports.renderPharmacyDashboard = async (req , res)=>{
 
 exports.sendOnlinePharmacies = async (req , res)=>{
     try{
-        // const pharmacies = await Pharmacies.get
-        // ({alive:true});
         let pharmacies = Object.entries(connectedPharmacies).map(([_,pClient])=>{
             return Pharmacies.getById(pClient.id);
         })

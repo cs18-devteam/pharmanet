@@ -91,6 +91,7 @@ class ChatTemplates{
 
     static syncConnection(orderId){
         return `${this.#SYNC}${JSON.stringify({
+            ...this.defaultOptions(),
             id : orderId,
         })}`
     }
@@ -220,6 +221,10 @@ class ChatTemplates{
 
     static isConnectionResponse(message){
         return message.startsWith(this.#STAB_CONN)
+    }
+
+    static isSyncRequest(message){
+        return message.startsWith(this.#SYNC)
     }
 
     static isRequestPayment(message){

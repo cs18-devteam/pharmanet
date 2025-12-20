@@ -25,6 +25,7 @@ cartContinueButton?.addEventListener('click' ,async ()=>{
     const {results: pharmacies} = await getPharmacies({mode :'online'});
     const pharmacyRequestCards = createRequestCards(pharmacies);
     renderRequestCards(nearByPharmaciesContainer , pharmacyRequestCards);
+
 })
 
 
@@ -40,6 +41,7 @@ nearByPharmaciesContainer?.addEventListener('click' , async (e)=>{
     if(requestBtn){
         Application.requestPharmacyId = requestBtn.dataset.id;
         cart.setLeftSideContent('');
+        await getCartsIdsAndCreateOrder();
         Application.connection = await openLiveConnection();
         Application.connection.addEventListener('message' , handleConnection)
     }
@@ -57,13 +59,18 @@ async function getCartsIdsAndCreateOrder() {
     });
 
     const data = await createOrder(Array.from(cartsIds));
-    Application.remoteOrderId = data.orderId;    
+
+    console.log();
+
+    Application.remoteOrderId = data.results.orderId;    
     return Application.requestPharmacyId;
 
 
 }
 
 function syncOrder(){
+    console.log('syncing...');
+    if(!Application.remoteOrderId) throw new Error("no remote order Id");
     Application.connection.send(ChatTemplates.syncConnection(Application.remoteOrderId))
 }
 
@@ -72,7 +79,6 @@ function syncOrder(){
 
 function handleConnection(msg){
     const message = msg.data;
-    console.log(message);
 
     if(Chat.isRequestConnection(message)){
         const {status} = Chat.readStablishConn(message)
@@ -92,7 +98,6 @@ function handleConnection(msg){
         if(resObj.accept){
             getCartsIdsAndCreateOrder();
             cart.setLeftSideContent(createChatBox());
-            getCartsIdsAndCreateOrder();
             syncOrder(Application.remoteOrderId);
             activateOnSubmitMessageCallback();
 

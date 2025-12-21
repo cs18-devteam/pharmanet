@@ -3,7 +3,7 @@
 @use "./pharmacyDashboard__oders" as dashboard_orders;
 @use "./pharmacyDashboard__transactions" as dashboard_transactions;
 @use "./pharmacyDashborder__waiting_list" as waiting-list;
-@use "./pharmacyDashboard__recipt" as doc;
+@use "./pharmacyDashboard__recipt" as recipe;
 
 /* paging effect */
 $containers : 'docs' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 'staff';
@@ -771,8 +771,8 @@ $containers : 'docs' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'produc
 //     @include chat.chat;
 // }
 
-.pharmacyDashboard .dashboards .container.docs {
-    @include doc.documents;
+.pharmacyDashboard .dashboards .container.orders .payment-section-container {
+    @include recipe.documents;
 } 
 
 

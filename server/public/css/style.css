@@ -11069,13 +11069,17 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   margin: 1rem;
 }
 
-.pharmacyDashboard .dashboards .container.docs {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container {
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: none;
   margin: 0;
+  position: absolute;
+  z-index: 0;
+  height: 100%;
 }
-.pharmacyDashboard .dashboards .container.docs .receipt-wrapper {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .receipt-wrapper {
   background-color: var(--color-blue-01);
   border-top-left-radius: 3rem;
   border-bottom-left-radius: 3rem;
@@ -11084,7 +11088,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   width: 100%;
   height: 100%;
 }
-.pharmacyDashboard .dashboards .container.docs .receipt-wrapper .receipt-header {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .receipt-wrapper .receipt-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11092,11 +11096,11 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   padding: 1rem;
   margin: 1rem;
 }
-.pharmacyDashboard .dashboards .container.docs .receipt-wrapper .receipt-header span {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .receipt-wrapper .receipt-header span {
   font-size: 2.5rem;
   font-weight: 600;
 }
-.pharmacyDashboard .dashboards .container.docs .receipt-wrapper .receipt-header .print-btn {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .receipt-wrapper .receipt-header .print-btn {
   font-size: 2rem;
   font-weight: 500;
   border: 0.1rem solid white;
@@ -11105,7 +11109,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   background-color: var(--color-blue-01);
   color: white;
 }
-.pharmacyDashboard .dashboards .container.docs .receipt-wrapper .receipt-card {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .receipt-wrapper .receipt-card {
   margin: 1rem;
   padding: 2rem;
   background-color: white;
@@ -11115,34 +11119,34 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   outline-offset: -1rem;
   color: black;
 }
-.pharmacyDashboard .dashboards .container.docs .receipt-wrapper .receipt-card .receipt-title {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .receipt-wrapper .receipt-card .receipt-title {
   margin: 1rem;
   padding: 1rem;
   text-align: center;
 }
-.pharmacyDashboard .dashboards .container.docs .receipt-wrapper .receipt-card .receipt-title .double-line {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .receipt-wrapper .receipt-card .receipt-title .double-line {
   border: none;
   height: 0.6rem;
   border-top: 0.2rem dashed var(--color-border-gray-03);
   border-bottom: 0.2rem dashed var(--color-border-gray-03);
   margin: 1rem 0;
 }
-.pharmacyDashboard .dashboards .container.docs .receipt-wrapper .receipt-card .receipt-title h3 {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .receipt-wrapper .receipt-card .receipt-title h3 {
   font-size: 2rem;
   color: var(--color-border-gray-03);
 }
-.pharmacyDashboard .dashboards .container.docs .receipt-wrapper .receipt-card .receipt-title .small {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .receipt-wrapper .receipt-card .receipt-title .small {
   color: var(--color-border-gray-02);
   font-weight: 500;
 }
-.pharmacyDashboard .dashboards .container.docs .receipt-wrapper .receipt-card .receipt-table {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .receipt-wrapper .receipt-card .receipt-table {
   width: 100%;
   font-size: 1.6rem;
   margin: 1rem;
   border-collapse: separate;
   border-spacing: 0 10px;
 }
-.pharmacyDashboard .dashboards .container.docs .receipt-wrapper .receipt-card .total {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .receipt-wrapper .receipt-card .total {
   margin: 1rem;
   margin-top: 6rem;
   padding: 2rem;
@@ -11152,63 +11156,63 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   justify-content: space-between;
   font-size: 1.8rem;
 }
-.pharmacyDashboard .dashboards .container.docs .receipt-wrapper .receipt-card .total .total-amount {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .receipt-wrapper .receipt-card .total .total-amount {
   font-size: 2rem;
   font-weight: 500;
 }
-.pharmacyDashboard .dashboards .container.docs .receipt-wrapper .receipt-card .payment {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .receipt-wrapper .receipt-card .payment {
   margin: 1rem;
   padding: 1rem;
 }
-.pharmacyDashboard .dashboards .container.docs .receipt-wrapper .receipt-card .payment p {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .receipt-wrapper .receipt-card .payment p {
   font-size: 1.8rem;
   font-weight: 600;
   text-transform: capitalize;
 }
-.pharmacyDashboard .dashboards .container.docs .payment-section {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section {
   margin: 1rem;
   padding: 1rem;
 }
-.pharmacyDashboard .dashboards .container.docs .payment-section h1 {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section h1 {
   font-size: 3rem;
   text-transform: capitalize;
 }
-.pharmacyDashboard .dashboards .container.docs .payment-section h3 {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section h3 {
   color: var(--color-border-gray-03);
   text-transform: capitalize;
 }
-.pharmacyDashboard .dashboards .container.docs .payment-section form {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section form {
   margin-top: 1rem;
   text-transform: capitalize;
 }
-.pharmacyDashboard .dashboards .container.docs .payment-section form input {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section form input {
   padding: 1rem;
   border: 0.1rem solid var(--color-border-gray-03);
   border-radius: 0.5rem;
   width: 100%;
 }
-.pharmacyDashboard .dashboards .container.docs .payment-section form label {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section form label {
   font-weight: 500;
   font-size: 1.6rem;
 }
-.pharmacyDashboard .dashboards .container.docs .payment-section form .first-row {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section form .first-row {
   display: flex;
   justify-content: space-between;
   margin-top: 2rem;
 }
-.pharmacyDashboard .dashboards .container.docs .payment-section form .second-row, .pharmacyDashboard .dashboards .container.docs .payment-section form .third-row {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section form .second-row, .pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section form .third-row {
   margin-top: 2rem;
 }
-.pharmacyDashboard .dashboards .container.docs .payment-section .select-payment-method {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section .select-payment-method {
   margin: 2rem 0;
 }
-.pharmacyDashboard .dashboards .container.docs .payment-section .select-payment-method .selection {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section .select-payment-method .selection {
   display: flex;
   justify-content: space-between;
   gap: 3rem;
   margin: 1rem 0;
 }
-.pharmacyDashboard .dashboards .container.docs .payment-section .select-payment-method .selection .cash-btn, .pharmacyDashboard .dashboards .container.docs .payment-section .select-payment-method .selection .card-btn {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section .select-payment-method .selection .cash-btn, .pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section .select-payment-method .selection .card-btn {
   width: 100%;
   padding: 1rem;
   display: flex;
@@ -11218,96 +11222,48 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   font-size: 2rem;
   font-weight: 500;
 }
-.pharmacyDashboard .dashboards .container.docs .payment-section .select-payment-method .selection .cash-btn:hover, .pharmacyDashboard .dashboards .container.docs .payment-section .select-payment-method .selection .card-btn:hover {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section .select-payment-method .selection .cash-btn:hover, .pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section .select-payment-method .selection .card-btn:hover {
   cursor: pointer;
 }
-.pharmacyDashboard .dashboards .container.docs .payment-section .select-payment-method .selection .cash-btn {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section .select-payment-method .selection .cash-btn {
   background-color: black;
   color: white;
 }
-.pharmacyDashboard .dashboards .container.docs .payment-section .select-payment-method .selection .cash-btn img {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section .select-payment-method .selection .cash-btn img {
   width: 2rem;
   height: 2rem;
   margin-left: 1rem;
 }
-.pharmacyDashboard .dashboards .container.docs .payment-section .select-payment-method .selection .card-btn {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section .select-payment-method .selection .card-btn {
   border: 0.1rem solid black;
 }
-.pharmacyDashboard .dashboards .container.docs .payment-section .select-payment-method .selection .card-btn img {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section .select-payment-method .selection .card-btn img {
   width: 10rem;
   height: 3rem;
   margin-left: 1rem;
 }
-.pharmacyDashboard .dashboards .container.docs .payment-section .footer-btn {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section .footer-btn {
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
 }
-.pharmacyDashboard .dashboards .container.docs .payment-section .footer-btn .back-btn, .pharmacyDashboard .dashboards .container.docs .payment-section .footer-btn .create-order-btn {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section .footer-btn .back-btn, .pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section .footer-btn .create-order-btn {
   padding: 1rem;
   margin: 1rem;
   border-radius: 3rem;
   width: 15rem;
   font-weight: 500;
-<<<<<<< HEAD
-  background-color: #09776e;
-  transition: all 0.8sec ease-in-out;
-  cursor: pointer;
-}
-.pharmacyDashboard .dashboards .container .right {
-  height: 75rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  flex-grow: 1;
-  margin: 1rem;
-  border-radius: 3rem;
-  border: 0.1rem solid #eeeeee;
-}
-.pharmacyDashboard .dashboards .container .right .prescription {
-  margin: 1rem;
-  width: 100%;
-  height: 20rem;
-  background-color: #eeeeee;
-  border: 0.1rem solid #afafaf;
-  color: #afafaf;
-  font-size: 1.5rem;
-  border-radius: 3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.pharmacyDashboard .dashboards .container .right .prescription .request-prescription-btn {
-  padding: 1rem 2rem;
-  border-radius: 3rem;
-  background-color: var(--color-green-01);
-  color: #fff;
-  scale: 1;
-  fill: #fff;
-}
-.pharmacyDashboard .dashboards .container .right .prescription .request-prescription-btn .spinner {
-  width: 3rem;
-  scale: 1;
-}
-.pharmacyDashboard .dashboards .container .right .payment-details {
-  display: block;
-  margin: 1rem;
-  padding: 1rem;
-}
-.pharmacyDashboard .dashboards .container .right .payment-details h1 {
-=======
->>>>>>> chathura/backend/orders/2.0
   font-size: 1.8rem;
   display: flex;
   justify-content: center;
 }
-.pharmacyDashboard .dashboards .container.docs .payment-section .footer-btn .back-btn:hover, .pharmacyDashboard .dashboards .container.docs .payment-section .footer-btn .create-order-btn:hover {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section .footer-btn .back-btn:hover, .pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section .footer-btn .create-order-btn:hover {
   cursor: pointer;
 }
-.pharmacyDashboard .dashboards .container.docs .payment-section .footer-btn .back-btn {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section .footer-btn .back-btn {
   border: 0.1rem solid black;
 }
-.pharmacyDashboard .dashboards .container.docs .payment-section .footer-btn .create-order-btn {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section .footer-btn .create-order-btn {
   background-color: var(--color-green-01);
   color: white;
 }

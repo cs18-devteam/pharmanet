@@ -1,11 +1,11 @@
 {header}
 <body class="pharmacyDashboard">
     <input type="radio"  name="navigation" id="docs">
-    <input type="radio" name="navigation" id="orders">
+    <input type="radio" checked name="navigation" id="orders">
     <input type="radio" name="navigation" id="chats">
-    <input type="radio" name="navigation" id="medicines">
+    <input type="radio"  name="navigation" id="medicines">
     <input type="radio"  name="navigation" id="transactions">
-    <input type="radio" checked name="navigation" id="products">
+    <input type="radio"  name="navigation" id="products">
     <input type="radio" name="navigation" id="staff">
 
 
@@ -50,6 +50,106 @@
     <div class="dashboards">
 
         <div class="docs container">
+
+
+
+        </div>
+
+        <div class="orders container">
+
+            <div class="orderleft-side">
+
+                <div class="L-side">
+                    <div class="search-bar">
+                        <input type="text" name="search-bar" class="search-bar__input" id="search-bar">
+                    </div>
+
+                    <div class="medicine_card_container">
+
+                    </div>
+                </div>
+                
+                <div class="right-btns">
+                    <span>
+                        <div class="search-btn">Search</div>
+                        <div class="payment-btn">History</div>
+                    </span>
+                    
+                </div>
+
+            </div>
+
+
+
+            <div class="order-right-side">
+                <div class="order_summery">
+
+
+                    <div class="order_summery__description">
+                        <div class="total_sales">
+                            <span class="total__sales__description__text">Total Sales</span>
+                            <span class="total__sales__description__amount">Rs 0
+                                <!-- <span><img src="/server/public/images/arrow-go-to-list.svg" alt="arrow" width="0.5rem"></span> -->
+                            </span>
+                        </div>
+
+                        <div class="total_orders">
+                            <span class="total__orders__description__text">Total Orders</span>
+                            <span class="total__orders__description__amount">0
+                                <!-- <span><img src="/server/public/images/arrow-go-to-list.svg" alt="arrow" width="0.5rem"></span> -->
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+
+                <div class="cart_summery_box">
+                    <div class="quick_access_2">
+
+                        <div class="cart_summery">
+                            <div>
+                                <img src="/images/Shopping-cart.svg" width="30rem" >
+                                <span>Cart</span>
+                            </div>
+                            <h2 class="no_of_cart_items">0</h2>
+                            
+                        </div>
+
+
+                        <div class="total_cart_summery">
+                            <div>
+                                <img src="/images/dollar-mark.svg" width="30rem">
+                                <span>Total</span>
+                            </div>
+                            <h2>Rs <span class="amount_of_cart_items">0</span></h2>
+                            
+                        </div>
+
+
+                        <div class="proceed_to_payment">
+                            <div>
+                                <span>Proceed To Payment</span>
+                            </div>
+                            <h2 class="pay_button">Pay →</h2>
+                            
+                        </div>
+
+                    </div>
+
+
+                    <div class="cart_list">
+                    </div>
+
+                </div>
+
+                
+
+            </div>
+
+
+
+            <div class="payment-section-container">
 
             <div class="receipt-wrapper">
                 <div class="receipt-header">
@@ -168,100 +268,6 @@
                 </div>
 
             </div>
-
-
-        </div>
-
-        <div class="orders container">
-
-            <div class="orderleft-side">
-
-                <div class="L-side">
-                    <div class="search-bar">
-                        <input type="text" name="search-bar" class="search-bar__input" id="search-bar">
-                    </div>
-
-                    <div class="medicine_card_container">
-
-                    </div>
-                </div>
-                
-                <div class="right-btns">
-                    <span>
-                        <div class="search-btn">Search</div>
-                        <div class="payment-btn">History</div>
-                    </span>
-                    
-                </div>
-
-            </div>
-
-
-
-            <div class="order-right-side">
-                <div class="order_summery">
-
-
-                    <div class="order_summery__description">
-                        <div class="total_sales">
-                            <span class="total__sales__description__text">Total Sales</span>
-                            <span class="total__sales__description__amount">Rs 0
-                                <!-- <span><img src="/server/public/images/arrow-go-to-list.svg" alt="arrow" width="0.5rem"></span> -->
-                            </span>
-                        </div>
-
-                        <div class="total_orders">
-                            <span class="total__orders__description__text">Total Orders</span>
-                            <span class="total__orders__description__amount">0
-                                <!-- <span><img src="/server/public/images/arrow-go-to-list.svg" alt="arrow" width="0.5rem"></span> -->
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                </div>
-
-                <div class="cart_summery_box">
-                    <div class="quick_access_2">
-
-                        <div class="cart_summery">
-                            <div>
-                                <img src="/images/Shopping-cart.svg" width="30rem" >
-                                <span>Cart</span>
-                            </div>
-                            <h2 class="no_of_cart_items">0</h2>
-                            
-                        </div>
-
-
-                        <div class="total_cart_summery">
-                            <div>
-                                <img src="/images/dollar-mark.svg" width="30rem">
-                                <span>Total</span>
-                            </div>
-                            <h2>Rs <span class="amount_of_cart_items">0</span></h2>
-                            
-                        </div>
-
-
-                        <div class="proceed_to_payment">
-                            <div>
-                                <span>Proceed To Payment</span>
-                            </div>
-                            <h2 class="pay_button">Pay →</h2>
-                            
-                        </div>
-
-                    </div>
-
-
-                    <div class="cart_list">
-                    </div>
-
-                </div>
-
-                
-
             </div>
 
         </div>
@@ -1079,5 +1085,6 @@
 
     <script src="/js/controller/pharmacy/pharmacy.dashboard.client.controller.js" type="module" ></script>
     <script type="module" src="/js/controller/pharmacy/connection.js"></script>
+    <script type="module" src="/js/controller/pharamcy.dashboard.orders.controller.js"></script>
 </body>
 </html>

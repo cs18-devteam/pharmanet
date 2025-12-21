@@ -1,10 +1,14 @@
 @mixin documents{
 
-    //margin: auto;
+    width: 100%;
     display: grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: none;
     margin: 0;
+    position: absolute;
+    z-index: 0;
+    height: 100%;
+
     
     .receipt-wrapper {
         background-color: var(--color-blue-01);

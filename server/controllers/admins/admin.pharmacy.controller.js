@@ -85,11 +85,6 @@ exports.createPharmacy = async (req , res)=>{
             error : e,
         }))
     }
-
-
-
-
-
 }
 exports.updatePharmacy = async (req , res)=>{
     let sent = false;

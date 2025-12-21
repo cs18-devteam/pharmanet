@@ -2,8 +2,8 @@
 <div class="medicine-card" data-id="{id}" data-type="medicine">
         <a href="/customers/{userId}/medicines/{id}" class="medi-img" >
             
-            <img    src="{image}" alt="{name}">  
-
+            <img src="{image}" alt="{name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" >  
+            <span class="img-alt">{name}</span>
         </a>
 
 
@@ -22,7 +22,7 @@
                     </span>
                     
                     <span class="price">
-                        Rs.<div class="price__value">Rs {price}</div>
+                        Rs.<div class="price__value">{price}</div>
                         <!-- <span class="price__identifier">(average)</span> -->
                     </span>
                 </div>

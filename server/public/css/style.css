@@ -2525,11 +2525,27 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05);
 }
 .medicine-section .Medicines_grid .medicine-card .medi-img {
+  object-fit: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.medicine-section .Medicines_grid .medicine-card .medi-img img {
   width: 15rem;
   height: 15rem;
-  object-fit: contain;
-  display: block;
-  margin: auto;
+  object-fit: cover;
+}
+.medicine-section .Medicines_grid .medicine-card .medi-img .img-alt {
+  font-size: 14px;
+  color: #777;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  height: 10rem;
 }
 .medicine-section .Medicines_grid .medicine-card .med_infomation .medicine_name > a {
   font-weight: 500;
@@ -2538,7 +2554,6 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   text-overflow: ellipsis;
   width: 100%;
   display: inline-block;
-  height: 4rem;
 }
 .medicine-section .Medicines_grid .medicine-card .med_infomation .medicine_name .name {
   font-weight: 600;

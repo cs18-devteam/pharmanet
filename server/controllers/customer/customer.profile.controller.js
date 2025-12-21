@@ -1,11 +1,11 @@
+const { catchAsync } = require("../../common/catchAsync");
 const Users = require("../../models/UserModel");
 const Bridge = require("../common/Bridge");
 const { response } = require("../common/response");
 const view = require("../common/view");
 
 
-exports.renderCustomerProfile = async (req , res)=>{
-    try{
+exports.renderCustomerProfile =catchAsync( async (req , res)=>{
         const customer = await Users.get(req.customerId)[0];
         if(!customer) return view('404' , {
             header : view('component.header' , {
@@ -36,8 +36,5 @@ exports.renderCustomerProfile = async (req , res)=>{
             mobileNumber : " " ,
             cart : view('customer/component.cart'),
         })
-    }catch(e){
-        console.log(e);
-        return response(res , view('404') , 404);
-    }
-}
+   
+})

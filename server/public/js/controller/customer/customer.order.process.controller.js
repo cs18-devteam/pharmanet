@@ -60,9 +60,10 @@ async function getCartsIdsAndCreateOrder() {
 
     const data = await createOrder(Array.from(cartsIds));
 
-    console.log();
 
-    Application.remoteOrderId = data.results.orderId;    
+    Application.remoteOrderId = data.results.orderId; 
+
+    
     return Application.requestPharmacyId;
 
 
@@ -73,8 +74,6 @@ function syncOrder(){
     if(!Application.remoteOrderId) throw new Error("no remote order Id");
     Application.connection.send(ChatTemplates.syncConnection(Application.remoteOrderId))
 }
-
-
 
 
 function handleConnection(msg){

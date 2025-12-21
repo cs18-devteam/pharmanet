@@ -17,6 +17,10 @@ class PharmacyOrderModel extends Model{
         this.status = {
             type:"VARCHAR(100)"
         }
+
+        this.prescription = {
+            type:"TEXT"
+        }
     }
 }
 
@@ -31,5 +35,7 @@ PharmacyOrders.createTable().then(()=>{
     console.log("pharmacy orders table not created")
     console.log(e);
 })
+
+// PharmacyOrders.drop();
 
 module.exports = PharmacyOrders;

@@ -1,11 +1,11 @@
-import Application from "../../model/application/Application";
+import Application from "../../model/application/Application.js";
 
 export async function getOrderData(id){
     try{
         const response = await fetch(`/api/v1/orders?id=${id}`);
         const data = await response.json();
         
-        if(data.status == "success"){
+        if(data.status == "error"){
             throw new Error(data.message);
         }
         

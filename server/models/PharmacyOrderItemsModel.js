@@ -29,8 +29,11 @@ class PharmacyOrderItemsModel extends Model{
         this.quantity = {
             type:"FLOAT",
         }
+
+
     }
 }
+
 
 
 const PharmacyOrdersItems = new PharmacyOrderItemsModel();

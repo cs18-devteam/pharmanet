@@ -90,9 +90,11 @@ class ChatTemplates{
     }
 
     static syncConnection(orderId){
+        if(!orderId) throw new Error("order id not defined");
+
         return `${this.#SYNC}${JSON.stringify({
             ...this.defaultOptions(),
-            id : orderId,
+            orderId : orderId,
         })}`
     }
 

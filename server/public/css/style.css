@@ -10,6 +10,8 @@
   --color-red-01: #FB5821;
   --color-pink-01: #DDA797;
   --color-border-gray-01: #eeeeee;
+  --color-border-gray-02: #bdbcbc;
+  --color-border-gray-03: #707070;
   --font-linear-secondary-color:#127EB5;
   --font-linear-primary-color:#08374F;
   --color-scheme: light ;
@@ -10912,12 +10914,54 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   grid-template-rows: 8rem 1fr;
 }
 .pharmacyDashboard .dashboards .product_container .left-side {
-  background-color: #eee;
   border-radius: 3rem;
+  border: 0.1rem solid var(--color-border-gray-01);
   height: 70rem;
 }
 .pharmacyDashboard .dashboards .product_container .left-side .search-bar {
   margin: 1rem;
+}
+.pharmacyDashboard .dashboards .product_container .left-side .title-section .small-title {
+  font-size: 1.3rem;
+  text-transform: capitalize;
+}
+.pharmacyDashboard .dashboards .product_container .left-side .title-section .title {
+  font-size: 1.8rem;
+  text-transform: capitalize;
+  font-weight: 500;
+  padding: 1rem;
+}
+.pharmacyDashboard .dashboards .product_container .left-side .title-section .title .amount-of-products {
+  color: var(--color-green-01);
+}
+.pharmacyDashboard .dashboards .product_container .left-side .title-section .title {
+  margin-bottom: 3rem;
+  border-bottom: 0.1rem solid var(--color-border-gray-01);
+}
+.pharmacyDashboard .dashboards .product_container .left-side .quick-looks {
+  padding: 1rem;
+  border-bottom: 0.1rem solid var(--color-border-gray-01);
+}
+.pharmacyDashboard .dashboards .product_container .left-side .quick-looks .tab {
+  display: flex;
+  justify-content: space-between;
+}
+.pharmacyDashboard .dashboards .product_container .left-side .quick-looks .tab span:nth-child(1) {
+  text-transform: capitalize;
+}
+.pharmacyDashboard .dashboards .product_container .left-side .quick-looks .tab span:nth-child(2) {
+  width: 5rem;
+  height: 2rem;
+}
+.pharmacyDashboard .dashboards .product_container .left-side .quick-looks .tab span:nth-child(3) {
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 3rem;
+  color: white;
+  font-size: 1.8rem;
+}
+.pharmacyDashboard .dashboards .product_container .left-side .quick-looks .tab .grreen-line {
+  background-color: var(--color-green-01);
 }
 .pharmacyDashboard .dashboards .product_container .left-side .pagination {
   display: flex;
@@ -11025,213 +11069,187 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   margin: 1rem;
 }
 
-.pharmacyDashboard .dashboards .container {
-  margin: auto;
+.pharmacyDashboard .dashboards .container.docs {
   display: grid;
-  grid-template-columns: 45rem 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: none;
+  margin: 0;
 }
-.pharmacyDashboard .dashboards .container .left {
-  max-width: 100vh;
-  height: 1fr;
-}
-.pharmacyDashboard .dashboards .container .chat-box {
-  height: 75rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  flex-grow: 1;
-  margin: 1rem;
-  justify-content: space-between;
-  border-radius: 3rem;
-  border: 0.1rem solid #eeeeee;
-}
-.pharmacyDashboard .dashboards .container .chat-box .header-section {
+.pharmacyDashboard .dashboards .container.docs .receipt-wrapper {
   background-color: var(--color-blue-01);
-  color: white;
   border-top-left-radius: 3rem;
-  border-top-right-radius: 3rem;
-  display: flex;
-  justify-content: space-between;
-}
-.pharmacyDashboard .dashboards .container .chat-box .header-section .customer-name {
-  padding: 1rem;
-  margin: 1rem;
-}
-.pharmacyDashboard .dashboards .container .chat-box .header-section .discount {
-  padding: 1rem;
-  margin: 1rem;
-  background-color: var(--color-red-01);
-  border-radius: 2rem;
-  width: 12rem;
-  display: flex;
-  justify-content: center;
-}
-.pharmacyDashboard .dashboards .container .chat-box .header-section .discount:hover {
-  font-weight: 500;
-  background-color: #e64b17;
-  transition: all 0.8sec ease-in-out;
-  cursor: pointer;
-}
-.pharmacyDashboard .dashboards .container .chat-box .body-section {
-  margin: 1rem;
-  height: 100%;
-  overflow: scroll;
-}
-.pharmacyDashboard .dashboards .container .chat-box .body-section .message {
-  background-color: var(--color-green-01);
-  border-radius: 2rem;
-  margin: 2rem 1rem;
-  padding: 1rem;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: fit-content;
+  border-bottom-left-radius: 3rem;
   color: white;
-}
-.pharmacyDashboard .dashboards .container .chat-box .body-section .message .profile-pic img {
-  border-radius: 50%;
-}
-.pharmacyDashboard .dashboards .container .chat-box .body-section .reply {
-  background-color: var(--color-pink-01);
-  margin-left: auto;
-}
-.pharmacyDashboard .dashboards .container .chat-box form {
-  margin: 1rem;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  border: 0.1rem solid #eeeeee;
-  border-radius: 3rem;
-}
-.pharmacyDashboard .dashboards .container .chat-box form .type-msg {
-  all: unset;
-  font-size: 1.8rem;
+  display: block;
   width: 100%;
-  position: relative;
-  color: black;
+  height: 100%;
 }
-.pharmacyDashboard .dashboards .container .chat-box form button {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  background-color: var(--color-green-01);
-  color: white;
+.pharmacyDashboard .dashboards .container.docs .receipt-wrapper .receipt-header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  border: none;
-}
-.pharmacyDashboard .dashboards .container .middle .cart {
-  height: 75rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  flex-grow: 1;
-  margin: 1rem;
-  border-radius: 3rem;
-  border: 0.1rem solid #eeeeee;
-}
-.pharmacyDashboard .dashboards .container .middle .cart .header-section {
-  margin: 1rem 1rem;
-}
-.pharmacyDashboard .dashboards .container .middle .cart .header-section .add-new-item-btn {
-  background-color: var(--color-green-01);
-  border-radius: 2rem;
-  margin: 1rem;
+  text-transform: capitalize;
   padding: 1rem;
-  width: fit-content;
-  color: white;
-  margin-left: auto;
+  margin: 1rem;
 }
-.pharmacyDashboard .dashboards .container .middle .cart .header-section .add-new-item-btn:hover {
+.pharmacyDashboard .dashboards .container.docs .receipt-wrapper .receipt-header span {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+.pharmacyDashboard .dashboards .container.docs .receipt-wrapper .receipt-header .print-btn {
+  font-size: 2rem;
   font-weight: 500;
-  background-color: #09776e;
-  transition: all 0.8sec ease-in-out;
-  cursor: pointer;
-}
-.pharmacyDashboard .dashboards .container .middle .cart .body-section {
-  margin: 1rem;
-  border: 0.1rem dashed #afafaf;
-  border-radius: 3rem;
-}
-.pharmacyDashboard .dashboards .container .middle .cart .body-section .medicine_card {
-  margin: 1rem;
-}
-.pharmacyDashboard .dashboards .container .middle .cart .body-section .medicine_card .medicine-card-header .added-btn {
-  padding: 1rem;
-  background-color: var(--color-blue-02);
-  border: none;
+  border: 0.1rem solid white;
   border-radius: 3rem;
   width: 10rem;
+  background-color: var(--color-blue-01);
   color: white;
-  font-size: 1.8rem;
 }
-.pharmacyDashboard .dashboards .container .middle .cart .body-section .medicine_card .medicine-card-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
+.pharmacyDashboard .dashboards .container.docs .receipt-wrapper .receipt-card {
+  margin: 1rem;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 3rem;
+  outline: 0.1rem solid var(--color-border-gray-03);
+  outline-style: dashed;
+  outline-offset: -1rem;
+  color: black;
 }
-.pharmacyDashboard .dashboards .container .middle .cart .body-section .medicine_card .medicine-card-footer .card-footer {
-  font-size: 1.8rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.pharmacyDashboard .dashboards .container .middle .cart .body-section .medicine_card .medicine-card-footer .card-footer span {
+.pharmacyDashboard .dashboards .container.docs .receipt-wrapper .receipt-card .receipt-title {
   margin: 1rem;
   padding: 1rem;
-  border-radius: 1rem;
+  text-align: center;
 }
-.pharmacyDashboard .dashboards .container .middle .cart .body-section .medicine_card .medicine-card-footer .unit {
-  color: var(--color-blue-01);
+.pharmacyDashboard .dashboards .container.docs .receipt-wrapper .receipt-card .receipt-title .double-line {
+  border: none;
+  height: 0.6rem;
+  border-top: 0.2rem dashed var(--color-border-gray-03);
+  border-bottom: 0.2rem dashed var(--color-border-gray-03);
+  margin: 1rem 0;
 }
-.pharmacyDashboard .dashboards .container .middle .cart .body-section .medicine_card .medicine-card-footer .unit span {
-  border: 0.2rem solid #afafaf;
+.pharmacyDashboard .dashboards .container.docs .receipt-wrapper .receipt-card .receipt-title h3 {
+  font-size: 2rem;
+  color: var(--color-border-gray-03);
 }
-.pharmacyDashboard .dashboards .container .middle .cart .body-section .medicine_card .medicine-card-footer .days {
-  color: var(--color-blue-02);
+.pharmacyDashboard .dashboards .container.docs .receipt-wrapper .receipt-card .receipt-title .small {
+  color: var(--color-border-gray-02);
+  font-weight: 500;
 }
-.pharmacyDashboard .dashboards .container .middle .cart .body-section .medicine_card .medicine-card-footer .days span {
-  border: 0.2rem solid #b3d1e0;
+.pharmacyDashboard .dashboards .container.docs .receipt-wrapper .receipt-card .receipt-table {
+  width: 100%;
+  font-size: 1.6rem;
+  margin: 1rem;
+  border-collapse: separate;
+  border-spacing: 0 10px;
 }
-.pharmacyDashboard .dashboards .container .middle .cart .body-section .medicine_card .medicine-card-footer .discount {
-  color: var(--color-green-01);
+.pharmacyDashboard .dashboards .container.docs .receipt-wrapper .receipt-card .total {
+  margin: 1rem;
+  margin-top: 6rem;
+  padding: 2rem;
+  border-top: 0.2rem dashed var(--color-border-gray-03);
+  border-bottom: 0.2rem dashed var(--color-border-gray-03);
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.8rem;
 }
-.pharmacyDashboard .dashboards .container .middle .cart .body-section .medicine_card .medicine-card-footer .discount span {
-  border: 0.2rem solid #d1e5e4;
+.pharmacyDashboard .dashboards .container.docs .receipt-wrapper .receipt-card .total .total-amount {
+  font-size: 2rem;
+  font-weight: 500;
 }
-.pharmacyDashboard .dashboards .container .middle .cart .footer-section {
+.pharmacyDashboard .dashboards .container.docs .receipt-wrapper .receipt-card .payment {
+  margin: 1rem;
+  padding: 1rem;
+}
+.pharmacyDashboard .dashboards .container.docs .receipt-wrapper .receipt-card .payment p {
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.pharmacyDashboard .dashboards .container.docs .payment-section {
+  margin: 1rem;
+  padding: 1rem;
+}
+.pharmacyDashboard .dashboards .container.docs .payment-section h1 {
+  font-size: 3rem;
+  text-transform: capitalize;
+}
+.pharmacyDashboard .dashboards .container.docs .payment-section h3 {
+  color: var(--color-border-gray-03);
+  text-transform: capitalize;
+}
+.pharmacyDashboard .dashboards .container.docs .payment-section form {
+  margin-top: 1rem;
+  text-transform: capitalize;
+}
+.pharmacyDashboard .dashboards .container.docs .payment-section form input {
+  padding: 1rem;
+  border: 0.1rem solid var(--color-border-gray-03);
+  border-radius: 0.5rem;
+  width: 100%;
+}
+.pharmacyDashboard .dashboards .container.docs .payment-section form label {
+  font-weight: 500;
+  font-size: 1.6rem;
+}
+.pharmacyDashboard .dashboards .container.docs .payment-section form .first-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+.pharmacyDashboard .dashboards .container.docs .payment-section form .second-row, .pharmacyDashboard .dashboards .container.docs .payment-section form .third-row {
+  margin-top: 2rem;
+}
+.pharmacyDashboard .dashboards .container.docs .payment-section .select-payment-method {
+  margin: 2rem 0;
+}
+.pharmacyDashboard .dashboards .container.docs .payment-section .select-payment-method .selection {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  margin: 1rem 0;
+}
+.pharmacyDashboard .dashboards .container.docs .payment-section .select-payment-method .selection .cash-btn, .pharmacyDashboard .dashboards .container.docs .payment-section .select-payment-method .selection .card-btn {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2rem;
+  font-size: 2rem;
+  font-weight: 500;
+}
+.pharmacyDashboard .dashboards .container.docs .payment-section .select-payment-method .selection .cash-btn:hover, .pharmacyDashboard .dashboards .container.docs .payment-section .select-payment-method .selection .card-btn:hover {
+  cursor: pointer;
+}
+.pharmacyDashboard .dashboards .container.docs .payment-section .select-payment-method .selection .cash-btn {
+  background-color: black;
+  color: white;
+}
+.pharmacyDashboard .dashboards .container.docs .payment-section .select-payment-method .selection .cash-btn img {
+  width: 2rem;
+  height: 2rem;
+  margin-left: 1rem;
+}
+.pharmacyDashboard .dashboards .container.docs .payment-section .select-payment-method .selection .card-btn {
+  border: 0.1rem solid black;
+}
+.pharmacyDashboard .dashboards .container.docs .payment-section .select-payment-method .selection .card-btn img {
+  width: 10rem;
+  height: 3rem;
+  margin-left: 1rem;
+}
+.pharmacyDashboard .dashboards .container.docs .payment-section .footer-btn {
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
-  margin: 1rem;
 }
-.pharmacyDashboard .dashboards .container .middle .cart .footer-section .btn {
-  color: white;
-  border-radius: 3rem;
+.pharmacyDashboard .dashboards .container.docs .payment-section .footer-btn .back-btn, .pharmacyDashboard .dashboards .container.docs .payment-section .footer-btn .create-order-btn {
   padding: 1rem;
-  font-size: 1.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.pharmacyDashboard .dashboards .container .middle .cart .footer-section .cancel-btn {
-  background-color: var(--color-red-01);
-  width: 10rem;
-}
-.pharmacyDashboard .dashboards .container .middle .cart .footer-section .cancel-btn:hover {
-  font-weight: 500;
-  background-color: #e64b17;
-  transition: all 0.8sec ease-in-out;
-  cursor: pointer;
-}
-.pharmacyDashboard .dashboards .container .middle .cart .footer-section .create-order-btn {
-  background-color: var(--color-green-01);
+  margin: 1rem;
+  border-radius: 3rem;
   width: 15rem;
-}
-.pharmacyDashboard .dashboards .container .middle .cart .footer-section .create-order-btn:hover {
   font-weight: 500;
+<<<<<<< HEAD
   background-color: #09776e;
   transition: all 0.8sec ease-in-out;
   cursor: pointer;
@@ -11277,71 +11295,131 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   padding: 1rem;
 }
 .pharmacyDashboard .dashboards .container .right .payment-details h1 {
+=======
+>>>>>>> chathura/backend/orders/2.0
   font-size: 1.8rem;
-  font-weight: 500;
-}
-.pharmacyDashboard .dashboards .container .right .payment-details .method, .pharmacyDashboard .dashboards .container .right .payment-details .status {
-  font-size: 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 1rem;
-}
-.pharmacyDashboard .dashboards .container .right .payment-details .method .method-selector, .pharmacyDashboard .dashboards .container .right .payment-details .method .status-selector, .pharmacyDashboard .dashboards .container .right .payment-details .status .method-selector, .pharmacyDashboard .dashboards .container .right .payment-details .status .status-selector {
-  padding: 1rem;
-  border: 0.1rem solid var(--color-border-gray-01);
-  border-radius: 0.5rem;
-}
-.pharmacyDashboard .dashboards .container .right .payment-details .method .status-selector, .pharmacyDashboard .dashboards .container .right .payment-details .status .status-selector {
-  color: var(--color-yellow-01);
-}
-.pharmacyDashboard .dashboards .container .right .payment-details .request-payment-btn {
-  text-align: center;
-  padding: 1rem;
-  margin: 1rem;
-  border: 0.1rem solid var(--color-border-gray-01);
-  border-radius: 3rem;
-  background-color: var(--color-yellow-01);
   display: flex;
   justify-content: center;
 }
-.pharmacyDashboard .dashboards .container .right .payment-details .request-payment-btn:hover {
-  background-color: #e1760c;
-  transition: all 0.8sec ease-in-out;
+.pharmacyDashboard .dashboards .container.docs .payment-section .footer-btn .back-btn:hover, .pharmacyDashboard .dashboards .container.docs .payment-section .footer-btn .create-order-btn:hover {
   cursor: pointer;
 }
-.pharmacyDashboard .dashboards .container .right .recipe-details {
-  margin: 1rem;
+.pharmacyDashboard .dashboards .container.docs .payment-section .footer-btn .back-btn {
+  border: 0.1rem solid black;
 }
-.pharmacyDashboard .dashboards .container .right .recipe-details h1 {
-  text-transform: capitalize;
-  font-size: 1.5rem;
+.pharmacyDashboard .dashboards .container.docs .payment-section .footer-btn .create-order-btn {
+  background-color: var(--color-green-01);
+  color: white;
+}
+
+.pharmacyDashboard .dashboards .container.chats {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: none;
+}
+.pharmacyDashboard .dashboards .container.chats .waiting-list {
+  margin: 1rem;
   padding: 1rem;
-  margin: 1rem;
+  border-right: 0.1rem solid var(--color-border-gray-01);
 }
-.pharmacyDashboard .dashboards .container .right .recipe-details div {
-  display: flex;
-  justify-content: space-between;
+.pharmacyDashboard .dashboards .container.chats .waiting-list h1 {
+  font-size: 3rem;
+  text-transform: capitalize;
+  background-image: linear-gradient(black, white);
+  background: -webkit-linear-gradient(#333, #eee);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.pharmacyDashboard .dashboards .container.chats .waiting-list h2 {
+  text-transform: capitalize;
+  color: var(--color-border-gray-03);
+  font-weight: 400;
   font-size: 1.8rem;
 }
-.pharmacyDashboard .dashboards .container .right .recipe-details .final-price {
+.pharmacyDashboard .dashboards .container.chats .waiting-list .msg-list {
+  font-size: 1.8rem;
+}
+.pharmacyDashboard .dashboards .container.chats .waiting-list .msg-list .msg {
+  display: grid;
+  grid-template-columns: 10% 1fr 35% 15% 13%;
+  align-items: center;
+  margin: 1rem;
+  padding: 1rem;
+}
+.pharmacyDashboard .dashboards .container.chats .waiting-list .msg-list .msg img {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+}
+.pharmacyDashboard .dashboards .container.chats .waiting-list .msg-list .msg .name-section {
+  display: block;
+}
+.pharmacyDashboard .dashboards .container.chats .waiting-list .msg-list .msg .name-section .name {
+  margin: 1rem;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+.pharmacyDashboard .dashboards .container.chats .waiting-list .msg-list .msg .name-section .distance {
+  margin: 1rem;
+}
+.pharmacyDashboard .dashboards .container.chats .waiting-list .msg-list .msg .view-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.pharmacyDashboard .dashboards .container.chats .waiting-list .msg-list .msg .view-section img {
+  width: 2rem;
+  height: 2rem;
+}
+.pharmacyDashboard .dashboards .container.chats .waiting-list .msg-list .msg .view-section span:nth-child(2) {
   color: var(--color-green-01);
 }
-.pharmacyDashboard .dashboards .container .right .recipe-details .print-recipe {
-  background-color: black;
-  color: white;
-  border-radius: 3rem;
-  margin: 1rem;
-  margin-left: auto;
+.pharmacyDashboard .dashboards .container.chats .waiting-list .msg-list .msg .view-section span:nth-child(3) {
   padding: 1rem;
-  width: 15rem;
+  border: 0.2rem solid var(--color-border-gray-02);
+  border-radius: 1rem;
+  width: 10rem;
   display: flex;
   justify-content: center;
 }
-.pharmacyDashboard .dashboards .container .right .recipe-details .print-recipe:hover {
+.pharmacyDashboard .dashboards .container.chats .waiting-list .msg-list .msg .btn {
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10rem;
+}
+.pharmacyDashboard .dashboards .container.chats .waiting-list .msg-list .msg .decline-btn {
+  border: 0.2rem solid var(--color-red-01);
+  color: var(--color-red-01);
+}
+.pharmacyDashboard .dashboards .container.chats .waiting-list .msg-list .msg .accept-btn {
+  border: 0.2rem solid var(--color-green-01);
+  color: var(--color-green-01);
+}
+.pharmacyDashboard .dashboards .container.chats .Instructions-section {
+  font-size: 1.6rem;
+  margin: 1rem;
+  padding: 1rem;
+}
+.pharmacyDashboard .dashboards .container.chats .Instructions-section .title {
   font-weight: 500;
-  transition: ease-in-out 0.3sec;
-  cursor: pointer;
+  text-transform: capitalize;
+  font-size: 2rem;
+}
+.pharmacyDashboard .dashboards .container.chats .Instructions-section h2 {
+  font-size: 1.6rem;
+  color: var(--color-border-gray-03);
+  margin-top: 1rem;
+  text-transform: capitalize;
+}
+.pharmacyDashboard .dashboards .container.chats .Instructions-section p {
+  font-size: 1.6rem;
 }
 
 .pharmacyDashboard .dashboards .container.transactions {

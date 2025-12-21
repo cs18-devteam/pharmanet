@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /
 /contactus
 /aboutus
@@ -99,3 +100,5 @@
 /api/v1/customers/:customerId/pharmacy/register
 /api/v1/customers/:customerId/cart
 /api/v1/orders
+=======
+>>>>>>> chathura/backend/orders/2.0

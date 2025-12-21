@@ -2,7 +2,8 @@
 @use "sass:math";
 @use "./pharmacyDashboard__oders" as dashboard_orders;
 @use "./pharmacyDashboard__transactions" as dashboard_transactions;
-@use "./pharmacyDashboard_chat" as chat;
+@use "./pharmacyDashborder__waiting_list" as waiting-list;
+@use "./pharmacyDashboard__recipt" as doc;
 
 /* paging effect */
 $containers : 'docs' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 'staff';
@@ -561,13 +562,62 @@ $containers : 'docs' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'produc
                 grid-template-rows: 8rem 1fr;
 
                 .left-side{
-                    background-color: #eee;
+                    //background-color: #eee;
                     border-radius: 3rem;
+                    border: 0.1rem solid var(--color-border-gray-01);
                     height: 70rem;
                     
 
                     .search-bar{
                         margin: 1rem;
+                    }
+
+                    .title-section{
+                        .small-title{
+                            font-size: 1.3rem;
+                            text-transform: capitalize;
+
+                        }
+                        .title{
+                            font-size: 1.8rem;
+                            text-transform: capitalize;
+                            font-weight: 500;
+                            padding: 1rem;
+
+                            .amount-of-products{
+                                color: var(--color-green-01);
+                            }
+                            margin-bottom: 3rem;
+                            border-bottom: 0.1rem solid var(--color-border-gray-01);
+
+                        }
+
+                    }
+
+                    .quick-looks{
+                        padding: 1rem;
+                        border-bottom: 0.1rem solid var(--color-border-gray-01);
+                        .tab{
+                            display: flex;
+                            justify-content: space-between;
+                            span:nth-child(1){
+                                text-transform: capitalize;
+                            }
+                            span:nth-child(2){
+                                width: 5rem;
+                                height: 2rem;
+                            }
+                            span:nth-child(3){
+                                margin: 1rem;
+                                padding: 1rem;
+                                border-radius: 3rem;
+                                color: white;
+                                font-size: 1.8rem;
+                            }
+                            .grreen-line{
+                                background-color: var(--color-green-01);
+                            }
+                        }
                     }
 
                     .pagination {
@@ -717,11 +767,19 @@ $containers : 'docs' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'produc
 }
 
 
-.pharmacyDashboard .dashboards .container {
-    @include chat.chat;
+// .pharmacyDashboard .dashboards .container.chatss {
+//     @include chat.chat;
+// }
+
+.pharmacyDashboard .dashboards .container.docs {
+    @include doc.documents;
+} 
+
+
+//waiting-list
+.pharmacyDashboard .dashboards .container.chats {
+    @include waiting-list.chat; 
 }
-
-
 
 
 .pharmacyDashboard .dashboards .container{

@@ -15,6 +15,7 @@ exports.pharmacistRouter = SubRouter.route('/pharmacies/:pharmacyId/pharmacist/:
 .subRoute('/attendance' , {
     get : pharmacyAttendanceController.renderAttendance,
 })
+.subRoute('/')
 
 exports.pharmacyRouter = SubRouter.route('/pharmacies/:pharmacyId')
 .subRoute('/medicines' , {

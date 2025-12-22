@@ -1,0 +1,145 @@
+.createStaff{
+     padding: 0;
+
+$primary: #1A7F78;
+$secondary-blue: #4fb6f5;
+$card-radius: 20px;
+$text-dark: #000;
+$green: #0f766e;
+
+
+body {
+  min-height: 100vh;
+ 
+}
+
+.page {
+  min-height: 100vh;
+  padding: 40px;
+  background: linear-gradient(113deg, #69CDFF 0%, #127EB5 20%, #006395 64.59%, #006395 83.5%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  position: relative;
+  z-index: 3;
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 1100px;
+//   background: #fff;
+//   border-radius: $card-radius;
+//   padding: 28px;
+//   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+
+
+&::before,
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: -1;
+  }
+
+  /* 2nd page behind */
+  &::before {
+    width: 90%;
+    transform: translateY(-14px) translateX(5rem);
+    opacity: 0.6;
+  }
+
+  /* 3rd page behind */
+  &::after {
+    width: 85%;
+    transform: translateY(-28px) translateX(7.5rem);
+    opacity: 0.3;
+  }
+}
+
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+
+  h2 {
+    font-size: 24px;
+    font-family: "Red Hat Display";
+    margin-bottom: 6px;
+    background: linear-gradient(90deg, #000 0%, #666 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  p {
+    font-size: 14px;
+    color: $text-dark;
+  }
+}
+
+.btn-create {
+  background: $primary;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.card-body {
+  display: flex;
+  gap: 24px;
+}
+
+.staff-list {
+  width: 300px;
+}
+
+.staff-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0;
+
+  img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .info {
+    h4 {
+      font-size: 14px;
+      color: $text-dark;
+      margin-bottom: 4px;
+    }
+
+    span {
+      font-size: 12px;
+      color: $text-dark;
+      font-weight: 400;
+    }
+  }
+}
+
+.divider {
+  width: 2px;
+  background: #e5e7eb;
+  height: 38rem;
+ 
+}
+}

@@ -7033,6 +7033,582 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   color: #fff;
 }
 
+.createStaff {
+  padding: 0;
+}
+.createStaff body {
+  min-height: 100vh;
+}
+.createStaff .page {
+  min-height: 100vh;
+  padding: 40px;
+  background: linear-gradient(113deg, #69CDFF 0%, #127EB5 20%, #006395 64.59%, #006395 83.5%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.createStaff .card {
+  position: relative;
+  z-index: 3;
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 1100px;
+}
+.createStaff .card::before, .createStaff .card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.7);
+  z-index: -1;
+}
+.createStaff .card {
+  /* 2nd page behind */
+}
+.createStaff .card::before {
+  width: 90%;
+  transform: translateY(-14px) translateX(5rem);
+  opacity: 0.6;
+}
+.createStaff .card {
+  /* 3rd page behind */
+}
+.createStaff .card::after {
+  width: 85%;
+  transform: translateY(-28px) translateX(7.5rem);
+  opacity: 0.3;
+}
+.createStaff .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.createStaff .card-header h2 {
+  font-size: 24px;
+  font-family: "Red Hat Display";
+  margin-bottom: 6px;
+  background: linear-gradient(90deg, #000 0%, #666 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.createStaff .card-header p {
+  font-size: 14px;
+  color: #000;
+}
+.createStaff .btn-create {
+  background: #1A7F78;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.createStaff .btn-create:hover {
+  opacity: 0.9;
+}
+.createStaff .card-body {
+  display: flex;
+  gap: 24px;
+}
+.createStaff .staff-list {
+  width: 300px;
+}
+.createStaff .staff-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0;
+}
+.createStaff .staff-item img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.createStaff .staff-item .info h4 {
+  font-size: 14px;
+  color: #000;
+  margin-bottom: 4px;
+}
+.createStaff .staff-item .info span {
+  font-size: 12px;
+  color: #000;
+  font-weight: 400;
+}
+.createStaff .divider {
+  width: 2px;
+  background: #e5e7eb;
+  height: 38rem;
+}
+
+.staffOptions {
+  padding: 0;
+}
+.staffOptions body {
+  min-height: 100vh;
+}
+.staffOptions .page {
+  min-height: 100vh;
+  padding: 40px;
+  background: linear-gradient(113deg, #69CDFF 0%, #127EB5 20%, #006395 64.59%, #006395 83.5%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.staffOptions .page .card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 3;
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 1100px;
+}
+.staffOptions .page .card::before, .staffOptions .page .card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.7);
+  z-index: -1;
+}
+.staffOptions .page .card {
+  /* 2nd page behind */
+}
+.staffOptions .page .card::before {
+  width: 90%;
+  transform: translateY(-14px) translateX(5rem);
+  opacity: 0.6;
+}
+.staffOptions .page .card {
+  /* 3rd page behind */
+}
+.staffOptions .page .card::after {
+  width: 85%;
+  transform: translateY(-28px) translateX(7.5rem);
+  opacity: 0.3;
+}
+.staffOptions .page .card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.staffOptions .page .card-header h2 {
+  font-size: 24px;
+  font-family: "Red Hat Display";
+  margin-bottom: 6px;
+  background: linear-gradient(90deg, #000 0%, #666 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.staffOptions .page .card-header p {
+  font-size: 14px;
+  color: #000;
+}
+.staffOptions .page .btn-create {
+  background: #1A7F78;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.staffOptions .page .btn-create:hover {
+  opacity: 0.9;
+}
+.staffOptions .page .card-body {
+  display: flex;
+  gap: 24px;
+}
+.staffOptions .page .staff-list {
+  width: 300px;
+}
+.staffOptions .page .staff-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0;
+}
+.staffOptions .page .staff-item img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.staffOptions .page .staff-item .info h4 {
+  font-size: 14px;
+  color: #000;
+  margin-bottom: 4px;
+}
+.staffOptions .page .staff-item .info span {
+  font-size: 12px;
+  color: #000;
+  font-weight: 400;
+}
+.staffOptions .page .divider {
+  width: 2px;
+  background: #e5e7eb;
+  height: 38rem;
+  margin: 4rem;
+  margin-top: 0;
+}
+.staffOptions .page .actions {
+  flex: 1;
+  padding-left: -10px;
+  padding-right: 8rem;
+}
+.staffOptions .page .action-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.staffOptions .page .action-row span {
+  font-size: 14px;
+  color: #000;
+}
+.staffOptions .page .btn-outline {
+  background: #fff;
+  border: 1px solid #9ca3af;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.staffOptions .page {
+  /* Side Panel */
+}
+.staffOptions .page .side-panel {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 400px;
+  height: 100%;
+  background: #fff;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.15);
+  transition: right 0.3s ease;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  border-bottom-right-radius: 0%;
+  border-top-right-radius: 0%;
+}
+.staffOptions .page {
+  /* Active */
+}
+.staffOptions .page .side-panel.active {
+  right: 0px;
+  z-index: 1000;
+}
+.staffOptions .page .overlay.active {
+  display: block;
+}
+.staffOptions .page .panel-header {
+  padding: 16px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.staffOptions .page .close-btn {
+  font-size: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.staffOptions .page .close-btn:hover {
+  color: red;
+}
+.staffOptions .page .panel-content {
+  padding: 16px;
+  overflow-y: auto;
+}
+.staffOptions .page .panel-content h4 {
+  margin: 16px 0 8px;
+  font-size: 16px;
+  color: #000;
+  margin: 1rem;
+  margin-left: 0;
+}
+.staffOptions .page .panel-content h5 {
+  color: #000;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 200;
+  line-height: normal;
+  text-transform: capitalize;
+  margin: 1rem;
+  margin-left: 0;
+}
+.staffOptions .page {
+  /* Permission Row */
+}
+.staffOptions .page .permission {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+.staffOptions .page .permission span {
+  font-weight: 600;
+}
+.staffOptions .page p {
+  font-size: 16spx;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 300;
+}
+.staffOptions .page {
+  /* Toggle Switch */
+}
+.staffOptions .page .switch {
+  position: relative;
+  width: 40px;
+  height: 20px;
+}
+.staffOptions .page .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.staffOptions .page .slider {
+  position: absolute;
+  inset: 0;
+  background: #ccc;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.staffOptions .page .slider::before {
+  content: "";
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  top: 2px;
+  background: #fff;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+.staffOptions .page .switch input:checked + .slider {
+  background: #000;
+}
+.staffOptions .page .switch input:checked + .slider::before {
+  transform: translateX(20px);
+}
+.staffOptions .page .side-panel {
+  padding: 2rem;
+  overflow-y: auto;
+}
+.staffOptions .page .side-panel .editPanelHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.staffOptions .page .side-panel .editPanelHeader h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 0.3rem;
+}
+.staffOptions .page .side-panel .uid {
+  color: #777;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+.staffOptions .page .side-panel .profile-section {
+  display: flex;
+  justify-content: left;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.staffOptions .page .side-panel .profile-section .profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.staffOptions .page .side-panel .profile-section .change-btn {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 8px 14px;
+  font-size: 1.1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+.staffOptions .page .side-panel .profile-section .change-btn:hover {
+  border-color: #1A7F78;
+  color: #1A7F78;
+}
+.staffOptions .page .side-panel .account-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.staffOptions .page .side-panel .account-form label {
+  font-size: 1.5rem;
+  font-weight: 550;
+  color: #444;
+}
+.staffOptions .page .side-panel .account-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+.staffOptions .page .side-panel .account-form input:focus {
+  border-color: #0b7a71;
+  outline: none;
+}
+.staffOptions .page .side-panel .account-form .hint {
+  font-size: 1.3rem;
+  color: #888;
+  margin: -3px 0 5px;
+  line-height: 1.5rem;
+}
+.staffOptions .page .side-panel .account-form .save-btn {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 12px;
+  background: #0b7a71;
+  color: #fff;
+  font-size: 1.7rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.staffOptions .page .side-panel .account-form .save-btn:hover {
+  background: #095f57;
+}
+.staffOptions .page .side-panel {
+  padding: 2rem;
+}
+.staffOptions .page .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1.5rem;
+  gap: 2rem;
+  border-bottom: 1px solid black;
+}
+.staffOptions .page .modal-header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+.staffOptions .page .modal-header p {
+  margin: 4px 0 0;
+  color: black;
+  font-weight: 100;
+  font-size: 14px;
+}
+.staffOptions .page .modal-header .close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+.staffOptions .page .modal-body {
+  padding: 1.5rem;
+}
+.staffOptions .page .section {
+  margin-bottom: 2rem;
+}
+.staffOptions .page .section label {
+  display: block;
+  margin: 0.5rem 0;
+  font-size: 14px;
+}
+.staffOptions .page .section label span {
+  color: red;
+}
+.staffOptions .page .section select,
+.staffOptions .page .section input,
+.staffOptions .page .section textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid black;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.staffOptions .page .section textarea {
+  resize: none;
+  height: 100px;
+}
+.staffOptions .page .section small {
+  color: black;
+  font-weight: 400;
+  font-size: 12px;
+}
+.staffOptions .page .section-title {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+.staffOptions .page .section-title .icon {
+  background: none;
+  color: #1A7F78;
+  padding: 0px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+.staffOptions .page .section-title h4 {
+  margin: 0;
+  font-size: 15px;
+}
+.staffOptions .page .section-title p {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: black;
+  font-weight: 400;
+}
+.staffOptions .page .date-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.staffOptions .page .modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid black;
+}
+.staffOptions .page .modal-footer .btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+.staffOptions .page .modal-footer .cancel {
+  background: white;
+  border: 1px solid black;
+}
+.staffOptions .page .modal-footer .primary {
+  background: #1A7F78;
+  color: white;
+}
+
 .cashier-create-bill {
   background: linear-gradient(180deg, #f8fbfb, #e8f0f0);
   /* ---------------- Dashboard Layout ---------------- */

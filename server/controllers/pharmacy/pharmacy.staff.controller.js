@@ -2,6 +2,35 @@ const { getRequestData } = require("../../common/getRequestData");
 const { response, responseJson } = require("../../common/response");
 const PharmacyStaff = require("../../models/PharmacyStaffModel");
 const Users = require("../../models/UserModel");
+const view = require("../../common/view");
+
+
+exports.renderCreateStaff = async(req, res) => {
+    try{ 
+    return response(res, view('staff/create'))
+}catch(e){
+    console.log(e);
+    return responseJson(res , 400 , {
+        status:"error",
+        message :"create staff page doesnot loaded",
+        error:e,
+
+    })
+}
+}
+
+exports.renderStaffOptions = async(req, res) =>{
+    try{
+        return response(res,view('staff/options'))
+    }catch(e){
+        console.log(e);
+        return responseJson(res, 400 , {
+            status: "error",
+            message: "staff options page doesnot loaded",
+            error: e,
+        })
+    }
+}
 
 exports.createStaffMember = async (req , res)=>{
     await Users.query("start transaction");

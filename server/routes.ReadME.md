@@ -43,6 +43,7 @@
 /pharmacies/:pharmacyId/pharmacist/:staffId
 /pharmacies/:pharmacyId/pharmacist/:staffId/staff
 /pharmacies/:pharmacyId/pharmacist/:staffId/attendance
+/pharmacies/:pharmacyId/pharmacist/:staffId
 /pharmacies/:pharmacyId/medicines
 /pharmacies/:pharmacyId/cashiers/:cashierId/bills/get
 /pharmacies/:pharmacyId/cashiers/:cashierId/bills/get/:billId
@@ -99,3 +100,5 @@
 /api/v1/customers/:customerId/pharmacy/register
 /api/v1/customers/:customerId/cart
 /api/v1/orders
+/pharmacist/:pharmacyId/staff/create
+/pharmacist/:pharmacyId/staff/options

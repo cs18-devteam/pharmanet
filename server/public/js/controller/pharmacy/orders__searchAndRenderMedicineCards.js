@@ -8,9 +8,6 @@ const orderCount = document.querySelector('.orders .total__orders__description__
 const numberOfItemsInCart = document.querySelector('.orders .no_of_cart_items');
 const priceOfCartItems = document.querySelector('.orders .amount_of_cart_items');
 const cartList = document.querySelector('.orders .cart_list');
-const ordersPayButton = document.querySelector('.orders .pay_button');
-
-
 
 
 
@@ -108,10 +105,6 @@ medicineCardContainer?.addEventListener('click' , e=>{
 
 
     
-})
-
-ordersPayButton?.addEventListener('click' , ()=>{
-    openOrdersPaymentMode();
 })
 
 init();

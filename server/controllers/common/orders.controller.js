@@ -11,6 +11,7 @@ exports.createOrder = apiCatchAsync(async (req , res)=>{
 
         const reqData = JSON.parse(await getRequestData(req));
         const carts = reqData.carts;
+        const items = reqData.items;
         let ordersData  = [];
         
         const [order] =await  PharmacyOrders.save({
@@ -27,7 +28,6 @@ exports.createOrder = apiCatchAsync(async (req , res)=>{
 
             ordersData = await Promise.all(cartsData).then(data=>data.map(d=>d[0]));
         }
-
 
         const orders= await Promise.all(ordersData.map(async (item)=>{
             return await PharmacyOrdersItems.save({

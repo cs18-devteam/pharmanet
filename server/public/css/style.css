@@ -10040,64 +10040,14 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   position: absolute;
   overflow: hidden;
 }
-.pharmacyDashboard input[type=radio]#docs {
-  display: none;
-}
-.pharmacyDashboard input[type=radio]#docs ~ .dashboards > .docs {
-  transform: translateY(0rem) scale(1);
-  z-index: 0;
-  transform-origin: top;
-  opacity: 1;
-  transition: all 0.8s ease;
-  transition-delay: 0.7s;
-}
-.pharmacyDashboard input[type=radio]#docs:checked ~ .nav > ul > li > label[for=docs] {
-  background-image: linear-gradient(120deg, var(--color-green-01), var(--color-green-02));
-  color: #fff;
-}
-.pharmacyDashboard input[type=radio]#docs:checked ~ .dashboards .container:nth-child(1) {
-  transition-delay: 0s;
-  opacity: 1;
-  transform: translate(0) scale(1);
-}
-.pharmacyDashboard input[type=radio]#docs:checked ~ .dashboards .container:nth-child(2) {
-  opacity: 0.8;
-  transform: translateY(calc(-0.5rem * 1)) scale(calc(1 - 0.1 * 1));
-  transition-delay: 0.1s;
-}
-.pharmacyDashboard input[type=radio]#docs:checked ~ .dashboards .container:nth-child(3) {
-  opacity: 0.6;
-  transform: translateY(calc(-0.5rem * 2)) scale(calc(1 - 0.1 * 2));
-  transition-delay: 0.2s;
-}
-.pharmacyDashboard input[type=radio]#docs:checked ~ .dashboards .container:nth-child(4) {
-  opacity: 0.4;
-  transform: translateY(calc(-0.5rem * 3)) scale(calc(1 - 0.1 * 3));
-  transition-delay: 0.3s;
-}
-.pharmacyDashboard input[type=radio]#docs:checked ~ .dashboards .container:nth-child(5) {
-  opacity: 0.2;
-  transform: translateY(calc(-0.5rem * 4)) scale(calc(1 - 0.1 * 4));
-  transition-delay: 0.4s;
-}
-.pharmacyDashboard input[type=radio]#docs:checked ~ .dashboards .container:nth-child(6) {
-  opacity: 0;
-  transform: translateY(calc(-0.5rem * 5)) scale(calc(1 - 0.1 * 5));
-  transition-delay: 0.5s;
-}
-.pharmacyDashboard input[type=radio]#docs:checked ~ .dashboards .container:nth-child(7) {
-  opacity: -0.2;
-  transform: translateY(calc(-0.5rem * 6)) scale(calc(1 - 0.1 * 6));
-  transition-delay: 0.6s;
-}
 .pharmacyDashboard input[type=radio]#orders {
   display: none;
 }
 .pharmacyDashboard input[type=radio]#orders ~ .dashboards > .orders {
-  transform: translateY(-0.5rem) scale(0.9);
-  z-index: -1;
+  transform: translateY(0rem) scale(1);
+  z-index: 0;
   transform-origin: top;
-  opacity: 0.7;
+  opacity: 1;
   transition: all 0.8s ease;
   transition-delay: 0.6s;
 }
@@ -10106,48 +10056,43 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   color: #fff;
 }
 .pharmacyDashboard input[type=radio]#orders:checked ~ .dashboards .container:nth-child(1) {
-  opacity: 1;
   transition-delay: 0s;
-  transform: translateY(110%) scale(1);
-}
-.pharmacyDashboard input[type=radio]#orders:checked ~ .dashboards .container:nth-child(2) {
-  transition-delay: 0.1s;
   opacity: 1;
   transform: translate(0) scale(1);
 }
-.pharmacyDashboard input[type=radio]#orders:checked ~ .dashboards .container:nth-child(3) {
+.pharmacyDashboard input[type=radio]#orders:checked ~ .dashboards .container:nth-child(2) {
   opacity: 0.8;
   transform: translateY(calc(-0.5rem * 1)) scale(calc(1 - 0.1 * 1));
+  transition-delay: 0.1s;
+}
+.pharmacyDashboard input[type=radio]#orders:checked ~ .dashboards .container:nth-child(3) {
+  opacity: 0.6;
+  transform: translateY(calc(-0.5rem * 2)) scale(calc(1 - 0.1 * 2));
   transition-delay: 0.2s;
 }
 .pharmacyDashboard input[type=radio]#orders:checked ~ .dashboards .container:nth-child(4) {
-  opacity: 0.6;
-  transform: translateY(calc(-0.5rem * 2)) scale(calc(1 - 0.1 * 2));
+  opacity: 0.4;
+  transform: translateY(calc(-0.5rem * 3)) scale(calc(1 - 0.1 * 3));
   transition-delay: 0.3s;
 }
 .pharmacyDashboard input[type=radio]#orders:checked ~ .dashboards .container:nth-child(5) {
-  opacity: 0.4;
-  transform: translateY(calc(-0.5rem * 3)) scale(calc(1 - 0.1 * 3));
+  opacity: 0.2;
+  transform: translateY(calc(-0.5rem * 4)) scale(calc(1 - 0.1 * 4));
   transition-delay: 0.4s;
 }
 .pharmacyDashboard input[type=radio]#orders:checked ~ .dashboards .container:nth-child(6) {
-  opacity: 0.2;
-  transform: translateY(calc(-0.5rem * 4)) scale(calc(1 - 0.1 * 4));
-  transition-delay: 0.5s;
-}
-.pharmacyDashboard input[type=radio]#orders:checked ~ .dashboards .container:nth-child(7) {
   opacity: 0;
   transform: translateY(calc(-0.5rem * 5)) scale(calc(1 - 0.1 * 5));
-  transition-delay: 0.6s;
+  transition-delay: 0.5s;
 }
 .pharmacyDashboard input[type=radio]#chats {
   display: none;
 }
 .pharmacyDashboard input[type=radio]#chats ~ .dashboards > .chats {
-  transform: translateY(-1rem) scale(0.8);
-  z-index: -2;
+  transform: translateY(-0.5rem) scale(0.9);
+  z-index: -1;
   transform-origin: top;
-  opacity: 0.4;
+  opacity: 0.7;
   transition: all 0.8s ease;
   transition-delay: 0.5s;
 }
@@ -10161,43 +10106,38 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   transform: translateY(110%) scale(1);
 }
 .pharmacyDashboard input[type=radio]#chats:checked ~ .dashboards .container:nth-child(2) {
-  opacity: 1;
   transition-delay: 0.1s;
-  transform: translateY(110%) scale(1);
-}
-.pharmacyDashboard input[type=radio]#chats:checked ~ .dashboards .container:nth-child(3) {
-  transition-delay: 0.2s;
   opacity: 1;
   transform: translate(0) scale(1);
 }
-.pharmacyDashboard input[type=radio]#chats:checked ~ .dashboards .container:nth-child(4) {
+.pharmacyDashboard input[type=radio]#chats:checked ~ .dashboards .container:nth-child(3) {
   opacity: 0.8;
   transform: translateY(calc(-0.5rem * 1)) scale(calc(1 - 0.1 * 1));
+  transition-delay: 0.2s;
+}
+.pharmacyDashboard input[type=radio]#chats:checked ~ .dashboards .container:nth-child(4) {
+  opacity: 0.6;
+  transform: translateY(calc(-0.5rem * 2)) scale(calc(1 - 0.1 * 2));
   transition-delay: 0.3s;
 }
 .pharmacyDashboard input[type=radio]#chats:checked ~ .dashboards .container:nth-child(5) {
-  opacity: 0.6;
-  transform: translateY(calc(-0.5rem * 2)) scale(calc(1 - 0.1 * 2));
+  opacity: 0.4;
+  transform: translateY(calc(-0.5rem * 3)) scale(calc(1 - 0.1 * 3));
   transition-delay: 0.4s;
 }
 .pharmacyDashboard input[type=radio]#chats:checked ~ .dashboards .container:nth-child(6) {
-  opacity: 0.4;
-  transform: translateY(calc(-0.5rem * 3)) scale(calc(1 - 0.1 * 3));
-  transition-delay: 0.5s;
-}
-.pharmacyDashboard input[type=radio]#chats:checked ~ .dashboards .container:nth-child(7) {
   opacity: 0.2;
   transform: translateY(calc(-0.5rem * 4)) scale(calc(1 - 0.1 * 4));
-  transition-delay: 0.6s;
+  transition-delay: 0.5s;
 }
 .pharmacyDashboard input[type=radio]#medicines {
   display: none;
 }
 .pharmacyDashboard input[type=radio]#medicines ~ .dashboards > .medicines {
-  transform: translateY(-1.5rem) scale(0.7);
-  z-index: -3;
+  transform: translateY(-1rem) scale(0.8);
+  z-index: -2;
   transform-origin: top;
-  opacity: 0.1;
+  opacity: 0.4;
   transition: all 0.8s ease;
   transition-delay: 0.4s;
 }
@@ -10216,38 +10156,33 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   transform: translateY(110%) scale(1);
 }
 .pharmacyDashboard input[type=radio]#medicines:checked ~ .dashboards .container:nth-child(3) {
-  opacity: 1;
   transition-delay: 0.2s;
-  transform: translateY(110%) scale(1);
-}
-.pharmacyDashboard input[type=radio]#medicines:checked ~ .dashboards .container:nth-child(4) {
-  transition-delay: 0.3s;
   opacity: 1;
   transform: translate(0) scale(1);
 }
-.pharmacyDashboard input[type=radio]#medicines:checked ~ .dashboards .container:nth-child(5) {
+.pharmacyDashboard input[type=radio]#medicines:checked ~ .dashboards .container:nth-child(4) {
   opacity: 0.8;
   transform: translateY(calc(-0.5rem * 1)) scale(calc(1 - 0.1 * 1));
+  transition-delay: 0.3s;
+}
+.pharmacyDashboard input[type=radio]#medicines:checked ~ .dashboards .container:nth-child(5) {
+  opacity: 0.6;
+  transform: translateY(calc(-0.5rem * 2)) scale(calc(1 - 0.1 * 2));
   transition-delay: 0.4s;
 }
 .pharmacyDashboard input[type=radio]#medicines:checked ~ .dashboards .container:nth-child(6) {
-  opacity: 0.6;
-  transform: translateY(calc(-0.5rem * 2)) scale(calc(1 - 0.1 * 2));
-  transition-delay: 0.5s;
-}
-.pharmacyDashboard input[type=radio]#medicines:checked ~ .dashboards .container:nth-child(7) {
   opacity: 0.4;
   transform: translateY(calc(-0.5rem * 3)) scale(calc(1 - 0.1 * 3));
-  transition-delay: 0.6s;
+  transition-delay: 0.5s;
 }
 .pharmacyDashboard input[type=radio]#transactions {
   display: none;
 }
 .pharmacyDashboard input[type=radio]#transactions ~ .dashboards > .transactions {
-  transform: translateY(-2rem) scale(0.6);
-  z-index: -4;
+  transform: translateY(-1.5rem) scale(0.7);
+  z-index: -3;
   transform-origin: top;
-  opacity: -0.2;
+  opacity: 0.1;
   transition: all 0.8s ease;
   transition-delay: 0.3s;
 }
@@ -10271,33 +10206,28 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   transform: translateY(110%) scale(1);
 }
 .pharmacyDashboard input[type=radio]#transactions:checked ~ .dashboards .container:nth-child(4) {
-  opacity: 1;
   transition-delay: 0.3s;
-  transform: translateY(110%) scale(1);
-}
-.pharmacyDashboard input[type=radio]#transactions:checked ~ .dashboards .container:nth-child(5) {
-  transition-delay: 0.4s;
   opacity: 1;
   transform: translate(0) scale(1);
 }
-.pharmacyDashboard input[type=radio]#transactions:checked ~ .dashboards .container:nth-child(6) {
+.pharmacyDashboard input[type=radio]#transactions:checked ~ .dashboards .container:nth-child(5) {
   opacity: 0.8;
   transform: translateY(calc(-0.5rem * 1)) scale(calc(1 - 0.1 * 1));
-  transition-delay: 0.5s;
+  transition-delay: 0.4s;
 }
-.pharmacyDashboard input[type=radio]#transactions:checked ~ .dashboards .container:nth-child(7) {
+.pharmacyDashboard input[type=radio]#transactions:checked ~ .dashboards .container:nth-child(6) {
   opacity: 0.6;
   transform: translateY(calc(-0.5rem * 2)) scale(calc(1 - 0.1 * 2));
-  transition-delay: 0.6s;
+  transition-delay: 0.5s;
 }
 .pharmacyDashboard input[type=radio]#products {
   display: none;
 }
 .pharmacyDashboard input[type=radio]#products ~ .dashboards > .products {
-  transform: translateY(-2.5rem) scale(0.5);
-  z-index: -5;
+  transform: translateY(-2rem) scale(0.6);
+  z-index: -4;
   transform-origin: top;
-  opacity: -0.5;
+  opacity: -0.2;
   transition: all 0.8s ease;
   transition-delay: 0.2s;
 }
@@ -10326,28 +10256,23 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   transform: translateY(110%) scale(1);
 }
 .pharmacyDashboard input[type=radio]#products:checked ~ .dashboards .container:nth-child(5) {
-  opacity: 1;
   transition-delay: 0.4s;
-  transform: translateY(110%) scale(1);
-}
-.pharmacyDashboard input[type=radio]#products:checked ~ .dashboards .container:nth-child(6) {
-  transition-delay: 0.5s;
   opacity: 1;
   transform: translate(0) scale(1);
 }
-.pharmacyDashboard input[type=radio]#products:checked ~ .dashboards .container:nth-child(7) {
+.pharmacyDashboard input[type=radio]#products:checked ~ .dashboards .container:nth-child(6) {
   opacity: 0.8;
   transform: translateY(calc(-0.5rem * 1)) scale(calc(1 - 0.1 * 1));
-  transition-delay: 0.6s;
+  transition-delay: 0.5s;
 }
 .pharmacyDashboard input[type=radio]#staff {
   display: none;
 }
 .pharmacyDashboard input[type=radio]#staff ~ .dashboards > .staff {
-  transform: translateY(-3rem) scale(0.4);
-  z-index: -6;
+  transform: translateY(-2.5rem) scale(0.5);
+  z-index: -5;
   transform-origin: top;
-  opacity: -0.8;
+  opacity: -0.5;
   transition: all 0.8s ease;
   transition-delay: 0.1s;
 }
@@ -10381,12 +10306,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   transform: translateY(110%) scale(1);
 }
 .pharmacyDashboard input[type=radio]#staff:checked ~ .dashboards .container:nth-child(6) {
-  opacity: 1;
   transition-delay: 0.5s;
-  transform: translateY(110%) scale(1);
-}
-.pharmacyDashboard input[type=radio]#staff:checked ~ .dashboards .container:nth-child(7) {
-  transition-delay: 0.6s;
   opacity: 1;
   transform: translate(0) scale(1);
 }
@@ -10468,6 +10388,33 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   margin: 3rem 3rem 0 3rem;
   border-radius: 3rem;
   padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.pharmacyDashboard .header-container .quick_look::after {
+  width: 100%;
+  aspect-ratio: 1;
+  position: absolute;
+  top: 0;
+  left: 0%;
+  content: "";
+  background-image: linear-gradient(var(--color-green-01), var(--color-green-02));
+  opacity: 0.1;
+  mask-image: url(/images/spin.svg);
+  mask-size: 100%;
+  mask-position: top;
+  mask-repeat: no-repeat;
+  margin: 2rem;
+  animation: spin 20s ease infinite;
+  transform-origin: center;
+}
+.pharmacyDashboard .header-container .quick_look::before {
+  content: "No Notifications yet";
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+  opacity: 0.2;
 }
 .pharmacyDashboard .header-container .quick_look .title {
   font-size: 2.4rem;
@@ -10513,6 +10460,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   transform: translateX(-110%);
 }
 .pharmacyDashboard .dashboards .container .orderleft-side {
+  z-index: 1;
   position: relative;
   transition: all 0.8s cubic-bezier(0.97, 0.01, 0.3, 0.97);
 }
@@ -10599,7 +10547,11 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .pharmacyDashboard .dashboards .container .order-right-side {
   margin: 1rem;
+  z-index: 1;
   transition: all 0.8s cubic-bezier(0.97, 0.01, 0.3, 0.97);
+  background-color: #fff;
+  border-radius: 3rem;
+  height: 220%;
 }
 .pharmacyDashboard .dashboards .container .order-right-side .order_summery__description {
   display: flex;
@@ -10682,6 +10634,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   border-radius: 3rem;
   padding: 1rem;
   min-height: 100%;
+  height: 220%;
 }
 .pharmacyDashboard .dashboards .container .order-right-side .cart_summery_box .cart_list .medicine_card {
   margin: 1rem;
@@ -11069,23 +11022,29 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   margin: 1rem;
 }
 
+@keyframes spin {
+  50% {
+    transform: rotate(180deg);
+  }
+}
 .pharmacyDashboard .dashboards .container.orders .payment-section-container {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: none;
-  margin: 0;
+  margin: 1rem;
   position: absolute;
   z-index: 0;
   height: 100%;
 }
 .pharmacyDashboard .dashboards .container.orders .payment-section-container .receipt-wrapper {
   background-color: var(--color-blue-01);
+  margin: 1rem;
   border-top-left-radius: 3rem;
   border-bottom-left-radius: 3rem;
   color: white;
   display: block;
-  width: 100%;
+  width: 90%;
   height: 100%;
 }
 .pharmacyDashboard .dashboards .container.orders .payment-section-container .receipt-wrapper .receipt-header {
@@ -11118,6 +11077,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   outline-style: dashed;
   outline-offset: -1rem;
   color: black;
+  height: 84%;
 }
 .pharmacyDashboard .dashboards .container.orders .payment-section-container .receipt-wrapper .receipt-card .receipt-title {
   margin: 1rem;
@@ -11161,6 +11121,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   font-weight: 500;
 }
 .pharmacyDashboard .dashboards .container.orders .payment-section-container .receipt-wrapper .receipt-card .payment {
+  display: none;
   margin: 1rem;
   padding: 1rem;
 }
@@ -11170,7 +11131,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   text-transform: capitalize;
 }
 .pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section {
-  margin: 1rem;
+  margin: 9rem;
   padding: 1rem;
 }
 .pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section h1 {
@@ -11183,6 +11144,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section form {
   margin-top: 1rem;
+  display: none;
   text-transform: capitalize;
 }
 .pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section form input {
@@ -11221,11 +11183,12 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   border-radius: 2rem;
   font-size: 2rem;
   font-weight: 500;
+  border: 0.1rem solid black;
 }
 .pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section .select-payment-method .selection .cash-btn:hover, .pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section .select-payment-method .selection .card-btn:hover {
   cursor: pointer;
 }
-.pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section .select-payment-method .selection .cash-btn {
+.pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section .select-payment-method .selection .active {
   background-color: black;
   color: white;
 }
@@ -11233,9 +11196,6 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   width: 2rem;
   height: 2rem;
   margin-left: 1rem;
-}
-.pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section .select-payment-method .selection .card-btn {
-  border: 0.1rem solid black;
 }
 .pharmacyDashboard .dashboards .container.orders .payment-section-container .payment-section .select-payment-method .selection .card-btn img {
   width: 10rem;
@@ -11674,6 +11634,42 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table tbody tr:nth-child(19) {
   animation: fade-in-up 0.3s ease;
   animation-duration: calc(0.3s * 19);
+}
+
+.pharmacyDashboard .pharmacy-profile-settings {
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+}
+.pharmacyDashboard .pharmacy-profile-settings .profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pharmacyDashboard .pharmacy-profile-settings .profile-info div {
+  font-size: 1.6rem;
+  text-align: center;
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 3rem;
+  background-color: var(--color-green-02);
+  transform: translateY(-50%);
+}
+.pharmacyDashboard .pharmacy-profile-settings .profile-info img {
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+}
+.pharmacyDashboard .pharmacy-profile-settings .signout-btn-container .signout {
+  color: #fff;
+  background-color: var(--color-red-01);
+  padding: 2rem 3rem;
+  border-radius: 3px;
+  font-size: 2rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  border: none;
+  outline: none;
 }
 
 /* admin */

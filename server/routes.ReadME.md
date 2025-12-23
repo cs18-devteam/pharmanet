@@ -99,3 +99,5 @@
 /api/v1/customers/:customerId/pharmacy/register
 /api/v1/customers/:customerId/cart
 /api/v1/orders
+/api/v1/users/:userId
+/api/v1/pharmacy/:pharmacyId

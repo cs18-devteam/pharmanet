@@ -33,6 +33,20 @@ window.cookieStore.getAll().then(cookies=>{
     Application.userId = cookies.find(c=>c.name == "id")?.value;
     Application.ip = cookies.find(c=>c.name == "ip")?.value;
 
+
+    if(Application.userId){
+        fetch(`/api/v1/users/${Application.userId}`)
+        .then(data => data.json())
+        .then(user=>Application.user = user.results)
+        .catch(e=>console.log(e));
+    }
+    if(Application.pharmacyId){
+        fetch(`/api/v1/pharmacy/${Application.pharmacyId}`)
+        .then(data => data.json())
+        .then(pharmacy=>Application.pharmacy = pharmacy.results)
+        .catch(e=>console.log(e));
+    }
+
 })
 
 
@@ -50,6 +64,10 @@ export default class Application{
     static remoteOrderId = undefined;
     static #orderMedicineResultsStack = [];
     static MessageTemplates = ChatTemplates;
+    static orderId = undefined;
+    static pharmacy = undefined;
+    static user = undefined;
+    static connectedUser = undefined;
 
     /**
      * @type {Order[]}
@@ -90,10 +108,26 @@ export default class Application{
         return this.#orders;
     }
 
+    static clearOrderItems(){
+        return this.#orders = [];
+
+    }
+
     static setOrderMedicineResultsStack(medicines = []){
         this.#orderMedicineResultsStack = medicines;
     }
 
+    static async getUserData(userId){
+        try{
+
+            const results = await fetch(`/api/v1/users/${userId}`);
+            const data= results.json();
+            return data.results;
+        }catch(e){
+            console.log(e);
+            return {};
+        }
+    }   
 
 
 }

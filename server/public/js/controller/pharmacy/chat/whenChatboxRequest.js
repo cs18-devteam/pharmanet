@@ -5,11 +5,16 @@ import { onAcceptIncomingMessage, onAnyCaseIncomingMessage, onRejectIncomingMess
 export function whenChatBoxRequest(message){
     const reqObj = ChatTemplates.readChatBoxRequest(message);
 
-    showIncomingMessage(reqObj);
-
+    showIncomingMessage({
+        ...reqObj,
+        user : Application.getUserData(reqObj.customerId),
+    });
+    
     onAcceptIncomingMessage(()=>{
-        console.log("customer = " , reqObj);
+        
         Application.connectedWith = reqObj.customerId;
+        Application.connectedUser = Application.getUserData(Application.connectedWith);
+        
     
         socket.send(ChatTemplates.acceptClient(true , reqObj.customerId));
         changeWindowTo('chats');

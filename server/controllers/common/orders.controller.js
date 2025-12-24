@@ -1,4 +1,5 @@
 const {apiCatchAsync} = require("../../common/catchAsync");
+const getMultipartData = require("../../common/getMultipartData");
 const { getRequestData } = require("../../common/getRequestData");
 const { response, responseJson } = require("../../common/response");
 const view = require("../../common/view");
@@ -71,4 +72,17 @@ exports.getOrders = apiCatchAsync(async (req , res)=>{
     })
 
 });
+
+
+exports.updateOrder = apiCatchAsync(async (req , res)=>{
+    const id = req.params.get('id');
+    const reqData = await getMultipartData(req);
+    console.log(reqData);
+    
+
+    return responseJson(res , 200 , {
+        status:"success",
+    } )
+    
+})
 

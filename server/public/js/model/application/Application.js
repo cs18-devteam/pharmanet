@@ -1,3 +1,4 @@
+import { swal } from "../../view/swal.js";
 import ChatTemplates from "./ChatTemplates.js";
 
 
@@ -68,6 +69,7 @@ export default class Application{
     static pharmacy = undefined;
     static user = undefined;
     static connectedUser = undefined;
+    static waitingList = [];
 
     /**
      * @type {Order[]}
@@ -84,6 +86,9 @@ export default class Application{
         
         this.#orders.forEach(item=>{
             if(item.medicineId == orderItem.medicineId){
+                swal({
+                    title:"Already added",
+                })
                 throw new Error("this is item is already in cart (order collection)")
             }
         });
@@ -110,7 +115,18 @@ export default class Application{
 
     static clearOrderItems(){
         return this.#orders = [];
+    }
 
+    static removeOrderItem({medicineId  , productId}){
+        this.#orders = this.#orders.filter(i=>{
+            if(i.medicineId && medicineId){
+                return i.medicineId != medicineId;
+            }else if(i.productId && productId){
+                return i.productId != productId;
+            }else{
+                return true;
+            }
+        })
     }
 
     static setOrderMedicineResultsStack(medicines = []){
@@ -128,6 +144,13 @@ export default class Application{
             return {};
         }
     }   
+
+
+
+    static addToWaitingList(reqObj){
+        this.waitingList.push(reqObj);
+        console.log(reqObj);
+    }
 
 
 }

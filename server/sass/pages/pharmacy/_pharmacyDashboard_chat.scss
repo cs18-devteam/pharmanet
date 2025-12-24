@@ -2,6 +2,11 @@
     margin: auto;
     display: grid;
     grid-template-columns: 45rem 1fr 1fr;
+
+    &.open{
+        background-color: #09776e;
+    }
+
         .left{
             max-width: 100vh;
             height: 1fr;

@@ -2,6 +2,9 @@ import html from "./../html.js";
 
 const medicineCardTemplate = html`
 <div class="medicine_card" data-id="{id}">
+    <div class="close-btn">+</div>
+
+
     <div class="dosage-icon {type}" >
         
         <svg width="20" class="{type}" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

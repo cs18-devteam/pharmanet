@@ -86,9 +86,13 @@ exports.renderPharmacyDashboard = async (req , res)=>{
         if(!staffMember){
             throw new Error("staff not found");
         }
-        
+
         return response(res , view('pharmacy/pharmacy.dashboard' , {
             transactionsView : view('pharmacy/views/dashboard.transactions.view'),
+            chatsView : view('pharmacy/views/dashboard.chats.view'),
+            productsView : view('pharmacy/views/dashboard.product.view'),
+            medicinesView : view('pharmacy/views/dashboard.medicines.view'),
+            ordersView : view('pharmacy/views/dashboard.orders.view'),
             header : view('component.header' , {
                 name:"Pharmacy Dashboard",
             }),

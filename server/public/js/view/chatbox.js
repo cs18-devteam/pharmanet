@@ -1,4 +1,5 @@
 import html from "./html.js";
+import { renderWaitingList } from "./pharmacy/chat/renderWaitingList.js";
 const tone_incomingCall = new Audio('/music/message.mp3');
 const tone_acceptCall = new Audio('/music/accept.mp3');
 const tone_rejectCall = new Audio('/music/reject.mp3');
@@ -13,7 +14,9 @@ export function showIncomingMessage(data){
      data.user.then(data=>{
           incomingMessage.querySelector('img').src = data.profile;
      })
-    handleIncomingMessageBtns();
+     
+     renderWaitingList();
+     handleIncomingMessageBtns();
 }
     
 export function removeIncomingMessage(){

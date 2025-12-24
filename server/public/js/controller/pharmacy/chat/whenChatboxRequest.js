@@ -5,10 +5,13 @@ import { onAcceptIncomingMessage, onAnyCaseIncomingMessage, onRejectIncomingMess
 export function whenChatBoxRequest(message){
     const reqObj = ChatTemplates.readChatBoxRequest(message);
 
-    showIncomingMessage({
+    const user = {
         ...reqObj,
         user : Application.getUserData(reqObj.customerId),
-    });
+    };
+
+    Application.waitingList.push(reqObj);
+    showIncomingMessage(user);
     
     onAcceptIncomingMessage(()=>{
         

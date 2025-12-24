@@ -1,0 +1,216 @@
+<div class="orders container">
+
+    <div class="orderleft-side">
+
+        <div class="L-side">
+            <div class="search-bar">
+                <input type="text" name="search-bar" class="search-bar__input" id="search-bar">
+            </div>
+
+            <div class="medicine_card_container">
+
+            </div>
+        </div>
+        
+        <div class="right-btns">
+            <span>
+                <div class="search-btn">Search</div>
+                <div class="payment-btn">History</div>
+            </span>
+            
+        </div>
+
+    </div>
+
+
+
+    <div class="order-right-side">
+        <div class="order_summery">
+
+
+            <div class="order_summery__description">
+                <div class="total_sales">
+                    <span class="total__sales__description__text">Total Sales</span>
+                    <span class="total__sales__description__amount">Rs 0
+                        <!-- <span><img src="/server/public/images/arrow-go-to-list.svg" alt="arrow" width="0.5rem"></span> -->
+                    </span>
+                </div>
+
+                <div class="total_orders">
+                    <span class="total__orders__description__text">Total Orders</span>
+                    <span class="total__orders__description__amount">0
+                        <!-- <span><img src="/server/public/images/arrow-go-to-list.svg" alt="arrow" width="0.5rem"></span> -->
+                    </span>
+                </div>
+            </div>
+
+            
+        </div>
+
+        <div class="cart_summery_box">
+            <div class="quick_access_2">
+
+                <div class="cart_summery">
+                    <div>
+                        <img src="/images/Shopping-cart.svg" width="30rem" >
+                        <span>Cart</span>
+                    </div>
+                    <h2 class="no_of_cart_items">0</h2>
+                    
+                </div>
+
+
+                <div class="total_cart_summery">
+                    <div>
+                        <img src="/images/dollar-mark.svg" width="30rem">
+                        <span>Total</span>
+                    </div>
+                    <h2>Rs <span class="amount_of_cart_items">0</span></h2>
+                    
+                </div>
+
+
+                <div class="proceed_to_payment">
+                    <div>
+                        <span>Proceed To Payment</span>
+                    </div>
+                    <h2 class="pay_button">Pay →</h2>
+                    
+                </div>
+
+            </div>
+
+
+            <div class="cart_list">
+            </div>
+
+        </div>
+
+        
+
+    </div>
+
+
+
+    <div class="payment-section-container">
+
+    <div class="receipt-wrapper">
+        <div class="receipt-header">
+            <span>Quick Look Of Receipt</span>
+            <button class="print-btn">Print</button>
+        </div>
+
+        <div class="receipt-card">
+            <div class="receipt-title">
+                <hr class="double-line">
+                <h3>Amaya Pharmacy Center</h3>
+                <small>ID 4323298989</small>
+                <hr class="double-line">
+            </div>
+
+
+            <table class="receipt-table">
+            
+            <tbody>
+                <tr>
+                    <td>10.00 × AMPICILLIN SODIU...</td>
+                    <td>for 3 Days</td>
+                    <td>Rs</td>
+                    <td>123.45</td>
+                </tr>
+                <tr>
+                    <td>100.00 × FUSIDIC ACID 2%...</td>
+                    <td>for 3 Days</td>
+                    <td>Rs</td>
+                    <td>123.45</td>
+                </tr>
+                <tr>
+                    <td>5.00 × AMPICILLIN SODIU...</td>
+                    <td>for 10 Days</td>
+                    <td>Rs</td>
+                    <td>123.45</td>
+                </tr>
+                <tr>
+                    <td>1.25 × AMPICILLIN SODIU...</td>
+                    <td>for 7 Days</td>
+                    <td>Rs</td>
+                    <td>123.45</td>
+                </tr>
+                <tr>
+                    <td>10.00 × AMPICILLIN SODIU...</td>
+                    <td>for 3 Days</td>
+                    <td>Rs</td>
+                    <td>123.45</td>
+                </tr>
+                <tr>
+                    <td>100.00 × FUSIDIC ACID 2%...</td>
+                    <td>for 3 Days</td>
+                    <td>Rs</td>
+                    <td>123.45</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+            <div class="total">
+                <span>Total Amount</span>
+                <span class="total-amount">Rs 2450.00</span>
+            </div>
+
+
+            <div class="payment">
+                <p>Payment method : Card</p>
+                <p>Card Number : ****3233</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="payment-section">
+        <h1>Payment</h1>
+        <h3>please fill customer details</h3>
+
+        <form action="post">
+
+            <div class="first-row">
+                <div>
+                    <label for="first-name" >First Name</label>
+                    <input type="text" name="f-name">
+                </div>
+                <div>
+                    <label for="Second-Name">Second Name</label>
+                    <input type="text" name="s-name">
+                </div>
+            </div>
+
+            <div class="second-row">
+                <label for="address">Address</label>
+                <input type="text" name="address" id="address">
+            </div>
+
+            <div class="third-row">
+                <label for="phone-number">Mobile Number</label>
+                <input type="text" name="p-number" id="p-number">
+            </div>
+            
+            
+        </form>
+
+        <div class="select-payment-method">
+            <div class="title">Select payment method</div>
+            <div class="selection">
+                <div class="cash-btn">Cash <img src="/images/dollar-sign-02.svg" alt="" class="dollar-mark" ></div>
+                <div class="card-btn">Card <img src="/images/visa-master.svg" alt="" class="cash-pic"> </div>
+            </div>
+        </div>
+
+        <div class="footer-btn">
+            <div class="back-btn">Back</div>
+            <div class="create-order-btn">Create Order</div>
+        </div>
+
+    </div>
+    </div>
+
+</div>

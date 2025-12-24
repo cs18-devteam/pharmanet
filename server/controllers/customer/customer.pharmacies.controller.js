@@ -159,7 +159,6 @@ exports.createPharmacy = async (req , res)=>{
             throw new Error('customer is not found');
         }
 
-        
         const pharmacyObj = {
             name : pharmacyData.name,
             licenseNumber : pharmacyData.licenseNumber,

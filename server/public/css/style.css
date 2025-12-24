@@ -1008,6 +1008,21 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   height: min-content;
   text-transform: capitalize;
 }
+.medicine_card .close-btn {
+  transform: rotate(45deg);
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border: 1px solid var(--color-red-01);
+  color: var(--color-red-01);
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  display: none;
+}
 .medicine_card .dosage-icon {
   height: min-content;
 }
@@ -1248,6 +1263,20 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   margin-left: 3rem;
 }
 
+.orders .cart_list .medicine_card .close-btn {
+  transform: rotate(45deg);
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border: 1px solid var(--color-red-01);
+  color: var(--color-red-01);
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
 .orders .cart_list .medicine_card .details .medicine__info__store-as {
   display: none;
 }

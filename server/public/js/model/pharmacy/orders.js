@@ -4,7 +4,9 @@ export async function createOrder({
          itemId ,
         itemType  : "product" || "medicine",
         quantity,
-    }]
+    }],
+    paymentMethod = "cash" || "card",
+    paymentStatus = "pending" || "complete",
 }){
     try{
 
@@ -13,6 +15,8 @@ export async function createOrder({
             body: JSON.stringify({
                 userId , 
                 items,
+                paymentMethod,
+                paymentStatus,
             })
         });
         
@@ -30,6 +34,53 @@ export async function createOrder({
         }
     }
 
+}
+
+
+
+export async function updateOrder({
+    userId , 
+    prescription , 
+    items = [{
+        itemId , 
+        itemType : "product" || "medicine",
+        quantity ,
+    }],
+    paymentMethod = "cash" || "card",
+    paymentStatus = "complete" || "pending",
+}) {
+
+    try{
+
+        
+        const formData = new FormData();
+        formData.append('userId' , userId);
+        formData.append('prescription' , prescription);
+        formData.append('items' , items);
+        formData.append('paymentMethod' , paymentMethod);
+        formData.append('paymentStatus' , paymentStatus);
+        
+        
+        const response = await fetch("/api/v1/orders" , {
+            method:"PATCH",
+            body : formData,
+        })
+        
+        const data = await response.json();
+        
+        if(data.status == "error"){
+            throw new Error(data.message);
+        }
+        
+        return data;
+    }catch(e){
+        console.log(e);
+        return {
+            status:"error",
+            results: [],
+            message:e.message,
+        }
+    }
 }
 
 

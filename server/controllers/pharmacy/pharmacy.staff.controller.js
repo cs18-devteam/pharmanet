@@ -7,7 +7,7 @@ const view = require("../../common/view");
 
 exports.renderCreateStaff = async(req, res) => {
     try{ 
-    return response(res, view('staff/create'))
+    return response(res, view('pharmacy/pharmacy.dashboard'))
 }catch(e){
     console.log(e);
     return responseJson(res , 400 , {

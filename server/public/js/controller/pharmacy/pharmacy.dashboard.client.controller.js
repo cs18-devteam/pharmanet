@@ -6,8 +6,8 @@ import { swal } from "../../view/swal.js";
 import orders__searchAndRenderMedicineCard from "./orders__searchAndRenderMedicineCards.js";
 import settings_init from "./pharamcy.dashboard.settings.controller.js";
 import chats_init from "./pharmacy.dashboard.chats.controller.js";
-import transactions_init from "./pharmacy.dashboard.medicines.controller.js";
 import medicines_init from "./pharmacy.dashboard.medicines.controller.js";
+import transactions_init from "./pharmacy.dashboard.transactions.controller.js";
 import { createTransactionsRow } from "/js/controller/pharmacy/transactions__searchAndRender.js";
 const ordersSearchBar = document.querySelector(".orders .search-bar > input");
 const setting_btn = document.getElementById("settings");
@@ -45,7 +45,6 @@ navLink.addEventListener("click" , e=>{
         case "settings":
             settings_init();
             break;
-            
     }
 
 

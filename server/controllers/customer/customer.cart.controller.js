@@ -7,6 +7,7 @@ const Products = require("../../models/ProductModel");
 exports.addToCart = async (req , res)=>{
     await Carts.query('start transaction');
     
+    
     try{
         const reqData = JSON.parse(await getRequestData(req));
 

@@ -10,23 +10,23 @@ const productManagementController = require("../../controllers/pharmanet/product
  // :: CUSTOMER ROUTES
 const customerRouter = SubRouter.route('/customers/:customerId')
 .subRoute('/' , {
-    get: [ authenticate('customerId') ,customerController.renderCustomerHome]
+    get: [ customerController.renderCustomerHome]
 })
 .subRoute('/profile' , {
-    get: [authenticate('customerId')  ,customerController.renderCustomerProfile]
+    get: [customerController.renderCustomerProfile]
 })
 .subRoute('/medicines' , {
-    get : [authenticate('customerId') , customerMedicineController.renderCustomerMedicines ]
+    get : [ customerMedicineController.renderCustomerMedicines ]
 })
 .subRoute('/medicines/:medicineId' , {
-    get : [authenticate('customerId') , customerMedicineController.renderCustomerSelectedMedicine ]
+    get : [ customerMedicineController.renderCustomerSelectedMedicine ]
 })
 .subRoute('/pharmacy/register' , {
-    get : [authenticate('customerId')  ,pharmacyController.renderPharmacyRegister],
+    get : [pharmacyController.renderPharmacyRegister],
 })
 .subRoute('/profile/edit')
 .subRoute('/pharmacies' , {
-    get : [authenticate('customerId')  , customerPharmacyController.renderCustomerPharmacies]
+    get : [ customerPharmacyController.renderCustomerPharmacies]
 })
 .subRoute('/pharmacies/:pharmacyId' , {
     get : customerPharmacyController.renderPharmacyLandingPage,

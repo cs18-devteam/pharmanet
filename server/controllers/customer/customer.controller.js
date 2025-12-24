@@ -4,17 +4,21 @@ const { response } = require("../../common/response");
 const view = require("../../common/view");
 const PharmacyStaff = require("../../models/PharmacyStaffModel");
 const Users = require("../../models/UserModel");
+const Medicines = require("../../models/MedicineModel");
+const { catchAsync } = require("../../common/catchAsync");
 
 
-exports.renderCustomerHome = async (req , res)=>{
-        try{    
+exports.renderCustomerHome = catchAsync ( async (req , res)=>{
                 const customer = (await Users.getById(req.customerId))[0];
                 
-                
+                //const medicine = (await Medicines)
+
                 if(!customer) throw new Error("customer not found");
 
                 const [staffMember] = await PharmacyStaff.get({userId : customer.id});
                 
+                const medicine = await Medicines.query("select* from this.table limit 8 ");
+                console.log(medicine)
                 
                 if(!staffMember){
                         return  response(res ,view('customer/customer.home' , {
@@ -24,7 +28,14 @@ exports.renderCustomerHome = async (req , res)=>{
                                         name:"Pharmanet || Home",
                                 }),
                                 footer: view('footer'),
-                                cart : view('customer/component.cart'),
+                                carts : view('customer/component.cart'),
+                                medCard : medicine.map(m => view("customer/component.medicine.card", {
+                                        id: m.id,
+                                        image: m.image,
+                                        name: m.geneticName,
+
+                                })).join(" ")
+                                //pharmacyCard : 
                         }) , 200)
                 }else{
                         return response(res , 'redirect' , 301 , {
@@ -32,12 +43,9 @@ exports.renderCustomerHome = async (req , res)=>{
                                 "Set-Cookie" : `staffId=${staffMember.id};expires=${Date.now()+300};path="/"`
                         })
                 }
-        }catch(e){
-                console.log(e);
-                return response(res , view('404') , 404);
-        }
+       
                 
-}
+})
 
 exports.renderCustomerProfile = async (req , res)=>{
         try{

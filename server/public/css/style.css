@@ -2514,7 +2514,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   justify-content: center;
   max-width: fit-content;
   border: 1px solid #e8e8e8;
-  margin: auto;
+  margin: 5rem auto;
 }
 .medicine-section .Medicines_grid .medicine-card {
   padding: 2rem;
@@ -2607,13 +2607,21 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 
 .pharmacy-section .section-title {
   margin-top: 5rem;
+  justify-content: center;
 }
 .pharmacy-section .section-title .title-one {
-  font-size: 2rem;
+  font-size: 4rem;
   font-weight: 600;
-  color: black;
-  text-align: left;
   margin: 1rem 7rem;
+  background: linear-gradient(to right, var(--color-green-02), var(--color-green-01));
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  width: max-content;
+  text-transform: capitalize;
+}
+.pharmacy-section .section-title.customer {
+  display: flex;
+  justify-content: center;
 }
 .pharmacy-section .pharmacy_grid {
   display: grid;
@@ -16356,6 +16364,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   display: flex;
   flex-wrap: wrap;
   gap: 3rem;
+  padding: 3rem;
+  border-radius: 2rem;
+  background: linear-gradient(to right, var(--color-blue-01), var(--color-green-01));
 }
 .aboutUs .about .content .column {
   flex: 1 1 450px;
@@ -16367,7 +16378,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .aboutUs .about .content .column p {
   margin-bottom: 1.5rem;
-  color: #111;
+  color: #eee;
 }
 .aboutUs .about .content .column ul {
   list-style: none;

@@ -3,15 +3,28 @@
 
         .section-title{
             margin-top:5rem ;
+            //display: flex;
+            justify-content: center;
 
             .title-one{
-                font-size: 2rem;
+                font-size: 4rem;
                 font-weight: 600;
-                color: black;
-                text-align: left;
+                //text-align: left;
                 //padding: 1rem;
                 margin: 1rem 7rem;
+                background: linear-gradient(to right, var(--color-green-02),var(--color-green-01));
+                -webkit-text-fill-color: transparent;
+                -webkit-background-clip: text;
+                width: max-content;
+                text-transform: capitalize;
             }
+
+        
+        }
+
+        .section-title.customer{
+            display: flex;
+            justify-content: center;
         }
 
 

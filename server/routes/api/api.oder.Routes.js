@@ -8,3 +8,8 @@ exports.ordersApiRouter = SubRouter.route('/api/v1/orders')
     delete:orderController[""],
     update:orderController[""]
 })
+
+.subRoute('/upload', {
+    post: orderController.createOrdersAndUploadPrescription
+    
+})

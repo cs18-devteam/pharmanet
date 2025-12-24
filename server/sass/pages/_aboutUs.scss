@@ -45,6 +45,9 @@ $font-stack: 'Inter', sans-serif;
     display: flex;
     flex-wrap: wrap;
     gap: 3rem;
+    padding: 3rem;
+    border-radius: 2rem;
+    background: linear-gradient(to right, var(--color-blue-01), var(--color-green-01));
 
     .column {
       flex: 1 1 450px;
@@ -57,7 +60,7 @@ $font-stack: 'Inter', sans-serif;
 
       p {
         margin-bottom: 1.5rem;
-        color: $text-color;
+        color: #eee;
       }
 
       ul {

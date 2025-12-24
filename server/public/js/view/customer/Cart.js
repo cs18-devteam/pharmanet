@@ -23,9 +23,9 @@ class Cart{
      */
     constructor(selector=".overlay-cart"){
         this.element = document.querySelector(selector);
-        this.leftSide = this.element.querySelector('.left-side');
-        this.rightSide = this.element.querySelector('.right-side');
-        this.popup = this.element.querySelector('.popup');
+        this.leftSide = this.element?.querySelector('.left-side');
+        this.rightSide = this.element?.querySelector('.right-side');
+        this.popup = this.element?.querySelector('.popup');
         this.#autoClose();
     }
 
@@ -64,7 +64,7 @@ class Cart{
 
 
     #autoClose(){
-        this.element.addEventListener('click' , (e)=>{
+        this.element?.addEventListener('click' , (e)=>{
             if(e.target == this.element){
                 this.close();
             }

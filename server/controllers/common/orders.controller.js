@@ -1,4 +1,5 @@
 const {apiCatchAsync} = require("../../common/catchAsync");
+const getMultipartData = require("../../common/getMultipartData");
 const { getRequestData } = require("../../common/getRequestData");
 const { response, responseJson } = require("../../common/response");
 const view = require("../../common/view");
@@ -47,7 +48,7 @@ exports.createOrder = apiCatchAsync(async (req , res)=>{
                 userId : order.userId,
             }
         })
-})
+});
 
 
 exports.getOrders = apiCatchAsync(async (req , res)=>{
@@ -72,3 +73,17 @@ exports.getOrders = apiCatchAsync(async (req , res)=>{
 
 });
 
+exports.createOrdersAndUploadPrescription = apiCatchAsync (async (req , res) =>{
+    const requestData = await getMultipartData( req);
+    console.log(requestData);
+    const prescription = requestData.prescription;
+    const customerID = requestData.customerid;
+
+    const [newOrder] = await PharmacyOrders.save({userId : customerID })
+    console.log(newOrder);
+
+    prescription.rename(`${newOrder.id}-${Date.now()}-${prescription.fileName}`)
+    const output = await prescription.save("/prescriptions")
+    console.log(output);
+    
+})

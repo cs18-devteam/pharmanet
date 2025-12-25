@@ -38,7 +38,6 @@ export function setSidebarContent(html){
 drawerSidebar?.addEventListener('click' , (e)=>{
     const sidebar = e.target.closest('.sidebar_content');
     const closeBtn = e.target.closest('.close');
-    console.log(sidebar);
     if(!sidebar) closeSidebar();
     if(closeBtn) closeSidebar();
 });

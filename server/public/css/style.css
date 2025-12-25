@@ -1458,6 +1458,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   border-radius: 3rem;
   width: 40rem;
   margin: 0 1rem;
+  padding: 0 1rem;
 }
 .search-bar__input:focus-visible {
   outline: 2px solid var(--color-green-01);
@@ -1491,13 +1492,14 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   width: 100vw;
   min-width: 40rem;
   position: fixed;
-  height: 100vh;
+  min-height: 100vh;
   left: 0;
   top: 0;
   overflow-y: scroll;
   background-color: rgba(0, 0, 0, 0.25);
   opacity: 0;
   z-index: -1000;
+  overflow-y: scroll;
   transition: opacity 0.2s ease 0.3s, z-index 0.1s linear 1s;
 }
 .drawer-sidebar[status=open] {
@@ -1522,6 +1524,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   right: -100%;
   height: 100vh;
   transition: all 0.8s ease 0.1s;
+  overflow-y: scroll;
 }
 .drawer-sidebar .sidebar_content * {
   transition: all 0.1s linear;
@@ -11699,6 +11702,153 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   text-transform: capitalize;
   border: none;
   outline: none;
+}
+
+.product_add_form, .product_update_form {
+  margin: 2rem;
+}
+.product_add_form .product_add_form__header, .product_add_form .product_update_form__header, .product_update_form .product_add_form__header, .product_update_form .product_update_form__header {
+  font-size: 3.2rem;
+  background-image: linear-gradient(to right, var(--color-green-01), var(--color-green-02));
+  background-clip: text;
+  color: transparent;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.product_add_form .field_container, .product_update_form .field_container {
+  margin-bottom: 2rem;
+}
+.product_add_form .field_container .field_header, .product_update_form .field_container .field_header {
+  font-size: 2rem;
+  color: #000;
+  font-weight: 400;
+}
+.product_add_form .field_container .field_description, .product_update_form .field_container .field_description {
+  font-size: 1.6rem;
+  color: #666;
+  font-weight: 400;
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+}
+.product_add_form .field_container .field input[type=file], .product_update_form .field_container .field input[type=file] {
+  display: none;
+}
+.product_add_form .field_container .field .upload-btn, .product_update_form .field_container .field .upload-btn {
+  color: #fff;
+  background-color: var(--color-green-02);
+  border-radius: 3px;
+  padding: 1rem 2rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+  display: inline-block;
+}
+.product_add_form .field_container .field input[type=text], .product_add_form .field_container .field input[type=number], .product_update_form .field_container .field input[type=text], .product_update_form .field_container .field input[type=number] {
+  width: 100%;
+  height: 5rem;
+  padding: 0 1rem;
+  font-size: 1.8rem;
+  color: #000;
+}
+.product_add_form .field_container .field input[type=text]:focus-visible, .product_add_form .field_container .field input[type=number]:focus-visible, .product_update_form .field_container .field input[type=text]:focus-visible, .product_update_form .field_container .field input[type=number]:focus-visible {
+  border: var(--color-green-01) solid 2px;
+  outline: none;
+}
+.product_add_form .form-btns, .product_update_form .form-btns {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+.product_add_form .form-btns button, .product_update_form .form-btns button {
+  width: 50%;
+  border-radius: 3px;
+  font-size: 2rem;
+  color: #fff;
+  border: none;
+  font-weight: 100;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+.product_add_form .form-btns .update-btn, .product_update_form .form-btns .update-btn {
+  background-color: var(--color-yellow-01);
+}
+.product_add_form .form-btns .save-btn, .product_update_form .form-btns .save-btn {
+  background-color: var(--color-green-01);
+}
+.product_add_form .form-btns .cancel-btn, .product_update_form .form-btns .cancel-btn {
+  background-color: transparent;
+  border: 1px solid #eee;
+  color: #000;
+}
+
+.product_data {
+  margin: 2rem;
+}
+.product_data h2 {
+  font-size: 2.4rem;
+  color: #111;
+  color: var(--color-green-01);
+}
+.product_data h2.additional_setting__heading {
+  color: var(--color-yellow-01);
+}
+.product_data p {
+  font-style: italic;
+  text-transform: capitalize;
+  margin-bottom: 3rem;
+  opacity: 0.4;
+  color: #555;
+  font-weight: 400;
+}
+.product_data .field {
+  display: flex;
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+  margin-left: 2rem;
+}
+.product_data .field .label {
+  width: 10rem;
+  font-size: 1.6rem;
+  opacity: 0.5;
+}
+.product_data .field .value {
+  font-size: 2rem;
+  text-wrap-mode: wrap;
+}
+
+.additional_setting {
+  margin-top: 4rem;
+}
+.additional_setting .setting-center {
+  margin-left: 2rem;
+  margin-bottom: 4rem;
+  border-radius: 1rem;
+}
+.additional_setting .setting-center p {
+  margin-bottom: 1rem;
+}
+.additional_setting .setting-center button {
+  font-size: 1.8rem;
+  padding: 2rem;
+  border: none;
+  text-transform: capitalize;
+  color: #fff;
+  border-radius: 1rem;
+}
+.additional_setting .setting-center.update-center button {
+  background-color: var(--color-yellow-01);
+}
+.additional_setting .setting-center.delete-center {
+  background-color: rgba(250, 151, 151, 0.3254901961);
+  padding: 2rem;
+}
+.additional_setting .setting-center.delete-center button {
+  background-color: var(--color-red-01);
+}
+.additional_setting .setting-center.delete-center .setting-center__heading {
+  color: var(--color-red-01);
+}
+.additional_setting .setting-center__heading {
+  text-transform: capitalize;
 }
 
 /* admin */

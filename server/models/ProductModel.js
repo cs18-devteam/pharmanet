@@ -2,7 +2,7 @@ const Model = require("../common/Model");
 
 class ProductModel extends Model{
     constructor(){
-                super();
+        super();
         this.name = {
             type:"VARCHAR(100)",
             null: false,
@@ -28,6 +28,13 @@ class ProductModel extends Model{
             type:"VARCHAR(100)",
         }
 
+        this.pharmacyId = {
+            type:"INT",
+        }
+
+        this.image = {
+            type:"TEXT"
+        }
 
     }
 }

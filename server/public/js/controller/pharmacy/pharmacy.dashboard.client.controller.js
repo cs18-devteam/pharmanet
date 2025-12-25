@@ -7,6 +7,7 @@ import orders__searchAndRenderMedicineCard from "./orders__searchAndRenderMedici
 import settings_init from "./pharamcy.dashboard.settings.controller.js";
 import chats_init from "./pharmacy.dashboard.chats.controller.js";
 import medicines_init from "./pharmacy.dashboard.medicines.controller.js";
+import products_init from "./pharmacy.dashboard.products.controller.js";
 import transactions_init from "./pharmacy.dashboard.transactions.controller.js";
 import { createTransactionsRow } from "/js/controller/pharmacy/transactions__searchAndRender.js";
 const ordersSearchBar = document.querySelector(".orders .search-bar > input");
@@ -27,12 +28,9 @@ ordersSearchBar?.addEventListener('input' , e=>{
 createTransactionsRow();
 
 
-//initiator of dashboard
-navLink.addEventListener("click" , e=>{
-    const target = e.target;
-    const btn = target.closest("label");
 
-    switch(btn?.getAttribute('for')){
+function initialize(view){
+     switch(view){
         case "chats":
             chats_init();
             break;
@@ -45,11 +43,27 @@ navLink.addEventListener("click" , e=>{
         case "settings":
             settings_init();
             break;
+        case "products":
+            products_init();
+            break;
     }
+}
 
 
 
-
-
-
+//initiator of dashboard
+navLink.addEventListener("click" , e=>{
+    const target = e.target;
+    const btn = target.closest("label");
+    initialize(btn?.getAttribute('for'))
 })
+
+
+const navInputControlElements = document.querySelectorAll("body > input[type=radio][name=navigation]")
+navInputControlElements.forEach(element=>{
+    if(element.checked){
+        const view = element.getAttribute('id');
+        initialize(view);
+    }
+})
+

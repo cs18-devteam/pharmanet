@@ -5,6 +5,7 @@
 @use "./pharmacyDashborder__waiting_list" as waiting-list;
 @use "./pharmacyDashboard__recipt" as recipe;
 @use "./pharmacyDashboard__settings" as pharmacy_profile;
+@use "./pharamcyDashboard_products" as pharmacy_products;
 
 /* paging effect */
 $containers : 'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 'staff';
@@ -830,3 +831,8 @@ $containers : 'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 's
 .pharmacyDashboard{
     @include pharmacy_profile.settings;
 }
+
+// .pharmacyDashboard .dashboards .container{
+// }
+@include pharmacy_products.product_add_form;
+@include pharmacy_products.product_details;

@@ -33,5 +33,3 @@ export function whenSyncRequest(message){
     }
 }
 
-
-console.log(ChatTemplates.syncConnection(1));

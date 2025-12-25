@@ -1,0 +1,201 @@
+@mixin products{
+    
+}
+
+
+@mixin product_add_form{
+    .product_add_form , .product_update_form{
+        margin: 2rem;
+
+        .product_add_form__header , .product_update_form__header{
+            font-size: 3.2rem;
+            background-image: linear-gradient(to right , var(--color-green-01) , var(--color-green-02));
+            background-clip: text;
+            color:  transparent;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        
+        }
+
+        .field_container{
+            margin-bottom: 2rem;
+
+            .field_header{
+                font-size: 2rem;
+                color: #000;
+                font-weight: 400;
+            }
+            
+            .field_description{
+                font-size: 1.6rem;
+                color: #666;
+                font-weight: 400;
+                text-transform: capitalize;
+                margin-bottom: 1rem;
+
+            }
+
+            .field{
+
+                input[type="file"]{
+                    display: none;
+                }
+
+                .upload-btn{
+                    color: #fff;
+                    background-color: var(--color-green-02);
+                    border-radius: 3px;
+                    padding: 1rem 2rem;
+                    font-size: 1.8rem;
+                    cursor: pointer;
+                    display: inline-block;
+                }
+
+                input[type="text"] , input[type="number"]{
+                    width: 100%;
+                    height: 5rem;
+                    padding: 0 1rem;
+                    font-size: 1.8rem;
+                    color: #000;
+
+                    &:focus-visible{
+                        border: var(--color-green-01) solid 2px;
+                        // border: none;
+                        outline: none;
+
+                    }
+                }
+
+            }
+        }
+
+        .form-btns{
+            display: flex;
+            width: 100%;
+            justify-content: flex-end;
+
+            button{
+                width: 50%;
+                border-radius: 3px;   
+                font-size: 2rem;
+                color: #fff;
+                border: none;
+                font-weight: 100;
+                text-transform: capitalize;
+                cursor: pointer;
+            }
+
+            .update-btn{
+                background-color: var(--color-yellow-01);
+            }
+
+            .save-btn{
+                background-color: var(--color-green-01);
+               
+            }
+
+            .cancel-btn{
+                background-color: transparent;
+                border: 1px solid #eee;
+                color: #000;
+            }
+        }
+
+
+    }
+}
+
+
+@mixin product_details{
+    .product_data{
+        margin: 2rem;
+
+        h2{
+            font-size: 2.4rem;
+            color: #111;
+            color: var(--color-green-01);
+
+            &.additional_setting__heading{
+                color: var(--color-yellow-01)
+            }
+        }
+        p{
+            font-style: italic;
+            text-transform: capitalize;
+            margin-bottom: 3rem;
+            opacity: .4;
+            color: #555;
+            font-weight: 400;
+
+        }
+
+        .field{
+            display: flex;
+            margin-bottom: 1rem;
+            text-transform: capitalize;
+            margin-left: 2rem;
+            
+            .label{
+                width: 10rem;
+                font-size: 1.6rem;
+                opacity: .5;
+            }
+            
+            .value{
+                font-size: 2rem;
+                text-wrap-mode: wrap;
+            }
+        }
+    }
+
+
+    .additional_setting{
+        margin-top: 4rem;
+
+
+        .setting-center{
+            margin-left: 2rem;
+            margin-bottom: 4rem;
+            border-radius: 1rem;
+            
+            p{
+                margin-bottom: 1rem;
+            }
+
+
+            button{
+                font-size: 1.8rem;
+                padding: 2rem;
+                border: none;
+                text-transform: capitalize;
+                color: #fff;
+                border-radius: 1rem;
+            }
+
+            &.update-center{
+
+                button{
+                    background-color: var(--color-yellow-01);
+
+                }
+            }
+            
+            &.delete-center{
+                background-color: #fa979753;
+                padding: 2rem;
+
+                button{
+                    background-color: var(--color-red-01);
+                }
+
+                .setting-center__heading{
+                    color: var(--color-red-01)
+                }
+            }
+
+            &__heading{
+                text-transform: capitalize;
+            }
+        }
+    }
+}

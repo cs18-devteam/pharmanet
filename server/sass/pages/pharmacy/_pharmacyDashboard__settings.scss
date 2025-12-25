@@ -26,18 +26,192 @@
         }
 
 
-        .signout-btn-container{
+        .btn-container{
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+
             .signout{
-                color: #fff;
-                background-color: var(--color-red-01);
-                padding: 2rem 3rem;
-                border-radius: 3px;
-                font-size: 2rem;
+                color: var(--color-red-01);
+                padding: 1rem 2rem;
+                border-radius: 3rem;
+                border : 1px solid var(--color-red-01);
+                font-size: 1.6rem;
                 font-weight: 500;
                 text-transform: capitalize;
-                border: none;
                 outline: none;
+                background-color: transparent;
+                width: 10rem;
+                cursor: pointer;
+                transition: all .1s ease;
+
+                &:hover{
+                    background-color: var(--color-red-01);
+                    color: #fff;
+                }
+            }
+
+            .edit{
+                color:#000;
+                font-weight: 100;
+                padding: 1rem 2rem;
+                border-radius: 3rem;
+                border: none;
+                min-width: 10rem;
+                font-size: 1.6rem;
+                background-color: transparent;
+                text-transform: capitalize;
+                cursor: pointer;
+                transition: all .1s ease;
+
+
+
+                &:hover{
+                    background-color: #000;
+                    color: #fff;
+
+                }
+                
+
+            }
+        }
+
+
+        .basic-info{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .location-info{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin:2rem 4rem;
+            border: 1px solid #eee;
+            padding: 1rem;
+            border-radius: 1rem;
+
+            h3{
+                font-size: 1.6rem;
+                text-align: center;
+                font-weight: 100;
+                font-style: italic;
+                margin-bottom: 1rem;
+            }
+
+            div{
+                text-transform: capitalize;
+            }
+        }
+
+
+        .danger-zone{
+            margin: 4rem 2rem;
+
+
+            &__heading{
+                &--2{
+                    font-size: 1.4rem;
+                    color: var(--color-red-01);
+                    text-transform: capitalize;
+
+                }
+
+                &--3{
+                    font-size: 2rem;
+                    color:#000;
+                    text-transform: capitalize;
+                }
+            }
+
+            &__para{
+                position: relative;
+                margin: 4rem 0;
+                &::after , &::before{
+                    content: '"';
+                    color: var(--color-red-01);
+                    font-size: 20rem;
+                    position: absolute;
+                    transform: translateY(-50%);
+
+                    
+                }
+
+                &::before{
+                    top: 50%;
+                    left: -5%;
+                    z-index: 0;
+                    opacity: .1;
+                }
+
+                &::after{
+                    top: 160%;
+                    right: 0;
+                    opacity: .4;
+                }
+                
+            }
+
+            .pharmacy_acc_delete_agreement__box{
+                display: grid;
+                grid-template-columns: 2rem 1fr;
+                grid-template-rows: minmax(2rem , fit-content) 6rem;
+                grid-template-areas: "checkbox agreement"
+                                     "btn btn" ;
+                column-gap: 1rem;
+                row-gap: 1rem;
+
+
+                #pharmacy_acc_delete_agreement__checkbox{
+                    grid-area: checkbox;
+                    display: inline;
+                    width: 2rem;
+                    height: 2rem;
+                    display: flex;
+                    align-self: center;
+                }   
+
+                
+                #pharmacy_acc_delete_agreement{
+                    grid-area: btn;
+                    text-transform: capitalize;
+                    background-color: var(--color-red-01);
+                    color: #fff;
+                    cursor:not-allowed;
+                    border: none;
+                    border-radius: 3px;
+                    padding: 1rem 2rem;
+                    display: inline-block;
+                    height: 5rem;
+                    font-size: 1.6rem;
+                    opacity: .2;
+        
+                    
+                }
+                
+                .pharmacy_acc_delete_agreement__text{
+                    margin: 1rem 0;
+                    grid-area: agreement;
+                    display: inline-block;
+                    cursor: pointer;
+                    font-size: 1.8rem;
+                    display: flex;
+                    gap:1rem;
+                    align-items: center;
+
+                }
+
+                #pharmacy_acc_delete_agreement__checkbox:checked ~ #pharmacy_acc_delete_agreement{
+                    cursor:pointer;
+                    opacity: 1;
+                    
+                }
             }
         }
     }
+
+
+
+
 }

@@ -21,6 +21,7 @@ const MIME_TYPES = {
 
 const refreshCache = (filePaths)=>{
     try{
+        console.log("🌀 refreshing cache");
     
     cache = filePaths?.map(filePath=>{
         return fs.readdirSync(filePath , {
@@ -105,7 +106,14 @@ exports.fileServer = (...filePaths)=>{
 
     filePathsContainer.forEach(filePath=>{
         fs.watch(filePath , ()=>{
+            console.log("file changed");
             refreshCache(filePathsContainer);
         }
     )});
 }
+
+
+exports.updateFileServerCache = ()=>{
+    refreshCache(filePathsContainer);
+}
+

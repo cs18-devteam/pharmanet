@@ -1,4 +1,5 @@
 const {apiCatchAsync} = require("../../common/catchAsync");
+const Convert = require("../../common/Convert");
 const getMultipartData = require("../../common/getMultipartData");
 const { getRequestData } = require("../../common/getRequestData");
 const { response, responseJson } = require("../../common/response");
@@ -6,6 +7,8 @@ const view = require("../../common/view");
 const Carts = require("../../models/CartModel");
 const PharmacyOrdersItems = require("../../models/PharmacyOrderItemsModel");
 const PharmacyOrders = require("../../models/PharmacyOrderModel");
+const PharmacyStaff = require("../../models/PharmacyStaffModel");
+const Transactions = require("../../models/TransactionModel");
 
 
 exports.createOrder = apiCatchAsync(async (req , res)=>{
@@ -39,6 +42,23 @@ exports.createOrder = apiCatchAsync(async (req , res)=>{
             })
         }))
 
+        const [staff] =  await PharmacyStaff.getById(reqData.userId);
+
+        // console.log(staff , reqData.userId);
+
+
+        const [transaction] = await Transactions.save({
+            orderId : order.id,
+            staffID : staff.id,
+            pharmacyId : staff.pharmacyId , 
+            method: reqData.method,
+            amount: reqData.amount ,
+            type: reqData.type,
+            transactionDateTime : Convert.toSqlDate(Date.now()),
+            
+
+        })
+
         return responseJson(res , 201 , {
             status:"success",
             results: {
@@ -46,6 +66,7 @@ exports.createOrder = apiCatchAsync(async (req , res)=>{
                 pharmacyId : order.pharmacyId,
                 items: orders,
                 userId : order.userId,
+                transaction : transaction,
             }
         })
 })

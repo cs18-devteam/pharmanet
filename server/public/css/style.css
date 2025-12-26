@@ -2761,6 +2761,21 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
     top: 10rem;
   }
 }
+body.large-view .header-container {
+  display: none;
+  padding: 0;
+}
+body.large-view .logo {
+  transform: scale(0.8);
+}
+body.large-view .nav_links {
+  transform: scale(0.95);
+}
+body.large-view .dashboards {
+  width: 100%;
+  margin: 0.5rem;
+}
+
 @font-face {
   font-family: "red hat display";
   font-weight: 100;
@@ -10109,12 +10124,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .pharmacyDashboard .dashboards .container.chats .waiting-list h1 {
   font-size: 3rem;
   text-transform: capitalize;
-  background-image: linear-gradient(black, white);
-  background: -webkit-linear-gradient(#333, #eee);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
+  color: var(--color-green-01);
 }
 .pharmacyDashboard .dashboards .container.chats .waiting-list h2 {
   text-transform: capitalize;
@@ -12106,6 +12116,46 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
+  align-items: center;
+}
+.pharmacyDashboard .pharmacy-profile-settings .btn-container .large-view-toggle {
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+  gap: 1rem;
+  justify-self: flex-start;
+  margin-right: auto;
+  cursor: pointer;
+}
+.pharmacyDashboard .pharmacy-profile-settings .btn-container .large-view-toggle #large-view-radio {
+  display: none;
+}
+.pharmacyDashboard .pharmacy-profile-settings .btn-container .large-view-toggle .large-view-radio__label {
+  width: 5rem;
+  height: 3rem;
+  display: inline-block;
+  border-radius: 3rem;
+  position: relative;
+  border: 1px solid #555;
+  cursor: pointer;
+}
+.pharmacyDashboard .pharmacy-profile-settings .btn-container .large-view-toggle .large-view-radio__label::after {
+  position: absolute;
+  aspect-ratio: 1;
+  height: calc(100% - 0.2rem);
+  margin: 0.1rem;
+  background-color: #555;
+  border-radius: 50%;
+  content: " ";
+  display: inline-block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  transition: all 0.3s ease;
+}
+.pharmacyDashboard .pharmacy-profile-settings .btn-container .large-view-toggle #large-view-radio:checked ~ .large-view-radio__label::after {
+  left: 40%;
+  background-color: var(--color-green-01);
 }
 .pharmacyDashboard .pharmacy-profile-settings .btn-container .signout {
   color: var(--color-red-01);

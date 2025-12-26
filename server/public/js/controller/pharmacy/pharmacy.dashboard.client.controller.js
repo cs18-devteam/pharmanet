@@ -3,10 +3,11 @@ import html from "../../view/html.js";
 import { openDrawer, openSidebar, setSidebarContent } from "../../view/pharmacy/drawerView.js";
 
 import { swal } from "../../view/swal.js";
-import orders__searchAndRenderMedicineCard from "./orders__searchAndRenderMedicineCards.js";
+import orders__searchAndRenderMedicineCard from "./orders/orders__searchAndRenderMedicineCards.js";
 import settings_init from "./pharamcy.dashboard.settings.controller.js";
 import chats_init from "./pharmacy.dashboard.chats.controller.js";
 import medicines_init from "./pharmacy.dashboard.medicines.controller.js";
+import orders_init from "./pharmacy.dashboard.orders.controller.js";
 import products_init from "./pharmacy.dashboard.products.controller.js";
 import transactions_init from "./pharmacy.dashboard.transactions.controller.js";
 import { createTransactionsRow } from "/js/controller/pharmacy/transactions__searchAndRender.js";
@@ -45,6 +46,9 @@ function initialize(view){
             break;
         case "products":
             products_init();
+            break;
+        case "orders":
+            orders_init();
             break;
     }
 }

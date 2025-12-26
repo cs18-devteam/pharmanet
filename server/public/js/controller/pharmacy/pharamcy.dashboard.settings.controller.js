@@ -6,6 +6,11 @@ import { swal } from "../../view/swal.js";
 const templateSettings = html`
     <div class="pharmacy-profile-settings">
         <div class="btn-container">
+            <div class="large-view-toggle">
+                <span>Full view</span>
+                <input type="checkbox" id="large-view-radio">
+                <label for="large-view-radio" class="large-view-radio__label" ></label>
+            </div>
             <a href="/pharmacies/{pharmacyId}/staff/{staffId}/profile" class="edit" id="edit">Profile settings</a>
             <button class="signout" id="signout">signout</button>
         </div>
@@ -58,12 +63,31 @@ const templateSettings = html`
     </div>
 `;
 
+
+
+function fullViewToggleSave(state){
+    window.localStorage.setItem('fullView' , state );
+    updateBodyAccordingToToggle();
+}
+
+
+function updateBodyAccordingToToggle(){ 
+    if(getFullViewToggleState() == true){
+        document.body.classList.add('large-view')
+    }else{
+        document.body.classList.remove('large-view')
+    }
+}
+
+
+function getFullViewToggleState(){
+    return window.localStorage.getItem('fullView') == "true" ? true : false;
+}
 // setSidebarContent(templateSettings);
 // openSidebar();
 
 export default function init(){
 
-    console.log(Application.staff);
 
     setSidebarContent(templateSettings
         .replace("{role}" , Application.staff.role || "standard")
@@ -82,25 +106,68 @@ export default function init(){
         .replace("{pharmacyId}" , Application.staff.pharmacyId)
     );
     openSidebar();
+    handleSignOut();
+    handleFullViewToggle();
 
-    document.querySelector('.signout#signout').addEventListener('click' , ()=>{
-    window.cookieStore.getAll().then((cookies)=>{
-        cookies.forEach(c=>window.cookieStore.delete(c.name));
-    })
+    
+
+}
+
+updateBodyAccordingToToggle();
+
+function handleFullViewToggle(){
+    const fillViewToggle = document.getElementById('large-view-radio');
+    const fillViewToggle__label = document.querySelector('.pharmacy-profile-settings .large-view-radio__label');
+
+    if(!fillViewToggle) return;
+
+    if(getFullViewToggleState() == true){
+        fillViewToggle.checked =true;
+
+    }else{
+        fillViewToggle.checked =false;
+    }
 
 
-    swal({
-        title: "do you want to signout ?",
-        icon: 'question',
-        showCancelButton: true,
-        dangerMode :true,
-        confirmButtonText : "signout"
-    }).then((value)=>{
-        if(value.isConfirmed){
-            window.location.href = "/login";
+    fillViewToggle__label?.addEventListener('click' , ()=>{
+        fullViewToggleSave(getFullViewToggleState() ? false : true);
+        
+        if(getFullViewToggleState()){
 
+            swal({
+                title:"Large Space Mode On",
+                text:"now experience much larger space",
+                icon:"success",
+            })
+        }else{
+            swal({
+                title:"Switched to Mini Space Mode",
+                text:"Looks like do you prefer small space",
+                icon:"success",
+        })
         }
     })
-})
+}
+
+function handleSignOut(){
+    document.querySelector('.signout#signout').addEventListener('click' , ()=>{
+        window.cookieStore.getAll().then((cookies)=>{
+            cookies.forEach(c=>window.cookieStore.delete(c.name));
+        })
+
+        swal({
+            title: "do you want to signout ?",
+            icon: 'question',
+            showCancelButton: true,
+            dangerMode :true,
+            confirmButtonText : "signout"
+        }).then((value)=>{
+            if(value.isConfirmed){
+                window.location.href = "/login";
+
+            }
+        })
+
+    })
 
 }

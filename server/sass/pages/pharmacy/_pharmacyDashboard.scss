@@ -4,12 +4,9 @@
 @use "./pharmacyDashboard__transactions" as dashboard_transactions;
 @use "./pharmacyDashborder__waiting_list" as waiting-list;
 @use "./pharmacyDashboard__recipt" as recipe;
-<<<<<<< HEAD
 @use "./pharmacyDashboard__staff" as staffManagement;
-=======
 @use "./pharmacyDashboard__settings" as pharmacy_profile;
 @use "./pharamcyDashboard_products" as pharmacy_products;
->>>>>>> 3151f3d4434ad90bfd46c7864b3c504b5b9e5fbc
 
 /* paging effect */
 $containers : 'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 'staff';
@@ -842,8 +839,6 @@ $containers : 'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 's
 }
 
 
-<<<<<<< HEAD
-=======
 .pharmacyDashboard{
     @include pharmacy_profile.settings;
 }
@@ -852,4 +847,3 @@ $containers : 'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 's
 // }
 @include pharmacy_products.product_add_form;
 @include pharmacy_products.product_details;
->>>>>>> 3151f3d4434ad90bfd46c7864b3c504b5b9e5fbc

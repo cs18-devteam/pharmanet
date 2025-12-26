@@ -2776,6 +2776,15 @@ body.large-view .dashboards {
   margin: 0.5rem;
 }
 
+body.full_screen .dashboards {
+  padding: 0;
+  min-height: 100vh;
+}
+body.full_screen .dashboards .container {
+  border-radius: 1rem;
+  box-shadow: none;
+}
+
 @font-face {
   font-family: "red hat display";
   font-weight: 100;
@@ -12118,13 +12127,29 @@ body.large-view .dashboards {
   gap: 1rem;
   align-items: center;
 }
+.pharmacyDashboard .pharmacy-profile-settings .btn-container #full_screen_mode__button {
+  display: flex;
+  cursor: pointer;
+  margin-right: auto;
+  align-items: center;
+  text-transform: capitalize;
+  border-left: 1px solid #aaa;
+  padding-left: 1rem;
+}
+.pharmacyDashboard .pharmacy-profile-settings .btn-container #full_screen_mode__button svg {
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+}
 .pharmacyDashboard .pharmacy-profile-settings .btn-container .large-view-toggle {
   display: flex;
   align-items: center;
   text-transform: capitalize;
   gap: 1rem;
   justify-self: flex-start;
-  margin-right: auto;
   cursor: pointer;
 }
 .pharmacyDashboard .pharmacy-profile-settings .btn-container .large-view-toggle #large-view-radio {

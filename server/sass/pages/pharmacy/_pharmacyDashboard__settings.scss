@@ -32,13 +32,35 @@
             gap: 1rem;
             align-items: center;
 
+            #full_screen_mode__button{
+                display: flex;
+                cursor: pointer;
+                margin-right: auto;
+                align-items: center;
+                text-transform: capitalize;
+                border-left: 1px solid #aaa;
+                padding-left: 1rem;
+
+                
+                svg{
+                    display: flex;
+                    width: 3rem;
+                    height: 3rem;
+                    align-items: center;
+                    justify-content: center;
+                    padding: .5rem;
+
+                }
+                // padding: .3rem;
+                // border: 1px solid #eee;
+            }
+
             .large-view-toggle{
                 display: flex;
                 align-items: center;
                 text-transform: capitalize;
                 gap : 1rem;
                 justify-self: flex-start;
-                margin-right: auto;
                 cursor: pointer;
 
                 #large-view-radio{

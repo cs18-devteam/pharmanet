@@ -6,7 +6,7 @@ import { swal } from "../../view/swal.js";
 const templateSettings = html`
     <div class="pharmacy-profile-settings">
         <div class="btn-container">
-            <button class="edit" id="edit">Profile settings</button>
+            <a href="/pharmacies/{pharmacyId}/staff/{staffId}/profile" class="edit" id="edit">Profile settings</a>
             <button class="signout" id="signout">signout</button>
         </div>
         
@@ -63,8 +63,10 @@ const templateSettings = html`
 
 export default function init(){
 
+    console.log(Application.staff);
+
     setSidebarContent(templateSettings
-        .replace("{role}" , Application.user.role || "standard")
+        .replace("{role}" , Application.staff.role || "standard")
         .replace("{profile}" , Application.user.profile)
         .replace("{firstName}" , Application.user.firstName)
         .replace("{lastName}" , Application.user.lastName)
@@ -76,6 +78,8 @@ export default function init(){
         .replace("{accountNo}" , Application.user.accountNo || "not available")
         .replace("{bank}" , Application.user.bank)
         .replace("{bankBranch}" , Application.user.bankBranch)
+        .replace("{staffId}" , Application.staff.id)
+        .replace("{pharmacyId}" , Application.staff.pharmacyId)
     );
     openSidebar();
 

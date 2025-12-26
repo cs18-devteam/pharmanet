@@ -40,10 +40,10 @@
 /admin/:adminId/pharmacies/:pharmacyId/edit/step/4
 /admin/:adminId/pharmacies/:pharmacyId
 /api/v1/admin/:adminId/pharmacies
-/pharmacies/:pharmacyId/pharmacist/:staffId
-/pharmacies/:pharmacyId/pharmacist/:staffId/staff
-/pharmacies/:pharmacyId/pharmacist/:staffId/attendance
-/pharmacies/:pharmacyId/pharmacist/:staffId
+/pharmacies/:pharmacyId/staff/:staffId
+/pharmacies/:pharmacyId/staff/:staffId/staff
+/pharmacies/:pharmacyId/staff/:staffId/attendance
+/pharmacies/:pharmacyId/staff/:staffId/profile
 /pharmacies/:pharmacyId/medicines
 /pharmacies/:pharmacyId/cashiers/:cashierId/bills/get
 /pharmacies/:pharmacyId/cashiers/:cashierId/bills/get/:billId
@@ -104,6 +104,7 @@
 /pharmacist/:pharmacyId/staff/options
 /api/v1/users/:userId
 /api/v1/pharmacy/:pharmacyId
+/api/v1/staff/:staffId
 /api/v1/pharmacies/:pharmacyId/products
 /api/v1/pharmacies/:pharmacyId/products/create
 /api/v1/pharmacies/:pharmacyId/products/:productId

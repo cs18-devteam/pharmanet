@@ -3,6 +3,7 @@ const { response, responseJson } = require("../../common/response");
 const PharmacyStaff = require("../../models/PharmacyStaffModel");
 const Users = require("../../models/UserModel");
 const view = require("../../common/view");
+const { apiCatchAsync } = require("../../common/catchAsync");
 
 
 exports.renderCreateStaff = async(req, res) => {
@@ -32,93 +33,93 @@ exports.renderStaffOptions = async(req, res) =>{
     }
 }
 
-exports.createStaffMember = async (req , res)=>{
-    await Users.query("start transaction");
-    try{
-        const reqData = JSON.parse(await getRequestData(req));
-        const userData = {
-            firstName: reqData.firstName,
-            lastName : reqData.lastName,
-            email : reqData.email,
-            password: reqData.password,
-            nic: reqData.nic,
-            fullName: reqData.fullName,
-            dateOfBirth: reqData.dateOfBirth,
-            addressNo : reqData.addressNo,
-            street : reqData.street,
-            town : reqData.town,
-            province : reqData.province,
-            postalCode : reqData.postalCode,
-            bank : reqData.bank,
-            accountNo : reqData.accountNo,
-            bankBranch : reqData.bankBranch,
-            userName : reqData.userName,
-            role : reqData.role,
-            pharmacyId : reqData.pharmacyId,
-        };
+exports.createStaffMember = apiCatchAsync(async (req , res)=>{
 
-        const [user] = await Users.save(userData);
+    const reqData = JSON.parse(await getRequestData(req));
+    const userData = {
+        firstName: reqData.firstName,
+        lastName : reqData.lastName,
+        email : reqData.email,
+        password: reqData.password,
+        nic: reqData.nic,
+        fullName: reqData.fullName,
+        dateOfBirth: reqData.dateOfBirth,
+        addressNo : reqData.addressNo,
+        street : reqData.street,
+        town : reqData.town,
+        province : reqData.province,
+        postalCode : reqData.postalCode,
+        bank : reqData.bank,
+        accountNo : reqData.accountNo,
+        bankBranch : reqData.bankBranch,
+        userName : reqData.userName,
+        role : reqData.role,
+        pharmacyId : reqData.pharmacyId,
+    };
 
-        if(!user.id){
-            throw new Error("user not created");
-        }else{
-            userData.userId = user.id;
-        }
+    const [user] = await Users.save(userData);
 
-        const [newStaffMember] = await PharmacyStaff.save(userData);
-
-        await Users.query('commit');
-
-
-        return responseJson(res , 200 , {
-            status:"success",
-            results: {...user , userId : user.id ,...newStaffMember},
-        })
-    }catch(e){
-        console.log(e);
-        await Users.query('rollback');
-        return responseJson(res , 400 , {
-            status:"error",
-            message:"staff member not created",
-            error:e,
-        })
+    if(!user.id){
+        throw new Error("user not created");
+    }else{
+        userData.userId = user.id;
     }
-}
+
+    const [newStaffMember] = await PharmacyStaff.save(userData);
+
+    await Users.query('commit');
 
 
-exports.getStaffMembers = async (req , res)=>{
-    try{
-        const id = req.params.get('id');
+    return responseJson(res , 200 , {
+        status:"success",
+        results: {...user , userId : user.id ,...newStaffMember},
+    })
+})
 
-        let members = [];
 
-        if(!id){
-            members = await PharmacyStaff.get();
-        }else{
-            members = await PharmacyStaff.getById(id);
-        }
+exports.getStaffMembers = apiCatchAsync(async (req , res)=>{
 
-        members = members.map(async m=>{
-            console.log(m);
-            const user = await Users.getById(m.userId);
-            return {...user , userId : user.id , ...m};
-        })
+    let members = await PharmacyStaff.getById(id);
 
-        members = await Promise.all(members);
+    members = members.map(async m=>{
+        console.log(m);
+        const user = await Users.getById(m.userId);
+        return {...user , userId : user.id , ...m};
+    })
 
-        return responseJson(res , 200 , {
-            status:"success",
-            results:members,
-            count: members.length,
-        })
+    members = await Promise.all(members);
 
-    }catch(e){
-        console.log(e);
-        return responseJson(res , 400 , {
-            status:"error",
-            message :"something went wrong",
-            error:e,
+    return responseJson(res , 200 , {
+        status:"success",
+        results:members,
+        count: members.length,
+    })
+})
 
-        })
+
+exports.getStaffMembers = apiCatchAsync(async (req , res)=>{
+    const id = req.staffId;
+
+    if(!id){
+        throw new Error("no staff id provided");
     }
-}
+    const [member] = await PharmacyStaff.getById(id);
+    const [user] = await Users.getById(member.userId);
+        
+    return responseJson(res , 200 , {
+        status:"success",
+        results:{...user , userId : user.id , ...member},
+    })
+})
+
+
+exports.changePermissions = apiCatchAsync(async (req , res)=>{
+    const staffId = req.staffId;
+
+    const permissions = {
+        
+    }
+
+
+    
+})

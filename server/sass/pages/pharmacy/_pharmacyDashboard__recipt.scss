@@ -58,8 +58,16 @@
             color: black;
             height: 84%;
 
+            @media print{
+                position: absolute;
+                inset: 0 0 0 0;
+                z-index: 2000;
+            }
+
+
             .receipt-title{
                 margin: 1rem;
+
                 padding: 1rem;
                 text-align: center;
 
@@ -69,16 +77,37 @@
                     border-top: 0.2rem dashed var(--color-border-gray-03);
                     border-bottom: 0.2rem dashed var(--color-border-gray-03);
                     margin: 1rem 0;
+
+
+                    // @media print{
+                    //     *{
+                    //         display: inline;
+                    //     }
+                    // }
                 }
 
                 h3{
                     font-size: 2rem;
                     color: var(--color-border-gray-03);
 
+
+                    // @media print{
+                    //     *{
+                    //         display: inline;
+                    //     }
+                    // }
+
                 }
                 .small{
                     color: var(--color-border-gray-02);
                     font-weight: 500;
+
+
+                    // @media print{
+                    //     *{
+                    //         display: inline;
+                    //     }
+                    // }
                 }
             }
 

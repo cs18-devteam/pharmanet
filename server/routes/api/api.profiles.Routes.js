@@ -8,3 +8,6 @@ exports.profileDetailsApiRouter = SubRouter.route('/api/v1')
 .subRoute('/pharmacy/:pharmacyId' , {
     get: profileApiController.getPharmacyProfileJsonData,
 })
+.subRoute('/staff/:staffId' , {
+    get: profileApiController.getStaffData,
+})

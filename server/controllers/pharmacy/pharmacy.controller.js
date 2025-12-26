@@ -68,8 +68,6 @@ exports.renderPharmacyProfile = async (req , res)=>{
 }
 
 
-
-
 exports.renderPharmacyDashboard = async (req , res)=>{
     try{
 

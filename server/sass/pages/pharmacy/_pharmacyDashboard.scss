@@ -22,6 +22,11 @@ $containers : 'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 's
         // overflow: hidden;
         // height: max-content;
 
+
+        @media print{
+            background-image: none;
+            background-color: #fff;;
+        }
         
     .dashboards{
         // padding-top: 4rem;
@@ -39,6 +44,11 @@ $containers : 'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 's
         position: absolute;
         // opacity: .1;
         overflow: hidden;
+
+
+         @media print{
+            box-shadow: none;
+        }
 
 
 
@@ -137,6 +147,11 @@ $containers : 'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 's
             }
         }
 
+
+         @media print{
+            display: none;
+        }
+
         
         
         .nav_links{
@@ -193,6 +208,10 @@ $containers : 'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 's
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        @media print{
+            display: none;
+        }
 
         
         .header{
@@ -268,6 +287,12 @@ $containers : 'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 's
         margin: 3rem;
         padding: 3rem;
         min-height: 80rem;
+
+
+        @media print{
+            margin: 0;
+            width: 100%;
+        }
 
         .container{
             position: absolute;
@@ -644,7 +669,7 @@ $containers : 'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 's
                                 margin: 1rem;
                                 padding: 1rem;
                                 border-radius: 3rem;
-                                color: white;
+                                color: var(--color-green-01);
                                 font-size: 1.8rem;
                             }
                             .grreen-line{

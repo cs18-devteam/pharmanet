@@ -11,6 +11,7 @@ const createOrderBackBtn = document.querySelector('.orders .footer-btn .back-btn
 const ordersPayButton = document.querySelector('.orders .pay_button');
 const paymentMethodButtons = document.querySelector('.orders .select-payment-method .selection');
 let paymentOption = undefined;
+const printBtn = document.querySelector(".orders .print-btn");
 
 
 function updatePaymentMethodScreen(){
@@ -184,4 +185,18 @@ paymentMethodButtons?.addEventListener('click' , e=>{
 
 
 // document.getElementById("payhere-payment").addEventListener("click" , payment);
+
+printBtn.addEventListener("click" , ()=>{
+    print()
+    // console.log('clicked');
+    // const receipt = document.querySelector(".orders .receipt-card");
+    // const body = document.createElement('body');
+    // body.insertAdjacentElement('afterbegin',receipt);
+    // body.addEventListener('click' , ()=>{
+    //     print();
+    // })
+
+    // body.click();
+    
+});
 

@@ -1,7 +1,7 @@
 
 
 // --- Authenticate user (Login) ---
-const { hashPassword, encrypt, createToken, createCookieToken } = require("../../common/Auth");
+const { hashPassword, encrypt, createToken, createCookie : createCookieToken} = require("../../common/Auth");
 const { createCookie } = require("../../common/cookie");
 const generateOTP = require("../../common/generateOTP");
 const { getRequestData } = require("../../common/getRequestData");

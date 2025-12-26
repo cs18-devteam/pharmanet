@@ -16,14 +16,6 @@
 @forward "./customer/medicine_review";
 
 /* pharmacy */
-@forward "./pharmacy/staff/attendance";
-//@forward "./pharmacy/pharmarcyLandingPage";
-@forward "./pharmacy/staff/staffMember";
-@forward "./pharmacy/stock/productManagement";
-@forward "./pharmacy/staff/pharmacy-member-intro";
-@forward "./pharmacy/staff/memberDetails";
-@forward "./pharmacy/staff/create";
-@forward "./pharmacy/staff/options";
 @forward "./pharmacy/cashier/cashier-create-bill";
 @forward "./pharmacy/cashier/cashier-customer";
 @forward "./pharmacy/cashier/cashier-dashboard";

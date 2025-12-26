@@ -89,6 +89,7 @@ exports.renderPharmacyDashboard = async (req , res)=>{
         
         return response(res , view('pharmacy/pharmacy.dashboard' , {
             transactionsView : view('pharmacy/views/dashboard.transactions.view'),
+            staffView : view('pharmacy/views/dashboard.staff.view'),
             header : view('component.header' , {
                 name:"Pharmacy Dashboard",
             }),

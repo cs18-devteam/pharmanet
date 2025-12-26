@@ -4,6 +4,7 @@
 @use "./pharmacyDashboard__transactions" as dashboard_transactions;
 @use "./pharmacyDashborder__waiting_list" as waiting-list;
 @use "./pharmacyDashboard__recipt" as recipe;
+@use "./pharmacyDashboard__staff" as staffManagement;
 
 /* paging effect */
 $containers : 'docs' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 'staff';
@@ -782,8 +783,20 @@ $containers : 'docs' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'produc
 }
 
 
+.pharmacyDashboard .dashboards .container.staff {
+    @include staffManagement.createStaff; 
+    @include staffManagement.memberDetails; 
+    @include staffManagement.options; 
+    @include staffManagement.staffMember; 
+    @include staffManagement.pharmacyMemberInfo; 
+    @include staffManagement.attendance; 
+}
+
+
 .pharmacyDashboard .dashboards .container{
     @include dashboard_transactions.transactions;
 
 
 }
+
+

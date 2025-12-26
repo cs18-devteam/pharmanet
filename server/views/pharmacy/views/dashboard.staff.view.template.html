@@ -1,0 +1,510 @@
+<div class="createStaff">
+<div class="page">
+<div class="card">
+
+    <div class="card-header">
+    <div>
+        <h2>Staff Management</h2>
+        <p>All your staff members can Manage from here</p>
+    </div>
+
+    <button class="btn-create">Create +</button>
+    </div>
+
+    <div class="card-body">
+    <div class="staff-list">
+
+        <div class="staff-item">
+        <img src="https://i.pravatar.cc/48?img=1" alt="avatar" />
+        <div class="info">
+            <h4>Chathura Priyashan</h4>
+            <span>Pharmacy Owner</span>
+        </div>
+        </div>
+
+        <div class="staff-item">
+        <img src="https://i.pravatar.cc/48?img=2" alt="avatar" />
+        <div class="info">
+            <h4>Chathura Priyashan</h4>
+            <span>Pharmacist</span>
+        </div>
+        </div>
+
+        <div class="staff-item">
+        <img src="https://i.pravatar.cc/48?img=3" alt="avatar" />
+        <div class="info">
+            <h4>Chathura Priyashan</h4>
+            <span>Cashier</span>
+        </div>
+        </div>
+
+        <div class="staff-item">
+        <img src="https://i.pravatar.cc/48?img=4" alt="avatar" />
+        <div class="info">
+            <h4>Chathura Priyashan</h4>
+            <span>Cashier</span>
+        </div>
+        </div>
+
+        <div class="staff-item">
+        <img src="https://i.pravatar.cc/48?img=5" alt="avatar" />
+        <div class="info">
+            <h4>Chathura Priyashan</h4>
+            <span>Cashier</span>
+        </div>
+        </div>
+
+    </div>
+
+    <div class="divider"></div>
+
+    </div>
+
+</div>
+</div> 
+    </div>
+
+
+
+    <div class="staffOptions">
+    <div class="page">
+        
+        <div class="card">
+        
+        <div class="card-header">
+            <div>
+            <h2>Staff Management</h2>
+            <p>All your staff members can Manage from here</p>
+            </div>
+            <div>
+            <button class="btn-create">Create +</button>
+        </div>
+        </div>
+
+        
+        <div class="card-body">
+            <div class="staff-list">
+
+            <div class="staff-item">
+                <img src="https://i.pravatar.cc/48?img=1" alt="avatar" />
+                <div class="info">
+                <h4>Chathura Priyashan</h4>
+                <span>Pharmacy Owner</span>
+                </div>
+            </div>
+
+            <div class="staff-item">
+                <img src="https://i.pravatar.cc/48?img=2" alt="avatar" />
+                <div class="info">
+                <h4>Chathura Priyashan</h4>
+                <span>Pharmacist</span>
+                </div>
+            </div>
+
+            <div class="staff-item">
+                <img src="https://i.pravatar.cc/48?img=3" alt="avatar" />
+                <div class="info">
+                <h4>Chathura Priyashan</h4>
+                <span>Cashier</span>
+                </div>
+            </div>
+
+            <div class="staff-item">
+                <img src="https://i.pravatar.cc/48?img=4" alt="avatar" />
+                <div class="info">
+                <h4>Chathura Priyashan</h4>
+                <span>Cashier</span>
+                </div>
+            </div>
+
+            <div class="staff-item">
+                <img src="https://i.pravatar.cc/48?img=5" alt="avatar" />
+                <div class="info">
+                <h4>Chathura Priyashan</h4>
+                <span>Cashier</span>
+                </div>
+            </div>
+            </div>
+            <div class="divider"></div>
+                
+        <!-- right actions -->
+        <div class="actions">
+            <div class="action-row">
+            <span>Create Leave Request</span>
+            <button class="btn-outline" onclick="openWindow('leaveModal')">Create Leave +</button>
+            </div>
+
+            <div class="action-row">
+            <span>Change Permissions Of Member</span>
+            <button class="btn-outline" onclick="openWindow('permissionPanel')">Change Permissions</button>
+            </div>
+
+            <div class="action-row">
+            <span>Edit Member</span>
+            <button class="btn-outline" onclick="openWindow('editAccount')">Edit</button>
+            </div>
+        </div>
+        </div>
+        </div>
+
+
+        <div class="side-panel" id="leaveModal">
+    <div class="modal-header">
+        <div>
+        <h2>Create Leave Request</h2>
+        <p>Submit a new leave request for approval by your manager</p>
+        </div>
+        <button class="close-btn" onclick="closeWindow('leaveModal')">&times;</button>
+    </div>
+
+    <div class="modal-body">
+
+        <!-- Leave Type -->
+        <div class="section">
+        <div class="section-title">
+            <div>
+            <h4>Leave Type</h4>
+            <p>Select the type of leave you're requesting</p>
+            </div>
+        </div>
+
+        <label>Type <span>*</span></label>
+        <select>
+            <option>Select leave type</option>
+            <option>Annual Leave</option>
+            <option>Medical Leave</option>
+            <option>Casual Leave</option>
+        </select>
+        </div>
+
+        <!-- Leave Period -->
+        <div class="section">
+        <div class="section-title">
+            <div>
+            <h4>Leave Period</h4>
+            <p>Specify the start and end dates for your leave</p>
+            </div>
+        </div>
+
+        <div class="date-grid">
+            <div>
+            <label>Start Date <span>*</span></label>
+            <input type="date" />
+            </div>
+            <div>
+            <label>End Date <span>*</span></label>
+            <input type="date" />
+            </div>
+        </div>
+        </div>
+
+        <!-- Details -->
+        <div class="section">
+        <div class="section-title">
+            <div>
+            <h4>Details</h4>
+            <p>Provide additional information about your leave</p>
+            </div>
+        </div>
+
+        <label>Reason (Optional)</label>
+        <textarea placeholder="Enter any additional details or reason for your leave request..."></textarea>
+        <small>Maximum 500 characters</small>
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+        
+        <button class="btn primary">Submit Request</button>
+    </div>
+    </div>
+
+
+        <div class="side-panel" id="editAccount">
+
+        <div class="editPanelHeader">
+        <h2>Update Your Account</h2>
+        <button class="close-btn" onclick="closeWindow('editAccount')">&times;</button>
+        </div>
+        <p class="uid">UID: 223344332233</p>
+
+        <div class="profile-section">
+            <img src="https://via.placeholder.com/100" alt="Profile" class="profile-img">
+
+            <button class="change-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="15" viewBox="0 0 24 24" fill="none">
+    <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M17 8L12 3L7 8" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12 3V15" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>Change Profile</button>
+        </div>
+
+        <form class="account-form">
+
+            <label>First Name</label>
+            <p class="hint">Your Staff Member Name</p>
+            <input type="text" placeholder="Your Staff Member Name">
+
+            <label>Last Name</label>
+            <p class="hint">Your Staff Member Name</p>
+            <input type="text" placeholder="Your Staff Member Surname">
+
+            <label>User Name</label>
+            <p class="hint">Please use only letters and numbers for the username . no special characters. Remember, usernames are case sensitive, so pick something easy to remember!</p>
+            <input type="text" placeholder="Username must be unique">
+
+            <label>Contact Number</label>
+            <p class="hint">We cannot verify if the mobile number is active. Please make sure to use a working phone number.</p>
+            <input type="text" placeholder="Enter your mobile number">
+
+            <label>Email</label>
+            <input type="email" placeholder="Enter the correct email">
+
+            <label>NIC</label>
+            <input type="text" placeholder="National Identification Number">
+
+            <button class="save-btn">Save Changes</button>
+        </form>
+
+    </div>
+
+
+
+
+        <!-- Permission Panel -->
+    <div class="side-panel" id="permissionPanel">
+    <div class="panel-header">
+        <h3>Change Permissions</h3>
+        <button class="close-btn" onclick="closeWindow('permissionPanel')">&times;</button>
+    </div>
+
+    <div class="panel-content">
+        <h4>Change Member Permisions</h4>
+        <h5>Orders Management Permisions</h5>
+
+        <div class="permission">
+        <span>Read Order Details</span>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+        </label>
+        </div>
+
+        <div class="permission">
+        <span>Create Orders</span>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+        </label>
+        </div>
+
+        <div class="permission">
+        <span>Update Orders</span>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+        </label>
+        </div>
+
+        <div class="permission">
+        <span>Delete Orders</span>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+        </label>
+        </div>
+
+            <h5>Stock Management Permissions</h5>
+
+        <div class="permission">
+        <span>Search Medicine & Products</span>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+        </label>
+        </div>
+
+        <div class="permission">
+        <span>Create Product & Medicine Stock</span>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+        </label>
+        </div>
+
+        <div class="permission">
+        <span>Update Product & Medicine Stock</span>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+        </label>
+        </div>
+
+
+        <div class="permission">
+        <span>Delete Products & Medicine</span>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+        </label>
+        </div>
+
+        
+        <p>Make sure you give correct permission to correct user</p>
+        <h5>Staff Management Permissions</h5>
+
+        <div class="permission">
+        <span>Read Details About Member</span>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+        </label>
+        </div>
+
+        <div class="permission">
+        <span>Create Staff Member</span>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+        </label>
+        </div>
+
+        <div class="permission">
+        <span>Update Staff Member</span>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+        </label>
+        </div>
+
+
+        <div class="permission">
+        <span>Delete Staff Member</span>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+        </label>
+        </div>
+
+        <p>Make sure you give correct permission to correct user</p>
+
+    </div>
+    </div>
+        
+        </div>
+
+
+        <div class="drawer" status="close">
+            <div class="medicine-viewer" data-id="${medicine.id}">
+
+                <div class="topbar">
+                    <div class="mini-header">
+                        <h1 class="medicine_name">
+                            ${medicine.geneticName}
+                        </h1>
+                        <div class="tag available" >available</div>
+                    </div>
+                    
+                    <div class="actions">
+                        <!-- <div class="bookmark"></div> -->
+                        <div class="edit">edit</div>
+                        <div class="close">close</div>
+                    </div>
+                    
+                </div>
+
+
+                <div class="content">
+                    <div class="left">
+                        <table class="details">
+                            <tbody>
+                                <tr class="row">
+                                    <td>genetic name</td>
+                                    <td>${medicine.geneticName}</td>
+                                </tr>
+                                <tr class="row">
+                                    <td>brand</td>
+                                    <td>${medicine.brand}</td>
+                                </tr>
+                                <tr class="row">
+                                    <td>country</td>
+                                    <td>${medicine.country}</td>
+                                </tr>
+                                <tr class="row">
+                                    <td>schedule</td>
+                                    <td>${medicine.schedule}</td>
+                                </tr>
+                                <tr class="row">
+                                    <td>registration number</td>
+                                    <td>${medicine.registrationNo}</td>
+                                </tr>
+                                <tr class="agent">
+                                    <td>agent</td>
+                                    <td>${medicine.agent}</td>
+                                </tr>
+                                <tr class="row">
+                                    <td>registration date</td>
+                                    <td>${new Date(medicine.registrationDate).toDateString()}</td>
+                                </tr>
+                                <tr class="row">
+                                    <td>manufacture</td>
+                                    <td>${medicine.manufacture}</td>
+                                </tr>
+                                <tr class="row">
+                                    <td>pack type</td>
+                                    <td>${medicine.packType}</td>
+                                </tr>
+                                <tr class="row">
+                                    <td>pack size</td>
+                                    <td>${medicine.packSize}</td>
+                                </tr>
+                                <tr class="row">
+                                    <td>dosage</td>
+                                    <td>${medicine.packType}</td>
+                                </tr>
+                                <tr class="row">
+                                    <td>validation</td>
+                                    <td>${medicine.validation}</td>
+                                </tr>
+                                <tr class="row">
+                                    <td>dossier number</td>
+                                    <td>${medicine.dossierNo}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+
+                    </div>
+                    <div class="right">
+
+
+                        
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        <div class="drawer-sidebar" status="close">
+            <div class="sidebar_content">
+
+
+            </div>
+        </div>
+
+
+        <div class="incoming_messege_box">
+                <h4>incoming message</h4>
+            
+                <img src="/xyz.png" alt="">
+            
+            <button class="accept">accept</button>
+            <button class="reject">reject</button>
+        </div>
+
+        <script src="/js/controller/pharmacy/pharmacy.dashboard.client.controller.js" type="module" ></script>
+        <script type="module" src="/js/controller/pharmacy/connection.js"></script>
+        <script type="module" src="/js/controller/pharamcy.dashboard.orders.controller.js"></script>
+    </div>

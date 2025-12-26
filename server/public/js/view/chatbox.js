@@ -1,4 +1,5 @@
 import html from "./html.js";
+import { renderWaitingList } from "./pharmacy/chat/renderWaitingList.js";
 const tone_incomingCall = new Audio('/music/message.mp3');
 const tone_acceptCall = new Audio('/music/accept.mp3');
 const tone_rejectCall = new Audio('/music/reject.mp3');
@@ -8,10 +9,14 @@ const tone_rejectCall = new Audio('/music/reject.mp3');
 const incomingMessage = document.querySelector('.incoming_messege_box');
 
 
-export function showIncomingMessage(){
+export function showIncomingMessage(data){
      tone_incomingCall.play();
-    incomingMessage?.classList.add('open');
-    handleIncomingMessageBtns();
+     data.user.then(data=>{
+          incomingMessage.querySelector('img').src = data.profile;
+     })
+     
+     renderWaitingList();
+     handleIncomingMessageBtns();
 }
     
 export function removeIncomingMessage(){
@@ -136,7 +141,10 @@ export function activateOnSubmitMessageCallback(){
      const chatBoxForm = document.querySelector('.chat-box .footer-section .type-bar-container');
 
 
-     if(!chatBoxForm) throw new Error("chat container not found");
+     if(!chatBoxForm) {
+         console.error("chat container not found");
+          return;
+     }
      const input = chatBoxForm.querySelector('input');
      
      chatBoxForm.addEventListener('submit' ,(e)=>{

@@ -102,3 +102,8 @@
 /api/v1/orders
 /pharmacist/:pharmacyId/staff/create
 /pharmacist/:pharmacyId/staff/options
+/api/v1/users/:userId
+/api/v1/pharmacy/:pharmacyId
+/api/v1/pharmacies/:pharmacyId/products
+/api/v1/pharmacies/:pharmacyId/products/create
+/api/v1/pharmacies/:pharmacyId/products/:productId

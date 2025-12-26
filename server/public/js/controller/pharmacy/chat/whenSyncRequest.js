@@ -25,13 +25,7 @@ export function whenSyncRequest(message){
             const cartBodySection = document.querySelector(".cart .body-section");
             renderPrescription(order.prescription || "/prescriptions/14-1765718920788.png");
 
-
-
-
-            
         })
     }
 }
 
-
-console.log(ChatTemplates.syncConnection(1));

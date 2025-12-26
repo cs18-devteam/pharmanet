@@ -1,48 +1,18 @@
-import {  fetchMedicineStockSummery } from "../../model/pharmacy/fetchMedicineData.js";
+import Application from "../../model/application/Application.js";
 import html from "../../view/html.js";
 import { openDrawer, openSidebar, setSidebarContent } from "../../view/pharmacy/drawerView.js";
-import { renderMedicineStockSummery } from "../../view/pharmacy/renderMedicineCards.js";
-import medicines__searchAndRenderMedicineCard from "./medicines__searchAndRenderMedicines.js";
+
+import { swal } from "../../view/swal.js";
 import orders__searchAndRenderMedicineCard from "./orders__searchAndRenderMedicineCards.js";
+import settings_init from "./pharamcy.dashboard.settings.controller.js";
+import chats_init from "./pharmacy.dashboard.chats.controller.js";
+import medicines_init from "./pharmacy.dashboard.medicines.controller.js";
+import products_init from "./pharmacy.dashboard.products.controller.js";
+import transactions_init from "./pharmacy.dashboard.transactions.controller.js";
 import { createTransactionsRow } from "/js/controller/pharmacy/transactions__searchAndRender.js";
-const medicinesSearchBar = document.querySelector(".medicines .search-bar");
 const ordersSearchBar = document.querySelector(".orders .search-bar > input");
 const setting_btn = document.getElementById("settings");
-
-
-
-
-
-
-medicines__searchAndRenderMedicineCard();
-
-
-fetchMedicineStockSummery(1).then(data=>{
-    try{
-        renderMedicineStockSummery({
-            count: data.results.count ,
-            sufficient : data.results.sufficient,
-            low: data.results.low,
-            out : data.results.out,
-        })
-    }catch(e){
-        console.log(e);
-    }
-})
-
-
-medicinesSearchBar?.addEventListener('input' , e=>{
-    try{
-
-
-        const input_search = e.target;
-        const value = input_search.value;
-        medicines__searchAndRenderMedicineCard(value , 6);
-    }catch(e){
-        console.log(e);
-    }
-})
-
+const navLink = document.querySelector(".nav_links");
 
 
 
@@ -58,18 +28,42 @@ ordersSearchBar?.addEventListener('input' , e=>{
 createTransactionsRow();
 
 
-const signoutBtn = html`<button class="signout" id="signout">signout</button>`;
+
+function initialize(view){
+     switch(view){
+        case "chats":
+            chats_init();
+            break;
+        case "medicines":
+            medicines_init();
+            break;
+        case "transactions":
+            transactions_init();
+            break;
+        case "settings":
+            settings_init();
+            break;
+        case "products":
+            products_init();
+            break;
+    }
+}
 
 
-setting_btn?.addEventListener("click" , ()=>{
-    setSidebarContent(signoutBtn);
-    openSidebar();
 
-    document.querySelector('.signout#signout').addEventListener('click' , ()=>{
-    window.cookieStore.getAll().then((cookies)=>{
-        cookies.forEach(c=>window.cookieStore.delete(c.name));
-    })
-    window.location.href = "http://localhost:3000";
+//initiator of dashboard
+navLink.addEventListener("click" , e=>{
+    const target = e.target;
+    const btn = target.closest("label");
+    initialize(btn?.getAttribute('for'))
 })
 
+
+const navInputControlElements = document.querySelectorAll("body > input[type=radio][name=navigation]")
+navInputControlElements.forEach(element=>{
+    if(element.checked){
+        const view = element.getAttribute('id');
+        initialize(view);
+    }
 })
+

@@ -21,6 +21,14 @@ class PharmacyOrderModel extends Model{
         this.prescription = {
             type:"TEXT"
         }
+
+        this.paymentMethod = {
+            type:"VARCHAR(50)",
+        }
+
+        this.cardNo = {
+            type:"VARCHAR(50)"
+        }
     }
 }
 

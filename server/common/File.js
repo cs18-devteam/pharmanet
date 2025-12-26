@@ -1,5 +1,6 @@
 const fs = require('fs/promises');
 const path = require('path');
+const { updateFileServerCache } = require('../fileServer');
 
 
 class File{
@@ -20,6 +21,8 @@ class File{
             const file = await fs.writeFile(filePath , this.content , {
                 encoding : "binary"
             });
+
+            updateFileServerCache();
             
             return {
                 status:"success",

@@ -4,10 +4,15 @@
 @use "./pharmacyDashboard__transactions" as dashboard_transactions;
 @use "./pharmacyDashborder__waiting_list" as waiting-list;
 @use "./pharmacyDashboard__recipt" as recipe;
+<<<<<<< HEAD
 @use "./pharmacyDashboard__staff" as staffManagement;
+=======
+@use "./pharmacyDashboard__settings" as pharmacy_profile;
+@use "./pharamcyDashboard_products" as pharmacy_products;
+>>>>>>> 3151f3d4434ad90bfd46c7864b3c504b5b9e5fbc
 
 /* paging effect */
-$containers : 'docs' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 'staff';
+$containers : 'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 'staff';
 
 .pharmacyDashboard{
         // background: #127EB5;
@@ -220,6 +225,36 @@ $containers : 'docs' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'produc
             margin:3rem 3rem 0 3rem;
             border-radius: 3rem;
             padding: 2rem;
+            position: relative;
+            overflow: hidden;
+
+
+            &::after{
+                   width: 100%;
+                    aspect-ratio: 1;
+                    position: absolute;
+                    top: 0;
+                    left: 0%;
+                    content: "";
+                    background-image: linear-gradient(var(--color-green-01), var(--color-green-02));
+                    opacity: 0.1;
+                    mask-image: url(/images/spin.svg);
+                    mask-size: 100%;
+                    mask-position: top;
+                    mask-repeat: no-repeat;
+                    margin: 2rem;
+                    animation: spin 20s ease infinite ;
+                    transform-origin: center;
+            }
+
+            &::before{
+                content: "No Notifications yet";
+                position: absolute;
+                bottom : 3rem;
+                left: 50%;
+                transform: translate(-50% , 0);
+                opacity: .2;
+            }
 
 
             .title{
@@ -768,6 +803,13 @@ $containers : 'docs' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'produc
 }
 
 
+@keyframes spin {
+    50%{
+        transform: rotate(180deg);
+    }
+}
+
+
 // .pharmacyDashboard .dashboards .container.chatss {
 //     @include chat.chat;
 // }
@@ -800,3 +842,14 @@ $containers : 'docs' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'produc
 }
 
 
+<<<<<<< HEAD
+=======
+.pharmacyDashboard{
+    @include pharmacy_profile.settings;
+}
+
+// .pharmacyDashboard .dashboards .container{
+// }
+@include pharmacy_products.product_add_form;
+@include pharmacy_products.product_details;
+>>>>>>> 3151f3d4434ad90bfd46c7864b3c504b5b9e5fbc

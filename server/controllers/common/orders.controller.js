@@ -1,4 +1,5 @@
 const {apiCatchAsync} = require("../../common/catchAsync");
+const getMultipartData = require("../../common/getMultipartData");
 const { getRequestData } = require("../../common/getRequestData");
 const { response, responseJson } = require("../../common/response");
 const view = require("../../common/view");
@@ -11,6 +12,7 @@ exports.createOrder = apiCatchAsync(async (req , res)=>{
 
         const reqData = JSON.parse(await getRequestData(req));
         const carts = reqData.carts;
+        const items = reqData.items;
         let ordersData  = [];
         
         const [order] =await  PharmacyOrders.save({
@@ -27,7 +29,6 @@ exports.createOrder = apiCatchAsync(async (req , res)=>{
 
             ordersData = await Promise.all(cartsData).then(data=>data.map(d=>d[0]));
         }
-
 
         const orders= await Promise.all(ordersData.map(async (item)=>{
             return await PharmacyOrdersItems.save({
@@ -71,4 +72,17 @@ exports.getOrders = apiCatchAsync(async (req , res)=>{
     })
 
 });
+
+
+exports.updateOrder = apiCatchAsync(async (req , res)=>{
+    const id = req.params.get('id');
+    const reqData = await getMultipartData(req);
+    console.log(reqData);
+    
+
+    return responseJson(res , 200 , {
+        status:"success",
+    } )
+    
+})
 

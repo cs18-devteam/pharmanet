@@ -34,6 +34,22 @@
         text-transform: capitalize;
     }
 
+    .close-btn{
+        transform: rotate(45deg);
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        border: 1px solid var(--color-red-01);
+        color : var(--color-red-01);
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        display: none;
+    }
+
     .dosage-icon{
         height: min-content;
         
@@ -348,6 +364,22 @@
 
 
 .orders  .cart_list .medicine_card {
+
+
+    .close-btn{
+        transform: rotate(45deg);
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        border: 1px solid var(--color-red-01);
+        color : var(--color-red-01);
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
 
     .details{
         .medicine__info__store-as{

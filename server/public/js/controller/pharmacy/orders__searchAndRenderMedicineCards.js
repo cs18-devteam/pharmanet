@@ -8,9 +8,6 @@ const orderCount = document.querySelector('.orders .total__orders__description__
 const numberOfItemsInCart = document.querySelector('.orders .no_of_cart_items');
 const priceOfCartItems = document.querySelector('.orders .amount_of_cart_items');
 const cartList = document.querySelector('.orders .cart_list');
-const ordersPayButton = document.querySelector('.orders .pay_button');
-
-
 
 
 
@@ -35,14 +32,21 @@ function calcCartPrice(){
 
 
 function init(){
-    setTextContent(numberOfItemsInCart , Application.getOrderItems().length)
-    setTextContent(priceOfCartItems , calcCartPrice());
+    // setTextContent(numberOfItemsInCart , Application.getOrderItems().length)
+    // setTextContent(priceOfCartItems , calcCartPrice());
+    updateCardList();
     orders__searchAndRenderMedicineCard();
 }
 
 
 
 
+function updateCardList(cartList , orders ){
+    setTextContent(numberOfItemsInCart , Application.getOrderItems().length);
+    setTextContent(priceOfCartItems , calcCartPrice().toLocaleString('En-us'));
+    const orderCards = createMedicineCards(orders);
+    renderMedicineCards(cartList , orderCards);
+}
 
 
 /**
@@ -53,17 +57,15 @@ function init(){
 function onPushOrderItem (orderItem , orderItemsCollection){
     setTextContent(numberOfItemsInCart , orderItemsCollection.length);
     setTextContent(priceOfCartItems , calcCartPrice().toLocaleString('En-us'));
-    console.log(orderItem);
+    // console.log(orderItem);
 
     // re structure order collection
     const orders = orderItemsCollection.map(item=>{
         const order ={...item , ...item.getMedicine()};
         return order;
-    })
+    });
 
-
-    const orderCards = createMedicineCards(orders);
-    renderMedicineCards(cartList , orderCards);
+    updateCardList(cartList , orders);
 }
 
 
@@ -110,8 +112,16 @@ medicineCardContainer?.addEventListener('click' , e=>{
     
 })
 
-ordersPayButton?.addEventListener('click' , ()=>{
-    openOrdersPaymentMode();
+
+cartList?.addEventListener('click' , (e)=>{
+    const target = e.target;
+    const removeBtn = target.closest(".close-btn");
+
+    if(removeBtn){
+        const id = target.closest('.medicine_card').dataset.id;
+        Application.removeOrderItem({medicineId : id});
+        updateCardList(cartList , Application.getOrderItems());
+    }
 })
 
 init();

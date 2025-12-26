@@ -1,6 +1,6 @@
 const Model = require("../common/Model");
 
-class Transaction extends Model{
+class TransactionModel extends Model{
     constructor(){
         super();
         this.orderId = {
@@ -39,7 +39,7 @@ class Transaction extends Model{
     }
 }
 
-const Transactions = new Transaction();
+const Transactions = new TransactionModel();
 Transactions.createTable().catch(e=>{
     console.log(e);
     console.log("Transaction Table not Created model");

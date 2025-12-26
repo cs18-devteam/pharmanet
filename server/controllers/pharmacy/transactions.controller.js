@@ -1,15 +1,15 @@
+const { catchAsync, apiCatchAsync } = require("../../common/catchAsync");
 const { getRequestData } = require("../../common/getRequestData");
 const { response, responseJson } = require("../../common/response");
 const Transactions = require("../../models/TransactionModel");
 
-exports.getTransactions = async (req , res)=>{
-    try{
+exports.getTransactions = catchAsync( async (req , res)=>{
+
         const filter = {}
         const pharmacyId = req.params.get("pharmacyId");
         const userId = req.params.get("userId");
         const staffID = req.params.get('staffId');
         const orderId = req.params.get('orderId');
-
 
         if(pharmacyId){
             filter.pharmacyId = pharmacyId;
@@ -42,20 +42,12 @@ exports.getTransactions = async (req , res)=>{
         });
 
 
-    }catch(e){
-        console.log(e);
-        return responseJson(res , 400 , {
-            status:"error",
-            message:"something wrong",
-            error:e,
-        })
-    }
-}
+   
+})
 
 
-exports.createTransaction = async (req , res)=>{
+exports.createTransaction = apiCatchAsync( async (req , res)=>{
     await Transactions.query('start transaction');
-    try{
         const reqData = JSON.parse(await getRequestData(req));
         const transactionObj = {
             orderId : reqData.orderId,
@@ -75,15 +67,7 @@ exports.createTransaction = async (req , res)=>{
             results : newTransaction,
         })
 
-    }catch(e){
-        console.log(e);
-        await Transactions.query('rollback');
-        return responseJson(res , 200 , {
-            status :"error",
-            message:"Transaction not created",
-            error:e,
-        })
-    }
-}
+  
+})
 
 

@@ -26,6 +26,9 @@ const { customerApiRouter } = require('./routes/api/api.customer.Routes');
 const Pharmacies = require('./models/PharmacyModel');
 const { ordersApiRouter } = require('./routes/api/api.oder.Routes');
 const { profileDetailsApiRouter } = require('./routes/api/api.profiles.Routes');
+const { pharmacyTransactionsRouter } = require('./routes/api/api.pharmacy.transaction.Router');
+
+
 
 
 const options = {
@@ -90,6 +93,7 @@ const server = https.createServer(options,(req , res)=>{
         adminApiPharmacyRouter.pipe(req , res);
         customerApiRouter.pipe(req , res);
         pharmaciesApiRouter.pipe(req ,res);
+        pharmacyTransactionsRouter.pipe(req,res);
 
         AppRouter.pipe(req ,res).route('/admin/addUsers')
         ?.get(adminController.addUsers);

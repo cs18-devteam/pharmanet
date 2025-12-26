@@ -101,3 +101,4 @@
 /api/v1/orders
 /api/v1/users/:userId
 /api/v1/pharmacy/:pharmacyId
+/api/v1/pharmacies/:pharmacyId/transactions

@@ -6,3 +6,4 @@ exports.transactionsRouter = SubRouter.route('/api/v1/transactions')
     get: transactionsController.getTransactions,
     post : transactionsController.createTransaction,
 })
+

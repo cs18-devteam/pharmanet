@@ -1,14 +1,18 @@
-import { renderWaitingList } from "../../view/pharmacy/chat/renderWaitingList.js";
+import { getProducts } from "../../model/pharmacy/fetchProductsData.js";
+import { createAndRenderProducts } from "../../view/pharmacy/products/createAndRenderProducts.js";
+import { updateProductsCount } from "../../view/pharmacy/products/updateProductsStats.js";
+import { fetchAndRenderProducts } from "./products/fetchAndRenderProduct.js";
+import { handleProductCardClicks } from "./products/handleProductCardClicks.js";
+import { handleSearchBar } from "./products/handleSearchBar.js";
+import { onClickAddProductBtn } from "./products/onClickAddProductBtn.js";
 
-const chatsNavButton = document.querySelector(".nav_links li label[for='chats']");
+export default async function init(){
+    fetchAndRenderProducts();
+    handleSearchBar();
+    handleProductCardClicks();
 
-chatsNavButton?.querySelector("click" , ()=>{
-    console.log(e);
-})
 
-
-export default function init(){
-    console.log('chats init');
-    renderWaitingList();
-
+    //? add new product
+    const createProductBtn = document.querySelector('.products.container .btn-add-new');
+    createProductBtn?.addEventListener('click' , onClickAddProductBtn);
 }

@@ -4,6 +4,16 @@ import { createOrder } from "../../model/pharmacy/orders.js";
 import { updateReceipt } from "../../view/pharmacy/orders/reciptView.js";
 import { closeOrdersPaymentMode, openOrdersPaymentMode } from "../../view/pharmacy/orders__viewPaymentMode.js";
 import { swal } from "../../view/swal.js";
+import orders__searchAndRenderMedicineCard, { updateCardList } from "./orders/orders__searchAndRenderMedicineCards.js";
+const cartList = document.querySelector('.orders .cart_list');
+
+
+
+export default function init(){
+    updateCardList(cartList , Application.getOrderItems());
+    orders__searchAndRenderMedicineCard()
+}
+
 
 const paymentForm = document.querySelector('.orders .payment-section form');
 const createOrderCreateBtn = document.querySelector('.orders .footer-btn .create-order-btn');
@@ -11,6 +21,7 @@ const createOrderBackBtn = document.querySelector('.orders .footer-btn .back-btn
 const ordersPayButton = document.querySelector('.orders .pay_button');
 const paymentMethodButtons = document.querySelector('.orders .select-payment-method .selection');
 let paymentOption = undefined;
+const printBtn = document.querySelector(".orders .print-btn");
 
 
 function updatePaymentMethodScreen(){
@@ -44,6 +55,8 @@ function updatePaymentMethodScreen(){
 function clearOrderDetails(){
     Application.clearOrderItems();
     closeOrdersPaymentMode();
+    console.log(Application.getOrderItems());
+    updateCardList(cartList , Application.getOrderItems());
 }
 
 // openOrdersPaymentMode();
@@ -67,13 +80,6 @@ createOrderCreateBtn?.addEventListener("click" ,async ()=>{
     for(const [key , value] of formData.entries()){
         const input = paymentForm.querySelector(`[name="${key}"]`);
 
-        // if(!value){
-        //     input.classList.add("error");
-        //     input.classList.remove("success");
-        // }else{
-        //     input.classList.remove("error");
-        //     input.classList.add("success");
-        // }
     }
 
     const items = Application.getOrderItems().map(item=>{
@@ -92,7 +98,7 @@ createOrderCreateBtn?.addEventListener("click" ,async ()=>{
     if(paymentOption == "cash"){
         
         const order = await createOrder({
-            userId : -1 , 
+            userId : Application.staffId , 
             items ,
             
         })
@@ -102,13 +108,13 @@ createOrderCreateBtn?.addEventListener("click" ,async ()=>{
                 title:"order created",
                 icon:"success",
             })
+
         }else{
             swal({
                 title:"order failed",
                 icon :"error",
             })
         }
-        console.log(order);
 
 
 
@@ -184,4 +190,18 @@ paymentMethodButtons?.addEventListener('click' , e=>{
 
 
 // document.getElementById("payhere-payment").addEventListener("click" , payment);
+
+printBtn.addEventListener("click" , ()=>{
+    print()
+    // console.log('clicked');
+    // const receipt = document.querySelector(".orders .receipt-card");
+    // const body = document.createElement('body');
+    // body.insertAdjacentElement('afterbegin',receipt);
+    // body.addEventListener('click' , ()=>{
+    //     print();
+    // })
+
+    // body.click();
+    
+});
 

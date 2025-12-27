@@ -10,6 +10,7 @@ class Slider{
         this.slideContainer = slideContainer;
         this.init();
         this.activateBtns();
+        console.log(this);
         return this.slideContainer;
     }
 
@@ -24,6 +25,7 @@ class Slider{
 
     next(){
         this.#setActive(this.active + 1);
+        console.log('clicked next');
     }
 
     previous(){
@@ -105,7 +107,6 @@ class Slider{
     }
 
 }
-
 
 
 const slideContainers = document.querySelectorAll('slide-container');

@@ -18,6 +18,90 @@ class PharmacyStaffModel extends Model{
             type :"INT" , 
             null : false,
         }
+
+        // order permissions
+
+        this.createOrder = {
+            type :"BOOL"
+        }
+        this.deleteOrder = {
+            type :"BOOL"
+        }
+        this.readOrder = {
+            type :"BOOL"
+        }
+        this.updateOrder = {
+            type :"BOOL"
+        }
+
+
+        // transaction permissions
+
+        this.readTransactions = {
+            type : "BOOL"
+        }
+
+
+        // products permissions
+
+        this.searchProducts = {
+            type:"BOOL",
+        }
+
+        this.updateProducts = {
+            type:"BOOL",
+        }
+
+        this.deleteProducts = {
+            type:"BOOL",
+        }
+
+        this.createProducts = {
+            type:"BOOL",
+        }
+        
+
+        // medicine permission
+        
+        this.searchMedicines = {
+            type:"BOOL",
+        }
+
+        this.updateMedicines = {
+            type:"BOOL",
+        }
+
+        this.deleteMedicines = {
+            type:"BOOL",
+        }
+
+        this.createMedicines = {
+            type:"BOOL",
+        }
+
+
+        // staff permission
+        
+        this.searchStaff = {
+            type:"BOOL",
+        }
+
+        this.updateStaff = {
+            type:"BOOL",
+        }
+
+        this.deleteStaff = {
+            type:"BOOL",
+        }
+
+        this.createStaff = {
+            type:"BOOL",
+        }
+
+        
+
+
+
     }
 
 }

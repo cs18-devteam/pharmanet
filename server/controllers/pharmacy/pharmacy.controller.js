@@ -68,8 +68,6 @@ exports.renderPharmacyProfile = async (req , res)=>{
 }
 
 
-
-
 exports.renderPharmacyDashboard = async (req , res)=>{
     try{
 
@@ -89,6 +87,7 @@ exports.renderPharmacyDashboard = async (req , res)=>{
 
         return response(res , view('pharmacy/pharmacy.dashboard' , {
             transactionsView : view('pharmacy/views/dashboard.transactions.view'),
+            staffView : view('pharmacy/views/dashboard.staff.view'),
             chatsView : view('pharmacy/views/dashboard.chats.view'),
             productsView : view('pharmacy/views/dashboard.product.view'),
             medicinesView : view('pharmacy/views/dashboard.medicines.view'),

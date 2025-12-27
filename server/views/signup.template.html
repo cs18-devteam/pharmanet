@@ -191,11 +191,11 @@
                         icon:"success",
                         title:"Account Created Successfully",
                     }).then(()=>{
-                        window.location.href = `http://localhost:3000/verify/${result.results["0"].id}/email`;
+                        window.location.href = `/verify/${result.results["0"].id}/email`;
                     })
 
                     setTimeout(()=>{
-                        window.location.href = `http://localhost:3000/verify/${result.results["0"].id}/email`;
+                        window.location.href = `/verify/${result.results["0"].id}/email`;
                     } , 3000)
                     
                 }

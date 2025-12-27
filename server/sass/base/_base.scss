@@ -21,6 +21,12 @@ body{
     padding: 2rem;
     transition: background-color 0.3s, color 0.3s;
     // user-select: var(--color-green-01);
+
+    @media print{
+        padding: 0;
+    }
+
+
     
 }
 
@@ -38,8 +44,6 @@ a{
     &:hover{
         color:var(--color-green-01);
         // background-size: 100% 10%;
-
-        
     }
 }
 
@@ -82,17 +86,3 @@ img{
 }
 
 
-
-
-
-                
-// .available{
-//     background-color: var(--color-green-01);
-// }
-// .low_stock{
-//     background-color: var(--color-yellow-01);
-// }
-// .out_of_stock{
-//     background-color: var(--color-red-01);
-
-// }

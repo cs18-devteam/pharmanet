@@ -2,22 +2,8 @@ const { getRequestData } = require("../../common/getRequestData")
 const { response, responseJson } = require("../../common/response")
 const view = require("../../common/view");
 const Blogs = require("../../models/BlogModel");
+const Users = require("../../models/UserModel");
 
-exports.antibiotics = async (req ,res)=>{
-  try{
-    
-    return response(res , view('blog/antibiotics',{
-      sidebar : view('admin/component.sidebar'),
-      header : view('component.header' , {
-        name:"Antibiotic || Pharmanet-blog",
-      })
-      
-    }))
-  }catch(e){
-    console.log(e);
-    return response(res , view('404') , 404);
-  }
-}
 
 exports.renderBlogManageView = async (req ,res)=>{
     try{
@@ -41,11 +27,12 @@ exports.renderBlogManageView = async (req ,res)=>{
 exports.renderBlogView = async (req ,res)=>{
   try{
 
-    
+    const [admin] = await Users.getById(id);
+
     const blogs = await Blogs.get();
     
     return response(res , view('blog/blogView' , {
-      sidebar : view('admin/component.sidebar'),
+      sidebar : view('admin/component.sidebar' , ...admin),
       blogs : blogs.map(b=>view('blog/componentBlog' , b)).join(''),
       header : view('component.header' , {
         name:"",
@@ -111,21 +98,6 @@ exports.hypertension = async (req ,res)=>{
       sidebar : view('admin/component.sidebar'),
       header : view('component.header' , {
         name:"hypertension",
-      })
-    }))
-  }catch(e){
-    console.log(e);
-    return response(res , view('404') , 404);
-  }
-}
-
-exports.supplement = async (req ,res)=>{
-  try{
-
-    return response(res , view('blog/supplement',{
-      sidebar : view('admin/component.sidebar'),
-      header : view('component.header' , {
-        name:"supplement",
       })
     }))
   }catch(e){

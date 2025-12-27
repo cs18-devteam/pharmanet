@@ -38,7 +38,7 @@ class PharmacyOrderItemsModel extends Model{
 
 const PharmacyOrdersItems = new PharmacyOrderItemsModel();
 PharmacyOrdersItems.createTable().then(()=>{
-    console.log("✅ pharmacy order items table created");
+    // console.log("✅ pharmacy order items table created");
 }).catch(e=>{
     console.log("🚫 pharmacy order items table not created");
     console.log(e);

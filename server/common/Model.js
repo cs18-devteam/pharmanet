@@ -102,14 +102,14 @@ class Model{
             await db.query(`use ${process.env.DATABASE_NAME}`);
             await db.query(createTableQuery);
             if(process.env.NODE_ENV == "development"){
-                console.log(`${this.#table} created`);
+                console.log(`✅ ${this.#table} created`);
             }
 
             this.#autoStructureTable().then(async (q)=>{
                 try{
                     if(!q) return;
                     await db.query(q);
-                    console.log(`${this.#table} updated`);
+                    console.log(`↗️ ${this.#table} updated`);
                 }catch(e){
                     throw e;
                 }
@@ -117,6 +117,9 @@ class Model{
                 console.log(e);
             }); 
         }catch(e){
+            if(process.env.NODE_ENV == "development"){
+                console.log(`⚠️ ${this.#table} not created`);
+            }
             throw e;
         }
     }

@@ -1,12 +1,12 @@
 {header}
 <body class="pharmacyDashboard">
     <!-- <input type="radio"  name="navigation" id="docs"> -->
-    <input type="radio" checked name="navigation" id="orders">
+    <input type="radio"  name="navigation" id="orders">
     <input type="radio" name="navigation" id="chats">
     <input type="radio"  name="navigation" id="medicines">
     <input type="radio"  name="navigation" id="transactions">
     <input type="radio"  name="navigation" id="products">
-    <input type="radio" name="navigation" id="staff">
+    <input type="radio" checked name="navigation" id="staff">
     <input type="hidden" name="navigation" id="settings" >
 
 
@@ -63,16 +63,9 @@
         {medicinesView}
         {transactionsView}
         {productsView}
+        {staffView}
 
-
-
-
-
-
-        <div class="staff container">staff</div>
-    
     </div>
-
 
     <div class="drawer" status="close">
          <div class="medicine-viewer" data-id="${medicine.id}">
@@ -187,5 +180,7 @@
     <script src="/js/controller/pharmacy/pharmacy.dashboard.client.controller.js" type="module" ></script>
     <script type="module" src="/js/controller/pharmacy/connection.js"></script>
     <script type="module" src="/js/controller/pharmacy/pharmacy.dashboard.orders.controller.js"></script>
+    <script type="module" src="/js/utilities/Slider.js" ></script>
+    <script type="module" src="/js/utilities/Popup.js" ></script>
 </body>
 </html>

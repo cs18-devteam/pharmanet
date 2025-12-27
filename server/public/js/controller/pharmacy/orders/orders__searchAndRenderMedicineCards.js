@@ -1,8 +1,8 @@
-import Application from "../../model/application/Application.js";
-import { fetchMedicineData } from "../../model/pharmacy/fetchMedicineData.js";
-import { openOrdersPaymentMode } from "../../view/pharmacy/orders__viewPaymentMode.js";
-import { createMedicineCards, renderMedicineCards } from "../../view/pharmacy/renderMedicineCards.js";
-import { setTextContent } from "./helpers.js";
+import Application from "../../../model/application/Application.js";
+import { fetchMedicineData } from "../../../model/pharmacy/fetchMedicineData.js";
+import { openOrdersPaymentMode } from "../../../view/pharmacy/orders__viewPaymentMode.js";
+import { createMedicineCards, renderMedicineCards } from "../../../view/pharmacy/renderMedicineCards.js";
+import { setTextContent } from "../helpers.js";
 const medicineCardContainer = document.querySelector(".orders .medicine_card_container");
 const orderCount = document.querySelector('.orders .total__orders__description__amount');
 const numberOfItemsInCart = document.querySelector('.orders .no_of_cart_items');
@@ -31,20 +31,13 @@ function calcCartPrice(){
 }
 
 
-function init(){
-    // setTextContent(numberOfItemsInCart , Application.getOrderItems().length)
-    // setTextContent(priceOfCartItems , calcCartPrice());
-    updateCardList();
-    orders__searchAndRenderMedicineCard();
-}
 
 
-
-
-function updateCardList(cartList , orders ){
+export function updateCardList(cartList , orders ){
     setTextContent(numberOfItemsInCart , Application.getOrderItems().length);
     setTextContent(priceOfCartItems , calcCartPrice().toLocaleString('En-us'));
     const orderCards = createMedicineCards(orders);
+    console.log(orderCards);
     renderMedicineCards(cartList , orderCards);
 }
 
@@ -123,5 +116,3 @@ cartList?.addEventListener('click' , (e)=>{
         updateCardList(cartList , Application.getOrderItems());
     }
 })
-
-init();

@@ -1,5 +1,4 @@
 const orders = document.querySelector('.orders.container')
-console.log(orders);
 
 
 export function openOrdersPaymentMode(){

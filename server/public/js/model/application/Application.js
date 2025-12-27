@@ -47,6 +47,12 @@ window.cookieStore.getAll().then(cookies=>{
         .then(pharmacy=>Application.pharmacy = pharmacy.results)
         .catch(e=>console.log(e));
     }
+    if(Application.staffId){
+        fetch(`/api/v1/staff/${Application.staffId}`)
+        .then(data => data.json())
+        .then(pharmacy=>Application.staff = pharmacy.results)
+        .catch(e=>console.log(e));
+    }
 
 })
 
@@ -70,6 +76,7 @@ export default class Application{
     static user = undefined;
     static connectedUser = undefined;
     static waitingList = [];
+    static staff = undefined;
 
     /**
      * @type {Order[]}

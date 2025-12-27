@@ -4,7 +4,9 @@
 @use "./pharmacyDashboard__transactions" as dashboard_transactions;
 @use "./pharmacyDashborder__waiting_list" as waiting-list;
 @use "./pharmacyDashboard__recipt" as recipe;
+@use "./pharmacyDashboard__staff" as staffManagement;
 @use "./pharmacyDashboard__settings" as pharmacy_profile;
+@use "./pharamcyDashboard_products" as pharmacy_products;
 
 /* paging effect */
 $containers : 'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 'staff';
@@ -20,6 +22,11 @@ $containers : 'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 's
         // overflow: hidden;
         // height: max-content;
 
+
+        @media print{
+            background-image: none;
+            background-color: #fff;;
+        }
         
     .dashboards{
         // padding-top: 4rem;
@@ -37,6 +44,11 @@ $containers : 'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 's
         position: absolute;
         // opacity: .1;
         overflow: hidden;
+
+
+         @media print{
+            box-shadow: none;
+        }
 
 
 
@@ -135,6 +147,11 @@ $containers : 'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 's
             }
         }
 
+
+         @media print{
+            display: none;
+        }
+
         
         
         .nav_links{
@@ -191,6 +208,10 @@ $containers : 'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 's
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        @media print{
+            display: none;
+        }
 
         
         .header{
@@ -266,6 +287,12 @@ $containers : 'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 's
         margin: 3rem;
         padding: 3rem;
         min-height: 80rem;
+
+
+        @media print{
+            margin: 0;
+            width: 100%;
+        }
 
         .container{
             position: absolute;
@@ -642,7 +669,7 @@ $containers : 'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 's
                                 margin: 1rem;
                                 padding: 1rem;
                                 border-radius: 3rem;
-                                color: white;
+                                color: var(--color-green-01);
                                 font-size: 1.8rem;
                             }
                             .grreen-line{
@@ -820,13 +847,31 @@ $containers : 'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 's
 }
 
 
+.pharmacyDashboard .dashboards .container.staff {
+    @include staffManagement.createStaff; 
+    @include staffManagement.memberDetails; 
+    @include staffManagement.options; 
+    @include staffManagement.staffMember; 
+    @include staffManagement.pharmacyMemberInfo; 
+    @include staffManagement.attendance; 
+}
+
+
 .pharmacyDashboard .dashboards .container{
     @include dashboard_transactions.transactions;
-
-
+    
+    
 }
 
 
 .pharmacyDashboard{
     @include pharmacy_profile.settings;
 }
+
+// .pharmacyDashboard .dashboards .container{
+// }
+@include pharmacy_products.product_add_form;
+@include pharmacy_products.product_details;
+@include staffManagement.createStaffForm; 
+@include staffManagement.permissions; 
+    

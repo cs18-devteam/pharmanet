@@ -28,7 +28,7 @@ exports.renderCustomerHome = async (req , res)=>{
                         }) , 200)
                 }else{
                         return response(res , 'redirect' , 301 , {
-                                location :`/pharmacies/${staffMember.pharmacyId}/${staffMember.role}/${staffMember.id}`,
+                                location :`/pharmacies/${staffMember.pharmacyId}/staff/${staffMember.id}`,
                                 "Set-Cookie" : `staffId=${staffMember.id};expires=${Date.now()+300};path="/"`
                         })
                 }

@@ -25,8 +25,14 @@ const { transactionsRouter } = require('./routes/api/api.transactions.Routes');
 const { customerApiRouter } = require('./routes/api/api.customer.Routes');
 const Pharmacies = require('./models/PharmacyModel');
 const { ordersApiRouter } = require('./routes/api/api.oder.Routes');
+const { pharmacyStaffRouter } = require('./routes/web/pharmacy.staff.Routes');
 const { profileDetailsApiRouter } = require('./routes/api/api.profiles.Routes');
+<<<<<<< HEAD
 const { pharmacyTransactionsRouter } = require('./routes/api/api.pharmacy.transaction.Routes');
+=======
+const { pharmacyProductApiRouter } = require('./routes/api/api.pharmacy.product.Routes');
+const { pharmacyTransactionsRouter } = require('./routes/api/api.pharmacy.transaction.Router');
+>>>>>>> b7f71d86bb09a7b11f1a324c28bfc698473f586f
 
 
 
@@ -72,6 +78,7 @@ const server = https.createServer(options,(req , res)=>{
         adminPharmacyRouter.pipe(req , res);
         pharmacistRouter.pipe(req , res);
         pharmacyRouter.pipe(req , res);
+        pharmacyStaffRouter.pipe(req,res);
         cashiersBillsRouter.pipe(req ,res);
         pharmacistBillsRouter.pipe(req , res);
         pharmacyOwnersBillsRouter.pipe(req, res);

@@ -27,7 +27,7 @@ class CartsModel extends Model{
 const Carts = new CartsModel();
 
 Carts.createTable().then(()=>{
-    console.log('carts table created successfully');
+    // console.log('carts table created successfully');
 }).catch(e=>{
     console.log(e);
     console.log('⚠️ carts table not created');

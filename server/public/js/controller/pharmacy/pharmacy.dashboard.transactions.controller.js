@@ -33,6 +33,7 @@ export default async function init() {
 
         renderIncome(results);
         renderTable(results);
+        initDataFilter();
         
     } catch (error) {
         console.error("Transaction error:", error);
@@ -167,3 +168,49 @@ function renderType(type) {
         </div>
     `;
 }
+
+
+function initDataFilter() {
+
+    const startInput = document.getElementById("date_start");
+    const endInput = document.getElementById("date_end");
+
+    startInput.addEventListener('change', applyDataFilter);
+    endInput.addEventListener('change', applyDataFilter);
+
+}
+
+async function applyDataFilter() {
+
+    const startDate = document.getElementById("date_start").value;
+    const endDate = document.getElementById("date_end").value;
+
+    // No date range → load all transactions again
+    if (!startDate || !endDate) {
+        init();
+        return;
+    }
+
+    try {
+        const response = await fetch(
+            `/api/v1/pharmacies/${Application.pharmacyId}/transactions?startDate=${startDate}&endDate=${endDate}`
+        );
+
+        console.log("Date filter URL:", response.url);
+
+        if (!response.ok) {
+            throw new Error("Failed to filter transactions");
+        }
+
+        const { results } = await response.json();
+
+        console.log("Filtered transactions:", results);
+
+        renderIncome(results);
+        renderTable(results);
+
+    } catch (error) {
+        console.error("applyDataFilter error:", error);
+    }
+}
+

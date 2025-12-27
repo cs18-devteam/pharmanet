@@ -1,73 +1,124 @@
 const { catchAsync, apiCatchAsync } = require("../../common/catchAsync");
 const { getRequestData } = require("../../common/getRequestData");
-const { response, responseJson } = require("../../common/response");
+const { responseJson } = require("../../common/response");
 const Transactions = require("../../models/TransactionModel");
 
-exports.getTransactions = catchAsync( async (req , res)=>{
+console.log("Transactions model:", Transactions);
 
-        const filter = {}
-        const pharmacyId = req.params.get("pharmacyId");
-        const userId = req.params.get("userId");
-        const staffID = req.params.get('staffId');
-        const orderId = req.params.get('orderId');
+/**
+ * GET TRANSACTIONS
+ * Supports:
+ * - pharmacyId (params)
+ * - userId, staffId, orderId (params)
+ * - startDate, endDate (query)
+ */
+exports.getTransactions = catchAsync(async (req, res) => {
 
-        if(pharmacyId){
-            filter.pharmacyId = pharmacyId;
+    const pharmacyId = Number(req.pharmacyId); // FIXED
+    if (!pharmacyId) {
+        return responseJson(res, 400, { status: "fail", message: "Invalid pharmacyId" });
+    }
+
+    const filter = {};
+
+    const userId = req.userId;     
+    const staffID = req.staffId;    
+    const orderId = req.orderId;
+
+    const startDate = req.query.startDate;
+    const endDate   = req.query.endDate;
+
+    // Basic filters
+    if (pharmacyId) filter.pharmacyId = pharmacyId;
+    if (userId) filter.userId = userId;
+    if (staffID) filter.staffID = staffID;
+    if (orderId) filter.orderId = orderId;
+
+    let transactions;
+
+    /**
+     * DATE RANGE FILTER
+     */
+    if (startDate && endDate) {
+
+        let sql = `
+            SELECT *
+            FROM transaction_table
+            WHERE 1 = 1
+        `;
+        const values = [];
+
+        if (pharmacyId) {
+            sql += " AND pharmacyId = ?";
+            values.push(pharmacyId);
         }
 
-        if(userId){
-            filter.userId = userId;
+        if (userId) {
+            sql += " AND userId = ?";
+            values.push(userId);
         }
 
-        if(staffID){
-            filter.staffID = staffID;
+        if (staffID) {
+            sql += " AND staffID = ?";
+            values.push(staffID);
         }
 
-        if(orderId){
-            filter.orderId = orderId;
+        if (orderId) {
+            sql += " AND orderId = ?";
+            values.push(orderId);
         }
 
-        let transactions = {};
-        if(Object.keys(filter).length == 0){
-            transactions = await Transactions.get()
-        }else{
-            transactions = await Transactions.get(filter);
-        }
-        
+        sql += `
+            AND transactionDateTime BETWEEN ? AND ?
+            ORDER BY transactionDateTime DESC
+        `;
 
-        return responseJson(res , 200 , {
-            status:"success",
-            results:transactions,
-            count: transactions.length,
-        });
+        values.push(
+            `${startDate} 00:00:00`,
+            `${endDate} 23:59:59`
+        );
 
+        transactions = await Transactions.query(sql, values);
 
-   
-})
+    } else {
+        /**
+         * NO DATE FILTER → GET ALL
+         */
+        transactions = Object.keys(filter).length === 0
+            ? await Transactions.get()
+            : await Transactions.get(filter);
+    }
 
-
-exports.createTransaction = apiCatchAsync( async (req , res)=>{
-    await Transactions.query('start transaction');
-        const reqData = JSON.parse(await getRequestData(req));
-        const transactionObj = {
-            orderId : reqData.orderId,
-            pharmacyId : reqData.pharmacyId,
-            amount : reqData.amount,
-            userId : reqData.userId,
-            type : reqData.type,
-            staffID : reqData.staffID , 
-            method : reqData.method,
-            transactionDateTime : reqData.datetime,
-        }
-
-        const newTransaction = await Transactions.save(transactionObj);
-
-        return responseJson(res , 200 , {
-            status:"success",
-            results : newTransaction,
-        })
-
-  
-})
+    return responseJson(res, 200, {
+        status: "success",
+        results: transactions,
+        count: transactions.length,
+    });
+});
 
 
+/**
+ * CREATE TRANSACTION
+ */
+exports.createTransaction = apiCatchAsync(async (req, res) => {
+
+    const reqData = JSON.parse(await getRequestData(req));
+
+    const transactionObj = {
+        orderId: reqData.orderId,
+        pharmacyId: reqData.pharmacyId,
+        amount: reqData.amount,
+        userId: reqData.userId,
+        type: reqData.type,
+        staffID: reqData.staffID,
+        method: reqData.method,
+        transactionDateTime: reqData.datetime || new Date(),
+    };
+
+    const newTransaction = await Transactions.save(transactionObj);
+
+    return responseJson(res, 200, {
+        status: "success",
+        results: newTransaction,
+    });
+});

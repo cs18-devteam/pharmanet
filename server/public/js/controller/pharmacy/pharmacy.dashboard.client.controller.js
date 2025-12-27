@@ -11,7 +11,7 @@ import orders_init from "./pharmacy.dashboard.orders.controller.js";
 import products_init from "./pharmacy.dashboard.products.controller.js";
 import staff_init from "./pharmacy.dashboard.staff.controller.js";
 import transactions_init from "./pharmacy.dashboard.transactions.controller.js";
-import { createTransactionsRow } from "/js/controller/pharmacy/transactions__searchAndRender.js";
+// import { createTransactionsRow } from "/js/controller/pharmacy/transactions__searchAndRender.js";
 const ordersSearchBar = document.querySelector(".orders .search-bar > input");
 const setting_btn = document.getElementById("settings");
 const navLink = document.querySelector(".nav_links");
@@ -27,7 +27,7 @@ ordersSearchBar?.addEventListener('input' , e=>{
     
 })
 
-createTransactionsRow();
+// createTransactionsRow();
 
 
 

@@ -27,8 +27,7 @@ const Pharmacies = require('./models/PharmacyModel');
 const { ordersApiRouter } = require('./routes/api/api.oder.Routes');
 const { pharmacyStaffRouter } = require('./routes/web/pharmacy.staff.Routes');
 const { profileDetailsApiRouter } = require('./routes/api/api.profiles.Routes');
-const { pharmacyProductApiRouter } = require('./routes/api/api.pharmacy.product.Routes');
-const { pharmacyTransactionsRouter } = require('./routes/api/api.pharmacy.transaction.Router');
+const { pharmacyTransactionsRouter } = require('./routes/api/api.pharmacy.transaction.Routes');
 
 
 

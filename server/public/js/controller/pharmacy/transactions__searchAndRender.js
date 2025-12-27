@@ -1,5 +1,5 @@
-import { fetchTransactions } from"/js/model/pharmacy/fetchTransactionsData.js";
+// import { fetchTransactions } from"/js/model/pharmacy/fetchTransactionsData.js";
 
-export function createTransactionsRow(data){
-    fetchTransactions();   
-} 
+// export function createTransactionsRow(data){
+//     fetchTransactions();   
+// } 

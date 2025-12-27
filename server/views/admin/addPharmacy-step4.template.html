@@ -62,9 +62,9 @@
         </div>
 
         <div class="form-buttons">
-        <a href="/admin/pharmacy/step/3"><button type="button" class="btn prev btn-previous">Previous</button></a>
+        <a href="/admin/:adminId/pharmacies/create/step/3"><button type="button" class="btn prev btn-previous">Previous</button></a>
          <button type="button" class="btn btn-submit submit">Next
-          <img class="spinner" src="/logo/spinner.png"/>
+          <!-- <img class="spinner" src="/logo/spinner.png"/> -->
          </button>
         </div>
       </form>
@@ -129,7 +129,7 @@ try{
       
       //save to storage
       const previous = JSON.parse(localStorage.getItem('pharmacy'));
-      if(!previous) window.location.href = "/admin/pharmacy/step/3";
+      if(previous) window.location.href = "/admin/:adminId/pharmacies/create/step/3";
       localStorage.setItem("pharmacy" , JSON.stringify({...previous , ...data }));
 
       fetch("/admin/pharmacy/create" , {
@@ -148,7 +148,7 @@ try{
               icon: "success",
               draggable: true
           }).then(()=>{
-            window.location.href = "/admin/pharmacy";
+            window.location.href = "/admin/:adminId/pharmacies";
           });
           // Notify.showSuccess('/admin/pharmacy');
           

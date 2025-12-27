@@ -35,7 +35,7 @@
         <p>Enter your pharmacy details and license information</p>
       </div>
 
-      <form id="form" method="post" action="/admin/pharmacy/step/2">
+      <form id="form" method="post" action="/admin/:adminId/pharmacies/create/step/2">
         <div class="form-row">
           <label>Pharmacy Name *</label>
           <input type="text" name="name" placeholder="Enter pharmacy name" required>
@@ -54,7 +54,7 @@
 
         <div class="form-buttons">
           <!-- <button type="button" class="btn prev">Previous</button> -->
-          <button data-href="/admin/pharmacy/step/2" type="button" class="btn next btn-next">Next <img class="spinner" src="/logo/spinner.png"/></button>
+          <button data-href="/admin/:adminId/pharmacies/create/step/2" type="button" class="btn next btn-next">Next </button>
         </div>
       </form>
     </div>
@@ -113,7 +113,7 @@ btn_next.addEventListener('click' , (e)=>{
     
     //save to storage
     localStorage.setItem("pharmacy" , JSON.stringify(data));
-    window.location.href = "/admin/pharmacy/step/2";
+    window.location.href = "/admin/:adminId/pharmacies/create/step/2";
 
     
 

@@ -5,7 +5,19 @@ const Users = require("../models/UserModel");
 
 exports.getUserProfileJsonData = apiCatchAsync(async (req , res)=>{
     const userId = req.userId;
+    if (!userId || isNaN(userId)) {
+        return responseJson(res, 400, {
+            status: "error",
+            message: "Invalid or missing user ID",
+        });
+    }
     const [user] = await Users.getById(userId);
+    if (!user) {
+        return responseJson(res, 404, {
+            status: "error",
+            message: "User not found",
+        });
+    }
 
     return responseJson(res , 200 , {
         status:"success",

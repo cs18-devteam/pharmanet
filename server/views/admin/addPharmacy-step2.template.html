@@ -52,10 +52,10 @@
         </div>
 
         <div class="form-buttons">
-          <a href="/admin/pharmacy/create">
+          <a href="/admin/:adminId/pharmacies/create">
          <button type="button" class="btn prev btn-previous">Previous</button></a>
           <button  type="button" class="btn next btn-next">Next
-            <img class="spinner" src="/logo/spinner.png"/>
+            <!-- <img class="spinner" src="/logo/spinner.png"/> -->
           </button></a>
         </div>
       </form>
@@ -136,10 +136,10 @@ btn_next.addEventListener('click' , (e)=>{
     
     //save to storage
     const previous = JSON.parse(localStorage.getItem('pharmacy'));
-    if(!previous) window.location.href = "/admin/pharmacy/step/2";
+    if(previous) window.location.href = "/admin/:adminId/pharmacies/create";
     localStorage.setItem("pharmacy" , JSON.stringify({...previous , ...data }));
 
-    window.location.href = "/admin/pharmacy/step/3"
+    window.location.href = "/admin/:adminId/pharmacies/create/step/3"
     
 })
 

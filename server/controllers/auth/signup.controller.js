@@ -42,7 +42,7 @@ exports.signup = async (req, res) => {
         }
         
         //check for duplicate nic
-        const nicUser = await Users.get(nic);
+        const nicUser = await Users.get({nic: nic});
         if(nicUser[0]){
             return responseJson(res , 400 , {
                 status :"error",
@@ -101,7 +101,7 @@ exports.signup = async (req, res) => {
 
         return responseJson(res , 201 , {
                 status:"success",
-                results : {...newUser,
+                results : {...newUser[0],
                     password:undefined ,
                     emailOTP :undefined , 
                     emailOTPCreatedAt : undefined,
@@ -109,7 +109,7 @@ exports.signup = async (req, res) => {
             message :"user account created successfully",
             token : token,
         } , {
-            "Set-Cookie" : [cookie , createCookie('id' , newUser.id) , createCookie('ip' , ipaddress)],
+            "Set-Cookie" : [cookie , createCookie('id' , newUser[0].id) , createCookie('ip' , ipaddress)],
         })
 
     }catch(e){

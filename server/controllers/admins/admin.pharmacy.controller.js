@@ -175,7 +175,7 @@ exports.renderAdminCreatePharmacyViewStep01 = async (req ,res)=>{
         header : view('component.header' , {
             name:"Add new Pharmacy | step 01",
         }),
-        next : "/admin/pharmacy/step/2"
+        next : "/admin/:adminId/pharmacies/create/step/2"
 
     }) , 200);
 }

@@ -130,18 +130,17 @@
                   });
 
                   document.body.classList.add("success");
-                  let redirectUrl = "http://localhost:3000/login";
+                  let redirectUrl = "/login";
                   switch(result.user.role){
                     case "customer":
                       redirectUrl = `/customers/${result.user.id}`;
                       break;
                     case "admin":
-                      redirectUrl = `http://localhost:3000/admin/${result.user.id}`;
+                      redirectUrl = `/admin/${result.user.id}`;
                       break;
                     case "cashier":
-                      redirectUrl = `http://localhost:3000/cashier-dashboard`;
+                      redirectUrl = `/cashier-dashboard`;
                       break;
-                        
                   }
 
                   setTimeout(()=>{

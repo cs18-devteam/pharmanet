@@ -2785,6 +2785,60 @@ body.full_screen .dashboards .container {
   box-shadow: none;
 }
 
+.field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+.field label {
+  font-size: 1.8rem;
+  color: #000;
+  text-transform: capitalize;
+}
+.field p {
+  font-size: 1.4rem;
+  font-weight: 400;
+  opacity: 0.6;
+  margin-bottom: 1rem;
+}
+.field input {
+  height: 5rem;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 0 2rem;
+  font-size: 1.8rem;
+  color: #555;
+}
+.field input:focus-visible, .field input:focus {
+  border: 1px solid var(--color-green-01);
+  outline: 1px solid var(--color-green-01);
+}
+.field select {
+  width: 100%;
+  height: 5rem;
+  border: 1px solid #ccc;
+  font-size: 1.8rem;
+  padding: 0 2rem;
+}
+
+.fields_row {
+  display: flex;
+  gap: 1rem;
+}
+
+button {
+  width: 100%;
+  border: none;
+}
+button.save {
+  height: 5rem;
+  font-size: 1.6rem;
+  color: #fff;
+  background-color: var(--color-green-01);
+}
+
 @font-face {
   font-family: "red hat display";
   font-weight: 100;
@@ -10460,9 +10514,6 @@ body.full_screen .dashboards .container {
   background-color: var(--color-yellow-01);
   color: #fff;
 }
-.pharmacyDashboard .dashboards .container.staff {
-  padding: 0;
-}
 .pharmacyDashboard .dashboards .container.staff .page {
   min-height: 100vh;
   width: 100%;
@@ -10615,99 +10666,8 @@ body.full_screen .dashboards .container {
 .pharmacyDashboard .dashboards .container.staff .page .overlay.active {
   display: block;
 }
-.pharmacyDashboard .dashboards .container.staff .page .panel-header {
-  padding: 1.6rem;
-  border-bottom: 0.1rem solid #ddd;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.pharmacyDashboard .dashboards .container.staff .page .close-btn {
-  font-size: 2.2rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-.pharmacyDashboard .dashboards .container.staff .page .close-btn:hover {
-  color: red;
-}
-.pharmacyDashboard .dashboards .container.staff .page .panel-content {
-  padding: 1.6rem;
-  overflow-y: auto;
-}
-.pharmacyDashboard .dashboards .container.staff .page .panel-content h4 {
-  margin: 1.6rem 0 0.8rem;
-  font-size: 1.6rem;
-  color: #000;
-  margin: 1rem;
-  margin-left: 0;
-}
-.pharmacyDashboard .dashboards .container.staff .page .panel-content h5 {
-  color: #000;
-  font-family: Poppins;
-  font-size: 1.4rem;
-  font-style: normal;
-  font-weight: 200;
-  line-height: normal;
-  text-transform: capitalize;
-  margin: 1rem;
-  margin-left: 0;
-}
 .pharmacyDashboard .dashboards .container.staff .page {
   /* Permission Row */
-}
-.pharmacyDashboard .dashboards .container.staff .page .permission {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.2rem;
-  font-size: 1.6rem;
-}
-.pharmacyDashboard .dashboards .container.staff .page .permission span {
-  font-weight: 600;
-}
-.pharmacyDashboard .dashboards .container.staff .page p {
-  font-size: 1.6rem;
-  color: rgba(0, 0, 0, 0.7);
-  font-weight: 300;
-}
-.pharmacyDashboard .dashboards .container.staff .page {
-  /* Toggle Switch */
-}
-.pharmacyDashboard .dashboards .container.staff .page .switch {
-  position: relative;
-  width: 4rem;
-  height: 2rem;
-}
-.pharmacyDashboard .dashboards .container.staff .page .switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-.pharmacyDashboard .dashboards .container.staff .page .slider {
-  position: absolute;
-  inset: 0;
-  background: #ccc;
-  border-radius: 2rem;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.pharmacyDashboard .dashboards .container.staff .page .slider::before {
-  content: "";
-  position: absolute;
-  height: 1.6rem;
-  width: 1.6rem;
-  left: 0.2rem;
-  top: 0.2rem;
-  background: #fff;
-  border-radius: 50%;
-  transition: 0.3s;
-}
-.pharmacyDashboard .dashboards .container.staff .page .switch input:checked + .slider {
-  background: #000;
-}
-.pharmacyDashboard .dashboards .container.staff .page .switch input:checked + .slider::before {
-  transform: translateX(2rem);
 }
 .pharmacyDashboard .dashboards .container.staff .page .side-panel {
   padding: 2rem;
@@ -12466,6 +12426,132 @@ body.full_screen .dashboards .container {
 }
 .additional_setting .setting-center__heading {
   text-transform: capitalize;
+}
+
+.create_new_member {
+  margin-bottom: 4rem;
+  padding: 3rem;
+}
+.create_new_member__heading {
+  font-size: 2.8rem;
+  color: var(--color-green-01);
+}
+.create_new_member__heading--3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: #000;
+  text-transform: capitalize;
+  color: var(--color-yellow-02);
+}
+
+.permission {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+  font-size: 1.6rem;
+}
+.permission span {
+  font-weight: 600;
+}
+
+p {
+  font-size: 1.6rem;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 300;
+}
+
+.panel-header {
+  padding: 1.6rem;
+  border-bottom: 0.1rem solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Toggle Switch */
+.switch {
+  position: relative;
+  width: 4rem;
+  height: 2rem;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background: #ccc;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 1.6rem;
+  width: 1.6rem;
+  left: 0.2rem;
+  top: 0.2rem;
+  background: #fff;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.switch input:checked + .slider {
+  background: #000;
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(2rem);
+}
+
+.panel-header {
+  padding: 1.6rem;
+  border-bottom: 0.1rem solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  font-size: 2.2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.close-btn:hover {
+  color: red;
+}
+
+.panel-content {
+  padding: 1.6rem;
+  overflow-y: auto;
+}
+
+.panel-content h4 {
+  margin: 1.6rem 0 0.8rem;
+  font-size: 1.6rem;
+  color: #000;
+  margin: 1rem;
+  margin-left: 0;
+}
+.panel-content h5 {
+  color: #000;
+  font-family: Poppins;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 200;
+  line-height: normal;
+  text-transform: capitalize;
+  margin: 1rem;
+  margin-left: 0;
 }
 
 /* admin */

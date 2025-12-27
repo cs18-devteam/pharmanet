@@ -9,6 +9,7 @@ import chats_init from "./pharmacy.dashboard.chats.controller.js";
 import medicines_init from "./pharmacy.dashboard.medicines.controller.js";
 import orders_init from "./pharmacy.dashboard.orders.controller.js";
 import products_init from "./pharmacy.dashboard.products.controller.js";
+import staff_init from "./pharmacy.dashboard.staff.controller.js";
 import transactions_init from "./pharmacy.dashboard.transactions.controller.js";
 import { createTransactionsRow } from "/js/controller/pharmacy/transactions__searchAndRender.js";
 const ordersSearchBar = document.querySelector(".orders .search-bar > input");
@@ -49,6 +50,9 @@ function initialize(view){
             break;
         case "orders":
             orders_init();
+            break;
+        case "staff":
+            staff_init();
             break;
     }
 }

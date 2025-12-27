@@ -78,7 +78,9 @@
             <p>All your staff members can Manage from here</p>
             </div>
             <div>
-            <button class="btn-create">Create +</button>
+             <button id="add-new-staff" class="add-new-staff btn-create">  
+                create +  
+          </button>
         </div>
         </div>
 
@@ -132,12 +134,12 @@
         <div class="actions">
             <div class="action-row">
             <span>Create Leave Request</span>
-            <button class="btn-outline" onclick="openWindow('leaveModal')">Create Leave +</button>
+            <button class="btn-outline" >Create Leave +</button>
             </div>
 
             <div class="action-row">
             <span>Change Permissions Of Member</span>
-            <button class="btn-outline" onclick="openWindow('permissionPanel')">Change Permissions</button>
+            <button id="btn-change-perssmions_staff" class="btn-outline ">Change Permissions</button>
             </div>
 
             <div class="action-row">
@@ -149,7 +151,7 @@
         </div>
 
 
-        <div class="side-panel" id="leaveModal">
+    <div class="side-panel" id="leaveModal">
     <div class="modal-header">
         <div>
         <h2>Create Leave Request</h2>
@@ -272,127 +274,9 @@
 
 
 
-        <!-- Permission Panel -->
-    <div class="side-panel" id="permissionPanel">
-    <div class="panel-header">
-        <h3>Change Permissions</h3>
-        <button class="close-btn" onclick="closeWindow('permissionPanel')">&times;</button>
-    </div>
-
-    <div class="panel-content">
-        <h4>Change Member Permisions</h4>
-        <h5>Orders Management Permisions</h5>
-
-        <div class="permission">
-        <span>Read Order Details</span>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider"></span>
-        </label>
-        </div>
-
-        <div class="permission">
-        <span>Create Orders</span>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider"></span>
-        </label>
-        </div>
-
-        <div class="permission">
-        <span>Update Orders</span>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider"></span>
-        </label>
-        </div>
-
-        <div class="permission">
-        <span>Delete Orders</span>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider"></span>
-        </label>
-        </div>
-
-            <h5>Stock Management Permissions</h5>
-
-        <div class="permission">
-        <span>Search Medicine & Products</span>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider"></span>
-        </label>
-        </div>
-
-        <div class="permission">
-        <span>Create Product & Medicine Stock</span>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider"></span>
-        </label>
-        </div>
-
-        <div class="permission">
-        <span>Update Product & Medicine Stock</span>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider"></span>
-        </label>
-        </div>
+</div>
 
 
-        <div class="permission">
-        <span>Delete Products & Medicine</span>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider"></span>
-        </label>
-        </div>
 
-        
-        <p>Make sure you give correct permission to correct user</p>
-        <h5>Staff Management Permissions</h5>
+</div>
 
-        <div class="permission">
-        <span>Read Details About Member</span>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider"></span>
-        </label>
-        </div>
-
-        <div class="permission">
-        <span>Create Staff Member</span>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider"></span>
-        </label>
-        </div>
-
-        <div class="permission">
-        <span>Update Staff Member</span>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider"></span>
-        </label>
-        </div>
-
-
-        <div class="permission">
-        <span>Delete Staff Member</span>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider"></span>
-        </label>
-        </div>
-
-        <p>Make sure you give correct permission to correct user</p>
-
-    </div>
-    </div>
-        
-        </div>
-
-
- </div>

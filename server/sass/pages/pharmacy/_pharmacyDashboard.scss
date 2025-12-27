@@ -859,8 +859,8 @@ $containers : 'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 's
 
 .pharmacyDashboard .dashboards .container{
     @include dashboard_transactions.transactions;
-
-
+    
+    
 }
 
 
@@ -872,3 +872,6 @@ $containers : 'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 's
 // }
 @include pharmacy_products.product_add_form;
 @include pharmacy_products.product_details;
+@include staffManagement.createStaffForm; 
+@include staffManagement.permissions; 
+    

@@ -18,6 +18,7 @@ const domain = ipaddress ? (isDomainActive ? process.env.DOMAIN_NAME : ipaddress
 
 server.listen(process.env.PORT , process.env.HOSTNAME , ()=>{
     console.log(`${process.env.DATABASE_NAME} running on https://${domain}:${process.env.PORT}`);
+    console.log(`${process.env.DATABASE_NAME} running on https://localhost:${process.env.PORT}`);
 })
 
 socketServer.listen(process.env.SOCKET_PORT , process.env.HOSTNAME ,async ()=>{
@@ -33,6 +34,7 @@ socketServer.listen(process.env.SOCKET_PORT , process.env.HOSTNAME ,async ()=>{
 
 
         console.log(`web socket is running on wss://${domain}:${process.env.SOCKET_PORT}`);
+        console.log(`web socket is running on wss://localhost:${process.env.SOCKET_PORT}`);
 
     }catch(e){
         console.log(e);

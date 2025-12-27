@@ -13,35 +13,11 @@ class TransactionModel extends Model {
         this.transactionDateTime = { type: "DATETIME" };
     }
 
-    async get(filter = {}) {
-        let where = "1=1";
-        const values = [];
 
-        if (filter.pharmacyId) {
-            where += " AND pharmacyId = ?";
-            values.push(filter.pharmacyId);
-        }
-
-        if (
-            filter.transactionDateTime &&
-            filter.transactionDateTime.$between
-        ) {
-            where += " AND transactionDateTime BETWEEN ? AND ?";
-            values.push(
-                filter.transactionDateTime.$between[0],
-                filter.transactionDateTime.$between[1]
-            );
-        }
-
-        const query = `
-            SELECT * FROM transaction_table
-            WHERE ${where}
-            ORDER BY transactionDateTime DESC
-        `;
-
-        return this.query(query, values);
+       
     }
-}
+
 
 const Transactions = new TransactionModel();
+Transactions.createTable().catch(e=>console.log(e));
 module.exports = Transactions;

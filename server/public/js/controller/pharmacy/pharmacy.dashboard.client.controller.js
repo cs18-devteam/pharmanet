@@ -8,7 +8,7 @@ import settings_init from "./pharamcy.dashboard.settings.controller.js";
 import chats_init from "./pharmacy.dashboard.chats.controller.js";
 import medicines_init from "./pharmacy.dashboard.medicines.controller.js";
 import transactions_init from "./pharmacy.dashboard.transactions.controller.js";
-import { createTransactionsRow } from "/js/controller/pharmacy/transactions__searchAndRender.js";
+// import { createTransactionsRow } from "/js/controller/pharmacy/transactions__searchAndRender.js";
 const ordersSearchBar = document.querySelector(".orders .search-bar > input");
 const setting_btn = document.getElementById("settings");
 const navLink = document.querySelector(".nav_links");
@@ -24,7 +24,7 @@ ordersSearchBar?.addEventListener('input' , e=>{
     
 })
 
-createTransactionsRow();
+// createTransactionsRow();
 
 
 //initiator of dashboard

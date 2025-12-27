@@ -9,7 +9,7 @@ exports.renderBlogManageView = async (req ,res)=>{
     try{
       const blogs = await Blogs.get();
 
-    return response(res , view('blog/blogManage' , {
+    return response(res , view('admin/blogManage' , {
       header : view('component.header' , {
         name:"Blogs || Manage All Blogs",
       }),

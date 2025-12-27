@@ -1,5 +1,12 @@
-{header}
-<body class="medicines">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="styleSheet" href="/css/style.css">
+    <title>Document</title>
+</head>
+<body class="medicines" id="pageContent">
     <div class="container">
     <div class="container-1">
     <div class="sideBar">
@@ -22,13 +29,13 @@
 
   <div class="container-2">
   <div class="main">
-    <header>
+    <!-- <header>
       <input type="text" id="searchInput" placeholder="Search medicines..." />
-      <!-- <div class="user-section">
+      <div class="user-section">
         <span class="bell"></span>
         <div class="admin">AD</div>
-      </div> -->
-    </header>
+      </div>
+    </header> -->
 
     <section class="dashboard">
      <div class="sectionHeading">
@@ -37,10 +44,71 @@
       <p>Manage medicine inventory across all pharmacies.</p>
       </div>
       <div>
-      <button class="addBtn">Add Medicines</button>
+      <button class="addBtn" onclick="openPopup('addMedicineModal')">Add Medicines</button>
       </div>
       </div>
 </section>
+
+<div class="addMedicine" id="addMedicineModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <h2>Add New Medicine</h2>
+        <p>Enter the medicine details below. Click save when you're done.</p>
+      </div>
+      <button class="close-btn" onclick="closePopup('addMedicineModal')">&times;</button>
+    </div>
+
+    <form class="medicine-form" id="addMedicineForm" action="post">
+      <div class="form-row">
+        <label>Medicine Name</label>
+        <input type="text" name="name" placeholder="e.g., Amoxicillin" required>
+      </div>
+
+      <div class="form-row">
+        <label>Dosage</label>
+        <input type="text" name="dosage" placeholder="e.g., 500mg" required>
+      </div>
+
+      <div class="form-row">
+        <label>Category</label>
+        <select name="category" required>
+          <option>Select category</option>
+          <option value="Antibiotic">Antibiotic</option>
+          <option value="Pain-relief">Pain-relief</option>
+          <option value="Cardiac">Cardiac</option>
+          <option value="Gastric">Gastric</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label>Manufacturer</label>
+        <input type="text" name="manufacturer" placeholder="e.g., PharmaCorp" required>
+      </div>
+
+      <div class="form-row">
+        <label>Brand Name</label>
+        <input type="text" name="brandName" placeholder="e.g., Medistol" required>
+      </div>
+
+      <div class="form-row">
+        <label>Schedule</label>
+        <input type="text" name="schedule" placeholder="e.g., 1B" required>
+      </div>
+
+      <div class="form-row">
+        <label>Expiry Date</label>
+        <input type="date" name="expiryDate" required>
+      </div>
+
+      <div class="modal-footer">
+        <button class="cancel-btn" onclick="closePopup('addMedicineModal')">Cancel</button>
+        <button type="submit" class="save-btn">Save Medicine</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 
  <div class="table-container">
     <table class="medicine-table">
@@ -49,34 +117,33 @@
           <th>Medicine</th>
           <th>Category</th>
           <th>Manufacturer</th>
-          <th>Stock</th>
-          <th>Price</th>
+          <th>Brand Name</th>
+          <th>Shedule</th>
           <th>Expiry Date</th>
-          <th>Status</th>
+          <!-- <th>Status</th> -->
           <th></th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
+      <tbody id="medicineTableBody">
+        <!-- <tr>
           <td>Amoxicillin<br><small>500mg</small></td>
           <td><span class="tag antibiotics">Antibiotics</span></td>
           <td>PharmaCorp</td>
-          <td>847</td>
-          <td>$12.99</td>
+          <td>Medistol</td>
+          <td>11B</td>
           <td>2025-08-15</td>
-          <td><span class="status in-stock">In Stock</span></td>
-          <td class="actions">
+           <td><span class="status in-stock">In Stock</span></td> -->
+          <!-- <td class="actions">
             <div class="dropdownMenu">
               <button class="dots">⋮</button>
               <ul class="dropdown">
-                <button id="viewDetailsBtn">View Details</button>
-                <button id="editBtn">Edit</button>
-                <button>Update Stock</button>
+                <button class="viewDetailsBtn" onclick="openPopup('viewPopup')">View Details</button>
+                <button id="editBtn" onclick="openPopup('editPopup')">Edit</button>
                 <button class="danger">Delete</button>
               </ul>
             </div>
           </td>
-        </tr>
+        </tr>  -->
 
         <!-- <tr>
           <td>Ibuprofen<br><small>400mg</small></td>
@@ -186,12 +253,10 @@
     </table>
   </div>
 
-  <!-- view medicine details modal -->
-  <!-- Overlay -->
-<div id="viewModalOverlay" class="viewModal-overlay hidden"></div>
-
+<!-- view medicine details modal -->
 <!-- Modal -->
-<div id="productModal" class="modal hidden">
+<div id="viewPopup" class="viewMedicine">
+  <div class="modal">
   <div class="modal-header">
     <div class="title-block">
       <div>
@@ -200,7 +265,7 @@
       </div>
     </div>
 
-    <button id="closeModal" class="close-icon">✕</button>
+    <button id="closeModal" class="close-icon" onclick="closePopup('viewPopup')">✕</button>
   </div>
 
   <div class="alert-box">
@@ -254,28 +319,99 @@
   </div>
 
   <div class="modal-footer">
-    <button id="closeFooterBtn" class="footer-close">Close</button>
+    <button class="footer-close" onclick="closePopup('viewPopup')">Close</button>
   </div>
+</div>
 </div>
 </div>
 </div>
 </div>
 
-<div id="editModal" class="modal hidden">
-  <div class="modal-header">
-    <div>
-      <h2>Edit Medicine</h2>
-    </div>
+
+<div class="editModal" id="editPopup">
+<div class="modal">
+<div class="modal-header">
+<div>
+<h2>Edit Medicine Details</h2>
+<p class="subtitle">Update information for Amoxicillin</p>
+</div>
+<button class="close-icon" onclick="closePopup('editPopup')">×</button>
+</div>
+
+
+
+<form class="form">
+<div class="row">
+<div class="field">
+<label>Medicine Name *</label>
+<input type="text" name="name" value="Amoxicillin" />
+</div>
+<div class="field">
+<label>Brand Name *</label>
+<input type="text" name="brandName" value="Medistol" />
+</div>
+</div>
+
+
+<div class="row">
+<div class="field">
+<label>Dosage *</label>
+<input type="text" name="dosage" value="500mg" />
+</div>
+<div class="field">
+<label>Schedule</label>
+<select name="schedule">
+<option>I</option>
+<option>IIA</option>
+<option>IIB</option>
+</select>
+</div>
+</div>
+
+
+<div class="row">
+<div class="field">
+<label>Manufacturer</label>
+<input type="text" name="manufacturer" value="Pharmacorp" />
+</div>
+<div class="field">
+<label>Category</label>
+<select name="category">
+<option>Antibiotic</option>
+</select>
+</div>
+</div>
+
+<div class="row">
+  <div class="field">
+    <label>Date</label>
+    <input type="date" name="expiryDate"/>
   </div>
 </div>
+
+
+<div class="toggle">
+<span>Prescription Required</span>
+<input type="checkbox" checked />
+</div>
+
+
+<div class="actions">
+<button type="button" class="cancel" onclick="closePopup('editPopup')">Cancel</button>
+<button type="submit" class="save">Save Changes</button>
+</div>
+</form>
+</div>
+</div>
+
+
+
 
 
  
   <script>
-    try{
-
-    //Search filter
-    document.getElementById('searchInput').addEventListener('keyup', function () {
+  //Search filter
+  document.getElementById('searchInput').addEventListener('keyup', function () {
   const filter = this.value.toLowerCase(); // what user types
   const rows = document.querySelectorAll('.medicine-table tr');
 
@@ -289,7 +425,80 @@
   });
 });
 
-    // Toggle dropdown menu
+
+let medicinesData = []; 
+
+async function loadMedicines() {
+    try {
+      const response = await fetch('/admin/medicines/api');
+      if (!response.ok){
+        throw new Error(`API error: ${response.status} ${response.statusText}`);
+      }
+      const data = await response.json();
+      if(!Array.isArray(data)){
+          console.error('API returned non-array data:', data);
+          alert('Failed to load medicines: ' + (data.error || 'Unknown error'));
+          return;
+          }
+      medicinesData = data;
+      const tbody = document.getElementById('medicineTableBody');
+      tbody.innerHTML = '';
+      data.forEach(medicine => {
+        const formattedExpiryDate = new Date(medicine.expiryDate).toLocaleDateString('en-CA');
+        const row = `
+          <tr>
+            <td>${medicine.name}<br><small>${medicine.dosage}</small></td>
+            <td><span class="tag ${medicine.category}">${medicine.category}</span></td>
+            <td>${medicine.manufacturer}</td>
+            <td>${medicine.brandName}</td>
+            <td>${medicine.schedule}</td>
+            <td>${formattedExpiryDate}</td>
+            <td class="actions">
+              <div class="dropdownMenu">
+                <button class="dots">⋮</button>
+                <ul class="dropdown">
+                  <button class="viewDetailsBtn" onclick="openPopup('viewPopup')">View Details</button>
+                  <button id="editBtn" onclick="openPopup('editPopup')">Edit</button>
+                  <button class="danger delete-btn" data-id="${medicine.id}">Delete</button>
+                </ul>
+              </div>
+            </td>
+          </tr>
+        `;
+        tbody.insertAdjacentHTML('beforeend', row);
+      });
+      attachDropdownListeners();
+
+      //delete medicine
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+        const id = btn.dataset.id;
+        if (confirm('Are you sure you want to delete this medicine?')) {
+            try {
+                const response = await fetch(`/admin/medicines/api/${id}`, {
+                    method: 'DELETE'
+                });
+                if (response.ok) {
+                    loadMedicines(); // Reload the table
+                } else {
+                    alert('Failed to delete medicine');
+                }
+            } catch (error) {
+                console.error('Error deleting medicine:', error);
+                alert('Error deleting medicine');
+            }
+        }
+    });
+});
+   } catch (error) {
+      console.error('Error loading medicines:', error);
+      alert('Error loading medicines: ' + error.message);
+    }
+  }
+
+
+  // Toggle dropdown menu
+  function attachDropdownListeners() {
     document.querySelectorAll('.dots').forEach(btn => {
       btn.addEventListener('click', e => {
         e.stopPropagation();
@@ -298,51 +507,73 @@
         dropdownMenu.classList.toggle('show');
       });
     });
-
-    // Hide dropdown when clicking outside
-    document.addEventListener('click', () => {
-      document.querySelectorAll('.dropdown').forEach(dropdownMenu => dropdownMenu.classList.remove('show'));
-    });
-
-
-    //view details window
-    const modal = document.getElementById("productModal");
-    const overlay = document.getElementById("modalOverlay");
-
-    document.getElementById("viewDetailsBtn").addEventListener("click", () => {
-      modal.classList.remove("hidden");
-      overlay.classList.remove("hidden");
-    });
-
-    function closeModal() {
-      modal.classList.add("hidden");
-      overlay.classList.add("hidden");
-    }
-
-    document.getElementById("closeModal").addEventListener("click", closeModal);
-    document.getElementById("closeFooterBtn").addEventListener("click", closeModal);
-    overlay.addEventListener("click", closeModal);
-
-
-    //edit medicine details model
-    const editModal = document.getElementById('editModal');
-    const editOverlay = document.getElementById('editOverlay');
-
-    function openEditModel(){ 
-      editModal.classList.remove('hidden');
-      editOverlay.classList.remove('hidden');
-    }
-    function closeEditModel() {
-      editModal.classList.add('hidden');
-      editModal.classList.add('hidden');
-    }
-    document.getElementById("editBtn").addEventListener("click", openEditModel);
-    document.getElementById("closeEditBtn").addEventListener("click", closeEditModel);
-
-
-  }catch(e){
-    console.log(e);
   }
+
+  // Load medicines on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    loadMedicines();
+  });
+
+  // Hide dropdown when clicking outside
+  document.addEventListener('click', () => {
+  document.querySelectorAll('.dropdown').forEach(dropdownMenu => dropdownMenu.classList.remove('show'));
+    });
+
+
+  document.getElementById('addMedicineForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+    try {
+      const response = await fetch('/admin/medicines/api', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (response.ok) {
+        closePopup('addMedicineModal');
+        e.target.reset();
+        loadMedicines();  // Reload the table
+      } else {
+        alert('Failed to add medicine');
+      }
+    } catch (error) {
+      console.error('Error adding medicine:', error);
+    }
+  });
+
+
+    function openPopup(Id){
+      document.getElementById(Id).style.display = "flex";
+      document.getElementById("pageContent").classList.add("blur");
+    }
+
+    function closePopup(Id){
+      document.getElementById(Id).style.display = "none";
+    }
+    
+
+    document.querySelectorAll('.close').forEach(btn => {
+      btn.addEventListener('click',function(){
+        const popup = this.closest('.popup-overlay');
+        popup.style.display = "none";
+
+        document.getElementById("pageContent").classList.remove("blur");
+      });
+    });
+
+    //close when clicking outside of the window
+    document.querySelectorAll('.popup-overlay').forEach(overlay => {
+      overlay.addEventListener('click', function(e){
+        if(e.target === this){
+          this.style.display = "none";
+          document.getElementById("pageContent").classList.remove("blur");
+
+        }
+      });
+    });
+
+
     
   </script>
   </div>

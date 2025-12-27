@@ -29,17 +29,18 @@ exports.adminPharmacy = async(req,res)=>{
     }),200);
 }
 
-exports.medicines = async (req ,res)=>{
+exports.renderAdminMedicinesView = catchAsync(async (req ,res)=>{
     const [admin] = await Users.getById(req.adminId);
 
 
     return response(res , view('admin/medicines',{
+        sidebar : view('admin/component.sidebar' ,admin),
         header : view('component.header' , {
           name:"Medicines || Pharmanet - Manage all medicines here",
         }),
-        sidebar : view('admin/component.sidebar' ,admin)
+        
     }) , 200);
-}
+})
 
 exports.renderAdminDataAssetsView = async (req ,res)=>{
     const [admin] = await Users.getById(req.adminId);

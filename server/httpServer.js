@@ -28,6 +28,8 @@ const { ordersApiRouter } = require('./routes/api/api.oder.Routes');
 const { pharmacyStaffRouter } = require('./routes/web/pharmacy.staff.Routes');
 const { profileDetailsApiRouter } = require('./routes/api/api.profiles.Routes');
 const { pharmacyProductApiRouter } = require('./routes/api/api.pharmacy.product.Routes');
+const { adminMedicineRouter } = require('./routes/web/admin.medicines.Routes');
+const { adminUsersRouter } = require('./routes/web/admin.users.Routes');
 
 
 const options = {
@@ -69,6 +71,9 @@ const server = https.createServer(options,(req , res)=>{
         adminRouter.pipe(req , res);
         adminBlogsRouter.pipe(req , res);
         adminPharmacyRouter.pipe(req , res);
+        adminMedicineRouter.pipe(req,res);
+        adminUsersRouter.pipe(req,res);
+        adminBlogsRouter.pipe(req,res);
         pharmacistRouter.pipe(req , res);
         pharmacyRouter.pipe(req , res);
         pharmacyStaffRouter.pipe(req,res);

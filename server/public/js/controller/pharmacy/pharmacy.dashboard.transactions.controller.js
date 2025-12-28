@@ -97,14 +97,78 @@ export default async function init() {
   const incomeValue = document.querySelector(".income__value");
   const summeryByStaff = document.querySelector(
     ".summery_staff_wise.summery_block"
-  );
+);
   const summeryOfPayment = document.querySelector(
     ".summery_payment_method_wise.summery_block"
   );
   //console.log("init");
   const getRequestDatas = await getRequestData();
   updateTable(getRequestDatas)
+  filterTodayTransaction(getRequestDatas)
+  filterTransactionByDate(getRequestDatas)
+
+  
 }
+
+
+export function filterTodayTransaction({results : transactionData}){
+
+  //const table = document.querySelector(".transaction_table tbody");
+  const incomeValue = document.querySelector(".income__value");
+
+  const currentDate = new Date().toISOString().split("T")[0];
+  //console.log(currentDate);
+  
+  const todayTotal = transactionData
+    .filter(tr => {
+      const trDate = new Date(tr.transactionDateTime)
+        .toISOString()
+        .split("T")[0];
+
+        return trDate === currentDate;
+    })
+    .reduce((sum , tr) => sum + Number(tr.amount),0);
+
+
+    console.log(todayTotal);
+    incomeValue.innerHTML= Number(todayTotal);
+    const startDate = document.getElementById("date_start");
+    const endData = document.getElementById("data_end");
+
+    const startDateValue = startDate.value;
+    const endDataValue = endData.value;
+
+    console.log("start date" ,startDateValue);
+    console.log(endDataValue);
+    
+}
+
+export function filterTransactionByDate({results : data}){
+
+  const datas = data;
+
+  const startDate = document.getElementById("date_start");
+  const endDate = document.getElementById("data_end");
+
+  function handleEvent(e){
+    if(e.key === "Enter"){
+      e.preventDefault();
+      
+      const startValue = startDate.value;
+      const endValue = endDate.value;
+
+      console.log(startValue);
+      console.log(endValue);
+
+      //return {startDate,endDate};
+    }
+  }
+  console.log("hi");
+  startDate.addEventListener("keydown", handleEvent);
+  endDate.addEventListener("keydown",handleEvent);
+
+}
+
 
 
 

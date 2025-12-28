@@ -11,7 +11,7 @@ export async function getRequestData() {
       throw new error(`response status: $respones.status`);
     }
 
-    const results = await transaction.json();
+    const results = await transaction.json(); //decode the data 
     //console.log(results);
     return results;
   } catch (e) {

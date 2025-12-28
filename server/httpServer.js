@@ -71,9 +71,9 @@ const server = https.createServer(options,(req , res)=>{
         adminRouter.pipe(req , res);
         adminBlogsRouter.pipe(req , res);
         adminPharmacyRouter.pipe(req , res);
+        pharmacyStaffRouter.pipe(req,res);
         pharmacistRouter.pipe(req , res);
         pharmacyRouter.pipe(req , res);
-        pharmacyStaffRouter.pipe(req,res);
         cashiersBillsRouter.pipe(req ,res);
         pharmacistBillsRouter.pipe(req , res);
         pharmacyOwnersBillsRouter.pipe(req, res);

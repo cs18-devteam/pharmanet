@@ -6,6 +6,16 @@ const pharmacyController = require("../../controllers/pharmacy/pharmacy.controll
 const pharmacyStaffProfileController = require("../../controllers/pharmacy/pharmacy.staff.profile.controller");
 
 
+// exports.pharmacyStaffRouter = SubRouter.route('/pharmacies/:pharmacyId/staff')
+// .subRoute('/create',{
+//     get : pharmacyStaffController.renderCreateStaff,
+//     post : pharmacyStaffController.createStaffMember,
+// })
+// .subRoute('/options',{
+//     get : pharmacyStaffController.renderStaffOptions,
+// })
+
+
 exports.pharmacistRouter = SubRouter.route('/pharmacies/:pharmacyId/staff/:staffId')
 .subRoute('/' , {
     get : pharmacyController.renderPharmacyDashboard,

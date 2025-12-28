@@ -4,6 +4,7 @@ const PharmacyStaff = require("../../models/PharmacyStaffModel");
 const Users = require("../../models/UserModel");
 const view = require("../../common/view");
 const { apiCatchAsync } = require("../../common/catchAsync");
+const getMultipartData = require("../../common/getMultipartData");
 
 
 exports.renderCreateStaff = async(req, res) => {
@@ -35,12 +36,13 @@ exports.renderStaffOptions = async(req, res) =>{
 
 exports.createStaffMember = apiCatchAsync(async (req , res)=>{
 
-    const reqData = JSON.parse(await getRequestData(req));
+    const pharmacyId = req.pharmacyId;
+    const reqData = (await getMultipartData(req));
     const userData = {
         firstName: reqData.firstName,
         lastName : reqData.lastName,
         email : reqData.email,
-        password: reqData.password,
+        password: reqData.password || "1234567890",
         nic: reqData.nic,
         fullName: reqData.fullName,
         dateOfBirth: reqData.dateOfBirth,
@@ -54,7 +56,7 @@ exports.createStaffMember = apiCatchAsync(async (req , res)=>{
         bankBranch : reqData.bankBranch,
         userName : reqData.userName,
         role : reqData.role,
-        pharmacyId : reqData.pharmacyId,
+        pharmacyId : pharmacyId,
     };
 
     const [user] = await Users.save(userData);
@@ -79,11 +81,10 @@ exports.createStaffMember = apiCatchAsync(async (req , res)=>{
 
 exports.getStaffMembers = apiCatchAsync(async (req , res)=>{
 
-    let members = await PharmacyStaff.getById(id);
+    let members = await PharmacyStaff.get({pharmacyId : req.pharmacyId});
 
     members = members.map(async m=>{
-        console.log(m);
-        const user = await Users.getById(m.userId);
+        const [user] = await Users.getById(m.userId);
         return {...user , userId : user.id , ...m};
     })
 
@@ -97,7 +98,7 @@ exports.getStaffMembers = apiCatchAsync(async (req , res)=>{
 })
 
 
-exports.getStaffMembers = apiCatchAsync(async (req , res)=>{
+exports.getStaffMember = apiCatchAsync(async (req , res)=>{
     const id = req.staffId;
 
     if(!id){
@@ -108,7 +109,7 @@ exports.getStaffMembers = apiCatchAsync(async (req , res)=>{
         
     return responseJson(res , 200 , {
         status:"success",
-        results:{...user , userId : user.id , ...member},
+        results:{...user , userId : user.id , staffId : member.id , ...member},
     })
 })
 

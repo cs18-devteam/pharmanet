@@ -100,8 +100,9 @@
 /api/v1/customers/:customerId/pharmacy/register
 /api/v1/customers/:customerId/cart
 /api/v1/orders
-/pharmacist/:pharmacyId/staff/create
-/pharmacist/:pharmacyId/staff/options
+/pharmacies/:pharmacyId/staff/create
+/pharmacies/:pharmacyId/staff
+/pharmacies/:pharmacyId/staff/options
 /api/v1/users/:userId
 /api/v1/pharmacy/:pharmacyId
 /api/v1/staff/:staffId

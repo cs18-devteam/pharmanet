@@ -107,9 +107,9 @@
 /api/v1/pharmacies/:pharmacyId/products
 /api/v1/pharmacies/:pharmacyId/products/create
 /api/v1/pharmacies/:pharmacyId/products/:productId
-/admin/medicines
-/admin/./medicines/api
-/admin/./medicines/api/:id
+/admin/:adminId/medicines
+/admin/:adminId/medicines/api
+/admin/:adminId/medicines/api/:id
 /api/v1/admin/:adminId/medicines
 /admin/:adminId/users
 /admin/:adminId/addUsers

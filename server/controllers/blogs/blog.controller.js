@@ -193,7 +193,7 @@ exports.renderDeleteView = async (req , res)=>{
 }
 
 
-exports.renderDeleteConform = async (req, res)=>{
+exports.renderDeleteConfirm = async (req, res)=>{
   try{
 
     return response(res , view('blog/delete' , {

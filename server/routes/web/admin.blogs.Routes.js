@@ -15,7 +15,7 @@ const adminBlogsRouter = SubRouter.route('/admin/:adminId')
     update : blogController.updateBlog,
 })
 .subRoute('/blogs/:blogId/delete' , {
-    get : blogController.renderDeleteConform,
+    get : blogController.renderDeleteConfirm,
     delete : blogController.deleteBlog,
 });
 

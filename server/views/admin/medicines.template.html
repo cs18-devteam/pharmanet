@@ -29,13 +29,13 @@
 
   <div class="container-2">
   <div class="main">
-    <!-- <header>
+    <header>
       <input type="text" id="searchInput" placeholder="Search medicines..." />
-      <div class="user-section">
+      <!-- <div class="user-section">
         <span class="bell"></span>
         <div class="admin">AD</div>
-      </div>
-    </header> -->
+      </div> -->
+    </header>
 
     <section class="dashboard">
      <div class="sectionHeading">
@@ -524,16 +524,20 @@ async function loadMedicines() {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
+    for (const [key ,value] of formData.entries() ){
+      console.log(key , value)
+    }
+  
     try {
-      const response = await fetch('/admin/medicines/api', {
+      console.log(data);
+      const response = await fetch('/admin/:adminId/medicines/api', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+        body: formData,
       });
       if (response.ok) {
         closePopup('addMedicineModal');
         e.target.reset();
-        loadMedicines();  // Reload the table
+        //loadMedicines();  // Reload the table
       } else {
         alert('Failed to add medicine');
       }
@@ -573,7 +577,7 @@ async function loadMedicines() {
       });
     });
 
-
+    attachDropdownListeners();
     
   </script>
   </div>

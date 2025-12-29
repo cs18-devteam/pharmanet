@@ -1,15 +1,15 @@
 const SubRouter = require("../../common/SubRouter");
 const adminMedicineController = require("../../controllers/admins/admin.medicine.controller");
 
-exports.adminMedicineRouter = SubRouter.route('/admin')
+exports.adminMedicineRouter = SubRouter.route('/admin/:adminId')
 .subRoute('/medicines',{
     get: adminMedicineController.renderAdminMedicinesView, 
 })
-.subRoute('./medicines/api',{
+.subRoute('/medicines/api',{
     post: adminMedicineController.addMedicine,
     get: adminMedicineController.getMedicines,
 })
-.subRoute('./medicines/api/:id',{
+.subRoute('/medicines/api/:id',{
     delete: adminMedicineController.deleteMedicine,
 })
 

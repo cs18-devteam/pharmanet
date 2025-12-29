@@ -3839,6 +3839,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   width: 100%;
   max-width: 1200px;
   padding: 0 20px;
+  margin: 0 auto;
 }
 .landing .header-title {
   text-align: center;
@@ -3893,7 +3894,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .landing .pillblue {
   position: absolute;
   left: 23%;
-  bottom: -1.68%;
+  bottom: 0%;
   z-index: 10;
 }
 .landing .side-words {
@@ -3955,8 +3956,27 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   transition: all 0.3s;
   cursor: pointer;
 }
+.landing .pharmacy_grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: stretch;
+  margin: 0 10rem;
+}
+.landing .pharmacy-card {
+  display: flex;
+  flex-direction: column;
+}
+.landing .pharmacy-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+.landing .name {
+  margin-top: 1.5rem;
+}
 .landing .advantages-section {
-  margin-top: 22rem;
+  margin-top: 20rem;
   margin-bottom: 15rem;
 }
 .landing .section-title {
@@ -4183,6 +4203,128 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   font-size: 1.4rem;
   font-family: var(--primary-font);
 }
+@media screen and (max-width: 1483px) {
+  .landing .distance_img, .landing .view_img {
+    width: 15px;
+  }
+  .landing .distance__value, .landing .view_pharmacy {
+    font-size: 1.3rem;
+  }
+}
+@media screen and (max-width: 1324px) {
+  .landing .distance__value, .landing .view_pharmacy {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (max-width: 1302px) {
+  .landing .distance_img, .landing .view_img {
+    width: 12px;
+  }
+  .landing .mid-title {
+    font-size: 8rem;
+  }
+}
+@media screen and (max-width: 1245px) {
+  .landing .mid-title {
+    font-size: 6.5rem;
+  }
+}
+@media screen and (max-width: 1173px) {
+  .landing .advantage-title img {
+    width: 2rem;
+  }
+  .landing .advantage-title {
+    font-size: 1.5rem;
+  }
+  .landing .advantage-disc {
+    font-size: 1.3rem;
+  }
+}
+@media screen and (max-width: 1090px) {
+  .landing .header-title {
+    font-size: 5.5rem;
+    margin-top: 2rem;
+  }
+  .landing .header-discription {
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 1025px) {
+  .landing .header-title {
+    font-size: 4.5rem;
+  }
+  .landing .header-discription {
+    font-size: 2rem;
+  }
+  .landing .mid-title {
+    font-size: 6rem;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .landing .medicines_grid {
+    grid-template-columns: repeat(4, 1fr);
+    align-items: stretch;
+    margin: 0 5rem;
+  }
+  .landing .med_infomation {
+    font-size: 1.3rem;
+  }
+  .landing .world_img {
+    width: 15px;
+  }
+  .landing .map__search__value {
+    font-size: 1.3rem;
+  }
+}
+@media screen and (max-width: 1060px) {
+  .landing .advantages-grid {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: stretch;
+    gap: 2rem;
+  }
+  .landing .advantage-disc {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (max-width: 992px) {
+  .landing .advantage-title {
+    font-size: 1.4rem;
+  }
+  .landing .advantage-disc {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 960px) {
+  .landing .pharmacy_grid {
+    grid-template-columns: repeat(4, 1fr);
+    align-items: stretch;
+    margin: 0 5rem;
+  }
+  .landing .name, .landing .pharmacy-name {
+    font-size: 0.5rem;
+  }
+  .landing .distance_img, .landing .view_img {
+    width: 10px;
+  }
+  .landing .distance__value, .landing .view_pharmacy {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 945px) {
+  .landing .mid-title {
+    font-size: 5.5rem;
+  }
+}
+@media screen and (max-width: 920px) {
+  .landing .advantage-title img {
+    width: 1.5rem;
+  }
+}
+@media screen and (max-width: 868px) {
+  .landing .mid-title {
+    font-size: 5rem;
+  }
+}
 @media screen and (max-width: 790px) {
   .landing .header-title {
     font-size: 3.6rem;
@@ -4200,16 +4342,13 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
     clip-path: none;
     border-radius: 2rem;
   }
-  .landing {
-    /* Position corrections because absolute elements break in mobile */
-  }
   .landing .fb-call-msg,
   .landing .pills,
   .landing .pillBW,
   .landing .pillwhite,
   .landing .pillblue,
   .landing .side-words {
-    display: none; /* Hide for mobile */
+    display: none;
   }
   .landing .upload-container {
     bottom: -12%;
@@ -4223,47 +4362,6 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   }
   .landing .upload-container .upload-box p {
     font-size: 1.4rem;
-  }
-  .landing .advantages-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 1rem;
-  }
-  .landing .mid-title {
-    font-size: 4rem;
-  }
-  .landing .stats-container {
-    flex-direction: column;
-    gap: 4rem;
-  }
-  .landing .stats-container .stat-orange,
-  .landing .stats-container .stat-blue {
-    width: 20rem;
-    height: 20rem;
-  }
-  .landing .stats-container .progress-text {
-    top: 10rem !important;
-    left: 3rem !important;
-  }
-  .landing .stats-container .progress-text .value {
-    font-size: 4rem;
-  }
-  .landing .stats-container .progress-text .label {
-    font-size: 1.8rem;
-  }
-  .landing .joinus .button-group {
-    flex-direction: column;
-    width: 100%;
-  }
-  .landing .joinus .button-group .btn {
-    width: 90%;
-    margin: auto;
-  }
-}
-@media screen and (min-width: 790px) and (max-width: 1090px) {
-  .landing .header-title {
-    font-size: 4.5rem;
-    margin-top: 2rem;
   }
 }
 

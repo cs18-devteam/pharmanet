@@ -15,7 +15,7 @@ export function startSocketListening(socket){
         }
 
         if(ChatTemplates.isChatBoxRequestFromClient(message)){
-            whenChatBoxRequest(message);
+            whenChatBoxRequest(socket , message);
 
         }else if(ChatTemplates.isMessage(message)){
             whenIncomingMessage(message);

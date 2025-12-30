@@ -116,10 +116,52 @@ exports.getStaffMember = apiCatchAsync(async (req , res)=>{
 
 exports.changePermissions = apiCatchAsync(async (req , res)=>{
     const staffId = req.staffId;
+    const data = await getMultipartData(req);
 
-    const permissions = {
+
+    const permissionObj = {
+        id: staffId,
+        createOrder : data.createOrder == "on" ? '1' : '0',
+        deleteOrder : data.deleteOrder == "on" ? '1' : '0',
+        readOrder : data.readOrder == "on" ? '1' : '0',
+        updateOrder : data.updateOrder == "on" ? '1' : '0',
+
+        // transaction permissions
+
+        readTransactions : data.readTransactions == "on" ? '1' : '0',
+
+        // products permissions
+
+        searchProducts : data.searchProducts == "on" ? '1' : '0',
+        updateProducts : data.updateProducts == "on" ? '1' : '0',
+        deleteProducts : data.deleteProducts  == "on" ? '1' : '0',
+        createProducts : data.createProducts == "on" ? '1' : '0',
+
+        // medicine permission
         
+        searchMedicines : data.searchMedicines == "on" ? '1' : '0',
+        createMedicines : data.createMedicines == "on" ? '1' : '0',
+        deleteMedicines : data.deleteMedicines == "on" ? '1' : '0',
+        createMedicines : data.createMedicines == "on" ? '1' : '0',
+
+        // staff permission
+        searchStaff : data.searchStaff == "on" ? '1' : '0',
+        updateStaff : data.updateStaff == "on" ? '1' : '0',
+        deleteStaff : data.deleteStaff == "on" ? '1' : '0',
+        createStaff : data.createStaff == "on" ? '1' : '0',
     }
+
+    
+
+    const [staffMember] = await PharmacyStaff.update(permissionObj);
+
+
+
+    return responseJson(res , 200 , {
+        status:"success",
+        results: staffMember,
+        count : 1,
+    })
 
 
     

@@ -67,7 +67,7 @@ class PharmacyStaffModel extends Model{
             type:"BOOL",
         }
 
-        this.updateMedicines = {
+        this.createMedicines = {
             type:"BOOL",
         }
 

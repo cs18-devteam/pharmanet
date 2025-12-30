@@ -40,3 +40,26 @@ export async function getStaffData() {
         }
     }
 }
+
+
+export async function updateStaffPermissions(formData) {
+    try{
+
+        const response = await fetch(`/pharmacies/${Application.pharmacyId}/staff/${Application.staffId}/permissions` , {
+            method: "POST",
+            body: formData,
+        });
+
+        const data = await response.json();
+        return data;
+        
+
+    }catch(e){
+        console.log(e);
+        return {
+            status:"error",
+            results:[],
+            message: e.message,
+        }
+    }
+}

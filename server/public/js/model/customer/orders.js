@@ -5,6 +5,7 @@ export async function createOrder(cartsIds=[]) {
         const response = await fetch('/api/v1/orders' , {
             method: "POST",
             body : JSON.stringify({
+                staffId : Application.staffId,
                 userId : Application.userId,
                 carts: cartsIds,
             })

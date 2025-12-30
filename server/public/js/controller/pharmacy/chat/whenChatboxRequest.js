@@ -1,16 +1,21 @@
 import Application from "../../../model/application/Application.js";
 import ChatTemplates from "../../../model/application/ChatTemplates.js";
-import { onAcceptIncomingMessage, onAnyCaseIncomingMessage, onRejectIncomingMessage, showIncomingMessage } from "../../../view/chatbox.js";
+import { activateOnSubmitMessageCallback, onAcceptIncomingMessage, onAnyCaseIncomingMessage, onRejectIncomingMessage, removeIncomingMessage, showIncomingMessage } from "../../../view/chatbox.js";
+import { changeWindowTo } from "../../../view/pharmacy/changeWindow.js";
+import { renderChatBox } from "../../../view/pharmacy/chat/renderChatbox.js";
+import { renderWaitingList } from "../../../view/pharmacy/chat/renderWaitingList.js";
 
-export function whenChatBoxRequest(message){
+export async function whenChatBoxRequest(socket,message){
     const reqObj = ChatTemplates.readChatBoxRequest(message);
+    console.log(reqObj);
 
     const user = {
         ...reqObj,
-        user : Application.getUserData(reqObj.customerId),
     };
-
+    user.user = Application.getUserData(reqObj.customerId),
+    
     Application.waitingList.push(reqObj);
+    renderWaitingList();
     showIncomingMessage(user);
     
     onAcceptIncomingMessage(()=>{
@@ -21,7 +26,8 @@ export function whenChatBoxRequest(message){
     
         socket.send(ChatTemplates.acceptClient(true , reqObj.customerId));
         changeWindowTo('chats');
-        activateChatBoxButtons(socket);
+        renderChatBox();
+        activateOnSubmitMessageCallback(socket);
     })
 
     onRejectIncomingMessage(()=>{

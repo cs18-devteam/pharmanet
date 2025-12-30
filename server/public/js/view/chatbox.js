@@ -10,11 +10,15 @@ const incomingMessage = document.querySelector('.incoming_messege_box');
 
 
 export function showIncomingMessage(data){
+     console.log(data);
+
      tone_incomingCall.play();
      data.user.then(data=>{
-          incomingMessage.querySelector('img').src = data.profile;
+          if(incomingMessage) incomingMessage.querySelector('img').src = data.profile;
      })
-     
+
+
+     incomingMessage?.classList.add("open");
      renderWaitingList();
      handleIncomingMessageBtns();
 }

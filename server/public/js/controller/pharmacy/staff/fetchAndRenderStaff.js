@@ -15,7 +15,6 @@ const template = html`
 
 export async function fetchAndRenderStaff() {
     const {results} = await getStaffData();
-    console.log(results);
     const allStaffCards = results.map(member=>template
         .replace( "{userId}"  , member.userId)
         .replace( "{staffId}"  , member.staffId)

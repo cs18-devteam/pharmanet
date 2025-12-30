@@ -9,6 +9,7 @@ const PharmacyOrdersItems = require("../../models/PharmacyOrderItemsModel");
 const PharmacyOrders = require("../../models/PharmacyOrderModel");
 const PharmacyStaff = require("../../models/PharmacyStaffModel");
 const Transactions = require("../../models/TransactionModel");
+const Users = require("../../models/UserModel");
 
 
 exports.createOrder = apiCatchAsync(async (req , res)=>{
@@ -42,17 +43,25 @@ exports.createOrder = apiCatchAsync(async (req , res)=>{
             })
         }))
 
-        const [staff] =  await PharmacyStaff.getById(reqData.userId);
+        let staff;
+        if(reqData.staffId){
+            const [staff] =  await PharmacyStaff.getById(reqData.staffId);
 
-        // console.log(staff , reqData.userId);
+            if(!staff) throw new Error("staff member not found");
+        }
 
+        const [user] = await Users.getById(reqData.userId);
+        if(!user){
+            throw new Error("You not part of our system");
+        }
 
         const [transaction] = await Transactions.save({
             orderId : order.id,
-            staffID : staff.id,
-            pharmacyId : staff.pharmacyId , 
+            staffID : reqData.staffId,
+            pharmacyId : staff?.pharmacyId , 
             method: reqData.method,
             amount: reqData.amount ,
+            userId : reqData.userId,
             type: reqData.type,
             transactionDateTime : Convert.toSqlDate(Date.now()),
             

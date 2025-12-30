@@ -1,0 +1,76 @@
+.toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgb(234, 234, 234);
+}
+.toggle #input-toggle {
+  display: none;
+}
+.toggle #input-toggle-label {
+  cursor: pointer;
+  width: 20rem;
+  height: 10rem;
+  border: 1px solid #eee;
+  border-radius: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: inset 8px 3px 100px 0px rgba(255, 0, 0, 0.01), inset 0px 0px 6px 0px rgba(164, 255, 164, 0.01), inset -5px 0px 3px 0px rgba(119, 119, 255, 0.01), inset 0px 10px 12px 0px rgba(255, 255, 255, 0.01), 0px 0px 5px rgba(0, 0, 0, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.1), inset 0px 0px 5px 0px rgba(255, 112, 112, 0.1);
+  background-color: #fff;
+}
+.toggle #input-toggle-label::before {
+  content: " ";
+  position: absolute;
+  width: 10rem;
+  height: 85%;
+  top: 50%;
+  left: 1rem;
+  transform: translate(0%, -50%);
+  background-color: rgba(255, 0, 0, 0.01);
+  border-radius: inherit;
+  transition: all 0.3s ease;
+  background-image: linear-gradient(120deg, rgb(246, 114, 114), rgb(245, 41, 41));
+}
+.toggle #input-toggle-label .toggle-btn {
+  width: 12rem;
+  height: 9rem;
+  border-radius: 5rem;
+  border-left: 1px solid #ff4545;
+  display: inline-block;
+  transition: all 0.3s ease;
+  margin-left: 0.5rem;
+  backdrop-filter: blur(5px);
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 8px 3px 100px 0px rgba(255, 0, 0, 0.01), inset 0px 0px 6px 0px rgba(164, 255, 164, 0.01), inset -5px 0px 3px 0px rgba(119, 119, 255, 0.01), inset 0px 10px 12px 0px rgba(255, 255, 255, 0.01), 0px 0px 5px rgba(0, 0, 0, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes pop {}
+@keyframes pop-up {
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1) translateX(150%);
+  }
+}
+#input-toggle:checked ~ #input-toggle-label {
+  animation: pop 0.3s ease;
+}
+#input-toggle:checked ~ #input-toggle-label::before {
+  width: 90%;
+  background-color: rgb(247, 61, 61);
+  height: 85%;
+  left: 1rem;
+}
+#input-toggle:checked ~ #input-toggle-label .toggle-btn {
+  transform: translateX(100%);
+  box-shadow: inset 8px 3px 10px 0px rgba(255, 90, 90, 0.5), inset 0px 0px 6px 0px rgba(164, 255, 164, 0.1), inset -5px 0px 3px 0px rgba(119, 119, 255, 0.1), inset 0px 10px 12px 0px rgba(255, 255, 255, 0.1), 0px 0px 5px rgba(0, 0, 0, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+/*# sourceMappingURL=style.css.map */

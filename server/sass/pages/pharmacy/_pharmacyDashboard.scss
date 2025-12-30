@@ -5,6 +5,7 @@
 @use "./pharmacyDashborder__waiting_list" as waiting-list;
 @use "./pharmacyDashboard__recipt" as recipe;
 @use "./pharmacyDashboard__staff" as staffManagement;
+@use "./pharmacyDashboard_chat" as chatManagement;
 @use "./pharmacyDashboard__settings" as pharmacy_profile;
 @use "./pharamcyDashboard_products" as pharmacy_products;
 
@@ -844,6 +845,7 @@ $containers : 'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 's
 //waiting-list
 .pharmacyDashboard .dashboards .container.chats {
     @include waiting-list.chat; 
+    @include chatManagement.chat; 
 }
 
 

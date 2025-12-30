@@ -103,6 +103,7 @@
 /pharmacies/:pharmacyId/staff/create
 /pharmacies/:pharmacyId/staff
 /pharmacies/:pharmacyId/staff/options
+/pharmacies/:pharmacyId/staff/:staffId/permissions
 /api/v1/users/:userId
 /api/v1/pharmacy/:pharmacyId
 /api/v1/staff/:staffId

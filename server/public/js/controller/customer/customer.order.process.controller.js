@@ -115,19 +115,21 @@ function handleConnection(msg){
         const {opcode , data} = ChatTemplates.decodeString(message);
         console.log(opcode , data);
 
-        if(opcode == ChatTemplates.requestPrescription){
+        if(opcode == ChatTemplates.requestPrescriptionCode){
             cart.setPopupContent(createPrescriptionUploadCardContent())
+            onClickSkipBtnOfPrescriptionPopup();
             cart.openPopup();
 
             onSelectPrescription(async (e , input , card , skip)=>{
                 try{
                     skip.addEventListener('click' ,()=>cart.closePopup());
 
-
+                    debugger;
 
                     const file = input.files[0];
                     const formData = new FormData();
                     formData.append('prescription' , file);
+                    formData.append('orderId' , Application.remoteOrderId);
 
                     const cartUploadButton = card.querySelector('label[for="prescription-upload-input"]');
                     const response = await fetch(`/api/v1/customers/${Application.userId}/chats/assets/prescriptions` , {
@@ -165,7 +167,6 @@ function handleConnection(msg){
 
 
 setOnSubmitMessageCallback((e , value)=>{
-    console.log(ChatTemplates.message(value));
     Application.connection.send(ChatTemplates.message(value));  
     renderReply(value);
 })
@@ -175,6 +176,14 @@ setOnSubmitMessageCallback((e , value)=>{
 
 
 
+
+function onClickSkipBtnOfPrescriptionPopup(){
+    const prescriptionSkipBtn = document.querySelector(".card-prescription-upload");
+
+    prescriptionSkipBtn.addEventListener('click' , ()=>{
+        cart.closePopup();
+    })
+}
 
 
 

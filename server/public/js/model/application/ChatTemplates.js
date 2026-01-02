@@ -11,7 +11,7 @@ class ChatTemplates{
     static #STAT_PAY = "STAT_PAY="
     static #RES_PHR = "RES_PHR="
     static #STAT_PRSC = "STAT_PRSC="
-    static requestPrescription = this.#REQ_PRSC.replace('=','');
+    static requestPrescriptionCode = this.#REQ_PRSC.replace('=','');
     static #MINOR_ERROR = "MINOR_ERROR="
     static #SYNC = "SYNC="
 

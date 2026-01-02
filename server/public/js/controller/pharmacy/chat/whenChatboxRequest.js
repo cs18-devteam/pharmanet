@@ -4,6 +4,7 @@ import { activateOnSubmitMessageCallback, onAcceptIncomingMessage, onAnyCaseInco
 import { changeWindowTo } from "../../../view/pharmacy/changeWindow.js";
 import { renderChatBox } from "../../../view/pharmacy/chat/renderChatbox.js";
 import { renderWaitingList } from "../../../view/pharmacy/chat/renderWaitingList.js";
+import { onPrescriptionRequest } from "./onPrescriptionRequest.js";
 
 export async function whenChatBoxRequest(socket,message){
     const reqObj = ChatTemplates.readChatBoxRequest(message);
@@ -27,7 +28,9 @@ export async function whenChatBoxRequest(socket,message){
         socket.send(ChatTemplates.acceptClient(true , reqObj.customerId));
         changeWindowTo('chats');
         renderChatBox();
+        Application.preventReload();
         activateOnSubmitMessageCallback(socket);
+        onPrescriptionRequest();
     })
 
     onRejectIncomingMessage(()=>{

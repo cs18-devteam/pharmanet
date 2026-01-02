@@ -6,10 +6,11 @@ function renderPrescription(url){
     if(!url) return;
     const img = document.createElement("img");
     img.classList.add("prescription-img");
-    img.src = url;
+    img.src = "/"+url;
     img.addEventListener('load' , ()=>{
         prescriptions.innerHTML = "";
         prescriptions.insertAdjacentElement('beforeend',img);
+        debugger;
     })
 }
 
@@ -20,6 +21,7 @@ export function whenSyncRequest(message){
     if(data.orderId){
         getOrderData(+data.orderId).then(data=>{
             const order = data.results[0];
+            console.log(order);
 
 
             const cartBodySection = document.querySelector(".cart .body-section");

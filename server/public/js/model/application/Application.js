@@ -157,7 +157,12 @@ export default class Application{
         }
     }   
 
-
+    static preventReload(){
+        window.addEventListener("beforeunload", function (e) {
+            e.preventDefault();
+            e.returnValue = ""; // required for Chrome
+        });
+    }
 
     static addToWaitingList(reqObj){
         this.waitingList.push(reqObj);

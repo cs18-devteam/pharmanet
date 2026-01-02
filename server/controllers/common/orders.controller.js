@@ -107,7 +107,7 @@ exports.getOrders = apiCatchAsync(async (req , res)=>{
 exports.updateOrder = apiCatchAsync(async (req , res)=>{
     const id = req.params.get('id');
     const reqData = await getMultipartData(req);
-    console.log(reqData);
+    console.log({id , ...reqData});
     
 
     return responseJson(res , 200 , {

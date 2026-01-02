@@ -709,7 +709,7 @@ $containers : 'bills' ,'orders' , 'chats' ,'medicines' , 'transactions' , 'produ
 }
 
 
-.pharmacyDashboard .dashboards .container {
+.pharmacyDashboard .dashboards .container.chats {
     @include chat.chat;
 }
 

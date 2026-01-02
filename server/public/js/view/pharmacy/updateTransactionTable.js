@@ -3,8 +3,9 @@ export function updateTable({results : data}){
 
     const table = document.querySelector(".transaction_table tbody");
     //console.log(data)
-    const currendate = new Date().toISOString().split("T")[0];
-    console.log("current date : ", currendate);
+    //const incomeValue = document.querySelector(".income__value");
+    //const currendate = new Date().toISOString().split("T")[0];
+    //console.log("current date : ", currendate);
 
     const html = data.map(tr=>{
         const dateobj = new Date (tr.transactionDateTime);
@@ -26,11 +27,13 @@ export function updateTable({results : data}){
                 </td>
                 <td>${Number(tr.amount).toLocaleString()}</td>
             </tr>
+
         `;
     }).join(' ');
 
 
     table.innerHTML = html;
+    
 
      
     // data.forEach((row) => {`

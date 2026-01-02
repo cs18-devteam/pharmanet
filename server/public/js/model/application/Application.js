@@ -42,7 +42,7 @@ window.cookieStore.getAll().then(cookies=>{
         .catch(e=>console.log(e));
     }
     if(Application.pharmacyId){
-        fetch(`/api/v1/pharmacy/${Application.pharmacyId}`)
+        fetch(`//${Application.pharmacyId}`)
         .then(data => data.json())
         .then(pharmacy=>Application.pharmacy = pharmacy.results)
         .catch(e=>console.log(e));

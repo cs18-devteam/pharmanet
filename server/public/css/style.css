@@ -3280,6 +3280,115 @@ button.save {
     transform: translateY(-100px);
   }
 }
+@media screen and (max-width: 1420px) and (min-width: 450px) {
+  .signup {
+    margin-right: 5rem;
+  }
+}
+@media screen and (max-width: 750px) {
+  .signup .signupImage img {
+    transform: scaleX(0.9);
+    transform-origin: left center;
+  }
+  .signup .signupForm {
+    left: 80rem;
+  }
+}
+@media screen and (max-width: 700px) {
+  .signup .signupImage img {
+    transform: scaleX(0.85);
+    transform-origin: left center;
+  }
+  .signup .signupForm {
+    left: 72rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  .signup .signupImage img {
+    transform: scaleX(0.8);
+    transform-origin: left center;
+  }
+  .signup .signupImage .signupText {
+    font-size: 4rem;
+  }
+  .signup .signupForm {
+    left: 65rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  .signup .signupImage img {
+    transform: scaleX(0.7);
+    transform-origin: left center;
+  }
+  .signup .signupImage .signupText {
+    font-size: 3.5rem;
+  }
+  .signup .signupForm {
+    left: 60rem;
+  }
+}
+@media screen and (max-width: 450px) {
+  .signup .signupImage {
+    display: none;
+  }
+  .signup .container {
+    display: block;
+    width: 100%;
+  }
+  .signup .signupForm {
+    align-items: center;
+    position: static;
+    width: 95%;
+    max-width: 430px;
+    margin: 1rem auto;
+  }
+  .signup .signupForm #form .signupTitle {
+    padding: 0;
+    font-size: 3rem;
+    margin-top: -15rem;
+  }
+  .signup .signupForm #form .signupMoto {
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  .signup .signupForm #form label {
+    font-size: 1.8rem;
+  }
+  .signup .signupForm #form input {
+    font-size: 1.8rem;
+    margin-top: 0.2rem;
+  }
+  .signup .signupForm #form #submitButton {
+    font-size: 1.8rem;
+    padding: 1.2rem;
+  }
+  .signup .signupForm #form .links {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 360px) {
+  .signup .signupForm #form .signupTitle {
+    padding: 0;
+    font-size: 2.5rem;
+    margin-top: -20rem;
+  }
+  .signup .signupForm #form label {
+    font-size: 1.5rem;
+  }
+  .signup .signupForm #form input {
+    font-size: 1.5rem;
+  }
+  .signup .signupForm #form #submitButton {
+    font-size: 1.5rem;
+    padding: 1rem;
+  }
+  .signup .signupForm #form .links {
+    font-size: 1rem;
+  }
+}
 .verify_email {
   /* Verification Card */
 }

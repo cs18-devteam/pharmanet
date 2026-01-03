@@ -139,7 +139,6 @@ createOrderCreateBtn?.addEventListener("click" ,async ()=>{
         });
 
         const results = await payment.makePayment();
-        console.log(payment , results);
     }
 
 

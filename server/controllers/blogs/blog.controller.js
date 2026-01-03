@@ -149,7 +149,6 @@ exports.updateBlog = async (req, res) => {
       title , category , author , excerpt , content
     });
 
-    console.log({title,category ,author});
     return responseJson(res , 200 , newBlog);
   }catch(e){
     console.log(e);

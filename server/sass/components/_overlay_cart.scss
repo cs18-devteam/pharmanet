@@ -9,6 +9,7 @@
     z-index: -1000;
     transition: all .3s ease;
     perspective: 1000px;
+    height: 100vh;
     
     &.open{
         opacity: 1;
@@ -22,6 +23,7 @@
         height: 98%;
         border-radius: 2rem;
         transition: all .3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        
 
          &.open{
             transform: translateX(0%);
@@ -39,6 +41,8 @@
     .right-side{
         width: 40%;
         transform: translateX(150%);
+        min-height: fit-content;
+
     }
 
     .popup{

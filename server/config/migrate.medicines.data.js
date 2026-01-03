@@ -25,7 +25,6 @@ csvtojson().fromFile( path.join(__dirname , "./../data/medicines.csv")).then(jso
             await Medicines.save(medicine);
         }catch(e){
             console.log(e);
-            console.log(medicine);
             return;
         }
     })

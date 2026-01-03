@@ -185,7 +185,6 @@ exports.createMedicineStock = async (req , res)=>{
 exports.updateMedicineStock = async (req , res)=>{
     try{
         const medicine =  JSON.parse(await getRequestData(req));
-        console.log({medicine});
         
         const [updated] = await PharmacyMedicines.update({
             id: medicine.stockId,

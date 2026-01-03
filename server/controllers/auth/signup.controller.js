@@ -26,7 +26,6 @@ exports.signup = async (req, res) => {
 
         const {email , password , firstName , lastName , nic , fullName , dateOfBirth  , addressNo , street , town , province , postalCode  , role} = JSON.parse(await getRequestData(req));
 
-        console.log({email , password , firstName , lastName , nic , fullName , dateOfBirth  , addressNo , street , town , province , postalCode , role })
         
         //check for duplicate email
         const emailUser = await Users.get({

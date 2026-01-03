@@ -59,7 +59,6 @@ class ChatTemplates{
 
 
     static requestPharmacy(pharmacyId){
-        console.log({userID : Application.userId});
 
 
 

@@ -6,7 +6,6 @@ try{
 const form = document.getElementById('form');
 const btn_next = document.querySelector('.btn-next');
 const data = JSON.parse(localStorage.getItem('pharmacy')) || {};
-console.log(data);
 for(const [key,value] of Object.entries(data)){
     const field = document.querySelector(`[name=${key}]`);
 

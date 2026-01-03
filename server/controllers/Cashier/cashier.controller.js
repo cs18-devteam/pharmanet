@@ -113,7 +113,6 @@ exports.renderCashierProduct = async(req, res) => {
     try{
 
         const allProducts = await Products.get();
-        console.log(allProducts);
         
         return response(res, view('cashier/cashier-product' , {
             rows: allProducts.map(product => view('Cashier/component.product' , {

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,18 +18,18 @@
     <!-- Personal Info -->
     <div class="section">
       <h2 class="section-title">Personal Information</h2>
-       <form class="form-section" id="addUserForm">
-      <div class="row">
-        <div class="input-group">
-          <label>First Name <span>*</span></label>
-          <input type="text" id="fname" name="fname" placeholder="John"  />
-        </div>
+      <form class="form-section" id="addUserForm">
+        <div class="row">
+          <div class="input-group">
+            <label>First Name <span>*</span></label>
+            <input type="text" id="fname" name="fname" placeholder="John" />
+          </div>
 
-        <div class="input-group">
-          <label>Last Name <span>*</span></label>
-          <input type="text" id="lname" name="lname" placeholder="Smith" />
+          <div class="input-group">
+            <label>Last Name <span>*</span></label>
+            <input type="text" id="lname" name="lname" placeholder="Smith" />
+          </div>
         </div>
-      </div>
     </div>
 
     <!-- Contact Info -->
@@ -48,9 +49,9 @@
       <div class="row">
         <div class="input-group">
           <label>Pharmacy Assignment <span>*</span></label>
-          <select id = "pharmacy" name="pharmacy">
-            <option selected>Select a pharmacy</option>
-            <option selected>ABC</option>
+          <select id="pharmacy" name="pharmacy">
+            <option value="" disabled selected>Select a pharmacy</option>
+            <option>ABC</option>
           </select>
         </div>
 
@@ -68,36 +69,62 @@
       <!-- <button class="btncancel">Cancel</button> -->
       <button class="btn primary" type="submit">Add User</button>
     </div>
-</form>
+    </form>
   </div>
 
- <script>
-  const form = document.getElementById('addUserForm');
+  <script>
+    const form = document.getElementById('addUserForm');
 
-  form.addEventListener('submit',(e)=>{
-    e.preventDefault();
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
 
-    const data = {};
-    const formData = new FormData(form);
+      const data = {};
+      const formData = new FormData(form);
 
-    for (const [key, value] of formData.entries()) {
-      data[key] = value;
-    }
+      for (const [key, value] of formData.entries()) {
+        data[key] = value;
+      }
 
-    console.log(data);
+      // Generate Avatar from initials
+      if (data.fname && data.lname) {
+        const f = data.fname.trim().charAt(0).toUpperCase();
+        const l = data.lname.trim().charAt(0).toUpperCase();
+        data.avatar = f + l;
+      }
 
-    fetch("/api/admin/users",{
-      method: "POST",
-      
-      body: JSON.stringify(data),
-    })
+      // Validate pharmacy
+      if (data.pharmacy === "Select a pharmacy") {
+        alert("Please select a valid pharmacy");
+        return;
+      }
 
-    .then((respond) => respond.json())
-    .then(() => window.location.href = "/admin/users")
-    .catch(e => console.log(e));
+      console.log(data);
 
-  });
- </script>
+      fetch("/admin/{adminId}/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data),
+      })
+
+        .then((respond) => respond.json())
+        .then((res) => {
+          if (res.status === 'error') {
+            alert(res.message || "Error adding user");
+          } else {
+            // Notify parent window to close modal and reload
+            window.parent.postMessage({ action: 'closeModalAndReload' }, '*');
+          }
+        })
+        .catch(e => {
+          console.log(e);
+          alert("An error occurred");
+        });
+
+    });
+  </script>
 
 </body>
+
 </html>

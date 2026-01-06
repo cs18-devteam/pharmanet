@@ -9,7 +9,7 @@ exports.renderBlogManageView = async (req ,res)=>{
     try{
       const blogs = await Blogs.get();
 
-    return response(res , view('admin/blogManage' , {
+    return response(res , view('admin/blogManage' ,  {
       header : view('component.header' , {
         name:"Blogs || Manage All Blogs",
       }),
@@ -23,6 +23,8 @@ exports.renderBlogManageView = async (req ,res)=>{
     return response(res , view('404') , 404);
   }
 }
+
+
 
 exports.renderBlogView = async (req ,res)=>{
   try{
@@ -44,9 +46,7 @@ exports.renderBlogView = async (req ,res)=>{
   }
 }
 
-
-
-exports.createNewBlog = async (req ,res)=>{
+exports.renderCreateBlogView = async (req ,res)=>{
   try{
 
     return response(res , view('blog/createNewBlog' , {

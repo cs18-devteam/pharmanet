@@ -62,8 +62,8 @@
         </div>
 
         <div class="form-buttons">
-        <a href="/admin/:adminId/pharmacies/create/step/3"><button type="button" class="btn prev btn-previous">Previous</button></a>
-         <button type="button" class="btn btn-submit submit">Next
+        <button id="prevBtn" type="button" class="btn prev btn-previous">Previous</button>
+         <button id="submitBtn" type="button" class="btn btn-submit submit">Next
           <!-- <img class="spinner" src="/logo/spinner.png"/> -->
          </button>
         </div>
@@ -79,9 +79,12 @@
     // import "/js/utilities/Popup.js";
 // import Notify from "/js/view/Notify.js";
 try{
+    const pathParts = window.location.pathname.split('/');
+    const adminIdIndex = pathParts.indexOf('admin') + 1;
+    const adminId = pathParts[adminIdIndex];
 
     const form = document.getElementById('form');
-    const btn_submit = document.querySelector('.btn-submit');
+    const submitBtn = document.querySelector('#submitBtn');
 
     const data = JSON.parse(localStorage.getItem('pharmacy')) || {};
     console.log(data);
@@ -94,7 +97,7 @@ try{
 
 
 
-    btn_submit.addEventListener('click' , (e)=>{
+    submitBtn.addEventListener('click' , async(e)=>{
       e.preventDefault();
       const formData = new FormData(form);
 
@@ -128,57 +131,66 @@ try{
       }
       
       //save to storage
-      const previous = JSON.parse(localStorage.getItem('pharmacy'));
-      if(previous) window.location.href = "/admin/:adminId/pharmacies/create/step/3";
+      const previous = JSON.parse(localStorage.getItem('pharmacy')) || {};
+      const payload = {...previous, ...data};
       localStorage.setItem("pharmacy" , JSON.stringify({...previous , ...data }));
 
-      fetch("/admin/pharmacy/create" , {
+      try{
+       const res = await fetch(`/admin/${adminId}/pharmacies/create` , {
         method:"POST",
-        body: localStorage.getItem("pharmacy"),
-      }).then(data=>data.json()).then(data=>{
-        if(data.status == "error"){
-          throw new Error(data.message);
-          return;
-        }
-        
-        if(typeof (data?.[0]) == "object"){
-          localStorage.setItem('pharmacy' , JSON.stringify({}));
-          Swal.fire({
-              title: "Pharmacy Created Successfully",
-              icon: "success",
-              draggable: true
-          }).then(()=>{
-            window.location.href = "/admin/:adminId/pharmacies";
-          });
-          // Notify.showSuccess('/admin/pharmacy');
-          
+        headers: {"Content-type": "application/json"},
+        body: JSON.stringify(payload),
+      }); 
 
-        }
-      }).catch(e=>{
-        console.log(e);
+      if(!res.ok) {
+        const text =await res.text();
+        throw new Error(text || `Server error: ${res.status}`);
+      }
+
+      const json = await res.json();
+      if (json.status === "error") throw new Error(json.message);
+
+      if (typeof json?.[0] === "object"){
+        localStorage.setItem('pharmacy',JSON.stringify({}));
         Swal.fire({
-        icon: "error",
-        title: "something went wrong",
-        text: e.message,
-        footer: '<a href="/contactus">Why do I have this issue?</a>'
-    }); 
-
-        
-
-      }).finally(()=>{
-        console.log(localStorage.getItem("pharmacy"))
-      });      
-    });
-
-    }catch(e){
-      console.log(e);
+          title: "Pharmacy Created Successfully",
+          icon: "success",
+          draggable: true
+        }).then(() => {
+          window.location.href = `/admin/${adminId}/pharmacies`;
+        });
+      }
+    }catch(err){
+      console.log(err);
       Swal.fire({
         icon: "error",
         title: "something went wrong",
-        text: e.message,
-        footer: '<a href="/contactus">Why do I have this issue?</a>'
-    }); 
+        text: err.message,
+        footer: '<a href = "/contactus">Why do I have this issue?</a>'
+      });
     }
+    });
+  } catch (e) {
+    console.log(e);
+    Swal.fire({
+      icon: "error",
+      title: "something went wrong",
+      text: e.message,
+      footer: '<a href="/contactUs">Why do I have this issue?</a>'
+    });
+  }
+  </script>
+    
+
+  <script>
+    const pathParts = window.location.pathname.split('/');
+    const adminIdIndex = pathParts.indexOf('admin') + 1;
+    const adminId = pathParts[adminIdIndex];
+
+    document.getElementById('prevBtn').addEventListener('click',() => {
+      window.location.href = `/admin/${adminId}/pharmacies/create/step/3`;
+    });
+    
   </script>
 
 

@@ -5,11 +5,14 @@ exports.adminMedicineRouter = SubRouter.route('/admin/:adminId')
 .subRoute('/medicines',{
     get: adminMedicineController.renderAdminMedicinesView, 
 })
-.subRoute('/medicines/api',{
+.subRoute('/medicines/create',{
     post: adminMedicineController.addMedicine,
     get: adminMedicineController.getMedicines,
 })
-.subRoute('/medicines/api/:id',{
+.subRoute('/medicines/api', {
+    get: adminMedicineController.getMedicines,
+})
+.subRoute('/medicines/:medicineId/delete',{
     delete: adminMedicineController.deleteMedicine,
 })
 

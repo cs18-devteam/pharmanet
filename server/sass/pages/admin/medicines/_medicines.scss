@@ -17,7 +17,7 @@
       margin-right: 0rem;
       align-items: stretch;
       min-height: 95vh;
-      background-image: linear-gradient(45deg, rgba(2, 127, 128, 0.2392156863), rgba(2, 127, 128, 0));
+      background-image: linear-gradient(45deg, rgba(2, 127, 128,10), rgba(2, 127, 128, 0));
       border-radius: 1rem;
 
       .sideBar {
@@ -76,33 +76,33 @@
     }
 
     .menuItem {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      margin-left: -2rem;
-      padding: 2rem;
-      width: 26rem;
-      background-color: $primary;
-      border-bottom-left-radius: 1rem;
-      border-bottom-right-radius: 1rem;
-      position: absolute;
-      top: 59rem;
+      // display: flex;
+      // flex-direction: column;
+      // align-items: flex-start;
+      // margin-left: -2rem;
+      // padding: 2rem;
+      // width: 26rem;
+      // background-color: $primary;
+      // border-bottom-left-radius: 1rem;
+      // border-bottom-right-radius: 1rem;
+      // position: absolute;
+      // top: 59rem;
 
       .text {
         border: none;
         font-size: 1.5rem;
         background: none;
-        color: white;
+        color: $accent;
         cursor: pointer;
 
         &:hover {
           color: $accent;
         }
 
-        &.setting::before {
-          content: "⚙";
-          margin-right: 0.5rem;
-        }
+        // &.setting::before {
+        //   content: "⚙";
+        //   margin-right: 0.5rem;
+        // }
 
         &.signOut::before {
           content: "⎋";

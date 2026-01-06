@@ -12423,7 +12423,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   min-height: 95vh;
   background: #F7F7F7;
   border-radius: 1rem;
-  background-image: linear-gradient(45deg, rgba(2, 127, 128, 0.2392156863), rgba(2, 127, 128, 0));
+  background-image: linear-gradient(45deg, rgb(2, 127, 128), rgba(2, 127, 128, 0));
 }
 .adminDashboard .container .container-1 .sideBar {
   width: 26rem;
@@ -12540,16 +12540,17 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .adminDashboard .container-2 .main .dashboard .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 2rem;
+  gap: 4rem;
 }
 .adminDashboard .container-2 .main .dashboard .cards .card {
-  background: #F7F7F7;
+  background-image: linear-gradient(-45deg, rgb(2, 127, 128), rgba(2, 152, 152, 0));
   padding: 2rem;
   border-radius: 16px;
   display: flex;
   flex-direction: column;
+  border: 2px solid #FB8F21;
   gap: 1rem;
-  box-shadow: 0 0.2rem 0.8ren rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1rem 0.8ren rgba(0, 0, 0, 0.4);
 }
 .adminDashboard .container-2 .main .dashboard .cards .card .icon {
   font-size: 2.6rem;
@@ -12569,7 +12570,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .adminDashboard .container-2 .main .dashboard .cards .card h3 {
   font-size: 1.6rem;
-  color: #9ca3af;
+  color: #08374F;
 }
 .adminDashboard .container-2 .main .dashboard .cards .card h1 {
   font-size: 2.8rem;
@@ -12688,6 +12689,98 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .adminDashboard .container-2 .tag.inventory {
   background-color: #ef6c00;
 }
+@media (max-width: 992px) {
+  .adminDashboard .sideBar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .adminDashboard .menu {
+    flex-direction: row;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    overflow-x: auto;
+  }
+  .adminDashboard .menu a {
+    white-space: nowrap;
+  }
+  .adminDashboard .main {
+    padding: 20px;
+  }
+  .adminDashboard .main header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .adminDashboard .main header input {
+    width: 100%;
+  }
+  .adminDashboard .analyticCards {
+    flex-direction: column;
+  }
+}
+@media (max-width: 768px) {
+  .adminDashboard .sideBar {
+    padding: 1.5rem;
+  }
+  .adminDashboard .dashboard h1 {
+    font-size: 2.6rem;
+  }
+  .adminDashboard .dashboard p {
+    font-size: 1.3rem;
+  }
+  .adminDashboard .cards {
+    gap: 1.5rem;
+  }
+  .adminDashboard .analyticCards {
+    margin: 1.5rem;
+  }
+  .adminDashboard .activity-card {
+    margin: 1.5rem;
+  }
+  .adminDashboard .activity-item {
+    flex-direction: column;
+  }
+  .adminDashboard .activity-item .avatar {
+    margin-bottom: 0.8rem;
+  }
+}
+@media (max-width: 576px) {
+  .adminDashboard .sideBar {
+    width: 100%;
+  }
+  .adminDashboard .menu a {
+    font-size: 1.2rem;
+    padding: 8px 10px;
+  }
+  .adminDashboard .dashboard h1 {
+    font-size: 2.2rem;
+  }
+  .adminDashboard .dashboard .cards {
+    grid-template-columns: 1fr;
+  }
+  .adminDashboard .analyticCard1 canvas,
+  .adminDashboard .analyticCard2 canvas {
+    height: 22rem;
+  }
+  .adminDashboard .activity-card h2 {
+    font-size: 1.3rem;
+  }
+}
+@media (max-width: 400px) {
+  .adminDashboard .main {
+    padding: 15px;
+  }
+  .adminDashboard header .user-section {
+    gap: 1rem;
+  }
+  .adminDashboard .dashboard h1 {
+    font-size: 2rem;
+  }
+  .adminDashboard .card h1 {
+    font-size: 2.4rem;
+  }
+}
 
 .users .container {
   display: flex;
@@ -12698,7 +12791,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   margin-right: 0rem;
   align-items: stretch;
   min-height: 95vh;
-  background-image: linear-gradient(45deg, rgba(2, 127, 128, 0.2392156863), rgba(2, 127, 128, 0));
+  background-image: linear-gradient(45deg, rgb(2, 127, 128), rgba(2, 127, 128, 0));
   border-radius: 1rem;
 }
 .users .container .container-1 .sideBar {
@@ -12762,31 +12855,12 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .users .container .menuItem .text2::before {
   content: "⎋";
 }
-.users .container .menuItem {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-left: -2rem;
-  padding: 2rem;
-  width: 26rem;
-  background-color: #08374F;
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
-  position: absolute;
-  top: 59rem;
-}
 .users .container .menuItem .text {
   border: none;
   font-size: 1.5rem;
   background: none;
-  color: white;
-  cursor: pointer;
-}
-.users .container .menuItem .text:hover {
   color: #FB8F21;
-}
-.users .container .menuItem .text.setting::before {
-  content: "⚙";
+  cursor: pointer;
 }
 .users .container .menuItem .text.signOut::before {
   content: "⎋";
@@ -12940,13 +13014,14 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   width: 100%;
   max-width: 140rem;
   border-radius: 12px;
-  overflow: hidden;
+  overflow: visible;
 }
 .users .container .user-table table {
   width: 100%;
   border-collapse: collapse;
 }
-.users .container .user-table table th, .users .container .user-table table td {
+.users .container .user-table table th,
+.users .container .user-table table td {
   text-align: left;
   padding: 16px 20px;
 }
@@ -12987,7 +13062,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   padding: 4px 10px;
   border-radius: 6px;
   font-size: 13px;
-  background-color: #222;
+  background-image: linear-gradient(45deg, rgba(2, 127, 128, 0.2392156863), rgba(2, 127, 128, 0.33));
 }
 .users .container .role.admin {
   background-color: #00a676;
@@ -13536,7 +13611,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   margin-right: 0rem;
   align-items: stretch;
   min-height: 95vh;
-  background-image: linear-gradient(45deg, rgba(2, 127, 128, 0.2392156863), rgba(2, 127, 128, 0));
+  background-image: linear-gradient(45deg, rgb(2, 127, 128), rgba(2, 127, 128, 0));
   border-radius: 1rem;
 }
 .medicines .container .container-1 .sideBar {
@@ -13582,32 +13657,15 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   background: #768190;
   color: #FB8F21;
 }
-.medicines .container .menuItem {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-left: -2rem;
-  padding: 2rem;
-  width: 26rem;
-  background-color: #08374F;
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
-  position: absolute;
-  top: 59rem;
-}
 .medicines .container .menuItem .text {
   border: none;
   font-size: 1.5rem;
   background: none;
-  color: white;
+  color: #FB8F21;
   cursor: pointer;
 }
 .medicines .container .menuItem .text:hover {
   color: #FB8F21;
-}
-.medicines .container .menuItem .text.setting::before {
-  content: "⚙";
-  margin-right: 0.5rem;
 }
 .medicines .container .menuItem .text.signOut::before {
   content: "⎋";
@@ -14302,7 +14360,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   margin-right: 0rem;
   align-items: stretch;
   min-height: 95vh;
-  background: #F7F7F7;
+  background-image: linear-gradient(25deg, rgb(6, 156, 156), rgba(2, 127, 128, 0));
   border-radius: 1rem;
 }
 .blogManage .container .container-1 .sideBar {
@@ -14366,24 +14424,11 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .blogManage .container .menuItem .text2::before {
   content: "⎋";
 }
-.blogManage .container .menuItem {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-left: -2rem;
-  padding: 2rem;
-  width: 26rem;
-  background-color: #08374F;
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
-  position: absolute;
-  top: 75rem;
-}
 .blogManage .container .menuItem .text {
   border: none;
   font-size: 1.5rem;
   background: none;
-  color: white;
+  color: #FB8F21;
   cursor: pointer;
 }
 .blogManage .container .menuItem .text:hover {
@@ -14522,6 +14567,128 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   font-size: 2rem;
   font-weight: 700;
   margin: 0;
+}
+@media (max-width: 1200px) {
+  .blogManage .container {
+    flex-direction: column;
+  }
+  .blogManage .container-1 {
+    width: 100%;
+    min-height: auto;
+  }
+  .blogManage .container-2 {
+    max-width: 100%;
+    margin: 2rem auto;
+  }
+  .blogManage header h1 {
+    font-size: 2.2rem;
+  }
+}
+@media (max-width: 992px) {
+  .blogManage .navbar {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  .blogManage .navbar .nav-buttons {
+    justify-content: center;
+  }
+  .blogManage .container {
+    flex-direction: column;
+  }
+  .blogManage .sideBar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1.5rem;
+  }
+  .blogManage .menu {
+    flex-direction: row;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    overflow-x: auto;
+  }
+  .blogManage .menu a {
+    white-space: nowrap;
+  }
+  .blogManage header .btn-create {
+    position: static;
+    margin-top: 1rem;
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .blogManage .navbar {
+    padding: 1rem;
+  }
+  .blogManage .navbar .logo span {
+    font-size: 1.6rem;
+  }
+  .blogManage .navbar .btn {
+    font-size: 1.2rem;
+    padding: 6px 12px;
+  }
+  .blogManage .sideBar {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+  .blogManage .menu {
+    width: 100%;
+  }
+  .blogManage .container-2 {
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+  .blogManage .summary {
+    flex-direction: column;
+  }
+  .blogManage .blog-table {
+    overflow-x: auto;
+  }
+  .blogManage .blog-table table {
+    min-width: 700px;
+  }
+}
+@media (max-width: 576px) {
+  .blogManage header h1 {
+    font-size: 1.8rem;
+  }
+  .blogManage header p {
+    font-size: 1.2rem;
+  }
+  .blogManage .navbar .logo img {
+    width: 3rem;
+    height: 3rem;
+  }
+  .blogManage .btn-create {
+    padding: 1rem;
+    font-size: 1.2rem;
+  }
+  .blogManage .menu a {
+    font-size: 1.2rem;
+    padding: 8px 10px;
+  }
+  .blogManage td strong {
+    font-size: 1.4rem;
+  }
+  .blogManage td p {
+    font-size: 1.1rem;
+  }
+}
+@media (max-width: 400px) {
+  .blogManage .navbar {
+    padding: 0.8rem;
+  }
+  .blogManage .btn {
+    width: 100%;
+  }
+  .blogManage .menu {
+    gap: 0.3rem;
+  }
+  .blogManage .summary .card p {
+    font-size: 1.6rem;
+  }
 }
 
 .blogView .navbar {
@@ -16127,6 +16294,305 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .addPharmarcy04 .registration-container footer a:hover {
   text-decoration: underline;
+}
+
+.pharmarcy .container {
+  display: flex;
+  flex-direction: row;
+}
+.pharmarcy .container .container-1 {
+  flex: -2;
+  margin-right: 0rem;
+  align-items: stretch;
+  min-height: 95vh;
+  background-image: linear-gradient(45deg, rgb(2, 127, 128), rgba(2, 127, 128, 0));
+  border-radius: 1rem;
+}
+.pharmarcy .container .container-1 .sideBar {
+  width: 26rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.pharmarcy .container .container-1 .sideBar .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.pharmarcy .container .container-1 .sideBar .logo .logopic {
+  font-size: 2.4rem;
+}
+.pharmarcy .container .container-1 .sideBar .logo div h3 {
+  font-size: 1.8rem;
+  margin-bottom: -0.5rem;
+  color: #08374F;
+}
+.pharmarcy .container .container-1 .sideBar .logo div p {
+  font-size: 1.2rem;
+  color: #9ca3af;
+}
+.pharmarcy .container .menu {
+  flex: 2;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4rem;
+}
+.pharmarcy .container .menu a {
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #9ca3af;
+  transition: all 0.3s;
+}
+.pharmarcy .container .menu a.active, .pharmarcy .container .menu a:hover {
+  background: #768190;
+  color: #FB8F21;
+}
+.pharmarcy .container .menuItem {
+  display: flex;
+  border-radius: 0.5rem;
+}
+.pharmarcy .container .menuItem .text1 {
+  font-size: 1rem;
+  text-decoration: none;
+  border: none;
+}
+.pharmarcy .container .menuItem .text1::before {
+  content: "⚙";
+}
+.pharmarcy .container .menuItem .text2 {
+  font-size: 1rem;
+}
+.pharmarcy .container .menuItem .text2::before {
+  content: "⎋";
+}
+.pharmarcy .container .menuItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: -2rem;
+  padding: 2rem;
+  width: 26rem;
+  background-color: #08374F;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  position: absolute;
+  top: 75rem;
+}
+.pharmarcy .container .menuItem .text {
+  border: none;
+  font-size: 1.5rem;
+  background: none;
+  color: white;
+  cursor: pointer;
+}
+.pharmarcy .container .menuItem .text:hover {
+  color: #FB8F21;
+}
+.pharmarcy .container .menuItem .text.setting::before {
+  content: "⚙";
+}
+.pharmarcy .container .menuItem .text.signOut::before {
+  content: "⎋";
+}
+.pharmarcy .container .container-2 {
+  flex: 2;
+}
+.pharmarcy .container .container-2 .main {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+}
+.pharmarcy .container .container-2 .main header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  justify-content: space-around;
+}
+.pharmarcy .container .container-2 .main header input {
+  background: white;
+  border: 2px solid black;
+  outline: none;
+  padding: 10px 15px;
+  width: 50%;
+  color: #9ca3af;
+  border-radius: 8px;
+}
+.pharmarcy .container .container-2 .main header .user-section {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.pharmarcy .container .container-2 .main header .user-section .bell {
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: relative;
+}
+.pharmarcy .container .container-2 .main header .user-section .bell::before {
+  content: "🔔";
+}
+.pharmarcy .container .container-2 .main header .user-section .bell::after {
+  content: "3";
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  background: red;
+  color: white;
+  font-size: 0.7rem;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+}
+.pharmarcy .container .container-2 .main header .user-section .admin {
+  width: 3.5rem;
+  height: 3.5rem;
+  background: #FB8F21;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fff;
+}
+.pharmarcy .container .container-2 .main .dashboard .sectionHeading {
+  display: flex;
+  justify-content: space-between;
+}
+.pharmarcy .container .container-2 .main .dashboard .sectionHeading .addBtn {
+  background: linear-gradient(to right, #18978D, #083851);
+  color: white;
+  font-size: 1.4rem;
+  border-radius: 1rem;
+  border: 1rem #FB8F21;
+  align-items: baseline;
+  padding: 1.5rem;
+}
+.pharmarcy .container .container-2 .main .dashboard .sectionHeading .addBtn::before {
+  content: "+ ";
+}
+.pharmarcy .container .container-2 .main .dashboard h1 {
+  font-size: 3.2rem;
+  margin-bottom: 0.8rem;
+  color: #08374F;
+  margin-bottom: -0.5rem;
+}
+.pharmarcy .container .container-2 .main .dashboard p {
+  color: #9ca3af;
+  margin-bottom: 3rem;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(45rem, 1fr));
+  gap: 1.5rem;
+  min-height: 90vh;
+  align-items: stretch;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card {
+  display: grid;
+  background-color: #F7F7F7;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+  position: relative;
+  align-items: stretch;
+  max-width: 60rem;
+  max-height: 50vh;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .header h3 {
+  font-size: 1.5rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #08374F;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .header .menu-btn {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card p {
+  margin: 0.75rem 0 0.5rem;
+  color: #08374F;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .details li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+  font-size: 1.2rem;
+  color: #FB8F21;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .details li span {
+  font-size: 1.5rem;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .details li span.address::before {
+  content: "📍";
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .details li span.telephoneNo::before {
+  content: "📞 ";
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .details li span.email::before {
+  content: "✉️ ";
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .footer {
+  margin-top: 1.2rem;
+  border-top: 1px solid #222;
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: fit-content;
+  max-height: fit-content;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .footer p {
+  font-size: 0.95rem;
+  color: #aaa;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .footer p strong {
+  color: #08374F;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .footer .details-btn {
+  background: linear-gradient(to right, #18978D, #083851);
+  border: 1px solid #08374F;
+  color: #fff;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .footer .details-btn:hover {
+  background-color: #1e1e1e;
+}
+.pharmarcy .container .container-2 .main .dashboard .status {
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.pharmarcy .container .container-2 .main .dashboard .status.active {
+  background-color: #00c853;
+  color: #fff;
+}
+.pharmarcy .container .container-2 .main .dashboard .status.inactive {
+  background-color: #424242;
+  color: #ccc;
 }
 
 .addUsers {

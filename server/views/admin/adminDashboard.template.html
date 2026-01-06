@@ -28,42 +28,42 @@
         <div class="card">
           <div class="icon pharmarcy"></div>
           <h3>Total Pharmacies</h3>
-          <h1>24</h1>
+          <h1 id = "totalPharmacies"></h1>
           <p class="change">+2 this month</p>
         </div>
 
         <div class="card">
           <div class="icon stock"></div>
-          <h3>Medicines in Stock</h3>
-          <h1>1,847</h1>
+          <h3>Registered Medicines</h3>
+          <h1 id="totalMedicines">1,847</h1>
           <p class="change">+127 this week</p>
         </div>
 
         <div class="card">
           <div class="icon users"></div>
-          <h3>Active Users</h3>
-          <h1>342</h1>
+          <h3>Total Users</h3>
+          <h1 id="totalUsers">342</h1>
           <p class="change">+18 this week</p>
         </div>
 
-        <div class="card">
+        <!-- <div class="card">
           <div class="icon revenue"></div>
           <h3>Revenue</h3>
           <h1>$54,239</h1>
           <p class="change">+12.5% from last month</p>
         </div>
-      </div>
+      </div> -->
     </section>
   </div>
   
 
 <!-- Analytics -->
  <div class="analyticCards">
- <div class="analyticCard1">
+ <!-- <div class="analyticCard1">
       <h2>Sales & Prescriptions</h2>
       <p>Monthly overview of sales and prescription volume</p>
       <canvas id="salesChart"></canvas>
-    </div>
+    </div> -->
     
 
     <div class="analyticCard2">
@@ -142,8 +142,33 @@
   </div>
   </div>
   </div>   
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
   <script src="/js/controller/admin/system.admin.js"></script>
+
+  <script>
+    const pathParts = window.location.pathname.split('/');
+    const adminId = pathParts[pathParts.indexOf('admin')+1];
+
+    async function loadDashboardStats() {
+      try{
+        console.log('Fetching from:',`/api/v1/admin/${adminId}/dashboard`);
+        const res = await fetch(`/api/v1/admin/${adminId}/dashboard`);
+        const data = await res.json();
+
+        console.log('Dashboard data:', data);
+        const stats = data.data || data;
+
+        if(stats) {
+          document.getElementById('totalPharmacies').textContent = stats.totalPharmacies ?? 0;
+          document.getElementById('totalMedicines').textContent = stats.totalMedicines ?? 0;
+          document.getElementById('totalUsers').textContent = stats.totalUsers ?? 0;
+        }
+      }catch (e) {
+        console.error('Error loading dashboard stats:', e);
+      }
+    }
+    loadDashboardStats();
+  </script>
 </body>
 </html>
 

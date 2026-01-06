@@ -1,10 +1,13 @@
+const { catchAsync } = require("../../common/catchAsync");
 const { getRequestData } = require("../../common/getRequestData");
 const { responseJson, response } = require("../../common/response");
 const view = require("../../common/view");
 const Pharmacies = require("../../models/PharmacyModel");
 
-exports.renderAllPharmacies = async (req ,res)=>{
+exports.renderAllPharmacies = catchAsync(async (req ,res)=>{
+
     const pharmacies = await Pharmacies.get();
+    const [admin] = await Pharmacies.getById(req.adminId);
 
 
     return response(res , 
@@ -12,16 +15,32 @@ exports.renderAllPharmacies = async (req ,res)=>{
             header : view('component.header' , {
           name:"Pharmacies || Pharmanet Pharmacy Management",
         }),
-            sidebar : view('admin/component.sidebar'),
+            sidebar : view('admin/component.sidebar',admin),
             rows : pharmacies.map(p=>view('admin/component.pharmacy.row' , p)).join(" ")
         }) , 200 )
-}
+})
 
 
         
 
 exports.createPharmacy = async (req , res)=>{
     let sent = false;
+    let adminId = req.adminId;
+
+  // Fallback: extract from URL if not in req
+  if (!adminId && req.url) {
+    const parts = req.url.split('/');
+    // Assuming /admin/:id/blogs/create -> id is index 2 (empty, admin, id, ...)
+    if (parts[1] === 'admin' && parts[2]) {
+      adminId = parts[2];
+    }
+  }
+
+  // Validation: Ensure adminId is valid (e.g., numeric)
+  if (!adminId || isNaN(adminId)) {
+    console.error(`Invalid or missing adminId: ${adminId}`);
+    return response(res, "Invalid Admin ID", 400);
+  }
     
 
     try{
@@ -85,12 +104,8 @@ exports.createPharmacy = async (req , res)=>{
             error : e,
         }))
     }
-
-
-
-
-
 }
+
 exports.updatePharmacy = async (req , res)=>{
     let sent = false;
 
@@ -107,11 +122,6 @@ exports.updatePharmacy = async (req , res)=>{
             error : e,
         }))
     }
-
-
-
-
-
 }
 
 exports.sendJsonPharmaciesList = async (req , res)=>{
@@ -170,7 +180,7 @@ exports.deletePharmacy = async (req , res)=>{
 }
 
 
-exports.renderAdminCreatePharmacyViewStep01 = async (req ,res)=>{
+exports.renderAdminCreatePharmacyViewStep01 = catchAsync(async (req ,res)=>{
     return response(res , view('admin/addPharmacy',{
         header : view('component.header' , {
             name:"Add new Pharmacy | step 01",
@@ -178,34 +188,34 @@ exports.renderAdminCreatePharmacyViewStep01 = async (req ,res)=>{
         next : "/admin/:adminId/pharmacies/create/step/2"
 
     }) , 200);
-}
-exports.renderAdminCreatePharmacyViewStep02 = async (req ,res)=>{
+})
+exports.renderAdminCreatePharmacyViewStep02 = catchAsync(async (req ,res)=>{
     return response(res , view('admin/addPharmacy-step2',{
         header : view('component.header' , {
           name:"Add new Pharmacy | step 02",
         }),
-        next: "/admin/pharmacy/step/3",
-        previous:"/admin/pharmacy/create"
+        next: "/admin/:adminId/pharmacies/step/3",
+        previous:"/admin/:adminId/pharmacies/create"
     }) , 200);
-}
-exports.renderAdminCreatePharmacyViewStep03 = async (req ,res)=>{
+})
+exports.renderAdminCreatePharmacyViewStep03 = catchAsync(async (req ,res)=>{
     return response(res , view('admin/addPharmacy-step3',{
         header : view('component.header' , {
           name:"Add new Pharmacy | step 03",
         }),
-        next:"/admin/pharmacy/step/4",
-        previous:"/admin/pharmacy/step/2"
+        next:"/admin/:adminId/pharmacies/step/4",
+        previous:"/admin/:adminId/pharmacies/step/2"
     }) , 200);
-}
-exports.renderAdminCreatePharmacyViewStep04 = async (req ,res)=>{
+})
+exports.renderAdminCreatePharmacyViewStep04 = catchAsync(async (req ,res)=>{
     return response(res , view('admin/addPharmacy-step4',{
         header : view('component.header' , {
           name:"Add new Pharmacy | step 04",
         }),
-        previous:"/admin/pharmacy/step/3"
-        // next:"/admin/pharmacy/step/2"
+        previous:"/admin/:adminId/pharmacies/step/3",
+        next:"/admin/:adminId/pharmacies"
     }) , 200);
-}
+})
 
 exports.renderAdminEditPharmacyViewStep01 = async (req ,res)=>{
      try{

@@ -1,4 +1,12 @@
-{header}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ 
+    <link rel="stylesheet" href="/css/style.css">
+</head>
 <body class="pharmarcy">
     <div class="container">
     <div class="container-1">
@@ -21,13 +29,13 @@
 
   <div class="container-2">
   <div class="main">
-    <!-- <header>
+    <header>
       <input type="text" id="searchInput" placeholder="Search pharmacies..." />
       <div class="user-section">
         <span class="bell"></span>
         <div class="admin">AD</div>
       </div>
-    </header> -->
+    </header>
 
     <section class="dashboard">
      <div class="sectionHeading">
@@ -36,28 +44,14 @@
       <p>Manage All pharmarcy locations and their details.</p>
       </div>
       <div>
-      <a href="/admin/:adminId/pharmacies/create" class="addBtn">Add Pharmarcy</a>
+      <button id="addPharmacyBtn" class="addBtn">Add Pharmarcy</button>
       </div>
       </div>
     
     <div class="content-wrapper">
     <div class="pharmacy-grid">
     
-      <table class="pharmacy-table">
-        <thead>
-          <th>name</th>
-          <th>licenseNumber</th>
-          <th>email</th>
-          <th>address</th>
-          <th>location</th>
-          <th>contact</th>
-          <th>type</th>
-          <th>pharmacist</th>
-        </thead>
-        <tbody>
-          {rows}
-        </tbody>
-      </table>
+
   
     
 
@@ -68,76 +62,59 @@
   </div>
 
   <script>
+    const pathParts = window.location.pathname.split('/');
+    const adminIdIndex = pathParts.indexOf('admin') + 1;
+    const adminId = pathParts[adminIdIndex];
+
+    // Set the buttons links
+    document.getElementById('addPharmacyBtn').addEventListener('click', () => {
+      window.location.href = `/admin/${adminId}/pharmacies/create`;
+    });
+   
+
     async function renderPharmacies(){
-      const respond = await fetch("/admin/pharmacy/create" , {
-        method:"GET",
-      });
+      const res = await fetch(`${window.location.origin}/api/v1/admin/${adminId}/pharmacies`);
+      const pharmacies = await res.json();
+      
+      if(!Array.isArray(pharmacies) || pharmacies.length === 0) return;
 
-      const  results = await respond.json();
-      console.log(results);
-
-      if(!results.data) return;
-      if(!results.data[0])return;
-
-      const pharmacies = results.data.map(pharmacy=>{
-        const pharmacyCard = `
-        <a href="/admin/pharmacy/view/${pharmacy.id}" class="pharmacy-card">
-          <div class="header">
-            <h3>${pharmacy.name} <span class="status inactive">inactive</span></h3>
-            <button class="menu-btn">⋮</button>
-          </div>
-          <p>Manager: Lisa Anderson</p>
-          <ul class="details">
-            <li><span class="address"></span>${pharmacy.street} , ${pharmacy.town} , ${pharmacy.province}</li>
-            <li><span class="email"></span> ${pharmacy.email}</li>
-          </ul>
-          <div class="footer">
-            <p>Inventory: <strong>423 items</strong></p>
-            <button class="details-btn">View Details</button>
-          </div>
-        </a>`;
-
-        return pharmacyCard;
-
-          })
-          const pharmacyBody = document.querySelector('.pharmacy-grid');
-          if(pharmacyBody){
-            pharmacyBody.innerHTML = pharmacies.join(' ');
-          }
-          
-        }
-
-
-
+      const html = pharmacies.map(p =>`
+      <a href = "/admin/pharmacy/view/${p.id}" class="pharmacy-card">
+        <div class="header">
+          <h3>${p.name} <span class="status inactive">inactive</span></h3>
+          <button class="menu-btn">⋮</button>
+        </div>
+        <p>Manager: ${p.pharmacist || 'N/A'}</p>
+        <ul class="details">
+          <li><span class="address"></span>${p.street || ''}, ${p.town || ''}, ${p.province || ''}</li>
+          <li><span class="email"></span> ${p.email || ''}</li>
+        </ul>
+        <div class= "footer">
+          <p>Inventory: <strong>N/A</strong></p>
+          <button class="details-btn">View Details</button>
+        </div>
+      </a>`).join('');
+      document.querySelector('.pharmacy-grid').innerHTML = html;
+    }
     renderPharmacies();
-
-
-
   </script>
 
 
   <script>
-    try{
+  //Search filter
+  document.getElementById('searchInput').addEventListener('keyup', function () {
+  const filter = this.value.toLowerCase(); // what user types
+  const rows = document.querySelectorAll('.pharmacy-card');
 
-      
-      //Search filter
-      document.getElementById('searchInput').addEventListener('keyup', function () {
-        const filter = this.value.toLowerCase(); // what user types
-        const rows = document.querySelectorAll('.pharmacy-card');
-        
-        rows.forEach(row => {
-          const text = row.textContent.toLowerCase();
-          if (text.includes(filter)) {
-            row.style.display = ''; // show row
-          } else {
-            row.style.display = 'none'; // hide row
-          }
-        });
-      });
-    }catch(e){
-      console.log(e);
-      Notify.showError(e.message);
+  rows.forEach(row => {
+    const text = row.textContent.toLowerCase();
+    if (text.includes(filter)) {
+      row.style.display = ''; // show row
+    } else {
+      row.style.display = 'none'; // hide row
     }
+  });
+});
   </script>
 
 

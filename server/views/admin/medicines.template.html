@@ -21,7 +21,7 @@
   {sidebar}
 
     <div class="menuItem">
-        <button class="text setting"> Settings</button>
+        <!-- <button class="text setting"> Settings</button> -->
         <button class="text signOut"> Sign Out</button>
     </div>
   </div>
@@ -410,10 +410,16 @@
 
  
   <script>
+  const pathParts = window.location.pathname.split('/');
+  const adminIdIndex = pathParts.indexOf('admin') + 1;
+  const adminId = pathParts[adminIdIndex];
+
+  
   //Search filter
   document.getElementById('searchInput').addEventListener('keyup', function () {
   const filter = this.value.toLowerCase(); // what user types
   const rows = document.querySelectorAll('.medicine-table tr');
+ 
 
   rows.forEach(row => {
     const text = row.textContent.toLowerCase();
@@ -430,7 +436,7 @@ let medicinesData = [];
 
 async function loadMedicines() {
     try {
-      const response = await fetch('/admin/medicines/api');
+      const response = await fetch(`${window.location.origin}/admin/${adminId}/medicines/api`);
       if (!response.ok){
         throw new Error(`API error: ${response.status} ${response.statusText}`);
       }
@@ -459,7 +465,7 @@ async function loadMedicines() {
                 <ul class="dropdown">
                   <button class="viewDetailsBtn" onclick="openPopup('viewPopup')">View Details</button>
                   <button id="editBtn" onclick="openPopup('editPopup')">Edit</button>
-                  <button class="danger delete-btn" data-id="${medicine.id}">Delete</button>
+                  <button class="delete-btn" data-id="${medicine.id}">Delete</button>
                 </ul>
               </div>
             </td>
@@ -468,33 +474,36 @@ async function loadMedicines() {
         tbody.insertAdjacentHTML('beforeend', row);
       });
       attachDropdownListeners();
+      attachDeleteListeners();
 
-      //delete medicine
-    document.querySelectorAll('.delete-btn').forEach(btn => {
-    btn.addEventListener('click', async () => {
-        const id = btn.dataset.id;
-        if (confirm('Are you sure you want to delete this medicine?')) {
-            try {
-                const response = await fetch(`/admin/medicines/api/${id}`, {
-                    method: 'DELETE'
-                });
-                if (response.ok) {
-                    loadMedicines(); // Reload the table
-                } else {
-                    alert('Failed to delete medicine');
-                }
-            } catch (error) {
-                console.error('Error deleting medicine:', error);
-                alert('Error deleting medicine');
-            }
-        }
-    });
-});
    } catch (error) {
       console.error('Error loading medicines:', error);
       alert('Error loading medicines: ' + error.message);
     }
   }
+
+  // Attach delete event listeners to buttons
+  function attachDeleteListeners() {
+    document.querySelectorAll(".delete-btn").forEach(btn =>
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        deleteMedicine(btn.dataset.id);
+      })
+    );
+  }
+
+  //=======DELETE BLOG=======
+  async function deleteMedicine(medicineId) {
+    if(!confirm("Are you sure you want to delete this medicine?")) return;
+
+  const res = await fetch(`${window.location.origin}/admin/${adminId}/medicines/${medicineId}/delete`, { method: "DELETE" });
+  if (res.ok) {
+    alert("Medicine deleted!");
+    loadMedicines();
+  } else {
+    alert("Failed to delete medicine");
+  }
+  }  
 
 
   // Toggle dropdown menu
@@ -514,35 +523,41 @@ async function loadMedicines() {
     loadMedicines();
   });
 
-  // Hide dropdown when clicking outside
-  document.addEventListener('click', () => {
-  document.querySelectorAll('.dropdown').forEach(dropdownMenu => dropdownMenu.classList.remove('show'));
-    });
-
 
   document.getElementById('addMedicineForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
-    for (const [key ,value] of formData.entries() ){
-      console.log(key , value)
+    const medicineData = {
+      name: data.name,
+      brandName: data.brandName,
+      manufacturer: data.manufacturer,
+      dosage: data.dosage,
+      category: data.category,
+      schedule: data.schedule,
+      expiryDate: data.expiryDate,
+
     }
+    
   
     try {
       console.log(data);
-      const response = await fetch('/admin/:adminId/medicines/api', {
+      const response = await fetch(`${window.location.origin}/admin/${adminId}/medicines/create`, {
         method: 'POST',
-        body: formData,
+        headers: {'Content-Type' : 'application/json',},
+        body: JSON.stringify(medicineData),
       });
       if (response.ok) {
         closePopup('addMedicineModal');
         e.target.reset();
-        //loadMedicines();  // Reload the table
+        loadMedicines();  // Reload the table
       } else {
-        alert('Failed to add medicine');
+        const error = await response.json();
+        alert('Failed to add medicine: ' + (error.error || 'Unknown error'));
       }
     } catch (error) {
       console.error('Error adding medicine:', error);
+      alert('Failed to add medicine: ' + error.message);
     }
   });
 

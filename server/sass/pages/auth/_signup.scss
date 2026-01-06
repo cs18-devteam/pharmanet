@@ -291,106 +291,7 @@ $secondary-font: 'Poppins', sans-serif;
             }
         }
 
-// @media screen and (max-width: 1415px) {
-//   .signup {
-//     .signupImage img{
-//       transform: scaleX(0.95);
-//       transform-origin: left center;
-//     }
-//     .signupForm {
-//       left:85rem;
-//     }
-//   }
-// }
 
-// @media screen and (max-width: 1360px) {
-//   .signup {
-//     .signupImage img{
-//       transform: scaleX(0.9);
-//       transform-origin: left center;
-//     }
-//     .signupForm {
-//       left:80rem;
-//     }
-//   }
-// }
-
-// @media screen and (max-width: 1310px) {
-//   .signup {
-//     .signupImage img{
-//       transform: scaleX(0.85);
-//       transform-origin: left center;
-//     }
-//     .signupImage .signupText{
-//       margin-left: 0;
-//     }
-//     .signupForm {
-//       left:75rem;
-//     }
-//   }
-// }
-// @media screen and (max-width: 1260px) {
-//   .signup {
-//     .signupImage img{
-//       transform: scaleX(0.8);
-//       transform-origin: left center;
-//     }
-//     .signupImage .signupText {
-//       font-size: 4.3rem;
-//     }
-
-//     .signupForm {
-//       left:70rem;
-//     }
-//   }
-// }
-// @media screen and (max-width: 1210px) {
-//   .signup {
-//     .signupImage img{
-//       transform: scaleX(0.75);
-//       transform-origin: left center;
-//     }
-//     .signupImage .signupText {
-//       font-size: 4rem;
-//     }
-
-//     .signupForm {
-//       left:65rem;
-//     }
-//   }
-// }
-// @media screen and (max-width: 1160px) {
-//   .signup {
-//     .signupImage img{
-//       transform: scaleX(0.7);
-//       transform-origin: left center;
-//     }
-//     .signupImage .signupText {
-//       font-size: 3.7rem;
-//     }
-
-//     .signupForm {
-//       left:60rem;
-//     }
-//   }
-// }
-// @media screen and (max-width: 1110px) {
-//   .signup {
-//     .signupImage img{
-//       transform: scaleX(0.65);
-//       transform-origin: left center;
-//       left: 3rem;
-//     }
-//     .signupImage .signupText {
-//       font-size: 3.2rem;
-//       // left: 10%;
-//     }
-
-//     .signupForm {
-//       left:55rem;
-//     }
-//   }
-// }
 @media screen and (max-width:1420px) and (min-width:450px){
   .signup{
     margin-right: 5rem;
@@ -403,7 +304,7 @@ $secondary-font: 'Poppins', sans-serif;
       transform-origin: left center;
     }
     .signupForm {
-      left:80rem;
+      left:76rem;
     }
   }
 }
@@ -522,32 +423,3 @@ $secondary-font: 'Poppins', sans-serif;
     }
   }
 }
-
-
-// @media screen and (max-width: 395px) {
-//   .signup {
-//     .signupForm {
-//       #form  div {
-//         font-size: 1rem;
-//       }
-//       #form label {
-//         font-size: 1.8rem;
-//       }
-//       #form input {
-//         font-size: 1.8rem;
-//       }
-//     }
-//   }
-// }
-// @media screen and (max-width: 315px) {
-//   .signup {
-//     .signupForm {
-//       #form .nameFields label {
-//         font-size: 1.5rem;
-//       }
-//       #form .nameFields input {
-//         font-size: 1.5rem;
-//       }
-//     }
-//   }
-// }

@@ -3291,7 +3291,7 @@ button.save {
     transform-origin: left center;
   }
   .signup .signupForm {
-    left: 80rem;
+    left: 76rem;
   }
 }
 @media screen and (max-width: 700px) {

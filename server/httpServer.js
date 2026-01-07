@@ -30,6 +30,11 @@ const { profileDetailsApiRouter } = require('./routes/api/api.profiles.Routes');
 const { pharmacyTransactionsRouter } = require('./routes/api/api.pharmacy.transaction.Routes');
 
 
+const { pharmacyProductApiRouter } = require('./routes/api/api.pharmacy.product.Routes');
+const { adminUsersRouter } = require('./routes/web/admin.users.Routes');
+const { adminMedicineRouter } = require('./routes/web/admin.medicines.Routes');
+const { adminDashboardRouter } = require('./routes/web/admin.dashboard.Routes');
+const { adminApiDashboardRouter } = require('./routes/web/admin.dashboard.Routes');
 
 
 const options = {
@@ -69,9 +74,15 @@ const server = https.createServer(options,(req , res)=>{
         authRouter.pipe(req,res);
         customerRouter.pipe(req , res);
         adminRouter.pipe(req , res);
+        adminDashboardRouter.pipe(req, res);
         adminBlogsRouter.pipe(req , res);
         adminPharmacyRouter.pipe(req , res);
+<<<<<<< HEAD
         pharmacyStaffRouter.pipe(req,res);
+=======
+        adminUsersRouter.pipe(req,res);
+        adminMedicineRouter.pipe(req, res)
+>>>>>>> origin/kasun/admin/3.5
         pharmacistRouter.pipe(req , res);
         pharmacyRouter.pipe(req , res);
         cashiersBillsRouter.pipe(req ,res);
@@ -82,6 +93,7 @@ const server = https.createServer(options,(req , res)=>{
         transactionsRouter.pipe(req, res);
 
         //api routes
+        adminApiDashboardRouter.pipe(req, res);
         pharmacistBillsApiRouter.pipe(req , res);
         pharmacyOwnersBillsApiRouter.pipe(req, res);
         cashiersBillsApiRouter.pipe(req , res);

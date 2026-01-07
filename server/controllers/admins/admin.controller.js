@@ -20,28 +20,29 @@ exports.renderAdminDashboardView = catchAsync(async (req , res)=>{
     }) , 200);
 })
 
-exports.adminPharmacy = async(req,res)=>{
+exports.adminPharmacy = catchAsync(async(req,res)=>{
     const [admin] = await Users.getById(req.adminId);
 
 
     return response(res, view('admin/pharmacy', {
         sidebar : view('admin/component.sidebar' ,admin)
     }),200);
-}
+})
 
-exports.medicines = async (req ,res)=>{
+exports.renderAdminMedicinesView = catchAsync(async (req ,res)=>{
     const [admin] = await Users.getById(req.adminId);
 
 
     return response(res , view('admin/medicines',{
+        sidebar : view('admin/component.sidebar' ,admin),
         header : view('component.header' , {
           name:"Medicines || Pharmanet - Manage all medicines here",
         }),
-        sidebar : view('admin/component.sidebar' ,admin)
+        
     }) , 200);
-}
+})
 
-exports.renderAdminDataAssetsView = async (req ,res)=>{
+exports.renderAdminDataAssetsView = catchAsync(async (req ,res)=>{
     const [admin] = await Users.getById(req.adminId);
 
 
@@ -51,39 +52,39 @@ exports.renderAdminDataAssetsView = async (req ,res)=>{
         }),
         sidebar : view('admin/component.sidebar' ,admin)
     }) , 200);
-}
+})
 
-exports.viewProfile = async(req ,res)=>{
+exports.viewProfile = catchAsync(async(req ,res)=>{
 
 
     return response(res, view('admin/viewProfile'), 200);
-}
+})
 
-exports.pharmacy = async (req ,res)=>{
+exports.pharmacy = catchAsync(async (req ,res)=>{
     const [admin] = await Users.getById(req.adminId);
 
 
     return response(res , view('admin/pharmacy',{
-        sidebar : view('admin/component.sidebar' ,admin)
+        sidebar : view('admin/component.sidebar', admin)
     }) , 200 );
-}
+})
 
 
-exports.renderAdminUsersView = async (req ,res)=>{
+exports.renderAdminUsersView = catchAsync(async (req ,res)=>{
     const [admin] = await Users.getById(req.adminId);
 
 
     return response(res , view('admin/users',{
         sidebar : view('admin/component.sidebar' , admin)
     }) , 200);
-}
+})
 
-exports.addUsers = async (req ,res)=>{
+exports.addUsers =  catchAsync(async (req ,res)=>{
     return response(res, view('admin/addUsers') , 200);
-}
+})
 
 //create User
-exports.createUser = async (req,res) => {
+exports.createUser = catchAsync(async (req,res) => {
     const [admin] = await Users.getById(req.adminId);
 
 
@@ -92,12 +93,12 @@ exports.createUser = async (req,res) => {
         name, email , pharmacy , role
     });
     return responseJson(res , 201 , newUser);
-}
+})
 
 //get all users
-exports.getAllBlogs = async (req, res) => {
+exports.getAllBlogs = catchAsync(async (req, res) => {
     const users = await Users.get()
     return responseJson(res , 200 , newBlog);
-}
+})
 
 

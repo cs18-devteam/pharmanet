@@ -5,6 +5,8 @@
   $accent: #FB8F21;
   $danger-red: #ff4444;
   $accent-green: #00a676;
+  $border: #e5e5e5;
+  $radius: 10px;
 
   .container {
     display: flex;
@@ -15,7 +17,7 @@
       margin-right: 0rem;
       align-items: stretch;
       min-height: 95vh;
-      background: $element-bg;
+      background-image: linear-gradient(45deg, rgba(2, 127, 128,10), rgba(2, 127, 128, 0));
       border-radius: 1rem;
 
       .sideBar {
@@ -74,33 +76,33 @@
     }
 
     .menuItem {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      margin-left: -2rem;
-      padding: 2rem;
-      width: 26rem;
-      background-color: $primary;
-      border-bottom-left-radius: 1rem;
-      border-bottom-right-radius: 1rem;
-      position: absolute;
-      top: 59rem;
+      // display: flex;
+      // flex-direction: column;
+      // align-items: flex-start;
+      // margin-left: -2rem;
+      // padding: 2rem;
+      // width: 26rem;
+      // background-color: $primary;
+      // border-bottom-left-radius: 1rem;
+      // border-bottom-right-radius: 1rem;
+      // position: absolute;
+      // top: 59rem;
 
       .text {
         border: none;
         font-size: 1.5rem;
         background: none;
-        color: white;
+        color: $accent;
         cursor: pointer;
 
         &:hover {
           color: $accent;
         }
 
-        &.setting::before {
-          content: "⚙";
-          margin-right: 0.5rem;
-        }
+        // &.setting::before {
+        //   content: "⚙";
+        //   margin-right: 0.5rem;
+        // }
 
         &.signOut::before {
           content: "⎋";
@@ -132,6 +134,7 @@
             width: 50%;
             color: $text-muted;
             border-radius: 8px;
+            border: 2px solid black;
           }
 
           .user-section {
@@ -187,6 +190,8 @@
               border-radius: 1rem;
               padding: 1.5rem;
               cursor: pointer;
+              border: none;
+              
 
               &::before {
                 content: "+ ";
@@ -208,6 +213,123 @@
       }
     }
   }
+
+  
+  .addMedicine {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.4);
+  justify-content: center;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+
+  .modal {
+    width: 520px;
+    background: #fff;
+    border-radius: 12px;
+    
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 1.5rem 1.8rem;
+      border-top-left-radius: 1.2rem;
+      border-top-right-radius: 1.2rem;
+      background: linear-gradient(to right, #18978D, #083851);
+
+      h2 {
+        margin: 0;
+        color: white;
+        font-size: 22px;
+      }
+
+      p {
+        margin: 4px 0 0;
+        font-size: 14px;
+        color: white
+      }
+
+      .close-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 22px;
+        cursor: pointer;
+
+        &:hover{
+          color: red;
+        }
+      }
+    }
+
+    .medicine-form {
+      margin-top: 1.5rem;
+      padding: 1.5rem 1.8rem;
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 14px;
+
+        label {
+          font-size: 14px;
+          font-weight: 500;
+        }
+
+        input, select {
+          width: 100%;
+          padding: 10px 12px;
+          border: 1px solid $border;
+          border-radius: $radius;
+          font-size: 14px;
+
+          &:focus {
+            outline: none;
+            border-color: #000;
+          }
+        }
+      }
+  
+
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 1.5rem;
+
+      .cancel-btn {
+        background: #fff;
+        border: 1px solid $border;
+        padding: 9px 18px;
+        border-radius: $radius;
+        cursor: pointer;
+
+        &:hover{
+          color: red;
+          border: 1px solid red;
+        }
+      }
+
+      .save-btn {
+        background: #083851;
+        color: #fff;
+        padding: 9px 18px;
+        border-radius: $radius;
+        border: none;
+        cursor: pointer;
+
+        &:hover{
+          border: 1px solid black;
+        }
+      }
+    }
+  }
+}
+}
 
   .table-container {
     width: 100%;
@@ -247,22 +369,22 @@
   .tag {
     padding: 3px 8px;
     border-radius: 6px;
-    font-size: 0.75rem;
+    font-size: 1rem;
     color: #fff;
 
-    &.antibiotics {
+    &.Antibiotic {
       background: #007bff;
     }
-    &.pain-relief {
+    &.Pain-relief {
       background: #ff9800;
     }
-    &.diabetes {
+    &.Diabetes {
       background: #9c27b0;
     }
-    &.cardiac {
+    &.Cardiac {
       background: #673ab7;
     }
-    &.gastric {
+    &.Gastric {
       background: #00bcd4;
     }
   }
@@ -281,24 +403,7 @@
     &.low-stock {
       background: $accent-green;
     }
-  }
-.table-container {
-  width:100%;
-  // background: $element-bg;
-  border-radius: 12px;
-  padding: 1rem;
-  // box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
 
-.medicine-table {
-  width: 100%;
-  border-collapse: collapse;
-
-  th, td {
-    text-align: left;
-    padding: 0.9rem 1rem;
-    border-bottom: 1px solid #eee;
-    
     &.critical {
       background: $danger-red;
     }
@@ -377,39 +482,28 @@
   }
 
 
-/* ---------- GLOBAL MODAL ---------- */
-
-.viewModal-overlay {
+.viewMedicine {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(3px);
-  z-index: 90;
-}
-
-.hidden {
+  background: rgba(0,0,0,.4);
+  justify-content: center;
+  z-index: 1000;
   display: none;
-}
+  align-items: center;
 
-.modal {
-  width: 520px;
-  height: 98vh;
-  background: #fff;
-  border-radius: 14px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 100;
-  overflow: hidden;
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+  .modal {
+    width: 520px;
+    background: #fff;
+    border-radius: 12px;
 
   .modal-header{
     padding:18px 20px; 
     display:flex; 
+    border-top-left-radius: 1.2rem;
+    border-top-right-radius: 1.2rem;
     justify-content:space-between; 
     align-items:center; 
-    background: linear-gradient(90deg,#008b79,#00a58a); 
+    background: linear-gradient(to right, #18978D, #083851); 
     color:#fff;
 
     h2{
@@ -490,49 +584,126 @@
   background:#d6dfe5; 
   border:none; 
   cursor:pointer; 
+
+  &:hover{
+    color: red;
+  }
+}
 }
 }
 
 .editModal{
-  width: 520px;
-  height: 98vh;
-  background: #fff;
-  border-radius: 14px;
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 100;
-  overflow: hidden;
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+  inset: 0;
+  background: rgba(0,0,0,.4);
+  justify-content: center;
+  z-index: 1000;
+  display: none;
+  align-items: center;
 
+  .modal {
+    width: 520px;
+    background: #fff;
+    border-radius: 12px;
+    
 
-  .modal-header{
+}
+.modal-header{
     padding:18px 20px; 
     display:flex; 
+    border-top-left-radius: 1.2rem;
+    border-top-right-radius: 1.2rem;
     justify-content:space-between; 
     align-items:center; 
-    background: linear-gradient(90deg,#008b79,#00a58a); 
-    color:#fff;.modal-header{
-    padding:18px 20px; 
-    display:flex; 
-    justify-content:space-between; 
-    align-items:center; 
-    background: linear-gradient(90deg,#008b79,#00a58a); 
-    color:#fff; 
+    background: linear-gradient(to right, #18978D, #083851); 
+    color:#fff;
 
     h2{
-      font-size: 5rem;
+      margin:0; 
+      font-size:2rem;
+    }
+
+    p{
+      margin:0; 
+      font-size:13px; 
+      opacity:0.9;
+    }
+  }
+  .close-icon{
+    background:transparent; 
+    border:none; 
+    color:#fff; 
+    font-size:18px; 
+    cursor:pointer;
+
+    &:hover{
+      color: red;
     }
   }
 
-  .grid-2 { 
-    display:grid; 
-    grid-template-columns:1fr 1fr; 
-    gap:12px; 
-  }
+.form {
+  padding: 2rem;
+.row {
+display: flex;
+gap: 16px;
+margin-bottom: 16px;
+}
+
+
+.field {
+flex: 1;
+display: flex;
+flex-direction: column;
+
+
+label {
+font-size: 13px;
+margin-bottom: 4px;
+}
+
+
+input,
+select {
+padding: 8px 10px;
+border: 1px solid $border;
+border-radius: 6px;
+font-size: 14px;
 }
 }
 }
 
+
+.toggle {
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin: 20px 0;
+}
+
+
+.actions {
+display: flex;
+justify-content: flex-end;
+gap: 10px;
+
+
+.cancel {
+background: none;
+border: 1px solid $border;
+padding: 8px 14px;
+border-radius: 6px;
+cursor: pointer;
+}
+
+
+.save {
+background: $primary;
+color: #fff;
+border: none;
+padding: 8px 16px;
+border-radius: 6px;
+cursor: pointer;
+}
+}
+}
 }

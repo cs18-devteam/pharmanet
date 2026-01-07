@@ -4,16 +4,20 @@ class MedicineModel extends Model{
     constructor(){
         super();
         
-        this.geneticName = {
+        this.name = {
             type:"VARCHAR(200)",
         }
 
-        this.brand = {
+        this.brandName = {
             type:"VARCHAR(100)",
         }
         
         this.image = {
             type:"VARCHAR(100)"
+        }
+
+        this.expiryDate = {
+            type:"VARCHAR(50)"
         }
         // this.serialNumber = {
         //     type:"VARCHAR(100)",
@@ -41,7 +45,7 @@ class MedicineModel extends Model{
             type:"DATE"
         }
 
-        this.manufacture = {
+        this.manufacturer = {
             type:"VARCHAR(100)"
         }
         this.packType = {

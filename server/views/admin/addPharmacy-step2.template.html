@@ -52,10 +52,9 @@
         </div>
 
         <div class="form-buttons">
-          <a href="/admin/pharmacy/create">
-         <button type="button" class="btn prev btn-previous">Previous</button></a>
-          <button  type="button" class="btn next btn-next">Next
-            <img class="spinner" src="/logo/spinner.png"/>
+         <button id="prevBtn" type="button" class="btn prev btn-previous">Previous</button></a>
+          <button id="nextBtn" type="button" class="btn next btn-next">Next
+            <!-- <img class="spinner" src="/logo/spinner.png"/> -->
           </button></a>
         </div>
       </form>
@@ -71,91 +70,99 @@
 // import Notify from "/js/view/Notify.js";
 
 try{
-
-const form = document.getElementById('form');
-const btn_next = document.querySelector('.btn-next');
-const data = JSON.parse(localStorage.getItem('pharmacy')) || {};
-console.log(data);
-for(const [key,value] of Object.entries(data)){
-    const field = document.querySelector(`[name=${key}]`);
-
-
-    if(field){
-    field.value = value;
-    }
-}
-
-btn_next.addEventListener('click' , (e)=>{
-    e.preventDefault();
-    const formData = new FormData(form);
-
-    for( const [key , value] of formData.entries()){
-    const field = document.querySelector(`[name=${key}]`);
-    if(key == 'contact'){
-        if(/[^0-9]/.test(value)){
-        field.classList.add('utility-warn');
-        field.parentElement.insertAdjacentText("beforeend" , "only numbers are allowed")
-        return;
-        } 
-        if(value.length < 10){
-        field.classList.add('utility-warn');
-        field.parentElement.insertAdjacentText("afterend" , "number can't have length less than 10");
-        return;
-        }
-
-    }else if(key != "email"){
-        if(/[^A-Za-z ]/.test(value)){
-        field.classList.add('utility-warn');
-        field.parentElement.insertAdjacentText('beforeEnd' , "only letters are allowed")
-
-        return;
-        }else{
-        field.classList.remove('utility-warn');
-        }
-        
-    }else{
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)){
-        field.classList.add('utility-warn');
-        return;
-        }else{
-        field.classList.remove('utility-warn');
-        }
-    }
-    
-    if(!value){
-        document.querySelector(`input[name=${key}]`).classList.add('utility-warn');
-        document.querySelector(`input[name="${key}"]`).classList.remove('utility-success');
-        console.log(document.querySelector(`input[name=${key}]`));
-        return;
-    }else{
-        document.querySelector(`input[name="${key}"]`).classList.add('utility-success')
-        document.querySelector(`input[name="${key}"]`).classList.remove('utility-warn')
-    }
-    data[key] = value;
-    }
-    
-    //save to storage
-    const previous = JSON.parse(localStorage.getItem('pharmacy'));
-    if(!previous) window.location.href = "/admin/pharmacy/step/2";
-    localStorage.setItem("pharmacy" , JSON.stringify({...previous , ...data }));
-
-    window.location.href = "/admin/pharmacy/step/3"
-    
-})
-
-}catch(e){
-    console.log(e);
-    Swal.fire({
-      icon: "error",
-      title: "something went wrong",
-      text: e.message,
-      footer: '<a href="/contactus">Why do I have this issue?</a>'
-    })
-}
-
-    
+  const form = document.getElementById('form');
+  const btn_next = document.querySelector('.btn-next');
+  const data = JSON.parse(localStorage.getItem('pharmacy')) || {};
+  console.log(data);
+  for(const [key,value] of Object.entries(data)){
+      const field = document.querySelector(`[name=${key}]`);
 
 
+      if(field){
+      field.value = value;
+      }
+  }
+
+  btn_next.addEventListener('click' , (e)=>{
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      for( const [key , value] of formData.entries()){
+      const field = document.querySelector(`[name=${key}]`);
+      if(key == 'contact'){
+          if(/[^0-9]/.test(value)){
+          field.classList.add('utility-warn');
+          field.parentElement.insertAdjacentText("beforeend" , "only numbers are allowed")
+          return;
+          } 
+          if(value.length < 10){
+          field.classList.add('utility-warn');
+          field.parentElement.insertAdjacentText("afterend" , "number can't have length less than 10");
+          return;
+          }
+
+      }else if(key != "email"){
+          if(/[^A-Za-z ]/.test(value)){
+          field.classList.add('utility-warn');
+          field.parentElement.insertAdjacentText('beforeEnd' , "only letters are allowed")
+
+          return;
+          }else{
+          field.classList.remove('utility-warn');
+          }
+          
+      }else{
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)){
+          field.classList.add('utility-warn');
+          return;
+          }else{
+          field.classList.remove('utility-warn');
+          }
+      }
+      
+      if(!value){
+          document.querySelector(`input[name=${key}]`).classList.add('utility-warn');
+          document.querySelector(`input[name="${key}"]`).classList.remove('utility-success');
+          console.log(document.querySelector(`input[name=${key}]`));
+          return;
+      }else{
+          document.querySelector(`input[name="${key}"]`).classList.add('utility-success')
+          document.querySelector(`input[name="${key}"]`).classList.remove('utility-warn')
+      }
+      data[key] = value;
+      }
+      
+      //save to storage
+      const previous = JSON.parse(localStorage.getItem('pharmacy'));
+      if(previous) window.location.href = "/admin/${adminId}/pharmacies/create";
+      localStorage.setItem("pharmacy" , JSON.stringify({...previous , ...data }));
+
+      window.location.href = `/admin/${adminId}/pharmacies/create/step/3`;
+      
+  })
+
+  }catch(e){
+      console.log(e);
+      Swal.fire({
+        icon: "error",
+        title: "something went wrong",
+        text: e.message,
+        footer: '<a href="/contactus">Why do I have this issue?</a>'
+      })
+  }
+  </script>
+
+  <script>
+  const pathParts = window.location.pathname.split('/');
+  const adminIdIndex = pathParts.indexOf('admin') + 1;
+  const adminId = pathParts[adminIdIndex];
+
+  document.getElementById('nextBtn').addEventListener(() => {
+    window.location.href = `/admin/${adminId}/pharmacies/create/step/03`;
+  });
+  document.getElementById('prevBtn').addEventListener(() => {
+    window.location.href = `/admin/${adminId}/pharamcies/create`;
+  });
   </script>
  
 

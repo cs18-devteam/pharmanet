@@ -20,8 +20,9 @@
 /customers/:customerId/orders/:orderId/checkout
 /customers/:customerId/products/pharmacy_management_system
 /customers/:customerId/products/pharmacy_management_system/register
-/admin/:adminId/blogs
+/admin/:adminId/blogs/api/create
 /admin/:adminId/blogs/manage
+/admin/:adminId/blogs/create
 /admin/:adminId/blogs/:blogId/edit
 /admin/:adminId/blogs/:blogId/delete
 /admin/:adminId
@@ -106,5 +107,22 @@
 /pharmacies/:pharmacyId/staff/:staffId/permissions
 /api/v1/users/:userId
 /api/v1/pharmacy/:pharmacyId
+<<<<<<< HEAD
 /api/v1/staff/:staffId
 /api/v1/pharmacies/:pharmacyId/transactions
+=======
+/api/v1/pharmacies/:pharmacyId/products
+/api/v1/pharmacies/:pharmacyId/products/create
+/api/v1/pharmacies/:pharmacyId/products/:productId
+/admin/:adminId/users
+/admin/:adminId/users/create
+/admin/:adminId/api/users
+/admin/:adminId/api/users/:id
+/admin/:adminId/medicines
+/admin/:adminId/medicines/create
+/admin/:adminId/medicines/api
+/admin/:adminId/medicines/:medicineId/delete
+/api/v1/admin/:adminId/medicines
+/admin/:adminId/dashboard
+/api/v1/admin/:adminId/dashboard
+>>>>>>> origin/kasun/admin/3.5

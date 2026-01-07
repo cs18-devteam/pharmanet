@@ -3,7 +3,7 @@
 
   <div class="registration-container">
     <header>
-      <img class="logopic" src="/public/logo/logo.svg" alt="logo">
+      <img class="logopic" src="/logo/logo.svg" alt="logo">
       <h1>PharmaNet</h1>
       <p>Register your pharmacy to get started</p>
     </header>
@@ -75,14 +75,14 @@
               <option>Colombo</option>
               <option>Kaluthara</option>
              </select>
-             <p></p>
+             <p></p> 
           </div>
         </div>
 
         <div class="form-buttons">
-         <a href="/admin/pharmacy/step/2"><button type="button" class="btn prev btn-previous">Previous</button></a>
-          <button type="button" class="btn next btn-next">Next
-            <img class="spinner" src="/logo/spinner.png"/>
+         <button id="prevBtn" class="btn prev btn-previous">Previous</button>
+          <button id="nextBtn" class="btn next btn-next">Next
+            <!-- <img class="spinner" src="/logo/spinner.png"/> -->
           </button>
         </div>
       </form>
@@ -93,11 +93,13 @@
     </footer>
   </div>
 
-  <script>
-    // import "/js/utilities/Popup.js";
+<script>
+// import "/js/utilities/Popup.js";
 // import Notify from "/js/view/Notify.js";
 try{
-
+const pathParts = window.location.pathname.split('/');
+const adminIdIndex = pathParts.indexOf('admin') + 1;
+const adminId = pathParts[adminIdIndex];
 
 
 const form = document.getElementById('form');
@@ -120,8 +122,8 @@ function renderError(input , msg){
 }
 function renderSuccess(input , msg){
   input.parentElement.querySelector('p').textContent = "";
-    input.classList.remove('utility-success');
-    input.classList.add('utility-warn');
+    input.classList.remove('utility-warn');
+    input.classList.add('utility-success');
     input.parentElement.querySelector('p').textContent = msg;
 }
 
@@ -157,10 +159,10 @@ btn_next.addEventListener('click' , (e)=>{
     
     //save to storage
     const previous = JSON.parse(localStorage.getItem('pharmacy'));
-    if(!previous) window.location.href = "/admin/pharmacy/step/3";
+    if(previous) window.location.href = "/admin/${adminId}/pharmacies/create/step/2";
     localStorage.setItem("pharmacy" , JSON.stringify({...previous , ...data }));
 
-    window.location.href = "/admin/pharmacy/step/4"
+    window.location.href = `/admin/${adminId}/pharmacies/create/step/4`;
     
 
 })
@@ -174,6 +176,18 @@ btn_next.addEventListener('click' , (e)=>{
     })
 }
 
+  </script>
+  <script>
+    const pathParts = window.location.split('/');
+    const adminIdIndex = pathParts.indexOf('admin') + 1;
+    const adminId = pathParts[adminIdIndex];
+
+    document.getElementById('prevBtn').addEventListener('click', () =>{
+      window.location.href = `/admin/${adminId}/pharmacies/step/02`;
+    });
+    document.getElementById('nextBtn').addEventListener('click', () =>{
+      window.location.href = `/admin/${adminId}/pharmacies/step/04`;
+    });
   </script>
 
 </body>

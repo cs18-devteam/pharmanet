@@ -1,4 +1,4 @@
-const UserModel = require("./UserModel");
+const { UserModel } = require("./UserModel");
 
 class CustomerModel extends UserModel{
     constructor(){
@@ -7,8 +7,9 @@ class CustomerModel extends UserModel{
 }
 
 const Customers = new CustomerModel();
-Customers.createTable().catch(e=>{
+Customers.createTable().catch(e => {
     console.log(e);
     console.log("customer table not created");
 })
+
 module.exports =  Customers;

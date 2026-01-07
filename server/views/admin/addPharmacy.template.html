@@ -1,7 +1,7 @@
 {header}
 
 <body class="addPharmarcy01">
-<a href="/admin/pharmacy"><button class="closeBtn"></button></a>
+  <button id="close-Btn" class="closeBtn"></button>
   <div class="registration-container">
     <header>
       <img class="logopic" src="/logo/logo.svg" alt="logo">
@@ -35,7 +35,7 @@
         <p>Enter your pharmacy details and license information</p>
       </div>
 
-      <form id="form" method="post" action="/admin/pharmacy/step/2">
+      <form id="form" method="post" action="/admin/${adminId}/pharmacies/create">
         <div class="form-row">
           <label>Pharmacy Name *</label>
           <input type="text" name="name" placeholder="Enter pharmacy name" required>
@@ -54,7 +54,7 @@
 
         <div class="form-buttons">
           <!-- <button type="button" class="btn prev">Previous</button> -->
-          <button data-href="/admin/pharmacy/step/2" type="button" class="btn next btn-next">Next <img class="spinner" src="/logo/spinner.png"/></button>
+          <button id="next-Btn" class="btn next btn-next">Next </button>
         </div>
       </form>
     </div>
@@ -67,69 +67,81 @@
   <script>
     try{
 
-const form = document.getElementById('form');
-const btn_next = document.querySelector('.btn-next');
+    const pathParts = window.location.pathname.split('/');
+    const adminIdIndex = pathParts.indexOf('admin') + 1;
+    const adminId = pathParts[adminIdIndex];
 
-const data = JSON.parse(localStorage.getItem('pharmacy')) || {};
-console.log(data);
-for(const [key,value] of Object.entries(data)){
-    const field = document.querySelector(`[name=${key}]`);
-    if(field){
-    field.value = value;
-    }
-}
+    const form = document.getElementById('form');
+    const btn_next = document.querySelector('.btn-next');
 
-btn_next.addEventListener('click' , (e)=>{
-    e.preventDefault();
-    const formData = new FormData(form);
-
-    for( const [key , value] of formData.entries()){
-    const field = document.querySelector(`[name='${key}']`);
-
-    if(key != "email" && new RegExp(value).test(/^[a-zA-Z]/)){
-        field.classList.add('utility-warn');
-        return;
-    }else{
-        field.classList.remove('utility-warn');
+    const data = JSON.parse(localStorage.getItem('pharmacy')) || {};
+    console.log(data);
+    for(const [key,value] of Object.entries(data)){
+        const field = document.querySelector(`[name=${key}]`);
+        if(field){
+        field.value = value;
+        }
     }
 
-    if(key=="email" && new RegExp(value).test(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)){
-        field.classList.add('utility-warn');
+    btn_next.addEventListener('click' , (e)=>{
+        e.preventDefault();
+        const formData = new FormData(form);
 
-    }else{
-        field.classList.remove('utility-warn');
-    }
-    
-    if(!value){
-        field.classList.add('utility-warn');
-        field.classList.remove('utility-success');
-        return;
-    }else{
-        field.classList.add('utility-success')
-        field.classList.remove('utility-warn')
-    }
-    data[key] = value;
-    }
-    
-    //save to storage
-    localStorage.setItem("pharmacy" , JSON.stringify(data));
-    window.location.href = "/admin/pharmacy/step/2";
+        for( const [key , value] of formData.entries()){
+        const field = document.querySelector(`[name='${key}']`);
 
-    
+        if(key != "email" && new RegExp(value).test(/^[a-zA-Z]/)){
+            field.classList.add('utility-warn');
+            return;
+        }else{
+            field.classList.remove('utility-warn');
+        }
 
+        if(key=="email" && new RegExp(value).test(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)){
+            field.classList.add('utility-warn');
 
-})
-}catch(e){
-    console.log(e);
-    Swal.fire({
-      icon: "error",
-      title: "something went wrong",
-      text: e.message,
-      footer: '<a href="/contactus">Why do I have this issue?</a>'
+        }else{
+            field.classList.remove('utility-warn');
+        }
+        
+        if(!value){
+            field.classList.add('utility-warn');
+            field.classList.remove('utility-success');
+            return;
+        }else{
+            field.classList.add('utility-success')
+            field.classList.remove('utility-warn')
+        }
+        data[key] = value;
+        }
+        
+        //save to storage
+        localStorage.setItem("pharmacy" , JSON.stringify(data));
+        window.location.href = `/admin/${adminId}/pharmacies/create/step/2`;
     })
-}
+    }catch(e){
+        console.log(e);
+        Swal.fire({
+          icon: "error",
+          title: "something went wrong",
+          text: e.message,
+          footer: '<a href="/contactus">Why do I have this issue?</a>'
+        })
+    }
 
 
+  </script>
+  <script>
+    const pathParts = window.location.pathname.split('/');
+    const adminIdIndex = pathParts.indexOf('admin') + 1;
+    const adminId = pathParts[adminIdIndex];
+
+    document.getElementById('close-Btn').addEventListener('click', () => {
+      window.location.href = `/admin/${adminId}/pharmacies`;
+    });
+    document.getElementById('next-Btn').addEventListener('click', () => {
+      window.location.href = `/admin/${adminId}/pharmacies/create/step/2`;
+    })
   </script>
 
 

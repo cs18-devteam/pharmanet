@@ -1,50 +1,10 @@
-document.addEventListener('DOMContentLoaded', async() => {
+document.addEventListener('DOMContentLoaded', () => {
   const canvas = document.getElementById('inventoryChart');
-  if (!canvas) {
-    console.error('Canvas #inventoryChart not found');
-    return;
-  }
-
-  const pathParts = window.location.pathname.split('/');
-  const adminId = pathParts[pathParts.indexOf('admin')+1];
-
-  let categories = ['Antibiotics', 'Pain Relief', 'Vitamins', 'Cardiac', 'Diabetes', 'Other'];
-  let values = [0, 0, 0, 0, 0, 0];
-
-  try{
-    const res = await fetch(`/api/v1/admin/${adminId}/dashboard`);
-    const data = await  res.json();
-    const stats = data.data || data;
-
-    if(stats.medicinesByCategory){
-      const categoryMap = {
-        'Antibiotics' : 'Antibiotics',
-        'Pain Relief' : 'Pain Relief',
-        'Vitamins' : 'Vitamins',
-        'Cardiac' : 'Cardiac',
-        'Diabetics' : 'Diabetics',
-      };
-
-      categories = [];
-      values = [];
-
-      for (const [cat, count] of Object.entries(stats.medicinesByCategory)) {
-        categories.push(cat);
-        values.push(count);
-      }
-
-      //If no data, use defaults
-      if (categories.length === 0) {
-        categories = ['No Data'];
-        values = [0];
-      }
-    }
-  }catch (e) {
-      console.error('Failed to fetch category data: ', e);
-    }
-  
+  if (!canvas) return;
 
   const ctx = canvas.getContext('2d');
+  const categories = ['Antibiotics', 'Pain Relief', 'Vitamins', 'Cardiac', 'Diabetes', 'Other'];
+  const values = [330, 280, 460, 190, 230, 310];
   const barColor = '#66bb6a';
 
   const dpr = window.devicePixelRatio || 1;
@@ -87,6 +47,4 @@ document.addEventListener('DOMContentLoaded', async() => {
     ctx.fillStyle = '#5a6b7b';
     ctx.fillText(label, x, padding.top + chartH + 18);
   });
-
-  console.log('Chart rendered with categories:', categories, 'values:', values);
 });

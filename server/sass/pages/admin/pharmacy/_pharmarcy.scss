@@ -231,6 +231,7 @@
   gap: 1.5rem;
   min-height: 90vh;
   align-items: stretch;
+  overflow: hidden;
 }
 
 .pharmacy-card {
@@ -238,7 +239,7 @@
   background-color: $element-bg;
   border-radius: 12px;
   padding: 1.5rem;
-  box-shadow: 0 0 1rem rgba(0,0,0,0.5);
+  box-shadow: 1rem 1rem 1rem rgba(0,0,0,0.5);
   position: relative;
   align-items: stretch;
   max-width: 60rem;
@@ -283,7 +284,8 @@
       align-items: center;
       gap: 0.5rem;
       margin-bottom: 0.25rem;
-      font-size: 1.2rem;
+      font-weight: 600;
+      font-size: 1.4rem;
       color: $accent;
 
       span {
@@ -301,9 +303,13 @@
     }
   }
 
-  .footer {
+  hr{
+    border:1px solid black;
+    height: 1px;
+  }
+
+  .pharmacyCardFooter {
     margin-top: 1.2rem;
-    border-top: 1px solid #222;
     padding-top: 1rem;
     display: flex;
     justify-content: space-between;

@@ -88,9 +88,11 @@
         <ul class="details">
           <li><span class="address"></span>${p.street || ''}, ${p.town || ''}, ${p.province || ''}</li>
           <li><span class="email"></span> ${p.email || ''}</li>
+          <li><span class="telephoneNo"></span> ${p.contact || ''}</li>
         </ul>
-        <div class= "footer">
-          <p>Inventory: <strong>N/A</strong></p>
+        <hr>
+        <div class= "pharmacyCardFooter">
+          <!-- <p>Inventory: <strong>N/A</strong></p> -->
           <button class="details-btn">View Details</button>
         </div>
       </a>`).join('');

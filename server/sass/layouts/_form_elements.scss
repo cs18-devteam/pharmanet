@@ -55,14 +55,15 @@
     gap: 1rem;
 }
 
-   button{
-        width: 100%;
-        border: none;
-        
-        &.save{
-            height: 5rem;
-            font-size: 1.6rem;
-            color: #fff;
-            background-color: var(--color-green-01);
-        }
+button{
+    // width: 100%;
+    
+    border: none;
+    
+    &.save{
+        height: 5rem;
+        font-size: 1.6rem;
+        color: #fff;
+        background-color: var(--color-green-01);
     }
+}

@@ -2831,7 +2831,6 @@ body.full_screen .dashboards .container {
 }
 
 button {
-  width: 100%;
   border: none;
 }
 button.save {

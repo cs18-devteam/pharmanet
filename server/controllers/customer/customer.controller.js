@@ -2,6 +2,8 @@ const { createCookie } = require("../../common/Auth");
 const Bridge = require("../../common/Bridge");
 const { response } = require("../../common/response");
 const view = require("../../common/view");
+const Medicines = require("../../models/MedicineModel");
+const Pharmacies = require("../../models/PharmacyModel");
 const PharmacyStaff = require("../../models/PharmacyStaffModel");
 const Users = require("../../models/UserModel");
 
@@ -13,8 +15,9 @@ exports.renderCustomerHome = async (req , res)=>{
                 
                 if(!customer) throw new Error("customer not found");
 
-                const [staffMember] = await PharmacyStaff.get({userId : customer.id});
-                
+                const [staffMember] = await PharmacyStaff.get({userId : customer.id});        
+                const [{count : medicineCount}] = await Medicines.query('select count(*) as count from this.table');
+                const [{count : pharmacyCount}] = await Pharmacies.query('select count(*) as count from this.table');
                 
                 if(!staffMember){
                         return  response(res ,view('customer/customer.home' , {
@@ -25,6 +28,8 @@ exports.renderCustomerHome = async (req , res)=>{
                                 }),
                                 footer: view('footer'),
                                 cart : view('customer/component.cart'),
+                                MedicineCount : medicineCount ,
+                                PharmacyCount: pharmacyCount, 
                         }) , 200)
                 }else{
                         return response(res , 'redirect' , 301 , {

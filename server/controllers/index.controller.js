@@ -2,6 +2,8 @@ const { decrypt } = require("../common/encrypt");
 const readCookies = require("../common/readCookies");
 const { response } = require("../common/response")
 const view = require("../common/view");
+const Medicines = require("../models/MedicineModel");
+const Pharmacies = require("../models/PharmacyModel");
 const Users = require("../models/UserModel");
 
 exports.renderIndexPage =  async (req , res)=>{
@@ -37,6 +39,8 @@ exports.renderIndexPage =  async (req , res)=>{
             }
         }
 
+        const [{count : medicineCount}] = await Medicines.query('select count(*) as count from this.table');
+        const [{count : pharmacyCount}] = await Pharmacies.query('select count(*) as count from this.table');
         
         
         // if(cookies.token) return response(res , "redirect to home page" , )
@@ -48,6 +52,8 @@ exports.renderIndexPage =  async (req , res)=>{
                 }),
                 navbar : view('components/navbar.user'),
                 footer: view('footer'),
+                MedicineCount : medicineCount ,
+                PharmacyCount: pharmacyCount,
             }) , 200);
     }catch(e){
         console.log(e);

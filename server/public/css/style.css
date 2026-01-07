@@ -1,12 +1,30 @@
-/* Error: Can't find stylesheet to import.
- *    ,
- * 17 | @forward "./overlay_cart";
- *    | ^^^^^^^^^^^^^^^^^^^^^^^^^
- *    '
- *   sass/components/_index.scss 17:1  @use
- *   sass/main.scss 3:1                root stylesheet */
+@charset "UTF-8";
+:root {
+  --white:#ffffff;
+  --color-green-01: #18978D;
+  --color-green-02: #08374F;
+  --color-blue-01: #083851;
+  --color-blue-02: #006395;
+  --color-yellow-01: #FB8F21;
+  --color-yellow-02:#f9a550;
+  --color-red-01: #FB5821;
+  --color-pink-01: #DDA797;
+  --color-border-gray-01: #eeeeee;
+  --color-border-gray-02: #bdbcbc;
+  --color-border-gray-03: #707070;
+  --font-linear-secondary-color:#127EB5;
+  --font-linear-primary-color:#08374F;
+  --color-scheme: light ;
+  --primary-font:"red hat display", sans-serif;
+  --secondary-font:"Poppins" , sans-serif;
+  --color-scheme: light;
+  color-scheme: light;
+  --bg-color: white;
+  --text-color: black;
+  --toggle-bg: lightgray;
+  --slider-color: black;
+}
 
-<<<<<<< HEAD
 * {
   padding: 0;
   margin: 0;
@@ -200,19 +218,9 @@ nav {
 .dropdown .navbar li a {
   text-decoration: none;
   color: var(--white);
-=======
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
->>>>>>> chamani/catchAsync
   display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a    \2577 \a 17 \2502  @forward \"./overlay_cart\";\a    \2502  ^^^^^^^^^^^^^^^^^^^^^^^^^\a    \2575 \a   sass/components/_index.scss 17:1  @use\a   sass/main.scss 3:1                root stylesheet";
+  transition: all 0.2s ease-out;
 }
-<<<<<<< HEAD
 .dropdown .navbar li a:hover {
   color: var(--color-yellow-01);
 }
@@ -3914,10 +3922,10 @@ button.save {
   }
 }
 /* customer */
-.landing .hedder-content {
-  width: 100%;
-  max-width: 1200px;
+.landing .header-content {
+  width: 98vw;
   padding: 0 20px;
+  margin-bottom: 30rem;
 }
 .landing .header-title {
   text-align: center;
@@ -17773,5 +17781,3 @@ p {
 }
 
 /*# sourceMappingURL=style.css.map */
-=======
->>>>>>> chamani/catchAsync

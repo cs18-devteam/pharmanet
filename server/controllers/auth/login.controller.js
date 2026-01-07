@@ -13,6 +13,7 @@ const Users = require("../../models/UserModel");
 // Render login page
 exports.renderLogin = async (req, res) => {
     return response(res, view("login",{
+        navbar : view('components/navbar.user'),
         header : view('component.header' , {
           name:"Login || Pharmanet Pharmacy Management",
         })

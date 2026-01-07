@@ -77,12 +77,9 @@ const server = https.createServer(options,(req , res)=>{
         adminDashboardRouter.pipe(req, res);
         adminBlogsRouter.pipe(req , res);
         adminPharmacyRouter.pipe(req , res);
-<<<<<<< HEAD
         pharmacyStaffRouter.pipe(req,res);
-=======
         adminUsersRouter.pipe(req,res);
         adminMedicineRouter.pipe(req, res)
->>>>>>> origin/kasun/admin/3.5
         pharmacistRouter.pipe(req , res);
         pharmacyRouter.pipe(req , res);
         cashiersBillsRouter.pipe(req ,res);

@@ -110,29 +110,56 @@ exports.updateUserStatus = async (req, res) => {
     }
 }
 
-exports.viewProfile = async (req, res) => {
-    const url = new URL(req.url, 'http://loacalhost:3000');
-    const id = url.searchParams.get('id');
-
-    if (!id) {
-        return response(res, 'User ID required', 400);
-    }
-
+exports.renderViewProfilePage = async (req, res) => {
     try {
-        const db = Database.getInstance();
-        const [user] = await db.query(`SELECT * FROM user_table WHERE id = ${id}`);
-
-        if (!user) {
-            return response(res, 'User not found', 404);
+        // Extract adminId from URL since it may not be in req.adminId
+        let adminId = req.adminId || req.params?.adminId;
+            if (!adminId) {
+            const parts = req.url.split('?')[0].split('/').filter(Boolean);
+            const adminIdx = parts.indexOf('admin');
+            if (adminIdx >= 0 && parts[adminIdx + 1]) adminId = parts[adminIdx + 1];
         }
 
-        //Render template with user data
-        return response(res, view('admin/viewProfile', user), 200)
+        const userId =
+        req.query?.id ||
+        req.params?.id ||
+        (() => {
+            const parts = req.url.split('?')[0].split('/').filter(Boolean);
+            const vpIdx = parts.indexOf('viewProfile');
+            return vpIdx >= 0 && parts[vpIdx + 1] ? parts[vpIdx + 1] : null;
+        })();
+
+        if (!userId) return response(res, "User ID is required", 400);
+
+        if (!adminId) {
+            return response(res, "Admin ID is required", 400);
+        }
+
+        console.log(`Fetching user ${userId} for admin ${adminId}`);
+
+        // Fetch user details
+        const [user] = await Users.getById(userId);
+
+        if (!user) {
+            return response(res, "User not found", 404);
+        }
+
+        // Fetch admin for sidebar
+        const [admin] = await Users.getById(adminId);
+
+        return response(res, view('admin/viewProfile', {
+            user: JSON.stringify(user),  // ← Stringify here
+            adminId: adminId,
+            sidebar: view('admin/component.sidebar', admin),
+            header: view('component.header', {
+                name: "User Profile || Pharmanet",
+            }),
+        }), 200);
     } catch (error) {
-        console.error(error);
-        return response(res, 'Error fetching user', 500)
+        console.error('Error rendering view profile:', error);
+        return response(res, "Error loading profile", 500);
     }
-};
+}
 
 exports.getAllUsers = async (req, res) => {
     const users = await Users.get()

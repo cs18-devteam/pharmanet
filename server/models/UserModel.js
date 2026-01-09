@@ -29,10 +29,6 @@ class UserModel extends Model {
             type: "VARCHAR(100)"
         }
 
-        this.name = {
-            type: "VARCHAR(100)"
-        }
-
         this.dateOfBirth = {
             type: "DATETIME"
         }

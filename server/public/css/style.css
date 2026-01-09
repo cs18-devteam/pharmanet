@@ -4159,6 +4159,34 @@ button.save {
 .landing .stats-container .stat-blue .arc::before {
   background-color: var(--color-blue-01);
 }
+.landing .main-container .medicine-section .container .header-section .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 4rem;
+  margin: 3rem;
+  color: var(--color-green-02);
+  text-transform: capitalize;
+  gap: 4rem;
+}
+.landing .main-container .medicine-section .container .header-section .title span {
+  color: var(--color-yellow-01);
+}
+.landing .main-container .medicine-section .container .header-section .title .search-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  border: 0.1rem solid #eee;
+}
+.landing .main-container .medicine-section .container .header-section .title input {
+  border: none;
+  outline: none;
+  font-size: 2rem;
+  width: 30rem;
+  padding: 1rem;
+}
 .landing .joinus {
   margin: 8rem;
   padding: 2rem;
@@ -11933,6 +11961,16 @@ button.save {
 }
 .pharmacyDashboard .dashboards .container.transactions .transaction_table_container .captions .date_range > * {
   margin: 0 1rem;
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .captions .date_range .dateForm {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .captions .date_range .dateForm input {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
 }
 .pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table {
   width: 100%;

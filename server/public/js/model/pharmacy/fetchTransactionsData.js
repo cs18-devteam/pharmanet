@@ -26,26 +26,43 @@ export async function getRequestData() {
 }
 
 
-export async function getStaffData(){
+// export async function getStaffData(){
 
+//   try {
+//     const staff = await fetch(
+//       `/api/v1/pharmacies/${Application.pharmacyId}/staff`
+//     );
+
+//     if (!staff.ok) {
+//       throw new Error(`response status: ${staff.status}`);
+//     }
+
+//     const results = await staff.json();
+
+//     return results;
+//   } catch (e) {
+//     console.log(e);
+//     return {
+//       status: "error",
+//       results: [],
+//       message: e.message,
+//     };
+//   }
+// }
+
+export async function getStaffSummary() {
   try {
-    const staff = await fetch(
-      `/api/v1/pharmacies/${Application.pharmacyId}/staff`
+    const res = await fetch(
+      `/api/v1/pharmacies/${Application.pharmacyId}/transactions/staff-summary`
     );
 
-    if (!staff.ok) {
-      throw new Error(`response status: ${staff.status}`);
+    if (!res.ok) {
+      throw new Error("Failed to fetch staff summary");
     }
 
-    const results = await staff.json();
-
-    return results;
+    return await res.json();
   } catch (e) {
     console.log(e);
-    return {
-      status: "error",
-      results: [],
-      message: e.message,
-    };
+    return { status: "error", results: [] };
   }
 }

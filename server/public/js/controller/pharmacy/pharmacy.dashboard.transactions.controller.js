@@ -2,6 +2,7 @@
 import Application from "../../model/application/Application.js";
 import { getRequestData } from "../../model/pharmacy/fetchTransactionsData.js";
 import { updateTable } from "../../view/pharmacy/updateTransactionTable.js";
+import { getStaffSummary } from "../../model/pharmacy/fetchTransactionsData.js";
 
 
 export default async function init() {
@@ -21,7 +22,7 @@ export default async function init() {
   );
   //console.log("init");
   const getRequestDatas = await getRequestData();
-  const getStaffDatas = await getStaffData();
+  //const getStaffDatas = await getStaffData();
   updateTable(getRequestDatas)
   filterTodayTransaction(getRequestDatas)
   filterTransactionByDateRange(getRequestDatas)
@@ -29,6 +30,7 @@ export default async function init() {
   totalAmountOfCachOffline(getRequestDatas)
   totalAmountOfcardOnline(getRequestDatas)
   totalAmountOfCardOffline(getRequestDatas)
+  updateStaffWiseSummary()
   
 }
 
@@ -216,5 +218,39 @@ export function totalAmountOfCardOffline({results : data}){
 }
 
 
-//export function 
 
+
+export async function updateStaffWiseSummary() {
+
+  const container = document.querySelector(
+    ".summery_staff_wise.summery_block"
+  );
+
+  if (!container) return;
+
+  const { results } = await getStaffSummary();
+
+  if (!results.length) {
+    container.innerHTML = "<p>No staff data available</p>";
+    return;
+  }
+
+  const html = results.map(staff => `
+    <div class="analytics">
+      <div class="description">
+        <div class="name">${staff.staffName}</div>
+        <div class="orders">( ${staff.orders} Orders )</div>
+        <div class="amount">${Number(staff.totalAmount).toLocaleString()}</div>
+      </div>
+      <div class="bar"></div>
+    </div>
+  `).join("");
+
+  container.innerHTML = `
+    <div class="group-by">
+      <img src="/transactions/user.svg" alt="">
+      Group by staff Members
+    </div>
+    ${html}
+  `;
+}

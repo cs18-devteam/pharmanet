@@ -235,6 +235,18 @@
                         margin: 0 1rem;
                      }
 
+                     .dateForm{
+                        display: flex;
+                        align-items: center;
+                        gap: 1rem;
+
+                        input{
+                            border: 1px solid #ccc;
+                            border-radius: .5rem;
+                            padding: .5rem 1rem;
+                        }
+                     }
+
 
                      
                 }

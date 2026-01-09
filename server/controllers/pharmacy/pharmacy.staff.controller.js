@@ -97,7 +97,7 @@ exports.getStaffMembers = apiCatchAsync(async (req , res)=>{
 })
 
 
-exports.getStaffMembers = apiCatchAsync(async (req , res)=>{
+exports.getStaffMember = apiCatchAsync(async (req , res)=>{
     const id = req.staffId;
 
     if(!id){

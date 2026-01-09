@@ -1,6 +1,7 @@
 const { catchAsync, apiCatchAsync } = require("../../common/catchAsync");
 const { getRequestData } = require("../../common/getRequestData");
 const { responseJson } = require("../../common/response");
+const PharmacyStaff = require("../../models/PharmacyStaffModel");
 const Transactions = require("../../models/TransactionModel");
 
 console.log("Transactions model:", Transactions);
@@ -38,6 +39,12 @@ exports.getTransactions = catchAsync(async (req, res) => {
         pharmacyId :pharmacyId,
     })
 
+    // exports.getByStaffId = async (pharmacyId) => {
+    //     return await PharmacyStaff.query(
+    //         `SELECT staffID FROM transactions_table 
+    //         `,)
+    // }
+
 
     return responseJson(res, 200, {
         status: "success",
@@ -71,4 +78,36 @@ exports.createTransaction = apiCatchAsync(async (req, res) => {
         status: "success",
         results: newTransaction,
     });
+});
+
+
+exports.getStaffWiseSummary = catchAsync(async (req, res) => {
+  const pharmacyId = Number(req.pharmacyId);
+
+  if (!pharmacyId) {
+    return responseJson(res, 400, { status: "fail", message: "Invalid pharmacyId" });
+  }
+
+  const sql=`
+    SELECT 
+        ps.id AS staffID,
+        u.fullName AS staffName,
+        COUNT(t.orderId) AS orders,
+        IFNULL(SUM(t.amount),0) AS totalAmount
+
+        FROM transaction_table t
+        JOIN pharmacystaff_table ps ON ps.id = t.staffID
+        JOIN user_table u ON ps.userId = u.id
+        WHERE t.pharmacyId = ${pharmacyId}
+        GROUP BY ps.id
+        ORDER BY totalAmount DESC
+  `;
+
+
+  const summary = await Transactions.query(sql);
+
+  return responseJson(res, 200, {
+    status: "success",
+    results: summary
+  });
 });

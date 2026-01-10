@@ -3462,7 +3462,7 @@ button.save {
 #resend {
   border-radius: 3rem;
   padding: 1rem;
-  margin: 1rem;
+  margin: 1rem 0;
   font-size: 1.4rem;
   color: #555;
   outline: none;
@@ -3507,6 +3507,55 @@ button.save {
   opacity: 1;
 }
 
+@media screen and (max-width: 570px) {
+  .verify-email-container {
+    padding: 0 3rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  .verify-email-container {
+    padding: 0 4rem;
+  }
+  .verify-email-container .title {
+    font-size: 3rem;
+  }
+  .verify-email-container .discription {
+    font-size: 1.7rem;
+  }
+  .verify-email-container .second-title {
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 470px) {
+  .verify-email-container {
+    padding: 0 3rem 0 6rem;
+  }
+}
+@media screen and (max-width: 420px) {
+  .verify-email-container {
+    padding-left: 8rem;
+  }
+}
+@media screen and (max-width: 380px) {
+  .verify-email-container {
+    padding-left: 10rem;
+  }
+}
+@media screen and (max-width: 340px) {
+  .verify-email-container {
+    padding-left: 12rem;
+  }
+}
+@media screen and (max-width: 300px) {
+  .verify-email-container {
+    padding-left: 14rem;
+  }
+}
+@media screen and (max-width: 250px) {
+  .verify-email-container {
+    padding-left: 16rem;
+  }
+}
 .verify_number {
   /* Verification Card */
 }

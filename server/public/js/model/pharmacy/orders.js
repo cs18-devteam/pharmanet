@@ -1,3 +1,5 @@
+import Application from "../application/Application.js";
+
 export async function createOrder({
     userId  = undefined , 
     items = [{
@@ -79,6 +81,56 @@ export async function updateOrder({
             status:"error",
             results: [],
             message:e.message,
+        }
+    }
+}
+
+export async function addOrderItem({orderId , medicineId , productId , price , discount , quantity}){
+    try{
+
+        const response =await fetch(`/api/v1/orders/${Application.remoteOrderId}/items` , {
+            method:"POST",
+            body: JSON.stringify({
+                orderId , 
+                medicineId,
+                productId,
+                price,
+                discount,
+                quantity,
+            })
+        });
+        
+        const data = await response.json();
+        
+        if(data.status == "error"){
+            throw new Error(data.message);
+        }
+
+        return data;
+    }catch(e){
+        console.log(e);
+        return {
+            results:"",
+        }
+    }
+}
+
+export async function getOrderItems() {
+      try{
+
+        const response =await fetch(`/api/v1/orders/${Application.remoteOrderId}/items`);
+        
+        const data = await response.json();
+        
+        if(data.status == "error"){
+            throw new Error(data.message);
+        }
+
+        return data;
+    }catch(e){
+        console.log(e);
+        return {
+            results:"",
         }
     }
 }

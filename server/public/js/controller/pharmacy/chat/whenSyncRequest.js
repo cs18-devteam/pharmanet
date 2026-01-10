@@ -1,5 +1,7 @@
+import Application from "../../../model/application/Application.js";
 import ChatTemplates from "../../../model/application/ChatTemplates.js";
 import { getOrderData } from "../../../view/pharmacy/orders.js";
+import { refreshCartList } from "./refreshCartList.js";
 
 function renderPrescription(url){
     const prescriptions = document.querySelector(".chats .prescription");
@@ -19,6 +21,7 @@ function renderPrescription(url){
 export function whenSyncRequest(message){
     const {data} = ChatTemplates.decodeString(message);
     if(data.orderId){
+        Application.remoteOrderId = +data.orderId;
         getOrderData(+data.orderId).then(data=>{
             const order = data.results[0];
             console.log(order);
@@ -26,6 +29,7 @@ export function whenSyncRequest(message){
 
             const cartBodySection = document.querySelector(".cart .body-section");
             renderPrescription(order.prescription);
+            refreshCartList();
 
         })
     }

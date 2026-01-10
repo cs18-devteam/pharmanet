@@ -1,4 +1,6 @@
+import { renderChatBox } from "../../view/pharmacy/chat/renderChatbox.js";
 import { renderWaitingList } from "../../view/pharmacy/chat/renderWaitingList.js";
+import PharmacyChatbox from "../../view/pharmacy/PharmacyChatBox.js";
 
 // const chatsNavButton = document.querySelector(".nav_links li label[for='chats']");
 
@@ -8,7 +10,9 @@ import { renderWaitingList } from "../../view/pharmacy/chat/renderWaitingList.js
 
 
 export default function init(){
-    renderWaitingList();
+    if(!PharmacyChatbox.isOpen){
+        renderWaitingList();
+    }
 
 }
 

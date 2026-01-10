@@ -15,7 +15,7 @@ export function onSocketOpened(socket){
     Application.connection = socket;
     stablishConnection(socket);
     renderToast('requesting connection');
-    startSocketListening(socket)
+    // startSocketListening(socket)
 }
 
 

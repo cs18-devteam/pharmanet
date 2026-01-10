@@ -34,5 +34,5 @@ let socket = new Promise((resolve , reject)=>{
 socket.then(socket=>socket.addEventListener('open' , ()=>{
     onSocketOpened(socket);
     startSocketListening(socket);
-    startListingOutgoingMessages();
+    // startListingOutgoingMessages();
 }));

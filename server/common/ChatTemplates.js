@@ -11,6 +11,7 @@ class ChatTemplates{
     static #RES_PHR = "RES_PHR="
     static #STAT_PRSC = "RES_PHR="
     static #MINOR_ERROR = "MINOR_ERROR="
+    static #DISCONNECT="DCN="
 
 
     static message({msg ,from , to , toId , fromId}){
@@ -23,6 +24,14 @@ class ChatTemplates{
             })}`
         
     } 
+
+
+    static disconnect(){
+        return `${this.#DISCONNECT}${JSON.stringify({
+            ...this.defaultOptions() , 
+        })}`
+    }
+
 
 
 
@@ -48,7 +57,6 @@ class ChatTemplates{
         try{
 
             const opcode = message.split('=')[0];
-            console.log(message , opcode ,message.replace(`${opcode}=` , '') );
             
             
             return {
@@ -63,6 +71,13 @@ class ChatTemplates{
                 }
             }
         }
+    }
+
+
+    static disconnect(){
+        return `${this.#DISCONNECT}${JSON.stringify({
+            
+        })}`
     }
 
     static requestConnection(){

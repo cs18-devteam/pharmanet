@@ -69,17 +69,14 @@ server.onClientMessage((message , client)=>{
         // create connection with server
         if(ChatTemplates.isRequestConnection(message)){
             const stabObj = ChatTemplates.readStablishConn(message);
-            console.log(stabObj);
 
             if(stabObj.type == "pharmacy"){
                 connectedPharmacies[`${stabObj.id}`] = new PharmacyClient(stabObj.id ,client)
                 client.send(ChatTemplates.createConnection(true));
-                console.log(stabObj.type ,connectedPharmacies);
                 
             }else if(stabObj.type == "customer"){
                 connectedCustomers[`${stabObj.id}`] = new CustomerClient(stabObj.id , client);
                 client.send(ChatTemplates.createConnection(true));
-                console.log(stabObj.type ,connectedCustomers);
             }
 
             return;
@@ -97,7 +94,6 @@ server.onClientMessage((message , client)=>{
 
         }else if(ChatTemplates.isAcceptClient(message)){
             const reqClientObj = ChatTemplates.readChatBoxAcceptRequestFromServer(message);
-            console.log(reqClientObj);
 
             if(reqClientObj.accept == true){
             
@@ -128,6 +124,8 @@ server.onClientMessage((message , client)=>{
                 connectedPharmacies[`${msgObj.toId}`].client.send(message)
             }else if(msgObj.to == "customer"){
                 connectedCustomers[`${msgObj.toId}`].client.send(message)
+            }else{
+                
             }
 
         }

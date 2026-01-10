@@ -1,0 +1,479 @@
+.loyaltyPoints{
+  $primary: #08374F;
+
+
+.topTabs{
+  display: flex;
+  gap: 15px;
+  margin-top: 4rem;
+  justify-content: center;
+
+  .tab {
+    display: flex;
+    align-items: center;
+    padding: 8px 18px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+
+    &.active {
+      background: #000;
+      color: #fff;
+    }
+    &:hover{
+      border: 1px solid black;
+    }
+
+  }
+}
+
+
+.loyalty-banner {
+  max-width: 100%;
+  background: #ffffff;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  border: 3px solid #e4e4e4;
+  
+  margin: 2rem 8%;
+
+
+  .left {
+    padding: 2rem 2rem;
+    width: 55%;
+
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #333;
+
+      span {
+        color: #333;
+      }
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #666;
+      line-height: 1.5rem;
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+  }
+
+  .right {
+    width: 45%;
+    background: linear-gradient(90deg, #0b7a71, #0d9287);
+    color: #fff;
+    padding: 3.5rem 3rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    border-left: none;
+    clip-path: polygon(
+      8% 0%,     // top-left goes down
+      100% 0,   // top-right stays high
+      100% 100%, 
+      0 100%
+  );
+
+    .label {
+      font-size: 1.2rem;
+      opacity: 0.8;
+    }
+
+    .points {
+      font-size: 2.5rem;
+      margin-top: 0rem;
+      font-weight: 600;
+    }
+
+    .shape {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+    }
+
+    .shape-1 {
+      width: 180px;
+      height: 180px;
+      bottom: -30px;
+      left: -40px;
+    }
+
+    .shape-2 {
+      width: 260px;
+      height: 260px;
+      top: -80px;
+      right: -80px;
+      opacity: 0.2;
+    }
+  }
+}
+
+.loyalty-info {
+  width: 100%;
+  padding: 1rem 12rem;
+
+  .header {
+    h2 {
+      color: #0b7a71;
+      font-size: 2.4rem;
+      margin-bottom: 0.3rem;
+      font-weight: 700;
+      align-self: stretch;
+    }
+
+    p {
+      color: #000;
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 2.5rem;
+      align-self: stretch;
+    }
+
+    ul {
+      margin: 0.8rem 0 0.5rem 1.2rem;
+
+      li {
+        color: #000;
+        font-weight: 500;
+        font-size: 1.5rem;
+        margin-bottom: 0.2rem;
+      }
+    }
+  }
+
+  .cards-row {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    
+    .card {
+      flex: 1;
+      background: #fff;
+      padding: 1.8rem;
+      border: 1px solid #e4e4e4;
+      border-radius: 10px;
+
+      .title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.6rem 0;
+        border-bottom: 1px solid #f0f0f0;
+
+        a {
+          color: #0b7a71;
+          text-decoration: underline;
+          font-size: 1.5rem;
+          font-weight: 500;
+          
+        }
+
+        span {
+          font-size: 1.5rem;
+          color: #000;
+          font-weight: 500;
+
+          &.positive {
+            color: #0b7a71;
+            font-weight: 500;
+          }
+
+          &.negative {
+            color: #db463d;
+            font-weight: 500;
+          }
+        }
+      }
+
+      .end {
+        text-align: center;
+        color: #777;
+        margin-top: 1rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    /* Title alignment for transactions */
+    .transactions {
+      .title-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+
+        .small {
+          font-size: 0.8rem;
+          color: #777;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+.footer {
+background: $primary;
+color: white;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+margin-left: 0;
+padding: 40px 60px;
+margin-top: 40px;
+height: 379px;
+padding-top: 4rem;
+
+width: 100%;
+position: relative;
+overflow: hidden;
+clip-path: polygon(
+      0 8%,     // top-left goes down
+      100% 0,   // top-right stays high
+      100% 100%, 
+      0 100%
+  );
+
+.footer-topSection{
+    flex: 1;
+    gap: 25rem;
+    display: flex;
+    flex-direction: row;
+
+.footer-left{
+    width: 50rem;
+    display: flex;
+
+
+    .footer-logo{
+        width: 46px;
+        height: 46px;
+
+    }
+
+    p{
+        margin-top: 1rem;
+        font-weight: 400;
+    }
+    
+}
+.footer-center{
+    width: 95rem;
+}
+.footer-right{
+    width: 280rem;
+}
+
+h4 {
+margin-bottom: 8px;
+}
+
+
+ul {
+list-style: none;
+li {
+padding: 4px 0;
+opacity: 0.8;
+}
+}
+}
+.footer-bottomSection{
+    display: flex;
+    flex-direction: row;
+    color: red;
+    font-size: 1.5rem;
+    gap: 15rem;
+
+         button {
+            padding: 0;
+            background: none;
+            color: white;
+            border: none;
+
+            a{
+                color: white;
+            }
+    }
+ 
+}
+}
+
+
+@media (max-width: 600px) {
+
+  nav{
+    .logoname{
+      font-size: 1.2rem;
+    }
+
+    .search{
+      font-size: 1rem;
+      max-width: 18rem;
+
+      form{
+        input{
+        font-size: 1rem;
+        height: 3rem;
+        
+      }
+    }
+    }
+    .user-section{
+      span{
+        display: none;
+      }
+    }
+  }
+
+    .topTabs {
+      flex-direction: row;
+      gap: 10px;
+
+      .tab {
+        
+        justify-content: center;
+      }
+    }
+
+    .loyalty-banner {
+      flex-direction: column;
+      margin: 1rem;
+
+      .left, .right {
+        width: 100%;
+        padding: 1.5rem;
+      }
+
+      .left h2 {
+        font-size: 1.8rem;
+      }
+
+      .right {
+        align-items: flex-start;
+        clip-path: none;
+      }
+    }
+
+    .loyalty-info {
+      padding: 1rem;
+
+      .header h2 {
+        font-size: 1.8rem;
+      }
+      .header p, .header ul li {
+        font-size: 1rem;
+        line-height: 1.6rem;
+      }
+
+      .cards-row {
+        flex-direction: column;
+
+        .card .row a,
+        .card .row span {
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    .footer {
+      height: auto;
+      padding: 2rem 1.5rem;
+
+      clip-path: none;
+
+      .footer-topSection {
+        flex-direction: row;
+        gap: 2rem;
+        font-size: 1rem;
+
+        .footer-left,
+        .footer-center,
+        .footer-right {
+          width: 100%;
+        }
+      }
+
+      .footer-bottomSection {
+        flex-direction: row;
+        gap: 2rem;
+        margin-top: 2rem;
+        font-size: 1rem;
+
+        button{
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+
+/* TABLET — 600px to 900px */
+@media (max-width: 900px) and (min-width: 601px) {
+
+    .loyalty-banner {
+      margin: 1rem 3rem;
+
+      .left h2 {
+        font-size: 2rem;
+      }
+
+      .right .points {
+        font-size: 2rem;
+      }
+    }
+
+    .loyalty-info {
+      padding: 1rem 4rem;
+
+      .cards-row {
+        flex-direction: column;
+      }
+    }
+
+    .footer {
+      clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+      padding: 3rem;
+
+      .footer-topSection {
+        gap: 5rem;
+      }
+      .footer-bottomSection{
+        gap: 6rem;
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+
+/* SMALL DESKTOP — 901px to 1200px */
+@media (max-width: 1200px) and (min-width: 901px) {
+
+    .loyalty-info {
+      padding: 1rem 6rem;
+    }
+
+    .footer {
+      .footer-topSection {
+        gap: 10rem;
+      }
+      .footer-bottomSection{
+        gap: 10rem;
+      }
+    }
+  }
+
+}

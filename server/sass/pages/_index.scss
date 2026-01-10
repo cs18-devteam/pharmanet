@@ -14,6 +14,9 @@
 @forward "./customer/medicine_view_page";
 @forward "./customer/pharmacyLandingPage";
 @forward "./customer/medicine_review";
+@forward "./customer/manageBill";
+@forward "./customer/loyaltyPoints";
+@forward "./customer/orderManage";
 
 /* pharmacy */
 @forward "./pharmacy/cashier/cashier-create-bill";

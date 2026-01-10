@@ -307,7 +307,7 @@
     &.show-order-add-form{
         .order-add-form{
             height: 3rem;
-            opacity: 1;
+            opacity: 1 !important;
 
         }
     }
@@ -320,7 +320,7 @@
         justify-content: space-between;
         align-items: center;
         margin-left: 3rem;
-        opacity: 0;
+        opacity: 0 !important;
         height: 1px;
         display: none;
 
@@ -355,7 +355,7 @@
     }
 
     .cart_item_details{
-        opacity: 0;
+        opacity: 0 !important;
         height: 1px;
         width: 100%;
         margin-left: 3rem;

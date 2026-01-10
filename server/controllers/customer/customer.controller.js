@@ -1,5 +1,6 @@
 const { createCookie } = require("../../common/Auth");
 const Bridge = require("../../common/Bridge");
+const { catchAsync } = require("../../common/catchAsync");
 const { response } = require("../../common/response");
 const view = require("../../common/view");
 const Medicines = require("../../models/MedicineModel");
@@ -81,3 +82,37 @@ exports.renderPharmacyView = async (req , res)=>{
     }) , 200)
 }
 
+
+
+
+exports.renderCustomerOrders = catchAsync(async (req , res)=>{
+
+         const customer = (await Users.getById(req.customerId))[0];
+        if(!customer) return response(res , "your are not authorized" , 302);
+
+        return response(res , view('customer/customer.orders.history' , {
+                ...customer,
+                navbar : view('customer/navbar.customer' , customer),
+                header : view('component.header' , {
+                        name:"medicine view",
+                       
+                }),
+                footer : view('footer'),
+        })), 200
+})
+
+exports.renderLoyaltyPoints = catchAsync(async (req , res)=>{
+
+         const customer = (await Users.getById(req.customerId))[0];
+        if(!customer) return response(res , "your are not authorized" , 302);
+
+        return response(res , view('customer/customer.loyaltyPoints' , {
+                ...customer,
+                navbar : view('customer/navbar.customer' , customer),
+                header : view('component.header' , {
+                        name:"medicine view",
+                       
+                }),
+                footer : view('footer'),
+        })), 200
+})

@@ -10,6 +10,7 @@
     transition: all .3s ease;
     perspective: 1000px;
     height: 100vh;
+    overflow: hidden;
     
     &.open{
         opacity: 1;
@@ -41,7 +42,8 @@
     .right-side{
         width: 40%;
         transform: translateX(150%);
-        min-height: fit-content;
+        height: 99vh;
+        overflow: scroll;
 
     }
 

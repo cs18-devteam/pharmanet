@@ -194,13 +194,6 @@ export function createPrescriptionUploadCardContent(){
 }
 
 
-export function onSelectPrescription(func=()=>{}){
-     const uploadCard = document.querySelector('.card-prescription-upload');
-     const input = uploadCard.querySelector('#prescription-upload-input');
-     const skip = uploadCard.querySelector('.skip');
 
-     input.addEventListener('change' , (e)=>func(e , input , uploadCard , skip));
-   
-}
 
 

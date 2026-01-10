@@ -33,7 +33,12 @@ const customerRouter = SubRouter.route('/customers/:customerId')
 })
 .subRoute('/history')
 .subRoute('/transaction')
-.subRoute('/orders')
+.subRoute('/orders' , {
+    get : customerController.renderCustomerOrders
+})
+.subRoute('/loyalty' , {
+    get : customerController.renderLoyaltyPoints
+})
 .subRoute('/orders/:orderId')
 .subRoute('/orders/:orderId/checkout' , {
     get : customerPaymentController.redirectToPaymentGateWay

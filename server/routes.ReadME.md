@@ -16,6 +16,7 @@
 /customers/:customerId/history
 /customers/:customerId/transaction
 /customers/:customerId/orders
+/customers/:customerId/loyalty
 /customers/:customerId/orders/:orderId
 /customers/:customerId/orders/:orderId/checkout
 /customers/:customerId/products/pharmacy_management_system
@@ -101,6 +102,7 @@
 /api/v1/customers/:customerId/pharmacy/register
 /api/v1/customers/:customerId/cart
 /api/v1/orders
+/api/v1/orders/:orderId/items
 /pharmacies/:pharmacyId/staff/create
 /pharmacies/:pharmacyId/staff
 /pharmacies/:pharmacyId/staff/options

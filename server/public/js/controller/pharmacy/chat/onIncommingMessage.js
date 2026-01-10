@@ -1,4 +1,6 @@
 import ChatTemplates from "../../../model/application/ChatTemplates.js";
+import { renderChatBox } from "../../../view/pharmacy/chat/renderChatbox.js";
+import { onDisconnect } from "./onDisconnect.js";
 import { whenChatBoxRequest } from "./whenChatboxRequest.js";
 import { whenConnected } from "./whenConnected.js";
 import { whenIncomingMessage } from "./whenIncommingMessage.js";
@@ -25,7 +27,10 @@ export function startSocketListening(socket){
         }else if(ChatTemplates.isSyncRequest(message)){
             whenSyncRequest(message);
 
+        }else if(ChatTemplates.isDisconnect(message)){
+            onDisconnect();
         }
     })
 
 }
+

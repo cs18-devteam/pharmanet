@@ -14,6 +14,7 @@ class ChatTemplates{
     static requestPrescriptionCode = this.#REQ_PRSC.replace('=','');
     static #MINOR_ERROR = "MINOR_ERROR="
     static #SYNC = "SYNC="
+    static #DISCONNECT="DCN="
 
 
 
@@ -55,6 +56,17 @@ class ChatTemplates{
             id : Application.pharmacyId ? Application.pharmacyId : Application.userId,
             
         }
+    }
+
+    static disconnect(){
+        return `${this.#DISCONNECT}${JSON.stringify({
+            ...this.defaultOptions() , 
+        })}`
+    }
+
+    static isDisconnect(message){
+        console.log(message);
+        return message.startsWith(this.#DISCONNECT);
     }
 
 

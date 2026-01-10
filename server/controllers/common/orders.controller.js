@@ -5,6 +5,7 @@ const { getRequestData } = require("../../common/getRequestData");
 const { response, responseJson } = require("../../common/response");
 const view = require("../../common/view");
 const Carts = require("../../models/CartModel");
+const Medicines = require("../../models/MedicineModel");
 const PharmacyOrdersItems = require("../../models/PharmacyOrderItemsModel");
 const PharmacyOrders = require("../../models/PharmacyOrderModel");
 const PharmacyStaff = require("../../models/PharmacyStaffModel");
@@ -104,15 +105,54 @@ exports.getOrders = apiCatchAsync(async (req , res)=>{
 });
 
 
-exports.updateOrder = apiCatchAsync(async (req , res)=>{
-    const id = req.params.get('id');
-    const reqData = await getMultipartData(req);
+exports.addOrderItem = apiCatchAsync(async (req , res)=>{
+    const id = req.orderId;
+    const reqData = JSON.parse(await getRequestData(req));
     console.log({id , ...reqData});
+
+    let medicine;
+    let product;
+    if(reqData.medicineId){
+        medicine = await Medicines.getById(reqData.medicineId)[0];
+    }
+
+    const orderObj = {
+        orderId : id,
+        itemId : reqData.medicineId || reqData.orderId,
+        itemType : reqData.medicineId ? "medicine" : "product",      
+        price : medicine?.price || product?.price,
+        discount :  reqData.discount,
+        quantity : reqData.quantity,
+    }
+
+
+ 
+    const [orderItem] = await PharmacyOrdersItems.save(orderObj)
     
 
     return responseJson(res , 200 , {
         status:"success",
+        results : orderItem,
     } )
     
+});
+
+
+
+exports.getOrderItems =apiCatchAsync(async (req , res)=>{
+    const id = req.orderId;
+    const [order] = await PharmacyOrders.getById(id);
+    const items = await PharmacyOrdersItems.get({
+        orderId :id,
+    })
+
+    responseJson(res , 200 , {
+        status:"success",
+        results : {
+            order , 
+            items,
+        },
+        count: 1,
+    })
 })
 

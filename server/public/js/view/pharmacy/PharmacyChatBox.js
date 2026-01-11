@@ -293,11 +293,11 @@ export default class PharmacyChatbox{
             
                                     
                                 </div>
-                                <div class="footer-section">
+                                <!-- <div class="footer-section">
             
                                     <div class=" btn cancel-btn">Cancel</div>
                                     <div class="btn create-order-btn">Create Order</div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
             
@@ -322,6 +322,10 @@ export default class PharmacyChatbox{
             
                             <div class="recipe-details">
                                 <h1>Recipe Details</h1>
+                                <div>
+                                    <span>Order Id</span>
+                                    <span>#<span class="remote-order-id"></span></span>
+                                </div>
                                 <div>
                                     <span>Total</span>
                                     <span>Rs<span class="total">1,345</span></span>

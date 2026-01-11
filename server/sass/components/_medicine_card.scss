@@ -50,6 +50,20 @@
         display: none;
     }
 
+    .remove-btn{
+        border: 1px solid var(--color-red-01);
+        color: var(--color-red-01);
+        padding: 1rem 2rem;
+        border-radius: 3rem;
+        background-color: rgb(248, 215, 215);
+        transition: all .3s ease;
+
+        &:hover{
+            background-color: var(--color-red-01);
+            color: #fff;
+        }
+    }
+
     .dosage-icon{
         height: min-content;
         

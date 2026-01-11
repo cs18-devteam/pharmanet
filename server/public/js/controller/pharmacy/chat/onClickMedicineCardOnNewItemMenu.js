@@ -1,4 +1,5 @@
 import Application from "../../../model/application/Application.js";
+import ChatTemplates from "../../../model/application/ChatTemplates.js";
 import { fetchMedicineData } from "../../../model/pharmacy/fetchMedicineData.js";
 import { addOrderItem } from "../../../model/pharmacy/orders.js";
 import { closeSidebar } from "../../../view/pharmacy/drawerView.js";
@@ -44,6 +45,7 @@ export async function onClickMedicineCardOnNewItemMenu() {
                     closeSidebar()
                 })
                 refreshCartList();
+                Application.connection.send(ChatTemplates.syncConnection(Application.remoteOrderId));
             }
         }
         

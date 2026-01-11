@@ -6,9 +6,11 @@ const { response, responseJson } = require("../../common/response");
 const view = require("../../common/view");
 const Carts = require("../../models/CartModel");
 const Medicines = require("../../models/MedicineModel");
+const PharmacyMedicines = require("../../models/PharmacyMedicinesModel");
 const PharmacyOrdersItems = require("../../models/PharmacyOrderItemsModel");
 const PharmacyOrders = require("../../models/PharmacyOrderModel");
 const PharmacyStaff = require("../../models/PharmacyStaffModel");
+const Products = require("../../models/ProductModel");
 const Transactions = require("../../models/TransactionModel");
 const Users = require("../../models/UserModel");
 
@@ -142,15 +144,39 @@ exports.addOrderItem = apiCatchAsync(async (req , res)=>{
 exports.getOrderItems =apiCatchAsync(async (req , res)=>{
     const id = req.orderId;
     const [order] = await PharmacyOrders.getById(id);
-    const items = await PharmacyOrdersItems.get({
+    let items = await PharmacyOrdersItems.get({
         orderId :id,
     })
+
+    items = items.map(async i=>{
+        if(i.itemType == "medicine"){
+            console.log('medicine');
+            return {
+                ...i , 
+                details : (await Medicines.getById(i.itemId))[0],
+                stock : (await PharmacyMedicines.get({
+                    medicineId : i.itemId,
+                    pharmacyId : req.params.get("pharmacyId"),
+                }))[0],
+            }
+        }else if(i.itemType == "product"){
+            console.log('product');
+            return {
+                ...i , 
+                details: (await Products.getById(i.itemId))[0],
+            }
+        }
+    }) 
+
+    items = await Promise.all(items);
+
+    console.log(items);
 
     responseJson(res , 200 , {
         status:"success",
         results : {
             order , 
-            items,
+            items ,
         },
         count: 1,
     })

@@ -115,10 +115,10 @@ export async function addOrderItem({orderId , medicineId , productId , price , d
     }
 }
 
-export async function getOrderItems() {
+export async function getOrderItems(pharmacyId) {
       try{
 
-        const response =await fetch(`/api/v1/orders/${Application.remoteOrderId}/items`);
+        const response =await fetch(`/api/v1/orders/${Application.remoteOrderId}/items?pharmacyId=${pharmacyId ||Application.pharmacyId}`);
         
         const data = await response.json();
         

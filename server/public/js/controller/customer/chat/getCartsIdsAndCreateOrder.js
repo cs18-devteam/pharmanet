@@ -15,6 +15,7 @@ export default async function getCartsIdsAndCreateOrder() {
 
     Application.remoteOrderId = data.results.orderId; 
 
+    console.log(data.results);
     
     return Application.requestPharmacyId;
 

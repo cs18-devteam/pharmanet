@@ -1,6 +1,5 @@
 import { getOrderItems } from "../../../model/pharmacy/orders.js";
 import html from "../../../view/html.js";
-import { renderMedicineCards } from "../../../view/pharmacy/renderMedicineCards.js";
 import { swal } from "../../../view/swal.js";
 
 export async function refreshCartList() {
@@ -13,14 +12,17 @@ export async function refreshCartList() {
         })
     }
 
+
     const items = data.results.items;
 
     const medicineCards = items?.map((item=>{
+        if(item.itemType != "medicine") return;
+
         return html`
-        <div class="medicine_card">
+        <div class="medicine_card" data-orderItemId="${item.id}" data-medicineId="${item.details.id}" >
             <div class="medicine-card-header">
                 <div class="dosage-icon">
-                    <img width="60rem" src="/images/bottel_of_pills.svg">  
+                    <img width="60rem" src="${item.details.image}">  
 
                 </div>
 
@@ -28,7 +30,7 @@ export async function refreshCartList() {
                 <div class="details">
                     <div class="medicine__name">
                         <div class="name">Name</div>
-                        AMPICILLIN SODIUM FOR INJECTION BP 250MG
+                        ${item.details.geneticName}
                     </div>
                     <div class="medicine__info">
                     
@@ -40,7 +42,7 @@ export async function refreshCartList() {
                             </span>
                             <span>price</span>
                             <span class="price">
-                                <span>Rs<div class="price__value">${item.price || "unknown"}</div></span>
+                                <span>Rs<div class="price__value">&nbsp;${item.stock?.price || "Not Available"}</div></span>
                                 
                             </span>
                         </div>
@@ -49,26 +51,29 @@ export async function refreshCartList() {
                     
                 </div>
 
-                <div class="added-btn">
-                    Added +
+                <div class="remove-btn">
+                    remove
                 </div>
             </div>
-
+            
             <div class="medicine-card-footer">
+                ${item.stock ? html`
+                    
+                    <div class="card-footer unit">
+                        Units <span>${item.quantity}</span>
+                    </div>
 
-                <div class="card-footer unit">
-                    Units <span>${item.quantity}</span>
-                </div>
+                    <div class="card-footer days">
+                        Days <span>${items.days}</span>
+                    </div>
 
-                <div class="card-footer days">
-                    Days <span>${items.days}</span>
-                </div>
-
-                <div class="card-footer discount">
-                    Discounts (Rs) <span>${items.discount}</span>
-                </div>
+                    <div class="card-footer discount">
+                        Discounts (Rs) <span>${items.discount}</span>
+                    </div>
+                    ` : html`this medicine not available in pharmacy`
+            
+                }
             </div>
-        
 
         </div>`;
 

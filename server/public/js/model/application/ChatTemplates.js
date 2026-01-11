@@ -58,6 +58,8 @@ class ChatTemplates{
         }
     }
 
+    
+
     static disconnect(){
         return `${this.#DISCONNECT}${JSON.stringify({
             ...this.defaultOptions() , 

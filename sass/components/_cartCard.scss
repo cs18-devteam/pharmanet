@@ -1,0 +1,121 @@
+@mixin btn-style($className , $bg-color){
+    &:not(#{$className}) > #{$className} {
+            display: none;
+    }
+
+    #{$className}{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding: 1rem;
+        @content;
+
+        .text{   
+            font-size: 1.4rem;
+            padding: 1rem 2rem;
+            border: 1px solid #000;
+            color: #000;
+            display: flex;
+            flex-wrap: nowrap;
+            border-radius: 3rem;
+            user-select: none;
+            transition: all .3s ease;
+        }
+
+        input[type="checkbox"]:checked ~{
+            .text{
+                background-color: $bg-color;
+                color:#fff;
+                border: none;
+
+            }
+        }
+
+    }
+}
+
+
+.cart_item{
+    flex-grow: 1;
+    border: 1px solid #eee;
+    border-radius: 2rem;
+    margin: 1rem;
+    overflow: hidden;
+    display: flex;
+
+    .content{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        overflow: hidden;
+        gap: 1rem;
+
+        img{
+            width: 10rem;
+            aspect-ratio: 1;
+            object-fit: contain;
+        }
+
+        .description{
+            h4{
+                div:first-child{
+                    font-size: 1.4rem;
+                    font-weight: 100;
+                    opacity: .6;
+                }
+                div:nth-child(2){
+                    font-size: 1.6rem;
+                    font-weight: 400;
+                    text-wrap-mode: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    max-width: 25rem;
+                }
+            }
+
+            .price{
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+
+                .label{
+                    height: fit-content;
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+
+                    
+
+                    img{
+                        width: 1.6rem;
+                        aspect-ratio: 1;
+                    }
+                }
+
+                .amount{
+                    color: var(--color-green-01);
+
+                    &::before{
+                        content: "Rs ";
+                    }
+                }
+                
+
+                
+            }
+        }
+    }
+
+
+    .action-box{
+        @include btn-style('.select', #000);
+        @include btn-style(".remove" , #FE7743 );
+        @include btn-style(".available" , #1A7F78 );
+        @include btn-style(".added" , #127EB5 );
+        @include btn-style(".removed" , #000 );
+
+    }
+
+}

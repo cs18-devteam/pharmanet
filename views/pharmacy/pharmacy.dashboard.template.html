@@ -1,0 +1,186 @@
+{header}
+<body class="pharmacyDashboard">
+    <!-- <input type="radio"  name="navigation" id="docs"> -->
+    <input type="radio"  name="navigation" id="orders">
+    <input type="radio" name="navigation" id="chats">
+    <input type="radio"  name="navigation" id="medicines">
+    <input type="radio"  name="navigation" id="transactions">
+    <input type="radio"  name="navigation" id="products">
+    <input type="radio" checked name="navigation" id="staff">
+    <input type="hidden" name="navigation" id="settings" >
+
+
+
+    <nav class="nav">
+        <a class="logo">
+            <img src="/logo/logo.svg" alt="">
+            <span>Pharmanet</span>
+        </a>
+
+
+        <ul class="nav_links">
+            <!-- <li><label for="docs" >Docs</label></li> -->
+            <li ><label for="orders" >orders</label></li>
+            <li><label for="chats" >chats</label></li>
+            <li><label for="medicines" >medicines</label></li>
+            <li><label for="transactions" >transactions</label></li>
+            <li><label for="products" >products</label></li>
+            <li><label for="staff">staff</label></li>
+            <li><label for="settings" id="settings">Settings</label></li>
+        </ul>
+    </nav>
+
+    <div class="header-container">
+
+        <header class="header">
+            <h1>Manage All Medicines</h1>
+            <p> 
+                Take charge of your medicine inventory with confidence.
+                Easily add new items, manage stock in real time, and 
+                keep your pharmacy running smoothly.
+            </p>
+        </header>
+        
+        <div class="quick_look">
+            <div class="title">quick look</div>
+        </div>
+        
+        
+    </div>
+
+    <div class="dashboards">
+
+        <!-- <div class="docs container"> -->
+
+
+
+        <!-- </div> -->
+
+
+
+        {ordersView}
+        {chatsView}
+        {medicinesView}
+        {transactionsView}
+        {productsView}
+        {staffView}
+
+    </div>
+
+    <div class="drawer" status="close">
+         <div class="medicine-viewer" data-id="${medicine.id}">
+
+            <div class="topbar">
+                <div class="mini-header">
+                    <h1 class="medicine_name">
+                        ${medicine.geneticName}
+                    </h1>
+                    <div class="tag available" >available</div>
+                </div>
+                
+                <div class="actions">
+                    <!-- <div class="bookmark"></div> -->
+                    <div class="edit">edit</div>
+                    <div class="close">close</div>
+                </div>
+                
+            </div>
+
+
+            <div class="content">
+                <div class="left">
+                    <table class="details">
+                        <tbody>
+                            <tr class="row">
+                                <td>genetic name</td>
+                                <td>${medicine.geneticName}</td>
+                            </tr>
+                            <tr class="row">
+                                <td>brand</td>
+                                <td>${medicine.brand}</td>
+                            </tr>
+                            <tr class="row">
+                                <td>country</td>
+                                <td>${medicine.country}</td>
+                            </tr>
+                            <tr class="row">
+                                <td>schedule</td>
+                                <td>${medicine.schedule}</td>
+                            </tr>
+                            <tr class="row">
+                                <td>registration number</td>
+                                <td>${medicine.registrationNo}</td>
+                            </tr>
+                            <tr class="agent">
+                                <td>agent</td>
+                                <td>${medicine.agent}</td>
+                            </tr>
+                            <tr class="row">
+                                <td>registration date</td>
+                                <td>${new Date(medicine.registrationDate).toDateString()}</td>
+                            </tr>
+                            <tr class="row">
+                                <td>manufacture</td>
+                                <td>${medicine.manufacture}</td>
+                            </tr>
+                            <tr class="row">
+                                <td>pack type</td>
+                                <td>${medicine.packType}</td>
+                            </tr>
+                            <tr class="row">
+                                <td>pack size</td>
+                                <td>${medicine.packSize}</td>
+                            </tr>
+                            <tr class="row">
+                                <td>dosage</td>
+                                <td>${medicine.packType}</td>
+                            </tr>
+                            <tr class="row">
+                                <td>validation</td>
+                                <td>${medicine.validation}</td>
+                            </tr>
+                            <tr class="row">
+                                <td>dossier number</td>
+                                <td>${medicine.dossierNo}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+
+                </div>
+                <div class="right">
+
+
+                    
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+    
+    <div class="drawer-sidebar" status="close">
+        <div class="sidebar_content">
+
+
+        </div>
+    </div>
+
+
+    <div class="incoming_messege_box">
+            <h4>incoming message</h4>
+        
+            <img src="/xyz.png" alt="">
+        
+        <button class="accept">accept</button>
+        <button class="reject">reject</button>
+    </div>
+
+    <script src="/js/controller/pharmacy/pharmacy.dashboard.client.controller.js" type="module" ></script>
+    <script type="module" src="/js/controller/pharmacy/connection.js"></script>
+    <script type="module" src="/js/controller/pharmacy/pharmacy.dashboard.orders.controller.js"></script>
+    <script type="module" src="/js/utilities/Slider.js" ></script>
+    <script type="module" src="/js/utilities/Popup.js" ></script>
+</body>
+</html>

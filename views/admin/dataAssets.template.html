@@ -1,0 +1,190 @@
+{header}
+
+<body class="dataAssets">
+    <div class="container">
+    <div class="container-1">
+    <div class="sideBar">
+    <div class="logo">
+      <img class="logopic" src="/public/logo/logo.svg" alt="logo">
+      <div>
+        <h3>System Admin</h3>
+        <p>Management System</p>
+      </div>
+    </div>
+
+    {sidebar}
+
+    <div class="menuItem">
+        <button class="text setting"> Settings</button>
+        <button class="text signOut"> Sign Out</button>
+    </div>
+  </div>
+  </div>
+
+  <div class="container-2">
+  <div class="main">
+    <header>
+      <input type="text" id="searchInput" placeholder="Search files by name of data category..." />
+      <div class="user-section">
+        <span class="bell"></span>
+        <div class="admin">AD</div>
+      </div>
+    </header>
+
+    <section class="dashboard">
+     <div class="sectionHeading">
+    <div>
+      <h1>Data Assets</h1>
+      <p>Manage documents, reports and data files.</p>
+      </div>
+      <div>
+      <button class="uploadBtn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+       viewBox="0 0 16 16">
+    <path d="M.5 9.9V15h15V9.9h-1V14H1.5V9.9h-1zm7.5-7.4V12h1V2.5h3.5L8 0 3.5 2.5H7z"/>
+  </svg> Upload File</button>
+      </div>
+     </div>
+
+     <div class="table-container">
+    <table class="file-table">
+      <thead>
+        <tr>
+          <th>File Name</th>
+          <th>Category</th>
+          <th>Size</th>
+          <th>Uploaded By</th>
+          <th>Upload Date</th>
+          <th>Downloads</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td class="file-cell">
+            <div class="file-icon pdf">📄</div>
+            <div class="file-info">
+              <a href=""><strong>Q4 Sales Report 2024</strong></a><br />
+              <small>PDF</small>
+            </div>
+          </td>
+          <td><span class="tag reports">Reports</span></td>
+          <td>2.4 MB</td>
+          <td>John Smith</td>
+          <td>2024-01-15</td>
+          <td>24</td>
+          <td><button class="dots">⋮</button></td>
+        </tr>
+
+        <tr>
+          <td class="file-cell">
+            <div class="file-icon excel">📊</div>
+            <div class="file-info">
+              <a href=""><strong>Inventory Master List</strong></a><br />
+              <small>Excel</small>
+            </div>
+          </td>
+          <td><span class="tag inventory">Inventory</span></td>
+          <td>1.8 MB</td>
+          <td>Sarah Johnson</td>
+          <td>2024-01-14</td>
+          <td>156</td>
+          <td><button class="dots">⋮</button></td>
+        </tr>
+
+        <tr>
+          <td class="file-cell">
+            <div class="file-icon csv">📘</div>
+            <div class="file-info">
+              <a href=""><strong>Prescription Records Jan 2024</strong></a><br />
+              <small>CSV</small>
+            </div>
+          </td>
+          <td><span class="tag prescriptions">Prescriptions</span></td>
+          <td>5.2 MB</td>
+          <td>Mike Davis</td>
+          <td>2024-01-13</td>
+          <td>42</td>
+          <td><button class="dots">⋮</button></td>
+        </tr>
+
+        <tr>
+          <td class="file-cell">
+            <div class="file-icon pdf">📄</div>
+            <div class="file-info">
+              <a href=""><strong>Pharmacy Compliance Certificate</strong></a><br />
+              <small>PDF</small>
+            </div>
+          </td>
+          <td><span class="tag compliance">Compliance</span></td>
+          <td>856 KB</td>
+          <td>Lisa Anderson</td>
+          <td>2024-01-12</td>
+          <td>8</td>
+          <td><button class="dots">⋮</button></td>
+        </tr>
+
+        <tr>
+          <td class="file-cell">
+            <div class="file-icon pdf">📄</div>
+            <div class="file-info">
+              <a href=""><strong>Staff Training Materials</strong></a><br />
+              <small>PDF</small>
+            </div>
+          </td>
+          <td><span class="tag training">Training</span></td>
+          <td>3.1 MB</td>
+          <td>Tom Wilson</td>
+          <td>2024-01-11</td>
+          <td>67</td>
+          <td><button class="dots">⋮</button></td>
+        </tr>
+
+        <tr>
+          <td class="file-cell">
+            <div class="file-icon excel">📊</div>
+            <div class="file-info">
+              <a href=""><strong>Medicine Price List 2024</strong></a><br />
+              <small>Excel</small>
+            </div>
+          </td>
+          <td><span class="tag pricing">Pricing</span></td>
+          <td>924 KB</td>
+          <td>Emily Brown</td>
+          <td>2024-01-10</td>
+          <td>189</td>
+          <td><button class="dots">⋮</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+      </div>
+      </div>
+
+      <script>
+        try{
+
+           //Search filter
+    document.getElementById('searchInput').addEventListener('keyup', function () {
+  const filter = this.value.toLowerCase(); // what user types
+  const rows = document.querySelectorAll('.file-table tr');
+
+  rows.forEach(row => {
+    const text = row.textContent.toLowerCase();
+    if (text.includes(filter)) {
+      row.style.display = ''; // show row
+    } else {
+      row.style.display = 'none'; // hide row
+    }
+  });
+});
+        }catch(e){
+          console.log(e);
+          Notify.showError(e.message);
+        }
+
+ </script>
+    
+</body>
+</html>

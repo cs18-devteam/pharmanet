@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="loyaltyPoints">
+    <!-- <header>
+    <nav>
+        <div class="logo">
+            <img class="logopic" src="/public/logologo.svg" alt="logo">
+            <p class="logoname">PharmaNet</p>
+        </div>
+
+
+        <div class="search">
+            <form action="POST">
+                <input type="search" placeholder="Search anything...">
+                <input type="submit" value="Find">
+            </form>
+        </div>
+        <div class="dropdown">
+            <a href="#">Services</a>
+                <ul class="navbar">
+                    <li><img src="/frontend//public/images/Check circle.svg"><a href="#">Services</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+        </div>
+
+        <div id="toggle-placeholder"></div>
+
+
+        <div class="user-section">
+          <span>Chathura Priyashan</span>
+          <img src="https://via.placeholder.com/40" class="avatar" />
+        </div>
+    </nav> 
+    </header> -->
+    
+    {navbar}
+    
+    <div class="topTabs">
+        <a class="tab" href="/customers/{id}/profile"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="15" viewBox="0 0 26 26" fill="none">
+      <g clip-path="url(#clip0_140_2418)">
+        <path d="M12.9998 2.16663C7.01984 2.16663 2.1665 7.01996 2.1665 13C2.1665 18.98 7.01984 23.8333 12.9998 23.8333C18.9798 23.8333 23.8332 18.98 23.8332 13C23.8332 7.01996 18.9798 2.16663 12.9998 2.16663ZM7.96234 20.0416C9.3815 19.0233 11.1148 18.4166 12.9998 18.4166C14.8848 18.4166 16.6182 19.0233 18.0373 20.0416C16.6182 21.06 14.8848 21.6666 12.9998 21.6666C11.1148 21.6666 9.3815 21.06 7.96234 20.0416ZM19.6515 18.5466C17.8207 17.1166 15.5132 16.25 12.9998 16.25C10.4865 16.25 8.179 17.1166 6.34817 18.5466C5.0915 17.0408 4.33317 15.1125 4.33317 13C4.33317 8.21163 8.2115 4.33329 12.9998 4.33329C17.7882 4.33329 21.6665 8.21163 21.6665 13C21.6665 15.1125 20.9082 17.0408 19.6515 18.5466Z" fill="black"/>
+        <path d="M12.9997 6.5C10.9088 6.5 9.20801 8.20083 9.20801 10.2917C9.20801 12.3825 10.9088 14.0833 12.9997 14.0833C15.0905 14.0833 16.7913 12.3825 16.7913 10.2917C16.7913 8.20083 15.0905 6.5 12.9997 6.5ZM12.9997 11.9167C12.1005 11.9167 11.3747 11.1908 11.3747 10.2917C11.3747 9.3925 12.1005 8.66667 12.9997 8.66667C13.8988 8.66667 14.6247 9.3925 14.6247 10.2917C14.6247 11.1908 13.8988 11.9167 12.9997 11.9167Z" fill="black"/>
+      </g>
+      <defs>
+        <clipPath id="clip0_140_2418">
+          <rect width="26" height="25" fill="white"/>
+        </clipPath>
+      </defs>
+    </svg>Account</a>
+      <a class="tab" href="/customers/{id}/orders"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="15" viewBox="0 0 28 28" fill="none">
+  <path d="M12.8333 22.6625V14.6709L5.83333 10.6167V18.6084L12.8333 22.6625ZM15.1667 22.6625L22.1667 18.6084V10.6167L15.1667 14.6709V22.6625ZM12.8333 25.3459L4.66667 20.65C4.29722 20.4362 4.01042 20.1542 3.80625 19.8042C3.60208 19.4542 3.5 19.0653 3.5 18.6375V9.36254C3.5 8.93476 3.60208 8.54587 3.80625 8.19587C4.01042 7.84587 4.29722 7.56393 4.66667 7.35004L12.8333 2.65421C13.2028 2.44032 13.5917 2.33337 14 2.33337C14.4083 2.33337 14.7972 2.44032 15.1667 2.65421L23.3333 7.35004C23.7028 7.56393 23.9896 7.84587 24.1938 8.19587C24.3979 8.54587 24.5 8.93476 24.5 9.36254V18.6375C24.5 19.0653 24.3979 19.4542 24.1938 19.8042C23.9896 20.1542 23.7028 20.4362 23.3333 20.65L15.1667 25.3459C14.7972 25.5598 14.4083 25.6667 14 25.6667C13.5917 25.6667 13.2028 25.5598 12.8333 25.3459ZM18.6667 9.94587L20.9125 8.66254L14 4.66671L11.725 5.97921L18.6667 9.94587ZM14 12.6584L16.275 11.3459L9.3625 7.35004L7.0875 8.66254L14 12.6584Z" fill="white"/>
+</svg>Order</a>
+        <a class="tab active" href="/customers/{id}/loyalty"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="15" viewBox="0 0 28 28" fill="none">
+  <g clip-path="url(#clip0_140_2431)">
+    <path d="M2.33333 14C2.33333 10.745 4.24667 7.93333 7.01167 6.62667V4.10667C2.94 5.55333 0 9.43833 0 14C0 18.5617 2.94 22.4467 7.01167 23.8933V21.3733C4.24667 20.0667 2.33333 17.255 2.33333 14ZM17.5 3.5C11.7133 3.5 7 8.21333 7 14C7 19.7867 11.7133 24.5 17.5 24.5C23.2867 24.5 28 19.7867 28 14C28 8.21333 23.2867 3.5 17.5 3.5ZM17.5 22.1667C12.9967 22.1667 9.33333 18.5033 9.33333 14C9.33333 9.49667 12.9967 5.83333 17.5 5.83333C22.0033 5.83333 25.6667 9.49667 25.6667 14C25.6667 18.5033 22.0033 22.1667 17.5 22.1667Z" fill="black"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_140_2431">
+      <rect width="28" height="28" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>Loyalty Points</a>
+    </div>
+
+<div class="loyalty-banner">
+    <div class="left">
+        <h2>Loyalty <span>Points</span></h2>
+        <p>
+            Welcome to your loyalty zone — track your points,<br>
+            unlock rewards, and enjoy the benefits you've earned.
+        </p>
+    </div>
+
+    <div class="right">
+        <span class="label">Total Points</span>
+        <h1 class="points">15,087 Points</h1>
+
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+    </div>
+</div>
+
+
+
+<div class="loyalty-info">
+
+    <div class="header">
+        <h2>How this Works</h2>
+        <p>
+            Loyalty points are rewards you earn every time you make a purchase. The more you buy, the more points you collect — 
+            and those points can later be used to get discounts, special offers, or free items. <br>
+            Every time you place an order, you earn points based on your total bill. <br><br>
+
+            For example:
+        </p>
+
+        <ul>
+            <li>Spend Rs. 100 → Earn 1 point</li>
+            <li>Spend Rs. 1000 → Earn 10 points</li>
+        </ul>
+
+        <p>(You can set your own point system.)</p>
+    </div>
+
+    <div class="cards-row">
+        
+        <!-- Summary Card -->
+        <div class="card summary">
+            <div class="title">Summary</div>
+
+            <div class="row">
+                <a href="#">Amaya Pharmacy Center</a>
+                <span>20 Points</span>
+            </div>
+
+            <div class="row">
+                <a href="#">Kurunagala thissa pharmacy</a>
+                <span>13 Points</span>
+            </div>
+
+            <p class="end">End Of List</p>
+        </div>
+
+        <!-- Transactions Card -->
+        <div class="card transactions">
+            <div class="title-row">
+                <div class="title">Transactions</div>
+                <div class="small">last 10 Transactions</div>
+            </div>
+
+            <div class="row">
+                <span>Amaya Pharmacy Center</span>
+                <span class="negative">-100 Points</span>
+            </div>
+
+            <div class="row">
+                <span>Amaya Pharmacy Center</span>
+                <span class="positive">29 Points</span>
+            </div>
+
+            <div class="row">
+                <span>Amaya Pharmacy Center</span>
+                <span class="negative">-100 Points</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+{cart}
+{footer}
+    <!-- <div class="footer"> -->
+<!-- <svg xmlns="http://www.w3.org/2000/svg" width="1480" height="400" viewBox="0 0 1480 579" fill="none">
+  <path d="M0 0L1480 59.5V579H0V0Z" fill="#08374F"/>
+</svg> -->
+<!-- <div class="footer-topSection">
+<div class="footer-left">
+<div class="footer-logo">
+    <img class="logo" src="/public/logo/logo.svg">
+</div>
+<div>
+    <p>Pharmanet</p>
+</div>
+
+</div>
+<div class="footer-center">
+<h4>Site Map</h4>
+<ul>
+<li>Search medicines</li>
+<li>Search pharmacies</li>
+<li>Register pharmacy</li>
+<li>Top rated pharmacies</li>
+</ul>
+</div>
+<div class="footer-right">
+<h4>Description</h4>
+<p>This is created for university 2nd year learning project by chathura priyashan , kasun nirmal , chamani niroshani , noorul hamdha</p>
+</div>
+</div>
+<div class="footer-bottomSection">
+    <div>
+        <p>© All rights reserved 2025</p>
+    </div>
+    <div>
+        <button><a href="">About</a></button>
+    </div>
+    <div>
+        <button><a href="">ContactUs</a></button>
+    </div>
+    <div>
+        <button><a href="">LinkedIn</a></button>
+    </div>
+    <div>
+        <button><a href="">Facebook</a></button>
+    </div>
+    <div>
+        <button><a href="">Terms and Conditions</a></button>
+    </div>
+</div>
+    
+</body> -->
+<!-- <script>
+    function order(){
+        window.location.href = "/customer/orderManage";
+    }
+    function loyaltyPoints(){
+        window.location.href = "/customer/loyaltyPoints";
+    }
+    function account(){
+        window.location.href = "/customer/userProfileManage";
+    }
+</script> -->
+</html>

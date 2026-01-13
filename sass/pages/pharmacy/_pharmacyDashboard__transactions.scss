@@ -1,0 +1,353 @@
+@mixin transactions{
+    &.transactions{
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-rows: .5fr 1fr 1fr;
+        grid-template-areas: "income incomeSummery search" 
+                             "staffWise transactions transactions"
+                             "methodWise transactions transactions";
+
+        .income{
+            grid-area: income;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 1.6rem;
+            justify-content: center;
+            text-transform: capitalize;
+            
+            p{
+                opacity: .6;
+            }
+
+            &__value{
+                font-size: 3.2rem;
+                font-weight: 500;
+
+                &::before{
+                    content: 'Rs  ';
+                }
+            }
+
+        }
+
+
+
+        .income_stat{
+            grid-area: incomeSummery ;
+
+            .bars{
+                width: 100%;
+                display: flex;
+                .bar{
+                    flex-grow: 1;
+                    height: 4.8rem;
+                    background-color: #eee;
+                    border-radius: 3rem;
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    padding: .3rem;
+                    margin: .2rem;
+
+                    .percentage{
+                        background-color: #ffffff60;
+                        height: 100%;
+                        aspect-ratio: 1;
+                        border-radius: 50%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        color: #fff;
+                    }
+
+                    &-cash{
+                        &__offline{
+                            background-color: #1A7F78;
+                            
+                        }
+                        &__online{
+                            background-color: #22A59B;
+                            
+                        }
+                    }
+                    
+                    &-card{
+                        &__offline{
+                            background-color: #006394;
+                            
+                        }
+                        
+                        &__online{
+                            background-color: #0081c2;
+
+                        }
+                    }
+                    
+                    
+                }
+            }
+
+            .descriptions{
+                display: flex;
+                width: 100%;
+                justify-content: space-around;
+                .stat{
+                    display: flex;
+                    align-items: center;
+                    .topic{
+                        font-size: 1.4rem;
+                        opacity: .7;
+                        
+                    }
+                    
+                    .results{
+                        display: flex;
+                        font-size: 1.6rem;
+                        align-items: center;
+
+                        > * {
+                            margin: 1rem;
+                            display: flex;
+                            align-items: center;
+                            margin: 1rem .5rem;
+
+                            span{
+                                margin-left:.5rem ;
+                            }
+                            span::before{
+                                content: "Rs ";
+
+                            }
+                        } 
+                        // .offline{}
+                        // .online{}
+                    }
+                }
+            }
+        }
+
+        .searchbar{
+            grid-area: search ;
+            display: flex;
+            justify-content: center;
+            
+
+            input{
+                width: 90%;
+                height: 6.5rem;
+                border: 1px solid #eee;
+                border-radius: 3rem;
+            }
+        }
+
+
+        .summery_block{
+            border: 1px solid #eee;
+            padding: 2rem;
+            margin: 1rem 0;
+            border-radius: 2rem;
+            font-size: 1.6rem;
+
+            .group-by{
+                display: flex;
+                > * {
+                    margin-right: 1rem;
+                }
+
+            }
+
+            .analytics{
+                margin: 2rem 0;
+
+                .description{
+                    display: flex;
+                    width: 100%;
+                    font-size: 1.4rem;
+                    margin-bottom: .5rem;
+                    // .name{
+
+                    // }
+
+                    // .orders{
+
+                    // }
+
+                    .amount{
+                        justify-self: flex-end;
+                        margin-left: auto;
+                    }
+                }
+
+                .bar{
+                    width: 100%;
+                    height: 2px;
+                    background-color: #eee;
+                    position: relative;
+
+                    &::before{
+                        position: absolute;
+                        content:  ' ';
+                        width: 50%;
+                        height: 100%;
+                        top: 0;
+                        left: 0;
+                        background-color: black;
+                        animation: progress-bar .8s ease;
+                    }
+                }
+            }
+
+
+
+            &.summery_staff_wise{
+                grid-area: staffWise ;
+                // background-color: blue;
+            }
+
+            &.summery_payment_method_wise{
+                grid-area: methodWise ;
+                // background-color: violet;
+            }
+        }
+
+        .transaction_table_container{
+            grid-area: transactions;
+            padding: 2rem;
+
+
+            .captions{
+                display: flex;
+                justify-content: space-between;
+
+                .heading--2{
+                    font-size: 1.8rem;
+                    font-weight: 500;
+                    text-transform: capitalize;
+                }
+
+                .date_range{
+                    display: flex;
+                    align-items: center;
+                    text-transform: capitalize;
+
+                     > *{
+                        margin: 0 1rem;
+                     }
+
+
+                     
+                }
+            }
+
+            .transaction_table{
+                width: 100%;
+                margin-top: 2rem;
+                font-size: 1.6rem;
+                thead{
+                    tr{
+                        th{
+                            padding: 1rem 0;
+                            text-align: left;
+                            margin: 1rem;
+                            border-bottom: 1px solid #eee;
+                        }
+                    }
+                }
+
+                tbody{
+                    tr{
+                        td{
+                            padding: 1rem 0;
+
+
+                            &.card > {
+                                .card{
+                                    display: flex;
+                                    align-items: center;
+                                    > * {
+                                        margin-right: 1rem;
+                                    } 
+                                }
+
+                                .cash{
+                                    display: none;
+                                }
+                            }
+
+                            &.cash > {
+                                .card{
+                                    display: none;
+                                }
+
+                                .cash{
+                                     display: flex;
+                                    align-items: center;
+                                    > * {
+                                        margin-right: 1rem;
+                                    } 
+                                }
+                            }
+
+
+                            &.online > {
+                                .online{
+                                    display: inline-block;
+                                }
+
+                                .offline{
+                                    display: none;
+                                }
+                            }
+
+                            &.offline >{
+                                .offline{
+                                    display: inline-block;
+                                }
+
+                                .online{
+                                    display: none;
+                                }
+                            }
+                            
+                        }
+                        
+                        
+                        @for $i from 1 to 20{
+                            &:nth-child(#{$i}){
+                                animation: fade-in-up .3s ease;
+                                animation-duration: calc(.3s * #{$i});
+                            }
+                        }
+                    }
+                }
+            }
+
+
+
+
+
+        }
+    }
+        
+}
+
+
+
+@keyframes progress-bar{
+    0%{
+        width: 0%;
+    }
+}
+
+@keyframes fade-in-up {
+    0%{
+        opacity: 0;
+        transform: translateY(100px);    
+    }
+
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}

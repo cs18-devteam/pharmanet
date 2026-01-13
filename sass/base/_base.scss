@@ -1,0 +1,88 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+    &::selection{
+        background-color: var(--color-green-01);
+        color: #222;
+    }
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    font-size: 1.6rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--primary-font);
+    padding: 2rem;
+    transition: background-color 0.3s, color 0.3s;
+    // user-select: var(--color-green-01);
+
+    @media print{
+        padding: 0;
+    }
+
+
+    
+}
+
+
+a{
+    text-decoration: none;
+    background-size: 0% 10%;
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-image: linear-gradient(90deg, var(--color-green-01)  70%, transparent 70%);
+    transition: all .2s ease;
+    color: black;
+    text-transform: capitalize;
+    
+    &:hover{
+        color:var(--color-green-01);
+        // background-size: 100% 10%;
+    }
+}
+
+input{
+    //border-radius: 3px;
+    //border: 1px solid #ccc !important;
+    //padding: 1rem !important;
+}
+
+button{
+    padding: 1rem;
+}
+
+img{
+    object-fit: cover;
+}
+
+
+.warning{
+    background-color: rgb(255, 255, 141);
+    color: rgb(33, 33, 2);
+}
+
+.error , .danger{
+    background-color: var(--color-yellow-02);
+    color: #222;
+}
+
+.required{
+    &::after{
+        content: "*";
+        color:red;
+        display: inline-block;
+        padding: .3rem;
+    }
+}
+
+.swal2-popup {
+    font-size: 1.8rem !important;
+}
+
+

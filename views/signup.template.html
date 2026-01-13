@@ -1,0 +1,230 @@
+{header}
+<body class="signup">
+    <header>
+        <nav class="nav">
+        <a class="logo" href="/">
+            <img class="logopic" src="/logo/logo.svg" alt="logo">
+            <p class="logoname">PharmaNet</p>
+        </a>
+    </nav>
+
+    </header>
+    <div class = "container">
+    <div class = "signupImage">
+        <img src="/signup/signup.jpg" alt="signup image">
+        <div class="signupText">"Take Control of Your Medication Journey"</div>
+    </div>
+    <div class = "signupForm" >
+    <form autocomplete="off"  id="form" class="signup" autocomplete="off" action="/signup" method="post" novalidate aria-autocomplete="none" >
+     
+    <h1 class="signupTitle">Get Start Now</h1>
+    <p class="signupMoto" >Your Digital Journey To Seamless Prescriptions, Smarter Inventory, And Happier Patients Begins Here.</p>
+    <div class="nameFields">
+    
+    <div>
+    <label for="fName">First Name</label><br>
+    <input type="text" id="fName" name="firstName" placeholder="Chathura" required/><br>
+    <span id="feedbackname" ></span><br>
+    </div>
+
+    <div>
+    <label for="lName">Last Name</label><br>
+    <input type="text" value="" id="lName" name="lastName" placeholder="Priyashan" required/><br>
+    <span id="feedbackname"></span><br>
+    </div>     
+
+    </div>
+   
+    <label for="email">Email</label><br>
+    <input type="text" id="email" name="email" placeholder="Example@Gmail.com" required/><br>
+    <span id="feedbackEmail"></span><br>
+    
+    <label for="birthDay">BirthDay</label><br>
+    <input type="date" id="birthDay" name="dateOfBirth" placeholder="2003/07/11" required/><br>
+    <span id="feedbackdateOfBirth"></span><br>
+
+    <label for="nic">National Identification Number(NIC)</label><br>
+    <input type="text" id="nic" name="nic" placeholder="200412309889" required/><br>
+    <span id="feedbackNic"></span><br>
+    
+    <label for="password">Password</label><br>
+    <input type="password" id="password" name="password" placeholder="********" required/><br>
+    <span id="feedbackPassword"></span><br>
+
+    <label for="confirmPassword">Confirm Password</label><br>
+    <input type="password" id="confirmPassword" name="conformPassword" placeholder="********" required/><br>
+    <span id="feedbackPassword"></span><br>
+    
+    <span id="form-error" class="utility-error"></span>
+    <button type="submit" id="submitButton">Create Account</button>
+    <a type="submit" id="forgetPassword">Do you need any help ?</a><br>
+    
+    <div style="text-align: center;" class="links">
+    <p>I Have An Account
+        <a href="/login"  class="logInButton" >Log In</a>
+    </p>
+    </div>
+
+
+  </form>
+  
+    </div>
+    </div>
+    
+        
+
+
+      
+    </header>  
+<!--     
+    <div class="congrats">
+        Welcome to <span>Pharmanet</span>
+    </div> -->
+
+
+
+    <script>
+        try{
+
+        
+            let clearToSubmit = true;
+            
+            const birthDay = document.getElementById('birthDay');
+            const birthDayFeedback = document.getElementById('feedbackdateOfBirth');
+            const submit_btn = document.getElementById('submitButton');
+            const form = document.getElementById('form');
+            // form.addEventListener('submit' , (e)=>e.preventDefault());
+            birthDay.addEventListener('change' , ()=>{
+            const age = (new Date(Date.now()).getFullYear() - new Date(birthDay.value).getFullYear());
+
+            if(age < 16){
+                birthDay.classList.remove('utility-success');
+                birthDay.classList.add('utility-warn');
+                birthDayFeedback.textContent = "Sorry! This feature is only available for users aged 16 or above.";
+                clearToSubmit = clearToSubmit && false;
+                console.log('from date');
+                return;
+            }else{
+                birthDay.classList.add('utility-success');
+                birthDay.classList.remove('utility-warn');
+                birthDayFeedback.textContent = '';
+                clearToSubmit = clearToSubmit && true;
+            }
+        })
+
+
+        form.addEventListener('submit' ,async (e)=>{
+            try{
+                e.preventDefault(e);
+                e.stopPropagation();
+                clearToSubmit = true;
+
+
+                form.querySelectorAll('input').forEach(el=>{
+                    console.log(el.value);
+                    if(el?.hasAttribute('required') && el.value=='' ){
+                        el?.classList.remove('utility-success');
+                        el?.classList.add('utility-warn');
+                        console.log(el);
+                        document.getElementById('form-error').textContent ="Oops! It looks like some fields are missing 😝. Please fill out the form before submitting.";
+                        console.log(el);
+                        return;
+                    }else{
+                        el?.classList.add('utility-success');
+                        el?.classList.remove('utility-warn');
+                        clearToSubmit = clearToSubmit && true;
+                    }
+                })
+                
+                const data = {};
+                const formData = new FormData(form);
+                for(const [key , value] of formData.entries()){
+                    const el = document.querySelector(`[name="${value}"]`);
+
+                    
+                    data[key] = value;
+                }
+                // if(data.password != data.conformPassword) throw new Error("password doesn't match");
+
+                if(!clearToSubmit) Swal.fire({
+                    icon:"error",
+                    title:"Invalid Form Data",
+                    body:"can't submit , please check again",
+                })
+                
+                console.log({clearToSubmit});
+                if(!clearToSubmit) return;
+                const respond = await fetch("/signup" , {
+                    method:"POST",
+                    headers:{
+                        "Content-Type" : "application/json",
+                    },
+                    body : JSON.stringify(data),
+                });
+                
+
+                const result = await respond.json();
+                console.log(result , respond);
+
+
+
+                if(result.status != "success" ) {
+                    if(result.field == "email") {
+                        document.getElementById('feedbackEmail').textContent = "Oops! It looks like this email is already registered. Try logging in instead.";
+                        document.getElementById('email').classList.add('utilities-warn');
+                    }else if(result.field == "nic"){
+                        document.getElementById('feedbackNic').textContent = "Oops! It looks like this nic is already registered. Try logging in instead.";
+                        document.getElementById('nic').classList.add('utilities-warn');
+                    }else{
+                        Swal.fire({
+                            icon:"error",
+                            title:"internal server error",
+                            body:'please try again',
+                        })
+                    }
+                    
+                    // throw new Error(result.message)
+                }else{
+                    // document.body.classList.add('success');
+                    console.log(result);
+                    Swal.fire({
+                        icon:"success",
+                        title:"Account Created Successfully",
+                    }).then(()=>{
+                        window.location.href = `/verify/${result.results["0"].id}/email`;
+                    })
+
+                    setTimeout(()=>{
+                        window.location.href = `/verify/${result.results["0"].id}/email`;
+                    } , 3000)
+                    
+                }
+
+                
+            }catch(error){
+                
+                console.log(error);
+                throw error;
+            }
+            
+
+
+            
+        })
+
+    }catch(e){
+        console.log(e);
+        Swal.fire({
+            icon: "error",
+            title: "something went wrong",
+            text: e.message,
+            footer: '<a href="contactus">Why do I have this issue?</a>'
+        });    
+    }
+
+
+
+    </script>
+
+</body>
+</html>

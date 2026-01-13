@@ -1,0 +1,175 @@
+{header}
+<body class="adminDashboard">
+<div class="container">
+    <div class="container-1">
+    <div class="sideBar">
+    <div class="logo">
+      <img class="logopic" src="/logo/logo.svg" alt="logo">
+      <div>
+        <h3>System Admin</h3>
+        <p>Management System</p>
+      </div>
+    </div>
+
+    {sidebar}
+
+    
+  </div>
+  </div>
+
+  <div class="container-2">
+  <div class="main">
+
+    <section class="dashboard">
+      <h1>Dashboard</h1>
+      <p>Welcome back! Here's your system overview.</p>
+
+      <div class="cards">
+        <div class="card">
+          <div class="icon pharmarcy"></div>
+          <h3>Total Pharmacies</h3>
+          <h1 id = "totalPharmacies"></h1>
+          <p class="change">+2 this month</p>
+        </div>
+
+        <div class="card">
+          <div class="icon stock"></div>
+          <h3>Registered Medicines</h3>
+          <h1 id="totalMedicines">1,847</h1>
+          <p class="change">+127 this week</p>
+        </div>
+
+        <div class="card">
+          <div class="icon users"></div>
+          <h3>Total Users</h3>
+          <h1 id="totalUsers">342</h1>
+          <p class="change">+18 this week</p>
+        </div>
+
+        <!-- <div class="card">
+          <div class="icon revenue"></div>
+          <h3>Revenue</h3>
+          <h1>$54,239</h1>
+          <p class="change">+12.5% from last month</p>
+        </div>
+      </div> -->
+    </section>
+  </div>
+  
+
+<!-- Analytics -->
+ <div class="analyticCards">
+ <!-- <div class="analyticCard1">
+      <h2>Sales & Prescriptions</h2>
+      <p>Monthly overview of sales and prescription volume</p>
+      <canvas id="salesChart"></canvas>
+    </div> -->
+    
+
+    <div class="analyticCard2">
+      <h2>Inventory by Category</h2>
+      <p>Current medicine stock distribution</p>
+      <canvas id="inventoryChart"></canvas>
+   </div>
+  </div>
+
+  <!-- Activity card -->
+     <div class="activity-card">
+    <h2>Recent Activity</h2>
+    <p class="subtitle">Latest actions across the system</p>
+
+    <ul class="activity-list">
+      <li class="activity-item">
+        <div class="avatar">JS</div>
+        <div class="details">
+          <div class="info">
+            <strong>John Smith</strong>
+            <span class="tag medicine">medicine</span>
+          </div>
+          <p>Added new medicine <strong>Amoxicillin 500mg</strong></p>
+          <span class="time">2 minutes ago</span>
+        </div>
+      </li>
+
+      <li class="activity-item">
+        <div class="avatar">SJ</div>
+        <div class="details">
+          <div class="info">
+            <strong>Sarah Johnson</strong>
+            <span class="tag pharmacy">pharmacy</span>
+          </div>
+          <p>Updated pharmacy <strong>Downtown Pharmacy</strong></p>
+          <span class="time">15 minutes ago</span>
+        </div>
+      </li>
+
+      <li class="activity-item">
+        <div class="avatar">MD</div>
+        <div class="details">
+          <div class="info">
+            <strong>Mike Davis</strong>
+            <span class="tag user">user</span>
+          </div>
+          <p>Created user account <strong>emily.brown@pharmacy.com</strong></p>
+          <span class="time">1 hour ago</span>
+        </div>
+      </li>
+
+      <li class="activity-item">
+        <div class="avatar">LA</div>
+        <div class="details">
+          <div class="info">
+            <strong>Lisa Anderson</strong>
+            <span class="tag prescription">prescription</span>
+          </div>
+          <p>Processed prescription <strong>RX-2024-0847</strong></p>
+          <span class="time">2 hours ago</span>
+        </div>
+      </li>
+
+      <li class="activity-item">
+        <div class="avatar">TW</div>
+        <div class="details">
+          <div class="info">
+            <strong>Tom Wilson</strong>
+            <span class="tag inventory">inventory</span>
+          </div>
+          <p>Updated inventory <strong>Central Pharmacy</strong></p>
+          <span class="time">3 hours ago</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  </div>
+  </div>   
+  <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+  <script src="/js/controller/admin/system.admin.js"></script>
+
+  <script>
+    const pathParts = window.location.pathname.split('/');
+    const adminId = pathParts[pathParts.indexOf('admin')+1];
+
+    async function loadDashboardStats() {
+      try{
+        console.log('Fetching from:',`/api/v1/admin/${adminId}/dashboard`);
+        const res = await fetch(`/api/v1/admin/${adminId}/dashboard`);
+        const data = await res.json();
+
+        console.log('Dashboard data:', data);
+        const stats = data.data || data;
+
+        if(stats) {
+          document.getElementById('totalPharmacies').textContent = stats.totalPharmacies ?? 0;
+          document.getElementById('totalMedicines').textContent = stats.totalMedicines ?? 0;
+          document.getElementById('totalUsers').textContent = stats.totalUsers ?? 0;
+        }
+      }catch (e) {
+        console.error('Error loading dashboard stats:', e);
+      }
+    }
+    loadDashboardStats();
+  </script>
+</body>
+</html>
+
+

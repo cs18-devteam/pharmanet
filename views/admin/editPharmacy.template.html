@@ -1,0 +1,160 @@
+{header}
+
+<body class="addPharmarcy01">
+<a href="/admin/pharmacy"><button class="closeBtn"></button></a>
+  <div class="registration-container">
+    <header>
+      <img class="logopic" src="/logo/logo.svg" alt="logo">
+      <h1>PharmaNet</h1>
+      <p>Register your pharmacy to get started</p>
+    </header>
+
+    <div class="steps">
+      <div class="step active">
+        <div class="circle">1</div>
+        <span>Pharmacy Details</span>
+      </div>
+      <div class="step">
+        <div class="circle">2</div>
+        <span>Owner Information</span>
+      </div>
+      <div class="step">
+        <div class="circle">3</div>
+        <span>Location</span>
+      </div>
+      <div class="step">
+        <div class="circle">4</div>
+        <span>Pharmacist & Services</span>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <div class="card-header">
+        <i class="fa-solid fa-building-columns"></i>
+        <span>Pharmacy Details</span>
+        <p>Enter your pharmacy details and license information</p>
+      </div>
+
+      <form id="form" method="post" action="/admin/pharmacy/step/2">
+        <div class="form-row">
+          <label>Pharmacy Name *</label>
+          <input type="text" name="name" placeholder="Enter pharmacy name" required>
+        </div>
+
+        <div class="form-row two-cols">
+          <div>
+            <label>License Number *</label>
+            <input type="text" name="licenseNumber" placeholder="e.g., PH-2024-001" required>
+          </div>
+          <div>
+            <label>License Expiry Date *</label>
+            <input type="date" name="expireDate" required>
+          </div>
+        </div>
+
+        <div class="form-buttons">
+          <!-- <button type="button" class="btn prev">Previous</button> -->
+          <button data-href="/admin/pharmacy/step/2" type="button" class="btn next btn-next">Next <img class="spinner" src="/logo/spinner.png"/></button>
+        </div>
+      </form>
+    </div>
+
+    <footer>
+      Need help? <a href="#">Contact support</a>
+    </footer>
+  </div>
+
+  <script>
+    try{
+
+
+
+
+const form = document.getElementById('form');
+const btn_next = document.querySelector('.btn-next');
+
+localStorage.setItem("pharmacy" ,JSON.stringify({
+  name : "{name}",
+  id: "{id}",
+  street : "{street}",
+  town : "{town}",
+  type:"{type}",
+  email : "{email}",
+  province: "{province}",
+  postalCode : "{postalCode}",
+  pharmacist : "{pharmacist}",
+  contact : "{contact}",
+  licenseNumber:"{licenseNumber}",
+  expireDate: "{expireDate}",
+  owner:"{owner}",
+  pharmacistLicense:"{pharmacistLicense}"
+
+
+}))
+
+
+const data = JSON.parse(localStorage.getItem('pharmacy')) || {};
+console.log(data);
+for(const [key,value] of Object.entries(data)){
+    const field = document.querySelector(`[name=${key}]`);
+    if(field){
+    field.value = value;
+    }
+}
+
+btn_next.addEventListener('click' , (e)=>{
+    e.preventDefault();
+    const formData = new FormData(form);
+
+    for( const [key , value] of formData.entries()){
+    const field = document.querySelector(`[name='${key}']`);
+
+    if(key != "email" && new RegExp(value).test(/^[a-zA-Z]/)){
+        field.classList.add('utility-warn');
+        return;
+    }else{
+        field.classList.remove('utility-warn');
+    }
+
+    if(key=="email" && new RegExp(value).test(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)){
+        field.classList.add('utility-warn');
+
+    }else{
+        field.classList.remove('utility-warn');
+    }
+    
+    if(!value){
+        field.classList.add('utility-warn');
+        field.classList.remove('utility-success');
+        return;
+    }else{
+        field.classList.add('utility-success')
+        field.classList.remove('utility-warn')
+    }
+    data[key] = value;
+    }
+    
+    //save to storage
+    localStorage.setItem("pharmacy" , JSON.stringify(data));
+    window.location.href = "/admin/pharmacy/{id}/edit/step/2";
+
+    
+
+
+})
+}catch(e){
+    console.log(e);
+    Swal.fire({
+      icon: "error",
+      title: "something went wrong",
+      text: e.message,
+      footer: '<a href="/contactus">Why do I have this issue?</a>'
+    })
+}
+
+
+  </script>
+
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/style.css">
+  <title>Add New User</title>
+</head>
+
+<body class="addUsers">
+
+  <h1 class="page-title">Add New User</h1>
+  <p class="page-subtitle">Create a new user account and assign permissions</p>
+
+  <div class="card">
+
+    <!-- Personal Info -->
+    <div class="section">
+      <h2 class="section-title">Personal Information</h2>
+      <form class="form-section" id="addUserForm">
+        <div class="row">
+          <div class="input-group">
+            <label>First Name <span>*</span></label>
+            <input type="text" id="fname" name="fname" placeholder="John" />
+          </div>
+
+          <div class="input-group">
+            <label>Last Name <span>*</span></label>
+            <input type="text" id="lname" name="lname" placeholder="Smith" />
+          </div>
+        </div>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="section">
+      <h2 class="section-title">Contact Information</h2>
+
+      <div class="input-group full">
+        <label>Email Address <span>*</span></label>
+        <input type="email" id="email" name="email" placeholder="john.smith@pharmacy.com" />
+      </div>
+    </div>
+
+    <!-- Pharmacy & Role -->
+    <div class="section">
+      <h2 class="section-title">Pharmacy & Role</h2>
+
+      <div class="row">
+        <div class="input-group">
+          <label>Pharmacy Assignment <span>*</span></label>
+          <select id="pharmacy" name="pharmacy">
+            <option value="" disabled selected>Select a pharmacy</option>
+            <option>ABC</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label>Role <span>*</span></label>
+          <select id="role" name="role">
+            <option selected>Pharmacist</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="btn-row">
+      <!-- <button class="btncancel">Cancel</button> -->
+      <button class="btn primary" type="submit">Add User</button>
+    </div>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('addUserForm');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const data = {};
+      const formData = new FormData(form);
+
+      for (const [key, value] of formData.entries()) {
+        data[key] = value;
+      }
+
+      // Generate Avatar from initials
+      if (data.fname && data.lname) {
+        const f = data.fname.trim().charAt(0).toUpperCase();
+        const l = data.lname.trim().charAt(0).toUpperCase();
+        data.avatar = f + l;
+      }
+
+      // Validate pharmacy
+      if (data.pharmacy === "Select a pharmacy") {
+        alert("Please select a valid pharmacy");
+        return;
+      }
+
+      console.log(data);
+
+      fetch("/admin/{adminId}/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data),
+      })
+
+        .then((respond) => respond.json())
+        .then((res) => {
+          if (res.status === 'error') {
+            alert(res.message || "Error adding user");
+          } else {
+            // Notify parent window to close modal and reload
+            window.parent.postMessage({ action: 'closeModalAndReload' }, '*');
+          }
+        })
+        .catch(e => {
+          console.log(e);
+          alert("An error occurred");
+        });
+
+    });
+  </script>
+
+</body>
+
+</html>

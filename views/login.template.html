@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PharmaNet Login</title>
+  <link rel="stylesheet" href="/css/style.css">
+      <link rel="icon" href="/logo/favicon.svg" type="image/svg+xml">
+    <link rel="alternate icon" href="/logo/favicon.png" type="image/png">
+    <link rel="stylesheet" href="./css/style.css">
+
+  <style>
+        .success{
+            animation: animateFade 2s ease forwards;
+        }
+
+        .congrats{
+            position: fixed;
+            top: 100%;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            opacity: 0;
+            z-index: -10;
+            transition: all 2s ease;
+            color: #888;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .congrats > span{
+            color: transparent;
+            background-image: linear-gradient(var(--color-green-01) , var(--color-green-02));
+            background-clip: text;
+        }
+
+        .success .congrats {
+            top: 0;
+            z-index: 10;
+            opacity: 1;
+        }
+
+        @keyframes animateFade{
+            100%{
+                opacity: 0; 
+                transform: translateY(-100px); 
+            }
+        }
+
+    </style>
+
+
+</head>
+<body class="login">
+  {navbar}
+  <div class="login-container">
+      <div class="left-panel">
+        <!-- <div class="image-wrapper"> -->
+          <!-- <img src="/signup/signup.jpg" alt="Medicine Illustration"> -->
+        <div class="quote">“ Take Control of Your Medication Journey ”</div>
+      </div>
+
+      <div class="right-panel">
+        <div id = "toggle-placeholder"> </div>
+        <div class="logo">
+          <img src="/images/Rectangle.svg" alt="PharmaNet Logo">
+        </div>
+        <h1>Welcome Back To<br/>Pharmanet</h1>
+
+        <form id="loginForm" method="post" action="/login">
+          <label>Email</label>
+          <input type="email" name="email" placeholder="Example@Gmail.Com" required>
+          <label>Password</label>
+          <input type="password" name="password" placeholder="**********" required>
+          <button type="submit">Log In</button>
+        </form>
+
+        <div class="links">
+          <a href="#">Forgot password ?</a>
+          <p>Don't You Have An Account ?
+            <a href="/signup" class="signup-btn">Sign Up</a>
+          </p>
+        </div>
+
+
+      </div>
+
+  </div>
+
+
+
+    <div class="congrats">
+        Welcome to <span>Pharmanet</span>
+    </div>
+
+
+    <script type="module" src="/js/controller/login.controller.js">
+
+
+
+
+    </script>
+
+</body>
+</html>

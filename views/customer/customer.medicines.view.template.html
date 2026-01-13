@@ -1,0 +1,93 @@
+{header}
+<body class="landing">
+
+    <!--nav bar for all page-->
+    <header>
+    {navbar}
+
+    </header>
+
+       
+    <main class="main-container">
+
+
+        <section class="container">
+            <!-- Medicine Section -->
+        <section class="medicine-section">
+            <div class="container">
+
+                <!-- <div class="header-section">
+
+                    <div class="active-page">
+                        <div class="title">Looking for..</div>
+                        <div class="buttons">
+                            <div class="active-btn" >Medicines <span class="circle"></span></div>
+                            <div class="btn">Pharmacies</div>
+                        </div>
+                    </div>
+
+                    <div class="addToCart">
+                        <span>Your Cart</span><br>
+                        <img src="/images/add-to-cart.svg" alt="cart">
+
+                    </div>
+
+                </div> -->
+            
+             
+
+            <div class="Medicines_grid">
+                
+                {medicine_cards}
+            </div>
+
+            </div>
+
+       
+        </section>
+        </section>
+        {cart}
+
+       {footer}
+
+        <script type="module" src="/js/controller/customer/customer.medicines.search.controller.js"></script>
+
+        <script>
+            
+            const allElements = Array.from(document.querySelector('body').children);
+
+            const intersectionObserver = new IntersectionObserver((entries)=>{
+                const [entry] = entries;
+                entry.target.classList.remove("utility-hidden");
+            } , {
+                root:null,
+                threshold: .1,
+            })
+
+
+
+            allElements.forEach(( el ,index)=>{
+                // if(index < 2) return;
+
+                if(el.tagName == "script") return;
+
+                // Check if element is initially visible
+                const rect = el.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                if(isVisible) return;
+
+                intersectionObserver.observe(el);
+                el.classList.add('utility-transition')
+                el.classList.add('utility-hidden');
+                
+            })
+            
+
+
+
+        </script>
+    </main>
+   
+
+    </body>
+</html>

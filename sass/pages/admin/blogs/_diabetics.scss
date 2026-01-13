@@ -1,0 +1,164 @@
+.diabetics{
+    $text-muted: #9ca3af;
+    $element-bg: #F7F7F7;
+    $primary: #08374F;
+    $accent: #FB8F21;
+    $danger-red: #ff4444;
+    $accent-green: #00a676;
+
+      .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    background-color: white;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-weight: 600;
+    font-size: 3rem;
+
+    img {
+      width: 4rem;
+      height: 4rem;
+    }
+
+    span{
+        color: $primary;
+        font-size: 2rem;
+    }
+  }
+
+  .nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .btn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 1.5rem;
+
+      &.btn-filled {
+        background-color: $element-bg;
+        color: $primary;
+        border: 0.2rem solid $primary;
+      }
+
+      &.btn-icon {
+        background: $element-bg;
+        color: $primary;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        border: 0.2rem solid $primary;
+      }
+
+      
+    &:hover{
+        background: $accent;
+      }
+    }
+  }
+}
+
+
+.article {
+  max-width: 100%;
+  width: 100%;
+  padding: 2rem 30rem 2rem 30rem;
+}
+
+.article-card {
+  background: $element-bg;
+  border-radius: 1rem;
+//   box-shadow: $shadow;
+  padding: 2rem 2.5rem;
+  line-height: 1.6;
+}
+
+.tag {
+  background: azure;
+  color: $accent-green;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-weight: 600;
+  border: 0.2rem solid $accent-green;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  margin: 0.8rem 0 0.5rem;
+  line-height: 4rem;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  color: $text-muted;
+  font-size: 1.5rem;
+  margin-bottom: 1.2rem;
+
+  i {
+    margin-right: 0.3rem;
+  }
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 1.2rem 0;
+}
+
+p {
+  font-size: 1.5rem;
+  color: #222;
+  margin: 0.8rem 0;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.6rem;
+}
+ol {
+  margin-left: 1.5rem;
+  li {
+    margin-bottom: 0.7rem;
+    strong {
+      font-weight: 700;
+    }
+  }
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: $primary;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.5rem;
+
+  &:hover {
+    background: $accent;
+  }
+
+  i {
+    font-size: 1.5rem;
+  }
+}
+}

@@ -1,0 +1,156 @@
+.medicine-review{
+
+
+    .medicine{
+        margin: 5rem;
+        .main-info{
+            display: flex;
+            // justify-content: space-between;
+            gap: 2rem;
+            img{
+                margin: 1rem;
+                object-fit: contain;
+                object-position: center;
+            }
+
+            .right-side{
+                padding: 1rem;
+                margin: 1rem;
+                font-weight: 500;
+                font-size: 1.8rem;
+            }
+        }
+
+        
+            .title{
+                color: var(--color-green-01);
+                font-size: 2rem;
+                text-transform: capitalize;
+                padding:1rem ;
+                margin-top: 2rem;
+                
+            }
+            .para{
+                    font-size: 1.8rem;
+                    margin: 1rem;
+                }
+
+                ul{
+                    list-style-type: disc;
+                    font-size: 1.8rem;
+                    margin-left: 5rem;
+                }
+            .refference{
+                font-size: 2rem;
+                font-weight: 500;
+                padding: 1rem;
+                margin-top:2rem ;
+                a{
+                    color: var(--color-green-01);
+                    font-size: 1.8rem;
+                }
+            }
+        
+    }
+
+
+
+ //footer
+
+    .footer{
+        // background-color: var(--color-green-02);
+        color:var(--white);
+        font-family: var(--primary-font);
+        padding:3rem;
+        height:57.9rem;
+        background-image: linear-gradient(183deg, transparent 12%, var(--color-green-02) 10%) , linear-gradient(178deg, transparent 10%, var(--color-green-01) 10%);
+        // clip-path:polygon(0% 0%, 100% 20%, 100% 100%, 0% 100% );
+
+
+        
+
+        .main {
+
+        padding:8rem 3rem;
+        color: #cfd8dc;
+        display: flex;
+        justify-content: space-between;
+        align-items:self-start;
+        color:var(--white);
+        font-size: 2.4rem;;
+        }
+
+        .logo {
+        font-family: var(--secondary-font);
+        display: flex;
+        align-items: center;
+        mix-blend-mode: plus-lighter;
+
+            .logopic {
+                height: 4.6rem;
+                margin-right: 1rem;
+            }
+
+            .logoname {
+                font-weight: bold;
+                color: var(--white);
+                font-size: 1.6rem;
+            }
+        }
+
+        .site-map{
+        
+            li{
+                list-style: none;
+            }
+            a{
+            color:#bdc6cb;
+            line-height: 5rem;
+            text-decoration: none;
+            color:#bdc6cb;
+            font-size:1.8rem;
+            font-family: var(--primary-font);
+            }
+        }
+
+        .footer-title{
+            color:var(--white);
+            margin:5rem 0;
+        }
+
+        .footer-discription{
+            p{
+                color:#bdc6cb;
+                margin:2rem 0;
+                font-size: 1.8rem;
+            }
+        
+        }
+
+        .bottom{
+            margin: 10rem 0 2rem 0;
+            
+            nav{
+                display:flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem 2rem;
+                color:#75a6cd;
+                gap: 2rem;
+                font-size: 1.4rem;
+                
+                
+                >a{
+                    text-decoration: none;
+                    color:var(--white);
+                    font-size:1.4rem;
+                    font-family: var(--primary-font);
+
+                }
+
+            }
+
+        }
+    }
+
+}

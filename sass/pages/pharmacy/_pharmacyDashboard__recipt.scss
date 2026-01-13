@@ -1,0 +1,288 @@
+@mixin documents{
+
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: none;
+    margin: 1rem;
+    position: absolute;
+    z-index: 0;
+    height: 100%;
+    
+
+    
+    .receipt-wrapper {
+        background-color: var(--color-blue-01);
+        margin: 1rem;
+        border-top-left-radius: 3rem;
+        border-bottom-left-radius: 3rem;
+        color: white;
+        display: block;
+        width: 90%;
+        height: 100%;
+
+
+        .receipt-header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-transform: capitalize;
+            padding: 1rem;
+            margin: 1rem;
+            span{
+                font-size: 2.5rem;
+                font-weight: 600;
+
+            }
+
+            .print-btn{
+                font-size: 2rem;
+                font-weight: 500;
+                border: 0.1rem solid white;
+                border-radius: 3rem;
+                width: 10rem;
+                background-color: var(--color-blue-01);
+                color: white;
+            }
+        }
+
+        .receipt-card{
+            //width: 100%;
+            margin: 1rem;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 3rem;
+            outline: 0.1rem solid var(--color-border-gray-03);
+            outline-style:dashed ;
+            outline-offset: -1rem;
+            color: black;
+            height: 84%;
+
+            @media print{
+                position: absolute;
+                inset: 0 0 0 0;
+                z-index: 2000;
+            }
+
+
+            .receipt-title{
+                margin: 1rem;
+
+                padding: 1rem;
+                text-align: center;
+
+                .double-line{
+                    border: none;
+                    height: 0.6rem;
+                    border-top: 0.2rem dashed var(--color-border-gray-03);
+                    border-bottom: 0.2rem dashed var(--color-border-gray-03);
+                    margin: 1rem 0;
+
+
+                    // @media print{
+                    //     *{
+                    //         display: inline;
+                    //     }
+                    // }
+                }
+
+                h3{
+                    font-size: 2rem;
+                    color: var(--color-border-gray-03);
+
+
+                    // @media print{
+                    //     *{
+                    //         display: inline;
+                    //     }
+                    // }
+
+                }
+                .small{
+                    color: var(--color-border-gray-02);
+                    font-weight: 500;
+
+
+                    // @media print{
+                    //     *{
+                    //         display: inline;
+                    //     }
+                    // }
+                }
+            }
+
+            .receipt-table{
+                width: 100%;
+                font-size: 1.6rem;
+                margin: 1rem;
+                //text-align: center;
+                border-collapse: separate;
+                border-spacing: 0 10px;
+
+                
+            }
+
+            .total{
+                margin: 1rem;
+                margin-top: 6rem;
+                padding: 2rem;
+                border-top: 0.2rem dashed var(--color-border-gray-03);
+                border-bottom: 0.2rem dashed var(--color-border-gray-03);
+                display: flex;
+                justify-content: space-between;
+                font-size: 1.8rem;
+
+                .total-amount{
+                    font-size: 2rem;
+                    font-weight: 500;
+                }
+
+            }
+
+            .payment{
+                display: none;
+                margin: 1rem;
+                padding: 1rem;
+                
+                p{
+                    font-size: 1.8rem;
+                    font-weight: 600;
+                    text-transform: capitalize;
+
+                }
+            }
+        }
+
+        
+        }
+
+       .payment-section{
+
+            margin: 9rem;
+            padding: 1rem;
+
+            h1{
+                font-size: 3rem;
+                text-transform: capitalize;
+            }
+
+            h3{
+                color: var(--color-border-gray-03);
+                text-transform: capitalize;
+            }
+
+            form{
+                margin-top: 1rem;
+                display: none;
+                //padding: 1rem;
+                text-transform: capitalize;
+                input{
+                        padding: 1rem;
+                        border: 0.1rem solid var(--color-border-gray-03);
+                        border-radius: 0.5rem;
+                        width: 100%;
+                    }
+
+                label{
+                    font-weight: 500;
+                    font-size: 1.6rem;
+                    //margin-top: 2rem;
+                }
+
+                .first-row{
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 2rem;
+                
+                }
+
+                .second-row, .third-row{
+                    margin-top: 2rem;
+                }
+
+                
+            }
+
+            .select-payment-method{
+                    margin:2rem 0;
+                    .selection{
+                        display: flex;
+                        justify-content: space-between;
+                        gap: 3rem;
+                        margin: 1rem 0;
+
+                        .cash-btn,.card-btn{
+                            width: 100%;
+                            padding: 1rem;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            border-radius: 2rem;
+                            font-size: 2rem;
+                            font-weight: 500;
+                            border: 0.1rem solid black;
+
+                            &:hover{
+                                cursor: pointer;
+                            }
+
+                        }
+
+                        .active{
+                            background-color: black;
+                            color: white;
+                        }
+
+                        .cash-btn{
+                            img{
+                                width: 2rem;
+                                height: 2rem;
+                                margin-left: 1rem;
+                            }
+                        }
+
+                        .card-btn{
+                           // display: block;
+
+                            img{
+                                width: 10rem;
+                                height: 3rem;
+                                margin-left: 1rem;
+                            }
+                        }
+
+
+                    }
+                }
+
+                .footer-btn{
+                    display: flex;
+                    justify-content:flex-end;
+                    gap: 1rem;
+
+                    .back-btn, .create-order-btn{
+                        padding: 1rem;
+                        margin: 1rem;
+                        border-radius: 3rem;
+                        width: 15rem;
+                        font-weight: 500;
+                        font-size: 1.8rem;
+                        display: flex;
+                        justify-content: center;
+                         &:hover{
+                                cursor: pointer;
+                            }
+                    }
+
+                    .back-btn{
+                        border: 0.1rem solid black;
+                    }
+
+                    .create-order-btn{
+                        background-color: var(--color-green-01);
+                        color: white;
+                    }
+                }
+        } 
+
+}

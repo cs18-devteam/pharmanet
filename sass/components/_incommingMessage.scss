@@ -1,0 +1,67 @@
+.incoming_messege_box{
+    position : fixed;
+    z-index: 1000;
+    width: 25rem;
+    height: 30rem;
+    background-color:var(--color-green-02);
+    border-radius: 3rem;
+    box-shadow: 4px 0px 5px rgba(0,0,0,.25);
+    display: grid;
+    column-gap : 1rem;
+    padding: 2rem;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: .2fr 1fr .2fr;
+    grid-template-areas: "topic topic"
+                        "img img"
+                        "accept reject";
+    right:  -40rem;
+    top : 5rem;
+    transition: all .4s ease;
+
+    &.open{
+        right: 5rem;
+    }
+    
+    h4{
+        grid-area: topic;
+        font-size : 2rem;
+        color: #fff;
+        text-align: center;
+        text-transform: capitalize;
+        font-weight: 400;
+    }
+    
+    img {
+        grid-area: img;
+        height: 10rem;
+        border-radius: 50%;
+        background-color: #fff;
+        justify-self: center;
+        width: 10rem;
+        margin: 2rem 0;
+    }
+    
+
+    button{
+        border-radius: 3rem;
+        border:none;
+        text-transform: capitalize;
+        font-size : 2rem;
+        padding: 1rem 2rem;
+        color: #fff;
+        
+        &.accept{
+            grid-area: accept;
+            background-color: var(--color-green-01);
+        
+        }
+        
+        &.reject{
+            grid-area : reject;
+            background-color: var(--color-red-01);
+        }
+    }
+  
+}

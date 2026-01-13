@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ 
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="pharmarcy">
+    <div class="container">
+    <div class="container-1">
+    <div class="sideBar">
+    <div class="logo">
+      <img class="logopic" src="/logo/logo.svg" alt="logo">
+      <div>
+        <h3>System Admin</h3>
+        <p>Management System</p>
+      </div>
+    </div>
+
+    {sidebar}
+    <div class="menuItem">
+        <button class="text setting"> Settings</button>
+        <button class="text signOut"> Sign Out</button>
+    </div>
+  </div>
+  </div>
+
+  <div class="container-2">
+  <div class="main">
+    <header>
+      <input type="text" id="searchInput" placeholder="Search pharmacies..." />
+      <div class="user-section">
+        <span class="bell"></span>
+        <div class="admin">AD</div>
+      </div>
+    </header>
+
+    <section class="dashboard">
+     <div class="sectionHeading">
+    <div>
+      <h1>Pharmarcies</h1>
+      <p>Manage All pharmarcy locations and their details.</p>
+      </div>
+      <div>
+      <button id="addPharmacyBtn" class="addBtn">Add Pharmarcy</button>
+      </div>
+      </div>
+    
+    <div class="content-wrapper">
+    <div class="pharmacy-grid">
+    
+
+  
+    
+
+   </div>
+  </div>
+    </section>
+  </div>
+  </div>
+
+  <script>
+    const pathParts = window.location.pathname.split('/');
+    const adminIdIndex = pathParts.indexOf('admin') + 1;
+    const adminId = pathParts[adminIdIndex];
+
+    // Set the buttons links
+    document.getElementById('addPharmacyBtn').addEventListener('click', () => {
+      window.location.href = `/admin/${adminId}/pharmacies/create`;
+    });
+   
+
+    async function renderPharmacies(){
+      const res = await fetch(`${window.location.origin}/api/v1/admin/${adminId}/pharmacies`);
+      const pharmacies = await res.json();
+      
+      if(!Array.isArray(pharmacies) || pharmacies.length === 0) return;
+
+      const html = pharmacies.map(p =>`
+      <a href = "/admin/pharmacy/view/${p.id}" class="pharmacy-card">
+        <div class="header">
+          <h3>${p.name} <span class="status inactive">inactive</span></h3>
+          <button class="menu-btn">⋮</button>
+        </div>
+        <p>Manager: ${p.pharmacist || 'N/A'}</p>
+        <ul class="details">
+          <li><span class="address"></span>${p.street || ''}, ${p.town || ''}, ${p.province || ''}</li>
+          <li><span class="email"></span> ${p.email || ''}</li>
+          <li><span class="telephoneNo"></span> ${p.contact || ''}</li>
+        </ul>
+        <hr>
+        <div class= "pharmacyCardFooter">
+          <!-- <p>Inventory: <strong>N/A</strong></p> -->
+          <button class="details-btn">View Details</button>
+        </div>
+      </a>`).join('');
+      document.querySelector('.pharmacy-grid').innerHTML = html;
+    }
+    renderPharmacies();
+  </script>
+
+
+  <script>
+  //Search filter
+  document.getElementById('searchInput').addEventListener('keyup', function () {
+  const filter = this.value.toLowerCase(); // what user types
+  const rows = document.querySelectorAll('.pharmacy-card');
+
+  rows.forEach(row => {
+    const text = row.textContent.toLowerCase();
+    if (text.includes(filter)) {
+      row.style.display = ''; // show row
+    } else {
+      row.style.display = 'none'; // hide row
+    }
+  });
+});
+  </script>
+
+
+  
+    
+</body>
+</html>

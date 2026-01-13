@@ -1,0 +1,138 @@
+@mixin chat{
+
+    display:grid;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: none;
+
+
+    .waiting-list{
+        margin: 1rem;
+        padding: 1rem;
+        border-right: 0.1rem solid var(--color-border-gray-01);
+
+        
+        h1{
+            font-size: 3rem;
+            text-transform: capitalize;
+            color: var(--color-green-01);
+        //     background-image: linear-gradient( black, white);
+        //     background: -webkit-linear-gradient( #333, #eee);
+        //     background-clip: text;
+        //     -webkit-background-clip: text;
+        //     color: transparent;
+        //    -webkit-text-fill-color: transparent;
+        }
+
+        h2{
+            text-transform: capitalize;
+            color: var(--color-border-gray-03);
+            font-weight: 400;
+            font-size: 1.8rem;
+        }
+
+        .msg-list{
+            font-size: 1.8rem;
+           .msg{
+            display: grid;
+            grid-template-columns: 10% 1fr 35% 15% 13%;
+            align-items: center;
+            margin: 1rem;
+            padding: 1rem;
+
+            img{
+                width: 5rem;
+                height: 5rem;
+                border-radius: 50%;
+            }
+
+            .name-section{
+               display: block; 
+
+               .name{
+                    margin: 1rem;
+                    text-transform: capitalize;
+                    font-weight: 500;
+               }
+
+               .distance{
+                    margin: 1rem;
+               }
+            }
+
+            .view-section{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+                img{
+                    width: 2rem;
+                    height: 2rem;
+                }
+
+                span:nth-child(2){
+                    color: var(--color-green-01);
+                }
+
+                span:nth-child(3){
+                    padding: 1rem;
+                    //margin: 1rem;
+                    border: 0.2rem solid var(--color-border-gray-02);
+                    border-radius: 1rem;
+                    width: 10rem;
+                    display: flex;
+                    justify-content: center;
+                }
+
+
+            }
+
+            .btn{
+                margin: 1rem;
+                padding: 1rem;
+                border-radius: 3rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 10rem;
+            }
+
+            .decline-btn{
+                border: 0.2rem solid var(--color-red-01);
+                color: var(--color-red-01);
+            }
+
+            .accept-btn{
+                border: 0.2rem solid var(--color-green-01);
+                color: var(--color-green-01);
+            }
+           } 
+        }
+    }
+
+    .Instructions-section{
+        font-size: 1.6rem;
+        margin: 1rem;
+        padding: 1rem;
+
+        .title{
+            font-weight: 500;
+            text-transform: capitalize;
+            font-size: 2rem;
+        }
+
+        h2{
+            font-size: 1.6rem;
+            color: var(--color-border-gray-03);
+            margin-top: 1rem;
+            text-transform: capitalize;
+        }
+
+        p{
+            font-size: 1.6rem;
+
+        }
+
+
+
+    }
+}

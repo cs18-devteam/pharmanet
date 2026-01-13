@@ -1,0 +1,190 @@
+   .chat-box {
+            height: 75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            //justify-content: space-between;
+            flex-grow: 1;
+            margin: 1rem;
+            border-radius: 3rem;
+            border: 0.1rem solid #eeeeee;
+            justify-content: space-between;
+
+
+
+            .header-section {
+                background-color: var(--color-blue-01);
+                color: white;
+                border-top-left-radius: 3rem;
+                border-top-right-radius: 3rem;
+                display: flex;
+                justify-content: space-between;
+
+                .customer-name {
+                    padding: 1rem;
+                    margin: 1rem;
+                }
+
+                .discount {
+                    padding: 1rem;
+                    margin: 1rem;
+                    background-color: var(--color-red-01);
+                    border-radius: 2rem;
+                    width: 12rem;
+                    display: flex;
+                    justify-content: center;
+
+                    &:hover {
+                        font-weight: 500;
+                        background-color: #e64b17;
+                        transition: all 0.8sec ease-in-out;
+                        cursor: pointer;
+                    }
+                }
+
+            }
+
+            .body-section {
+                margin: 1rem;
+                // height: 50rem;
+                height: 60vh;
+                overflow: scroll;
+                width: 100%;
+
+                .message {
+                    background-color: var(--color-green-01);
+                    border-radius: 2rem;
+                    margin: 2rem 1rem;
+                    padding: 1rem;
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    width: fit-content;
+                    color: white;
+                    animation: popup .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+                    .profile-pic {
+                        img {
+                            border-radius: 50%;
+                            margin-right: 1rem;
+                        }
+                    }
+
+                    &-time {
+                        font-size: 1.4rem;
+                        margin-top: -2rem;
+                        margin-left: 2rem;
+                        width: 93%;
+                        opacity: .5;
+                        animation: fade .2s ease;
+                        
+                    }
+
+                }
+
+                .reply {
+                    background-color: var(--color-pink-01);
+                    margin-left: auto;
+                    margin-right: 4rem;
+
+                    &-time {
+                        text-align: right;
+                    }
+                }
+
+
+            }
+
+            .type-bar-container {
+                margin: 1rem;
+                padding: 1rem;
+                display: flex;
+                justify-content: space-between;
+                border: 0.1rem solid #eeeeee;
+                border-radius: 3rem;
+                width: 96%;
+                position: relative;
+                transition: all .1s ease;
+
+                .type-msg {
+                    all: unset;
+                    font-size: 1.8rem;
+                    width: 100%;
+                    position: relative;
+                    color: black;
+                    transition: all .5s ease;
+                }
+
+                button {
+                    width: 3rem;
+                    height: 3rem;
+                    border-radius: 50%;
+                    background-color: var(--color-green-01);
+                    color: white;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border: none;
+                    transition: all .5s ease;
+                }
+
+                .disconnect-text {
+                    position: absolute;
+                    text-align: center;
+                    opacity: 0;
+                    width: 100%;
+                    transition: all 1s ease;
+                    transition-delay: .5s;
+                    transform: translateY(100%);
+
+
+                }
+            }
+
+            &.disconnect {
+                border: 1px solid var(--color-red-01);
+
+
+                .header-section {
+                    background-color: #000;
+
+                    .discount {
+                        background-color: #666;
+                        color: #fff;
+                        display: none;
+                    }
+                }
+
+                .body-section{
+                    .message{
+                        background-color: #e64b17;
+                        transition-delay: .2s;
+                  
+                    }   
+                }
+
+
+                .type-bar-container {
+                    border: none;
+
+                    .type-msg {
+                        transform: translateY(400%);
+                        opacity: 0;
+                    }
+
+                    button {
+                        transform: translateY(300%);
+                        opacity: 0;
+                    }
+
+                    .disconnect-text {
+                        opacity: 1;
+                        transform: translateY(0%);
+
+
+                    }
+
+                }
+            }
+
+        }

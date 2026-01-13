@@ -1,0 +1,66 @@
+/* auth */
+@forward "./auth/signup";
+@forward "./auth/verify-email";
+@forward "./auth/verify-number";
+@forward "./auth/pharmacy-registration";
+@forward "./auth/login";
+
+/* customer */
+@forward "./customer/landingPage";
+@forward "./customer/search-medicine";
+@forward "./customer/search-pharmacy";
+@forward "./customer/contactUs";
+@forward "./customer/userUpdate";
+@forward "./customer/medicine_view_page";
+@forward "./customer/pharmacyLandingPage";
+@forward "./customer/medicine_review";
+@forward "./customer/manageBill";
+@forward "./customer/loyaltyPoints";
+@forward "./customer/orderManage";
+
+/* pharmacy */
+@forward "./pharmacy/cashier/cashier-create-bill";
+@forward "./pharmacy/cashier/cashier-customer";
+@forward "./pharmacy/cashier/cashier-dashboard";
+@forward "./pharmacy/cashier/cashier-order";
+@forward "./pharmacy/cashier/cashier-payment-card";
+@forward "./pharmacy/cashier/cashier-payment-cash";
+@forward "./pharmacy/cashier/cashier-payment-qr";
+@forward "./pharmacy/cashier/cashier-product";
+@forward "./pharmacy/cashier/cashier-sales";
+@forward "./pharmacy/pharmarcy";
+@forward "./pharmacy/stock/stockDashboard";
+@forward "./pharmacy/stock/stockLogin";
+@forward "./pharmacy/pharmacyDashboard";
+
+/* admin */
+@forward "./admin/allStaff";
+@forward "./admin/adminDashboard";
+@forward "./admin/users";
+@forward "./admin/dataAssets";
+
+@forward "./admin/medicines/medicineAdd";
+@forward "./admin/medicines/medicines";
+
+@forward "./admin/blogs/antibiotics";
+@forward "./admin/blogs/blogManage";
+@forward "./admin/blogs/blogView";
+@forward "./admin/blogs/createNewBlog";
+@forward "./admin/blogs/diabetics";
+@forward "./admin/blogs/editBlog";
+@forward "./admin/blogs/hypertension";
+@forward "./admin/blogs/supplement";
+
+@forward "./admin/pharmacy/addPharmarcy";
+@forward "./admin/pharmacy/addPharmarcy01";
+@forward "./admin/pharmacy/addPharmarcy02";
+@forward "./admin/pharmacy/addPharmarcy03";
+@forward "./admin/pharmacy/addPharmarcy04";
+@forward "./admin/pharmacy/pharmarcy";
+@forward "./landingPage";
+@forward "./addUsers";
+@forward "./viewProfile";
+@forward "./userProfileManage";
+@forward "./products.pharmacy_management_system.scss";
+@forward "./aboutUs";
+

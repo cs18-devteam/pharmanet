@@ -1,0 +1,94 @@
+.btn-add-new{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-green-02);
+    width: fit-content;
+    text-transform: capitalize;
+    color:#fff;
+    border-radius: 3rem;
+    margin: 1rem;
+    font-weight: 300;
+    cursor: pointer;
+    overflow: hidden;
+    user-select: none;
+
+
+    &:hover{
+        // transform: translateY(-3px);
+        // box-shadow: 0 3px 0px rgba(5, 36, 33, 0.348);
+
+
+        span{
+            &:first-child{
+                background-size: 400%;
+                
+                span:first-child{
+                    // font-size: 1.4rem;
+                    opacity: 0;
+                    transition-delay: 0s;
+                }
+
+
+                span:nth-child(2){
+                    position: absolute;
+                    left: 50%;
+                    bottom: 0;
+                    opacity: 1;
+                    transform: translate(-50% , 0%);
+                }
+            }
+            &:nth-child(2){
+                background-size: 400%;
+            }
+        }
+    }
+
+    &:active{
+        transition: all .4s ease;
+        transform: scale(0.9) translateY(3px);
+    }
+
+    span{
+        padding: 2rem;
+        transition: all .3s ease;
+        // transition-delay:0s ;
+
+        &:first-child{
+            padding-right: 1rem;
+            background-image: radial-gradient(circle at 100% 50% ,var(--color-green-01) 30%, var(--color-green-02) 30%);
+            background-repeat: no-repeat;
+            background-size: 0%;
+            background-position: right center;
+            position: relative;
+            
+            span:first-child{
+                transition-delay: .5s;
+                background-image: none;
+            }
+            
+            span:nth-child(2){
+                position: absolute;
+                left: 50%;
+                bottom: 0;
+                transform: translate(-50% , 100%);
+                background-color: none;
+                background-image: none;
+                font-size: 1.4rem;
+                opacity: 0;
+            }
+        }
+        
+        &:nth-child(2){
+            background-image: radial-gradient(circle at 0% 50% ,var(--color-yellow-01) 30%, var(--color-green-02) 30%);
+            background-position: left center;
+            background-size: 0%;
+            background-repeat: no-repeat;
+            transition-delay: .3s;
+            
+        }
+
+
+    }
+            
+}

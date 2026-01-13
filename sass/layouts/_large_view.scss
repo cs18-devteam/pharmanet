@@ -1,0 +1,19 @@
+body.large-view{
+    .header-container{
+        display: none;
+        padding: 0;
+    }
+
+    .logo{
+        transform: scale(.8);
+    }
+
+    .nav_links{
+        transform: scale(.95);
+    }
+
+    .dashboards{
+        width: 100%;
+        margin: .5rem;
+    }
+}

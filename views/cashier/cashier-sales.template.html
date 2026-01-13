@@ -1,0 +1,384 @@
+{header}
+
+<body class="cashier-sales-page">
+  <!-- ---------------- Header ---------------- -->
+  <header>
+    <div class="navbar-pharmacy">
+    <nav>
+      <div class="logo">
+        <img class="logopic" src="/logo/logo.svg" alt="Pharmacy Logo" />
+      </div>
+
+      <div id="toggle-placeholder"></div>
+
+      <nav class="nav-links">
+        <button class="tab">Store</button>
+        <button class="tab">Dashboard</button>
+        <button class="tab active">Cashier</button>
+      </nav>
+
+
+      <!-- Notification Button -->
+<div class="notification-container">
+  <button class="notification-bell" onclick="toggleNotificationPopup()">
+    <span class="bell-icon">💬</span>
+    <span class="notification-count" id="notificationCount">2</span>
+  </button>
+  
+  <!-- Notification Popup -->
+  <div class="notification-popup" id="notificationPopup">
+    <div class="popup-header">
+      <h3>Online Orders Chat</h3>
+      <button class="close-popup" onclick="closeNotificationPopup()">×</button>
+    </div>
+    
+    <div class="chat-container">
+      <!-- Order 1 -->
+      <div class="order-chat">
+        <div class="customer-info">
+          <span class="customer-name">John Doe</span>
+          <span class="order-id">#ORD-001</span>
+          <span class="order-time">2 min ago</span>
+        </div>
+        
+        <div class="chat-messages">
+          <div class="message customer-message">
+            <div class="message-content">
+              <p>Hello, I'd like to order:</p>
+              <ul>
+                <li>2 × Amoxicillin 500mg (pack)</li>
+                <li>5 × Paracetamol 500mg (strip)</li>
+              </ul>
+            </div>
+            <span class="message-time">10:34 PM</span>
+          </div>
+          
+          <div class="message system-message">
+            <div class="message-content">
+              <p><strong>Order Summary:</strong></p>
+              <p>Items: 7 | Total: LKR 3,050 | Discount: LKR 100</p>
+              <p><strong>Final Total: LKR 2,950</strong></p>
+            </div>
+            <span class="message-time">10:35 PM</span>
+          </div>
+        </div>
+        
+        <div class="chat-actions">
+          <button class="action-btn accept-btn" onclick="acceptOrder('ORD-001')">Accept Order</button>
+          <button class="action-btn reject-btn" onclick="rejectOrder('ORD-001')">Reject</button>
+          <button class="action-btn chat-btn" onclick="startChat('ORD-001')">Message Customer</button>
+        </div>
+      </div>
+      
+      <!-- Order 2 -->
+      <div class="order-chat">
+        <div class="customer-info">
+          <span class="customer-name">Jane Smith</span>
+          <span class="order-id">#ORD-002</span>
+          <span class="order-time">5 min ago</span>
+        </div>
+        
+        <div class="chat-messages">
+          <div class="message customer-message">
+            <div class="message-content">
+              <p>Hi, I need:</p>
+              <ul>
+                <li>3 × Vitamin C 1000mg</li>
+                <li>1 × Blood Pressure Monitor</li>
+              </ul>
+              <p>Do you have these in stock?</p>
+            </div>
+            <span class="message-time">10:30 PM</span>
+          </div>
+        </div>
+        
+        <div class="chat-actions">
+          <button class="action-btn accept-btn" onclick="acceptOrder('ORD-002')">Accept Order</button>
+          <button class="action-btn reject-btn" onclick="rejectOrder('ORD-002')">Reject</button>
+          <button class="action-btn chat-btn" onclick="startChat('ORD-002')">Reply</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <!-- <div class="profile">
+       
+        <div class="profilePic">
+          <a href="/signup.html">
+            <img src="/public/logo/profile_pic.jpg" alt="Profile Picture" />
+          </a>
+        </div>
+      </div> -->
+    </nav>
+    </div>
+  </header>
+
+  <!-- ---------------- Dashboard Layout ---------------- -->
+  <div class="dashboard">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="menu-section">
+        <h4 class="section-title">MAIN MENU</h4>
+        <ul>
+          <li onclick="window.location.href='cashier-dashboard'"><i class="icon"></i><span>Dashboard</span></li>
+          <li onclick="window.location.href='cashier-product'"><i class="icon"></i><span>Products</span></li>
+        </ul>
+      </div>
+
+      <div class="menu-section">
+        <h4 class="section-title">LEADS</h4>
+        <ul>
+          <li onclick="window.location.href='cashier-order'"><i class="icon"></i><span>Orders</span></li>
+          <li class="active" onclick="window.location.href='cashier-sales'"><i class="icon"></i><span>Sales</span></li>
+          <li onclick="window.location.href='cashier-customer'"><i class="icon"></i><span>Customers</span></li>
+        </ul>
+      </div>
+
+      <!--<div class="menu-section">
+        <h4 class="section-title">COMMS</h4>
+        <ul>
+          <li><i class="icon"></i><span>Reports</span></li>
+          <li><i class="icon"></i><span>Settings</span></li>
+        </ul>
+      </div>-->
+    </aside>
+
+    <!-- Right Side Content -->
+    <div class="right-side">
+      <main class="content">
+        
+        <!-- Top Bar -->
+        <header class="top-bar">
+          <div class="search-bar">
+            <form action="" method="post">
+              <label for="category">
+                
+              <label for="Search">
+                <input type="search" class="searchmedi" id="Search" placeholder="Search by cashier name, customer name or Order Id" />
+              </label>
+
+              <label for="filter">
+                <button type="submit" class="searchButton" name="filter">Filter</button>
+              </label>
+
+              <label for="createBill">
+                <button type="button" class="createBill" onclick="window.location.href='cashier-createBill'">Create Bill</button>
+              </label>
+            </form>
+          </div>
+        </header>
+
+        <!-- Sales Results Section -->
+        <section class="sales-results">
+          <h2>Pharmacy Sales Results</h2>
+
+          <div class="cards">
+            <!-- Card 1 -->
+            <div class="card green">
+              <div class="card-header">
+                <i class="icon"></i>
+                <button class="more">⋮</button>
+              </div>
+              <h3>Today’s Sales</h3>
+              <p class="value">Rs 00.00</p>
+              <p class="change">+0.0% This Month</p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card yellow">
+              <div class="card-header">
+                <i class="icon"></i>
+                <button class="more">⋮</button>
+              </div>
+              <h3>Orders</h3>
+              <p class="value">0</p>
+              <p class="change">+0.0% This Month</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card red">
+              <div class="card-header">
+                <i class="icon"></i>
+                <button class="more">⋮</button>
+              </div>
+              <h3>Top Medicine</h3>
+              <p class="value">Paracetamol</p>
+              <p class="change">0% sales</p>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card ash">
+              <div class="card-header">
+                <i class="icon"></i>
+                <button class="more">⋮</button>
+              </div>
+              <h3>Low Stock</h3>
+              <p class="value">0</p>
+              <p class="change">Items</p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Recent Sales Table -->
+      <div class="recentSale">
+        <table class="recent-sales-table">
+          <thead>
+            <tr>
+              <th>Customer</th>
+              <th>Order Id</th>
+              <th>Cashier</th>
+              <th>Total</th>
+              <th>Discount</th>
+              <th>Time</th>
+              <th>Date</th>
+              <th>Payment<br>Method</th>
+              <th>Status</th>
+              <th>View</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><img src="/frontend/public/users/1.jpg" alt="Customer" /></td>
+              <td>68e251016c109</td>
+              <td>Nipuni</td>
+              <td>Rs 3050</td>
+              <td>Rs 100</td>
+              <td>10:36 PM</td>
+              <td>15/10/2025</td>
+              <td>Card</td>
+              <td>Completed</td>
+              <td>View</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="pagination">
+          <button class="page-btn">Prev</button>
+          <button class="page-btn">1</button>
+          <button class="page-btn active">2</button>
+          <button class="page-btn">...</button>
+          <button class="page-btn">9</button>
+          <button class="page-btn">Next</button>
+
+          <div class="entries">Showing of 20 Entries</div>
+          <select class="show-count">
+            <option>Show 3</option>
+            <option>Show 5</option>
+            <option>Show 10</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Notification functionality
+function toggleNotificationPopup() {
+  try{
+
+    const popup = document.getElementById('notificationPopup');
+    const overlay = document.createElement('div');
+    overlay.className = 'notification-overlay active';
+    document.body.appendChild(overlay);
+    
+    popup.classList.add('active');
+    
+    // Close when clicking overlay
+    overlay.addEventListener('click', closeNotificationPopup);
+  }catch(e){
+    console.log(e);
+    Notify.showError(e.message);
+  }
+}
+
+function closeNotificationPopup() {
+  try{
+
+    const popup = document.getElementById('notificationPopup');
+    const overlay = document.querySelector('.notification-overlay');
+    
+    popup.classList.remove('active');
+    if (overlay) {
+      overlay.remove();
+    }
+  }catch(e){
+    console.log(e);
+    Notify.showError(e.message);
+  }
+}
+
+// Order actions
+function acceptOrder(orderId) {
+  try{
+
+    if (confirm(`Accept order ${orderId}?`)) {
+      alert(`Order ${orderId} accepted!`);
+      // Add your API call here
+      updateNotificationCount();
+    }
+  }catch(e){
+    console.log(e);
+    Notify.showError(e.message);
+  } 
+}
+
+function rejectOrder(orderId) {
+  try{
+
+    if (confirm(`Reject order ${orderId}?`)) {
+      alert(`Order ${orderId} rejected!`);
+      // Add your API call here
+      updateNotificationCount();
+    }
+  }catch(e){
+    console.log(e);
+    Notify.showError(e.message);
+  }
+}
+
+function startChat(orderId) {
+  try{
+
+    alert(`Starting chat for order ${orderId}`);
+    // Implement chat functionality
+  }catch(e){
+    console.log(e);
+    Notify.showError(e.message);
+  }
+}
+
+function updateNotificationCount() {
+  try{
+
+    const countElement = document.getElementById('notificationCount');
+    let currentCount = parseInt(countElement.textContent);
+    if (currentCount > 0) {
+      countElement.textContent = currentCount - 1;
+    }
+  }catch(e){
+    console.log(e);
+    Notify.showError(e.message);
+  }
+}
+
+try{
+
+  
+  // Close popup when pressing Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeNotificationPopup();
+    }
+  });
+}catch(e){
+  console.log(e)
+  Notify.showError(e.message);
+}
+  </script>
+</body>
+</html>

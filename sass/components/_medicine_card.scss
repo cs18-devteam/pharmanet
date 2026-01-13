@@ -1,0 +1,444 @@
+.medicine_card{
+    border: 1px solid #eee;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 3rem;
+    position: relative;
+    padding: 2rem;
+    min-height: 10rem;
+    gap: 1rem;
+    transition: all .3s ease;
+    cursor: pointer;
+    opacity: 0;
+    scale: 0.9;
+    animation: medi_card_Popup .2s ease forwards;
+
+    @for $i from 1 to 20{
+        &:nth-child(#{$i}){
+            animation-delay: .1s * $i;
+        }
+    } 
+
+    &:hover{
+        border: 1px solid #000;
+    }
+
+    svg {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    * {
+        display: flex;
+        height: min-content;
+        text-transform: capitalize;
+    }
+
+    .close-btn{
+        transform: rotate(45deg);
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        border: 1px solid var(--color-red-01);
+        color : var(--color-red-01);
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        display: none;
+    }
+
+    .remove-btn{
+        border: 1px solid var(--color-red-01);
+        color: var(--color-red-01);
+        padding: 1rem 2rem;
+        border-radius: 3rem;
+        background-color: rgb(248, 215, 215);
+        transition: all .3s ease;
+
+        &:hover{
+            background-color: var(--color-red-01);
+            color: #fff;
+        }
+    }
+
+    .dosage-icon{
+        height: min-content;
+        
+        svg{
+            display: none;
+        }
+
+        &.syringe .syringe , &.pill .pill{
+            display: inline-block;
+        }
+        
+    }
+
+    .details{
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 1rem;
+        align-items: flex-start;
+
+        .medicine{
+            &__name{
+                display: inline-block;
+                height: fit-content;
+                text-transform: uppercase;
+                font-size: 1.8rem;
+                text-overflow: ellipsis;
+                max-width: 40rem;
+                width: 100%;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+            &__info{
+                &__store-as{
+                    display: flex;
+                }
+            }
+        }
+
+
+        @mixin fade-text{
+            font-size: 1.6rem;
+            opacity: .5;
+            font-weight: 400;
+            color:#000;
+
+        }
+
+        .medicine__info{
+            gap: 2rem;
+            align-items: center;
+
+            * {
+                align-items: center;
+            }
+
+            > * {
+
+
+                // padding: 0 2rem;
+                border-right: 1px solid #333;
+                gap: 1rem;
+                justify-content: space-between;
+                padding: 0 2rem;
+
+                &:first-child{
+                    padding-left: 0rem;
+                }
+                
+                &:last-child{
+                    border: none;
+                }
+                
+            }
+
+
+            &__store-as{
+                align-items: center;
+
+
+                span:first-child{ /* "store as" text */
+                    @include fade-text();
+                }
+                span:nth-child(2){
+                    align-items: center;
+                    gap: .5rem;
+                }
+                &__icon{
+                    align-items: center;
+                    opacity: 1;
+                    
+
+                    &.pill .pill{
+                        display: inline-block;
+                    }
+
+                    svg{
+                        display: none;
+                    }
+
+                }
+
+                // &__variety{
+                //     color: red;
+
+                // }
+
+            }
+
+            &__price{
+                    color:var(--color-green-01);
+                    font-weight: 600;
+
+                
+                
+                > span:first-child{ /* "price" text */
+                    @include fade-text();
+                }
+
+                .price{
+                    &__value{
+                        opacity: 1;
+
+                    }
+
+                    &__identifier{
+                        opacity: .5;
+                        font-weight: 400;
+                        color:#000;
+                        margin-left: .5rem;
+
+                    }
+                }
+            }
+        }
+
+    }
+
+    .stock{
+        // opacity: 0;
+        position: absolute;
+        inset : 1rem 1rem auto auto ;
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        
+        &__tag{
+            
+            display: inline-block;
+            border-radius: 3rem;
+            gap: 0rem;
+            height: 4rem;
+            width: 12rem;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+            // --background : #eee;
+            // background-color: var(--background);
+
+            // &.available{
+            //     --background : var(--color-green-01);
+
+            // }
+            // &.low_stock{
+            //     --background : var(--color-yellow-01)
+                
+                
+            // }
+            // &.not_available{
+            //     --background : #eee;
+
+            // }
+            // &.out_of_stock{
+            //     --background : var(--color-red-01);
+            // }
+
+
+            @mixin tag-styles{
+
+                color: #fff;
+                display: none;
+                width: 12rem;
+                padding: 1rem;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50% , -50%);
+            }
+
+            .not_available{
+                @include tag-styles();
+                color: #333;
+            }
+
+
+            .available{
+                @include tag-styles();
+            }
+            
+            .low_stock{
+                @include tag-styles();
+
+            }
+
+            .out_of_stock{
+                @include tag-styles();
+
+            }
+
+        }
+
+        @mixin tag-style($class-name){
+            &#{$class-name}{
+                $background-color : #eee;
+                color:#fff;
+
+                @if($class-name == ".available"){
+                    $background-color : var(--color-green-01);
+                }
+                @else if($class-name == ".low_stock"){
+                    $background-color : var(--color-yellow-01);
+                }
+                @else if($class-name == ".out_of_stock"){
+                    $background-color : var(--color-red-01);
+                }@else if($class-name == ".not_available"){
+                    color:#000;
+                }
+
+                #{$class-name}{
+                    display: inline-block;
+                    background-color: $background-color;
+
+                    
+                    
+                }
+
+                .stock__amount{
+                    padding: 1rem;
+                    background-color: $background-color;
+                    border-radius: 3rem;
+                }
+
+                
+            }                
+        }
+
+        @include tag-style(".not_available");
+        @include tag-style(".out_of_stock");
+        @include tag-style(".available");
+        @include tag-style(".low_stock");
+
+
+    }
+
+
+    &.show-order-add-form{
+        .order-add-form{
+            height: 3rem;
+            opacity: 1 !important;
+
+        }
+    }
+
+
+    .order-add-form{
+        width: 100%;
+        transition: all .3s ease;
+        display:  flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-left: 3rem;
+        opacity: 0 !important;
+        height: 1px;
+        display: none;
+
+        &.available{
+            display: flex;
+        }
+
+
+        .input{
+            width: 30%;
+
+            label{
+
+                display: flex;
+                align-items: center;
+                
+                input{
+                    width: 100%;
+                    margin:0 1rem;
+                }
+            }
+        }
+
+
+        .add{
+            padding: 1rem 2.5rem ;
+            border-radius: 3rem;
+            color: #fff;
+            background-color: var(--color-green-01);
+            border: none;
+        }
+    }
+
+    .cart_item_details{
+        opacity: 0 !important;
+        height: 1px;
+        width: 100%;
+        margin-left: 3rem;
+    }
+}
+
+
+.orders  .cart_list .medicine_card {
+
+
+    .close-btn{
+        transform: rotate(45deg);
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        border: 1px solid var(--color-red-01);
+        color : var(--color-red-01);
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
+
+    .details{
+        .medicine__info__store-as{
+            display: none;
+        }
+
+        .medicine__info__price{
+            display: none;
+        }
+    }
+
+
+    .stock{
+        display: none;
+    }
+
+    .cart_item_details{
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        justify-content: space-between;
+        opacity: 1;
+        height: 3rem;
+        margin-top: -3rem;
+
+        .cart_item_details__summery{
+            > * {
+                margin-right: 1rem;  
+            }
+
+            span:nth-child(1) , span:nth-child(5){
+                color : var(--color-green-01)
+            }
+        }
+
+        .cart_item_details__total{
+            font-size: 2rem;
+        }
+    }
+} 
+
+@keyframes medi_card_Popup{
+    100%{
+        opacity: 1;
+        scale:1;
+    }
+}
+

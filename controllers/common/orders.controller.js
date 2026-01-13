@@ -1,0 +1,180 @@
+const {apiCatchAsync} = require("../../common/catchAsync");
+const Convert = require("../../common/Convert");
+const getMultipartData = require("../../common/getMultipartData");
+const { getRequestData } = require("../../common/getRequestData");
+const { response, responseJson } = require("../../common/response");
+const view = require("../../common/view");
+const Carts = require("../../models/CartModel");
+const Medicines = require("../../models/MedicineModel");
+const PharmacyMedicines = require("../../models/PharmacyMedicinesModel");
+const PharmacyOrdersItems = require("../../models/PharmacyOrderItemsModel");
+const PharmacyOrders = require("../../models/PharmacyOrderModel");
+const PharmacyStaff = require("../../models/PharmacyStaffModel");
+const Products = require("../../models/ProductModel");
+const Transactions = require("../../models/TransactionModel");
+const Users = require("../../models/UserModel");
+
+
+exports.createOrder = apiCatchAsync(async (req , res)=>{
+
+        const reqData = JSON.parse(await getRequestData(req));
+        const carts = reqData.carts;
+        const items = reqData.items;
+        let ordersData  = [];
+        
+        const [order] =await  PharmacyOrders.save({
+            userId : reqData.userId,
+        })
+
+        if(carts && carts.length){
+            let cartsData = carts.map(async cid=>{
+                return await Carts.get({
+                    userId: reqData.userId,
+                    id : cid,
+                })
+            });
+
+            ordersData = await Promise.all(cartsData).then(data=>data.map(d=>d[0]));
+        }
+
+        const orders= await Promise.all(ordersData.map(async (item)=>{
+            return await PharmacyOrdersItems.save({
+                orderId: order.id,
+                itemId : item.productId || item.medicineId,
+                itemType : item.productId ? "product" : "medicine",
+                quantity : item.quantity,
+            })
+        }))
+
+        let staff;
+        if(reqData.staffId){
+            const [staff] =  await PharmacyStaff.getById(reqData.staffId);
+
+            if(!staff) throw new Error("staff member not found");
+        }
+
+        const [user] = await Users.getById(reqData.userId);
+        if(!user){
+            throw new Error("You not part of our system");
+        }
+
+        const [transaction] = await Transactions.save({
+            orderId : order.id,
+            staffID : reqData.staffId,
+            pharmacyId : staff?.pharmacyId , 
+            method: reqData.method,
+            amount: reqData.amount ,
+            userId : reqData.userId,
+            type: reqData.type,
+            transactionDateTime : Convert.toSqlDate(Date.now()),
+            
+
+        })
+
+        return responseJson(res , 201 , {
+            status:"success",
+            results: {
+                orderId : order.id , 
+                pharmacyId : order.pharmacyId,
+                items: orders,
+                userId : order.userId,
+                transaction : transaction,
+            }
+        })
+})
+
+
+exports.getOrders = apiCatchAsync(async (req , res)=>{
+    const userId = req.params.get('user');
+    const pharmacyId = req.params.get('pharmacy')    
+    const id = req.params.get('id');
+        
+    const filter = {};
+    if(userId) filter.userId = userId;
+    if(pharmacyId) filter.pharmacyId = pharmacyId;
+    if(id) filter.id = id;
+
+    if(!Object.entries(filter).length) throw new Error('pharmacy | userId | id are not defined');
+
+    const results = await PharmacyOrders.get(filter);
+
+    return responseJson(res , 200 , {
+        status:"success",
+        results,
+        count: results.length,
+    })
+
+});
+
+
+exports.addOrderItem = apiCatchAsync(async (req , res)=>{
+    const id = req.orderId;
+    const reqData = JSON.parse(await getRequestData(req));
+
+    let medicine;
+    let product;
+    if(reqData.medicineId){
+        medicine = await Medicines.getById(reqData.medicineId)[0];
+    }
+
+    const orderObj = {
+        orderId : id,
+        itemId : reqData.medicineId || reqData.orderId,
+        itemType : reqData.medicineId ? "medicine" : "product",      
+        price : medicine?.price || product?.price,
+        discount :  reqData.discount,
+        quantity : reqData.quantity,
+    }
+
+
+ 
+    const [orderItem] = await PharmacyOrdersItems.save(orderObj)
+    
+
+    return responseJson(res , 200 , {
+        status:"success",
+        results : orderItem,
+    } )
+    
+});
+
+
+
+exports.getOrderItems =apiCatchAsync(async (req , res)=>{
+    const id = req.orderId;
+    const [order] = await PharmacyOrders.getById(id);
+    let items = await PharmacyOrdersItems.get({
+        orderId :id,
+    })
+
+    items = items.map(async i=>{
+        if(i.itemType == "medicine"){
+            return {
+                ...i , 
+                details : (await Medicines.getById(i.itemId))[0],
+                stock : (await PharmacyMedicines.get({
+                    medicineId : i.itemId,
+                    pharmacyId : req.params.get("pharmacyId"),
+                }))[0],
+            }
+        }else if(i.itemType == "product"){
+            return {
+                ...i , 
+                details: (await Products.getById(i.itemId))[0],
+            }
+        }
+    }) 
+
+    items = await Promise.all(items);
+
+
+    responseJson(res , 200 , {
+        status:"success",
+        results : {
+            order , 
+            items ,
+        },
+        count: 1,
+    })
+})
+

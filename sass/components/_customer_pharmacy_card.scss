@@ -1,0 +1,138 @@
+//pharmacy section
+    .pharmacy-section{
+
+        .section-title{
+            margin-top:5rem ;
+
+            .title-one{
+                font-size: 2rem;
+                font-weight: 600;
+                color: black;
+                text-align: left;
+                //padding: 1rem;
+                margin: 1rem 7rem;
+            }
+        }
+
+
+        .pharmacy_grid {
+            display: grid;
+            align-items: center;
+            grid-template-columns: repeat(4, 32rem);  /* 4 columns */
+            // margin: 5rem 10rem 10rem 10rem;
+            justify-content: center;
+            max-width: fit-content;
+            border: 1px solid #e8e8e8;
+            margin: auto;
+            
+
+        .pharmacy-card{
+            padding:2rem;
+            background-color: white;
+            width: 100%;
+            border: 1px solid #e8e8e8;
+            box-shadow:0px 2px 6px rgba(0,0,0,0.05);
+            //height: 15rem;
+            //margin: 1rem;
+
+            
+
+            .pharmacy_infomation{
+                .pharmacy_name_info{
+                    //font-weight: 500;
+                    .name{
+                        font-weight: 600;
+                        color: #979696;
+                        font-size:1.6rem;
+                    }
+                    .pharmacy_name{
+                        font-size: 1.6rem;
+                        font-weight: 500;
+                    }
+                }
+
+                .pharmacy_address{
+                    font-size: 1.6rem;
+                    color:#1A7F89 ;
+                    padding:1.6rem 0;
+                    font-weight: 600;
+    
+                }
+                }
+
+
+                    .results{
+
+                        display: flex;
+                        justify-content: space-between;
+                        
+                        .distance{
+
+                            display: flex;
+                            background-color: #E8F7FF;
+                            border-radius: 3rem;
+                            //padding: 0.5rem;
+                            font-size:1.6rem;
+                            color: #08374F;
+                            font-weight: 500;
+                            margin: 1rem;
+                            max-width: fit-content;
+                            //gap:1rem;
+                            justify-content: center;
+                            align-items: center;
+
+                            .distance_img{
+                                margin:  1rem ;
+                            }
+
+                            .distance__value{
+                                margin: 1rem;
+                            }
+                            
+                        }
+                        .view-btn{
+                            display: flex;
+                            background-color: #006395;
+                            align-items: center;
+                            border-radius: 3rem;
+                            padding: 1rem;
+                            font-size:1.6rem;
+                            color:white;
+                            font-weight: 500;
+                            margin: 1rem;
+                            max-width: fit-content;
+                            gap:1rem;
+                            justify-content: center;
+
+                            .view_pharmacy{
+                                margin-left: 1rem;
+                            }
+
+                            .view_img{
+                            margin-right: 1rem ;
+                        }
+                        }
+
+                    }
+
+                    &:hover{
+                            background-color: white;
+                            border: 1px solid black;
+                            cursor: pointer;
+                        }
+
+
+            .pharmacy-img{
+                    object-fit: none;
+                    align-items: center;
+                    display: flex;
+                    justify-content: center;
+                    
+                }
+        }
+
+        }
+
+
+        
+    }

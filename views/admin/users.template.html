@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="users">
+  <div class="container">
+    <div class="container-1">
+      <div class="sideBar">
+        <div class="logo">
+          <img class="logopic" src="/logo/logo.svg" alt="logo">
+          <div>
+            <h3>System Admin</h3>
+            <p>Management System</p>
+          </div>
+        </div>
+
+        {sidebar}
+
+        <div class="menuItem">
+          <button class="text signOut"> Sign Out</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-2">
+      <div class="main">
+        <!-- <header>
+      <input type="text" placeholder="Search users..." />
+      <div class="user-section">
+        <span class="bell"></span>
+        <div class="admin">AD</div>
+      </div>
+    </header> -->
+
+        <section class="dashboard">
+          <div class="sectionHeading">
+            <div>
+              <h1>Users</h1>
+              <p>Manage user accounts and permissions.</p>
+            </div>
+            <div>
+              <button class="addBtn" id="openAddUserModal">Add Users</button>
+              <div id="addUserModal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <iframe src="/admin/{id}/users/create" class="modal-iframe"></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="user-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>User</th>
+                  <th>Role</th>
+                  <th>Pharmacy</th>
+                  <th>Status</th>
+                  <th>Last Active</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="users-table-body">
+                <!-- <tr>
+          <td>
+            <div class="user-info">
+              <div class="avatar">JS</div>
+              <div class="details">
+                <div class="name">John Smith</div>
+                <div class="email">john.smith@pharmacy.com</div>
+              </div>
+            </div>
+          </td>
+          <td><span class="role admin">Admin</span></td>
+          <td>Downtown Pharmacy</td>
+          <td><span class="status active">Active</span></td>
+          <td>2 hours ago</td>
+          <td class="actions">
+            <div class="dropdownMenu">
+              <button class="dots">⋮</button>
+              <ul class="dropdown">
+                <a href="/admin/viewProfile">View Profile</a>
+                <a href="">Edit User</a>
+                <a href="">Change Role</a>
+                <a href="">Reset Password</a>
+                <a href="#" class="deactivate-btn danger" data-id="">Deactivate</a>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td>
+            <div class="user-info">
+              <div class="avatar">SJ</div>
+              <div class="details">
+                <div class="name">Sarah Johnson</div>
+                <div class="email">sarah.j@pharmacy.com</div>
+              </div>
+            </div>
+          </td>
+          <td><span class="role admin">Manager</span></td>
+          <td>Central Medicine Pharmacy</td>
+          <td><span class="status active">Active</span></td>
+          <td>5 minutes ago</td>
+          <td class="actions">
+            <div class="dropdownMenu">
+              <button class="dots">⋮</button>
+              <ul class="dropdown">
+                <a href="/admin/viewProfile">View Profile</a>
+                <a href="">Edit User</a>
+                <a href="">Change Role</a>
+                <a href="">Reset Password</a>
+                <a href="" class="danger">Deactivate</a>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+    
+        <tr>
+          <td>
+            <div class="user-info">
+              <div class="avatar">MD</div>
+              <div class="details">
+                <div class="name">Mike Davis</div>
+                <div class="email">mike.davis@pharmacy.com</div>
+              </div>
+            </div>
+          </td>
+          <td><span class="role admin">Pharmarcist</span></td>
+          <td>Westside Pharmacy</td>
+          <td><span class="status active">Active</span></td>
+          <td>1 hour ago</td>
+          <td class="actions">
+            <div class="dropdownMenu">
+              <button class="dots">⋮</button>
+              <ul class="dropdown">
+                <a href="/admin/viewProfile">View Profile</a>
+                <a href="">Edit User</a>
+                <a href="">Change Role</a>
+                <a href="">Reset Password</a>
+                <a href="" class="danger">Deactivate</a>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="user-info">
+              <div class="avatar">LA</div>
+              <div class="details">
+                <div class="name">Lisa Anderson</div>
+                <div class="email">lisa.a@pharmacy.com</div>
+              </div>
+            </div>
+          </td>
+          <td><span class="role admin">Manager</span></td>
+          <td>Eastgate Pharmacy</td>
+          <td><span class="status active">Active</span></td>
+          <td>2 hours ago</td>
+          <td class="actions">
+            <div class="dropdownMenu">
+              <button class="dots">⋮</button>
+              <ul class="dropdown">
+                <a href="/admin/viewProfile">View Profile</a>
+                <a href="">Edit User</a>
+                <a href="">Change Role</a>
+                <a href="">Reset Password</a>
+                <a href="" class="danger">Deactivate</a>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="user-info">
+              <div class="avatar">TW</div>
+              <div class="details">
+                <div class="name">Tom Wilson</div>
+                <div class="email">tom.wilson@pharmacy.com</div>
+              </div>
+            </div>
+          </td>
+          <td><span class="role admin">Pharmarcist</span></td>
+          <td>Downtown Pharmacy</td>
+          <td><span class="status active">Active</span></td>
+          <td>30 minutes ago</td>
+          <td class="actions">
+            <div class="dropdownMenu">
+              <button class="dots">⋮</button>
+              <ul class="dropdown">
+                <a href="/admin/viewProfile">View Profile</a>
+                <a href="">Edit User</a>
+                <a href="">Change Role</a>
+                <a href="">Reset Password</a>
+                <a href="" class="danger">Deactivate</a>
+              </ul>
+            </div>
+          </td>
+        </tr> -->
+
+              </tbody>
+            </table>
+          </div>
+
+          <script>
+
+            // Hide dropdown when clicking outside
+            document.addEventListener('click', () => {
+              document.querySelectorAll('.dropdown').forEach(dropdownMenu => dropdownMenu.classList.remove('show'));
+            });
+
+
+            const modal = document.getElementById("addUserModal");
+            const btn = document.getElementById("openAddUserModal");
+            const closeBtn = document.querySelector(".modal .close");
+
+            btn.addEventListener("click", () => {
+              modal.style.display = "flex";
+            });
+
+            closeBtn.addEventListener("click", () => {
+              modal.style.display = "none";
+            });
+
+            // Close when click outside
+            window.addEventListener("click", (e) => {
+              if (e.target === modal) {
+                modal.style.display = "none";
+              }
+            });
+
+
+            //listen for messages from the iframe
+            window.addEventListener('message', (event) => {
+              if (event.data.action === 'closeModalAndReload') {
+                modal.style.display = "none";
+                loadUsers();
+              }
+            })
+
+            const pathParts = window.location.pathname.split('/');
+            const adminIdIndex = pathParts.indexOf('admin') + 1;
+            const adminId = pathParts[adminIdIndex];
+
+            const API_URL = `${window.location.origin}/admin/${adminId}/api/users`;
+
+            window.addEventListener('load', loadUsers);
+
+            //FETCH ALL USERS
+            async function loadUsers() {
+              const res = await fetch(API_URL);
+              const users = await res.json();
+
+              const tableBody = document.getElementById("users-table-body");
+              tableBody.innerHTML = "";
+
+              users.forEach(user => {
+                const initials = user.name.split('').map(n => n[0]).join('').toUpperCase();
+                const avatar = user.avatar || initials;
+                const status = user.status || 'Active';
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                      <td>
+                          <div class="user-info">
+                            <div class="avatar">${avatar}</div>
+                            <div class="details">
+                              <div class="name">${user.name}</div>
+                              <div class="email">${user.email}</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td><span class="role">${user.role}</span></td>
+                        <td>${user.pharmacy}</td>
+                        <td><span class="status ${status.toLowerCase()}">${status}</span></td>
+                        <td>2 hours ago</td>
+                        <td class="actions">
+                          <div class="dropdownMenu">
+                            <button class="dots">⋮</button>
+                            <ul class="dropdown">
+                              <a href="/admin/viewProfile?id=${user.id}">View Profile</a>
+                              <a href="" class="edit-btn" data-id="${user.id}">Edit User</a>
+                              <a href="">Change Role</a>
+                              <a href="">Reset Password</a>
+                              <a href="#" class="deactivate-btn danger" data-id="${user.id}">Deactivate</a>
+                            </ul>
+                          </div>
+                        </td>
+                    
+                    `;
+                tableBody.appendChild(row);
+              });
+
+              // Toggle dropdown menu
+              document.querySelectorAll('.dots').forEach(btn => {
+                btn.addEventListener('click', e => {
+                  e.stopPropagation();
+                  document.querySelectorAll('.dropdown').forEach(dropdownMenu => dropdownMenu.classList.remove('show'));
+                  const dropdownMenu = btn.nextElementSibling;
+                  dropdownMenu.classList.toggle('show');
+                });
+              });
+
+              //Add event listeners to buttons
+              document.querySelectorAll(".deactivate-btn").forEach(btn =>
+                btn.addEventListener("click", (e) => {
+                  e.preventDefault();
+                  deactivateUser(btn.dataset.id);
+                })
+              );
+
+              document.querySelectorAll(".edit-btn").forEach(btn =>
+                btn.addEventListener("click", () => editUser(btn.dataset.id))
+              );
+            }
+
+            //Deactivate User
+            async function deactivateUser(id) {
+              if (!confirm("Are you sure you want to deactivate this User?")) return;
+
+              const res = await fetch(`${API_URL}/${id}`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ status: "Inactive" })
+              });
+              if (res.ok) {
+                alert("User deactivated");
+                loadUsers();
+              } else {
+                alert("Failed to deactivate User");
+              }
+            }
+
+            //Add new user
+            document.querySelector("#addUserForm")?.addEventListener("submit", async (e) => {
+              e.preventDefault();
+              const fname = document.querySelector("#fname").value;
+              const lname = document.querySelector("#lname").value;
+              const avatar = generateAvatar(fname, lname);
+              const name = fname + " " + lname;
+              const email = document.querySelector("#email").value;
+              const pharmacy = document.querySelector("#pharmacy").value;
+              const role = document.querySelector("#role").value;
+              console.log(avatar);
+
+
+              const res = await fetch(`${window.location.origin}/admin/${adminId}/api/users`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, email, pharmacy, role, avatar })
+              });
+
+              if (res.ok) {
+                alert("user created successfully!");
+                e.target.reset();
+                loadBlogs();
+              } else {
+                alert("Error creating user");
+              }
+
+              async function generateAvatar(fname, lname) {
+                const fletter = fname.trim().charAt(0).toUpperCase();
+                const lletter = lname.trim().charAt(0).toUpperCase();
+                const avatar = fletter + lletter;
+                console.log(avatar);
+                return avatar;
+              }
+
+            });
+
+          </script>
+      </div>
+    </div>
+</body>
+
+</html>

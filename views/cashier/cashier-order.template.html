@@ -1,0 +1,388 @@
+{header}
+
+<body class="cashier-dashboard">
+  <!-- ---------------- Header ---------------- -->
+  <header>
+    <div class="navbar-pharmacy">
+    <nav>
+      <div class="logo">
+        <img class="logopic" src="/logo/logo.svg" alt="Pharmacy Logo" />
+      </div>
+
+      <div id="toggle-placeholder"></div>
+
+      <nav class="nav-links">
+        <button class="tab">Store</button>
+        <button class="tab">Dashboard</button>
+        <button class="tab active">Cashier</button>
+      </nav>
+
+      <!-- Notification Button -->
+<div class="notification-container">
+  <button class="notification-bell" onclick="toggleNotificationPopup()">
+    <span class="bell-icon">💬</span>
+    <span class="notification-count" id="notificationCount">2</span>
+  </button>
+  
+  <!-- Notification Popup -->
+  <div class="notification-popup" id="notificationPopup">
+    <div class="popup-header">
+      <h3>Online Orders Chat</h3>
+      <button class="close-popup" onclick="closeNotificationPopup()">×</button>
+    </div>
+    
+    <div class="chat-container">
+      <!-- Order 1 -->
+      <div class="order-chat">
+        <div class="customer-info">
+          <span class="customer-name">John Doe</span>
+          <span class="order-id">#ORD-001</span>
+          <span class="order-time">2 min ago</span>
+        </div>
+        
+        <div class="chat-messages">
+          <div class="message customer-message">
+            <div class="message-content">
+              <p>Hello, I'd like to order:</p>
+              <ul>
+                <li>2 × Amoxicillin 500mg (pack)</li>
+                <li>5 × Paracetamol 500mg (strip)</li>
+              </ul>
+            </div>
+            <span class="message-time">10:34 PM</span>
+          </div>
+          
+          <div class="message system-message">
+            <div class="message-content">
+              <p><strong>Order Summary:</strong></p>
+              <p>Items: 7 | Total: LKR 3,050 | Discount: LKR 100</p>
+              <p><strong>Final Total: LKR 2,950</strong></p>
+            </div>
+            <span class="message-time">10:35 PM</span>
+          </div>
+        </div>
+        
+        <div class="chat-actions">
+          <button class="action-btn accept-btn" onclick="acceptOrder('ORD-001')">Accept Order</button>
+          <button class="action-btn reject-btn" onclick="rejectOrder('ORD-001')">Reject</button>
+          <button class="action-btn chat-btn" onclick="startChat('ORD-001')">Message Customer</button>
+        </div>
+      </div>
+      
+      <!-- Order 2 -->
+      <div class="order-chat">
+        <div class="customer-info">
+          <span class="customer-name">Jane Smith</span>
+          <span class="order-id">#ORD-002</span>
+          <span class="order-time">5 min ago</span>
+        </div>
+        
+        <div class="chat-messages">
+          <div class="message customer-message">
+            <div class="message-content">
+              <p>Hi, I need:</p>
+              <ul>
+                <li>3 × Vitamin C 1000mg</li>
+                <li>1 × Blood Pressure Monitor</li>
+              </ul>
+              <p>Do you have these in stock?</p>
+            </div>
+            <span class="message-time">10:30 PM</span>
+          </div>
+        </div>
+        
+        <div class="chat-actions">
+          <button class="action-btn accept-btn" onclick="acceptOrder('ORD-002')">Accept Order</button>
+          <button class="action-btn reject-btn" onclick="rejectOrder('ORD-002')">Reject</button>
+          <button class="action-btn chat-btn" onclick="startChat('ORD-002')">Reply</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <!-- <div class="profile">
+        
+        <div class="profilePic">
+          <a href="/signup.html">
+            <img src="/logo/profile_pic.jpg" alt="Profile Picture" />
+          </a>
+        </div>
+      </div> -->
+    </nav>
+    </div>
+  </header>
+
+  <!-- ---------------- Dashboard Layout ---------------- -->
+  <div class="dashboard">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="menu-section">
+        <h4 class="section-title">MAIN MENU</h4>
+        <ul>
+          <li onclick="window.location.href='cashier-dashboard'"><i class="icon"></i><span>Dashboard</span></li>
+          <li onclick="window.location.href='cashier-product'"><i class="icon"></i><span>Products</span></li>
+        </ul>
+      </div>
+
+      <div class="menu-section">
+        <h4 class="section-title">LEADS</h4>
+        <ul>
+          <li class="active" onclick="window.location.href='cashier-order'" ><i class="icon"></i><span>Orders</span></li>
+          <li onclick="window.location.href='cashier-sales'"><i class="icon"></i><span>Sales</span></li>
+          <li onclick="window.location.href='cashier-customer'"><i class="icon"></i><span>Customers</span></li>
+        </ul>
+      </div>
+
+      <!-- <div class="menu-section"> -->
+        <!-- <h4 class="section-title">COMMS</h4> -->
+        <!-- <ul> -->
+          <!-- <li><i class="icon"></i><span>Reports</span></li> -->
+          <!-- <li><i class="icon"></i><span>Settings</span></li> -->
+        <!-- </ul> -->
+      <!-- </div> -->
+    </aside>
+
+    <!-- Right Side Content -->
+    <div class="right-side">
+      <main class="content">
+        
+        <!-- Top Bar -->
+        <header class="top-bar">
+          <div class="search-bar">
+            <form action="" method="post">
+              <label for="category">
+                <span>Category:</span>
+                <select name="category" id="category" class="selector">
+                  <option value="Antibiotics">Antibiotics</option>
+                  <option value="Pain Relievers">Pain Relievers</option>
+                  <option value="Antipyretics (Fever Medicines)">Antipyretics (Fever Medicines)</option>
+                  <option value="Antacids & Digestive Medicines">Antacids & Digestive Medicines</option>
+                  <option value="Anti-Allergic Medicines">Anti-Allergic Medicines</option>
+                  <option value="Cough & Cold Medicines">Cough & Cold Medicines</option>
+                  <option value="Vitamins & Supplements">Vitamins & Supplements</option>
+                  <option value="Diabetes Medicines">Diabetes Medicines</option>
+                  <option value="Blood Pressure Medicines">Blood Pressure Medicines</option>
+                  <option value="Heart & Cardiac Care">Heart & Cardiac Care</option>
+                  <option value="Skin Care Medicines">Skin Care Medicines</option>
+                  <option value="Eye & Ear Drops">Eye & Ear Drops</option>
+                  <option value="First Aid & Emergency">First Aid & Emergency</option>
+                  <option value="Ayurvedic & Herbal Medicines">Ayurvedic & Herbal Medicines</option>
+                  <option value="Baby & Child Care">Baby & Child Care</option>
+                  <option value="Personal Hygiene">Personal Hygiene</option>
+                  <option value="Medical Devices & Equipment">Medical Devices & Equipment</option>
+                  <option value="Veterinary Medicines">Veterinary Medicines</option>
+                </select>
+              </label>
+
+              <label for="Search">
+                <input type="search" class="searchmedi" id="Search" placeholder="Search by name, description or brand" />
+              </label>
+
+              <label for="filter">
+                <button type="submit" class="searchButton" name="filter">Filter</button>
+              </label>
+
+              <label for="createBill">
+                <button type="button" class="createBill" onclick="window.location.href='cashier-createBill'">Create Bill</button>
+              </label>
+            </form>
+          </div>
+        </header>
+
+      </main>
+
+      <!-- Order table -->
+      <div class="recentSale">
+        <table class="recent-sales-table">
+          <thead>
+            <tr>
+              <th>Customer</th>
+              <th>Order Id</th>
+              <th>Items</th>
+              <th>Total</th>
+              <th>Discount</th>
+              <th>Time</th>
+              <th>Date</th>
+              <th>Payment<br>Method</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><img src="/frontend/users/1.jpg" alt="Customer" /></td>
+              <td>68e251016c109</td>
+              <td>
+                2 × Amoxicillin 500mg (pack) 2×1200=2400<br />
+                5 × Paracetamol 500mg (strip) 5×150=750
+              </td>
+              <td>LKR 3050</td>
+              <td>LKR 100</td>
+              <td>10:36 PM</td>
+              <td>15/10/2025</td>
+              <td>Card</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="pagination">
+          <button class="page-btn">Prev</button>
+          <button class="page-btn">1</button>
+          <button class="page-btn active">2</button>
+          <button class="page-btn">...</button>
+          <button class="page-btn">9</button>
+          <button class="page-btn">Next</button>
+
+          <div class="entries">Showing of 20 Entries</div>
+          <select class="show-count">
+            <option>Show 3</option>
+            <option>Show 5</option>
+            <option>Show 10</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Charts Section (Optional) -->
+      <!-- 
+      <div class="chart-row">
+        <div class="card graph-report">
+          <h3>Graph Report</h3>
+          <div class="donut">
+            <div class="center">
+              <p>Total</p>
+              <h2>755K</h2>
+            </div>
+          </div>
+          <div class="legend">
+            <span class="item purchases">Purchases</span>
+            <span class="item suppliers">Suppliers</span>
+            <span class="item sales">Sales</span>
+            <span class="item no-sales">No Sales</span>
+          </div>
+        </div>
+
+        <div class="card total-sales">
+          <h3>Total Sales Overview</h3>
+          <div class="bars">
+            <div class="bar mon"><div class="fill"></div><p>Mon</p></div>
+            <div class="bar tue"><div class="fill"></div><p>Tue</p></div>
+            <div class="bar wed active"><div class="fill"></div><p>Wed</p></div>
+            <div class="bar thu"><div class="fill"></div><p>Thu</p></div>
+            <div class="bar fri"><div class="fill"></div><p>Fri</p></div>
+            <div class="bar sat"><div class="fill"></div><p>Sat</p></div>
+          </div>
+          <div class="tooltip">
+            <p>Apr, 2025</p>
+            <h4>$298.00K</h4>
+          </div>
+        </div>
+      </div>
+      -->
+      <script>
+        // Notification functionality
+function toggleNotificationPopup() {
+  try{
+
+    const popup = document.getElementById('notificationPopup');
+    const overlay = document.createElement('div');
+    overlay.className = 'notification-overlay active';
+    document.body.appendChild(overlay);
+    
+    popup.classList.add('active');
+    
+    // Close when clicking overlay
+    overlay.addEventListener('click', closeNotificationPopup);
+  }catch(e){
+    console.log(e);
+    Notify.showError(e.message);
+  }
+}
+
+function closeNotificationPopup() {
+  try{
+
+    const popup = document.getElementById('notificationPopup');
+    const overlay = document.querySelector('.notification-overlay');
+    
+    popup.classList.remove('active');
+    if (overlay) {
+      overlay.remove();
+    }
+  }catch(e){
+    console.log(e);
+    Notify.showError(e.message);
+  }
+}
+
+// Order actions
+function acceptOrder(orderId) {
+  try{
+
+    if (confirm(`Accept order ${orderId}?`)) {
+      alert(`Order ${orderId} accepted!`);
+      // Add your API call here
+      updateNotificationCount();
+    }
+  }catch(e){
+    console.log(e);
+    Notify.showError(e.message)
+  }
+}
+
+function rejectOrder(orderId) {
+  try{
+
+    if (confirm(`Reject order ${orderId}?`)) {
+      alert(`Order ${orderId} rejected!`);
+      // Add your API call here
+      updateNotificationCount();
+    }
+  }catch(e){
+    console.log(e);
+    Notify.showError(e.message);
+  }
+}
+
+function startChat(orderId) {
+  try{
+    
+    alert(`Starting chat for order ${orderId}`);
+    // Implement chat functionality
+  }catch(e){
+    console.log(e);
+    Notify.showError(e.message);
+  }
+}
+
+function updateNotificationCount() {
+  try{
+
+    const countElement = document.getElementById('notificationCount');
+    let currentCount = parseInt(countElement.textContent);
+    if (currentCount > 0) {
+      countElement.textContent = currentCount - 1;
+    }
+  }catch(e){
+    console.log(e);
+    Notify.showError(e.message);
+  }
+}
+
+// Close popup when pressing Escape key
+document.addEventListener('keydown', function(e) {
+  try{
+
+    if (e.key === 'Escape') {
+      closeNotificationPopup();
+    }
+  }catch(e){
+    console.log(e);
+    Notify.showError(e.message);
+  }
+});
+      </script>
+    </div>
+  </div>
+</body>
+</html>

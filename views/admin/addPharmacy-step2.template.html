@@ -1,0 +1,170 @@
+{header}
+<body  class="addPharmarcy02">
+
+  <div class="registration-container">
+    <header>
+      <img class="logopic" src="/logo/logo.svg" alt="logo">
+      <h1>PharmaNet</h1>
+      <p>Register your pharmacy to get started</p>
+    </header>
+
+    <div class="steps">
+      <div class="step">
+        <div class="circle">1</div>
+        <span>Pharmacy Details</span>
+      </div>
+      <div class="step  active">
+        <div class="circle">2</div>
+        <span>Owner Information</span>
+      </div>
+      <div class="step">
+        <div class="circle">3</div>
+        <span>Location</span>
+      </div>
+      <div class="step">
+        <div class="circle">4</div>
+        <span>Pharmacist & Services</span>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <div class="card-header">
+        <i class="fa-solid fa-building-columns"></i>
+        <span>Owner Information</span>
+        <p>Provide owner contact information</p>
+      </div>
+
+      <form id="form">
+        <div class="form-row">
+          <label>Owner Name *</label>
+          <input type="text" placeholder="Enter owner name" name="owner" required>
+        </div>
+
+        <div class="form-row two-cols">
+          <div>
+            <label>Email Address*</label>
+            <input type="email" placeholder="e.g. owner@pharmarcy.com" name="email" required>
+          </div>
+          <div>
+            <label>Phone Number *</label>
+            <input type="tel" name="contact" placeholder="+94 78 141 3123" required>
+          </div>
+        </div>
+
+        <div class="form-buttons">
+         <button id="prevBtn" type="button" class="btn prev btn-previous">Previous</button></a>
+          <button id="nextBtn" type="button" class="btn next btn-next">Next
+            <!-- <img class="spinner" src="/logo/spinner.png"/> -->
+          </button></a>
+        </div>
+      </form>
+    </div>
+
+    <footer>
+      Need help? <a href="#">Contact support</a>
+    </footer>
+  </div>
+
+  <script>
+    // import "/js/utilities/Popup.js";
+// import Notify from "/js/view/Notify.js";
+
+try{
+  const form = document.getElementById('form');
+  const btn_next = document.querySelector('.btn-next');
+  const data = JSON.parse(localStorage.getItem('pharmacy')) || {};
+  console.log(data);
+  for(const [key,value] of Object.entries(data)){
+      const field = document.querySelector(`[name=${key}]`);
+
+
+      if(field){
+      field.value = value;
+      }
+  }
+
+  btn_next.addEventListener('click' , (e)=>{
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      for( const [key , value] of formData.entries()){
+      const field = document.querySelector(`[name=${key}]`);
+      if(key == 'contact'){
+          if(/[^0-9]/.test(value)){
+          field.classList.add('utility-warn');
+          field.parentElement.insertAdjacentText("beforeend" , "only numbers are allowed")
+          return;
+          } 
+          if(value.length < 10){
+          field.classList.add('utility-warn');
+          field.parentElement.insertAdjacentText("afterend" , "number can't have length less than 10");
+          return;
+          }
+
+      }else if(key != "email"){
+          if(/[^A-Za-z ]/.test(value)){
+          field.classList.add('utility-warn');
+          field.parentElement.insertAdjacentText('beforeEnd' , "only letters are allowed")
+
+          return;
+          }else{
+          field.classList.remove('utility-warn');
+          }
+          
+      }else{
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)){
+          field.classList.add('utility-warn');
+          return;
+          }else{
+          field.classList.remove('utility-warn');
+          }
+      }
+      
+      if(!value){
+          document.querySelector(`input[name=${key}]`).classList.add('utility-warn');
+          document.querySelector(`input[name="${key}"]`).classList.remove('utility-success');
+          console.log(document.querySelector(`input[name=${key}]`));
+          return;
+      }else{
+          document.querySelector(`input[name="${key}"]`).classList.add('utility-success')
+          document.querySelector(`input[name="${key}"]`).classList.remove('utility-warn')
+      }
+      data[key] = value;
+      }
+      
+      //save to storage
+      const previous = JSON.parse(localStorage.getItem('pharmacy'));
+      if(previous) window.location.href = "/admin/${adminId}/pharmacies/create";
+      localStorage.setItem("pharmacy" , JSON.stringify({...previous , ...data }));
+
+      window.location.href = `/admin/${adminId}/pharmacies/create/step/3`;
+      
+  })
+
+  }catch(e){
+      console.log(e);
+      Swal.fire({
+        icon: "error",
+        title: "something went wrong",
+        text: e.message,
+        footer: '<a href="/contactus">Why do I have this issue?</a>'
+      })
+  }
+  </script>
+
+  <script>
+  const pathParts = window.location.pathname.split('/');
+  const adminIdIndex = pathParts.indexOf('admin') + 1;
+  const adminId = pathParts[adminIdIndex];
+
+  document.getElementById('nextBtn').addEventListener(() => {
+    window.location.href = `/admin/${adminId}/pharmacies/create/step/03`;
+  });
+  document.getElementById('prevBtn').addEventListener(() => {
+    window.location.href = `/admin/${adminId}/pharamcies/create`;
+  });
+  </script>
+ 
+
+</body>
+</html>

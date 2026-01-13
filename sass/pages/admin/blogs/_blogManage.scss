@@ -1,0 +1,513 @@
+.blogManage{
+   background: white;
+
+    $text-muted: #9ca3af;
+    $element-bg: #F7F7F7;
+    $primary: #08374F;
+    $accent: #FB8F21;
+    $danger-red: #ff4444;
+    $accent-green: #00a676;
+    $radius: 1rem;
+    
+
+
+  .navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-weight: 600;
+    font-size: 3rem;
+
+    img {
+      width: 4rem;
+      height: 4rem;
+    }
+
+    span{
+        color: $primary;
+        font-size: 2rem;
+    }
+  }
+
+  .nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .btn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 1.5rem;
+
+      &.btn-filled {
+        
+        color: $primary;
+        border: 0.2rem solid $primary;
+      }
+
+      &.btn-icon {
+        background: linear-gradient(to right, #18978D, #083851);
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        border: 0.2rem solid $primary;
+      }
+
+      &:hover{
+        background: $accent;
+      }
+    }
+  }
+}
+
+  .container{
+        display: flex;
+        flex-direction: row;
+     .container-1{
+            flex: -2;
+            margin-right: 0rem;
+            align-items: stretch;
+            min-height: 95vh;
+            background-image: linear-gradient(25deg, rgba(6, 156, 156, 10), rgba(2, 127, 128, 0));
+            border-radius: 1rem;
+    
+    .sideBar{
+    
+        width: 26rem;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        
+       
+        
+        
+
+        .logo{
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            .logopic{
+                font-size: 2.4rem;
+            }
+            div{
+            h3{
+                font-size: 1.8rem;
+                margin-bottom: -0.5rem;
+                color: $primary;
+            }   
+
+            p{
+                font-size: 1.2rem;
+                color: $text-muted;
+            }
+           }
+        }
+    }
+}
+ 
+    .menu {
+        flex: 2;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 4rem;
+
+    a {
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      color: $text-muted;
+      transition: all 0.3s;
+
+      &.active,
+      &:hover {
+        background: #768190;
+        color: $accent;
+      }
+    }
+  }
+
+    .menuItem{
+        display: flex;
+        border-radius: 0.5rem;
+        .text1{
+            font-size: 1rem;
+            text-decoration: none;
+            border: none;
+            
+
+            &::before{
+                content: "⚙";
+            }
+        }
+        .text2{
+            font-size: 1rem;
+            
+            &::before{
+                content: "⎋";
+            } 
+        }
+    }
+  .menuItem{
+        // display: flex;
+        // flex-direction: column;
+        // align-items: flex-start;
+        // margin-left: -2rem;
+        // padding: 2rem;
+        // width: 26rem;
+        // background-color: $primary;
+        // border-bottom-left-radius: 1rem;
+        // border-bottom-right-radius: 1rem;
+        // position: absolute;
+        // top: 75rem;
+
+       
+        .text{
+            border: none;
+            font-size: 1.5rem;
+            background: none;
+            color: $accent;
+            cursor: pointer;
+
+            &:hover{color: $accent;}
+
+            &.setting{
+              &::before{content: "⚙";}
+            }
+            &.signOut{
+              &::before{content: "⎋";}
+            }
+  }
+}
+
+
+.container-2 {
+  flex: 2;
+  max-width: 1200px;
+  margin: 5rem auto;
+  margin-left: 2rem;
+  // background: $element-bg;
+  padding: 2rem;
+  border-radius: $radius;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  position: relative;
+  
+
+  h1 {
+    font-size: 2.5rem;
+    color: $primary;
+    font-weight: 700;
+    margin-bottom: 0rem;
+  }
+
+  p {
+    color: #666;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-create {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: linear-gradient(to right, #18978D, #083851);
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: $radius;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+    padding: 1.5rem;
+
+    &:hover {
+      background: ($primary, 8%);
+    }
+  }
+}
+
+.blog-table {
+  background: $element-bg;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: $radius;
+    overflow: hidden;
+    margin-bottom: 2rem;
+
+    th {
+      text-align: left;
+      background: #e6f0ef;
+      padding: 0.8rem;
+      font-weight: 600;
+      color: $primary;
+      font-family: sans-serif;
+    }
+
+    td {
+      padding: 1rem;
+      border-bottom: 1px solid $accent-green;
+      vertical-align: top;
+
+      strong{
+        color: $primary;
+        font-size: 1.8rem;
+      }
+
+      p {
+        font-size: 1.2rem;
+        color: #666;
+        margin: 0.3rem 0 0;
+      }
+    }
+
+    .actions {
+      a {
+        margin-right: 0.6rem;
+        text-decoration: none;
+        font-weight: 500;
+
+        &.edit-btn {
+          color: #0a7b83;
+
+          &::before{
+            content: "✏️";
+          }
+        }
+
+        &.delete {
+          color: #c0392b;
+
+          &::before{
+            content: "🗑️";
+          }
+        }
+      }
+    }
+  }
+}
+
+.tag {
+  padding: 0.2rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  &.tag-green {
+    background: #e3f9e5;
+    color: #1b7a35;
+  }
+  &.tag-blue {
+    background: #e3f0ff;
+    color: #2b56d6;
+  }
+}
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+
+  .card {
+    flex: 1;
+    background: $element-bg;
+    border-radius: $radius;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+
+    h3 {
+      margin-bottom: 0.5rem;
+      color: #666;
+    }
+
+    p {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0;
+    }
+  }
+}
+
+
+@media (max-width: 1200px) {
+
+    .container {
+      flex-direction: column;
+    }
+
+    .container-1 {
+      width: 100%;
+      min-height: auto;
+    }
+
+    .container-2 {
+      max-width: 100%;
+      margin: 2rem auto;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+    }
+  }
+
+
+@media (max-width: 992px) {
+    .navbar {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+
+      .nav-buttons {
+        justify-content: center;
+      }
+    }
+
+    .container {
+      flex-direction: column;
+    }
+
+    .sideBar {
+      width: 100%;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 1.5rem;
+    }
+
+    .menu {
+      flex-direction: row;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      overflow-x: auto;
+    }
+
+    .menu a {
+      white-space: nowrap;
+    }
+
+    header .btn-create {
+      position: static;
+      margin-top: 1rem;
+      width: 100%;
+    }
+  }
+
+@media (max-width: 768px) {
+
+    .navbar {
+      padding: 1rem;
+
+      .logo span {
+        font-size: 1.6rem;
+      }
+
+      .btn {
+        font-size: 1.2rem;
+        padding: 6px 12px;
+      }
+    }
+
+    .sideBar {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .menu {
+      width: 100%;
+    }
+
+    .container-2 {
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .summary {
+      flex-direction: column;
+    }
+
+    .blog-table {
+      overflow-x: auto;
+
+      table {
+        min-width: 700px;
+      }
+    }
+  }
+
+@media (max-width: 576px) {
+
+    header h1 {
+      font-size: 1.8rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+    }
+
+    .navbar .logo img {
+      width: 3rem;
+      height: 3rem;
+    }
+
+    .btn-create {
+      padding: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .menu a {
+      font-size: 1.2rem;
+      padding: 8px 10px;
+    }
+
+    td strong {
+      font-size: 1.4rem;
+    }
+
+    td p {
+      font-size: 1.1rem;
+    }
+  }
+
+
+@media (max-width: 400px) {
+
+    .navbar {
+      padding: 0.8rem;
+    }
+
+    .btn {
+      width: 100%;
+    }
+
+    .menu {
+      gap: 0.3rem;
+    }
+
+    .summary .card p {
+      font-size: 1.6rem;
+    }
+  
+}
+}

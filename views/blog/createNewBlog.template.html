@@ -1,0 +1,93 @@
+{header}
+<body class="createNewBlog">
+  <header class="page-header">
+    <a href="/admin/{id}/blogs/manage" class="back-btn">←</a>
+    <div class="title-group">
+      <h1>Create New Blog Post</h1>
+      <p>Share health tips and pharmacy insights with your community</p>
+    </div>
+  </header>
+
+  <div class="container">
+  <div class="container1">
+    <form class="form-section" id="createBlogForm" action="post">
+      <div class="card">
+        <h3>Post Details</h3>
+        <p class="subtitle">Enter the basic information for your blog post</p>
+
+        <label>Post Title</label>
+        <input type="text" id="title" name="title" placeholder="e.g., 5 Tips for Managing Your Medications">
+
+        <label>URL Slug</label>
+        <input type="text" id="slug" name="slug" placeholder="">
+
+        <label>Excerpt</label>
+        <textarea id="excerpt" name="excerpt" placeholder="Brief summary of your post (shown in listings)" name="excerpt"></textarea>
+      </div>
+
+      <div class="card">
+        <h3>Content</h3>
+        <p class="subtitle">Write your blog post content here</p>
+
+        <label>Post Content</label>
+        <textarea id="content" name="content" placeholder="Write your blog post content here. You can use markdown formatting..."></textarea>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <div class="card">
+        <h3>Publish Settings</h3>
+
+        <label>Status</label>
+        <input id="date" type="date" name="status" placeholder="DD-MM-YYYY">
+        <!-- <select name="status">
+          <option>Draft</option>
+          <option>Published</option>
+        </select> -->
+
+        <label>Category</label>
+        <select id="category" name="category">
+          <option>Select a category</option>
+          <option>Medicine</option>
+          <option>Disease</option>
+        </select>
+
+        <label>Author</label>
+        <input id="author" type="text" name="author" placeholder="Your name">
+
+        <label>Tags</label>
+        <input id="tag" type="text" name="tag" placeholder="Separate with commas">
+      </div>
+
+      <div class="buttons">
+        <button class="save"><span></span> Save Post</button>
+        <button class="preview"><span>👁</span> Preview</button>
+      </div>
+
+      <div class="tip">
+        <p><strong>Tip:</strong> Write clear, informative content that helps your customers. Include relevant keywords for better search visibility.</p>
+      </div>
+    </div>
+    </div>
+  </div>
+  <script>
+    const  form = document.getElementById('createBlogForm');
+    form.addEventListener("submit" , (e)=>{
+	    e.preventDefault();
+	    const data = {}
+	    const formData = new FormData(form);
+      for(const  [key , value] of formData.entries()){
+        data[key] = value;
+      }
+
+      console.log(data);
+
+      fetch("/admin/{id}/blogs/api/create" , {
+        method:"POST" , 
+        body : JSON.stringify(data),
+      }).then((respond)=>respond.json()).then(()=>window.location.href="/admin/{id}/blogs/manage").catch(e=>console.log(e));
+	
+})
+  </script>
+</body>
+</html>

@@ -14,7 +14,6 @@ class StaffMember extends User{
             url : Application.registry.DynamicURL(Application.registry.URL_STAFF , { id : ' '}),
         });
 
-        console.log(respond);
     }
 
 }

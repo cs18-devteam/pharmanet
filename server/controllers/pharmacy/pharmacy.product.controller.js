@@ -82,6 +82,7 @@ exports.getProducts  = apiCatchAsync(async (req , res)=>{
         products = await Products.query(`select * from this.table where pharmacyId=${pharmacyId} limit ${limit}`);
     }
     
+
     return responseJson(res , 200 , {
         status:"success",
         results: products,

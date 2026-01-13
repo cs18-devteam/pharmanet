@@ -1,6 +1,7 @@
 import Payment from "../../model/Payment.js";
 import Application from "../../model/application/Application.js";
 import { createOrder } from "../../model/pharmacy/orders.js";
+import { closeDrawer, openDrawer, setDrawerContent } from "../../view/pharmacy/drawerView.js";
 import { updateReceipt } from "../../view/pharmacy/orders/reciptView.js";
 import { closeOrdersPaymentMode, openOrdersPaymentMode } from "../../view/pharmacy/orders__viewPaymentMode.js";
 import { swal } from "../../view/swal.js";
@@ -11,7 +12,18 @@ const cartList = document.querySelector('.orders .cart_list');
 
 export default function init(){
     updateCardList(cartList , Application.getOrderItems());
-    orders__searchAndRenderMedicineCard()
+    orders__searchAndRenderMedicineCard();
+
+
+    const ordersBtn = document.querySelector(".orders .right-btns .payment-btn");
+    const searchBtn = document.querySelector(".orders .right-btns .search-btn");
+
+    ordersBtn.addEventListener("click" , showOrders);
+    searchBtn.addEventListener("click" , ()=>{closeDrawer()})
+
+
+
+    
 }
 
 
@@ -204,3 +216,10 @@ printBtn.addEventListener("click" , ()=>{
     
 });
 
+
+
+
+function showOrders(e){
+    setDrawerContent("");
+    openDrawer(e);
+}

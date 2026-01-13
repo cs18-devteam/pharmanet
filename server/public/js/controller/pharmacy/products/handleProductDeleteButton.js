@@ -14,9 +14,7 @@ export async function handleProductDeleteButton(){
             showCancelButton : true,
         }).then(async results=>{
             if(results.isConfirmed){
-                console.log('from delete product');
                 const data = await deleteProduct(deleteButton.dataset.id);
-                console.log(data);
                 if(data.status == "error"){
                     swal({
                         title:"product not deleted !",

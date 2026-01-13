@@ -105,6 +105,7 @@ const server = https.createServer(options,(req , res)=>{
         customerApiRouter.pipe(req , res);
         pharmaciesApiRouter.pipe(req ,res);
         pharmacyTransactionsRouter.pipe(req,res);
+        pharmacyProductApiRouter.pipe(req , res);
 
         AppRouter.pipe(req ,res).route('/admin/addUsers')
         ?.get(adminController.addUsers);

@@ -2,7 +2,6 @@ import Application from "../application/Application.js";
 
 export async function getProducts(search ,limit = 10) {
     try{
-
         const response = await fetch(`/api/v1/pharmacies/${Application.pharmacyId}/products?limit=${limit}${search ? `&search=${search}` : ""}`);
         
         const data = await response.json();

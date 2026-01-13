@@ -415,6 +415,12 @@ $containers : 'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 's
                     font-weight: 500;
                     border-top-right-radius: 3rem;
                     z-index: -1;
+                    position: absolute;
+                    z-index: 100;
+                    border-bottom-left-radius: 3rem;
+                    height: 7rem;
+
+
 
                     span{
 
@@ -771,6 +777,9 @@ $containers : 'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 's
                     grid-template-columns: auto auto;
                     gap:1rem;
                     margin-top: 1rem;
+                    height: 80vh;
+                    overflow: scroll;
+                    padding-bottom: 15rem;
                 }
 
                 .medicine_card{

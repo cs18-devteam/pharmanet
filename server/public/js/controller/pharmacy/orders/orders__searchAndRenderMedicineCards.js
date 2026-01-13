@@ -37,7 +37,6 @@ export function updateCardList(cartList , orders ){
     setTextContent(numberOfItemsInCart , Application.getOrderItems().length);
     setTextContent(priceOfCartItems , calcCartPrice().toLocaleString('En-us'));
     const orderCards = createMedicineCards(orders);
-    console.log(orderCards);
     renderMedicineCards(cartList , orderCards);
 }
 
@@ -50,7 +49,6 @@ export function updateCardList(cartList , orders ){
 function onPushOrderItem (orderItem , orderItemsCollection){
     setTextContent(numberOfItemsInCart , orderItemsCollection.length);
     setTextContent(priceOfCartItems , calcCartPrice().toLocaleString('En-us'));
-    // console.log(orderItem);
 
     // re structure order collection
     const orders = orderItemsCollection.map(item=>{

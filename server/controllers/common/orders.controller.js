@@ -110,7 +110,6 @@ exports.getOrders = apiCatchAsync(async (req , res)=>{
 exports.addOrderItem = apiCatchAsync(async (req , res)=>{
     const id = req.orderId;
     const reqData = JSON.parse(await getRequestData(req));
-    console.log({id , ...reqData});
 
     let medicine;
     let product;
@@ -150,7 +149,6 @@ exports.getOrderItems =apiCatchAsync(async (req , res)=>{
 
     items = items.map(async i=>{
         if(i.itemType == "medicine"){
-            console.log('medicine');
             return {
                 ...i , 
                 details : (await Medicines.getById(i.itemId))[0],
@@ -160,7 +158,6 @@ exports.getOrderItems =apiCatchAsync(async (req , res)=>{
                 }))[0],
             }
         }else if(i.itemType == "product"){
-            console.log('product');
             return {
                 ...i , 
                 details: (await Products.getById(i.itemId))[0],
@@ -170,7 +167,6 @@ exports.getOrderItems =apiCatchAsync(async (req , res)=>{
 
     items = await Promise.all(items);
 
-    console.log(items);
 
     responseJson(res , 200 , {
         status:"success",

@@ -91,7 +91,6 @@ exports.searchMedicinesByName = async (req , res)=>{
                     medicineId : med.id,
                     pharmacyId : pharmacyId,
                 })
-                // console.log(stock[0]);
                 
 
                 return {...med , stock : stock[0] || {}};

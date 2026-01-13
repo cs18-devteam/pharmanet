@@ -1,10 +1,36 @@
 const drawer = document.querySelector('.drawer');
 const drawerSidebar = document.querySelector(".drawer-sidebar");
-export function openDrawer(){
+
+let drawerStatus = false;
+let updatedTime = undefined;
+
+const drawerOutsideListener = (e)=>{
+    // const isDrawerOpened = drawer.getAttribute("status") == "open";
+    const timeDef = Date.now() - updatedTime;
+    
+    if(timeDef < 10) return;
+
+    const isNotDrawer = !e.target.closest('.drawer');
+
+
+    if(isNotDrawer && drawerStatus){
+        console.log('drawer closed');
+        closeDrawer();
+    }
+}
+document.body.addEventListener('click' ,drawerOutsideListener);
+
+
+export function openDrawer(e){
+    if(e) e.stopPropagation();
+    drawerStatus = true;
+    updatedTime = Date.now();
     drawer.setAttribute('status' , 'open'); 
+
 }
 
 export function closeDrawer(){
+    drawerStatus = false;
     drawer.setAttribute('status' , 'close'); 
 }
 

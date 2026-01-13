@@ -51,7 +51,6 @@ exports.renderCustomerProfile = async (req , res)=>{
                 const customer = (await Users.getById(req.customerId))[0];
                 if(!customer) return response(res , "your are not authorized" , 302);
 
-                console.log(customer);
                 
                 return response(res , view('customer/profile' , {
                         header : view('component.header' , {
@@ -97,6 +96,7 @@ exports.renderCustomerOrders = catchAsync(async (req , res)=>{
                         name:"medicine view",
                        
                 }),
+                cart : view('customer/component.cart'),
                 footer : view('footer'),
         })), 200
 })
@@ -113,6 +113,7 @@ exports.renderLoyaltyPoints = catchAsync(async (req , res)=>{
                         name:"medicine view",
                        
                 }),
+                cart : view('customer/component.cart'),
                 footer : view('footer'),
         })), 200
 })

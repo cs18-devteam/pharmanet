@@ -74,7 +74,8 @@ exports.renderCustomerPharmacy = async (req , res)=>{
             ...customer,
             ...pharmacy , 
             navbar : view('customer/navbar.customer' ,customer) ,
-            customerId : customer.id
+            customerId : customer.id,
+            cart : view('customer/component.cart')
         }) , 200);
         
     }catch(error){

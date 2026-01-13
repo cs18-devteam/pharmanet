@@ -40,7 +40,6 @@ btn_next.addEventListener('click' , (e)=>{
     if(!value){
         document.querySelector(`[name=${key}]`).classList.add('utility-warn');
         document.querySelector(`[name="${key}"]`).classList.remove('utility-success');
-        console.log(document.querySelector(`input[name=${key}]`));
         return;
     }else{
         document.querySelector(`[name="${key}"]`).classList.add('utility-success')

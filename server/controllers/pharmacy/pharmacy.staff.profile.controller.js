@@ -34,7 +34,6 @@ exports.renderStaffProfile = catchAsync(async (req , res)=>{
         const [customer] = await Users.getById(staff.userId);
         if(!staff) return response(res , "your are not authorized" , 302);
 
-        console.log(staff);
         
         return response(res , view('pharmacy/staff.profile' , {
                 header : view('component.header' , {

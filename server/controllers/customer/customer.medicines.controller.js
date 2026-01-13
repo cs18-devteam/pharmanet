@@ -37,7 +37,6 @@ exports.renderCustomerSelectedMedicine = async (req , res)=>{
         const [medicine] = await Medicines.getById(req.medicineId);
         const [customer] = await Users.getById(req.customerId);
 
-        console.log(medicine);
 
         return response(res , view("customer/customer.medicine.blog" , {
             header : view('component.header' , {

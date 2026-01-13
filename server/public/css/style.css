@@ -10532,6 +10532,7 @@ button.save {
 }
 .pharmacyDashboard .dashboards .container .orderleft-side .L-side .search-bar {
   padding: 1rem;
+  width: fit-content;
 }
 .pharmacyDashboard .dashboards .container .orderleft-side .L-side .medicine_card {
   margin: 1rem;
@@ -10568,6 +10569,10 @@ button.save {
   font-weight: 500;
   border-top-right-radius: 3rem;
   z-index: -1;
+  position: absolute;
+  z-index: 100;
+  border-bottom-left-radius: 3rem;
+  height: 7rem;
 }
 .pharmacyDashboard .dashboards .container .orderleft-side .right-btns span {
   display: flex;
@@ -10774,6 +10779,10 @@ button.save {
   font-weight: 500;
   border-top-right-radius: 3rem;
   z-index: -1;
+  position: absolute;
+  z-index: 100;
+  border-bottom-left-radius: 3rem;
+  height: 7rem;
 }
 .pharmacyDashboard .dashboards .container .orderleft-side .right-btns span {
   display: flex;
@@ -11040,6 +11049,9 @@ button.save {
   grid-template-columns: auto auto;
   gap: 1rem;
   margin-top: 1rem;
+  height: 80vh;
+  overflow: scroll;
+  padding-bottom: 15rem;
 }
 .pharmacyDashboard .dashboards .product_container .medicine_card {
   border: none;

@@ -163,7 +163,6 @@ exports.createProduct= async(req, res) => {
     try{
 
         const data = JSON.parse(await getRequestData(req));
-        console.log(data);
         const product = await Products.save(data);
         return response(res , JSON.stringify({
             status:"success",

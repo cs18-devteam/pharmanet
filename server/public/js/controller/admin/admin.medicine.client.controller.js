@@ -12,7 +12,6 @@ document.body.addEventListener( 'click' ,async (e)=>{
     if(deleteButton){
         const medicineId = deleteButton.dataset.id;
         if(!medicineId) return;
-        console.log(medicineId , Application.registry.URL_ADMIN_MEDICINES_MEDICINE);
         const respond = await Application.load( Medicine.deleteById , 3)
     
         return;

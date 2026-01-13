@@ -45,7 +45,6 @@ exports.renderPharmacyProfile = async (req , res)=>{
 
         const [staff] = (await Users.getById(req.pharmacistId));
         const [pharmacy] = await Pharmacies.getById(req.pharmacyId);
-        console.log(staff , pharmacy)
         
         if(!staff) return '404 : No Staff Member';
         

@@ -41,6 +41,7 @@
 
                     .search-bar{
                         padding: 1rem;
+                        width: fit-content;
                     }
 
                     .medicine_card{
@@ -86,6 +87,12 @@
                     font-weight: 500;
                     border-top-right-radius: 3rem;
                     z-index: -1;
+                    position: absolute;
+                    z-index: 100;
+                    border-bottom-left-radius: 3rem;
+                    height: 7rem;
+                
+
 
                     span{
 

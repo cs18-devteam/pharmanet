@@ -24,7 +24,6 @@ export function whenSyncRequest(message){
         Application.remoteOrderId = +data.orderId;
         getOrderData(+data.orderId).then(data=>{
             const order = data.results[0];
-            console.log(order);
             document.querySelector(".remote-order-id").textContent == data.orderId;
 
 

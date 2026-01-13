@@ -3,7 +3,6 @@ const { getRequestData } = require("../../common/getRequestData");
 const { responseJson } = require("../../common/response");
 const Transactions = require("../../models/TransactionModel");
 
-console.log("Transactions model:", Transactions);
 
 /**
  * GET TRANSACTIONS

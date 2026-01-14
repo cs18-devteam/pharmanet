@@ -1,11 +1,14 @@
 const SubRouter = require("../../common/SubRouter");
 const indexController = require('../../controllers/index.controller');
 const contactUsController = require('../../controllers/contactus.controller');
+const { response } = require("../../common/response");
+
+
 
 
 exports.indexRouter = SubRouter.route('/')
 .subRoute('/' , {
-    get: indexController.renderIndexPage,
+    get: [ indexController.renderIndexPage],
 })
 .subRoute('/contactus' , {
     get : contactUsController.renderContactus,

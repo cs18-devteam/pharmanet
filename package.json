@@ -23,7 +23,8 @@
     "compile-sass": "sass ./sass/main.scss ./public/css/style.css --watch",
     "serve": "nodemon",
     "dev": "npm-run-all --parallel compile-sass serve",
-    "test": "jest"
+    "test": "jest",
+    "publish": "NODE_ENV=production PORT=443 node index.js "
   },
   "devDependencies": {
     "csvtojson": "^2.0.14",

@@ -1,5 +1,9 @@
 const env = require('./common/middlewares/env');
-env();
+// if(process.env.NODE_ENV!="production"){
+    // console.log("env variables created");
+    env();
+// }
+
 
 const {fileServer} = require('./fileServer');
 const server = require('./httpServer');
@@ -16,7 +20,7 @@ fileServer("./public" , "./storage"); // for static files
 
 const domain = ipaddress ? (isDomainActive ? process.env.DOMAIN_NAME : ipaddress) : 'localhost';
 
-server.listen(process.env.PORT , process.env.HOSTNAME , ()=>{
+server.listen("0.0.0.0" ,  ()=>{
     console.log(`${process.env.DATABASE_NAME} running on https://${domain}:${process.env.PORT}`);
     console.log(`${process.env.DATABASE_NAME} running on https://localhost:${process.env.PORT}`);
 })

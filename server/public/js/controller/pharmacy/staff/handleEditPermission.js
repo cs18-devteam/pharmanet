@@ -9,7 +9,7 @@ const sideBarTemplate = html`
     <div class="side-panel" id="permissionPanel">
         <div class="panel-header">
             <h3>Change Permissions</h3>
-            <button class="close-btn" onclick="closeWindow('permissionPanel')">&times;</button>
+            <button class="close-btn" onclick="closeSidebar()">&times;</button>
         </div>
 
         <form class="panel-content">
@@ -156,6 +156,8 @@ const sideBarTemplate = html`
 
     </form>
     </div>
+  
+    
 
 
 

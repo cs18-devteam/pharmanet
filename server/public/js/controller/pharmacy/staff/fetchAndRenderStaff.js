@@ -27,4 +27,36 @@ export async function fetchAndRenderStaff() {
     const staffCardList = document.querySelector(".staff .staff-list");
     staffCardList.innerHTML = allStaffCards;
 
+    // Show actions when staff item is clicked
+    document.querySelectorAll(".staff-item").forEach((item) => {
+      item.addEventListener("click", function () {
+        document.querySelector(".recentLeaveContainer").style.display = "none";
+        document.querySelector(".actions").style.display = "block";
+      });
+    });
+
+    // Optional: Go back to leave container from actions
+    document
+      .querySelector(".recentLeaveContainer")
+      .addEventListener("click", function () {
+        if (event.target.closest(".back-btn")) {
+          document.querySelector(".recentLeaveContainer").style.display =
+            "block";
+          document.querySelector(".actions").style.display = "none";
+        }
+      });
+
+      // Detect clicks outside to reset view
+    document.addEventListener("click", function(event) {
+      const staffItem = document.querySelector(".staff-item");
+      const actions = document.querySelector(".actions");
+      const recentLeave = document.querySelector(".recentLeaveContainer");
+      
+      // Check if click is outside staff-list and actions
+      if (!staffItem.contains(event.target) && !actions.contains(event.target)) {
+        recentLeave.style.display = "block";
+        actions.style.display = "none";
+      }
+    });
+
 }

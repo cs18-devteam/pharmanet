@@ -11667,7 +11667,7 @@ button.save {
 .pharmacyDashboard .dashboards .container.staff .createStaff .page {
   min-height: 100vh;
   padding: 4rem;
-  background: linear-gradient(113deg, #69CDFF 0%, #127EB5 20%, #006395 64.59%, #006395 83.5%);
+  background: linear-gradient(113deg, #69cdff 0%, #127eb5 20%, #006395 64.59%, #006395 83.5%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11724,7 +11724,7 @@ button.save {
   color: #000;
 }
 .pharmacyDashboard .dashboards .container.staff .createStaff .btn-create {
-  background: #1A7F78;
+  background: #1a7f78;
   color: #fff;
   border: none;
   padding: 1rem 1.8rem;
@@ -11931,7 +11931,7 @@ button.save {
   color: #000;
 }
 .pharmacyDashboard .dashboards .container.staff .page .btn-create {
-  background: #1A7F78;
+  background: #1a7f78;
   color: #fff;
   border: none;
   padding: 2rem 3rem;
@@ -11986,7 +11986,63 @@ button.save {
   margin: 4rem;
   margin-top: 0;
 }
+.pharmacyDashboard .dashboards .container.staff .page .recentLeaveContainer {
+  display: block;
+  padding-right: 2rem;
+  width: 60%;
+}
+.pharmacyDashboard .dashboards .container.staff .page .recentLeaveContainer .section-title {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 16px 0 8px;
+}
+.pharmacyDashboard .dashboards .container.staff .page .recentLeaveContainer .leave-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+}
+.pharmacyDashboard .dashboards .container.staff .page .recentLeaveContainer .leave-card .card-content {
+  max-width: 75%;
+}
+.pharmacyDashboard .dashboards .container.staff .page .recentLeaveContainer .leave-card .card-content h4 {
+  margin: 0;
+  font-size: 16px;
+  color: #111827;
+}
+.pharmacyDashboard .dashboards .container.staff .page .recentLeaveContainer .leave-card .card-content .date {
+  margin: 4px 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+.pharmacyDashboard .dashboards .container.staff .page .recentLeaveContainer .leave-card .card-content .desc {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+}
+.pharmacyDashboard .dashboards .container.staff .page .recentLeaveContainer .status {
+  padding: 6px 14px;
+  font-size: 13px;
+  border-radius: 999px;
+  color: #fff;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.pharmacyDashboard .dashboards .container.staff .page .recentLeaveContainer .status.pending {
+  background: #fb923c;
+}
+.pharmacyDashboard .dashboards .container.staff .page .recentLeaveContainer .status.approved {
+  background: #4caf7d;
+}
+.pharmacyDashboard .dashboards .container.staff .page .recentLeaveContainer .status.rejected {
+  background: #ef4444;
+}
 .pharmacyDashboard .dashboards .container.staff .page .actions {
+  display: none;
   padding-left: -1rem;
   padding-right: 8rem;
   width: 60%;
@@ -11999,7 +12055,7 @@ button.save {
 }
 .pharmacyDashboard .dashboards .container.staff .page .action-row span {
   font-size: 1.8rem;
-  color: #000;
+  color: #111827;
 }
 .pharmacyDashboard .dashboards .container.staff .page .btn-outline {
   background: #fff;
@@ -12089,8 +12145,8 @@ button.save {
   cursor: pointer;
 }
 .pharmacyDashboard .dashboards .container.staff .page .side-panel .profile-section .change-btn:hover {
-  border-color: #1A7F78;
-  color: #1A7F78;
+  border-color: #1a7f78;
+  color: #1a7f78;
 }
 .pharmacyDashboard .dashboards .container.staff .page .side-panel .account-form {
   display: flex;
@@ -12199,7 +12255,7 @@ button.save {
 }
 .pharmacyDashboard .dashboards .container.staff .page .section-title .icon {
   background: none;
-  color: #1A7F78;
+  color: #1a7f78;
   padding: 0rem;
   border-radius: 0.8rem;
   font-size: 1.6rem;
@@ -12238,7 +12294,7 @@ button.save {
   border: 0.1rem solid black;
 }
 .pharmacyDashboard .dashboards .container.staff .page .modal-footer .primary {
-  background: #1A7F78;
+  background: #1a7f78;
   color: white;
 }
 .pharmacyDashboard .dashboards .container.staff .staffMember .page-container {
@@ -12250,7 +12306,7 @@ button.save {
 }
 .pharmacyDashboard .dashboards .container.staff .staffMember .page-container .column1 {
   flex: 1;
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
   height: 75rem;
   padding: 2rem 3rem;
   align-items: flex-start;
@@ -12355,7 +12411,7 @@ button.save {
   border-radius: 1rem;
   border-color: var(--color-yellow-01);
   box-shadow: none;
-  background: var(--yellow-gradient, linear-gradient(91deg, #F9A550 0%, #FB8F21 100%));
+  background: var(--yellow-gradient, linear-gradient(91deg, #f9a550 0%, #fb8f21 100%));
   font-size: 1.8rem;
   color: white;
   line-height: normal;
@@ -12634,7 +12690,7 @@ button.save {
 }
 .pharmacyDashboard .dashboards .container.staff .PharmacyMemberIntro .head-section .title {
   font-size: 4rem;
-  color: #027F80;
+  color: #027f80;
   font-weight: 700;
   margin: 2rem;
 }
@@ -12736,7 +12792,7 @@ button.save {
   background: #707070;
 }
 .pharmacyDashboard .dashboards .container.staff .PharmacyMemberIntro .dot-active {
-  background-color: #027F80;
+  background-color: #027f80;
 }
 .pharmacyDashboard .dashboards .container.staff .PharmacyMemberIntro .slideset .window-1 {
   display: flex;
@@ -12812,7 +12868,7 @@ button.save {
 .pharmacyDashboard .dashboards .container.staff .PharmacyMemberIntro .slideset .window-6 h2,
 .pharmacyDashboard .dashboards .container.staff .PharmacyMemberIntro .slideset .window-7 h2 {
   font-size: 2.8rem;
-  color: #027F80;
+  color: #027f80;
   font-weight: 500;
   width: 100%;
   display: inline;
@@ -12839,7 +12895,7 @@ button.save {
 .pharmacyDashboard .dashboards .container.staff .PharmacyMemberIntro .slideset .window-6 .finished,
 .pharmacyDashboard .dashboards .container.staff .PharmacyMemberIntro .slideset .window-7 .finished {
   border-radius: 3rem;
-  background-color: #027F80;
+  background-color: #027f80;
   color: #fff;
   font-size: larger;
   border: none;
@@ -12897,7 +12953,7 @@ button.save {
   margin: 1rem;
 }
 .pharmacyDashboard .dashboards .container.staff .PharmacyMemberIntro .slideset .window-7 .success button.profile {
-  background-color: #027F80;
+  background-color: #027f80;
   color: #fff;
   padding: 0;
 }
@@ -12931,31 +12987,31 @@ button.save {
   content: ">";
 }
 .pharmacyDashboard .dashboards .container.staff .slide-container[active="1"] .progress-dots .dot:nth-child(0) {
-  background-color: #027F80;
+  background-color: #027f80;
 }
 .pharmacyDashboard .dashboards .container.staff .slide-container[active="2"] .progress-dots .dot:nth-child(1) {
-  background-color: #027F80;
+  background-color: #027f80;
 }
 .pharmacyDashboard .dashboards .container.staff .slide-container[active="3"] .progress-dots .dot:nth-child(2) {
-  background-color: #027F80;
+  background-color: #027f80;
 }
 .pharmacyDashboard .dashboards .container.staff .slide-container[active="4"] .progress-dots .dot:nth-child(3) {
-  background-color: #027F80;
+  background-color: #027f80;
 }
 .pharmacyDashboard .dashboards .container.staff .slide-container[active="5"] .progress-dots .dot:nth-child(4) {
-  background-color: #027F80;
+  background-color: #027f80;
 }
 .pharmacyDashboard .dashboards .container.staff .slide-container[active="6"] .progress-dots .dot:nth-child(5) {
-  background-color: #027F80;
+  background-color: #027f80;
 }
 .pharmacyDashboard .dashboards .container.staff .slide-container[active="7"] .progress-dots .dot:nth-child(6) {
-  background-color: #027F80;
+  background-color: #027f80;
 }
 .pharmacyDashboard .dashboards .container.staff .slide-container[active="8"] .progress-dots .dot:nth-child(7) {
-  background-color: #027F80;
+  background-color: #027f80;
 }
 .pharmacyDashboard .dashboards .container.staff .slide-container[active="9"] .progress-dots .dot:nth-child(8) {
-  background-color: #027F80;
+  background-color: #027f80;
 }
 .pharmacyDashboard .dashboards .container.staff .page-container {
   display: flex;
@@ -12966,7 +13022,7 @@ button.save {
 }
 .pharmacyDashboard .dashboards .container.staff .page-container .col1-sidebar {
   flex: 1;
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
   height: 75rem;
   padding: 2rem 3rem;
   align-items: flex-start;
@@ -13019,7 +13075,7 @@ button.save {
   flex: 1;
   width: 25.3rem;
   height: 15.3rem;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 0.5rem;
   position: relative;
   margin-top: 2rem;
@@ -13071,7 +13127,7 @@ button.save {
 }
 .pharmacyDashboard .dashboards .container.staff .page-container .col2-content .create {
   position: absolute;
-  background: var(--green-gradient, linear-gradient(91deg, #18978D 0%, #083851 100%));
+  background: var(--green-gradient, linear-gradient(91deg, #18978d 0%, #083851 100%));
   top: 10rem;
   left: 104rem;
   color: white;

@@ -1,8 +1,7 @@
- <div class="staff container">
-
-<div class="createStaff">
-<div class="page">
-<!-- <div class="card">
+<div class="staff container">
+  <div class="createStaff">
+    <div class="page">
+      <!-- <div class="card">
 
     <div class="card-header">
     <div>
@@ -63,32 +62,26 @@
     </div>
 
 </div> -->
-</div> 
     </div>
+  </div>
 
-
-
-    <div class="page">
-        
-        <div class="card">
-        
-        <div class="card-header">
-            <div>
-            <h2>Staff Management</h2>
-            <p>All your staff members can Manage from here</p>
-            </div>
-            <div>
-             <button id="add-new-staff" class="add-new-staff btn-create">  
-                create +  
+  <div class="page">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <h2>Staff Management</h2>
+          <p>All your staff members can Manage from here</p>
+        </div>
+        <div>
+          <button id="add-new-staff" class="add-new-staff btn-create">
+            Create +
           </button>
         </div>
-        </div>
+      </div>
 
-        
-        <div class="card-body">
-            <div class="staff-list">
-
-            <!-- <div class="staff-item">
+      <div class="card-body">
+        <div class="staff-list">
+          <!-- <div class="staff-item">
                 <img src="https://i.pravatar.cc/48?img=1" alt="avatar" />
                 <div class="info">
                 <h4>Chathura Priyashan</h4>
@@ -127,156 +120,259 @@
                 <span>Cashier</span>
                 </div>
             </div> -->
+        </div>
+        <div class="divider"></div>
+
+        <div class="recentLeaveContainer">
+          <h3 class="section-title">Recent Application:</h3>
+
+          <div class="leave-card">
+            <div class="card-content">
+              <h4>Annual Leave</h4>
+              <p class="date">1 Sep 2023 – 1 Sep 2023 (Full day)</p>
+              <p class="desc">
+                Lorem ipsum naptremometer reskade när dekakåling kotos…
+              </p>
             </div>
-            <div class="divider"></div>
-                
+            <span class="status pending">Pending</span>
+          </div>
+
+          <h3 class="section-title">Past Application:</h3>
+
+          <div class="leave-card">
+            <div class="card-content">
+              <h4>Annual Leave</h4>
+              <p class="date">1 Sep 2023 – 1 Sep 2023 (Half day)</p>
+              <p class="desc">
+                Lorem ipsum nebaligt benyda diapågt rösm al. Pepulig vabenat.
+              </p>
+            </div>
+            <span class="status approved">Approved</span>
+          </div>
+
+          <div class="leave-card">
+            <div class="card-content">
+              <h4>Medical Leave</h4>
+              <p class="date">1 Sep 2023 – 1 Sep 2023 (Full day)</p>
+              <p class="desc">
+                Lorem ipsum nebaligt benyda diapågt rösm al. Pepulig vabenat.
+              </p>
+            </div>
+            <span class="status approved">Approved</span>
+          </div>
+
+          <div class="leave-card">
+            <div class="card-content">
+              <h4>Annual Leave</h4>
+              <p class="date">1 Sep 2023 – 1 Sep 2023 (Full day)</p>
+              <p class="desc">
+                Lorem ipsum nebaligt benyda diapågt rösm al. Pepulig vabenat.
+              </p>
+            </div>
+            <span class="status rejected">Rejected</span>
+          </div>
+
+          <div class="leave-card">
+            <div class="card-content">
+              <h4>Annual Leave</h4>
+              <p class="date">1 Sep 2023 – 1 Sep 2023 (Full day)</p>
+              <p class="desc">
+                Lorem ipsum nebaligt benyda diapågt rösm al. Pepulig vabenat.
+              </p>
+            </div>
+            <span class="status approved">Approved</span>
+          </div>
+        </div>
+
         <!-- right actions -->
         <div class="actions">
-            <div class="action-row">
+          <div class="action-row">
             <span>Create Leave Request</span>
-            <button class="btn-outline" >Create Leave +</button>
-            </div>
+            <button class="btn-outline">Create Leave +</button>
+          </div>
 
-            <div class="action-row">
+          <div class="action-row">
             <span>Change Permissions Of Member</span>
-            <button id="btn-change-perssmions_staff" class="btn-outline ">Change Permissions</button>
-            </div>
+            <button id="btn-change-perssmions_staff" class="btn-outline">
+              Change Permissions
+            </button>
+          </div>
 
-            <div class="action-row">
+          <div class="action-row">
             <span>Edit Member</span>
-            <button class="btn-outline" onclick="openWindow('editAccount')">Edit</button>
-            </div>
+            <button class="btn-outline" onclick="openWindow('editAccount')">
+              Edit
+            </button>
+          </div>
         </div>
-        </div>
-        </div>
-
-
-    <div class="side-panel" id="leaveModal">
-    <div class="modal-header">
-        <div>
-        <h2>Create Leave Request</h2>
-        <p>Submit a new leave request for approval by your manager</p>
-        </div>
-        <button class="close-btn" onclick="closeWindow('leaveModal')">&times;</button>
+      </div>
     </div>
 
-    <div class="modal-body">
+    <div class="side-panel" id="leaveModal">
+      <div class="modal-header">
+        <div>
+          <h2>Create Leave Request</h2>
+          <p>Submit a new leave request for approval by your manager</p>
+        </div>
+        <button class="close-btn" onclick="closeWindow('leaveModal')">
+          &times;
+        </button>
+      </div>
 
+      <div class="modal-body">
         <!-- Leave Type -->
         <div class="section">
-        <div class="section-title">
+          <div class="section-title">
             <div>
-            <h4>Leave Type</h4>
-            <p>Select the type of leave you're requesting</p>
+              <h4>Leave Type</h4>
+              <p>Select the type of leave you're requesting</p>
             </div>
-        </div>
+          </div>
 
-        <label>Type <span>*</span></label>
-        <select>
+          <label>Type <span>*</span></label>
+          <select>
             <option>Select leave type</option>
             <option>Annual Leave</option>
             <option>Medical Leave</option>
             <option>Casual Leave</option>
-        </select>
+          </select>
         </div>
 
         <!-- Leave Period -->
         <div class="section">
-        <div class="section-title">
+          <div class="section-title">
             <div>
-            <h4>Leave Period</h4>
-            <p>Specify the start and end dates for your leave</p>
+              <h4>Leave Period</h4>
+              <p>Specify the start and end dates for your leave</p>
             </div>
-        </div>
+          </div>
 
-        <div class="date-grid">
+          <div class="date-grid">
             <div>
-            <label>Start Date <span>*</span></label>
-            <input type="date" />
+              <label>Start Date <span>*</span></label>
+              <input type="date" />
             </div>
             <div>
-            <label>End Date <span>*</span></label>
-            <input type="date" />
+              <label>End Date <span>*</span></label>
+              <input type="date" />
             </div>
-        </div>
+          </div>
         </div>
 
         <!-- Details -->
         <div class="section">
-        <div class="section-title">
+          <div class="section-title">
             <div>
-            <h4>Details</h4>
-            <p>Provide additional information about your leave</p>
+              <h4>Details</h4>
+              <p>Provide additional information about your leave</p>
             </div>
+          </div>
+
+          <label>Reason (Optional)</label>
+          <textarea
+            placeholder="Enter any additional details or reason for your leave request..."
+          ></textarea>
+          <small>Maximum 500 characters</small>
         </div>
+      </div>
 
-        <label>Reason (Optional)</label>
-        <textarea placeholder="Enter any additional details or reason for your leave request..."></textarea>
-        <small>Maximum 500 characters</small>
-        </div>
-
-    </div>
-
-    <div class="modal-footer">
-        
+      <div class="modal-footer">
         <button class="btn primary">Submit Request</button>
+      </div>
     </div>
-    </div>
 
-
-        <div class="side-panel" id="editAccount">
-
-        <div class="editPanelHeader">
+    <div class="side-panel" id="editAccount">
+      <div class="editPanelHeader">
         <h2>Update Your Account</h2>
-        <button class="close-btn" onclick="closeWindow('editAccount')">&times;</button>
-        </div>
-        <p class="uid">UID: 223344332233</p>
+        <button class="close-btn" onclick="closeWindow('editAccount')">
+          &times;
+        </button>
+      </div>
+      <p class="uid">UID: 223344332233</p>
 
-        <div class="profile-section">
-            <img src="https://via.placeholder.com/100" alt="Profile" class="profile-img">
+      <div class="profile-section">
+        <img
+          src="/users/profile-general.jpg"
+          alt="Profile"
+          class="profile-img"
+        />
 
-            <button class="change-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="15" viewBox="0 0 24 24" fill="none">
-    <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M17 8L12 3L7 8" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M12 3V15" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>Change Profile</button>
-        </div>
+        <button class="change-btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15"
+              stroke="black"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M17 8L12 3L7 8"
+              stroke="black"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M12 3V15"
+              stroke="black"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            /></svg
+          >Change Profile
+        </button>
+      </div>
 
-        <form class="account-form">
+      <form class="account-form">
+        <label>First Name</label>
+        <p class="hint">Your Staff Member Name</p>
+        <input type="text" placeholder="Your Staff Member Name" />
 
-            <label>First Name</label>
-            <p class="hint">Your Staff Member Name</p>
-            <input type="text" placeholder="Your Staff Member Name">
+        <label>Last Name</label>
+        <p class="hint">Your Staff Member Name</p>
+        <input type="text" placeholder="Your Staff Member Surname" />
 
-            <label>Last Name</label>
-            <p class="hint">Your Staff Member Name</p>
-            <input type="text" placeholder="Your Staff Member Surname">
+        <label>User Name</label>
+        <p class="hint">
+          Please use only letters and numbers for the username . no special
+          characters. Remember, usernames are case sensitive, so pick something
+          easy to remember!
+        </p>
+        <input type="text" placeholder="Username must be unique" />
 
-            <label>User Name</label>
-            <p class="hint">Please use only letters and numbers for the username . no special characters. Remember, usernames are case sensitive, so pick something easy to remember!</p>
-            <input type="text" placeholder="Username must be unique">
+        <label>Contact Number</label>
+        <p class="hint">
+          We cannot verify if the mobile number is active. Please make sure to
+          use a working phone number.
+        </p>
+        <input type="text" placeholder="Enter your mobile number" />
 
-            <label>Contact Number</label>
-            <p class="hint">We cannot verify if the mobile number is active. Please make sure to use a working phone number.</p>
-            <input type="text" placeholder="Enter your mobile number">
+        <label>Email</label>
+        <input type="email" placeholder="Enter the correct email" />
 
-            <label>Email</label>
-            <input type="email" placeholder="Enter the correct email">
+        <label>NIC</label>
+        <input type="text" placeholder="National Identification Number" />
 
-            <label>NIC</label>
-            <input type="text" placeholder="National Identification Number">
-
-            <button class="save-btn">Save Changes</button>
-        </form>
-
+        <button class="save-btn">Save Changes</button>
+      </form>
     </div>
+  </div>
 
-
-
-
+  <script>
+    function openWindow(Id) {
+      const sidePanel = document.getElementById(Id);
+      sidePanel.classList.add("active");
+    }
+    function closeWindow(Id) {
+      const sidePanel = document.getElementById(Id);
+      sidePanel.classList.remove("active");
+    }
+  </script>
 </div>
-
-
-
-</div>
-

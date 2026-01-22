@@ -19,21 +19,14 @@
   "author": "chathura priyashan",
   "type": "commonjs",
   "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
   "scripts": {
     "compile-sass": "sass ./sass/main.scss ./public/css/style.css --watch",
     "serve": "nodemon",
     "dev": "npm-run-all --parallel compile-sass serve",
     "test": "jest"
-  },
-  "devDependencies": {
-    "csvtojson": "^2.0.14",
-    "jest": "^30.2.0",
-    "lit-html": "^3.3.1",
-    "nodemon": "^3.1.11",
-    "npm-run-all": "^4.1.5",
-    "sass": "^1.93.2",
-    "typescript": "^5.9.2",
-    "vite": "^7.1.10"
   },
   "dependencies": {
     "cloudflared": "^0.7.1",
@@ -44,5 +37,15 @@
     "nodemailer": "^7.0.10",
     "sweetalert2": "^11.26.3",
     "toastify-js": "^1.12.0"
+  },
+  "devDependencies": {
+    "csvtojson": "^2.0.14",
+    "jest": "^30.2.0",
+    "lit-html": "^3.3.1",
+    "nodemon": "^3.1.11",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.93.2",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.10"
   }
 }

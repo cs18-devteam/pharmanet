@@ -4176,6 +4176,18 @@ button.save {
     width: 100%;
     max-width: 100%;
   }
+  .login form {
+    width: 100%;
+    max-width: 100%;
+  }
+  .login form input,
+  .login form button {
+    width: 95%;
+  }
+  .login .links {
+    width: 100%;
+    max-width: 100%;
+  }
   .login h1 {
     font-size: 5rem;
   }
@@ -4195,10 +4207,23 @@ button.save {
 }
 @media screen and (max-width: 550px) {
   .login h1 {
-    font-size: 4rem;
+    font-size: 4.6rem;
   }
 }
 @media screen and (max-width: 465px) {
+  .login h1 {
+    font-size: 4.3rem;
+  }
+}
+@media screen and (max-width: 425px) {
+  .login h1 {
+    font-size: 4rem;
+  }
+}
+@media screen and (max-width: 400px) {
+  .login h1 {
+    font-size: 3.8rem;
+  }
   .login form label {
     font-size: 1.8rem;
   }
@@ -4213,9 +4238,47 @@ button.save {
     font-size: 1.6rem;
   }
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 385px) {
   .login h1 {
-    font-size: 3.5rem;
+    font-size: 3.6rem;
+  }
+}
+@media screen and (max-width: 367px) {
+  .login h1 {
+    font-size: 3.4rem;
+  }
+}
+@media screen and (max-width: 351px) {
+  .login h1 {
+    font-size: 3.2rem;
+  }
+}
+@media screen and (max-width: 334px) {
+  .login h1 {
+    font-size: 3rem;
+  }
+}
+@media screen and (max-width: 317px) {
+  .login h1 {
+    font-size: 2.6rem;
+  }
+  .login form label {
+    font-size: 1.5rem;
+  }
+  .login form input {
+    font-size: 1.5rem;
+  }
+  .login form button {
+    font-size: 1.5rem;
+  }
+  .login .links a,
+  .login .links p {
+    font-size: 1.3rem;
+  }
+}
+@media screen and (max-width: 285px) {
+  .login h1 {
+    font-size: 2.3rem;
   }
 }
 /* customer */

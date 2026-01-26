@@ -447,108 +447,236 @@
         }
     }
 
-    @media screen and (max-width: 790px) {
-
-    .header-title {
-        font-size: 3.6rem;
-        margin-top: 2rem;
-    }
-
-    .header-discription {
-        font-size: 1.8rem;
-        line-height: 2.8rem;
-        padding: 0 1rem;
-    }
-
-    .header-background {
-        margin-left: 2rem;
-        margin-right: 2rem;
-        height: 28rem;
-        clip-path: none;
-        border-radius: 2rem;
-    }
-
-    /* Position corrections because absolute elements break in mobile */
-    .fb-call-msg,
-    .pills,
-    .pillBW,
-    .pillwhite,
-    .pillblue,
-    .side-words {
-        display: none; /* Hide for mobile */
-    }
-
-    .upload-container {
-        bottom: -12%;
-        right: 50%;
-        transform: translateX(50%);
-
-        .upload-box {
-            width: 18rem;
-            height: 18rem;
-            border-width: 1rem;
-
-            p {
-                font-size: 1.4rem;
-            }
+    @media screen and (max-width:1305px){
+        .mid-title {
+            font-size: 8rem;
         }
     }
 
-    .advantages-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        padding: 1rem;
+    @media screen and (max-width:1300px) {
+        
+        .Medicines_grid {
+            grid-template-columns: repeat(4, 28rem);
+        }
+        .pharmacy_grid {
+            grid-template-columns: repeat(4, 28rem);
+        }
     }
 
-    .mid-title {
-        font-size: 4rem;
+    @media screen and (max-width: 1245px) {
+        .mid-title{
+            font-size: 7.5rem;
+        }
+    }
+    @media screen and (max-width: 1222px) {
+        .Medicines_grid {
+            grid-template-columns: repeat(4, 26rem);
+        }
+        .pharmacy_grid {
+            grid-template-columns: repeat(4, 26rem);
+        }
+        .stats-container{
+            display: none;
+        }
     }
 
-    .stats-container {
-        flex-direction: column;
-        gap: 4rem;
+    @media screen and (max-width: 1173px){
+        .advantage-title{
+            font-size: 1.8rem;
+        }
+        .advantage-title img {
+            width:3rem;
+        }
+        .mid-title{
+            font-size: 7.2rem;
+        }
+    }
 
-        .stat-orange,
-        .stat-blue {
+    @media screen and (max-width:1125px){
+        .mid-title{
+            font-size: 7rem;
+        }
+    }
+
+    @media screen and (max-width:1094px) {
+        .header-title{
+            font-size: 6rem;
+        }
+        .advantage-title{
+            font-size: 1.5rem;
+        }
+        .advantage-title img {
+            width:2.5rem;
+        }
+        .mid-title{
+            font-size: 6.5rem;
+        }
+    }
+
+    @media screen and (max-width:1065px) {
+        .Medicines_grid {
+            grid-template-columns: repeat(4, 23rem);
+        }
+        .med_infomation{
+            font-size: 1.5rem;
+        }
+        .world_img{
+            width:2rem;
+        }
+        .map__search__value{
+            font-size: 1rem;
+        }
+        .pharmacy_grid {
+            grid-template-columns: repeat(4, 23rem);
+        }
+        .pharmacy-img img{
             width: 20rem;
-            height: 20rem;
         }
-
-        .progress-text {
-            top: 10rem !important;
-            left: 3rem !important;
-
-            .value {
-                font-size: 4rem;
-            }
-
-            .label {
-                font-size: 1.8rem;
-            }
+        .pharmacy_name_info, .pharmacy_address{
+            font-size: 1.5rem;
+        }
+        .results {
+            margin-left: -2rem;
+        }
+        .distance_img, .view_img{
+            width: 1.5rem;
+        }
+        .distance__value{
+            white-space: nowrap;
+            font-size: 1.3rem;
+        } 
+        
+        .view_pharmacy{
+            font-size: 1.3rem;
         }
     }
+
+    @media screen and (max-width: 1060px){
+        .advantages-grid {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .advantage-card {
+            flex: 1;
+        }
+    }
+
+    @media screen and (max-width:1025px) {
+        .header-title {
+            font-size: 5.8rem;
+        }
+    }
+
+    // .medicine-section,
+        // .pharmacy-section,
+        // .footer{
+        //     display:none;
+        // }
+
+
+//     @media screen and (max-width: 790px) {
+
+//     .header-title {
+//         font-size: 3.6rem;
+//         margin-top: 2rem;
+//     }
+
+//     .header-discription {
+//         font-size: 1.8rem;
+//         line-height: 2.8rem;
+//         padding: 0 1rem;
+//     }
+
+//     .header-background {
+//         margin-left: 2rem;
+//         margin-right: 2rem;
+//         height: 28rem;
+//         clip-path: none;
+//         border-radius: 2rem;
+//     }
+
+//     /* Position corrections because absolute elements break in mobile */
+//     .fb-call-msg,
+//     .pills,
+//     .pillBW,
+//     .pillwhite,
+//     .pillblue,
+//     .side-words {
+//         display: none; /* Hide for mobile */
+//     }
+
+//     .upload-container {
+//         bottom: -12%;
+//         right: 50%;
+//         transform: translateX(50%);
+
+//         .upload-box {
+//             width: 18rem;
+//             height: 18rem;
+//             border-width: 1rem;
+
+//             p {
+//                 font-size: 1.4rem;
+//             }
+//         }
+//     }
+
+//     .advantages-grid {
+//         grid-template-columns: 1fr;
+//         gap: 2rem;
+//         padding: 1rem;
+//     }
+
+//     .mid-title {
+//         font-size: 4rem;
+//     }
+
+//     .stats-container {
+//         flex-direction: column;
+//         gap: 4rem;
+
+//         .stat-orange,
+//         .stat-blue {
+//             width: 20rem;
+//             height: 20rem;
+//         }
+
+//         .progress-text {
+//             top: 10rem !important;
+//             left: 3rem !important;
+
+//             .value {
+//                 font-size: 4rem;
+//             }
+
+//             .label {
+//                 font-size: 1.8rem;
+//             }
+//         }
+//     }
 
    
 
-    .joinus .button-group {
-        flex-direction: column;
-        width: 100%;
+//     .joinus .button-group {
+//         flex-direction: column;
+//         width: 100%;
 
-        .btn {
-            width: 90%;
-            margin: auto;
-        }
-    }
-}
+//         .btn {
+//             width: 90%;
+//             margin: auto;
+//         }
+//     }
+// }
 
-@media screen and (min-width:790px) and (max-width: 1090px){
+// @media screen and (min-width:790px) and (max-width: 1090px){
 
-    .header-title {
-        font-size: 4.5rem;
-        margin-top: 2rem;
-    }
+//     .header-title {
+//         font-size: 4.5rem;
+//         margin-top: 2rem;
+//     }
 
-}
+// }
 
 
 }    

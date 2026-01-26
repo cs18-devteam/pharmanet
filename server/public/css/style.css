@@ -4630,87 +4630,113 @@ button.save {
   font-size: 1.4rem;
   font-family: var(--primary-font);
 }
-@media screen and (max-width: 790px) {
-  .landing .header-title {
-    font-size: 3.6rem;
-    margin-top: 2rem;
-  }
-  .landing .header-discription {
-    font-size: 1.8rem;
-    line-height: 2.8rem;
-    padding: 0 1rem;
-  }
-  .landing .header-background {
-    margin-left: 2rem;
-    margin-right: 2rem;
-    height: 28rem;
-    clip-path: none;
-    border-radius: 2rem;
-  }
-  .landing {
-    /* Position corrections because absolute elements break in mobile */
-  }
-  .landing .fb-call-msg,
-  .landing .pills,
-  .landing .pillBW,
-  .landing .pillwhite,
-  .landing .pillblue,
-  .landing .side-words {
-    display: none; /* Hide for mobile */
-  }
-  .landing .upload-container {
-    bottom: -12%;
-    right: 50%;
-    transform: translateX(50%);
-  }
-  .landing .upload-container .upload-box {
-    width: 18rem;
-    height: 18rem;
-    border-width: 1rem;
-  }
-  .landing .upload-container .upload-box p {
-    font-size: 1.4rem;
-  }
-  .landing .advantages-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 1rem;
-  }
+@media screen and (max-width: 1305px) {
   .landing .mid-title {
-    font-size: 4rem;
-  }
-  .landing .stats-container {
-    flex-direction: column;
-    gap: 4rem;
-  }
-  .landing .stats-container .stat-orange,
-  .landing .stats-container .stat-blue {
-    width: 20rem;
-    height: 20rem;
-  }
-  .landing .stats-container .progress-text {
-    top: 10rem !important;
-    left: 3rem !important;
-  }
-  .landing .stats-container .progress-text .value {
-    font-size: 4rem;
-  }
-  .landing .stats-container .progress-text .label {
-    font-size: 1.8rem;
-  }
-  .landing .joinus .button-group {
-    flex-direction: column;
-    width: 100%;
-  }
-  .landing .joinus .button-group .btn {
-    width: 90%;
-    margin: auto;
+    font-size: 8rem;
   }
 }
-@media screen and (min-width: 790px) and (max-width: 1090px) {
+@media screen and (max-width: 1300px) {
+  .landing .Medicines_grid {
+    grid-template-columns: repeat(4, 28rem);
+  }
+  .landing .pharmacy_grid {
+    grid-template-columns: repeat(4, 28rem);
+  }
+}
+@media screen and (max-width: 1245px) {
+  .landing .mid-title {
+    font-size: 7.5rem;
+  }
+}
+@media screen and (max-width: 1222px) {
+  .landing .Medicines_grid {
+    grid-template-columns: repeat(4, 26rem);
+  }
+  .landing .pharmacy_grid {
+    grid-template-columns: repeat(4, 26rem);
+  }
+  .landing .stats-container {
+    display: none;
+  }
+}
+@media screen and (max-width: 1173px) {
+  .landing .advantage-title {
+    font-size: 1.8rem;
+  }
+  .landing .advantage-title img {
+    width: 3rem;
+  }
+  .landing .mid-title {
+    font-size: 7.2rem;
+  }
+}
+@media screen and (max-width: 1125px) {
+  .landing .mid-title {
+    font-size: 7rem;
+  }
+}
+@media screen and (max-width: 1094px) {
   .landing .header-title {
-    font-size: 4.5rem;
-    margin-top: 2rem;
+    font-size: 6rem;
+  }
+  .landing .advantage-title {
+    font-size: 1.5rem;
+  }
+  .landing .advantage-title img {
+    width: 2.5rem;
+  }
+  .landing .mid-title {
+    font-size: 6.5rem;
+  }
+}
+@media screen and (max-width: 1065px) {
+  .landing .Medicines_grid {
+    grid-template-columns: repeat(4, 23rem);
+  }
+  .landing .med_infomation {
+    font-size: 1.5rem;
+  }
+  .landing .world_img {
+    width: 2rem;
+  }
+  .landing .map__search__value {
+    font-size: 1rem;
+  }
+  .landing .pharmacy_grid {
+    grid-template-columns: repeat(4, 23rem);
+  }
+  .landing .pharmacy-img img {
+    width: 20rem;
+  }
+  .landing .pharmacy_name_info, .landing .pharmacy_address {
+    font-size: 1.5rem;
+  }
+  .landing .results {
+    margin-left: -2rem;
+  }
+  .landing .distance_img, .landing .view_img {
+    width: 1.5rem;
+  }
+  .landing .distance__value {
+    white-space: nowrap;
+    font-size: 1.3rem;
+  }
+  .landing .view_pharmacy {
+    font-size: 1.3rem;
+  }
+}
+@media screen and (max-width: 1060px) {
+  .landing .advantages-grid {
+    display: flex;
+    gap: 1rem;
+  }
+  .landing .advantage-card {
+    flex: 1;
+  }
+}
+@media screen and (max-width: 1025px) {
+  .landing .header-title {
+    font-size: 5.8rem;
   }
 }
 

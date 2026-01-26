@@ -51,6 +51,8 @@ export async function fetchAndRenderStaff() {
       const staffItem = document.querySelector(".staff-item");
       const actions = document.querySelector(".actions");
       const recentLeave = document.querySelector(".recentLeaveContainer");
+      const editaccnt = document.getElementById('editAccount');
+
       
       // Check if click is outside staff-list and actions
       if (!staffItem.contains(event.target) && !actions.contains(event.target)) {

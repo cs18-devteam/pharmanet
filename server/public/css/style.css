@@ -12158,14 +12158,18 @@ button.save {
   font-weight: 550;
   color: #444;
 }
-.pharmacyDashboard .dashboards .container.staff .page .side-panel .account-form input {
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .account-form input,
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .account-form select,
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .account-form textarea {
   width: 100%;
   padding: 1rem;
   border: 0.1rem solid #ddd;
   border-radius: 0.6rem;
   font-size: 1rem;
 }
-.pharmacyDashboard .dashboards .container.staff .page .side-panel .account-form input:focus {
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .account-form input:focus,
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .account-form select:focus,
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .account-form textarea:focus {
   border-color: #0b7a71;
   outline: none;
 }
@@ -12187,6 +12191,113 @@ button.save {
   cursor: pointer;
 }
 .pharmacyDashboard .dashboards .container.staff .page .side-panel .account-form .save-btn:hover {
+  background: #095f57;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel {
+  padding: 2rem;
+  overflow-y: auto;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .createLeaveHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .createLeaveHeader .title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .createLeaveHeader .header-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: -0.5rem;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .createLeaveHeader h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: -0.7rem;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .createLeaveHeader p {
+  padding-bottom: 1rem;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .uid {
+  color: #777;
+  font-size: 1rem;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .profile-section {
+  display: flex;
+  justify-content: left;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .profile-section .profile-img {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .profile-section .change-btn {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 0.1rem solid #ddd;
+  padding: 0.8rem 1.4rem;
+  font-size: 1.1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .profile-section .change-btn:hover {
+  border-color: #1a7f78;
+  color: #1a7f78;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .account-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .account-form label {
+  font-size: 1.5rem;
+  font-weight: 550;
+  color: #444;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .account-form input,
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .account-form select,
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .account-form textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 0.1rem solid #ddd;
+  border-radius: 0.6rem;
+  font-size: 1rem;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .account-form input:focus,
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .account-form select:focus,
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .account-form textarea:focus {
+  border-color: #0b7a71;
+  outline: none;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .account-form .hint {
+  font-size: 1.3rem;
+  color: #888;
+  margin: -0.3rem 0 0.5rem;
+  line-height: 1.5rem;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .account-form .apply-btn {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 1.2rem;
+  background: #0b7a71;
+  color: #fff;
+  font-size: 1.7rem;
+  border: none;
+  border-radius: 0.6rem;
+  cursor: pointer;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .account-form .apply-btn:hover {
   background: #095f57;
 }
 .pharmacyDashboard .dashboards .container.staff .page .side-panel {

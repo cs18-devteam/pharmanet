@@ -188,7 +188,7 @@
         <div class="actions">
           <div class="action-row">
             <span>Create Leave Request</span>
-            <button class="btn-outline">Create Leave +</button>
+            <button class="btn-outline" onclick="openWindow('createLeave')">Create Leave +</button>
           </div>
 
           <div class="action-row">
@@ -363,7 +363,58 @@
         <button class="save-btn">Save Changes</button>
       </form>
     </div>
+
+
+    <div class="side-panel" id="createLeave">
+      <div class="createLeaveHeader">
+        <div class="title-block">
+        <div class="header-block">
+        <h2>Leave Application Form</h2>
+        <button class="close-btn" onclick="closeWindow('createLeave')">
+          &times;
+        </button>
+        </div>
+        <p class="hint">Please provide information about your leave</p>
+        </div>
+      </div>
+      
+      <div class="profile-section">
+        <img
+          src="/users/profile-general.jpg"
+          alt="Profile"
+          class="profile-img"
+        />
+      </div>
+      <p class="uid">UID: 223344332233</p>
+
+
+      <form class="account-form">
+        <label>Leave Type :</label>
+        <select  id="leaveType" name="leaveType" >
+            <option disabled value="" selected>Choose leave type...</option>
+            <option value="annualLeave">Annual Leave</option>
+            <option value="casualLeave">Casual Leave</option>
+            <option value="sickLeave">Sick Leave</option>
+            <option value="maternityLeave">Maternity Leave</option>
+          </select>
+
+        <label>Select Date : </label>
+        <input type="date" placeholder="Select the leave date" />
+
+        <label>Reason : </label>
+         <textarea placeholder="Enter reason .."></textarea>
+         <label for="document">Upload document:</label>
+         <input type="file" id="document" name="document" placeholder="upload your poofs">
+
+        <label>Job Will Covered By : </label>
+        <input type="email" placeholder="Who will cover your work.." />
+
+        <button class="apply-btn">Apply Leave</button>
+      </form>
+    </div>
   </div>
+  </div>
+
 
   <script>
     function openWindow(Id) {

@@ -30,15 +30,14 @@ export default async function init() {
   totalAmountOfCachOffline(getRequestDatas)
   totalAmountOfcardOnline(getRequestDatas)
   totalAmountOfCardOffline(getRequestDatas)
+  updateTodayTransaction(getRequestDatas)
   updateStaffWiseSummary()
+  //printTransaction()
   
 }
 
 
 export function filterTodayTransaction({results : transactionData}){
-
-  //const table = document.querySelector(".transaction_table tbody");
-  const incomeValue = document.querySelector(".income__value");
 
   const currentDate = new Date().toISOString().split("T")[0];
 
@@ -56,9 +55,21 @@ export function filterTodayTransaction({results : transactionData}){
 
 
     console.log(todayTotal);
-    incomeValue.innerHTML= Number(todayTotal);  
+
+    return todayTotal;
     
 }
+
+export function updateTodayTransaction({results : transactionData}){
+
+  const incomeValue = document.querySelector(".income__value");
+  const totalAmount = filterTodayTransaction({results : transactionData});
+
+  console.log(totalAmount);
+  incomeValue.innerHTML=totalAmount;
+  
+}
+
 
 export function filterTransactionByDateRange({results : data}){
 
@@ -131,6 +142,7 @@ export function totalAmountOfCachOnline({results : data}){
 
 
   const cashOnline = document.querySelector(".stat-cash .online span");
+  const prograss = document.querySelector(".bar-cash__online span");
     //console.log(cashOffline);
     const today = new Date().toISOString().split("T")[0];
 
@@ -140,14 +152,24 @@ export function totalAmountOfCachOnline({results : data}){
         .toISOString()
         .split("T")[0];
 
-        return trDate === today && tr.method === "CASH ONLINE";
+        return trDate === today && tr.method === "Cash" && tr.type === "Online";
       })
       .reduce((sum , tr) => sum + Number(tr.amount),0);
     
     
-      console.log("today cash payment");
-      console.log(todayCashPayment);
+      //console.log("today cash payment");
+      //console.log(todayCashPayment);
       cashOnline.innerHTML = todayCashPayment;
+
+      const todayTransaction = filterTodayTransaction({results : data});
+      
+      const percentage = todayTransaction > 0 ?
+       Math.floor((todayCashPayment / todayTransaction) * 100)
+       :0 ;
+
+      prograss.style.width= `${percentage}%`;
+      prograss.innerHTML=`${percentage}%`;
+      //console.log(percentage);
 
     
 }
@@ -155,6 +177,7 @@ export function totalAmountOfCachOnline({results : data}){
 export function totalAmountOfCachOffline({results : data}){
 
     const cashOffline = document.querySelector(".stat-cash .offline span");
+    const prograss = document.querySelector(".bar-cash__offline span")
     //console.log(cashOffline);
     const today = new Date().toISOString().split("T")[0];
 
@@ -164,7 +187,7 @@ export function totalAmountOfCachOffline({results : data}){
         .toISOString()
         .split("T")[0];
 
-        return trDate === today && tr.method === "CASH OFFLINE";
+        return trDate === today && tr.method === "Cash" && tr.type === "Offline";
       })
       .reduce((sum , tr) => sum + Number(tr.amount),0);
     
@@ -173,6 +196,13 @@ export function totalAmountOfCachOffline({results : data}){
       //console.log(todayCashPayment);
       cashOffline.innerHTML = todayCashPayment;
 
+      const todayTransaction = filterTodayTransaction({results : data});
+      const percentage = todayTransaction > 0?  Math.floor((todayCashPayment/todayTransaction)*100)
+      :0 ;
+
+      prograss.style.width= `${percentage}%`;
+      prograss.innerHTML= `${percentage}%`;
+
     
 }
 
@@ -180,6 +210,8 @@ export function totalAmountOfCachOffline({results : data}){
 export function totalAmountOfcardOnline({results : datas}){
 
   const cardOnline = document.querySelector(".stat-card .online span");
+  const prograss = document.querySelector(".bar-card__online span");
+
   const today = new Date().toISOString().split("T")[0];
 
   const todayOnlineCardPayment = datas
@@ -188,34 +220,51 @@ export function totalAmountOfcardOnline({results : datas}){
       .toISOString()
       .split("T")[0];
 
-      return date === today && tr.method === "ONLINE"
+      return date === today && tr.method === "Card" && tr.type === "Online";
     })
     .reduce((sum , tr) => sum + Number(tr.amount),0);
 
     cardOnline.innerHTML = todayOnlineCardPayment;
+
+    const todayTransaction = filterTodayTransaction({ results : datas});
+    const percetage = todayTransaction > 0?
+     Math.floor((todayOnlineCardPayment/todayTransaction)*100)
+     :0 ;
+
+    prograss.style.width = `${percetage}%`;
+    prograss.innerHTML= `${percetage}%`;
 }
 
 
-export function totalAmountOfCardOffline({results : data}){
-
-  //console.log("chamani");
+export function totalAmountOfCardOffline({ results: data }) {
 
   const cardOffline = document.querySelector(".stat-card .offline span");
-  const today = new Date().toDateString().split("T")[0];
+  const prograss = document.querySelector(".bar-card__offline span");
+  const today = new Date().toISOString().split("T")[0];
 
   const filteredDate = data
     .filter(tr => {
       const date = new Date(tr.transactionDateTime)
-      .toISOString()
-      .split("T")[0];
+        .toISOString()
+        .split("T")[0];
 
-      return date === today && tr.method === "CARD" 
+      return date === today && tr.method === "Card" && tr.type === "Offline";
     })
-    .reduce((sum, tr) => sum + Number(tr.amount),0);
-    
-    cardOffline.innerHTML = filteredDate;
-    console.log("hi");
+    .reduce((sum, tr) => sum + Number(tr.amount), 0);
+
+  cardOffline.innerHTML = filteredDate;
+  console.log(filteredDate);
+
+  const todayTransaction = filterTodayTransaction({ results : data});
+  const percetage = todayTransaction > 0 ? 
+   Math.floor((filteredDate/todayTransaction)*100)
+   :0;
+
+  prograss.style.width = `${percetage}%`;
+  prograss.innerHTML= `${percetage}%`;
+
 }
+
 
 
 
@@ -253,4 +302,9 @@ export async function updateStaffWiseSummary() {
     </div>
     ${html}
   `;
+}
+
+
+export function printTransaction(){
+  window.print();
 }

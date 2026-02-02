@@ -11834,11 +11834,12 @@ button.save {
   background-color: rgba(255, 255, 255, 0.3764705882);
   height: 100%;
   aspect-ratio: 1;
-  border-radius: 50%;
+  border-radius: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #fff;
+  padding: 2rem;
 }
 .pharmacyDashboard .dashboards .container.transactions .income_stat .bars .bar-cash__offline {
   background-color: #1A7F78;
@@ -11971,6 +11972,47 @@ button.save {
   border: 1px solid #ccc;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .captions .date_range .Print-btn {
+  border: 1px solid #eee;
+  border-radius: 3rem;
+  margin: 1rem;
+  padding: 0.5rem;
+  width: 8rem;
+  align-items: center;
+  text-align: center;
+  font-weight: 500;
+  background-color: #eee;
+}
+@media print {
+  .pharmacyDashboard .dashboards .container.transactions .transaction_table_container .captions .date_range body * {
+    visibility: hidden;
+  }
+  .pharmacyDashboard .dashboards .container.transactions .transaction_table_container .captions .date_range .transaction_table_wrapper,
+  .pharmacyDashboard .dashboards .container.transactions .transaction_table_container .captions .date_range .transaction_table_wrapper * {
+    visibility: visible;
+  }
+  .pharmacyDashboard .dashboards .container.transactions .transaction_table_container .captions .date_range .transaction_table_wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  .pharmacyDashboard .dashboards .container.transactions .transaction_table_container .captions .date_range .print-btn {
+    display: none;
+  }
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table_wrapper {
+  max-height: 60rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table_wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table_wrapper::-webkit-scrollbar-thumb {
+  background-color: #c9c9c9;
+  border-radius: 10px;
 }
 .pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table {
   width: 100%;

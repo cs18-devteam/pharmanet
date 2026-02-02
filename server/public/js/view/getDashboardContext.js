@@ -2,6 +2,10 @@ let defaultContext = undefined;
 const radioBtns = document.querySelectorAll('.pharmacyDashboard > input[type=radio]');
 Array.from(radioBtns).forEach(btn=>{
     if(btn.hasAttribute("checked")) defaultContext = btn.id;
+
+    btn.addEventListener('click' , ()=>{
+        defaultContext = btn.id;
+    })
 })
 
 

@@ -103,6 +103,7 @@
 /api/v1/customers/:customerId/cart
 /api/v1/orders
 /api/v1/orders/:orderId/items
+/api/v1/orders/:orderId
 /pharmacies/:pharmacyId/staff/create
 /pharmacies/:pharmacyId/staff
 /pharmacies/:pharmacyId/staff/options

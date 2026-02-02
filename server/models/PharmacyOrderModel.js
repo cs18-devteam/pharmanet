@@ -29,6 +29,10 @@ class PharmacyOrderModel extends Model{
         this.cardNo = {
             type:"VARCHAR(50)"
         }
+
+        this.createdAt = {
+            type:"datetime",
+        }
     }
 }
 

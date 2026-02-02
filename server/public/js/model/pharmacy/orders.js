@@ -1,3 +1,4 @@
+import { swal } from "../../view/swal.js";
 import Application from "../application/Application.js";
 
 export async function createOrder({
@@ -153,3 +154,35 @@ export async function getOrdersList() {
 }
 
 
+
+
+export async function  deleteOrder(orderId) {
+    try{
+        const response =await fetch(`/api/v1/orders/${orderId}` , {
+            method:"DELETE",
+        });
+        if(response.status == 204){
+            return {
+                status:"success",
+                message:"order deleted successfully"
+            }
+        }else{
+            const data =  await response.json();
+            if(data.status =="error"){
+                throw new Error(data.message);
+            }
+        }
+
+
+    }catch(e){
+        console.log(e);
+
+
+
+        return {
+            status:'error',
+            results : "",
+            message:e.message || "internal server error",
+        }
+    }
+}

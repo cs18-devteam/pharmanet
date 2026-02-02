@@ -28,6 +28,7 @@ exports.createOrder = apiCatchAsync(async (req , res)=>{
         const [order] =await  PharmacyOrders.save({
             userId : reqData.userId,
             pharmacyId : pharmacyId,
+            createdAt : Convert.toSqlDate(Date.now()),
         })
 
         if(carts && carts.length){
@@ -42,11 +43,46 @@ exports.createOrder = apiCatchAsync(async (req , res)=>{
         }
 
         const orders= await Promise.all(items.map(async (item)=>{
+
+
+            let orderItem;
+            if(item.itemType == "medicine"){
+                orderItem = (await PharmacyMedicines.getById(item.itemId))[0];
+                if(orderItem.publicStock < item.quantity){
+                    throw new Error(`insufficient medicine stock`);
+                }
+
+
+                await PharmacyMedicines.update({
+                    id: item.itemId,
+                    publicStock : orderItem.publicStock - item.quantity,
+                    stock : orderItem.stock - item.quantity,
+                })
+            }else{
+                orderItem = (await Products.getById(item.itemId))[0];
+
+                if(orderItem.publicStock < item.quantity){
+                    throw new Error(`insufficient product stock`);
+                }
+
+                await Products.update({
+                    quantity: orderItem.quantity - item.quantity,
+                })
+            }
+
+
+            
+
+
+
+
             return await PharmacyOrdersItems.save({
                 orderId: order.id,
                 itemId : item.itemId,
-                itemType : item.itemType ? "product" : "medicine",
+                itemType : item.itemType == "product" ? "product" : "medicine",
                 quantity : item.quantity,
+                price: orderItem?.price,
+                discount: item.discount || "0.0" ,
             })
         }))
 
@@ -106,6 +142,17 @@ exports.getOrders = apiCatchAsync(async (req , res)=>{
         let items = await PharmacyOrdersItems.get({
             orderId :order.id,
         });
+
+        items = await Promise.all(items.map(async i=>{
+            if(i.itemType == "medicine"){
+                const [medicine] = await Medicines.getById(i.itemId);
+                return {
+                    ...i,
+                    name : medicine.geneticName,
+                }
+            }
+            return {...i};
+        } ))
 
 
         return {
@@ -201,3 +248,51 @@ exports.getOrderItems =apiCatchAsync(async (req , res)=>{
     })
 })
 
+
+
+exports.deleteOrder = apiCatchAsync(async (req , res)=>{
+    const id = req.orderId;
+    let items = await PharmacyOrdersItems.get({
+        orderId :id,
+    })
+
+
+
+    items = await Promise.all(items.map(async i=>{
+        if(i.itemType == "medicine"){
+            const [med] = await PharmacyMedicines.getById(i.itemId);
+            console.log(med , med.publicStock + i.quantity);
+
+            await PharmacyMedicines.update({
+                id: i.itemId,
+                publicStock : med.publicStock + i.quantity,
+                stock : med.stock + i.quantity,
+            })
+
+            
+        }else if(i.itemType == "product"){
+            const [prod] = await Products.getById(i.itemId);
+            
+            if(prod){   
+                await Products.update({
+                    id: i.itemId,
+                    quantity : prod.quantity + i.quantity,
+                })
+            }else{
+                throw new Error("cannot find products");
+            }
+        }
+
+        return  await PharmacyOrdersItems.deleteById(i.id);
+
+    }));
+
+
+    await PharmacyOrders.deleteById(id);
+
+    return responseJson(res , 204 ,  {
+        status:"success",
+        message:"order deleted successful",
+    });
+    
+})

@@ -14,7 +14,6 @@ export function createOrderTable(data){
       <thead>
         <tr>
           <th>Order ID</th>
-          <th>Customer</th>
           <th>Date</th>
           <th>Status</th>
           <th>Total (LKR)</th>
@@ -26,13 +25,12 @@ export function createOrderTable(data){
             return html`
               <tr data-id="${order.id}">
               <td>#ORD-${order.id}</td>
-              <td>${order.staffId || "-"}</td>
-              <td>${order.data || "-"}</td>
-              <td><span class="status ${order.status}">${order.status || "-"}</span></td>
+              <td>${order.createdAt.replace('.000Z' , '').split("T").join(' ') || "-"}</td>
+              <td><span class="status ${order.status || "pending"}">${order.status || "pending"}</span></td>
               <td>${order.total || "-"}</td>
             </tr>
             `
-        })}
+        }).join(" ")}
         
 
         <!-- <tr data-id="2">

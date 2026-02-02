@@ -30,17 +30,12 @@ export function orderView(order){
     </header>
 
     <section class="order-info">
-      <!-- <div>
-        <label>Customer</label>
-        <p>Chamath Perera</p>
-      </div> -->
-
       <div>
         <label>Order Date</label>
-        <p>2026-02-02</p>
+        <p>${order.createdAt.replace('.000Z' , '').split("T").join(' ') || "-"}</p>
       </div>
 
-      <div>
+      <div style="margin-left:auto;">
         <label>Total Amount</label>
         <p>${order.total}</p>
       </div>

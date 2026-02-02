@@ -1,6 +1,6 @@
 import Payment from "../../model/Payment.js";
 import Application from "../../model/application/Application.js";
-import { createOrder, getOrdersList } from "../../model/pharmacy/orders.js";
+import { createOrder, deleteOrder, getOrdersList } from "../../model/pharmacy/orders.js";
 import { closeDrawer, openDrawer, setDrawerContent } from "../../view/pharmacy/drawerView.js";
 import { createOrderTable } from "../../view/pharmacy/orders/orderTableView.js";
 import { orderView } from "../../view/pharmacy/orders/orderView.js";
@@ -122,7 +122,11 @@ createOrderCreateBtn?.addEventListener("click" ,async ()=>{
             swal({
                 title:"order created",
                 icon:"success",
-            })
+                timer: 800,
+                showConfirmButton: false,
+            });
+
+            showOrders();
 
         }else{
             swal({
@@ -231,6 +235,7 @@ async function showOrders(e){
     const orderCloseBtn = document.querySelector(".order-table-close-btn.close-btn > button");
     orderCloseBtn?.addEventListener("click" , (e)=>{
         closeDrawer();
+        init();
     })
 
 
@@ -241,15 +246,50 @@ async function showOrders(e){
             const orderId = tr.dataset.id;
             const order = data.results.filter(order=>order.id == orderId)[0];
 
-
-
             setDrawerContent(orderView(order));
             openDrawer();
 
             const backBtn = document.querySelector(".order-container-order-view-back-btn");
             backBtn?.addEventListener("click" , ()=>{
                 showOrders();
+            });
+
+            const orderViewContainer = document.querySelector(".order-container-order-view");
+
+            orderViewContainer?.addEventListener("click" , e=>{
+                const target = e.target;
+
+                const deleteBtn = target.closest(".delete");
+                if(deleteBtn){
+                    swal({
+                        title:"are you want to delete ?",
+                        icon:"question",
+                        showConfirmButton:true,
+                        showCancelButton: true,
+                    }).then(data=>{
+                        if(data.isConfirmed){
+                            return deleteOrder(deleteBtn.dataset.id);
+                        }
+                    }).then(data=>{
+                        console.log(data);
+                        if(data.status == "error"){
+                            swal({
+                                icon:"error",
+                                title:"some thing went wrong",
+                                text:data.message || " ",
+                            })
+                        }else{
+                            swal({
+                                icon:"success",
+                                title:"order deleted successfully",
+                            }).then(()=>{
+                                showOrders();
+                            })
+                        }
+                    })
+                }
             })
+        
 
 
 

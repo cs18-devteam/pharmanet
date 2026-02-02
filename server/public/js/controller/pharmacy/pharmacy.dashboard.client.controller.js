@@ -31,7 +31,7 @@ ordersSearchBar?.addEventListener('input' , e=>{
 
 
 
-function initialize(view){
+export function initialize(view){
      switch(view){
         case "chats":
             chats_init();

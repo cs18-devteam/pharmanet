@@ -398,18 +398,30 @@
             <option value="maternityLeave">Maternity Leave</option>
           </select>
 
-        <label>Select Date : </label>
-        <input type="date" placeholder="Select the leave date" />
+        <label>Start Date : </label>
+        <input type="date" name="startDate" placeholder="Select the leave date" />
+
+        <label>End Date : </label>
+        <input type="date" name="endDate" placeholder="Select the leave date" />
+
+        <label>Leave Category :</label>
+        <select  id="leaveType" name="leaveCategory" >
+            <option disabled value="" selected>Choose leave category...</option>
+            <option value="annualLeave">Short Leave</option>
+            <option value="casualLeave">Half Day</option>
+            <option value="sickLeave">Full Day</option>
+          </select>
 
         <label>Reason : </label>
-         <textarea placeholder="Enter reason .."></textarea>
+         <textarea name="reason" placeholder="Enter reason .."></textarea>
+
          <label for="document">Upload document:</label>
          <input type="file" id="document" name="document" placeholder="upload your poofs">
 
         <label>Job Will Covered By : </label>
-        <input type="email" placeholder="Who will cover your work.." />
+        <input type="email" name="coveredBy" placeholder="Who will cover your work.." />
 
-        <button class="apply-btn">Apply Leave</button>
+        <button type="button" class="apply-btn">Apply Leave</button>
       </form>
     </div>
   </div>

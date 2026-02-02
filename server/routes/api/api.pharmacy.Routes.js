@@ -2,6 +2,7 @@ const SubRouter = require("../../common/SubRouter");
 const pharmacyController = require("../../controllers/pharmacy/pharmacy.controller");
 const pharmacyStaffController = require("../../controllers/pharmacy/pharmacy.staff.controller");
 const pharmacyMedicinesApiController = require('../../controllers/pharmacy/pharmacy.medicines.api.controller');
+const pharmacyStaffLeaveController = require('../../controllers/pharmacy/pharmacy.staff.leave.controller')
 
 
 exports.pharmaciesApiRouter = SubRouter.route("/api/v1/pharmacies")
@@ -37,4 +38,8 @@ exports.pharmacyApiStaffRouter = SubRouter.route('/api/v1/pharmacies/:pharmacyId
     // update: ,
     // delete: , 
 
+})
+.subRoute("/staff/:staffId/leaves", {
+    get: pharmacyStaffLeaveController.getLeaveRequests,
+    post: pharmacyStaffLeaveController.createLeaveRequest,
 })

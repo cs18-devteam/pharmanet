@@ -20,7 +20,7 @@
                     --x: 22rem; /* horizontal offset (no percentage) */
                     --y: 2rem; /* vertical offset (no percentage) */
                     
-                    //width: 250px;
+                    //width: 25.0rem;
                     aspect-ratio: 1;
                     border: 0.1rem solid #ccc;
                     background-color: white;
@@ -293,6 +293,246 @@
 
  
 
+}
+
+
+
+
+.order-table-close-btn{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+
+    button{
+        margin:2rem;
+        padding: 2rem;
+        border:none;
+        background-color: #000;
+        color:#fff;
+        border-radius: 3rem;
+        font-size: 1.4rem;
+        text-transform: capitalize;
+        cursor: pointer;
+    }
+    
+}
+
+
+
+
+.table-wrapper {
+  margin: 2rem;
+  background-color: var(--white);
+  border: 1px solid var(--color-border-gray-01);
+  border-radius: .8rem;
+  padding: 2.4rem;
+}
+
+.table-title {
+  margin-bottom: 2.0rem;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--color-green-02);
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.4rem;
+
+  thead {
+    background-color: var(--color-green-01);
+    color: var(--white);
+
+    th {
+      padding: 1.4rem 1.2rem;
+      text-align: left;
+      font-weight: 500;
+      letter-spacing: 0.4rem;
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: .1rem solid var(--color-border-gray-01);
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: rgba(24, 151, 141, 0.06);
+      }
+    }
+
+    td {
+      padding: 1.4rem 1.2rem;
+      color: var(--color-green-02);
+    }
+  }
+}
+
+/* Order Status Badges */
+.status {
+  padding: .4rem 1.0rem;
+  border-radius: 2.0rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  display: inline-block;
+
+  &.completed {
+    background-color: rgba(24, 151, 141, 0.15);
+    color: var(--color-green-01);
+  }
+
+  &.pending {
+    background-color: rgba(251, 143, 33, 0.15);
+    color: #FB8F21;
+  }
+
+  &.cancelled {
+    background-color: rgba(251, 88, 33, 0);
+  }
+}
+
+
+
+.order-container-order-view {
+  max-width: 100rem;
+  margin: auto;
+  border: 1px solid var(--border-gray);
+  border-radius: 10px;
+  padding: 28px;
+
+
+
+  &-back-btn{
+    background-color: #000;
+    color: #fff;
+    border-radius: 3rem;
+    padding: 1rem 2rem;
+    cursor: pointer;
+  }
+}
+
+/* Header */
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+
+  h2 {
+    margin: 0;
+    font-size: 2.8rem;
+    font-weight: 600;
+  }
+
+  .order-settings{
+    display: flex;
+    gap: 2rem;
+      
+    .btn{
+        padding: 1.5rem 2rem;
+        border-radius: 3rem;
+        font-size: 1.8rem;
+        text-transform: capitalize;
+        cursor: pointer;
+        
+        &.delete{
+            background-color: #c64013;
+            color:#fff;
+        }
+
+        &.print{
+            background-color: #000;
+            color:#fff;
+        }
+
+        &.edit{
+            display: none;
+        }
+    }
+  }
+}
+
+.order-status {
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--color-green-01);
+  background: var(--white);
+  color: var(--color-green-01);
+  font-size: 1.8rem;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+/* Order Info */
+.order-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.4rem;
+  margin-bottom: 3.2rem;
+
+  label {
+    font-size: 1.6rem;
+    color: var(--color-green-01);
+    letter-spacing: 0.4px;
+  }
+
+  p {
+    margin: 6px 0 0;
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
+}
+
+/* Items Table */
+.order-items {
+  h3 {
+    margin-bottom: 1.6rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.6rem;
+
+    thead {
+      border-bottom: 1px solid var(--border-gray);
+
+      th {
+        text-align: left;
+        padding: 10px 0;
+        font-weight: 500;
+        color: var(--color-green-01);
+      }
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--border-gray);
+
+      td {
+        padding: 12px 0;
+      }
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .order-info {
+    grid-template-columns: 1fr;
+  }
+
+  .order-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
 }
 
 

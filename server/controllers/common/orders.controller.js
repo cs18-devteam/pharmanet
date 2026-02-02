@@ -20,10 +20,14 @@ exports.createOrder = apiCatchAsync(async (req , res)=>{
         const reqData = JSON.parse(await getRequestData(req));
         const carts = reqData.carts;
         const items = reqData.items;
+        const pharmacyId = reqData.pharmacyId;
         let ordersData  = [];
+
+
         
         const [order] =await  PharmacyOrders.save({
             userId : reqData.userId,
+            pharmacyId : pharmacyId,
         })
 
         if(carts && carts.length){
@@ -37,11 +41,11 @@ exports.createOrder = apiCatchAsync(async (req , res)=>{
             ordersData = await Promise.all(cartsData).then(data=>data.map(d=>d[0]));
         }
 
-        const orders= await Promise.all(ordersData.map(async (item)=>{
+        const orders= await Promise.all(items.map(async (item)=>{
             return await PharmacyOrdersItems.save({
                 orderId: order.id,
-                itemId : item.productId || item.medicineId,
-                itemType : item.productId ? "product" : "medicine",
+                itemId : item.itemId,
+                itemType : item.itemType ? "product" : "medicine",
                 quantity : item.quantity,
             })
         }))
@@ -98,9 +102,28 @@ exports.getOrders = apiCatchAsync(async (req , res)=>{
 
     const results = await PharmacyOrders.get(filter);
 
+    let orders = results.map(async (order)=>{
+        let items = await PharmacyOrdersItems.get({
+            orderId :order.id,
+        });
+
+
+        return {
+            ...order,
+            items,
+            total: items.reduce((acc , item , i)=>{
+                return acc + item.price * item.quantity  - item.discount;
+            } , 0)
+        }
+
+    })
+
+    orders = await Promise.all(orders);
+
+
     return responseJson(res , 200 , {
         status:"success",
-        results,
+        results : orders,
         count: results.length,
     })
 

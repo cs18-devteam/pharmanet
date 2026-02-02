@@ -19,6 +19,7 @@ export async function createOrder({
                 items,
                 paymentMethod,
                 paymentStatus,
+                pharmacyId: Application.pharmacyId,
             })
         });
         
@@ -131,6 +132,22 @@ export async function getOrderItems(pharmacyId) {
         console.log(e);
         return {
             results:"",
+        }
+    }
+}
+
+
+export async function getOrdersList() {
+    try{
+        const response =await fetch(`/api/v1/orders?pharmacy=${Application.pharmacyId}`);
+        const data = await response.json();
+        return data;
+
+
+    }catch(e){
+        console.log(e);
+        return {
+            results : ""
         }
     }
 }

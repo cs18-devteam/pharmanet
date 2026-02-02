@@ -1,7 +1,9 @@
 import Payment from "../../model/Payment.js";
 import Application from "../../model/application/Application.js";
-import { createOrder } from "../../model/pharmacy/orders.js";
+import { createOrder, getOrdersList } from "../../model/pharmacy/orders.js";
 import { closeDrawer, openDrawer, setDrawerContent } from "../../view/pharmacy/drawerView.js";
+import { createOrderTable } from "../../view/pharmacy/orders/orderTableView.js";
+import { orderView } from "../../view/pharmacy/orders/orderView.js";
 import { updateReceipt } from "../../view/pharmacy/orders/reciptView.js";
 import { closeOrdersPaymentMode, openOrdersPaymentMode } from "../../view/pharmacy/orders__viewPaymentMode.js";
 import { swal } from "../../view/swal.js";
@@ -110,7 +112,8 @@ createOrderCreateBtn?.addEventListener("click" ,async ()=>{
     if(paymentOption == "cash"){
         
         const order = await createOrder({
-            userId : Application.staffId , 
+            userId : Application.staffId ,
+            pharmacyId : Application.pharmacyId, 
             items ,
             
         })
@@ -219,7 +222,44 @@ printBtn.addEventListener("click" , ()=>{
 
 
 
-function showOrders(e){
-    setDrawerContent("");
+async function showOrders(e){
+    const data = await getOrdersList();
+
+
+    setDrawerContent(createOrderTable(data.results));
     openDrawer(e);
+    const orderCloseBtn = document.querySelector(".order-table-close-btn.close-btn > button");
+    orderCloseBtn?.addEventListener("click" , (e)=>{
+        closeDrawer();
+    })
+
+
+    const orderTable = document.querySelector(".pharmacy-order-records");
+    orderTable?.addEventListener("click" , (e)=>{
+        const tr = e.target.closest("tr");
+        if(tr){
+            const orderId = tr.dataset.id;
+            const order = data.results.filter(order=>order.id == orderId)[0];
+
+
+
+            setDrawerContent(orderView(order));
+            openDrawer();
+
+            const backBtn = document.querySelector(".order-container-order-view-back-btn");
+            backBtn?.addEventListener("click" , ()=>{
+                showOrders();
+            })
+
+
+
+
+        }else{
+            return;
+        }
+    })
+
+
+
+
 }

@@ -13,7 +13,7 @@ exports.renderIndexPage =  async (req , res)=>{
         if(token){
             
             let redirectURL = undefined;
-            const tokenData = JSON.parse( decrypt(token));
+            const tokenData = JSON.parse(decrypt(token));
             if(tokenData?.id){
 
                 const [user] = await Users.getById(tokenData.id);

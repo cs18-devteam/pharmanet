@@ -442,3 +442,58 @@
     }
 }
 
+
+
+
+// .landing{
+
+
+//     .Medicines_grid{
+//         gap: 1rem;
+//         flex-wrap: nowrap;
+//         display: flex !important;
+//         border: none !important;
+//         margin-bottom: 2rem;
+//         padding-bottom: 2rem;
+//         animation:  move 5s ease infinite;
+
+//         &:nth-child(2){
+//             animation-direction: normal;
+//         }
+//         &:nth-child(2){
+//             animation-direction: reverse;
+//         }
+        
+//     }
+    
+//     .medicine-card{
+//         box-shadow: none !important;
+//         width: 20rem !important;
+//         height: 20rem !important;
+//         aspect-ratio: 1;
+//         border-radius: 50%;
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+
+//         .medi-img{
+//             object-fit: contain !important;
+//         }
+
+//         .med_infomation{
+//             display: none;
+//         }
+//     }
+// }
+
+
+
+// @keyframes move{
+//     0%{
+//         transform: translateX(0);
+//     }
+
+//     100%{
+//         transform: translateX(100rem);
+//     }
+// }

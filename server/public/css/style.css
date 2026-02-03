@@ -12024,22 +12024,14 @@ button.save {
   color: #6b7280;
   margin: 0;
 }
-.pharmacyDashboard .dashboards .container.staff .page .recentLeaveContainer .status {
+.pharmacyDashboard .dashboards .container.staff .page .recentLeaveContainer .leaveCategory {
   padding: 6px 14px;
   font-size: 13px;
   border-radius: 999px;
   color: #fff;
   font-weight: 500;
   white-space: nowrap;
-}
-.pharmacyDashboard .dashboards .container.staff .page .recentLeaveContainer .status.pending {
-  background: #fb923c;
-}
-.pharmacyDashboard .dashboards .container.staff .page .recentLeaveContainer .status.approved {
   background: #4caf7d;
-}
-.pharmacyDashboard .dashboards .container.staff .page .recentLeaveContainer .status.rejected {
-  background: #ef4444;
 }
 .pharmacyDashboard .dashboards .container.staff .page .actions {
   display: none;

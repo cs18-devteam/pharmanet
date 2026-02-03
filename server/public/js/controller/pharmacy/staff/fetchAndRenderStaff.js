@@ -23,6 +23,9 @@ const leaveCardTemplate = html`
   </div>
 `;
 
+let selectedStaffId = null;
+let allStaffMembers = [];
+
 function formatDate(dateString) {
   const date = new Date(dateString);
   const options = { day: "numeric", month: "short", year: "numeric" };
@@ -117,51 +120,95 @@ export async function fetchAndRenderLeaves() {
 }
 
 export async function fetchAndRenderStaff() {
-  const { results } = await getStaffData();
-  const allStaffCards = results
-    .map((member) =>
-      template
-        .replace("{userId}", member.userId)
-        .replace("{staffId}", member.staffId)
-        .replace("{profile}", member.profile)
-        .replace("{role}", member.role)
-        .replace("{firstName}", member.firstName)
-        .replace("{lastName}", member.lastName),
-    )
-    .join(" ");
+  try {
+    console.log("Fetching staff data...");
+    const response = await getStaffData();
+    console.log("Staff response:", response);
+    
+    const { results } = response;
 
-  const staffCardList = document.querySelector(".staff .staff-list");
-  staffCardList.innerHTML = allStaffCards;
+    if (!results || results.length === 0) {
+      console.log("No staff members found");
+      document.querySelector(".staff-list").innerHTML = `
+        <p style="text-align: center; color: #666; padding: 20px;">No staff members found</p>
+      `;
+      return;
+    }
 
-  // Show actions when staff item is clicked
-  document.querySelectorAll(".staff-item").forEach((item) => {
-    item.addEventListener("click", function () {
-      document.querySelector(".recentLeaveContainer").style.display = "none";
-      document.querySelector(".actions").style.display = "block";
+    allStaffMembers = results;
+    console.log("Found", results.length, "staff members");
+
+    const allStaffCards = results
+      .map((member) =>
+        template
+          .replace("{userId}", member.userId || "")
+          .replace("{staffId}", member.staffId || member.id || "")
+          .replace("{profile}", member.profile || "/users/profile-general.jpg")
+          .replace("{role}", member.role || "Staff")
+          .replace("{firstName}", member.firstName || "Unknown")
+          .replace("{lastName}", member.lastName || ""),
+      )
+      .join(" ");
+
+    const staffCardList = document.querySelector(".staff-list");
+    if (staffCardList) {
+      staffCardList.innerHTML = allStaffCards;
+      console.log("Staff list updated successfully");
+    } else {
+      console.error("Staff list container not found!");
+      return;
+    }
+
+    // Add click handlers to all staff items
+    document.querySelectorAll(".staff-item").forEach((item) => {
+      item.addEventListener("click", function (e) {
+        e.stopPropagation();
+        
+        // Get the userId from data attribute
+        const userId = this.getAttribute("data-id");
+        const staffId = this.getAttribute("data-staffId");
+        
+        selectedStaffId = staffId;
+        console.log("Selected staff:", { userId, staffId });
+
+        // Hide recent leaves and show actions
+        const recentLeaveContainer = document.querySelector(".recentLeaveContainer");
+        const actions = document.querySelector(".actions");
+
+        if (recentLeaveContainer) {
+          recentLeaveContainer.style.display = "none";
+        }
+        if (actions) {
+          actions.style.display = "block";
+        }
+      });
     });
-  });
 
-  // Optional: Go back to leave container from actions
-  document
-    .querySelector(".recentLeaveContainer")
-    .addEventListener("click", function () {
-      if (event.target.closest(".back-btn")) {
-        document.querySelector(".recentLeaveContainer").style.display = "block";
-        document.querySelector(".actions").style.display = "none";
+    // Click outside handler to go back to leave view
+    document.addEventListener("click", function (event) {
+      const staffList = document.querySelector(".staff-list");
+      const actions = document.querySelector(".actions");
+      const recentLeave = document.querySelector(".recentLeaveContainer");
+
+      // Check if click is outside both staff-list and actions
+      if (staffList && actions && recentLeave) {
+        const clickedInsideStaffList = staffList.contains(event.target);
+        const clickedInsideActions = actions.contains(event.target);
+
+        if (!clickedInsideStaffList && !clickedInsideActions) {
+          recentLeave.style.display = "block";
+          actions.style.display = "none";
+          selectedStaffId = null;
+        }
       }
     });
-
-  // Detect clicks outside to reset view
-  document.addEventListener("click", function (event) {
-    const staffItem = document.querySelector(".staff-item");
-    const actions = document.querySelector(".actions");
-    const recentLeave = document.querySelector(".recentLeaveContainer");
-    const editaccnt = document.getElementById("editAccount");
-
-    // Check if click is outside staff-list and actions
-    if (!staffItem.contains(event.target) && !actions.contains(event.target)) {
-      recentLeave.style.display = "block";
-      actions.style.display = "none";
+  } catch (error) {
+    console.error("Error fetching staff:", error);
+    const staffCardList = document.querySelector(".staff-list");
+    if (staffCardList) {
+      staffCardList.innerHTML = `
+        <p style="text-align: center; color: #f44336; padding: 20px;">Error loading staff: ${error.message}</p>
+      `;
     }
-  });
+  }
 }

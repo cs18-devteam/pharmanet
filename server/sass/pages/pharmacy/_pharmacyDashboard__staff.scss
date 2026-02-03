@@ -477,25 +477,15 @@
         }
       }
 
-      .status {
+      .leaveCategory {
         padding: 6px 14px;
         font-size: 13px;
         border-radius: 999px;
         color: #fff;
         font-weight: 500;
         white-space: nowrap;
+        background: $approved;
 
-        &.pending {
-          background: $pending;
-        }
-
-        &.approved {
-          background: $approved;
-        }
-
-        &.rejected {
-          background: $rejected;
-        }
       }
     }
 

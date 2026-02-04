@@ -4630,17 +4630,54 @@ button.save {
   font-size: 1.4rem;
   font-family: var(--primary-font);
 }
-@media screen and (max-width: 1305px) {
-  .landing .mid-title {
-    font-size: 8rem;
+@media screen and (max-width: 1350px) {
+  .landing .pillBW {
+    left: 20%;
+  }
+  .landing .pillwhite {
+    right: 15%;
+  }
+  .landing .pillblue {
+    left: 15%;
   }
 }
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1315px) {
+  .landing .fb-call-msg {
+    left: 5rem;
+  }
+  .landing .side-words {
+    right: -10rem;
+  }
+  .landing .header-background {
+    margin-left: 12rem;
+    margin-right: 12rem;
+  }
+  .landing .upload-container .upload-box {
+    width: 30rem;
+    height: 30rem;
+  }
   .landing .Medicines_grid {
     grid-template-columns: repeat(4, 28rem);
   }
   .landing .pharmacy_grid {
     grid-template-columns: repeat(4, 28rem);
+  }
+  .landing .distance {
+    display: flex;
+    white-space: nowrap;
+  }
+  .landing .pharmacy_grid .results {
+    margin-left: -1rem;
+  }
+}
+@media screen and (max-width: 1305px) {
+  .landing .mid-title {
+    font-size: 8rem;
+  }
+}
+@media screen and (max-width: 1282px) {
+  .landing .stats-container {
+    display: none;
   }
 }
 @media screen and (max-width: 1245px) {
@@ -4648,101 +4685,1157 @@ button.save {
     font-size: 7.5rem;
   }
 }
-@media screen and (max-width: 1222px) {
-  .landing .Medicines_grid {
-    grid-template-columns: repeat(4, 26rem);
-  }
-  .landing .pharmacy_grid {
-    grid-template-columns: repeat(4, 26rem);
-  }
-  .landing .stats-container {
-    display: none;
-  }
-}
 @media screen and (max-width: 1173px) {
   .landing .advantage-title {
+    display: flex;
     font-size: 1.8rem;
-  }
-  .landing .advantage-title img {
-    width: 3rem;
-  }
-  .landing .mid-title {
-    font-size: 7.2rem;
-  }
-}
-@media screen and (max-width: 1125px) {
-  .landing .mid-title {
-    font-size: 7rem;
-  }
-}
-@media screen and (max-width: 1094px) {
-  .landing .header-title {
-    font-size: 6rem;
-  }
-  .landing .advantage-title {
-    font-size: 1.5rem;
   }
   .landing .advantage-title img {
     width: 2.5rem;
   }
+}
+@media screen and (max-width: 1169px) {
+  .landing .mid-title {
+    font-size: 7rem;
+  }
+}
+@media screen and (max-width: 1150px) {
+  .landing .Medicines_grid {
+    grid-template-columns: repeat(4, 26rem);
+  }
+  .landing .pharmacy_grid {
+    grid-template-columns: repeat(4, 26rem);
+  }
+  .landing .pharmacy-img img {
+    width: 23rem;
+  }
+  .landing .pharmacy_grid .results {
+    margin-left: -1.5rem;
+  }
+  .landing .distance_img, .landing .view_img {
+    width: 2rem;
+  }
+  .landing .upload-container {
+    left: 38%;
+  }
+}
+@media screen and (max-width: 1101px) {
+  .landing .advantages-grid {
+    gap: 1rem;
+  }
+}
+@media screen and (max-width: 1094px) {
   .landing .mid-title {
     font-size: 6.5rem;
   }
 }
-@media screen and (max-width: 1065px) {
+@media screen and (max-width: 1090px) {
+  .landing .header-title {
+    font-size: 6rem;
+  }
+}
+@media screen and (max-width: 1070px) {
   .landing .Medicines_grid {
-    grid-template-columns: repeat(4, 23rem);
-  }
-  .landing .med_infomation {
-    font-size: 1.5rem;
-  }
-  .landing .world_img {
-    width: 2rem;
-  }
-  .landing .map__search__value {
-    font-size: 1rem;
+    grid-template-columns: repeat(4, 24rem);
   }
   .landing .pharmacy_grid {
-    grid-template-columns: repeat(4, 23rem);
+    grid-template-columns: repeat(4, 24rem);
+  }
+  .landing .medi-img img {
+    width: 12rem;
+    height: 12rem;
+  }
+  .landing .med_infomation {
+    margin-top: -2rem;
   }
   .landing .pharmacy-img img {
     width: 20rem;
   }
-  .landing .pharmacy_name_info, .landing .pharmacy_address {
-    font-size: 1.5rem;
+  .landing .pharmacy_grid .results {
+    margin-left: -1.9rem;
   }
-  .landing .results {
-    margin-left: -2rem;
+  .landing .distance__value, .landing .view_pharmacy {
+    font-size: 1.4rem;
   }
-  .landing .distance_img, .landing .view_img {
-    width: 1.5rem;
+}
+@media screen and (max-width: 1150px) {
+  .landing .pillBW {
+    top: 40%;
   }
-  .landing .distance__value {
-    white-space: nowrap;
-    font-size: 1.3rem;
+  .landing .pillBW img, .landing .pillblue img {
+    width: 18rem;
   }
-  .landing .view_pharmacy {
-    font-size: 1.3rem;
+  .landing .pillwhite {
+    top: 45%;
+  }
+  .landing .pillwhite img {
+    width: 25rem;
   }
 }
 @media screen and (max-width: 1060px) {
+  .landing .fb-call-msg {
+    left: 4rem;
+  }
+  .landing .side-words {
+    right: -12rem;
+  }
+  .landing .header-background {
+    margin-left: 10rem;
+    margin-right: 10rem;
+  }
+  .landing .pillBW {
+    left: 15%;
+  }
+  .landing .pillblue {
+    left: 12%;
+  }
+  .landing .upload-container .upload-box {
+    width: 27rem;
+    height: 27rem;
+  }
+  .landing .icon img {
+    width: 8rem;
+  }
+  .landing .upload-container .upload-box p {
+    font-size: 2.2rem;
+  }
+}
+@media screen and (max-width: 1041px) {
+  .landing .advantage-title {
+    font-size: 1.6rem;
+  }
+  .landing .advantage-title img {
+    width: 2rem;
+  }
+  .landing .advantage-disc {
+    font-size: 1.4rem;
+  }
+  .landing .foot-title {
+    font-size: 2rem;
+  }
+  .landing .footer .site-map a {
+    font-size: 1.6rem;
+    line-height: 4rem;
+  }
+  .landing .footer .footer-discription p {
+    font-size: 1.6rem;
+  }
+  .landing .footer .bottom {
+    margin: 2rem 0 2rem 0;
+  }
+  .landing .footer {
+    height: 45rem;
+  }
+}
+@media screen and (max-width: 1025px) {
+  .landing .header-title {
+    font-size: 5.6rem;
+  }
+}
+@media screen and (max-width: 1019px) {
+  .landing .mid-title {
+    font-size: 6rem;
+  }
+}
+@media screen and (max-width: 1000px) {
   .landing .advantages-grid {
     display: flex;
-    gap: 1rem;
+    justify-content: space-between;
+    gap: 0;
   }
   .landing .advantage-card {
     flex: 1;
   }
 }
-@media screen and (max-width: 1025px) {
-  .landing .header-title {
-    font-size: 5.8rem;
+@media screen and (max-width: 990px) {
+  .landing .Medicines_grid {
+    grid-template-columns: repeat(4, 22rem);
+  }
+  .landing .pharmacy_grid {
+    grid-template-columns: repeat(4, 22rem);
+  }
+  .landing .medicine_name, .landing .medicine__info__price, .landing .map__search__value {
+    font-size: 1.4rem;
+  }
+  .landing .store-as__icon img {
+    width: 1.6rem;
+  }
+  .landing .world_img {
+    width: 2rem;
+  }
+  .landing .pharmacy-img img {
+    width: 18rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .distance .distance_img {
+    margin-right: 0;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .view-btn .view_img {
+    margin-right: 0;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .view-btn .view_pharmacy {
+    margin-left: 0.5rem;
   }
 }
-
-.top-pharmacy {
-  padding: 8rem 0;
-  margin: 0 auto;
+@media screen and (max-width: 959px) {
+  .landing .header-title {
+    font-size: 5.2rem;
+  }
+  .landing .header-discription {
+    font-size: 2.4rem;
+  }
+}
+@media screen and (max-width: 944px) {
+  .landing .mid-title {
+    font-size: 5.5rem;
+  }
+}
+@media screen and (max-width: 930px) {
+  .landing .pills {
+    top: 10%;
+  }
+  .landing .pills img {
+    width: 25rem;
+  }
+  .landing .pillblue {
+    top: 82.1%;
+  }
+  .landing .fb-call-msg {
+    left: 3rem;
+  }
+  .landing .header-background {
+    margin-left: 8rem;
+    margin-right: 8rem;
+  }
+  .landing .upload-container .upload-box {
+    width: 25rem;
+    height: 25rem;
+  }
+  .landing .icon img {
+    width: 7rem;
+  }
+  .landing .upload-container .upload-box p {
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 912px) {
+  .landing .advantage-card {
+    padding: 0 2rem;
+  }
+}
+@media screen and (max-width: 910px) {
+  .landing .Medicines_grid {
+    grid-template-columns: repeat(4, 20rem);
+  }
+  .landing .pharmacy_grid {
+    grid-template-columns: repeat(4, 20rem);
+  }
+  .landing .pharmacy-img img {
+    width: 16rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .pharmacy_infomation .pharmacy_name_info .name {
+    font-size: 1.4rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .pharmacy_infomation .pharmacy_name_info .pharmacy_name {
+    font-size: 1.4rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .pharmacy_infomation .pharmacy_address {
+    font-size: 1.4rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .distance .distance__value {
+    font-size: 1.2rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .view-btn .view_pharmacy {
+    font-size: 1.2rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .distance {
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 893px) {
+  .landing .header-title {
+    font-size: 5rem;
+  }
+}
+@media screen and (max-width: 868px) {
+  .landing .mid-title {
+    font-size: 5rem;
+  }
+}
+@media screen and (max-width: 860px) {
+  .landing .header-title {
+    font-size: 4.8rem;
+  }
+}
+@media screen and (max-width: 850px) {
+  .landing .pillblue {
+    top: 85.1%;
+  }
+  .landing .pillblue img {
+    width: 15rem;
+  }
+}
+@media screen and (max-width: 845px) {
+  .landing .footer .logo {
+    margin-left: -3rem;
+  }
+  .landing .foot-title {
+    font-size: 1.7rem;
+  }
+  .landing .footer .site-map a {
+    font-size: 1.4rem;
+    line-height: 0rem;
+    letter-spacing: 0.05rem;
+  }
+  .landing .footer .footer-discription p {
+    font-size: 1.4rem;
+    letter-spacing: 0.05rem;
+  }
+  .landing .footer .bottom nav {
+    font-size: 1.2rem;
+  }
+  .landing .footer .bottom nav > a {
+    font-size: 1.2rem;
+  }
+  .landing .footer {
+    height: 38rem;
+  }
+  .landing .footer .main {
+    padding-bottom: 5rem;
+  }
+}
+@media screen and (max-width: 840px) {
+  .landing .advantage-title {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 828px) {
+  .landing .header-title {
+    font-size: 4.6rem;
+  }
+}
+@media screen and (max-width: 825px) {
+  .landing .Medicines_grid {
+    grid-template-columns: repeat(4, 18rem);
+  }
+  .landing .pharmacy_grid {
+    grid-template-columns: repeat(4, 18rem);
+  }
+  .landing .pharmacy-img img {
+    width: 14rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .distance .distance_img {
+    width: 1.5rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .view-btn .view_pharmacy {
+    margin-left: 0;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .view-btn .view_img {
+    width: 1.5rem;
+  }
+}
+@media screen and (max-width: 804px) {
+  .landing .advantage-title {
+    font-size: 1.4rem;
+  }
+  .landing .advantage-disc {
+    font-size: 1.3rem;
+  }
+}
+@media screen and (max-width: 800px) {
+  .landing .fb-call-msg {
+    left: 1.5rem;
+    top: 38%;
+  }
+  .landing .side-words {
+    right: -14rem;
+    top: 53%;
+  }
+  .landing .header-background {
+    margin-left: 6rem;
+    margin-right: 6rem;
+    height: 38rem;
+  }
+  .landing .pills {
+    left: 35%;
+  }
+  .landing .pillBW {
+    left: 12%;
+  }
+  .landing .pillwhite {
+    right: 5%;
+  }
+  .landing .pillblue {
+    left: 8%;
+    top: 83.8%;
+  }
+  .landing .upload-container {
+    left: 35%;
+  }
+}
+@media screen and (max-width: 795px) {
+  .landing .header-title {
+    font-size: 4.4rem;
+  }
+  .landing .header-discription {
+    font-size: 2.2rem;
+  }
+}
+@media screen and (max-width: 793px) {
+  .landing .mid-title {
+    font-size: 4.5rem;
+  }
+}
+@media screen and (max-width: 767px) {
+  .landing .advantages-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .landing .advantage-title {
+    margin-bottom: 1rem;
+  }
+}
+@media screen and (max-width: 762px) {
+  .landing .header-title {
+    font-size: 4.2rem;
+    margin-top: 3rem;
+  }
+}
+@media screen and (max-width: 755px) {
+  .landing .fb-call-msg {
+    top: 36%;
+  }
+  .landing .side-words {
+    top: 56%;
+  }
+  .landing .header-background {
+    height: 32rem;
+  }
+  .landing .pillwhite img {
+    width: 20rem;
+  }
+  .landing .pillblue {
+    top: 81.5%;
+  }
+}
+@media screen and (max-width: 745px) {
+  .landing .Medicines_grid {
+    grid-template-columns: repeat(4, 16rem);
+  }
+  .landing .pharmacy_grid {
+    grid-template-columns: repeat(4, 16rem);
+  }
+  .landing .medicine_name, .landing .medicine__info__price, .landing .map__search__value {
+    font-size: 1.2rem;
+  }
+  .landing .world_img {
+    width: 1.7rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .pharmacy_infomation .pharmacy_name_info .name {
+    font-size: 1.2rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .pharmacy_infomation .pharmacy_name_info .pharmacy_name {
+    font-size: 1.2rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .pharmacy_infomation .pharmacy_address {
+    font-size: 1.2rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .distance .distance_img {
+    width: 1rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .distance .distance__value {
+    margin: 0.7rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .view-btn {
+    padding: 0.7rem;
+    gap: 0.5rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .distance .distance__value {
+    font-size: 1rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .view-btn .view_pharmacy {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 729px) {
+  .landing .header-title {
+    font-size: 4rem;
+  }
+}
+@media screen and (max-width: 720px) {
+  .landing .footer {
+    height: 35rem;
+  }
+  .landing .footer .main {
+    padding: 7rem 0 4rem 1rem;
+  }
+  .landing .footer .bottom nav {
+    font-size: 1rem;
+  }
+  .landing .footer .bottom nav > a {
+    font-size: 1rem;
+    letter-spacing: 0.07rem;
+  }
+}
+@media screen and (max-width: 717px) {
+  .landing .mid-title {
+    font-size: 4rem;
+  }
+}
+@media screen and (max-width: 697px) {
+  .landing .header-title {
+    font-size: 3.8rem;
+  }
+  .landing .header-discription {
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 672px) {
+  .landing .footer .logo .logoname {
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+  .landing .footer .bottom nav {
+    gap: 1rem;
+  }
+  .landing .foot-title {
+    font-size: 1.5rem;
+  }
+  .landing .footer .site-map a {
+    font-size: 1.2rem;
+  }
+  .landing .footer .footer-discription p {
+    font-size: 1.2rem;
+  }
+  .landing .footer .logo .logopic {
+    height: 3.5rem;
+  }
+}
+@media screen and (max-width: 664px) {
+  .landing .header-title {
+    font-size: 3.6rem;
+  }
+  .landing .header-discription {
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+  }
+  .landing .fb-call-msg {
+    top: 12.5rem;
+  }
+  .landing .pillblue {
+    top: 80.5%;
+  }
+  .landing .upload-container .upload-box {
+    max-width: 22rem;
+    height: 22rem;
+  }
+}
+@media screen and (max-width: 660px) {
+  .landing .Medicines_grid {
+    grid-template-columns: repeat(4, 14.5rem);
+  }
+  .landing .pharmacy_grid {
+    grid-template-columns: repeat(4, 14.5rem);
+  }
+  .landing .Medicines_grid .medicine-card .medi-img {
+    width: 8rem;
+    height: 8rem;
+  }
+  .landing .medi-img img {
+    width: 8rem;
+    height: 8rem;
+  }
+  .landing .med_infomation {
+    margin-top: 0;
+  }
+  .landing .pharmacy-img img {
+    width: 12rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .distance .distance_img {
+    margin-left: 0.5rem;
+  }
+}
+@media screen and (max-width: 650px) {
+  .landing .fb-call-msg {
+    top: 35%;
+  }
+  .landing .fb-call-msg img {
+    width: 80%;
+  }
+  .landing .side-words {
+    letter-spacing: 0.4rem;
+    right: -10rem;
+    top: 54%;
+  }
+  .landing .header-background {
+    height: 25rem;
+  }
+  .landing .upload-container {
+    top: 72%;
+  }
+  .landing .upload-container .upload-box {
+    width: 18rem;
+    height: 18rem;
+  }
+  .landing .icon img {
+    width: 6rem;
+  }
+  .landing .upload-container .upload-box p {
+    font-size: 1.8rem;
+    line-height: 2rem;
+  }
+  .landing .pills img {
+    width: 20rem;
+  }
+  .landing .pillBW img {
+    width: 14rem;
+  }
+  .landing .pillblue {
+    top: 81%;
+    left: 12%;
+  }
+  .landing .pillblue img {
+    width: 12rem;
+  }
+  .landing .pillwhite {
+    right: 12%;
+  }
+  .landing .pillwhite img {
+    width: 15rem;
+  }
+}
+@media screen and (max-width: 645px) {
+  .landing .advantage-title img {
+    width: 1.5rem;
+  }
+}
+@media screen and (max-width: 642px) {
+  .landing .mid-title {
+    font-size: 3.5rem;
+  }
+}
+@media screen and (max-width: 638px) {
+  .landing .section-title .section-first-title {
+    font-size: 2.5rem;
+  }
+  .landing .section-title .section-second-title {
+    font-size: 1.4rem;
+  }
+}
+@media screen and (max-width: 631px) {
+  .landing .header-title {
+    font-size: 3.4rem;
+  }
+}
+@media screen and (max-width: 622px) {
+  .landing .footer .bottom {
+    margin-left: -3rem;
+  }
+}
+@media screen and (max-width: 598px) {
+  .landing .header-title {
+    font-size: 3.2rem;
+  }
+}
+@media screen and (max-width: 595px) {
+  .landing .Medicines_grid {
+    grid-template-columns: repeat(4, 13rem);
+  }
+  .landing .pharmacy_grid {
+    grid-template-columns: repeat(4, 13rem);
+  }
+  .landing .medicine__info__price {
+    font-size: 1rem;
+  }
+  .landing .store-as__icon img {
+    width: 1.2rem;
+  }
+  .landing .map__search__value {
+    font-size: 1rem;
+  }
+  .landing .results .map-serach img {
+    width: 1.5rem;
+  }
+  .landing .pharmacy-img img {
+    width: 11rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .distance {
+    margin-left: 0.5rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .distance .distance__value {
+    margin-right: 0.5rem;
+    margin-left: 0.2rem;
+  }
+}
+@media screen and (max-width: 592px) {
+  .landing .footer .logo .logopic {
+    height: 2rem;
+    margin-right: 0.5rem;
+  }
+  .landing .footer .logo .logoname {
+    font-size: 1.1rem;
+  }
+  .landing .foot-title {
+    font-size: 1.3rem;
+  }
+  .landing .footer .site-map a {
+    font-size: 1rem;
+  }
+  .landing .footer .site-map li {
+    height: 2rem;
+  }
+  .landing .footer .footer-discription p {
+    font-size: 1rem;
+  }
+  .landing .footer {
+    padding-right: 1rem;
+    height: 30rem;
+  }
+  .landing .footer .bottom {
+    margin-top: 0;
+  }
+}
+@media screen and (max-width: 577px) {
+  .landing .pillblue {
+    top: 80.5%;
+  }
+}
+@media screen and (max-width: 576px) {
+  .landing .header-title {
+    font-size: 3rem;
+  }
+  .landing .header-discription {
+    font-size: 1.6rem;
+    line-height: 2rem;
+  }
+}
+@media screen and (max-width: 572px) {
+  .landing .footer .bottom nav {
+    padding-right: 0;
+    padding-left: 1rem;
+  }
+}
+@media screen and (max-width: 567px) {
+  .landing .mid-title {
+    font-size: 3rem;
+  }
+}
+@media screen and (max-width: 545px) {
+  .landing .Medicines_grid {
+    grid-template-columns: repeat(2, 23rem);
+  }
+  .landing .pharmacy_grid {
+    grid-template-columns: repeat(2, 23rem);
+  }
+  .landing .Medicines_grid .medicine-card .medi-img {
+    width: 15rem;
+    height: 15rem;
+  }
+  .landing .medicine-card .medi-img img {
+    width: 15rem;
+    height: 15rem;
+  }
+  .landing .Medicines_grid .medicine-card .med_infomation .medicine_name {
+    font-size: 1.4rem;
+  }
+  .landing .store-as__icon img {
+    width: 2rem;
+  }
+  .landing .medicine__info__price {
+    font-size: 1.4rem;
+  }
+  .landing .map__search__value {
+    font-size: 1.4rem;
+  }
+  .landing .results .map-serach .world_img {
+    width: 2.5rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .pharmacy-img img {
+    width: 20rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .pharmacy_infomation .pharmacy_name_info .name {
+    font-size: 1.4rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .pharmacy_infomation .pharmacy_name_info .pharmacy_name {
+    font-size: 1.4rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .pharmacy_infomation .pharmacy_address {
+    font-size: 1.4rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .distance .distance__value {
+    font-size: 1.4rem;
+    margin: 1rem 1rem 1rem 0;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .view-btn .view_pharmacy {
+    font-size: 1.4rem;
+    margin-left: 1rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .distance .distance_img {
+    width: 2.5rem;
+    margin: 1rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .view-btn .view_img {
+    width: 2.5rem;
+    margin-right: 1rem;
+  }
+  .landing .advantage-card {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 533px) {
+  .landing .header-title {
+    font-size: 2.8rem;
+  }
+}
+@media screen and (max-width: 530px) {
+  .landing .fb-call-msg {
+    top: 40%;
+    left: 0rem;
+  }
+  .landing .fb-call-msg img {
+    width: 55%;
+  }
+  .landing .side-words {
+    letter-spacing: 0.2rem;
+    right: -7rem;
+    top: 58%;
+  }
+  .landing .side-words p {
+    font-size: 1.2rem;
+  }
+  .landing .header-background {
+    margin-left: 3.5rem;
+    margin-right: 3.5rem;
+  }
+  .landing .pills img {
+    width: 15rem;
+  }
+  .landing .pillBW img {
+    width: 10rem;
+  }
+  .landing .pillwhite img {
+    width: 12rem;
+  }
+  .landing .pillblue img {
+    width: 8rem;
+  }
+  .landing .pillblue {
+    top: 83.1%;
+  }
+  .landing .header-background {
+    height: 18rem;
+  }
+  .landing .upload-container .upload-box {
+    width: 15rem;
+    height: 15rem;
+  }
+  .landing .icon img {
+    width: 4rem;
+  }
+  .landing .upload-container .upload-box p {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 525px) {
+  .landing .section-title .section-first-title {
+    font-size: 2.3rem;
+  }
+}
+@media screen and (max-width: 517px) {
+  .landing .header-discription {
+    font-size: 1.4rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  .landing .header-title {
+    font-size: 2.6rem;
+  }
+}
+@media screen and (max-width: 493px) {
+  .landing .section-title .section-first-title {
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 492px) {
+  .landing .mid-title {
+    font-size: 2.5rem;
+  }
+}
+@media screen and (max-width: 490px) {
+  .landing .logo .logopic {
+    height: 4rem;
+  }
+  .landing .auth-btns a.signup {
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 485px) {
+  .landing .Medicines_grid {
+    grid-template-columns: repeat(2, 20rem);
+  }
+  .landing .pharmacy_grid {
+    grid-template-columns: repeat(2, 20rem);
+  }
+  .landing .pharmacy_grid .pharmacy-card .pharmacy-img img {
+    max-width: 17rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .distance .distance_img {
+    width: 2rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .view-btn .view_img {
+    width: 2rem;
+    margin-right: 0.5rem;
+  }
+  .landing .Medicines_grid .medicine-card .med_infomation .medicine_name {
+    font-size: 1.2rem;
+  }
+  .landing .Medicines_grid .medicine-card .med_infomation .medicine__info__price {
+    font-size: 1.2rem;
+  }
+  .landing .store-as__icon img {
+    width: 1.5rem;
+  }
+  .landing .map__search__value {
+    font-size: 1.2rem;
+  }
+  .landing .results .map-serach .world_img {
+    width: 1.8rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .pharmacy_infomation .pharmacy_name_info .pharmacy_name {
+    font-size: 1.2rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .pharmacy_infomation .pharmacy_address {
+    font-size: 1.2rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .distance .distance__value {
+    font-size: 1.2rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .view-btn .view_pharmacy {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (max-width: 467px) {
+  .landing .header-title {
+    font-size: 2.4rem;
+  }
+}
+@media screen and (max-width: 457px) {
+  .landing .header-discription {
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+  }
+}
+@media screen and (max-width: 434px) {
+  .landing .header-title {
+    font-size: 2.2rem;
+  }
+}
+@media screen and (max-width: 430px) {
+  .landing .auth-btns a {
+    padding: 1rem;
+  }
+}
+@media screen and (max-width: 467px) {
+  .landing .header-discription {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (max-width: 467px) {
+  .landing .pillblue {
+    top: 83%;
+  }
+}
+@media screen and (max-width: 460px) {
+  .landing .pillwhite {
+    right: 6%;
+  }
+}
+@media screen and (max-width: 460px) {
+  .landing .fb-call-msg img {
+    width: 45%;
+  }
+  .landing .side-words p {
+    font-size: 1rem;
+  }
+  .landing .side-words {
+    right: -17%;
+  }
+  .landing .pills img {
+    width: 12rem;
+  }
+  .landing .pillBW img {
+    width: 7rem;
+  }
+  .landing .pillBW {
+    top: 45%;
+  }
+  .landing .pillwhite img {
+    width: 8rem;
+  }
+  .landing .pillblue img {
+    width: 5rem;
+  }
+  .landing .pillblue {
+    top: 86.5%;
+  }
+  .landing .header-background {
+    height: 14rem;
+  }
+  .landing .upload-container .upload-box {
+    width: 12rem;
+    height: 12rem;
+  }
+  .landing .icon img {
+    width: 2.8rem;
+  }
+  .landing .upload-container .upload-box p {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (max-width: 425px) {
+  .landing .Medicines_grid {
+    grid-template-columns: repeat(2, 17rem);
+  }
+  .landing .pharmacy_grid {
+    grid-template-columns: repeat(2, 17rem);
+  }
+  .landing .Medicines_grid .medicine-card .medi-img {
+    width: 10rem;
+    height: 10rem;
+  }
+  .landing .medicine-card .medi-img img {
+    width: 10rem;
+    height: 10rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .pharmacy-img img {
+    width: 15rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .distance .distance_img {
+    margin: 0.5rem;
+    width: 1.5rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .distance .distance__value {
+    font-size: 1.2rem;
+    margin: 0.5rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .view-btn .view_pharmacy {
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .view-btn .view_img {
+    width: 1.5rem;
+  }
+}
+@media screen and (max-width: 417px) {
+  .landing .mid-title {
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 401px) {
+  .landing .header-title {
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 397px) {
+  .landing .header-discription {
+    font-size: 1.1rem;
+  }
+}
+@media screen and (max-width: 390px) {
+  .landing .logo .logopic {
+    height: 3rem;
+  }
+  .landing .logoname {
+    font-size: 1.4rem;
+  }
+  .landing .auth-btns a {
+    padding: 0.5rem;
+    font-size: 1.4rem;
+  }
+}
+@media screen and (max-width: 444px) {
+  .landing .section-title .section-first-title {
+    font-size: 1.8rem;
+  }
+  .landing .section-title .section-second-title {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (max-width: 412px) {
+  .landing .section-title .section-first-title {
+    font-size: 1.6rem;
+  }
+}
+@media screen and (max-width: 379px) {
+  .landing .section-title .section-first-title {
+    font-size: 1.4rem;
+  }
+}
+@media screen and (max-width: 368px) {
+  .landing .header-title {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+  }
+  .landing .header-discription {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 360px) {
+  .landing .Medicines_grid {
+    grid-template-columns: repeat(2, 15rem);
+  }
+  .landing .pharmacy_grid {
+    grid-template-columns: repeat(2, 15rem);
+  }
+  .landing .pharmacy_grid .pharmacy-card .pharmacy-img img {
+    width: 12rem;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .distance .distance__value {
+    margin-left: 0;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .view-btn .view_pharmacy {
+    margin-left: 0;
+  }
+  .landing .pharmacy_grid .pharmacy-card .results .view-btn .view_img {
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 337px) {
+  .landing .header-discription {
+    font-size: 0.9rem;
+  }
+}
+@media screen and (max-width: 351px) {
+  .landing .section-title .section-second-title {
+    font-size: 1.1rem;
+  }
+}
+@media screen and (max-width: 347px) {
+  .landing .section-title .section-first-title {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (max-width: 341px) {
+  .landing .mid-title {
+    font-size: 1.7rem;
+  }
+}
+@media screen and (max-width: 332px) {
+  .landing .section-title .section-second-title {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 336px) {
+  .landing .logo .logopic {
+    margin-right: 0;
+  }
+  .landing .logoname {
+    font-size: 1.2rem;
+  }
+  .landing .header-title {
+    font-size: 1.6rem;
+  }
 }
 
 .SearchMedi .main-container {

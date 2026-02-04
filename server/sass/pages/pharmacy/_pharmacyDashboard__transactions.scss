@@ -7,6 +7,8 @@
                              "staffWise transactions transactions"
                              "methodWise transactions transactions";
 
+
+
         .income{
             grid-area: income;
             display: flex;
@@ -248,7 +250,7 @@
                         }
                      }
 
-                     .Print-btn{
+                     .print-btn{
                         //padding: 1rem;
                         border: 1px solid #eee;
                         border-radius: 3rem;
@@ -261,28 +263,40 @@
                         font-weight: 500;
                         background-color: #eee;
 
+                        &:hover{
+                            cursor: pointer;
+                            background-color: #ccc;
+
+                        }
+
+                        &:active{
+                            transform:scale(0.95);
+                        }
+
                      }
 
-                     @media print {
-                        body * {
-                            visibility: hidden;
-                        }
-                        .transaction_table_wrapper,
-                        .transaction_table_wrapper * {
-                            visibility: visible;
-                        }
+                    //  @media print {
+                    //     body * {
+                    //         visibility: hidden;
+                    //     }
+                    //     .transaction_table_wrapper,
+                    //     .transaction_table_wrapper * {
+                    //         visibility: visible;
+                    //     }
 
-                        .transaction_table_wrapper{
-                            position: absolute ;
-                            left: 0;
-                            top: 0;
-                            width: 100%;
-                        }
+                    //     .transaction_table_wrapper{
+                    //         position: absolute ;
+                    //         left: 0;
+                    //         top: 0;
+                    //         width: 100%;
 
-                        .print-btn{
-                            display: none;
-                        }
-                     }
+                    //     }
+
+                    //     .print-btn{
+                    //         display: none;
+                    //     }
+
+                    //  }
 
 
                      

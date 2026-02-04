@@ -8,7 +8,7 @@ import { getStaffSummary } from "../../model/pharmacy/fetchTransactionsData.js";
 export default async function init() {
   const table = document.querySelector(".transaction_table tbody");
   const startDate = document.getElementById("date_start");
-  const endData = document.getElementById("data_end");
+  const endData = document.getElementById("date_end");
   const cashOffline = document.querySelector(".stat-cash .offline span");
   const cashOnline = document.querySelector(".stat-cash .online span");
   const cardOffline = document.querySelector(".stat-card .offline span");
@@ -20,6 +20,24 @@ export default async function init() {
   const summeryOfPayment = document.querySelector(
     ".summery_payment_method_wise.summery_block"
   );
+  
+
+  //print option
+
+  const printBtn = document.querySelector(".print-btn");
+
+  if (printBtn) {
+    printBtn.addEventListener("click", () => {
+       console.log("PRINT CLICKED");
+      window.print();
+    });
+  }else {
+  console.log("PRINT BUTTON NOT FOUND");
+}
+
+
+
+
   //console.log("init");
   const getRequestDatas = await getRequestData();
   //const getStaffDatas = await getStaffData();

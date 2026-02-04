@@ -3061,6 +3061,53 @@ button.save {
     background-position-x: 200%;
   }
 }
+@media print {
+  @page {
+    size: A4;
+    margin: 2rem;
+  }
+  body * {
+    visibility: hidden;
+  }
+  .transaction_table_container,
+  .transaction_table_container * {
+    visibility: visible;
+  }
+  .transaction_table_container {
+    position: static;
+    width: 100%;
+  }
+  .transaction_table_wrapper {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  .print-btn,
+  .date_range,
+  .searchbar {
+    display: none;
+  }
+  table.transaction_table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  thead {
+    display: table-header-group; /* repeats header on every page */
+  }
+  tr {
+    page-break-inside: avoid;
+  }
+  th, td {
+    border: 1px solid #000;
+    padding: 6px;
+    font-size: 11px;
+    text-align: left;
+  }
+  .heading--2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+}
 /* auth */
 .signup header {
   margin: 2rem;
@@ -11973,7 +12020,7 @@ button.save {
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
 }
-.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .captions .date_range .Print-btn {
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .captions .date_range .print-btn {
   border: 1px solid #eee;
   border-radius: 3rem;
   margin: 1rem;
@@ -11984,23 +12031,12 @@ button.save {
   font-weight: 500;
   background-color: #eee;
 }
-@media print {
-  .pharmacyDashboard .dashboards .container.transactions .transaction_table_container .captions .date_range body * {
-    visibility: hidden;
-  }
-  .pharmacyDashboard .dashboards .container.transactions .transaction_table_container .captions .date_range .transaction_table_wrapper,
-  .pharmacyDashboard .dashboards .container.transactions .transaction_table_container .captions .date_range .transaction_table_wrapper * {
-    visibility: visible;
-  }
-  .pharmacyDashboard .dashboards .container.transactions .transaction_table_container .captions .date_range .transaction_table_wrapper {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-  }
-  .pharmacyDashboard .dashboards .container.transactions .transaction_table_container .captions .date_range .print-btn {
-    display: none;
-  }
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .captions .date_range .print-btn:hover {
+  cursor: pointer;
+  background-color: #ccc;
+}
+.pharmacyDashboard .dashboards .container.transactions .transaction_table_container .captions .date_range .print-btn:active {
+  transform: scale(0.95);
 }
 .pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table_wrapper {
   max-height: 60rem;

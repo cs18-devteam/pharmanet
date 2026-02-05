@@ -43,3 +43,17 @@ exports.pharmacyApiStaffRouter = SubRouter.route('/api/v1/pharmacies/:pharmacyId
     get: pharmacyStaffLeaveController.getLeaveRequests,
     post: pharmacyStaffLeaveController.createLeaveRequest,
 })
+
+
+exports.pharmacyApiStaffRouter = SubRouter.route('/api/v1/pharmacies/:pharmacyId')
+.subRoute("/staff" , {
+    get: pharmacyStaffController.getStaffMembers,
+    post: pharmacyStaffController.createStaffMember,
+})
+.subRoute("/staff/:staffId/update", {
+    post: pharmacyStaffController.updateStaffMember,
+})
+.subRoute("/staff/:staffId/leaves", {
+    get: pharmacyStaffLeaveController.getLeaveRequests,
+    post: pharmacyStaffLeaveController.createLeaveRequest,
+})

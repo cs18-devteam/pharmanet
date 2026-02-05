@@ -4,12 +4,14 @@ import { handleCreateStaff } from "./staff/handleCreateStaff.js";
 import { handleEditPermission } from "./staff/handleEditPermission.js";
 import { initializeLeaveForm } from "./staff/handleCreateLeave.js";
 import Application from "../../model/application/Application.js";
+import { initializeEditStaffForm } from "./staff/handleEditStaff.js";
 
 
 export default function init(){
     handleCreateStaff();   
     handleEditPermission(); 
     initializeLeaveForm();
+    initializeEditStaffForm();
 
 // Wait for Application data to be loaded
     const waitForApplicationData = setInterval(() => {

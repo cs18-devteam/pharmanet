@@ -124,19 +124,19 @@
         <div class="divider"></div>
 
         <div class="recentLeaveContainer">
-          <h3 class="section-title">Recent Application:</h3>
+          <!-- <h3 class="section-title">Recent Application:</h3>
 
           <div class="leave-card">
             <div class="card-content">
               <h4>Annual Leave</h4>
-              <!-- <p class="userDetails">Kasun Nirmal (Cashier)</p> -->
+              <p class="userDetails">Kasun Nirmal (Cashier)</p>
               <p class="date">1 Sep 2023 – 1 Sep 2023 </p>
               <p class="desc">
                 Lorem ipsum naptremometer reskade när dekakåling kotos…
               </p>
             </div>
             <span class="leaveCategory">Full day</span>
-          </div>
+          </div> -->
 
           <!-- <h3 class="section-title">Past Application:</h3>
 
@@ -334,34 +334,38 @@
       <form class="account-form">
         <label>First Name</label>
         <p class="hint">Your Staff Member Name</p>
-        <input type="text" placeholder="Your Staff Member Name" />
+        <input type="text" name="firstName" placeholder="Your Staff Member Name" />
 
         <label>Last Name</label>
         <p class="hint">Your Staff Member Name</p>
-        <input type="text" placeholder="Your Staff Member Surname" />
+        <input type="text" name="lastName" placeholder="Your Staff Member Surname" />
 
-        <label>User Name</label>
+        <!-- <label>User Name</label>
         <p class="hint">
           Please use only letters and numbers for the username . no special
           characters. Remember, usernames are case sensitive, so pick something
           easy to remember!
         </p>
-        <input type="text" placeholder="Username must be unique" />
+        <input type="text" name="userName" placeholder="Username must be unique" /> -->
 
         <label>Contact Number</label>
         <p class="hint">
           We cannot verify if the mobile number is active. Please make sure to
           use a working phone number.
         </p>
-        <input type="text" placeholder="Enter your mobile number" />
+        <input type="text" name="contact" placeholder="Enter your mobile number" />
 
         <label>Email</label>
-        <input type="email" placeholder="Enter the correct email" />
+        <input type="email" name="email" placeholder="Enter the correct email" />
 
         <label>NIC</label>
-        <input type="text" placeholder="National Identification Number" />
+        <input type="text" name="nic" placeholder="National Identification Number" />
 
-        <button class="save-btn">Save Changes</button>
+        <label>Role</label>
+        <input type="text" name="role" placeholder="Role" />
+
+
+        <button type="button" class="save-btn">Save Changes</button>
       </form>
     </div>
 

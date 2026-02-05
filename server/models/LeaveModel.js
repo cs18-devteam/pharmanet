@@ -44,17 +44,17 @@ class LeaveModel extends Model {
             //default: "pending"
         }
 
-        this.requestedDate = {
-            type: "TIMESTAMP",
+        this.firstName = {
+            type: "VARCHAR(255)",
            // default: "CURRENT_TIMESTAMP"
         }
 
-        this.acceptedDate = {
-            type: "DATE",
+        this.lastName = {
+            type: "VARCHAR(255)",
         }
 
-        this.acceptedBy = {
-            type: "INT"
+        this.role = {
+            type: "VARCHAR(255)"
         }
     }
 }

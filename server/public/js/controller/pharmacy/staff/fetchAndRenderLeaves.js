@@ -10,7 +10,7 @@ const leaveCardTemplate = html`
             <p class="date">{startDate} – {endDate} </p>
             <p class="desc">{reason}</p>
         </div>
-        <span class="status {statusClass}">{leaveCategory}</span>
+        <span class="leaveCategory">{leaveCategory}</span>
     </div>
 `;
 

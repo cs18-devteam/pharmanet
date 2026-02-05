@@ -1,7 +1,7 @@
 import Application from "../../model/application/Application.js";
 import html from "../../view/html.js";
 import { openDrawer, openSidebar, setSidebarContent } from "../../view/pharmacy/drawerView.js";
-import { initializeLeaveForm } from "./staff/handleCreateLeave.js";
+
 
 import { swal } from "../../view/swal.js";
 import orders__searchAndRenderMedicineCard from "./orders/orders__searchAndRenderMedicineCards.js";
@@ -54,7 +54,6 @@ function initialize(view){
             break;
         case "staff":
             staff_init();
-            initializeLeaveForm();
             break;
     }
 }

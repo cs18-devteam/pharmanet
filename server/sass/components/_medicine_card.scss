@@ -338,7 +338,7 @@
         height: 1px;
         display: none;
 
-        &.available{
+        &.available , &.low_stock{
             display: flex;
         }
 

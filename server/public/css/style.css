@@ -1252,7 +1252,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   height: 1px;
   display: none;
 }
-.medicine_card .order-add-form.available {
+.medicine_card .order-add-form.available, .medicine_card .order-add-form.low_stock {
   display: flex;
 }
 .medicine_card .order-add-form .input {

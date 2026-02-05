@@ -10,11 +10,44 @@ const PharmacyStaff = require("../../models/PharmacyStaffModel");
 const Users = require("../../models/UserModel");
 
 
+
+function calculateDistanceKM(
+  clientLat,
+  clientLng,
+  pharmacyLat,
+  pharmacyLng
+) {
+  const R = 6371; // Earth radius in kilometers
+
+  const toRad = (value) => value * Math.PI / 180;
+
+  const dLat = toRad(pharmacyLat - clientLat);
+  const dLng = toRad(pharmacyLng - clientLng);
+
+  const lat1 = toRad(clientLat);
+  const lat2 = toRad(pharmacyLat);
+
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(lat1) * Math.cos(lat2) *
+    Math.sin(dLng / 2) * Math.sin(dLng / 2);
+
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+  return R * c; // distance in KM
+}
+
+
+
 exports.renderCustomerPharmacies = async (req , res)=>{
     try{
 
         const [customer] = await Users.getById(req.customerId);
         const pharmacies = await Pharmacies.get();
+        const latitude = req.params.get("latitude");
+        const longitude = req.params.get("longitude");
+
+
 
         if(!customer) return view('404');
         return response(res , view('customer/customer.pharmacies.view' , {
@@ -25,8 +58,9 @@ exports.renderCustomerPharmacies = async (req , res)=>{
             count : pharmacies.length ,
             navbar : view('customer/navbar.customer' ,customer) ,
             footer: view('footer'),
-            topRatedPharmacies : pharmacies.map(pharmacy=>view('customer/component.pharmacy.card' , {
+            pharmacies : pharmacies.map(pharmacy=>view('customer/component.pharmacy.card' , {
                 ...pharmacy , 
+                distance : latitude && longitude ? calculateDistanceKM(latitude , longitude , pharmacy.latitude , pharmacy.longitude).toFixed(1) : "not available",
                 customerId : customer.id
             })).join(' '),
             cart : view('customer/component.cart'),

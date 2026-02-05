@@ -68,9 +68,7 @@ exports.getCart = async (req, res)=>{
         const id = req.customerId;
         const carts = await Carts.get({userId : id});
 
-        console.table(await Carts.get());
-        
-
+    
         let results = carts.map(async cart=>{
             if(cart.productId){
                 const [product] = await Products.getById(cart.productId);
@@ -154,7 +152,7 @@ exports.updateCart = async (req ,res)=>{
 exports.deleteCart = async (req , res)=>{
     try{
         const reqData = JSON.parse(await getRequestData(req));
-        const item = await Carts.deleteById(reqData.id);
+        const item = await Carts.deleteById(reqData.itemId);
 
 
         await Carts.commit();

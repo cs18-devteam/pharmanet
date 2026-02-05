@@ -1,6 +1,6 @@
 import html from "../html.js";
 
-const template = html`<div class="cart_item">
+const template = html`<div class="cart_item" data-id="{id}">
     <div class="content">
         <img src="/medicines/general-med.png" alt="">
         <div class="description">
@@ -25,8 +25,11 @@ const template = html`<div class="cart_item">
         <div class="select">
             <input type="checkbox" id="select-{id}" name="id"  data-id="{id}">
             <label class="text" for="select-{id}">select</label>
-        </div>
+            
+            <div class="remove-from-cart-btn">&#10005</div>
 
+        </div>
+        
 
         <div class="remove">
             <input type="checkbox" id="remove-{id}" data-id="{id}" >
@@ -57,13 +60,13 @@ const template = html`<div class="cart_item">
         
     </div>
 
+
 </div>`;
 
 
 
 
 export function createCartCards(data){
-    console.log(data);
     return data.map(cart=>{
         return template
                     .replace('{state}' , 'select')

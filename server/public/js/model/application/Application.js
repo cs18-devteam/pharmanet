@@ -81,6 +81,8 @@ export default class Application{
     static connectedUser = undefined;
     static waitingList = [];
     static staff = undefined;
+    static latitude = undefined;
+    static longitude = undefined;
 
 
     /**

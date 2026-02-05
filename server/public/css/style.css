@@ -2146,6 +2146,20 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .cart_item .content .description .price .amount::before {
   content: "Rs ";
 }
+.cart_item .action-box .remove-from-cart-btn {
+  margin: 1rem;
+  padding: 1rem;
+  color: #fff;
+  background-color: #000;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
 .cart_item .action-box:not(.select) > .select {
   display: none;
 }
@@ -2598,7 +2612,6 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   grid-template-columns: repeat(4, 32rem); /* 4 columns */
   justify-content: center;
   max-width: fit-content;
-  border: 1px solid #e8e8e8;
   margin: auto;
 }
 .pharmacy-section .pharmacy_grid .pharmacy-card {

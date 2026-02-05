@@ -1,12 +1,11 @@
 import {swal} from "./../view/swal.js";      
 try{
-
+        let isProcessing = false;
         const form = document.getElementById('loginForm');
         form.addEventListener('submit' ,async (e)=>{
             try{
-
-                
-                e.preventDefault(e);
+              e.preventDefault(e);
+              if(isProcessing) return;                
                 
                 const data = {};
                 const formData = new FormData(form);
@@ -21,9 +20,11 @@ try{
                     },
                     body : JSON.stringify(data),
                 });
-                
+
+
+                isProcessing = true;
                 const result = await respond.json();
-                console.log(result);
+                isProcessing = false;
 
 
                 if(result.status == "success"){

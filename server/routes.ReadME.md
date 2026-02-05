@@ -112,6 +112,7 @@
 /api/v1/pharmacy/:pharmacyId
 /api/v1/staff/:staffId
 /api/v1/pharmacies/:pharmacyId/transactions
+/api/v1/pharmacies/:pharmacyId/transactions/staff-summary
 /api/v1/pharmacies/:pharmacyId/products
 /api/v1/pharmacies/:pharmacyId/products/create
 /api/v1/pharmacies/:pharmacyId/products/:productId

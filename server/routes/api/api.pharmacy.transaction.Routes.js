@@ -7,4 +7,11 @@ exports.pharmacyTransactionsRouter = SubRouter
     .subRoute("/", {
         get: transactionsController.getTransactions,
         post: transactionsController.createTransaction,
+    })
+
+    .subRoute("/staff-summary", {
+        get: transactionsController.getStaffWiseSummary
     });
+
+
+    

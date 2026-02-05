@@ -26,7 +26,7 @@
             <div class="stat stat-cash">
                 <div class="topic">cash</div>
                 <div class="results">
-                    <div class="offile">
+                    <div class="offline">
                         <img src="/transactions/offline-cash.svg" alt="">
                         
                        <span>
@@ -44,7 +44,7 @@
             <div class="stat stat-card">
                 <div class="topic">card</div>
                 <div class="results">
-                    <div class="offile">
+                    <div class="offline">
                         <img src="/transactions/offline-card.svg" alt="">
                         <span>
                             8,892
@@ -97,7 +97,7 @@
 
 
         </div>
-        <div class="summery_payment_method_wise summery_block">
+        <!-- <div class="summery_payment_method_wise summery_block">
             <div class="group-by">
                 <img src="/transactions/method.svg" alt="">
                 
@@ -130,7 +130,7 @@
             </div>
 
 
-        </div>
+        </div> -->
         <div class="">
             
         </div>
@@ -142,15 +142,18 @@
             
             
             <div class="date_range">
-                <div class="label" for="date_start">date range</div>
-                <input type="date" name="date_start" id="date_start">
-                
-                <div class="label">-</div>
-                <input type="date" name="date_end" id="date_end">
+                <form action="" class="dateForm">
+                    <div class="label" for="date_start">date range</div>
+                    <input type="date" name="date_start" id="date_start">
+                    
+                    <div class="label">-</div>
+                    <input type="date" name="date_end" id="date_end">
+                </form>
+                <button class="print-btn" onclick="window.print()">Print</button>
             </div>
         </div>
 
-
+        <div class="transaction_table_wrapper">
         <table class="transaction_table">
             <thead>
                 <tr>
@@ -168,13 +171,11 @@
                 
             </tbody>
         </table>
-
-
-
-
+        </div>
 
 
 
     </div>
+
 
 </div>

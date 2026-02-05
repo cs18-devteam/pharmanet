@@ -58,6 +58,26 @@ function update(){
         }
         
     })
+
+    if(Application.userId){
+        fetch(`/api/v1/users/${Application.userId}`)
+        .then(data => data.json())
+        .then(user=>Application.user = user.results)
+        .catch(e=>console.log(e));
+    }
+    if(Application.pharmacyId){
+        fetch(`//${Application.pharmacyId}`)
+        .then(data => data.json())
+        .then(pharmacy=>Application.pharmacy = pharmacy.results)
+        .catch(e=>console.log(e));
+    }
+    if(Application.staffId){
+        fetch(`/api/v1/staff/${Application.staffId}`)
+        .then(data => data.json())
+        .then(pharmacy=>Application.staff = pharmacy.results)
+        .catch(e=>console.log(e));
+    }
+
 }
 
 

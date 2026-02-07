@@ -68,3 +68,27 @@
     animation: loading 1s linear infinite;
     scale: .1;
 }
+
+.loader {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 1000;
+    transform: translate(-50% , -50%);
+  width: 35px;
+  aspect-ratio: 1;
+  --_g1: no-repeat radial-gradient(farthest-side,var(--color-green-01) 94%,#0000);
+  --_g2: no-repeat radial-gradient(farthest-side,var(--color-red-01) 94%,#0000);
+  --_g3: no-repeat radial-gradient(farthest-side,var(--color-blue-02) 94%,#0000);
+  --_g4: no-repeat radial-gradient(farthest-side,var(--color-yellow-01) 94%,#0000);
+  background:
+    var(--_g1) 0    0,
+    var(--_g2) 100% 0,
+    var(--_g3) 100% 100%,
+    var(--_g4) 0    100%;
+  background-size: 40% 40%;
+  animation: l38 .5s infinite; 
+}
+@keyframes l38 {
+  100% {background-position: 100% 0,100% 100%,0 100%,0 0}
+}

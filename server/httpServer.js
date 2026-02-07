@@ -35,6 +35,7 @@ const { adminUsersRouter } = require('./routes/web/admin.users.Routes');
 const { adminMedicineRouter } = require('./routes/web/admin.medicines.Routes');
 const { adminDashboardRouter } = require('./routes/web/admin.dashboard.Routes');
 const { adminApiDashboardRouter } = require('./routes/web/admin.dashboard.Routes');
+const { pharmacyDeleteRouter } = require('./routes/web/pharmacy.delete.Routes');
 
 
 const options = {
@@ -106,6 +107,7 @@ const server = https.createServer(options,(req , res)=>{
         pharmaciesApiRouter.pipe(req ,res);
         pharmacyTransactionsRouter.pipe(req,res);
         pharmacyProductApiRouter.pipe(req , res);
+        pharmacyDeleteRouter.pipe(req ,res);
 
         AppRouter.pipe(req ,res).route('/admin/addUsers')
         ?.get(adminController.addUsers);

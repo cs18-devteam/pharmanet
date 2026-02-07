@@ -1,6 +1,9 @@
 import Application from "../../model/application/Application.js";
+import { deletePharmacy } from "../../model/pharmacy/deletePharmacy.js";
 import html from "../../view/html.js";
 import { openSidebar, setSidebarContent } from "../../view/pharmacy/drawerView.js";
+import { renderText } from "../../view/renderText.js";
+import { removeSpinner, renderSpinner } from "../../view/spinner.js";
 import { swal } from "../../view/swal.js";
 
 const templateSettings = html`
@@ -73,105 +76,106 @@ const templateSettings = html`
 
 
 
-function fullViewToggleSave(state){
-    window.localStorage.setItem('fullView' , state );
+function fullViewToggleSave(state) {
+    window.localStorage.setItem('fullView', state);
     updateBodyAccordingToToggle();
 }
 
 
-function updateBodyAccordingToToggle(){ 
-    if(getFullViewToggleState() == true){
+function updateBodyAccordingToToggle() {
+    if (getFullViewToggleState() == true) {
         document.body.classList.add('large-view')
-    }else{
+    } else {
         document.body.classList.remove('large-view')
     }
 }
 
 
-function getFullViewToggleState(){
+function getFullViewToggleState() {
     return window.localStorage.getItem('fullView') == "true" ? true : false;
 }
 // setSidebarContent(templateSettings);
 // openSidebar();
 
-export default function init(){
+export default function init() {
 
 
     setSidebarContent(templateSettings
-        .replace("{role}" , Application.staff.role || "standard")
-        .replace("{profile}" , Application.user.profile)
-        .replace("{firstName}" , Application.user.firstName)
-        .replace("{lastName}" , Application.user.lastName)
-        .replace("{email}" , Application.user.email)
-        .replace("{addressNo}" , Application.user.addressNo)
-        .replace("{street}" , Application.user.street)
-        .replace("{town}" , Application.user.town)
-        .replace("{province}" , Application.user.province)
-        .replace("{accountNo}" , Application.user.accountNo || "not available")
-        .replace("{bank}" , Application.user.bank)
-        .replace("{bankBranch}" , Application.user.bankBranch)
-        .replace("{staffId}" , Application.staff.id)
-        .replace("{pharmacyId}" , Application.staff.pharmacyId)
+        .replace("{role}", Application.staff.role || "standard")
+        .replace("{profile}", Application.user.profile)
+        .replace("{firstName}", Application.user.firstName)
+        .replace("{lastName}", Application.user.lastName)
+        .replace("{email}", Application.user.email)
+        .replace("{addressNo}", Application.user.addressNo)
+        .replace("{street}", Application.user.street)
+        .replace("{town}", Application.user.town)
+        .replace("{province}", Application.user.province)
+        .replace("{accountNo}", Application.user.accountNo || "not available")
+        .replace("{bank}", Application.user.bank)
+        .replace("{bankBranch}", Application.user.bankBranch)
+        .replace("{staffId}", Application.staff.id)
+        .replace("{pharmacyId}", Application.staff.pharmacyId)
     );
     openSidebar();
     handleSignOut();
     handleFullViewToggle();
     handleFullScreenMode();
+    handleDeletePharmacyOperation();
 
-    
+
 
 }
 
 updateBodyAccordingToToggle();
 
-function handleFullViewToggle(){
+function handleFullViewToggle() {
     const fillViewToggle = document.getElementById('large-view-radio');
     const fillViewToggle__label = document.querySelector('.pharmacy-profile-settings .large-view-radio__label');
 
-    if(!fillViewToggle) return;
+    if (!fillViewToggle) return;
 
-    if(getFullViewToggleState() == true){
-        fillViewToggle.checked =true;
+    if (getFullViewToggleState() == true) {
+        fillViewToggle.checked = true;
 
-    }else{
-        fillViewToggle.checked =false;
+    } else {
+        fillViewToggle.checked = false;
     }
 
 
-    fillViewToggle__label?.addEventListener('click' , ()=>{
+    fillViewToggle__label?.addEventListener('click', () => {
         fullViewToggleSave(getFullViewToggleState() ? false : true);
-        
-        if(getFullViewToggleState()){
+
+        if (getFullViewToggleState()) {
 
             swal({
-                title:"Large Space Mode On",
-                text:"now experience much larger space",
-                icon:"success",
+                title: "Large Space Mode On",
+                text: "now experience much larger space",
+                icon: "success",
             })
-        }else{
+        } else {
             swal({
-                title:"Switched to Mini Space Mode",
-                text:"Looks like do you prefer small space",
-                icon:"success",
-        })
+                title: "Switched to Mini Space Mode",
+                text: "Looks like do you prefer small space",
+                icon: "success",
+            })
         }
     })
 }
 
-function handleSignOut(){
-    document.querySelector('.signout#signout').addEventListener('click' , ()=>{
-        window.cookieStore.getAll().then((cookies)=>{
-            cookies.forEach(c=>window.cookieStore.delete(c.name));
+function handleSignOut() {
+    document.querySelector('.signout#signout').addEventListener('click', () => {
+        window.cookieStore.getAll().then((cookies) => {
+            cookies.forEach(c => window.cookieStore.delete(c.name));
         })
 
         swal({
             title: "do you want to signout ?",
             icon: 'question',
             showCancelButton: true,
-            dangerMode :true,
-            confirmButtonText : "signout"
-        }).then((value)=>{
-            if(value.isConfirmed){
+            dangerMode: true,
+            confirmButtonText: "signout"
+        }).then((value) => {
+            if (value.isConfirmed) {
                 window.location.href = "/login";
 
             }
@@ -181,21 +185,93 @@ function handleSignOut(){
 
 }
 
-function handleFullScreenMode(){
-    document.getElementById("full_screen_mode__button").addEventListener('click' ,()=>{
-        if(document.fullscreenElement){
+function handleFullScreenMode() {
+    document.getElementById("full_screen_mode__button").addEventListener('click', () => {
+        if (document.fullscreenElement) {
             document.exitFullscreen();
-        }else{
+        } else {
             document.body.requestFullscreen()
 
         }
     })
 
-    document.body.addEventListener('fullscreenchange' , (e)=>{
-        if(document.fullscreenElement){
+    document.body.addEventListener('fullscreenchange', (e) => {
+        if (document.fullscreenElement) {
             document.body.classList.add("full_screen");
-        }else{
+        } else {
             document.body.classList.remove("full_screen");
         };
     })
 }
+
+function handleDeletePharmacyOperation() {
+    document.getElementById('pharmacy_acc_delete_agreement')?.addEventListener('click', e => {
+        const container = document.createElement('div');
+        container.classList.add("deletion-notice");
+
+        document.body.insertAdjacentElement('beforeend', container);
+
+        container.insertAdjacentHTML("afterbegin", html`
+    <div class="notice-wrapper">
+        <div class="notice-card">
+            <h1>We’re sorry to see you here</h1>
+            
+            <p class="intro">
+                We truly appreciate your support and trust in our system.
+                It’s always difficult to say goodbye.
+            </p>
+            
+            <div class="warning-box">
+                <p>
+                    This action will <strong>only delete your Pharmacy System</strong>.
+                </p>
+                <ul>
+                    <li>All pharmacy details will be permanently removed</li>
+                    <li>Your account will be converted to a normal user account</li>
+                    <li>You may create a new pharmacy account later</li>
+                    <li><strong>Previous data cannot be restored</strong></li>
+                </ul>
+            </div>
+            
+            <p class="final-note">
+                Once deleted, everything related to your pharmacy is gone forever.
+                Please make sure this is what you want.
+            </p>
+            
+            <div class="actions">
+                <button class='btn-back' >I don't want to delete</button>
+                <button class="btn-danger" id="pharmacy-account-final-final-final-delete-btn">
+                    Continue & Delete Account
+                </button>
+            </div>
+        </div>
+    </div>`)
+
+        document.getElementById('pharmacy-account-final-final-final-delete-btn').addEventListener('click', async () => {
+            container.innerHTML = '';
+
+            renderSpinner();
+            const results = await deletePharmacy();
+            removeSpinner();
+
+            if (results.status == "success") {
+                renderText("Bye , See you again ❤️");
+                setTimeout(()=>{
+                    window.location.href = "/login";
+                } , 5000);
+            } else {
+                swal({
+                    icon: 'error',
+                    title: "some thing went wrong",
+                }).then(() => {
+                    container.remove();
+                })
+            }
+
+
+        })
+    })
+}
+
+
+

@@ -1,0 +1,38 @@
+.text-animation{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    font-size: 6rem;
+    z-index: 1000;
+
+    > span{
+        font-size: 1px;
+        transform: scale(0) translateY(-100%) !important;
+        animation: text-animation .5s ease forwards;
+    }
+
+    @for $i from 1 to 200{
+        & > span:nth-child(#{$i}){
+            // animation-duration: calc(.1s * #{$i});
+            animation-delay: calc(.05s * #{$i});
+        }
+    }
+}
+
+
+@keyframes text-animation{
+    0%{
+        opacity: 0;
+        font-size: 1px;
+    }
+
+    
+    100%{
+        opacity: 1;
+        font-size: 6rem;
+        color: var(--color-green-01);
+
+
+    }
+}

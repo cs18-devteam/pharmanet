@@ -380,6 +380,7 @@
 
     .staff-list {
       width: 30rem;
+      height: min-content;
     }
 
     .staff-item {
@@ -429,6 +430,7 @@
       display: block;
       padding-right: 2rem;
       width: 60%;
+      overflow-y:  auto;
 
       $border: #e5e7eb;
       $text-dark: #111827;
@@ -477,25 +479,15 @@
         }
       }
 
-      .status {
+      .leaveCategory {
         padding: 6px 14px;
         font-size: 13px;
         border-radius: 999px;
         color: #fff;
         font-weight: 500;
         white-space: nowrap;
+        background: $approved;
 
-        &.pending {
-          background: $pending;
-        }
-
-        &.approved {
-          background: $approved;
-        }
-
-        &.rejected {
-          background: $rejected;
-        }
       }
     }
 
@@ -749,7 +741,9 @@
           color: #444;
         }
 
-        input {
+        input,
+        select,
+        textarea {
           width: 100%;
           padding: 1rem;
           border: 0.1rem solid #ddd;
@@ -770,6 +764,130 @@
         }
 
         .save-btn {
+          width: 100%;
+          margin-top: 1rem;
+          padding: 1.2rem;
+          background: #0b7a71;
+          color: #fff;
+          font-size: 1.7rem;
+          border: none;
+          border-radius: 0.6rem;
+          cursor: pointer;
+
+          &:hover {
+            background: #095f57;
+          }
+        }
+      }
+    }
+
+    .side-panel {
+      padding: 2rem;
+      overflow-y: auto;
+
+      .createLeaveHeader {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: baseline;
+
+        .title-block { 
+          display: flex; 
+          flex-direction: column; 
+          gap: 0.2rem; 
+        }
+
+        .header-block{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: -0.5rem;
+        }
+
+        h2 {
+          font-size: 2rem;
+          font-weight: 500;
+          color: #000;
+          margin-bottom: -0.7rem;
+        }
+        
+        p{
+          padding-bottom: 1rem;
+        }
+      }
+
+      .uid {
+        color: #777;
+        font-size: 1rem;
+        
+      }
+
+      .profile-section {
+        display: flex;
+        justify-content: left;
+        gap: 3rem;
+        align-items: center;
+        margin-bottom: 0.5rem;
+
+        .profile-img {
+          width: 8rem;
+          height: 8rem;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        .change-btn {
+          display: flex;
+          align-items: center;
+          background: #fff;
+          border: 0.1rem solid #ddd;
+          padding: 0.8rem 1.4rem;
+          font-size: 1.1rem;
+          border-radius: 2rem;
+          cursor: pointer;
+
+          &:hover {
+            border-color: $primary;
+            color: $primary;
+          }
+        }
+      }
+
+      .account-form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+
+        label {
+          font-size: 1.5rem;
+          font-weight: 550;
+          color: #444;
+        }
+
+        input,
+        select,
+        textarea {
+          width: 100%;
+          padding: 1rem;
+          border: 0.1rem solid #ddd;
+          border-radius: 0.6rem;
+          font-size: 1rem;
+
+          &:focus {
+            border-color: #0b7a71;
+            outline: none;
+          }
+        }
+
+        .hint {
+          font-size: 1.3rem;
+          color: #888;
+          margin: -0.3rem 0 0.5rem;
+          line-height: 1.5rem;
+        }
+
+        .apply-btn {
           width: 100%;
           margin-top: 1rem;
           padding: 1.2rem;

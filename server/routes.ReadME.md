@@ -97,6 +97,10 @@
 /api/v1/pharmacies/:pharmacyId/stock/medicines
 /api/v1/pharmacies/:pharmacyId/stock/medicines/:stockId
 /api/v1/pharmacies/:pharmacyId/staff
+/api/v1/pharmacies/:pharmacyId/staff/:staffId/leaves
+/api/v1/pharmacies/:pharmacyId/staff
+/api/v1/pharmacies/:pharmacyId/staff/:staffId/update
+/api/v1/pharmacies/:pharmacyId/staff/:staffId/leaves
 /api/v1/transactions
 /api/v1/customers/:customerId/chats/assets/prescriptions
 /api/v1/customers/:customerId/pharmacy/register
@@ -127,3 +131,4 @@
 /api/v1/admin/:adminId/medicines
 /admin/:adminId/dashboard
 /api/v1/admin/:adminId/dashboard
+/pharmacy/:pharmacyId

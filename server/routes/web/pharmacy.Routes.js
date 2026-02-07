@@ -35,3 +35,5 @@ exports.pharmacyRouter = SubRouter.route('/pharmacies/:pharmacyId')
     get : pharmacyMedicinesApiController.getAllMedicines
 })
 
+
+

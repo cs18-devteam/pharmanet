@@ -1,11 +1,14 @@
 const Bridge = require("../../common/Bridge");
+const { apiCatchAsync } = require("../../common/catchAsync");
 const { createCookie } = require("../../common/cookie");
 const ipaddress = require("../../common/ipaddress");
 const { response, responseJson } = require("../../common/response");
 const view = require("../../common/view");
 const connectedPharmacies = require("../../memory/pharmacies.memory.temp");
+const PharmacyMedicines = require("../../models/PharmacyMedicinesModel");
 const Pharmacies = require("../../models/PharmacyModel");
 const PharmacyStaff = require("../../models/PharmacyStaffModel");
+const Products = require("../../models/ProductModel");
 const Users = require("../../models/UserModel");
 
 
@@ -136,3 +139,47 @@ exports.sendOnlinePharmacies = async (req , res)=>{
         })
     }
 }
+
+
+exports.deletePharmacy = apiCatchAsync(async (req , res)=>{
+    const pharmacyId = req.pharmacyId;
+    if(!pharmacyId) throw new Error("no pharmacy id");
+
+
+    const [pharmacy] = await Pharmacies.getById(pharmacyId);
+    if(!pharmacy) throw new Error("no pharmacy found");
+
+
+    const medicines =  await PharmacyMedicines.get({
+        pharmacyId : pharmacy.id , 
+    })
+
+    await Promise.all(medicines.map( async m=>{
+       return await PharmacyMedicines.deleteById(m.id); 
+    }));
+
+    const products = await Products.get({
+        pharmacyId : pharmacy.id ,
+    })
+
+    await Promise.all(products.map(async p=>{
+        return await Products.getById(p.id);
+    }))
+
+    const staff = await PharmacyStaff.get({
+        pharmacyId : pharmacy.id ,
+    })
+
+    await Promise.all(staff.map(async s=>{
+        return await PharmacyStaff.deleteById(s.id);
+    }))
+
+    await Pharmacies.deleteById(pharmacy.id);
+
+    return responseJson(res , 200 , {
+        status:"success",
+        message:"pharmacy deleted successful"
+    })
+
+    
+})

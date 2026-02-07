@@ -1,4 +1,6 @@
 import { submitPharmacyRegisterData } from "../../model/products/submitPharmacyRegisterData.js";
+import { removeSpinner, renderSpinner } from "../../view/spinner.js";
+import { swal } from "../../view/swal.js";
 
 const pharmacyRegisterForm = document.getElementById("pharmacy-form");
 
@@ -38,11 +40,26 @@ pharmacyRegisterForm.addEventListener('submit' ,async e=>{
     formData.append('addressDoc' ,  inputFile_pharmacyAddressProof?.files[0]);
 
     
-    const {status ,results} = await submitPharmacyRegisterData(formData , 1);
+    renderSpinner();
+    const {status ,results , message} = await submitPharmacyRegisterData(formData , 1);
+    removeSpinner();
 
-    console.log(results);
+    if(status == "error"){
+        swal({
+            title:"Check your form again",
+            text: message || ' ',
+            icon:"error",
+        })
+    }
+
+
     if(status == "success"){
-        window.location.href = `/pharmacies/${results.id}/pharmacist/${results.pharmacist.id}`;
+        swal({
+            title:"Pharmacy Created",
+            icon:"success",
+        }).then(()=>{
+            window.location.href = `/pharmacies/${results.id}/staff/${results.pharmacist.id}`;
+        })
     };
 
 

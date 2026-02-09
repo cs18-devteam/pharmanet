@@ -47,6 +47,17 @@
       <button class="addBtn" onclick="openPopup('addMedicineModal')">Add Medicines</button>
       </div>
       </div>
+
+
+    <div class="uploadCard">
+    <h3>Bulk upload</h3>
+    <p>Upload .xlsx, .xls, or .csv to import medicines.</p>
+    <form id="bulkUploadForm">
+      <input type="file" id="medicineFile" name="file" accept=".xlsx,.xls,.csv" required />
+      <button type="submit" class="save-btn">Upload & Import</button>
+      <span id="uploadStatus" class="statusText"></span>
+    </form>
+  </div>   
 </section>
 
 <div class="addMedicine" id="addMedicineModal">
@@ -538,6 +549,44 @@ async function loadMedicines() {
       expiryDate: data.expiryDate,
 
     }
+
+
+
+
+    const uploadForm = document.getElementById("bulkUploadForm");
+const uploadStatus = document.getElementById("uploadStatus");
+
+if (uploadForm) {
+  uploadForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    uploadStatus.textContent = "Uploading...";
+    const fileInput = document.getElementById("medicineFile");
+    if (!fileInput.files.length) {
+      uploadStatus.textContent = "Select a file first.";
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", fileInput.files[0]);
+
+    try {
+      const res = await fetch(`${window.location.origin}/admin/${adminId}/medicines/import`, {
+        method: "POST",
+        body: formData,
+      });
+      const result = await res.json();
+      if (res.ok) {
+        uploadStatus.textContent = `Imported ${result.inserted} of ${result.total}.`;
+        loadMedicines();
+        fileInput.value = "";
+      } else {
+        uploadStatus.textContent = result.error || "Upload failed.";
+      }
+    } catch (err) {
+      uploadStatus.textContent = err.message || "Upload failed.";
+    }
+  });
+}
     
   
     try {

@@ -7,6 +7,7 @@ const Medicines = require("../../models/MedicineModel");
 const db = Database.getInstance();
 const { hashPassword } = require("../../common/encrypt");
 const { catchAsync } = require("../../common/catchAsync");
+const ActivityLogService = require("../../../services/activityLogService/activityLogService");
 
 exports.renderAdminMedicinesView = async (req ,res)=>{
     const [admin] = await Medicines.getById(req.adminId);
@@ -28,6 +29,17 @@ exports.addMedicine = async (req, res) => {
         await db.query(`USE ${process.env.DATABASE_NAME}`);  // Select the database
         const newMedicine = await Medicines.save(data);
         console.log('Saved medicine:', newMedicine);
+
+        await ActivityLogService.logActivity(
+            req.adminId,              // WHO did it (the admin's ID)
+            "CREATE",                 // WHAT action (CREATE, UPDATE, DELETE)
+            "medicine",               // CATEGORY
+            "Added new medicine",     // DESCRIPTION
+            data.name,                // ENTITY NAME (the medicine name)
+            newMedicine.insertId      // ENTITY ID (the new medicine's ID)
+        );
+
+
         return responseJson(res, 201, newMedicine);  // Changed to 201 for success
     } catch (e) {
         console.error('Error adding medicine:', e);
@@ -48,11 +60,39 @@ exports.getMedicines = async (req, res) => {
 
 exports.deleteMedicine = catchAsync(async (req, res) =>  {
   const medicineId = req.medicineId;
+  const adminId = req.adminId;
+
   console.log(medicineId);
   if (!medicineId || isNaN(medicineId)) {
     return response(res, "Invalid Medicine ID", 400);
   }
+
+  let medicineName = `${medicineId}`;
+  try{
+    const [medicine] = await Medicines.getById(medicineId);
+    if(medicine){
+        medicineName = medicine.name || medicine.title || medicine.slug || `${medicineId}`;
+    }
+  }catch(e) {
+    console.log("Failed to fetch medicine before delete:", e);
+  }
+
   const deleted = await Medicines.deleteById(medicineId);
+
+  if (adminId) {
+    try{
+        await ActivityLogService.logActivity(
+            adminId,              // WHO did it (the admin's ID)
+            "DELETE",                 // WHAT action (CREATE, UPDATE, DELETE)
+            "medicine",               // CATEGORY
+            "Deleted medicine",     // DESCRIPTION
+            medicineName,                // ENTITY NAME (the medicine name)
+            medicineId     // ENTITY ID (the deleted medicine's ID)
+        );
+    } catch (e) {
+        console.log("Failed to log delete activity :", e)
+    }
+  }
   return responseJson(res, 200, deleted);
 });
 

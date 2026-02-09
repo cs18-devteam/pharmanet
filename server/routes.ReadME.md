@@ -121,3 +121,4 @@
 /api/v1/admin/:adminId/medicines
 /admin/:adminId/dashboard
 /api/v1/admin/:adminId/dashboard
+/api/v1/admin/:adminId/activities

@@ -9,3 +9,7 @@ exports.adminApiDashboardRouter = SubRouter.route('/api/v1/admin/:adminId')
 .subRoute('/dashboard',{
     get: adminDashboardController.sendDashboardStats
 })
+exports.adminApiActivityRouter = SubRouter.route('/api/v1/admin/:adminId')
+.subRoute('/activities',{
+    get: adminDashboardController.sendRecentActivities
+})

@@ -1,5 +1,5 @@
 .blogManage{
-   background: white;
+  
 
     $text-muted: #9ca3af;
     $element-bg: #F7F7F7;
@@ -76,134 +76,88 @@
   .container{
         display: flex;
         flex-direction: row;
-     .container-1{
-            flex: -2;
-            margin-right: 0rem;
-            align-items: stretch;
-            min-height: 95vh;
-            background-image: linear-gradient(25deg, rgba(6, 156, 156, 10), rgba(2, 127, 128, 0));
-            border-radius: 1rem;
-    
-    .sideBar{
-    
+     .container-1 {
+      flex: -2;
+      margin-right: 0rem;
+      align-items: stretch;
+      min-height: 95vh;
+      background: $element-bg;
+      border-radius: 1rem;
+      background-color: $primary;
+      // background-image: linear-gradient(45deg, rgba(2, 127, 128, 10), rgba(2, 127, 128, 0));
+
+      .sideBar {
         width: 26rem;
-        padding: 2rem;
+        // padding: 2rem;
         display: flex;
         flex-direction: column;
         gap: 2rem;
-        min-height: 100vh;
-        
-      
-        .logo{
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            .logopic{
-                font-size: 2.4rem;
-            }
-            div{
-            h3{
-                font-size: 1.8rem;
-                margin-bottom: -0.5rem;
-                color: $primary;
-            }   
-
-            p{
-                font-size: 1.2rem;
-                color: $text-muted;
-            }
-           }
+        // min-height: 100vh;
+        .menuItem {
+          // margin-top: auto; // ← Already there, this pushes it down
+          // padding-top: 2rem;
+          // margin-bottom: 4rem;
         }
-    }
-}
- 
+        .logo {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 2rem;
+          padding-bottom: 5rem;
+          background-color: $element-bg;
+          border-bottom: 1px solid #ccc;
+          .logopic {
+            font-size: 2.4rem;
+
+          }
+          div {
+            h3 {
+              font-size: 1.8rem;
+              margin-bottom: -0.5rem;
+              color: $primary;
+            }
+
+            p {
+              font-size: 1.2rem;
+              color: $text-muted;
+            }
+          }
+        }
+      }
+
     .menu {
-        flex: 2;
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin-top: 4rem;
+      flex: 1;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 2rem;
 
-    a {
-      padding: 10px 15px;
-      border-radius: 8px;
-      cursor: pointer;
-      color: $text-muted;
-      transition: all 0.3s;
+      a {
+        padding: 10px 15px;
+        border-radius: 8px;
+        cursor: pointer;
+        color: white !important;
+        transition: all 0.3s;
 
-      &.active,
-      &:hover {
-        background: #768190;
-        color: $accent;
+        &:active,
+        &:hover {
+          background: #768190;
+          color: $accent;
+        }
       }
     }
   }
-
-    .menuItem{
-        display: flex;
-        border-radius: 0.5rem;
-        .text1{
-            font-size: 1rem;
-            text-decoration: none;
-            border: none;
-            
-
-            &::before{
-                content: "⚙";
-            }
-        }
-        .text2{
-            font-size: 1rem;
-            
-            &::before{
-                content: "⎋";
-            } 
-        }
-    }
-  .menuItem{
-        // display: flex;
-        // flex-direction: column;
-        // align-items: flex-start;
-        // margin-left: -2rem;
-        // padding: 2rem;
-        // width: 26rem;
-        // background-color: $primary;
-        // border-bottom-left-radius: 1rem;
-        // border-bottom-right-radius: 1rem;
-        // position: absolute;
-        // top: 75rem;
-        margin-top: auto;
-
-       
-        .text{
-            border: none;
-            font-size: 2rem;
-            background: none;
-            color: $accent;
-            cursor: pointer;
-
-            &:hover{color: $accent;}
-
-            &.setting{
-              &::before{content: "⚙";}
-            }
-            &.signOut{
-              &::before{content: "⎋";}
-            }
-  }
-}
-
 
 .container-2 {
   flex: 2;
   max-width: 1200px;
   margin: 5rem auto;
   margin-left: 2rem;
-  // background: $element-bg;
+  background: $element-bg;
   padding: 2rem;
   border-radius: $radius;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 1rem 1rem 1rem rgba(255, 255, 255, 0.5);
 }
 }
 
@@ -283,13 +237,18 @@ header {
     }
 
     .actions {
-      a {
-        margin-right: 0.6rem;
-        text-decoration: none;
-        font-weight: 500;
+      button {
+        border: none;
+        background: none;
+        cursor: pointer;
+        font-weight: 600;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        transition: all 0.3s ease;
         display: inline-flex;
         align-items: center;
-        gap: 0.3rem;
+        gap: 0.4rem;
+        font-size: 1.5rem;
 
         &.edit-btn {
           color: #0a7b83;
@@ -299,7 +258,7 @@ header {
           }
         }
 
-        &.delete {
+        &.delete-btn {
           color: #c0392b;
 
           &::before{
@@ -333,7 +292,7 @@ header {
 
   .card {
     flex: 1;
-    background: $element-bg;
+    background: white;
     border-radius: $radius;
     padding: 1.5rem;
     text-align: center;

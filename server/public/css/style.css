@@ -12421,25 +12421,24 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   margin-right: 0rem;
   align-items: stretch;
   min-height: 95vh;
-  background: #F7F7F7;
+  background: #f7f7f7;
   border-radius: 1rem;
-  background-image: linear-gradient(45deg, rgb(2, 127, 128), rgba(2, 127, 128, 0));
+  background-color: #08374f;
 }
 .adminDashboard .container .container-1 .sideBar {
   width: 26rem;
-  padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-}
-.adminDashboard .container .container-1 .sideBar .menuItem {
-  margin-top: auto;
-  padding-top: 2rem;
 }
 .adminDashboard .container .container-1 .sideBar .logo {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  padding: 2rem;
+  padding-bottom: 5rem;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #ccc;
 }
 .adminDashboard .container .container-1 .sideBar .logo .logopic {
   font-size: 2.4rem;
@@ -12447,7 +12446,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .adminDashboard .container .container-1 .sideBar .logo div h3 {
   font-size: 1.8rem;
   margin-bottom: -0.5rem;
-  color: #08374F;
+  color: #08374f;
 }
 .adminDashboard .container .container-1 .sideBar .logo div p {
   font-size: 1.2rem;
@@ -12459,18 +12458,18 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 .adminDashboard .container .menu a {
   padding: 10px 15px;
   border-radius: 8px;
   cursor: pointer;
-  color: #9ca3af;
+  color: white !important;
   transition: all 0.3s;
 }
 .adminDashboard .container .menu a:active, .adminDashboard .container .menu a:hover {
   background: #768190;
-  color: #FB8F21;
+  color: #fb8f21;
 }
 .adminDashboard .container-2 {
   flex: 3;
@@ -12523,7 +12522,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .adminDashboard .container-2 .main header .user-section .admin {
   width: 3.5rem;
   height: 3.5rem;
-  background: #FB8F21;
+  background: #fb8f21;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -12532,41 +12531,44 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   color: #fff;
 }
 .adminDashboard .container-2 .main .dashboard h1 {
-  font-size: 3.2rem;
+  font-size: 3.5rem;
   margin-bottom: 0.8rem;
-  color: #08374F;
+  color: #08374f;
   margin-bottom: -0.5rem;
 }
 .adminDashboard .container-2 .main .dashboard p {
   color: #9ca3af;
   margin-bottom: 3rem;
+  color: #08374f;
+  opacity: 0.6;
 }
 .adminDashboard .container-2 .main .dashboard .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 4rem;
 }
 .adminDashboard .container-2 .main .dashboard .cards .card {
-  background-image: linear-gradient(-45deg, rgb(2, 127, 128), rgba(2, 152, 152, 0));
+  background-color: #f7f7f7;
   padding: 2rem;
-  border-radius: 16px;
   display: flex;
   flex-direction: column;
-  border: 2px solid #FB8F21;
   gap: 1rem;
   box-shadow: 0 1rem 0.8ren rgba(0, 0, 0, 0.4);
 }
+.adminDashboard .container-2 .main .dashboard .cards .card:not(.adminDashboard .container-2 .main .dashboard .cards .card:last-child) {
+  border-right: 1px solid var(--color-green-01);
+}
 .adminDashboard .container-2 .main .dashboard .cards .card .icon {
   font-size: 2.6rem;
-  color: #FB8F21;
+  color: #fb8f21;
+  display: none;
 }
-.adminDashboard .container-2 .main .dashboard .cards .card .icon.pharmarcy::before {
+.adminDashboard .container-2 .main .dashboard .cards .card .icon.pharmarcies::before {
   content: "🏢";
 }
 .adminDashboard .container-2 .main .dashboard .cards .card .icon.stock::before {
   content: "🔗";
 }
-.adminDashboard .container-2 .main .dashboard .cards .card .icon.users::before {
+.adminDashboard .container-2 .main .dashboard .cards .card .icon.users\ ::before {
   content: "👥";
 }
 .adminDashboard .container-2 .main .dashboard .cards .card .icon.revenue::before {
@@ -12574,13 +12576,14 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .adminDashboard .container-2 .main .dashboard .cards .card h3 {
   font-size: 1.6rem;
-  color: #08374F;
+  color: #08374f;
 }
 .adminDashboard .container-2 .main .dashboard .cards .card h1 {
   font-size: 2.8rem;
+  color: #08374f;
 }
 .adminDashboard .container-2 .main .dashboard .cards .card .change {
-  color: #FB8F21;
+  color: #fb8f21;
   font-size: 1.4rem;
 }
 .adminDashboard .container-2 .analyticCards {
@@ -12589,29 +12592,32 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   margin: 0rem 4rem 0rem 4rem;
   gap: 2rem;
 }
-.adminDashboard .container-2 .analyticCards .analyticCard1, .adminDashboard .container-2 .analyticCards .analyticCard2 {
-  background-color: #F7F7F7;
+.adminDashboard .container-2 .analyticCards .analyticCard1,
+.adminDashboard .container-2 .analyticCards .analyticCard2 {
+  background-color: #f7f7f7;
   border-radius: 12px;
   padding: 1.5rem;
   flex: 1 1 45%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
-.adminDashboard .container-2 .analyticCards .analyticCard1 h2, .adminDashboard .container-2 .analyticCards .analyticCard2 h2 {
+.adminDashboard .container-2 .analyticCards .analyticCard1 h2,
+.adminDashboard .container-2 .analyticCards .analyticCard2 h2 {
   font-size: 1.5rem;
   margin-bottom: 0rem;
-  color: #08374F;
+  color: #08374f;
 }
-.adminDashboard .container-2 .analyticCards .analyticCard1 p, .adminDashboard .container-2 .analyticCards .analyticCard2 p {
+.adminDashboard .container-2 .analyticCards .analyticCard1 p,
+.adminDashboard .container-2 .analyticCards .analyticCard2 p {
   font-size: 1.2rem;
   color: #bbb;
   margin-bottom: 1rem;
 }
-.adminDashboard .container-2 .analyticCards .analyticCard1 canvas, .adminDashboard .container-2 .analyticCards .analyticCard2 canvas {
+.adminDashboard .container-2 .analyticCards .analyticCard1 canvas,
+.adminDashboard .container-2 .analyticCards .analyticCard2 canvas {
   width: 100%;
   height: 30rem;
 }
 .adminDashboard .container-2 .activity-card {
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
   padding: 1.5rem;
   border-radius: 1.2rem;
   margin: 2rem 4rem 0rem 4rem;
@@ -12795,24 +12801,24 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   margin-right: 0rem;
   align-items: stretch;
   min-height: 95vh;
-  background-image: linear-gradient(45deg, rgb(2, 127, 128), rgba(2, 127, 128, 0));
+  background: #f7f7f7;
   border-radius: 1rem;
+  background-color: #08374f;
 }
 .users .container .container-1 .sideBar {
   width: 26rem;
-  padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  min-height: 100vh;
-}
-.users .container .container-1 .sideBar .menuItem {
-  margin-top: auto;
 }
 .users .container .container-1 .sideBar .logo {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  padding: 2rem;
+  padding-bottom: 5rem;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #ccc;
 }
 .users .container .container-1 .sideBar .logo .logopic {
   font-size: 2.4rem;
@@ -12820,58 +12826,30 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .users .container .container-1 .sideBar .logo div h3 {
   font-size: 1.8rem;
   margin-bottom: -0.5rem;
-  color: #08374F;
+  color: #08374f;
 }
 .users .container .container-1 .sideBar .logo div p {
   font-size: 1.2rem;
   color: #9ca3af;
 }
-.users .container .menu {
-  flex: 2;
+.users .container .container-1 .menu {
+  flex: 1;
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
-.users .container .menu a {
+.users .container .container-1 .menu a {
   padding: 10px 15px;
   border-radius: 8px;
   cursor: pointer;
-  color: #9ca3af;
+  color: white !important;
   transition: all 0.3s;
 }
-.users .container .menu a.active, .users .container .menu a:hover {
+.users .container .container-1 .menu a:active, .users .container .container-1 .menu a:hover {
   background: #768190;
-  color: #FB8F21;
-}
-.users .container .menuItem {
-  display: flex;
-  border-radius: 0.5rem;
-}
-.users .container .menuItem .text1 {
-  font-size: 1rem;
-  text-decoration: none;
-  border: none;
-}
-.users .container .menuItem .text1::before {
-  content: "⚙";
-}
-.users .container .menuItem .text2 {
-  font-size: 1rem;
-}
-.users .container .menuItem .text2::before {
-  content: "⎋";
-}
-.users .container .menuItem .text {
-  border: none;
-  font-size: 2rem;
-  background: none;
-  color: #FB8F21;
-  cursor: pointer;
-}
-.users .container .menuItem .text.signOut::before {
-  content: "⎋";
+  color: #fb8f21;
 }
 .users .container .container-2 {
   flex: 2;
@@ -12924,7 +12902,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .users .container .container-2 .main header .user-section .admin {
   width: 3.5rem;
   height: 3.5rem;
-  background: #FB8F21;
+  background: #fb8f21;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -12937,11 +12915,11 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   justify-content: space-between;
 }
 .users .container .container-2 .main .dashboard .sectionHeading .addBtn {
-  background: linear-gradient(to right, #18978D, #083851);
+  background-color: #08374f;
   color: white;
   font-size: 1.4rem;
   border-radius: 1rem;
-  border: 1rem #FB8F21;
+  border: 1rem #fb8f21;
   align-items: baseline;
   padding: 1.5rem;
   cursor: pointer;
@@ -12953,10 +12931,10 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   color: white;
 }
 .users .container .container-2 .main .dashboard .sectionHeading .addBtn a:hover {
-  color: #FB8F21;
+  color: #fb8f21;
 }
 .users .container .container-2 .main .dashboard .sectionHeading .addBtn:hover {
-  color: #FB8F21;
+  color: #fb8f21;
 }
 .users .container .container-2 .main .dashboard .sectionHeading {
   /* Background Blur */
@@ -13009,20 +12987,23 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   border: none;
 }
 .users .container .container-2 .main .dashboard h1 {
-  font-size: 3.2rem;
+  font-size: 3.5rem;
   margin-bottom: 0.8rem;
-  color: #08374F;
+  color: #08374f;
   margin-bottom: -0.5rem;
 }
 .users .container .container-2 .main .dashboard p {
-  color: #9ca3af;
+  color: #08374f;
+  opacity: 0.6;
   margin-bottom: 3rem;
 }
 .users .container .user-table {
   width: 100%;
   max-width: 140rem;
+  background-color: #f7f7f7;
   border-radius: 12px;
   overflow: visible;
+  box-shadow: 1rem 1rem 1rem rgba(255, 255, 255, 0.5);
 }
 .users .container .user-table table {
   width: 100%;
@@ -13110,7 +13091,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   position: absolute;
   top: 10%;
   right: 0%;
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
   border-radius: 0.8rem;
   width: 14rem;
   overflow: visible;
@@ -13120,12 +13101,12 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .users .container .actions .dropdownMenu .dropdown a {
   padding: 1rem 1.5rem;
-  color: #08374F;
+  color: #08374f;
   cursor: pointer;
   font-size: 1.4rem;
 }
 .users .container .actions .dropdownMenu .dropdown a:hover {
-  background-color: #FB8F21;
+  background-color: #fb8f21;
   border-radius: 0.5rem;
 }
 .users .container .actions .dropdownMenu .dropdown a.danger {
@@ -13619,24 +13600,24 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   margin-right: 0rem;
   align-items: stretch;
   min-height: 95vh;
-  background-image: linear-gradient(45deg, rgb(2, 127, 128), rgba(2, 127, 128, 0));
+  background: #f7f7f7;
   border-radius: 1rem;
+  background-color: #08374f;
 }
 .medicines .container .container-1 .sideBar {
   width: 26rem;
-  padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  min-height: 100vh;
-}
-.medicines .container .container-1 .sideBar .menuItem {
-  margin-top: auto;
 }
 .medicines .container .container-1 .sideBar .logo {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  padding: 2rem;
+  padding-bottom: 5rem;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #ccc;
 }
 .medicines .container .container-1 .sideBar .logo .logopic {
   font-size: 2.4rem;
@@ -13644,44 +13625,30 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .medicines .container .container-1 .sideBar .logo div h3 {
   font-size: 1.8rem;
   margin-bottom: -0.5rem;
-  color: #08374F;
+  color: #08374f;
 }
 .medicines .container .container-1 .sideBar .logo div p {
   font-size: 1.2rem;
   color: #9ca3af;
 }
-.medicines .container .menu {
-  flex: 2;
+.medicines .container .container-1 .menu {
+  flex: 1;
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
-.medicines .container .menu a {
+.medicines .container .container-1 .menu a {
   padding: 10px 15px;
   border-radius: 8px;
   cursor: pointer;
-  color: #9ca3af;
+  color: white !important;
   transition: all 0.3s;
 }
-.medicines .container .menu a.active, .medicines .container .menu a:hover {
+.medicines .container .container-1 .menu a:active, .medicines .container .container-1 .menu a:hover {
   background: #768190;
-  color: #FB8F21;
-}
-.medicines .container .menuItem .text {
-  border: none;
-  font-size: 2rem;
-  background: none;
-  color: #FB8F21;
-  cursor: pointer;
-}
-.medicines .container .menuItem .text:hover {
-  color: #FB8F21;
-}
-.medicines .container .menuItem .text.signOut::before {
-  content: "⎋";
-  margin-right: 0.5rem;
+  color: #fb8f21;
 }
 .medicines .container .container-2 {
   flex: 2;
@@ -13735,20 +13702,20 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .medicines .container .container-2 .main header .user-section .admin {
   width: 3.5rem;
   height: 3.5rem;
-  background: #FB8F21;
+  background: #fb8f21;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  color: #fff;
+  color: #08374f;
 }
 .medicines .container .container-2 .main .dashboard .sectionHeading {
   display: flex;
   justify-content: space-between;
 }
 .medicines .container .container-2 .main .dashboard .sectionHeading .addBtn {
-  background: linear-gradient(to right, #18978D, #083851);
+  background: #08374f;
   color: white;
   font-size: 1.4rem;
   border-radius: 1rem;
@@ -13756,22 +13723,26 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   cursor: pointer;
   border: none;
 }
+.medicines .container .container-2 .main .dashboard .sectionHeading .addBtn:hover {
+  color: #fb8f21;
+}
 .medicines .container .container-2 .main .dashboard .sectionHeading .addBtn::before {
   content: "+ ";
 }
 .medicines .container .container-2 .main .dashboard h1 {
-  font-size: 3.2rem;
+  font-size: 3.5rem;
   margin-bottom: -0.5rem;
-  color: #08374F;
+  color: #08374f;
 }
 .medicines .container .container-2 .main .dashboard p {
-  color: #9ca3af;
+  color: #08374f;
+  opacity: 0.6;
   margin-bottom: 3rem;
 }
 .medicines .addMedicine {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.8);
   justify-content: center;
   z-index: 1000;
   display: none;
@@ -13789,7 +13760,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   padding: 1.5rem 1.8rem;
   border-top-left-radius: 1.2rem;
   border-top-right-radius: 1.2rem;
-  background: linear-gradient(to right, #18978D, #083851);
+  background: linear-gradient(113deg, #69cdff 0%, #127eb5 20%, #006395 64.59%, #006395 83.5%);
 }
 .medicines .addMedicine .modal .modal-header h2 {
   margin: 0;
@@ -13826,14 +13797,16 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   font-size: 14px;
   font-weight: 500;
 }
-.medicines .addMedicine .modal .medicine-form .form-row input, .medicines .addMedicine .modal .medicine-form .form-row select {
+.medicines .addMedicine .modal .medicine-form .form-row input,
+.medicines .addMedicine .modal .medicine-form .form-row select {
   width: 100%;
   padding: 10px 12px;
   border: 1px solid #e5e5e5;
   border-radius: 10px;
   font-size: 14px;
 }
-.medicines .addMedicine .modal .medicine-form .form-row input:focus, .medicines .addMedicine .modal .medicine-form .form-row select:focus {
+.medicines .addMedicine .modal .medicine-form .form-row input:focus,
+.medicines .addMedicine .modal .medicine-form .form-row select:focus {
   outline: none;
   border-color: #000;
 }
@@ -13867,10 +13840,10 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .medicines .table-container {
   width: 100%;
-  background: #F7F7F7;
+  background: #f7f7f7;
   border-radius: 12px;
   padding: 1rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 1rem 1rem 1rem rgba(255, 255, 255, 0.5);
 }
 .medicines .medicine-table {
   width: 100%;
@@ -13944,7 +13917,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   position: absolute;
   top: 10%;
   right: 0%;
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
   border-radius: 0.8rem;
   width: 13rem;
   overflow: visible;
@@ -13955,14 +13928,14 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .medicines .actions .dropdownMenu .dropdown button {
   padding: 1rem 1.5rem;
   border: none;
-  color: #08374F;
+  color: #08374f;
   cursor: pointer;
   font-size: 1.4rem;
   font-weight: bold;
   background: none;
 }
 .medicines .actions .dropdownMenu .dropdown button:hover {
-  background-color: #FB8F21;
+  background-color: #fb8f21;
   border-radius: 0.5rem;
 }
 .medicines .actions .dropdownMenu .dropdown button.danger {
@@ -13970,7 +13943,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   background: none;
 }
 .medicines .actions .dropdownMenu .dropdown button.danger:hover {
-  background-color: #FB8F21;
+  background-color: #fb8f21;
 }
 .medicines .actions .dropdownMenu .dropdown.show {
   display: block;
@@ -14013,7 +13986,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   border-top-right-radius: 1.2rem;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(to right, #18978D, #083851);
+  background: linear-gradient(to right, #18978d, #083851);
   color: #fff;
 }
 .medicines .viewMedicine .modal .modal-header h2 {
@@ -14112,7 +14085,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   border-top-right-radius: 1.2rem;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(to right, #18978D, #083851);
+  background: linear-gradient(to right, #18978d, #083851);
   color: #fff;
 }
 .medicines .editModal .modal-header h2 {
@@ -14177,7 +14150,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   cursor: pointer;
 }
 .medicines .editModal .actions .save {
-  background: #08374F;
+  background: #08374f;
   color: #fff;
   border: none;
   padding: 8px 16px;
@@ -14309,9 +14282,6 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   color: white;
 }
 
-.blogManage {
-  background: white;
-}
 .blogManage .navbar {
   display: flex;
   flex-direction: row;
@@ -14373,21 +14343,24 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   margin-right: 0rem;
   align-items: stretch;
   min-height: 95vh;
-  background-image: linear-gradient(25deg, rgb(6, 156, 156), rgba(2, 127, 128, 0));
+  background: #F7F7F7;
   border-radius: 1rem;
+  background-color: #08374F;
 }
 .blogManage .container .container-1 .sideBar {
   width: 26rem;
-  padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  min-height: 100vh;
 }
 .blogManage .container .container-1 .sideBar .logo {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  padding: 2rem;
+  padding-bottom: 5rem;
+  background-color: #F7F7F7;
+  border-bottom: 1px solid #ccc;
 }
 .blogManage .container .container-1 .sideBar .logo .logopic {
   font-size: 2.4rem;
@@ -14401,70 +14374,34 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   font-size: 1.2rem;
   color: #9ca3af;
 }
-.blogManage .container .menu {
-  flex: 2;
+.blogManage .container .container-1 .menu {
+  flex: 1;
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
-.blogManage .container .menu a {
+.blogManage .container .container-1 .menu a {
   padding: 10px 15px;
   border-radius: 8px;
   cursor: pointer;
-  color: #9ca3af;
+  color: white !important;
   transition: all 0.3s;
 }
-.blogManage .container .menu a.active, .blogManage .container .menu a:hover {
+.blogManage .container .container-1 .menu a:active, .blogManage .container .container-1 .menu a:hover {
   background: #768190;
   color: #FB8F21;
-}
-.blogManage .container .menuItem {
-  display: flex;
-  border-radius: 0.5rem;
-}
-.blogManage .container .menuItem .text1 {
-  font-size: 1rem;
-  text-decoration: none;
-  border: none;
-}
-.blogManage .container .menuItem .text1::before {
-  content: "⚙";
-}
-.blogManage .container .menuItem .text2 {
-  font-size: 1rem;
-}
-.blogManage .container .menuItem .text2::before {
-  content: "⎋";
-}
-.blogManage .container .menuItem {
-  margin-top: auto;
-}
-.blogManage .container .menuItem .text {
-  border: none;
-  font-size: 2rem;
-  background: none;
-  color: #FB8F21;
-  cursor: pointer;
-}
-.blogManage .container .menuItem .text:hover {
-  color: #FB8F21;
-}
-.blogManage .container .menuItem .text.setting::before {
-  content: "⚙";
-}
-.blogManage .container .menuItem .text.signOut::before {
-  content: "⎋";
 }
 .blogManage .container .container-2 {
   flex: 2;
   max-width: 1200px;
   margin: 5rem auto;
   margin-left: 2rem;
+  background: #F7F7F7;
   padding: 2rem;
   border-radius: 1rem;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 1rem 1rem 1rem rgba(255, 255, 255, 0.5);
 }
 .blogManage header {
   display: flex;
@@ -14532,24 +14469,29 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   color: #666;
   margin: 0.3rem 0 0;
 }
-.blogManage .blog-table table .actions a {
-  margin-right: 0.6rem;
-  text-decoration: none;
-  font-weight: 500;
+.blogManage .blog-table table .actions button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.4rem;
+  font-size: 1.5rem;
 }
-.blogManage .blog-table table .actions a.edit-btn {
+.blogManage .blog-table table .actions button.edit-btn {
   color: #0a7b83;
 }
-.blogManage .blog-table table .actions a.edit-btn::before {
+.blogManage .blog-table table .actions button.edit-btn::before {
   content: "✏️";
 }
-.blogManage .blog-table table .actions a.delete {
+.blogManage .blog-table table .actions button.delete-btn {
   color: #c0392b;
 }
-.blogManage .blog-table table .actions a.delete::before {
+.blogManage .blog-table table .actions button.delete-btn::before {
   content: "🗑️";
 }
 .blogManage .tag {
@@ -14573,7 +14515,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .blogManage .summary .card {
   flex: 1;
-  background: #F7F7F7;
+  background: white;
   border-radius: 1rem;
   padding: 1.5rem;
   text-align: center;
@@ -16325,24 +16267,25 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   margin-right: 0rem;
   align-items: stretch;
   min-height: 95vh;
-  background-image: linear-gradient(45deg, rgb(2, 127, 128), rgba(2, 127, 128, 0));
+  background: #f7f7f7;
   border-radius: 1rem;
+  background-color: #08374F;
 }
 .pharmarcy .container .container-1 .sideBar {
   width: 26rem;
-  padding: 2rem;
+  padding: 0rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  min-height: 100vh;
-}
-.pharmarcy .container .container-1 .sideBar .menuItem {
-  margin-top: auto;
 }
 .pharmarcy .container .container-1 .sideBar .logo {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  padding: 2rem;
+  padding-bottom: 5rem;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #ccc;
 }
 .pharmarcy .container .container-1 .sideBar .logo .logopic {
   font-size: 2.4rem;
@@ -16356,68 +16299,24 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   font-size: 1.2rem;
   color: #9ca3af;
 }
-.pharmarcy .container .menu {
-  flex: 2;
+.pharmarcy .container .container-1 .menu {
+  flex: 1;
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
-.pharmarcy .container .menu a {
+.pharmarcy .container .container-1 .menu a {
   padding: 10px 15px;
   border-radius: 8px;
   cursor: pointer;
-  color: #9ca3af;
+  color: white !important;
   transition: all 0.3s;
 }
-.pharmarcy .container .menu a.active, .pharmarcy .container .menu a:hover {
+.pharmarcy .container .container-1 .menu a:active, .pharmarcy .container .container-1 .menu a:hover {
   background: #768190;
   color: #FB8F21;
-}
-.pharmarcy .container .menuItem {
-  display: flex;
-  border-radius: 0.5rem;
-}
-.pharmarcy .container .menuItem .text1 {
-  font-size: 1rem;
-  text-decoration: none;
-  border: none;
-}
-.pharmarcy .container .menuItem .text1::before {
-  content: "⚙";
-}
-.pharmarcy .container .menuItem .text2 {
-  font-size: 1rem;
-}
-.pharmarcy .container .menuItem .text2::before {
-  content: "⎋";
-}
-.pharmarcy .container .menuItem {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-left: -2rem;
-  padding: 2rem;
-  width: 26rem;
-  background: none;
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
-  position: absolute;
-  top: 75rem;
-}
-.pharmarcy .container .menuItem .text {
-  border: none;
-  font-size: 2rem;
-  background: none;
-  color: #FB8F21;
-  cursor: pointer;
-}
-.pharmarcy .container .menuItem .text.setting::before {
-  content: "⚙";
-}
-.pharmarcy .container .menuItem .text.signOut::before {
-  content: "⎋";
 }
 .pharmarcy .container .container-2 {
   flex: 2;
@@ -16483,8 +16382,8 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   justify-content: space-between;
 }
 .pharmarcy .container .container-2 .main .dashboard .sectionHeading .addBtn {
-  background: linear-gradient(to right, #18978D, #083851);
-  color: white;
+  background: #f7f7f7;
+  color: black;
   font-size: 1.4rem;
   border-radius: 1rem;
   border: 1rem #FB8F21;
@@ -16494,14 +16393,19 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .pharmarcy .container .container-2 .main .dashboard .sectionHeading .addBtn::before {
   content: "+ ";
 }
+.pharmarcy .container .container-2 .main .dashboard .sectionHeading .addBtn:hover {
+  color: #FB8F21;
+  cursor: pointer;
+}
 .pharmarcy .container .container-2 .main .dashboard h1 {
-  font-size: 3.2rem;
+  font-size: 3.5rem;
   margin-bottom: 0.8rem;
-  color: #08374F;
+  color: black;
   margin-bottom: -0.5rem;
 }
 .pharmarcy .container .container-2 .main .dashboard p {
-  color: #9ca3af;
+  color: black;
+  opacity: 0.6;
   margin-bottom: 3rem;
 }
 .pharmarcy .container .container-2 .main .dashboard .pharmacy-grid {
@@ -16514,10 +16418,10 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 }
 .pharmarcy .container .container-2 .main .dashboard .pharmacy-card {
   display: grid;
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
   border-radius: 12px;
   padding: 1.5rem;
-  box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.5);
+  box-shadow: 1rem 1rem 1rem rgba(255, 255, 255, 0.5);
   position: relative;
   align-items: stretch;
   max-width: 60rem;

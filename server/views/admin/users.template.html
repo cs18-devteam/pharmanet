@@ -249,9 +249,9 @@
   const pathParts = window.location.pathname.split('/');
   const adminIdIndex = pathParts.indexOf('admin') + 1;
   const adminId = pathParts[adminIdIndex];
-
   const API_URL = `${window.location.origin}/admin/${adminId}/api/users`;
 
+  
   window.addEventListener('load', loadUsers);
 
   //FETCH ALL USERS

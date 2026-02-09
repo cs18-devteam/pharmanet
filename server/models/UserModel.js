@@ -108,10 +108,13 @@ class UserModel extends Model {
 }
 
 const Users = new UserModel();
+
+
 Users.createTable().catch(e => {
     console.log(e);
     console.log('user table not created');
 })
+
 module.exports = Users;
 // Named export: class (non-enumerable so it won’t show up in Object.entries)
 Object.defineProperty(module.exports, "UserModel", {

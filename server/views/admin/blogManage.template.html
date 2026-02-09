@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -158,7 +158,7 @@
       <td>${blog.author}</td>
       <td>${blog.status}</td>
       <td class = "actions">
-        <button class="edit-btn" data-id="${blog.id}">Edit</button>
+        <button class="edit-btn" data-id="${blog.id}" >Edit</button>
         <button class="delete-btn" data-id="${blog.id}">Delete</button>
       </td>
     `;
@@ -169,13 +169,13 @@
         document
           .querySelectorAll(".delete-btn")
           .forEach((btn) =>
-            btn.addEventListener("click", () => deleteBlog(btn.dataset.id))
+            btn.addEventListener("click", () => deleteBlog(btn.dataset.id)),
           );
 
         document
           .querySelectorAll(".edit-btn")
           .forEach((btn) =>
-            btn.addEventListener("click", () => editBlog(btn.dataset.id))
+            btn.addEventListener("click", () => editBlog(btn.dataset.id)),
           );
       }
 
@@ -187,7 +187,7 @@
           `${window.location.origin}/admin/${adminId}/blogs/${blogId}/delete`,
           {
             method: "DELETE",
-          }
+          },
         );
         if (res.ok) {
           alert("Blog deleted!");
@@ -224,6 +224,11 @@
 
       // ================== EDIT BLOG ==================
       async function editBlog(id) {
+        window.location.href = `/admin/${adminId}/blogs/${id}/edit`;
+      }
+
+      // ================== EDIT BLOG ==================
+      async function editblog(id) {
         const newTitle = prompt("Enter new blog title:");
         if (!newTitle) return;
 
@@ -233,7 +238,7 @@
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ title: newTitle }),
-          }
+          },
         );
 
         if (res.ok) {

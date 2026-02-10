@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', async() => {
   
 
   const ctx = canvas.getContext('2d');
-  const barColor = '#66bb6a';
+  const barColor = '#fb8f21';
 
   const dpr = window.devicePixelRatio || 1;
   const width = canvas.clientWidth || canvas.width || 520;

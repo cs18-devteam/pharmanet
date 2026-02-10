@@ -76,6 +76,34 @@ exports.renderAdminCreateNewBlog = catchAsync(async (req, res) => {
 
 
 
+exports.renderEditView = catchAsync(async (req, res) => {
+  // const adminId = req.params.adminId;
+  let adminId = req.adminId;
+
+  if (!adminId && req.url) {
+    const parts = req.url.split('/');
+    if (parts[1] === 'admin' && parts[2]) {
+      adminId = parts[2];
+    }
+  }
+
+  if (!adminId || isNaN(adminId)) {
+    return response(res, "Invalid Admin ID", 400);
+  }
+
+  const [admin] = await Users.getById(adminId);
+
+  if (!admin) {
+    return response(res, "Admin not found", 404);
+  }
+
+
+  return response(res, view('blog/editBlog', {
+    ...admin
+  }), 200);
+})
+
+
 exports.createBlog = catchAsync(async (req, res) => {
   const rawData = await getRequestData(req);
   if (!rawData) {

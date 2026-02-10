@@ -37,6 +37,7 @@ const { adminDashboardRouter } = require('./routes/web/admin.dashboard.Routes');
 const { adminApiDashboardRouter } = require('./routes/web/admin.dashboard.Routes');
 const { pharmacyDeleteRouter } = require('./routes/web/pharmacy.delete.Routes');
 
+const { adminApiActivityRouter } = require('./routes/web/admin.dashboard.Routes')
 
 const options = {
   key: fs.readFileSync('key.pem'),
@@ -80,7 +81,8 @@ const server = https.createServer(options,(req , res)=>{
         adminPharmacyRouter.pipe(req , res);
         pharmacyStaffRouter.pipe(req,res);
         adminUsersRouter.pipe(req,res);
-        adminMedicineRouter.pipe(req, res)
+        adminMedicineRouter.pipe(req, res);
+        adminApiActivityRouter.pipe(req, res);
         pharmacistRouter.pipe(req , res);
         pharmacyRouter.pipe(req , res);
         cashiersBillsRouter.pipe(req ,res);

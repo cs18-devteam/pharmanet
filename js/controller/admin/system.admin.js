@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const ctx = canvas.getContext('2d');
   const categories = ['Antibiotics', 'Pain Relief', 'Vitamins', 'Cardiac', 'Diabetes', 'Other'];
   const values = [330, 280, 460, 190, 230, 310];
-  const barColor = '#66bb6a';
+  const barColor = '#fb8f21';
 
   const dpr = window.devicePixelRatio || 1;
   const width = canvas.clientWidth || canvas.width || 520;
@@ -39,10 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const barHeight = (values[i] / maxVal) * chartH;
     const y = padding.top + chartH - barHeight;
 
+    const barColor = '#fb8f21';  // Change to your desired color
     ctx.fillStyle = barColor;
     ctx.fillRect(x - barWidth / 2, y, barWidth, barHeight);
 
-    ctx.fillStyle = '#1f2933';
+    
     ctx.fillText(values[i], x, y - 6);
     ctx.fillStyle = '#5a6b7b';
     ctx.fillText(label, x, padding.top + chartH + 18);

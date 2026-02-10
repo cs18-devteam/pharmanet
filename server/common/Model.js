@@ -350,7 +350,7 @@ class Model{
     }
 
 
-    drop(){
+    async drop(){
         try{
 
         const query = `drop table ${this.#table}`;

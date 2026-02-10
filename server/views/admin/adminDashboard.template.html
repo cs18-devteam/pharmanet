@@ -26,24 +26,22 @@
 
       <div class="cards">
         <div class="card">
-          <div class="icon pharmarcy"></div>
+          <div class="icon pharmarcies"></div>
           <h3>Total Pharmacies</h3>
           <h1 id = "totalPharmacies"></h1>
-          <p class="change">+2 this month</p>
+          
         </div>
 
         <div class="card">
           <div class="icon stock"></div>
           <h3>Registered Medicines</h3>
           <h1 id="totalMedicines">1,847</h1>
-          <p class="change">+127 this week</p>
         </div>
 
         <div class="card">
-          <div class="icon users"></div>
+          <div class="icon user"></div>
           <h3>Total Users</h3>
           <h1 id="totalUsers">342</h1>
-          <p class="change">+18 this week</p>
         </div>
 
         <!-- <div class="card">
@@ -78,8 +76,8 @@
     <h2>Recent Activity</h2>
     <p class="subtitle">Latest actions across the system</p>
 
-    <ul class="activity-list">
-      <li class="activity-item">
+    <ul class="activity-list" id="activityList">
+      <!-- <li class="activity-item">
         <div class="avatar">JS</div>
         <div class="details">
           <div class="info">
@@ -137,7 +135,7 @@
           <p>Updated inventory <strong>Central Pharmacy</strong></p>
           <span class="time">3 hours ago</span>
         </div>
-      </li>
+      </li> -->
     </ul>
   </div>
   </div>
@@ -169,6 +167,56 @@
     }
     loadDashboardStats();
   </script>
+
+
+  <script>
+    async function loadRecentActivities() {
+        try {
+            const pathParts = window.location.pathname.split('/');
+            const adminId = pathParts[pathParts.indexOf('admin') + 1];
+
+            console.log('Fetching activities from:', `/api/v1/admin/${adminId}/activities`);
+            const res = await fetch(`/api/v1/admin/${adminId}/activities`);
+            const data = await res.json();
+
+            console.log('Activities data:', data);
+            const activities = data.activities || [];
+
+            const activityList = document.getElementById('activityList');
+            activityList.innerHTML = '';
+
+            if (activities.length === 0) {
+                activityList.innerHTML = '<li class="activity-item"><p>No activities found</p></li>';
+                return;
+            }
+
+            activities.forEach(activity => {
+                const listItem = document.createElement('li');
+                listItem.className = 'activity-item';
+                listItem.innerHTML = `
+                    <div class="avatar">${activity.userAvatar || 'XX'}</div>
+                    <div class="details">
+                        <div class="info">
+                            <strong>${activity.userName || 'Unknown User'}</strong>
+                            <span class="tag ${activity.category}">${activity.category}</span>
+                        </div>
+                        <p>${activity.description} ${activity.entityName ? `<strong>${activity.entityName}</strong>` : ''}</p>
+                        <span class="time">${activity.timeAgo || 'Recently'}</span>
+                    </div>
+                `;
+                activityList.appendChild(listItem);
+            });
+        } catch (e) {
+            console.error('Error loading activities:', e);
+            const activityList = document.getElementById('activityList');
+            activityList.innerHTML = '<li class="activity-item"><p>Error loading activities</p></li>';
+        }
+    }
+
+    loadRecentActivities();
+    // Refresh activities every 30 seconds
+    setInterval(loadRecentActivities, 30000);
+</script>
 </body>
 </html>
 

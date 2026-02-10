@@ -122,6 +122,8 @@
 /api/v1/pharmacies/:pharmacyId/products/:productId
 /admin/:adminId/users
 /admin/:adminId/users/create
+/admin/:adminId/viewProfile
+/admin/:adminId/viewProfile/:id
 /admin/:adminId/api/users
 /admin/:adminId/api/users/:id
 /admin/:adminId/medicines
@@ -131,4 +133,5 @@
 /api/v1/admin/:adminId/medicines
 /admin/:adminId/dashboard
 /api/v1/admin/:adminId/dashboard
+/api/v1/admin/:adminId/activities
 /pharmacy/:pharmacyId

@@ -4,6 +4,7 @@ const view = require("../../common/view");
 const Pharmacies = require("../../models/PharmacyModel");
 const Medicines = require("../../models/MedicineModel");
 const Users = require("../../models/UserModel");
+const ActivityLogService = require("../../../services/activityLogService/activityLogService");
 
 exports.renderAdminDashboard = catchAsync(async (req, res) => {
   try {
@@ -38,10 +39,10 @@ exports.sendDashboardStats = catchAsync(async (req, res) => {
 
     //Count medicines by category
     const categoryCounts = {};
-    medicines.forEach(med => {
-      const category = med.category || 'other';
+    medicines.forEach((med) => {
+      const category = med.category || "other";
       categoryCounts[category] = (categoryCounts[category] || 0) + 1;
-    })
+    });
     return responseJson(res, 200, {
       totalPharmacies,
       totalMedicines,
@@ -52,6 +53,23 @@ exports.sendDashboardStats = catchAsync(async (req, res) => {
     console.log(e);
     return responseJson(res, 500, {
       error: "Failed to fetch dashboard statistics",
+    });
+  }
+});
+
+// Add this new export for getting activities
+exports.sendRecentActivities = catchAsync(async (req, res) => {
+  try {
+    const activities = await ActivityLogService.getRecentActivities(5);
+
+    return responseJson(res, 200, 
+      {activities: activities || []},
+      {"Cache-Control" : "no-store"}
+    );
+  } catch (e) {
+    console.log(e);
+    return responseJson(res, 500, {
+      error: "Failed to fetch activities",
     });
   }
 });

@@ -10,7 +10,7 @@ const { catchAsync } = require("../../common/catchAsync");
 const ActivityLogService = require("../../../services/activityLogService/activityLogService");
 
 exports.renderAdminMedicinesView = async (req ,res)=>{
-    const [admin] = await Medicines.getById(req.adminId);
+    const [admin] = await Users.getById(req.adminId);
 
 
     return response(res , view('admin/medicines',{

@@ -30,7 +30,7 @@
   <div class="container-2">
   <div class="main">
     <header>
-      <input type="text" id="searchInput" placeholder="Search medicines..." />
+      <input type="text" style="height: 5rem; font-size: 2rem; font-weight: 400; color: var(--color-green-02);"  id="searchInput" placeholder="Search medicines..." />
       <!-- <div class="user-section">
         <span class="bell"></span>
         <div class="admin">AD</div>
@@ -73,7 +73,7 @@
     <form class="medicine-form" id="addMedicineForm" action="post">
       <div class="form-row">
         <label>Medicine Name</label>
-        <input type="text" name="name" placeholder="e.g., Amoxicillin" required>
+        <input type="search" name="name" placeholder="e.g., Amoxicillin" required>
       </div>
 
       <div class="form-row">
@@ -457,19 +457,21 @@ async function loadMedicines() {
           alert('Failed to load medicines: ' + (data.error || 'Unknown error'));
           return;
           }
+
+      console.log(data);
       medicinesData = data;
       const tbody = document.getElementById('medicineTableBody');
       tbody.innerHTML = '';
       data.forEach(medicine => {
-        const formattedExpiryDate = new Date(medicine.expiryDate).toLocaleDateString('en-CA');
+        const formattedExpiryDate = medicine.expiryDate ?  new Date(medicine.expiryDate).toLocaleDateString('en-CA') : "---";
         const row = `
           <tr>
-            <td>${medicine.name}<br><small>${medicine.dosage}</small></td>
-            <td><span class="tag ${medicine.category}">${medicine.category}</span></td>
-            <td>${medicine.manufacturer}</td>
-            <td>${medicine.brandName}</td>
-            <td>${medicine.schedule}</td>
-            <td>${formattedExpiryDate}</td>
+            <td style="max-width: 30rem;">${medicine.geneticName}<br><small>${medicine.dosage}</small></td>
+            <td><span class="tag ${medicine.category}">${medicine.category || "---"}</span></td>
+            <td>${medicine.manufacturer || "---"}</td>
+            <td>${medicine.brandName || "---"}</td>
+            <td>${medicine.schedule || "---"}</td>
+            <td>${formattedExpiryDate || "---"}</td>
             <td class="actions">
               <div class="dropdownMenu">
                 <button class="dots">⋮</button>

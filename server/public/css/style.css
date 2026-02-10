@@ -8177,19 +8177,6 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .pharmarcy .container .menuItem .text2::before {
   content: "⎋";
 }
-.pharmarcy .container .menuItem {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-left: -2rem;
-  padding: 2rem;
-  width: 26rem;
-  background-color: #08374F;
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
-  position: absolute;
-  top: 75rem;
-}
 .pharmarcy .container .menuItem .text {
   border: none;
   font-size: 1.5rem;

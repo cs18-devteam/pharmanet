@@ -62,7 +62,7 @@
                   <th>Role</th>
                   <th>Pharmacy</th>
                   <th>Status</th>
-                  <th>Last Active</th>
+                  <!-- <th>Last Active</th> -->
                   <th></th>
                 </tr>
               </thead>
@@ -259,6 +259,7 @@
     try {
       const res = await fetch(API_URL);
       const users = await res.json();
+      console.log(users);
 
       const tableBody = document.getElementById("users-table-body");
       tableBody.innerHTML = "";
@@ -269,7 +270,7 @@
       }
 
       users.forEach(user => {
-        const initials = (user.name || user.fullName || 'U').split(' ').map(n => n[0]).join('').toUpperCase();
+        const initials = (user.firstName || user.lastName || user.fullName || 'U').split(' ').map(n => n[0]).join('').toUpperCase();
         const avatar = user.avatar || initials;
         const status = user.status || 'Active';
         const row = document.createElement("tr");
@@ -278,7 +279,7 @@
             <div class="user-info">
               <div class="avatar">${avatar}</div>
               <div class="details">
-                <div class="name">${user.name || user.fullName}</div>
+                <div class="name">${user.firstName +" " + user.lastName || user.fullName}</div>
                 <div class="email">${user.email}</div>
               </div>
             </div>
@@ -286,7 +287,7 @@
           <td><span class="role">${user.role || 'N/A'}</span></td>
           <td>${user.pharmacy || 'N/A'}</td>
           <td><span class="status ${status.toLowerCase()}">${status}</span></td>
-          <td>2 hours ago</td>
+          <!-- <td>2 hours ago</td> -->
           <td class="actions">
             <div class="dropdownMenu">
               <button class="dots">⋮</button>

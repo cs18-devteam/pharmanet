@@ -4,10 +4,12 @@ const { responseJson, response } = require("../../common/response");
 const view = require("../../common/view");
 const Pharmacies = require("../../models/PharmacyModel");
 const ActivityLogService = require("../../../services/activityLogService/activityLogService");
+const Users = require("../../models/UserModel");
 
 exports.renderAllPharmacies = catchAsync(async (req, res) => {
   const pharmacies = await Pharmacies.get();
-  const [admin] = await Pharmacies.getById(req.adminId);
+  const [admin] = await Users.getById(req.adminId);
+
 
   return response(
     res,

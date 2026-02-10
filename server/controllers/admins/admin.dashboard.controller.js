@@ -8,7 +8,7 @@ const ActivityLogService = require("../../../services/activityLogService/activit
 
 exports.renderAdminDashboard = catchAsync(async (req, res) => {
   try {
-    const [admin] = await Pharmacies.getById(req.adminId);
+    const [admin] = await Users.getById(req.adminId);
 
     return response(
       res,

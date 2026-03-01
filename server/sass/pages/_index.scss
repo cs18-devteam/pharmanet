@@ -17,6 +17,7 @@
 @forward "./customer/manageBill";
 @forward "./customer/loyaltyPoints";
 @forward "./customer/orderManage";
+@forward "./customer/customer_medicine_pharmacy_resutls_view.scss";
 
 /* pharmacy */
 @forward "./pharmacy/cashier/cashier-create-bill";

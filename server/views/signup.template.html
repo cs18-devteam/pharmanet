@@ -118,42 +118,155 @@
                 e.preventDefault(e);
                 e.stopPropagation();
                 clearToSubmit = true;
-
+                document.getElementById('form-error').textContent = '';
 
                 form.querySelectorAll('input').forEach(el=>{
                     console.log(el.value);
                     if(el?.hasAttribute('required') && el.value=='' ){
                         el?.classList.remove('utility-success');
                         el?.classList.add('utility-warn');
-                        console.log(el);
                         document.getElementById('form-error').textContent ="Oops! It looks like some fields are missing 😝. Please fill out the form before submitting.";
-                        console.log(el);
+                        clearToSubmit = false;
                         return;
-                    }else{
-                        el?.classList.add('utility-success');
-                        el?.classList.remove('utility-warn');
-                        clearToSubmit = clearToSubmit && true;
+                    }
+
+                    // First Name validation
+                    if(el?.id == "fName"){
+                        const value = el?.value.trim();
+                        if(value.length < 2){
+                            el.classList.remove('utility-success');
+                            el.classList.add('utility-warn');
+                            document.getElementById('feedbackname').textContent = 'First name must be at least 2 characters.';
+                            clearToSubmit = false;
+                        } else {
+                            el.classList.add('utility-success');
+                            el.classList.remove('utility-warn');
+                            document.getElementById('feedbackname').textContent = '';
+                        }
+                        return;
+                    }
+
+                    // Last Name validation
+                    if(el?.id == "lName"){
+                        const value = el?.value.trim();
+                        if(value.length < 2){
+                            el.classList.remove('utility-success');
+                            el.classList.add('utility-warn');
+                            document.getElementById('feedbackname').textContent = 'Last name must be at least 2 characters.';
+                            clearToSubmit = false;
+                        } else {
+                            el.classList.add('utility-success');
+                            el.classList.remove('utility-warn');
+                            document.getElementById('feedbackname').textContent = '';
+                        }
+                        return;
+                    }
+
+                    // Email validation
+                    if(el?.id == "email"){
+                        const value = el?.value;
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if(emailRegex.test(value)){
+                            el.classList.remove('utility-warn');
+                            el.classList.add('utility-success');
+                            document.getElementById('feedbackEmail').textContent = '';
+                        } else {
+                            el.classList.remove('utility-success');
+                            el.classList.add('utility-warn');
+                            document.getElementById('feedbackEmail').textContent = 'Please enter a valid email address (e.g., example@gmail.com).';
+                            clearToSubmit = false;
+                        }
+                        return;
+                    }
+
+                    // Birth Date validation
+                    if(el?.id == "birthDay"){
+                        const age = (new Date(Date.now()).getFullYear() - new Date(el.value).getFullYear());
+                        if(age < 16){
+                            el.classList.remove('utility-success');
+                            el.classList.add('utility-warn');
+                            document.getElementById('feedbackdateOfBirth').textContent = "Sorry! This feature is only available for users aged 16 or above.";
+                            clearToSubmit = false;
+                        } else {
+                            el.classList.add('utility-success');
+                            el.classList.remove('utility-warn');
+                            document.getElementById('feedbackdateOfBirth').textContent = '';
+                        }
+                        return;
+                    }
+
+                    // NIC validation
+                    if(el?.id == "nic"){
+                        const value = el?.value;
+                        const nicRegex = /^(\d{12}|\d{10}[Vv])$/;
+                        if(nicRegex.test(value)){
+                            el.classList.remove('utility-warn');
+                            el.classList.add('utility-success');
+                            document.getElementById('feedbackNic').textContent = '';
+                        } else {
+                            el.classList.remove('utility-success');
+                            el.classList.add('utility-warn');
+                            document.getElementById('feedbackNic').textContent = 'Invalid NIC format. Must be 12 digits or 10 digits followed by V/v.';
+                            clearToSubmit = false;
+                        }
+                        return;
+                    }
+
+                    // Password validation
+                    if(el?.id == "password"){
+                        const value = el?.value;
+                        if(value.length < 8){
+                            el.classList.remove('utility-success');
+                            el.classList.add('utility-warn');
+                            document.getElementById('feedbackPassword').textContent = 'Password must be at least 8 characters long.';
+                            clearToSubmit = false;
+                        } else {
+                            el.classList.add('utility-success');
+                            el.classList.remove('utility-warn');
+                            document.getElementById('feedbackPassword').textContent = '';
+                        }
+                        return;
+                    }
+
+                    // Confirm Password validation
+                    if(el?.id == "confirmPassword"){
+                        const value = el?.value;
+                        const password = document.getElementById('password').value;
+                        if(value.length < 8){
+                            el.classList.remove('utility-success');
+                            el.classList.add('utility-warn');
+                            document.getElementById('feedbackPassword').textContent = 'Password must be at least 8 characters long.';
+                            clearToSubmit = false;
+                        } else if(value !== password){
+                            el.classList.remove('utility-success');
+                            el.classList.add('utility-warn');
+                            document.getElementById('feedbackPassword').textContent = 'Passwords do not match.';
+                            clearToSubmit = false;
+                        } else {
+                            el.classList.add('utility-success');
+                            el.classList.remove('utility-warn');
+                            document.getElementById('feedbackPassword').textContent = '';
+                        }
+                        return;
                     }
                 })
                 
+                if(!clearToSubmit) {
+                    Swal.fire({
+                        icon:"error",
+                        title:"Invalid Form Data",
+                        body:"Please check all fields and try again.",
+                    })
+                    return;
+                }
+
                 const data = {};
                 const formData = new FormData(form);
                 for(const [key , value] of formData.entries()){
-                    const el = document.querySelector(`[name="${value}"]`);
-
-                    
                     data[key] = value;
                 }
-                // if(data.password != data.conformPassword) throw new Error("password doesn't match");
-
-                if(!clearToSubmit) Swal.fire({
-                    icon:"error",
-                    title:"Invalid Form Data",
-                    body:"can't submit , please check again",
-                })
                 
-                console.log({clearToSubmit});
-                if(!clearToSubmit) return;
+                console.log({clearToSubmit, data});
                 const respond = await fetch("/signup" , {
                     method:"POST",
                     headers:{
@@ -171,15 +284,17 @@
                 if(result.status != "success" ) {
                     if(result.field == "email") {
                         document.getElementById('feedbackEmail').textContent = "Oops! It looks like this email is already registered. Try logging in instead.";
-                        document.getElementById('email').classList.add('utilities-warn');
+                        document.getElementById('email').classList.add('utility-warn');
+                        document.getElementById('email').classList.remove('utility-success');
                     }else if(result.field == "nic"){
                         document.getElementById('feedbackNic').textContent = "Oops! It looks like this nic is already registered. Try logging in instead.";
-                        document.getElementById('nic').classList.add('utilities-warn');
+                        document.getElementById('nic').classList.add('utility-warn');
+                        document.getElementById('nic').classList.remove('utility-success');
                     }else{
                         Swal.fire({
                             icon:"error",
-                            title:"internal server error",
-                            body:'please try again',
+                            title:"Internal Server Error",
+                            body:'Please try again',
                         })
                     }
                     
@@ -191,20 +306,24 @@
                         icon:"success",
                         title:"Account Created Successfully",
                     }).then(()=>{
-                        window.location.href = `/verify/${result.results["0"].id}/email`;
+                        window.location.href = `/verify/${result.results.id}/email`;
                     })
 
                     setTimeout(()=>{
-                        window.location.href = `/verify/${result.results["0"].id}/email`;
+                        window.location.href = `/verify/${result.results.id}/email`;
                     } , 3000)
                     
                 }
 
                 
             }catch(error){
-                
-                console.log(error);
-                throw error;
+                console.error(error);
+                Swal.fire({
+                    icon: "error",
+                    title: "Something Went Wrong",
+                    text: error.message || 'Please try again',
+                    footer: '<a href="/contactus">Why do I have this issue?</a>'
+                }); 
             }
             
 
@@ -213,12 +332,12 @@
         })
 
     }catch(e){
-        console.log(e);
+        console.error(e);
         Swal.fire({
             icon: "error",
-            title: "something went wrong",
-            text: e.message,
-            footer: '<a href="contactus">Why do I have this issue?</a>'
+            title: "Something Went Wrong",
+            text: e.message || 'Please refresh the page and try again',
+            footer: '<a href="/contactus">Why do I have this issue?</a>'
         });    
     }
 

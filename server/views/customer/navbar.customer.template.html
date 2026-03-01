@@ -11,8 +11,12 @@
                 <input type="submit" value="Find">
             </form>
         </div> -->
-        <a href="/customers/{id}/medicines" class="find-medicines action-btn">find medicines</a>
-        <a href="/customers/{id}/pharmacies" class="find-pharmacy action-btn">find pharmacy</a>
+        
+        <a style="margin:0 2rem 0 auto ; border: none; display: flex; align-items: center;" href="/customers/{id}/medicines" class="find-medicines action-btn">
+            <img style="width: 2rem; margin-right: 1rem;" src="/images/customerpage/Pharmacy/search-img.svg" />
+            search
+        </a>
+        <!-- <a href="/customers/{id}/pharmacies" class="find-pharmacy action-btn">find pharmacy</a> -->
 
 
 
@@ -25,8 +29,8 @@
                 </ul>
         </div> -->
 
-        <div><a href="/aboutus">about us</a></div>
-        <div><a href="/customers/{id}/products/pharmacy_management_system">Join with us</a></div>
+        <!-- <div><a href="/aboutus">about us</a></div> -->
+        <!-- <div><a href="/customers/{id}/products/pharmacy_management_system">Join with us</a></div> -->
 
         <div id="toggle-placeholder"></div>
 
@@ -46,6 +50,8 @@
         <div class="setting-dropdown">
             <ul>
                 <li><a href="/customers/{id}/profile">Profile</a></li>
+                <li><a href="/aboutus">about us</a></li>
+                <li><a href="/customers/{id}/products/pharmacy_management_system">Join with us</a></li>
                 <li class="cart-btn">my cart</li>
                 <li><div id="signout">signout</div></li>
             </ul>

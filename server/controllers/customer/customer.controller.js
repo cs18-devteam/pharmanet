@@ -19,10 +19,14 @@ exports.renderCustomerHome = async (req , res)=>{
                 const [staffMember] = await PharmacyStaff.get({userId : customer.id});        
                 const [{count : medicineCount}] = await Medicines.query('select count(*) as count from this.table');
                 const [{count : pharmacyCount}] = await Pharmacies.query('select count(*) as count from this.table');
+                console.log(customer);
                 
                 if(!staffMember){
                         return  response(res ,view('customer/customer.home' , {
                                 ...customer,
+                                verified : !customer.verified ? view("components/component.unverified" , {
+                                        verificationpage : `/verify/${customer.id}/email`
+                                }) : "",
                                 navbar : view('customer/navbar.customer' , customer) , 
                                 header : view('component.header' , {
                                         name:"Pharmanet || Home",

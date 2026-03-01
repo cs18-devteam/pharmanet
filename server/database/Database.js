@@ -47,7 +47,6 @@ class Database{
     
     createConnection(){
         try{
-
             this.connection = mysql.createConnection({
                 host: process.env.DATABASE_HOSTNAME,
                 user: process.env.DATABASE_USERNAME,

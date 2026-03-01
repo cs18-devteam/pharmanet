@@ -67,11 +67,12 @@ exports.verifyEmail = async (req , res) =>{
     // if(5 < getMinutesFromNow(user.emailOTPCreatedAt)) throw new Error("OTP not valid");
 
     if(otp == user.emailOTP){
-      // await Users.update({
-      //   id: user.id,
-      //   emailOTP : null,
-      //   // emailOTPInvalidAt : null,
-      // })
+      await Users.update({
+        id: user.id,
+        emailOTP : null,
+        verified: true,
+        // emailOTPInvalidAt : null,
+      })
 
       return responseJson(res , 200 , {
         status:"success",

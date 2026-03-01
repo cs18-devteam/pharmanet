@@ -1,88 +1,100 @@
 {header}
-<body class="landing">
-
-    <!--nav bar for all page-->
-    <header>
+{verified}
+{cart}
+<body class="customer_medicine_pharmacy_resutls_view">
     {navbar}
+    <header class="header header-main">
+        <img class="header-image" src="/images/comadu.png" alt="">
+        <img class="header-image" src="/images/comadu.png" alt="">
 
+        <div class="header-content">
+
+            <div class="header-text">
+                <h1>Let's find what you're looking for</h1>
+                <p>Search medicines or explore nearby pharmacies</p>
+            </div>
+
+            <div class="search-section">
+                <form class="search-box-container" method="GET" action="/customers/{id}/medicines">
+                    <!-- <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg> -->
+                    <input 
+                        type="text" 
+                        class="search-input" 
+                        name="search"
+                        id="medicineSearch"
+                        placeholder="Search medicines, symptoms, or pharmacies..."
+                        aria-label="Search medicines or pharmacies"
+                        value="{value}"
+                    >
+                    <input type="submit" class="search-btn" id="searchBtn"  value="Search"/>
+                </form>
+
+                <!-- <div class="quick-filters">
+                    <button class="filter-chip active" data-filter="medicines">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="1"></circle>
+                            <path d="M12 1v6m6-6l-4.24 4.24M23 12h-6m0 6l4.24-4.24M12 23v-6m-6-6l4.24 4.24M1 12h6m0-6l-4.24 4.24"></path>
+                        </svg>
+                        Medicines
+                    </button>
+                    <button class="filter-chip" data-filter="pharmacies">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                        Pharmacies
+                    </button>
+                    <button class="filter-chip" data-filter="nearby">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        Nearby
+                    </button>
+                </div> -->
+            </div>
+        </div>
     </header>
 
-       
-    <main class="main-container">
+
+    <section class="section-medicines">
+        <h2>Better Health Starts Here – Medicine Results</h2>
+       <p>
+           Carefully selected medicines, trusted quality, and everything you need feel your best — all in one place.
+       </p> 
 
 
-        <section class="container">
-            <!-- Medicine Section -->
-        <section class="medicine-section">
-            <div class="container">
+        <div class="grid">
+            {medicines}
 
-                <div class="header-section">
 
-                    <div class="title">
-                        <div>Discover your <span>medicine</span>.</div>
+        </div>
 
-                        <div class="search-bar">
-                            <img src="/images/customerpage/Pharmacy/search-img.svg" alt="Search Icon" width="20rem" height="20rem">
-                            <input type="text" placeholder="Search medicine..." id="medicine-search-input">
-                        </div>
-                    </div>
 
-                </div>
-            
-             
+    </section>
 
-            <div class="Medicines_grid">
-                
-                {medicine_cards}
-            </div>
+    
 
-            </div>
 
-       
-        </section>
-        </section>
-        {cart}
+    <section class="section-pharmacies">
+        <h2>Your Neighborhood Pharmacies Are Ready to Help</h2>
+        <p>Explore nearby options, compare services, and choose with confidence.</p>
 
-       {footer}
+        <div class="grid">
+            {pharmacies}
 
-        <script type="module" src="/js/controller/customer/customer.medicines.search.controller.js"></script>
 
-        <script>
-            
-            const allElements = Array.from(document.querySelector('body').children);
+        </div>
 
-            const intersectionObserver = new IntersectionObserver((entries)=>{
-                const [entry] = entries;
-                entry.target.classList.remove("utility-hidden");
-            } , {
-                root:null,
-                threshold: .1,
-            })
+
+    </section>
 
 
 
-            allElements.forEach(( el ,index)=>{
-                // if(index < 2) return;
-
-                if(el.tagName == "script") return;
-
-                // Check if element is initially visible
-                const rect = el.getBoundingClientRect();
-                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-                if(isVisible) return;
-
-                intersectionObserver.observe(el);
-                el.classList.add('utility-transition')
-                el.classList.add('utility-hidden');
-                
-            })
-            
 
 
-
-        </script>
-    </main>
-   
-
-    </body>
-</html>
+    {footer}
+</body>

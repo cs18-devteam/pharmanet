@@ -1,0 +1,88 @@
+{header}
+<body class="landing">
+
+    <!--nav bar for all page-->
+    <header>
+    {navbar}
+
+    </header>
+
+       
+    <main class="main-container">
+
+
+        <section class="container">
+            <!-- Medicine Section -->
+        <section class="medicine-section">
+            <div class="container">
+
+                <div class="header-section">
+
+                    <div class="title">
+                        <div>Discover your <span>medicine</span>.</div>
+
+                        <div class="search-bar">
+                            <img src="/images/customerpage/Pharmacy/search-img.svg" alt="Search Icon" width="20rem" height="20rem">
+                            <input type="text" placeholder="Search medicine..." id="medicine-search-input">
+                        </div>
+                    </div>
+
+                </div>
+            
+             
+
+            <div class="Medicines_grid">
+                
+                {medicine_cards}
+            </div>
+
+            </div>
+
+       
+        </section>
+        </section>
+        {cart}
+
+       {footer}
+
+        <script type="module" src="/js/controller/customer/customer.medicines.search.controller.js"></script>
+
+        <script>
+            
+            const allElements = Array.from(document.querySelector('body').children);
+
+            const intersectionObserver = new IntersectionObserver((entries)=>{
+                const [entry] = entries;
+                entry.target.classList.remove("utility-hidden");
+            } , {
+                root:null,
+                threshold: .1,
+            })
+
+
+
+            allElements.forEach(( el ,index)=>{
+                // if(index < 2) return;
+
+                if(el.tagName == "script") return;
+
+                // Check if element is initially visible
+                const rect = el.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                if(isVisible) return;
+
+                intersectionObserver.observe(el);
+                el.classList.add('utility-transition')
+                el.classList.add('utility-hidden');
+                
+            })
+            
+
+
+
+        </script>
+    </main>
+   
+
+    </body>
+</html>

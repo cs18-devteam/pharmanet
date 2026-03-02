@@ -5,25 +5,76 @@ const view = require("../common/view");
 const Users = require("../models/UserModel");
 
 
-exports.authenticate = (userId)=>{
+// exports.authenticate = (userId)=>{
+//     return async (req , res , next)=>{
+//         try{
+
+//             const [user] =await Users.getById(req[userId]);
+//             const cookies = readCookies(req);
+//             const token = decrypt(cookies.token);
+
+//             console.log(token);
+//             if(!token) throw new Error("no token found on user " + id);
+            
+//             if(user.id == token.id && user.email == token.email ){
+//                 req.user = user;
+//                 return next();
+//             }
+            
+//             return response(res ,view("login",{
+//                 header : view('component.header' , {
+//                         name:"Login || Pharmanet Pharmacy Management",
+//                     }
+//                 )
+//             }) , 408);
+            
+            
+            
+//         }catch(e){
+//             console.log(e);
+//             return response(res, view("login",{
+//                 header : view('component.header' , {
+//                         name:"Login || Pharmanet Pharmacy Management",
+//                     }
+//                 )
+//             }));
+//         }
+        
+//     }
+// }
+
+
+exports.authenticate = (userId ,roles=['*'] ,permissions = ['*'])=>{
     return async (req , res , next)=>{
         try{
 
-            const [user] =await Users.getById(req[userId]);
+            const id = req[userId];
+            if(!id) throw new Error("no user id found");
+            const [user] =await Users.getById(id);
+
+            if(!user) throw new Error("no user found for user id " + id);
+
             const cookies = readCookies(req);
             const token = JSON.parse(decrypt(cookies.token));
             
             if(user.id == token.id && user.email == token.email ){
-                req.user = user;
-                return next();
+                if(permissions.includes("*")){
+                    return next();
+                }
             }
+
+
+
+            
             
             return response(res ,view("login",{
                 header : view('component.header' , {
                         name:"Login || Pharmanet Pharmacy Management",
                     }
                 )
-            }) , 408);
+            }) , 302 , {
+                location :"/login"
+            });
             
             
             
@@ -34,7 +85,9 @@ exports.authenticate = (userId)=>{
                         name:"Login || Pharmanet Pharmacy Management",
                     }
                 )
-            }));
+            }) , 302 , {
+                location : "/login"
+            });
         }
         
     }

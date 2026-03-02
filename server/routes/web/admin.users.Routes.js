@@ -1,23 +1,24 @@
 const SubRouter = require("../../common/SubRouter");
 const adminUsersController = require("../../controllers/admins/admin.users.controller");
+const { authenticate } = require("../../middlewares/authenticate");
 
 exports.adminUsersRouter = SubRouter.route('/admin/:adminId')
     .subRoute('/users', {
-        get: adminUsersController.renderAdminUsersView,
+        get: [authenticate('adminId')  ,adminUsersController.renderAdminUsersView],
     })
     .subRoute('/users/create', {
-        get: adminUsersController.renderAddUsersView,
+        get: [authenticate('adminId')  ,adminUsersController.renderAddUsersView],
     })
     .subRoute('/viewProfile', {
-    get: adminUsersController.renderViewProfilePage,
+    get: [authenticate('adminId')  ,adminUsersController.renderViewProfilePage],
     })
     .subRoute('/viewProfile/:id', {
-    get: adminUsersController.renderViewProfilePage,
+    get: [authenticate('adminId')  ,adminUsersController.renderViewProfilePage],
     })
     .subRoute('/api/users', {
-        post: adminUsersController.createUser,
-        get: adminUsersController.getAllUsers,
+        post: [authenticate('adminId')  ,adminUsersController.createUser],
+        get: [authenticate('adminId')  ,adminUsersController.getAllUsers],
     })
     .subRoute('/api/users/:id', {
-        patch: adminUsersController.updateUserStatus,
+        patch: [authenticate('adminId')  ,adminUsersController.updateUserStatus],
     })

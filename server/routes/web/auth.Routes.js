@@ -23,5 +23,8 @@ const authRouter = SubRouter.route('/')
 .subRoute('/verify/:userId/email/otp' , {
     get : otpController.resendEmailOTP,
 })
+.subRoute('/recovery' , {
+    get : verifyEmailController.forgotPassword,
+})
 
 module.exports =  authRouter; 

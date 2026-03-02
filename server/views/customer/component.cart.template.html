@@ -2,14 +2,14 @@
         <div class="popup"></div>
         <div class="left-side">
             <div class="map-container" id="map">
-          <iframe
+          <!-- <iframe
             src="https://maps.google.com/maps?q=Colombo&z=13&output=embed"
             width="100%"
             height="300"
             frameborder="0"
             style="border:0;"
             allowfullscreen=""
-          ></iframe>
+          ></iframe> -->
         </div>
 
         <h3 class="near_by_pharmacies">near by pharmacies</h3>
@@ -72,7 +72,10 @@
           <div class="cart-footer">
             <p class="info">Click Continue to see pharmacies that offer your selected medicines. Your information won’t be saved until you pick a pharmacy. If any medicine requires a prescription, you’ll be asked to upload it.</p>
 
-            <button class="overlay-cart__continue continue">continue</button>
+            <div style="display: flex; margin-top: 2rem; justify-content: flex-end; gap: 1rem;">
+              <button style="padding: 1rem 2rem; border-radius: 3rem; font-size: 1.8rem; color: #333;" class="overlay-cart__continue cancel">Cancel</button>
+              <button class="overlay-cart__continue continue">continue</button>
+            </div>
           </div>
 
 

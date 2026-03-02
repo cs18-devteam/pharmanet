@@ -91,3 +91,18 @@ exports.verifyEmail = async (req , res) =>{
   }
 }
 
+
+
+
+exports.forgotPassword = async (req , res)=>{
+  try{
+      return response(res , view('forgotpassword.email' , {
+        header : view('component.header' , {
+          name:"Recovery Account",
+        })
+      }) , 200);
+    }catch(e){
+      console.log(e);
+      return response(res , view('404') , 404);
+    }
+}

@@ -129,6 +129,7 @@ exports.renderPharmacyLandingPage = async (req , res)=>{
         const [pharmacy] = await Pharmacies.getById(req.pharmacyId);
         const [customer] = await Users.getById(req.customerId);
         if(!customer) throw new Error("customer not found");
+        if(!pharmacy) throw new Error("no pharmacy found");
 
 
         const pharmacyData = {

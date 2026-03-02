@@ -308,11 +308,6 @@ nav {
   padding: 1rem;
   box-sizing: content-box;
   cursor: pointer;
-  background-clip: padding-box;
-  background-image: linear-gradient(90deg, var(--fill-color) 70%, transparent 70%);
-  background-size: 50% 10%;
-  background-position: bottom left;
-  background-repeat: no-repeat;
   transition: all 0.2s ease;
 }
 .setting-dropdown ul li a:hover, .setting-dropdown ul li div:hover {
@@ -3541,6 +3536,40 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
     color: var(--color-green-01);
   }
 }
+.component-404 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  margin: 2rem auto;
+}
+.component-404 div {
+  font-size: 6.8rem;
+  color: #ddd;
+  font-weight: 800;
+  text-transform: capitalize;
+}
+.component-404 .message {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.component-404 .message div {
+  font-size: 10rem;
+  align-items: center;
+  justify-content: center;
+}
+.component-404 .message video {
+  width: 9rem;
+  height: 9rem;
+  z-index: 10;
+  border-radius: 50rem;
+  overflow: hidden;
+  transform: translateY(20%);
+  object-fit: cover;
+  outline: 1.5rem solid currentColor;
+}
+
 body.large-view .header-container {
   display: none;
   padding: 0;
@@ -9413,6 +9442,9 @@ button.save {
   margin: 0;
   padding: 0;
 }
+.customer_medicine_pharmacy_resutls_view section .grid .card .status.not-available {
+  color: var(--color-red-01);
+}
 .customer_medicine_pharmacy_resutls_view section .grid .card button {
   padding: 1.5rem 2rem;
   font-size: 1.6rem;
@@ -11114,7 +11146,6 @@ button.save {
 }
 
 .product {
-  background: linear-gradient(180deg, #f8fbfb, #e8f0f0);
   /* ---------------- Sidebar ---------------- */
 }
 .product .sidebar {
@@ -21261,14 +21292,14 @@ p {
 }
 .userProfileManage .topTabs {
   display: flex;
-  gap: 15px;
+  gap: 1.5rem;
   margin-top: 4rem;
   justify-content: center;
 }
 .userProfileManage .topTabs .tab {
-  padding: 8px 18px;
-  border-radius: 25px;
-  border: 1px solid #ccc;
+  padding: 0.8rem 1.8rem;
+  border-radius: 2.5rem;
+  border: 0.1rem solid #ccc;
   background: #fff;
   cursor: pointer;
 }
@@ -21283,15 +21314,17 @@ p {
   padding-top: 2rem;
   padding-bottom: 2rem;
   gap: 12rem;
+  max-width: 100rem;
+  margin: 0rem auto;
 }
 .userProfileManage .mainContainer .leftContainer {
   flex: 1.2;
 }
 .userProfileManage .mainContainer .leftContainer .title {
-  margin-top: 25px;
-  font-size: 22px;
+  margin-top: 2.5rem;
+  font-size: 2.2rem;
   font-family: Poppins;
-  font-size: 32px;
+  font-size: 3.2rem;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -21302,24 +21335,24 @@ p {
 }
 .userProfileManage .mainContainer .leftContainer .subtitle {
   color: black;
-  font-size: 14px;
+  font-size: 1.8rem;
   width: 80%;
 }
 .userProfileManage .mainContainer .leftContainer .profile-card {
   display: flex;
   align-items: center;
-  margin: 20px 0;
+  margin: 2rem 0;
 }
 .userProfileManage .mainContainer .leftContainer .profile-card img {
-  width: 70px;
-  height: 70px;
+  width: 7rem;
+  height: 7rem;
   border-radius: 50%;
-  margin-right: 15px;
+  margin-right: 1.5rem;
 }
 .userProfileManage .mainContainer .leftContainer .profile-card h3 {
   margin: 0;
   font-family: "Red Hat Display";
-  font-size: 32px;
+  font-size: 3.2rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -21330,21 +21363,21 @@ p {
 }
 .userProfileManage .mainContainer .leftContainer .profile-card .uid {
   color: #888;
-  font-size: 13px;
+  font-size: 1.6rem;
   padding-left: 0.5rem;
   padding-top: -4rem;
 }
 .userProfileManage .mainContainer .leftContainer .profile-card .update-btn {
-  margin-top: 8px;
-  padding: 6px 12px;
+  margin-top: 0.8rem;
+  padding: 0.6rem 1.6rem;
   justify-content: center;
-  border-radius: 20px;
-  border: 1px solid #0b1b2b;
+  border-radius: 2rem;
+  border: 0.1rem solid #0b1b2b;
   background: white;
   cursor: pointer;
 }
 .userProfileManage .mainContainer .leftContainer .hint {
-  font-size: 13px;
+  font-size: 1.6rem;
   color: black;
   width: 80%;
 }
@@ -21359,20 +21392,20 @@ p {
   /* FORM AREA */
 }
 .userProfileManage .mainContainer .leftContainer .form-area {
-  margin-top: 25px;
+  margin-top: 2.5rem;
 }
 .userProfileManage .mainContainer .leftContainer .form-area h3 {
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 }
 .userProfileManage .mainContainer .leftContainer .form-area label {
   display: block;
-  margin-bottom: 15px;
-  font-size: 14px;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
 }
 .userProfileManage .mainContainer .leftContainer .form-area label .comment {
   color: #000;
   font-family: Poppins;
-  font-size: 12px;
+  font-size: 1.6rem;
   font-style: normal;
   font-weight: 200;
   line-height: normal;
@@ -21381,10 +21414,11 @@ p {
 }
 .userProfileManage .mainContainer .leftContainer .form-area label input {
   width: 80%;
-  margin-top: 6px;
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid #e5e5e5;
+  font-size: 1.8rem;
+  margin-top: 0.6rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 0.1rem solid #e5e5e5;
 }
 .userProfileManage .mainContainer .rightContainer {
   flex: 1;
@@ -21392,7 +21426,7 @@ p {
 .userProfileManage .mainContainer .rightContainer h3 {
   color: #000;
   font-family: "Red Hat Display";
-  font-size: 14px;
+  font-size: 1.8rem;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -21402,12 +21436,12 @@ p {
 }
 .userProfileManage .mainContainer .rightContainer .points-card {
   color: white;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 1rem;
+  border-radius: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #1A7F78;
+  border: 0.1rem solid #1A7F78;
   background: linear-gradient(90deg, #1A7F78 0%, #08374F 100%);
 }
 .userProfileManage .mainContainer .rightContainer .points-card .left {
@@ -21417,49 +21451,49 @@ p {
   justify-content: space-between;
 }
 .userProfileManage .mainContainer .rightContainer .points-card .left .label {
-  font-size: 14px;
+  font-size: 1.8rem;
   padding-right: 4rem;
 }
 .userProfileManage .mainContainer .rightContainer .points-card .left .points {
-  font-size: 20px;
-  margin: 0px 0 0;
+  font-size: 2rem;
+  margin: 0rem 0 0;
   padding-right: 0;
 }
 .userProfileManage .mainContainer .rightContainer .points-card .view-btn {
   background: none;
-  border: 2px solid white;
+  border: 0.2rem solid white;
   color: white;
-  padding: 8px 15px;
+  padding: 0.8rem 1.5rem;
   border-radius: 2rem;
   cursor: pointer;
 }
 .userProfileManage .mainContainer .rightContainer .extra-settings {
-  margin-top: 1px;
+  margin-top: 0.1rem;
 }
 .userProfileManage .mainContainer .rightContainer .extra-settings .comment {
   color: rgba(0, 0, 0, 0.7);
   font-family: Poppins;
-  font-size: 14px;
+  font-size: 1.8rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  max-width: 354px;
+  max-width: 35.4rem;
   padding-top: 2rem;
 }
 .userProfileManage .mainContainer .rightContainer .extra-settings .setting-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 0;
-  border-bottom: 1px solid #e5e5e5;
+  padding: 1.8rem 0;
+  border-bottom: 0.1rem solid #e5e5e5;
 }
 .userProfileManage .mainContainer .rightContainer {
   /* TOGGLE SWITCH */
 }
 .userProfileManage .mainContainer .rightContainer .switch {
   position: relative;
-  width: 48px;
-  height: 24px;
+  width: 4.8rem;
+  height: 2.4rem;
 }
 .userProfileManage .mainContainer .rightContainer .switch input {
   display: none;
@@ -21468,25 +21502,25 @@ p {
   position: absolute;
   inset: 0;
   background: #ccc;
-  border-radius: 20px;
+  border-radius: 2rem;
   cursor: pointer;
 }
 .userProfileManage .mainContainer .rightContainer .switch .slider:before {
   content: "";
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 2rem;
+  height: 2rem;
   background: white;
   border-radius: 50%;
-  top: 2px;
-  left: 2px;
+  top: 0.2rem;
+  left: 0.2rem;
   transition: 0.3s;
 }
 .userProfileManage .mainContainer .rightContainer .switch input:checked + .slider {
   background: #08374F;
 }
 .userProfileManage .mainContainer .rightContainer .switch input:checked + .slider:before {
-  transform: translateX(24px);
+  transform: translateX(2.4rem);
 }
 .userProfileManage .footer {
   background: #08374F;
@@ -21495,9 +21529,9 @@ p {
   flex-direction: column;
   justify-content: space-between;
   margin-left: 0;
-  padding: 40px 60px;
-  margin-top: 40px;
-  height: 379px;
+  padding: 4rem 6rem;
+  margin-top: 4rem;
+  height: 37.9rem;
   padding-top: 4rem;
   width: 100%;
   position: relative;
@@ -21515,8 +21549,8 @@ p {
   display: flex;
 }
 .userProfileManage .footer .footer-topSection .footer-left .footer-logo {
-  width: 46px;
-  height: 46px;
+  width: 4.6rem;
+  height: 4.6rem;
 }
 .userProfileManage .footer .footer-topSection .footer-left p {
   margin-top: 1rem;
@@ -21529,13 +21563,13 @@ p {
   width: 280rem;
 }
 .userProfileManage .footer .footer-topSection h4 {
-  margin-bottom: 8px;
+  margin-bottom: 0.8rem;
 }
 .userProfileManage .footer .footer-topSection ul {
   list-style: none;
 }
 .userProfileManage .footer .footer-topSection ul li {
-  padding: 4px 0;
+  padding: 0.4rem 0;
   opacity: 0.8;
 }
 .userProfileManage .footer .footer-bottomSection {
@@ -21556,16 +21590,16 @@ p {
 }
 .userProfileManage {
   /* ===========================
-        LARGE SCREENS (1200px↓)
+        LARGE SCREENS (120.0rem↓)
      =========================== */
 }
-@media (max-width: 1200px) {
+@media (max-width: 120rem) {
   .userProfileManage .mainContainer {
     padding: 8rem 8rem;
     gap: 6rem;
   }
   .userProfileManage .footer {
-    padding: 30px 40px;
+    padding: 3rem 4rem;
   }
   .userProfileManage .footer .footer-topSection {
     margin-top: 3rem;
@@ -21577,10 +21611,10 @@ p {
 }
 .userProfileManage {
   /* ===========================
-        TABLETS (992px↓)
+        TABLETS (99.2rem↓)
      =========================== */
 }
-@media (max-width: 992px) {
+@media (max-width: 99.2rem) {
   .userProfileManage .mainContainer {
     flex-direction: row;
     padding: 2rem 2rem;
@@ -21594,13 +21628,13 @@ p {
     width: 100%;
   }
   .userProfileManage .mainContainer .leftContainer .title {
-    font-size: 28px;
+    font-size: 2.8rem;
   }
   .userProfileManage .topTabs {
-    gap: 10px;
+    gap: 1rem;
   }
   .userProfileManage .topTabs .tab {
-    padding: 6px 14px;
+    padding: 0.6rem 1.8rem;
   }
   .userProfileManage .footer {
     height: auto;
@@ -21622,10 +21656,10 @@ p {
 }
 .userProfileManage {
   /* ===========================
-        MOBILE LARGE (768px↓)
+        MOBILE LARGE (76.8rem↓)
      =========================== */
 }
-@media (max-width: 768px) {
+@media (max-width: 76.8rem) {
   .userProfileManage .user-section span {
     display: none;
   }
@@ -21634,11 +21668,11 @@ p {
     gap: 2rem;
   }
   .userProfileManage .mainContainer .profile-card img {
-    width: 60px;
-    height: 60px;
+    width: 6rem;
+    height: 6rem;
   }
   .userProfileManage .mainContainer .profile-card h3 {
-    font-size: 26px;
+    font-size: 2.6rem;
   }
   .userProfileManage .mainContainer .form-area label input {
     width: 100%;
@@ -21660,7 +21694,7 @@ p {
     padding-right: 0;
   }
   .userProfileManage .footer {
-    padding: 30px 25px;
+    padding: 3rem 2.5rem;
     clip-path: none;
   }
   .userProfileManage .footer .footer-topSection {
@@ -21673,10 +21707,10 @@ p {
 }
 .userProfileManage {
   /* ===========================
-        MOBILE SMALL (576px↓)
+        MOBILE SMALL (57.6rem↓)
      =========================== */
 }
-@media (max-width: 576px) {
+@media (max-width: 57.6rem) {
   .userProfileManage .search input {
     width: 50%;
   }
@@ -21692,11 +21726,11 @@ p {
   }
   .userProfileManage .topTabs {
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 0.8rem;
   }
   .userProfileManage .topTabs .tab {
-    padding: 6px 10px;
-    font-size: 12px;
+    padding: 0.6rem 1rem;
+    font-size: 1.6rem;
   }
   .userProfileManage .mainContainer {
     padding: 2rem 2rem;
@@ -21704,20 +21738,20 @@ p {
     gap: 3rem;
   }
   .userProfileManage .mainContainer .leftContainer .title {
-    font-size: 22px;
+    font-size: 2.2rem;
   }
   .userProfileManage .mainContainer .subtitle {
     width: 100%;
-    font-size: 12px;
+    font-size: 1.6rem;
   }
   .userProfileManage .mainContainer .profile-card h3 {
-    font-size: 22px;
+    font-size: 2.2rem;
   }
   .userProfileManage .mainContainer .rightContainer h3 {
-    font-size: 8px;
+    font-size: 0.8rem;
   }
   .userProfileManage .mainContainer .rightContainer .points-card .points {
-    font-size: 16px;
+    font-size: 2rem;
   }
   .userProfileManage .footer {
     width: 100%;
@@ -21730,7 +21764,7 @@ p {
     gap: 1rem;
   }
   .userProfileManage .footer ul li {
-    font-size: 14px;
+    font-size: 1.8rem;
   }
 }
 

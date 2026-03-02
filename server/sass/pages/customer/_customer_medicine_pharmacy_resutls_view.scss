@@ -176,6 +176,10 @@
                     text-transform: capitalize;
                     margin: 0;
                     padding: 0;
+
+                    &.not-available{
+                        color: var(--color-red-01);
+                    }
                 }
 
                 button {

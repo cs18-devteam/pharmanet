@@ -1,23 +1,24 @@
 const SubRouter = require("../../common/SubRouter");
 const adminMedicineController = require("../../controllers/admins/admin.medicine.controller");
+const { authenticate } = require("../../middlewares/authenticate");
 
 exports.adminMedicineRouter = SubRouter.route('/admin/:adminId')
 .subRoute('/medicines',{
-    get: adminMedicineController.renderAdminMedicinesView, 
+    get: [authenticate('adminId')  ,adminMedicineController.renderAdminMedicinesView], 
 })
 .subRoute('/medicines/create',{
-    post: adminMedicineController.addMedicine,
-    get: adminMedicineController.getMedicines,
+    post: [authenticate('adminId')  ,adminMedicineController.addMedicine],
+    get: [authenticate('adminId')  ,adminMedicineController.getMedicines],
 })
 .subRoute('/medicines/api', {
-    get: adminMedicineController.getMedicines,
+    get: [authenticate('adminId')  ,adminMedicineController.getMedicines],
 })
 .subRoute('/medicines/:medicineId/delete',{
-    delete: adminMedicineController.deleteMedicine,
+    delete:[authenticate('adminId')  , adminMedicineController.deleteMedicine],
 })
 
 
 exports.adminApiMedicineRouter = SubRouter.route('/api/v1/admin/:adminId')
 .subRoute('/medicines' , {
-        get : adminMedicineController.sendJsonMedicinesList,
+        get : [authenticate('adminId')  ,adminMedicineController.sendJsonMedicinesList],
 })

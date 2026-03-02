@@ -5,6 +5,7 @@
 /signup
 /verify/:userId/email
 /verify/:userId/email/otp
+/recovery
 /customers/:customerId
 /customers/:customerId/profile
 /customers/:customerId/medicines

@@ -10,6 +10,7 @@ const nearByPharmaciesContainer = document.querySelector('.pharmacyRequestContai
 
 
 const cartContinueButton = document.querySelector('.overlay-cart__continue.continue');
+const cartCancelButton = document.querySelector('.overlay-cart__continue.cancel')
 
 cartContinueButton?.addEventListener('click' ,async ()=>{
     cart.openLeftPanel();
@@ -17,6 +18,11 @@ cartContinueButton?.addEventListener('click' ,async ()=>{
     const pharmacyRequestCards = createRequestCards(pharmacies);
     renderRequestCards(nearByPharmaciesContainer , pharmacyRequestCards);
 
+})
+
+
+cartCancelButton?.addEventListener("click" , ()=>{
+    cart.close();
 })
 
 

@@ -29,25 +29,25 @@ const customerRouter = SubRouter.route('/customers/:customerId')
     get : [authenticate('customerId')  , customerPharmacyController.renderCustomerPharmacies]
 })
 .subRoute('/pharmacies/:pharmacyId' , {
-    get : customerPharmacyController.renderPharmacyLandingPage,
+    get : [authenticate('customerId') , customerPharmacyController.renderPharmacyLandingPage],
 })
 .subRoute('/history')
 .subRoute('/transaction')
 .subRoute('/orders' , {
-    get : customerController.renderCustomerOrders
+    get : [authenticate('customerId') , customerController.renderCustomerOrders]
 })
 .subRoute('/loyalty' , {
-    get : customerController.renderLoyaltyPoints
+    get : [authenticate('customerId') ,customerController.renderLoyaltyPoints]
 })
 .subRoute('/orders/:orderId')
 .subRoute('/orders/:orderId/checkout' , {
-    get : customerPaymentController.redirectToPaymentGateWay
+    get : [authenticate('customerId') ,customerPaymentController.redirectToPaymentGateWay ]
 })
 .subRoute('/products/pharmacy_management_system' , {
-    get : productManagementController.renderPharmacyManagementSystemIntro
+    get :[authenticate('customerId') , productManagementController.renderPharmacyManagementSystemIntro ]
 })
 .subRoute('/products/pharmacy_management_system/register' , {
-    get : productManagementController.renderPharmanetRegistrationPage
+    get : [authenticate('customerId') ,productManagementController.renderPharmanetRegistrationPage ]
 })
 
 

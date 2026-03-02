@@ -247,11 +247,11 @@ nav {
         box-sizing: content-box;
         cursor: pointer;
 
-        background-clip: padding-box;
-        background-image: linear-gradient(90deg, var(--fill-color)  70%, transparent 70%);
-        background-size: 50%  10%;
-        background-position: bottom left;
-        background-repeat: no-repeat;
+        // background-clip: padding-box;
+        // background-image: linear-gradient(90deg, var(--fill-color)  70%, transparent 70%);
+        // background-size: 50%  10%;
+        // background-position: bottom left;
+        // background-repeat: no-repeat;
         transition: all .2s ease;
 
         &:hover{

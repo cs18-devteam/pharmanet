@@ -1,27 +1,27 @@
 import { addToCart } from "../../model/customer/cart.model.js";
 import { renderToast } from "../../view/renderToast.js";
 
-const medicineCardsContainer = document.querySelector(".landing .Medicines_grid");
+const cardsContainer = document.querySelector(".grid");
 
 
-if(medicineCardsContainer){
-    medicineCardsContainer.addEventListener('click' ,async (e)=>{
+if(cardsContainer){
+    cardsContainer.addEventListener('click' ,async (e)=>{
         const target = e.target;
-        const medicineCart = target.closest('.medicine-card');
+        const cta = target.closest('.cta.medicine');
         /**
          * @type {HTMLElement}
          */
-        const addToCartBtn = target.closest('.add-to-cart');
 
-        if(addToCartBtn){
-            const medicineId = medicineCart.dataset.id;
+        if(cta){
+            const medicineId = cta.dataset.id;
             if(!medicineId) throw new Error("can not fine medicine id");
 
-            addToCartBtn.textContent = "wait...";
+            cta.textContent = "wait...";
             const newCartItem = await addToCart(medicineId);
             if(newCartItem.status =="success"){
                 renderToast("added to cart");
-                addToCartBtn.style.display = "none";
+                cta.textContent = "Added";
+                cta.classList.add('added');
             }
 
 

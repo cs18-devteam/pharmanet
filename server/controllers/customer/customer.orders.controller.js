@@ -7,6 +7,8 @@ const view = require("../common/view");
 
 exports.renderCustomerOrders = async (req , res)=>{
     try{
+        const customerId = req.customerId;
+        
 
         return response(res , view("customer.orders" , {
             header : view('component.header' , {

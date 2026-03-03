@@ -102,9 +102,9 @@
 /api/v1/pharmacies/:pharmacyId/staff/:staffId/update
 /api/v1/pharmacies/:pharmacyId/staff/:staffId/leaves
 /api/v1/transactions
-/api/v1/customers/:customerId/chats/assets/prescriptions
-/api/v1/customers/:customerId/pharmacy/register
-/api/v1/customers/:customerId/cart
+/api/v1/users/:customerId/chats/assets/prescriptions
+/api/v1/users/:customerId/pharmacy/register
+/api/v1/users/:customerId/cart
 /api/v1/orders
 /api/v1/orders/:orderId/items
 /api/v1/orders/:orderId

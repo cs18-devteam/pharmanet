@@ -19777,6 +19777,9 @@ p {
   background: white;
   cursor: pointer;
 }
+.userProfileManage .mainContainer .leftContainer .profile-card .update-btn:hover {
+  transform: scale(0.95);
+}
 .userProfileManage .mainContainer .leftContainer .hint {
   font-size: 13px;
   color: black;
@@ -19819,6 +19822,18 @@ p {
   padding: 10px;
   border-radius: 10px;
   border: 1px solid #e5e5e5;
+}
+.userProfileManage .mainContainer .leftContainer .save-btn {
+  margin-top: 8px;
+  padding: 6px 12px;
+  justify-content: center;
+  border-radius: 20px;
+  border: 1px solid #0b1b2b;
+  background: white;
+  cursor: pointer;
+}
+.userProfileManage .mainContainer .leftContainer .save-btn:hover {
+  transform: scale(0.95);
 }
 .userProfileManage .mainContainer .rightContainer {
   flex: 1;

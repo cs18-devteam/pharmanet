@@ -95,7 +95,7 @@
     padding-top: -4rem;
   }
 
-  .update-btn {
+  .update-btn{
     margin-top: 8px;
     padding: 6px 12px;
     justify-content: center;
@@ -103,7 +103,12 @@
     border: 1px solid $dark;
     background: white;
     cursor: pointer;
+
+    &:hover{
+      transform: scale(0.95);
+    }
   }
+  
 }
 
 .hint {
@@ -154,7 +159,19 @@
       border: 1px solid $border;
     }
   }}
+  .save-btn{
+    margin-top: 8px;
+    padding: 6px 12px;
+    justify-content: center;
+    border-radius: 20px;
+    border: 1px solid $dark;
+    background: white;
+    cursor: pointer;
+
+    &:hover{
+      transform: scale(0.95);
     }
+  }}
 .rightContainer{
   flex: 1;
 

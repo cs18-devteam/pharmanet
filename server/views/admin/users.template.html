@@ -250,6 +250,7 @@
   const adminIdIndex = pathParts.indexOf('admin') + 1;
   const adminId = pathParts[adminIdIndex];
   const API_URL = `${window.location.origin}/admin/${adminId}/api/users`;
+  console.log(API_URL);
 
   
   window.addEventListener('load', loadUsers);
@@ -269,7 +270,7 @@
       }
 
       users.forEach(user => {
-        const initials = (user.name || user.fullName || 'U').split(' ').map(n => n[0]).join('').toUpperCase();
+        const initials = (user.firstName || 'U').split(' ').map(n => n[0]).join('').toUpperCase() + (user.lastName || 'U').split(' ').map(n => n[0]).join('').toUpperCase();
         const avatar = user.avatar || initials;
         const status = user.status || 'Active';
         const row = document.createElement("tr");
@@ -278,7 +279,7 @@
             <div class="user-info">
               <div class="avatar">${avatar}</div>
               <div class="details">
-                <div class="name">${user.name || user.fullName}</div>
+                <div class="name">${user.firstName} ${user.lastName}</div>
                 <div class="email">${user.email}</div>
               </div>
             </div>
@@ -333,19 +334,25 @@
 
   //Deactivate User
   async function deactivateUser(id) {
+    console.log(id);
     if (!confirm("Are you sure you want to deactivate this User?")) return;
-
-    const res = await fetch(`${API_URL}/${id}`, {
+    try{
+    const res = await fetch(`https://localhost:3000/admin/1/api/users/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ status: "Inactive" })
     });
+    console.log(res);
     if (res.ok) {
       alert("User deactivated");
       loadUsers();
     } else {
       alert("Failed to deactivate User");
     }
+  }catch(error){
+    console.error('Error deactivating user', error);
+    alert("Network error: Failed to deactivate user");
+  }
   }
 
   //Add new user

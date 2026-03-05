@@ -50,14 +50,10 @@
 
 
     <div class="uploadCard">
-    <h3>Bulk upload</h3>
-    <p>Upload .xlsx, .xls, or .csv to import medicines.</p>
-    <form id="bulkUploadForm">
-      <input type="file" id="medicineFile" name="file" accept=".xlsx,.xls,.csv" required />
-      <button type="submit" class="save-btn">Upload & Import</button>
-      <span id="uploadStatus" class="statusText"></span>
-    </form>
-  </div>   
+      <h3>Upload Medicines from Excel</h3>
+      <input type="file" id="medicineFileInput" accept=".xlsx,.xls" />
+      <button id="uploadSubmitButton" type="button">Submit</button>
+    </div>   
 </section>
 
 <div class="addMedicine" id="addMedicineModal">
@@ -104,7 +100,12 @@
 
       <div class="form-row">
         <label>Schedule</label>
-        <input type="text" name="schedule" placeholder="e.g., 1B" required>
+        <select id="edit-schedule" name="schedule">
+          <option value="">Select schedule</option>
+          <option value="I">I</option>
+          <option value="IIA">IIA</option>
+          <option value="IIB">IIB</option>
+        </select>
       </div>
 
       <div class="form-row">
@@ -351,15 +352,15 @@
 
 
 
-<form class="form">
+<form class="form" id="editMedicineModal">
 <div class="row">
 <div class="field">
 <label>Medicine Name *</label>
-<input type="text" name="name" value="Amoxicillin" />
+<input type="text" id="edit-name" name="name" value="" required />
 </div>
 <div class="field">
 <label>Brand Name *</label>
-<input type="text" name="brandName" value="Medistol" />
+<input type="text" id="edit-brandName" name="brandName" value="" required />
 </div>
 </div>
 
@@ -367,14 +368,15 @@
 <div class="row">
 <div class="field">
 <label>Dosage *</label>
-<input type="text" name="dosage" value="500mg" />
+<input type="text" id="edit-dosage" name="dosage" value="" required />
 </div>
 <div class="field">
 <label>Schedule</label>
-<select name="schedule">
-<option>I</option>
-<option>IIA</option>
-<option>IIB</option>
+<select id="edit-schedule" name="schedule">
+   <option value="">Select schedule</option>
+   <option value="I">I</option>
+   <option value="IIA">IIA</option>
+   <option value="IIB">IIB</option>
 </select>
 </div>
 </div>
@@ -383,12 +385,16 @@
 <div class="row">
 <div class="field">
 <label>Manufacturer</label>
-<input type="text" name="manufacturer" value="Pharmacorp" />
+<input type="text" id="edit-manufacturer" name="manufacturer" value="" />
 </div>
 <div class="field">
 <label>Category</label>
-<select name="category">
-<option>Antibiotic</option>
+<select id="edit-category" name="category">
+   <option value="">Select category</option>
+   <option value="Antibiotic">Antibiotic</option>
+   <option value="Pain-relief">Pain-relief</option>
+   <option value="Cardiac">Cardiac</option>
+   <option value="Gastric">Gastric</option>
 </select>
 </div>
 </div>
@@ -396,14 +402,14 @@
 <div class="row">
   <div class="field">
     <label>Date</label>
-    <input type="date" name="expiryDate"/>
+    <input type="date" id="edit-expiryDate" name="expiryDate"/>
   </div>
 </div>
 
 
 <div class="toggle">
 <span>Prescription Required</span>
-<input type="checkbox" checked />
+<input type="checkbox" id="edit-prescription" />
 </div>
 
 
@@ -474,8 +480,8 @@ async function loadMedicines() {
               <div class="dropdownMenu">
                 <button class="dots">⋮</button>
                 <ul class="dropdown">
-                  <button class="viewDetailsBtn" onclick="openPopup('viewPopup')">View Details</button>
-                  <button id="editBtn" onclick="openPopup('editPopup')">Edit</button>
+                  <!-- <button class="viewDetailsBtn" onclick="openPopup('viewPopup')">View Details</button> -->
+                   <button class="edit-btn" data-id="${medicine.id}">Edit</button>
                   <button class="delete-btn" data-id="${medicine.id}">Delete</button>
                 </ul>
               </div>
@@ -484,14 +490,16 @@ async function loadMedicines() {
         `;
         tbody.insertAdjacentHTML('beforeend', row);
       });
-      attachDropdownListeners();
-      attachDeleteListeners();
+       attachDropdownListeners();
+       attachDeleteListeners();
+       attachEditListeners();
 
    } catch (error) {
       console.error('Error loading medicines:', error);
       alert('Error loading medicines: ' + error.message);
     }
   }
+
 
   // Attach delete event listeners to buttons
   function attachDeleteListeners() {
@@ -503,7 +511,7 @@ async function loadMedicines() {
     );
   }
 
-  //=======DELETE BLOG=======
+  //=======DELETE medicine=======
   async function deleteMedicine(medicineId) {
     if(!confirm("Are you sure you want to delete this medicine?")) return;
 
@@ -529,6 +537,61 @@ async function loadMedicines() {
     });
   }
 
+
+//editMedicine
+  function attachEditListeners() {
+    document.querySelectorAll(".edit-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const id = btn.dataset.id;
+        const med = medicinesData.find(m => String(m.id) === String(id));
+        console.log(med);
+        if (!med) {
+          alert('Medicine data not found');
+          return;
+        }
+        // populate edit form fields
+        document.getElementById('edit-name').value = med.name || '';
+        document.getElementById('edit-brandName').value = med.brandName || '';
+        document.getElementById('edit-dosage').value = med.dosage || '';
+         // ensure the schedule is shown even if it's not one of the predefined options
+        const scheduleSelect = document.getElementById('edit-schedule');
+        scheduleSelect.value = med.schedule || '';
+        if (med.schedule && !Array.from(scheduleSelect.options).some(o => o.value === med.schedule)) {
+          scheduleSelect.appendChild(new Option(med.schedule, med.schedule));
+          scheduleSelect.value = med.schedule;
+        };
+        document.getElementById('edit-manufacturer').value = med.manufacturer || '';
+        document.getElementById('edit-category').value = med.category || '';
+        if (med.expiryDate) {
+          document.getElementById('edit-expiryDate').value = new Date(med.expiryDate).toISOString().slice(0,10);
+        } else {
+          document.getElementById('edit-expiryDate').value = '';
+        }
+        document.getElementById('edit-prescription').checked = !!med.prescriptionRequired;
+        // store id for submit
+        document.getElementById('editPopup').dataset.medicineId = id;
+
+        const payload = {
+          name: document.getElementById('edit-name').value,
+          brandName: document.getElementById('edit-brandName').value,
+          manufacturer: document.getElementById('edit-manufacturer').value,
+          dosage: document.getElementById('edit-dosage').value,
+          category: document.getElementById('edit-category').value,
+          schedule: document.getElementById('edit-schedule').value,
+          expiryDate: document.getElementById('edit-expiryDate').value || null,
+          prescriptionRequired: !!document.getElementById('edit-prescription').checked,
+        };
+
+        console.log(payload);
+        openPopup('editPopup');
+      });
+    });
+  }
+
+  
+
+
   // Load medicines on page load
   document.addEventListener('DOMContentLoaded', () => {
     loadMedicines();
@@ -553,7 +616,7 @@ async function loadMedicines() {
 
 
 
-    const uploadForm = document.getElementById("bulkUploadForm");
+const uploadForm = document.getElementById("bulkUploadForm");
 const uploadStatus = document.getElementById("uploadStatus");
 
 if (uploadForm) {
@@ -630,6 +693,21 @@ if (uploadForm) {
       });
     });
 
+    
+      // close any open action dropdowns when clicking/tapping outside
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.dropdown') && !e.target.closest('.dots')) {
+          document.querySelectorAll('.dropdown.show').forEach(d => d.classList.remove('show'));
+        }
+      });
+      // also handle touch devices
+      document.addEventListener('touchstart', (e) => {
+        if (!e.target.closest('.dropdown') && !e.target.closest('.dots')) {
+          document.querySelectorAll('.dropdown.show').forEach(d => d.classList.remove('show'));
+        }
+      });
+
+
     //close when clicking outside of the window
     document.querySelectorAll('.popup-overlay').forEach(overlay => {
       overlay.addEventListener('click', function(e){
@@ -644,6 +722,106 @@ if (uploadForm) {
     attachDropdownListeners();
     
   </script>
+
+  <script>
+    // submit edits to server
+  document.getElementById('editPo').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const id = document.getElementById('editPopup').dataset.medicineId;
+    if (!id) {
+      alert('No medicine selected for update.');
+      return;
+    }
+    const payload = {
+      name: document.getElementById('edit-name').value,
+      brandName: document.getElementById('edit-brandName').value,
+      manufacturer: document.getElementById('edit-manufacturer').value,
+      dosage: document.getElementById('edit-dosage').value,
+      category: document.getElementById('edit-category').value,
+      schedule: document.getElementById('edit-schedule').value,
+      expiryDate: document.getElementById('edit-expiryDate').value || null,
+      prescriptionRequired: !!document.getElementById('edit-prescription').checked,
+    };
+    try {
+      const res = await fetch(`${window.location.origin}/admin/${adminId}/medicines/${id}/update`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      
+      if (res.ok) {
+        closePopup('editPopup');
+        loadMedicines();
+        } else {
+        const err = await res.json().catch(() => ({}));
+        alert('Update failed: ' + (err.error || res.statusText));
+      }
+    } catch (err) {
+      console.error('Update error', err);
+      alert('Update failed: ' + err.message);
+    }
+  });
+
+  </script>
+
+
+  <script>
+      // Upload medicines from Excel file
+      const uploadSubmitButton = document.querySelector('#uploadSubmitButton');
+      const medicineFileInput = document.querySelector('#medicineFileInput');
+
+      if (uploadSubmitButton && medicineFileInput) {
+        uploadSubmitButton.addEventListener('click', async (e) => {
+          e.preventDefault();
+
+          const file = medicineFileInput.files[0];
+          
+          if (!file) {
+            alert('Please select an Excel file first');
+            return;
+          }
+
+          // Validate file type
+          if (!file.name.match(/\.(xlsx|xls)$/)) {
+            alert('Please select a valid Excel file (.xlsx or .xls)');
+            return;
+          }
+
+          const formData = new FormData();
+          formData.append('file', file);
+
+          try {
+            uploadSubmitButton.disabled = true;
+            uploadSubmitButton.textContent = 'Uploading...';
+
+            const response = await fetch(`${window.location.origin}/admin/${adminId}/medicines/upload/api`, {
+              method: 'POST',
+              body: formData
+            });
+
+            const result = await response.text();
+            console.log(response);
+
+            if (response.ok) {
+              alert('Success: ' + result);
+              medicineFileInput.value = ''; // Clear file input
+              // Refresh medicines list
+              loadMedicines(); // Call your existing function to reload medicines
+            } else {
+              alert('Upload failed: ' + result);
+            }
+          } catch (error) {
+            console.error('Upload error:', error);
+            alert('Upload failed: ' + error.message);
+          } finally {
+            uploadSubmitButton.disabled = false;
+            uploadSubmitButton.textContent = 'Submit';
+          }
+        });
+      }
+  </script>
+  
   </div>
   </div>
 </body>

@@ -145,7 +145,6 @@ exports.renderCustomerOrders = catchAsync(async (req, res) => {
         }))
 
 
-        console.log(orders[0].items[0]);
 
 
 

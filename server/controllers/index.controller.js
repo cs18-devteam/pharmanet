@@ -52,6 +52,7 @@ exports.renderIndexPage =  async (req , res)=>{
                 }),
                 navbar : view('components/navbar.user'),
                 footer: view('footer'),
+                verified:"",
                 MedicineCount : medicineCount ,
                 PharmacyCount: pharmacyCount,
             }) , 200);

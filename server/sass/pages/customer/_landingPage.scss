@@ -546,6 +546,9 @@
         .stats-container{
             display: none;
         }
+        .advantages-section{
+            margin-bottom: 0rem;
+        }
     }
 
     @media screen and (max-width:1245px){
@@ -588,6 +591,15 @@
         }
         .upload-container{
             left: 38%;
+        }
+        .joinus .header-title{
+            font-size: 6.2rem;
+        }
+        .header-discription{
+            font-size: 2.4rem;
+        }
+        .joinus .button-group .btn{
+            font-size: 2.2rem;
         }
     }
 
@@ -803,6 +815,16 @@
         }
     }
 
+    @media screen and (max-width:920px) {
+        .action-btn{
+            padding: 0.7rem 1.5rem;
+            font-size: 1.4rem;
+        }
+        a {
+            font-size: 1.4rem;
+        }
+    }
+
     @media screen and (max-width:912px){
         .advantage-card {
             padding: 0 2rem;
@@ -843,6 +865,12 @@
     @media screen and (max-width:893px){
         .header-title{
             font-size: 5rem;
+        }
+    }
+
+    @media screen and (max-width: 887px){
+        .joinus .button-group .btn{
+            font-size: 2rem;
         }
     }
 
@@ -895,6 +923,15 @@
         .footer .main{
             padding-bottom: 5rem;
         }
+        .joinus .header-title{
+            font-size: 5.5rem;
+        }
+        .joinus .header-discription{
+            font-size: 2.2rem;
+        }
+        .joinus .button-group .btn{
+            font-size: 1.8rem;
+        }
     }
 
     @media screen and (max-width:840px){
@@ -928,6 +965,16 @@
         .pharmacy_grid .pharmacy-card .results .view-btn .view_img{
             width: 1.5rem;
         }
+        .logo .logopic{
+            height: 4.4rem;
+            margin-right: 0.5rem;
+        }
+        .logo .logoname{
+            font-size: 1.4rem;
+        }
+        nav{
+            padding: 0 0.5rem;
+        }
     }
 
     @media screen and (max-width:804px){
@@ -936,6 +983,13 @@
         }
         .advantage-disc{
             font-size: 1.3rem;
+        }
+    }
+
+    @media screen and (max-width:803px){
+        .joinus {
+            padding-left: 0;
+            padding-right: 0;
         }
     }
 
@@ -986,6 +1040,12 @@
         }
     }
 
+    @media screen and (max-width:790px){
+        .action-btn{
+            padding: 0.5rem 1rem;
+        }
+    }
+
     @media screen and (max-width:767px){
         .advantages-grid{
             display: flex;
@@ -997,10 +1057,35 @@
         }
     }
 
+    @media screen and (max-width:763px){
+        .joinus .header-title{
+            font-size: 5.2rem;
+        }
+        .joinus .header-discription{
+            font-size: 2rem;
+            top: 0.5rem;
+        }
+        .joinus .button-group{
+            margin: 3rem 4rem;
+        }
+        .joinus .button-group .btn{
+            font-size: 1.6rem;
+        }
+    }
+
     @media screen and (max-width:762px){
         .header-title{
             font-size: 4.2rem;
             margin-top: 3rem;
+        }
+    }
+
+    @media screen and (max-width:760px) {
+        .action-btn{
+            padding: 0.5rem;
+        }
+        .logo .logopic{
+            margin-right: 0;
         }
     }
 
@@ -1087,6 +1172,21 @@
     @media screen and (max-width:717px){
         .mid-title{
             font-size: 4rem;
+        }
+    }
+
+    @media screen and (max-width:710rem) {
+        .action-btn{
+            font-size: 1.2rem;
+        }
+        a{
+            font-size: 1.2rem;
+        }
+        .profileName .welcome{
+            font-size: 1.2rem;
+        }
+        .profile .profileName > a{
+            font-size: 1.1rem;
         }
     }
 
@@ -1227,6 +1327,12 @@
     @media screen and (max-width:642px){
         .mid-title{
             font-size: 3.5rem;
+        }
+    }
+
+    @media screen and (max-width:640px) {
+        .action-btn {
+            display: block;
         }
     }
 

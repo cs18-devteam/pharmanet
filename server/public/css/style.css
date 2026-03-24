@@ -5562,6 +5562,9 @@ button.save {
   .landing .stats-container {
     display: none;
   }
+  .landing .advantages-section {
+    margin-bottom: 0rem;
+  }
 }
 @media screen and (max-width: 1245px) {
   .landing .mid-title {
@@ -5600,6 +5603,15 @@ button.save {
   }
   .landing .upload-container {
     left: 38%;
+  }
+  .landing .joinus .header-title {
+    font-size: 6.2rem;
+  }
+  .landing .header-discription {
+    font-size: 2.4rem;
+  }
+  .landing .joinus .button-group .btn {
+    font-size: 2.2rem;
   }
 }
 @media screen and (max-width: 1101px) {
@@ -5800,6 +5812,15 @@ button.save {
     font-size: 2rem;
   }
 }
+@media screen and (max-width: 920px) {
+  .landing .action-btn {
+    padding: 0.7rem 1.5rem;
+    font-size: 1.4rem;
+  }
+  .landing a {
+    font-size: 1.4rem;
+  }
+}
 @media screen and (max-width: 912px) {
   .landing .advantage-card {
     padding: 0 2rem;
@@ -5837,6 +5858,11 @@ button.save {
 @media screen and (max-width: 893px) {
   .landing .header-title {
     font-size: 5rem;
+  }
+}
+@media screen and (max-width: 887px) {
+  .landing .joinus .button-group .btn {
+    font-size: 2rem;
   }
 }
 @media screen and (max-width: 868px) {
@@ -5885,6 +5911,15 @@ button.save {
   .landing .footer .main {
     padding-bottom: 5rem;
   }
+  .landing .joinus .header-title {
+    font-size: 5.5rem;
+  }
+  .landing .joinus .header-discription {
+    font-size: 2.2rem;
+  }
+  .landing .joinus .button-group .btn {
+    font-size: 1.8rem;
+  }
 }
 @media screen and (max-width: 840px) {
   .landing .advantage-title {
@@ -5915,6 +5950,16 @@ button.save {
   .landing .pharmacy_grid .pharmacy-card .results .view-btn .view_img {
     width: 1.5rem;
   }
+  .landing .logo .logopic {
+    height: 4.4rem;
+    margin-right: 0.5rem;
+  }
+  .landing .logo .logoname {
+    font-size: 1.4rem;
+  }
+  .landing nav {
+    padding: 0 0.5rem;
+  }
 }
 @media screen and (max-width: 804px) {
   .landing .advantage-title {
@@ -5922,6 +5967,12 @@ button.save {
   }
   .landing .advantage-disc {
     font-size: 1.3rem;
+  }
+}
+@media screen and (max-width: 803px) {
+  .landing .joinus {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 @media screen and (max-width: 800px) {
@@ -5968,6 +6019,11 @@ button.save {
     font-size: 4.5rem;
   }
 }
+@media screen and (max-width: 790px) {
+  .landing .action-btn {
+    padding: 0.5rem 1rem;
+  }
+}
 @media screen and (max-width: 767px) {
   .landing .advantages-grid {
     display: flex;
@@ -5978,10 +6034,33 @@ button.save {
     margin-bottom: 1rem;
   }
 }
+@media screen and (max-width: 763px) {
+  .landing .joinus .header-title {
+    font-size: 5.2rem;
+  }
+  .landing .joinus .header-discription {
+    font-size: 2rem;
+    top: 0.5rem;
+  }
+  .landing .joinus .button-group {
+    margin: 3rem 4rem;
+  }
+  .landing .joinus .button-group .btn {
+    font-size: 1.6rem;
+  }
+}
 @media screen and (max-width: 762px) {
   .landing .header-title {
     font-size: 4.2rem;
     margin-top: 3rem;
+  }
+}
+@media screen and (max-width: 760px) {
+  .landing .action-btn {
+    padding: 0.5rem;
+  }
+  .landing .logo .logopic {
+    margin-right: 0;
   }
 }
 @media screen and (max-width: 755px) {
@@ -6063,6 +6142,20 @@ button.save {
 @media screen and (max-width: 717px) {
   .landing .mid-title {
     font-size: 4rem;
+  }
+}
+@media screen and (max-width: 710rem) {
+  .landing .action-btn {
+    font-size: 1.2rem;
+  }
+  .landing a {
+    font-size: 1.2rem;
+  }
+  .landing .profileName .welcome {
+    font-size: 1.2rem;
+  }
+  .landing .profile .profileName > a {
+    font-size: 1.1rem;
   }
 }
 @media screen and (max-width: 697px) {
@@ -6195,6 +6288,11 @@ button.save {
 @media screen and (max-width: 642px) {
   .landing .mid-title {
     font-size: 3.5rem;
+  }
+}
+@media screen and (max-width: 640px) {
+  .landing .action-btn {
+    display: block;
   }
 }
 @media screen and (max-width: 638px) {

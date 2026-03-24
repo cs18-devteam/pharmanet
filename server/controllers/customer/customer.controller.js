@@ -187,19 +187,3 @@ exports.renderCustomerOrders = catchAsync(async (req, res) => {
         })), 200
 })
 
-exports.renderLoyaltyPoints = catchAsync(async (req, res) => {
-
-        const customer = (await Users.getById(req.customerId))[0];
-        if (!customer) return response(res, "your are not authorized", 302);
-
-        return response(res, view('customer/customer.loyaltyPoints', {
-                ...customer,
-                navbar: view('customer/navbar.customer', customer),
-                header: view('component.header', {
-                        name: "medicine view",
-
-                }),
-                cart: view('customer/component.cart'),
-                footer: view('footer'),
-        })), 200
-})

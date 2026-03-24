@@ -5,6 +5,7 @@ const { getRequestData } = require("../../common/getRequestData");
 const { response, responseJson } = require("../../common/response");
 const view = require("../../common/view");
 const Carts = require("../../models/CartModel");
+const LoyaltyPoints = require("../../models/LoyaltyPointModel");
 const Medicines = require("../../models/MedicineModel");
 const PharmacyMedicines = require("../../models/PharmacyMedicinesModel");
 const PharmacyOrdersItems = require("../../models/PharmacyOrderItemsModel");
@@ -21,6 +22,7 @@ exports.createOrder = apiCatchAsync(async (req , res)=>{
         const carts = reqData.carts;
         const items = reqData.items;
         const pharmacyId = reqData.pharmacyId;
+        const customerId = reqData.userId;
         let ordersData  = [];
 
 
@@ -110,6 +112,15 @@ exports.createOrder = apiCatchAsync(async (req , res)=>{
             
 
         })
+
+
+       await LoyaltyPoints.save({
+            PharmacyId: pharmacyId,
+            CustomerId : customerId,
+            LoyaltyPoints :reqData.amount*0.01,
+       })
+
+
 
         return responseJson(res , 201 , {
             status:"success",

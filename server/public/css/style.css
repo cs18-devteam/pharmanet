@@ -5137,10 +5137,10 @@ button.save {
   }
 }
 /* customer */
-.landing .header-content {
-  width: 98vw;
+.landing .hedder-content {
+  width: 100%;
+  max-width: 1200px;
   padding: 0 20px;
-  margin-bottom: 30rem;
 }
 .landing .header-title {
   text-align: center;
@@ -5374,34 +5374,6 @@ button.save {
 }
 .landing .stats-container .stat-blue .arc::before {
   background-color: var(--color-blue-01);
-}
-.landing .main-container .medicine-section .container .header-section .title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 4rem;
-  margin: 3rem;
-  color: var(--color-green-02);
-  text-transform: capitalize;
-  gap: 4rem;
-}
-.landing .main-container .medicine-section .container .header-section .title span {
-  color: var(--color-yellow-01);
-}
-.landing .main-container .medicine-section .container .header-section .title .search-bar {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 2rem;
-  border: 0.1rem solid #eee;
-}
-.landing .main-container .medicine-section .container .header-section .title input {
-  border: none;
-  outline: none;
-  font-size: 2rem;
-  width: 30rem;
-  padding: 1rem;
 }
 .landing .joinus {
   margin: 8rem;
@@ -8825,6 +8797,8 @@ button.save {
   display: flex;
   gap: 2rem;
   margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
 }
 .loyaltyPoints .loyalty-info .cards-row .card {
   flex: 1;
@@ -8832,6 +8806,7 @@ button.save {
   padding: 1.8rem;
   border: 1px solid #e4e4e4;
   border-radius: 10px;
+  max-width: 60rem;
 }
 .loyaltyPoints .loyalty-info .cards-row .card .title {
   font-weight: 600;

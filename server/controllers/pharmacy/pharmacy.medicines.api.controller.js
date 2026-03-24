@@ -8,7 +8,8 @@ const { getRequestData } = require("../../common/getRequestData");
 
 exports.getAllMedicines = async (req, res) => {
   try {
-    const data = await PharmacyMedicines.get();
+    let data = [];
+    data = await PharmacyMedicines.get();
 
     // Check if data is empty
     if (!data || data.length === 0) {

@@ -13,7 +13,7 @@ const cartList = document.querySelector('.orders .cart_list');
 
 
 export default function orders__searchAndRenderMedicineCard(search="" , limit=6){
-    fetchMedicineData(search , limit).then(({results})=>{
+    fetchMedicineData(search , limit , Application.pharmacyId).then(({results})=>{
         Application.setOrderMedicineResultsStack(results);
         const medicineCards = createMedicineCards(results);
         renderMedicineCards(medicineCardContainer , medicineCards);

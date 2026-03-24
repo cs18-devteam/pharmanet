@@ -1,6 +1,7 @@
 import medicines__searchAndRenderMedicineCard from "./medicines__searchAndRenderMedicines.js";
 import { renderMedicineStockSummery } from "../../view/pharmacy/renderMedicineCards.js";
 import {  fetchMedicineStockSummery } from "../../model/pharmacy/fetchMedicineData.js";
+import Application from "../../model/application/Application.js";
 const medicinesSearchBar = document.querySelector(".medicines .search-bar");
 
 
@@ -10,7 +11,7 @@ export default function init(){
     medicines__searchAndRenderMedicineCard();
     
     
-    fetchMedicineStockSummery(1).then(data=>{
+    fetchMedicineStockSummery(Application.pharmacyId).then(data=>{
         try{
             renderMedicineStockSummery({
                 count: data.results.count ,

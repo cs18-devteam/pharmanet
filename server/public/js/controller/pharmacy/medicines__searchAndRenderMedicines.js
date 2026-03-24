@@ -1,3 +1,4 @@
+import Application from "../../model/application/Application.js";
 import { fetchMedicineData, fetchMedicineStockSummery } from "../../model/pharmacy/fetchMedicineData.js";
 import { createStockMedicine, deleteMedicineFromStock, getMedicineByStockId, updateMedicineStock } from "../../model/pharmacy/manageStockData.js";
 import { createStockAddEditForm } from "../../view/pharmacy/createStockAddEditForm.js";
@@ -11,7 +12,7 @@ const medicineCardContainer = document.querySelector('.medicine_cards_container'
 
 
 export default function searchAndRenderMedicineCard(value , limit = 6){
-    fetchMedicineData(value , limit).then(data=>{
+    fetchMedicineData(value , limit , Application.pharmacyId).then(data=>{
         const medicines = data.results;
         const medicineCards =  createMedicineCards(medicines);
         renderMedicineCards(medicineCardContainer , medicineCards?.slice(0 , 6));
@@ -37,7 +38,7 @@ export default function searchAndRenderMedicineCard(value , limit = 6){
                     const form = formContainer.querySelector('form');
                     if(target.closest('.btn_save')){
                         updateMedicineStock({
-                            pharmacyId : 1,
+                            pharmacyId : Application.pharmacyId,
                             
                             stock : {...selectedMedicine , ...extractFormData(form) , stockId : selectedMedicine.stock.id},
                         }).then(data=>{
@@ -49,7 +50,7 @@ export default function searchAndRenderMedicineCard(value , limit = 6){
                                     closeSidebar();
                                     closeDrawer();                                    
                                     getMedicineByStockId({
-                                        pharmacyId : 1 , 
+                                        pharmacyId : Application.pharmacyId , 
                                         stockId : selectedMedicine.stock.id,
                                     }).then((data)=>{
                                         console.log(data);
@@ -78,7 +79,7 @@ export default function searchAndRenderMedicineCard(value , limit = 6){
                         }).then(results=>{
                             if(results.isConfirmed){
                                 deleteMedicineFromStock({
-                                    pharmacyId : 1,
+                                    pharmacyId : Application.pharmacyId,
                                     stockId : selectedMedicine.stock.id,
                                 }).then(data=>{
                                     if(data.status == "success"){
@@ -124,7 +125,7 @@ export default function searchAndRenderMedicineCard(value , limit = 6){
                     const form = formContainer.querySelector('form');
                     if(target.closest('.btn_add_to_stock')){
                         createStockMedicine({
-                            pharmacyId : 1,
+                            pharmacyId : Application.pharmacyId,
                             stock : {...selectedMedicine,...extractFormData(form)}
                         }).then(data=>{
                             if(data.status == "success"){
@@ -135,7 +136,7 @@ export default function searchAndRenderMedicineCard(value , limit = 6){
                                     closeSidebar();
                                     closeDrawer();                                    
                                     getMedicineByStockId({
-                                        pharmacyId : 1 , 
+                                        pharmacyId : Application.pharmacyId , 
                                         stockId : data.stock.id
                                     }).then((data)=>{
                                         console.log(data);
@@ -158,7 +159,7 @@ export default function searchAndRenderMedicineCard(value , limit = 6){
                         })
                     }else if(target.closest('btn_save')){
                         updateMedicineStock({
-                            pharmacyId : 1,
+                            pharmacyId : Application.pharmacyId,
                             stock : {...selectedMedicine , ...extractFormData(form)},
                         }).then(data=>{
                             if(data.status == "success"){

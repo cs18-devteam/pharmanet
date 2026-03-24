@@ -47,14 +47,28 @@ exports.createOrder = apiCatchAsync(async (req , res)=>{
 
             let orderItem;
             if(item.itemType == "medicine"){
-                orderItem = (await PharmacyMedicines.getById(item.itemId))[0];
+                [orderItem] = await PharmacyMedicines.get({
+                    pharmacyId : pharmacyId,
+                    medicineId : item.itemId
+                });
+
+                console.log(orderItem , {
+                    pharmacyId : pharmacyId,
+                    medicineId : item.itemId
+                });
+
                 if(orderItem.publicStock < item.quantity){
                     throw new Error(`insufficient medicine stock`);
                 }
 
+                console.log({
+                    id: orderItem.id,
+                    publicStock : orderItem.publicStock - item.quantity,
+                    stock : orderItem.stock - item.quantity,
+                });
 
                 await PharmacyMedicines.update({
-                    id: item.itemId,
+                    id: orderItem.id,
                     publicStock : orderItem.publicStock - item.quantity,
                     stock : orderItem.stock - item.quantity,
                 })

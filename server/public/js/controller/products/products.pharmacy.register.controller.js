@@ -1,3 +1,4 @@
+import Application from "../../model/application/Application.js";
 import { submitPharmacyRegisterData } from "../../model/products/submitPharmacyRegisterData.js";
 import { removeSpinner, renderSpinner } from "../../view/spinner.js";
 import { swal } from "../../view/swal.js";
@@ -41,7 +42,7 @@ pharmacyRegisterForm.addEventListener('submit' ,async e=>{
 
     
     renderSpinner();
-    const {status ,results , message} = await submitPharmacyRegisterData(formData , 1);
+    const {status ,results , message} = await submitPharmacyRegisterData(formData , Application.userId);
     removeSpinner();
 
     if(status == "error"){

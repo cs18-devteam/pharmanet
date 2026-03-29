@@ -175,7 +175,14 @@ exports.deletePharmacy = apiCatchAsync(async (req , res)=>{
         return await PharmacyStaff.deleteById(s.id);
     }))
 
+
+    await Users.update({
+        id : pharmacy.userId,
+        role : 'customer',
+    })
+
     await Pharmacies.deleteById(pharmacy.id);
+
 
     return responseJson(res , 200 , {
         status:"success",

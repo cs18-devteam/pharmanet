@@ -15,8 +15,9 @@ exports.renderIndexPage =  async (req , res)=>{
             let redirectURL = undefined;
             const tokenData = JSON.parse(decrypt(token));
             if(tokenData?.id){
-
+                
                 const [user] = await Users.getById(tokenData.id);
+                console.log(user);
                 if(user){
                     switch (user.role){
                         case "customer":

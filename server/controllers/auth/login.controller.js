@@ -6,6 +6,7 @@ const { getRequestData } = require("../../common/getRequestData");
 const ipaddress = require("../../common/ipaddress");
 const { response, responseJson } = require("../../common/response");
 const view = require("../../common/view");
+const PharmacyStaff = require("../../models/PharmacyStaffModel");
 const Users = require("../../models/UserModel");
 
 
@@ -58,6 +59,13 @@ exports.login = async (req, res) => {
 
 
         console.log(cookie)
+        const role = user[0].role;
+        if(role == "pharmacist" || role == "cashier" || "stockmanager" || "accountant"){
+            const [member] = await PharmacyStaff.get({
+                userId : user[0].id,
+            })
+            user[0] = {...user[0] , ...member};
+        }
 
         return responseJson(res , 200 , {
             status:"success",

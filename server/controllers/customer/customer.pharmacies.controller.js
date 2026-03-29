@@ -195,6 +195,9 @@ exports.createPharmacy = async (req , res)=>{
             throw new Error('customer is not found');
         }
 
+
+        console.log(customer);
+
         const pharmacyObj = {
             name : pharmacyData.name,
             licenseNumber : pharmacyData.licenseNumber,
@@ -247,6 +250,10 @@ exports.createPharmacy = async (req , res)=>{
         pharmacy.pharmacist = pharmacist,
 
 
+        await Users.update({
+            id : customer.id,
+            role :"pharmacist",
+        })
         
 
         await Pharmacies.query("commit");

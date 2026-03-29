@@ -164,9 +164,6 @@ function handleFullViewToggle() {
 
 function handleSignOut() {
     document.querySelector('.signout#signout').addEventListener('click', () => {
-        window.cookieStore.getAll().then((cookies) => {
-            cookies.forEach(c => window.cookieStore.delete(c.name));
-        })
 
         swal({
             title: "do you want to signout ?",
@@ -175,6 +172,13 @@ function handleSignOut() {
             dangerMode: true,
             confirmButtonText: "signout"
         }).then((value) => {
+
+            window.cookieStore.getAll().then((cookies) => {
+                cookies.forEach(c => window.cookieStore.delete(c.name));
+        })
+
+
+
             if (value.isConfirmed) {
                 window.location.href = "/login";
 

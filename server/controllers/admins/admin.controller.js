@@ -75,7 +75,10 @@ exports.renderAdminUsersView = catchAsync(async (req ,res)=>{
 
 
     return response(res , view('admin/users',{
-        sidebar : view('admin/component.sidebar' , admin)
+        sidebar : view('admin/component.sidebar' , admin),
+        header : view('component.header' , {
+          name:"Users || Pharmanet - User Collection",
+        }),
     }) , 200);
 })
 

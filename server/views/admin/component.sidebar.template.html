@@ -1,33 +1,52 @@
-   <!DOCTYPE html>
-   <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="./../css/style.css">
-      <title>Document</title>
-   </head>
-   <body>
-      <div class="sidebar">
-         <div style="padding-left: 2rem; font-size: 1.4rem; color: rgba(255, 255, 255, 0.699)">
-            Main Menu
-         </div>
-      <ul class="menu">
-      <a href="/admin/{id}" >Dashboard</a>
+<div class="sidebar">
+   <div style="padding-left: 2rem; font-size: 1.4rem; color: rgba(255, 255, 255, 0.699)">
+      Main Menu
+   </div>
+   <ul class="menu">
+      <a href="/admin/{id}">Dashboard</a>
       <a href="/admin/{id}/pharmacies">Pharmacies</a>
       <a href="/admin/{id}/medicines">Medicines</a>
       <a href="/admin/{id}/users">Users</a>
       <a href="/admin/{id}/blogs/manage">Blogs</a>
       <!-- <a href="">Analytics</a> -->
-      <!-- <a href="/admin/{id}/assets">Data Assets</a> -->
-      </div>
-      <div style="border-top: 1px solid #eeeeee50;padding-top:2rem;padding-left: 2rem; font-size: 1.4rem; color: rgba(255, 255, 255, 0.699)">
-            Actions & Settings
-         </div>
-      <div class="menuItem">
-        <!-- <button class="text setting"> Settings</button> -->
-        <button class="text signOut"> Sign Out</button>
-    </div>
-    </ul>
-   </body>
-   </html>
-   
+   </ul>
+
+   <!-- <a href="/admin/{id}/assets">Data Assets</a> -->
+</div>
+<div
+   style="border-top: 1px solid #eeeeee50;padding-top:2rem;padding-left: 2rem; font-size: 1.4rem; color: rgba(255, 255, 255, 0.699)">
+   Actions & Settings
+</div>
+<div class="menuItem">
+   <!-- <button class="text setting"> Settings</button> -->
+   <button class="text signOut"> Sign Out</button>
+</div>
+
+<script>
+
+      document.querySelector('button.signOut').addEventListener('click', () => {
+         
+         Swal.fire({
+            title: "do you want to signout ?",
+            icon: 'question',
+            showCancelButton: true,
+            dangerMode: true,
+            confirmButtonText: "signout"
+         }).then((value) => {
+            
+            if (value.isConfirmed) {
+
+            window.cookieStore.getAll().then((cookies) => {
+               cookies.forEach(c => window.cookieStore.delete(c.name));
+            })
+            
+            
+            
+               window.location.href = "/login";
+               
+            }
+         })
+         
+      })
+      
+</script>

@@ -8,9 +8,10 @@
 @use "./pharmacyDashboard_chat" as chatManagement;
 @use "./pharmacyDashboard__settings" as pharmacy_profile;
 @use "./pharamcyDashboard_products" as pharmacy_products;
+@use "./pharmacyDashboard__docs" as pharmacy_docs;
 
 /* paging effect */
-$containers : 'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 'staff';
+$containers : 'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 'docs' , 'staff';
 
 .pharmacyDashboard{
         // background: #127EB5;
@@ -865,6 +866,11 @@ $containers : 'orders' , 'chats' ,'medicines' , 'transactions' , 'products' , 's
     @include staffManagement.staffMember; 
     @include staffManagement.pharmacyMemberInfo; 
     @include staffManagement.attendance; 
+}
+
+.pharmacyDashboard .dashboards .container.docs {
+    @include pharmacy_docs.docs; 
+
 }
 
 

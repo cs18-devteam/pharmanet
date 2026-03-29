@@ -7,6 +7,7 @@ import { swal } from "../../view/swal.js";
 import orders__searchAndRenderMedicineCard from "./orders/orders__searchAndRenderMedicineCards.js";
 import settings_init from "./pharamcy.dashboard.settings.controller.js";
 import chats_init from "./pharmacy.dashboard.chats.controller.js";
+import docs_init from "./pharmacy.dashboard.docs.controller.js";
 import medicines_init from "./pharmacy.dashboard.medicines.controller.js";
 import orders_init from "./pharmacy.dashboard.orders.controller.js";
 import products_init from "./pharmacy.dashboard.products.controller.js";
@@ -55,6 +56,8 @@ export function initialize(view){
         case "staff":
             staff_init();
             break;
+        case "docs":
+            docs_init()
     }
 }
 

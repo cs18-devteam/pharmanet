@@ -331,38 +331,12 @@ class Model {
       if (data) {
         let filters = [];
 
-<<<<<<< HEAD
-        if(!id) throw new Error("no id in request body");
-
-        let query = "UPDATE %%TABLE_NAME%% SET %%COLUMNS%%  WHERE id=%%U_ID%%";
-
-        //add table name
-        query = query.replace("%%TABLE_NAME%%" , this.#table);
-        query = query.replace("%%U_ID%%" , id);
-
-
-        const dataArray = [];
-        for(const [columnName] of Object.entries(this)){
-
-            if(columnName == "id") continue;
-
-            const value = data?.[columnName];
-
-            if(!value && value != 0) continue;
-
-            if(typeof value == "string"){
-                dataArray.push(`${columnName}="${value}"`);
-            }else{
-                dataArray.push(`${columnName}= ${value}`);
-            }
-=======
         for (const [column, value] of Object.entries(data)) {
           if (typeof value == "string") {
             filters.push(`${column}="${value}"`);
           } else {
             filters.push(`${column}=${value}`);
           }
->>>>>>> kasum/admin/3.7
         }
         query += filters.join(" AND ");
       }

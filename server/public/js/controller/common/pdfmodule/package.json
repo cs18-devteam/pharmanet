@@ -1,0 +1,24 @@
+{
+  "name": "pharmanet-pdfmodule",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "chahtura",
+    "priyashan",
+    "pharmanet",
+    "pdfmodule",
+    "private"
+  ],
+  "license": "ISC",
+  "author": "chathura priyashan",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "jspdf": "^4.2.1",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^5.5.207"
+  }
+}

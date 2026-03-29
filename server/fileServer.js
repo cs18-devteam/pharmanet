@@ -15,7 +15,8 @@ const MIME_TYPES = {
     "json" : 'application/json',
     "css" : "text/css",
     "ttf" : "font/ttf",
-    "svg" : "image/svg+xml"
+    "svg" : "image/svg+xml",
+    "mjs" : "text/javascript",
 }
 
 

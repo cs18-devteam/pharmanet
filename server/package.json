@@ -29,14 +29,17 @@
     "test": "jest"
   },
   "dependencies": {
+    "chokidar": "^5.0.0",
     "cloudflared": "^0.7.1",
     "crypto-js": "^4.2.0",
     "googleapis": "^161.0.0",
     "multiclient-websocket": "^2.3.2",
     "mysql2": "^3.15.1",
     "nodemailer": "^7.0.10",
+    "pharmanet-pdfmodule": "^1.0.0",
     "sweetalert2": "^11.26.3",
-    "toastify-js": "^1.12.0"
+    "toastify-js": "^1.12.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "csvtojson": "^2.0.14",

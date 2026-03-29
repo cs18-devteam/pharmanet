@@ -8,15 +8,9 @@ const db = Database.getInstance();
 const { hashPassword } = require("../../common/encrypt");
 const { catchAsync } = require("../../common/catchAsync");
 const ActivityLogService = require("../../../services/activityLogService/activityLogService");
-<<<<<<< HEAD
-
-exports.renderAdminMedicinesView = async (req ,res)=>{
-    const [admin] = await Users.getById(req.adminId);
-=======
 const fs = require("fs");
 const path = require("path");
 const readExcel = require("../../../services/excelRead-service/excelReader");
->>>>>>> kasum/admin/3.7
 
 
 

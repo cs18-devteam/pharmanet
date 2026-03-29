@@ -94,6 +94,7 @@ exports.renderPharmacyDashboard = async (req , res)=>{
             productsView : view('pharmacy/views/dashboard.product.view'),
             medicinesView : view('pharmacy/views/dashboard.medicines.view'),
             ordersView : view('pharmacy/views/dashboard.orders.view'),
+            docsView : view('pharmacy/views/dashboard.docs.view'),
             header : view('component.header' , {
                 name:"Pharmacy Dashboard",
             }),

@@ -37,7 +37,8 @@ const { adminDashboardRouter } = require('./routes/web/admin.dashboard.Routes');
 const { adminApiDashboardRouter } = require('./routes/web/admin.dashboard.Routes');
 const { pharmacyDeleteRouter } = require('./routes/web/pharmacy.delete.Routes');
 
-const { adminApiActivityRouter } = require('./routes/web/admin.dashboard.Routes')
+const { adminApiActivityRouter } = require('./routes/web/admin.dashboard.Routes');
+const docsApiRouter = require('./routes/api/api.docs.Routes');
 
 const options = {
   key: fs.readFileSync('key.pem'),
@@ -110,6 +111,7 @@ const server = https.createServer(options,(req , res)=>{
         pharmacyTransactionsRouter.pipe(req,res);
         pharmacyProductApiRouter.pipe(req , res);
         pharmacyDeleteRouter.pipe(req ,res);
+        docsApiRouter.pipe(req , res);
 
         AppRouter.pipe(req ,res).route('/admin/addUsers')
         ?.get(adminController.addUsers);

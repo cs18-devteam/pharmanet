@@ -138,3 +138,4 @@
 /api/v1/admin/:adminId/dashboard
 /api/v1/admin/:adminId/activities
 /pharmacy/:pharmacyId
+/api/v1/docs/:pharmacyId

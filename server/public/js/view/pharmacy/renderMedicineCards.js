@@ -131,7 +131,7 @@ export function createMedicineCards (data = []){
             .replace('{geneticName}' , medicine.geneticName)
             .replaceAll('{price}' , price )
             .replaceAll('{status}' , status || " ")
-            .replace('{count}' , medicine.stock.publicStock)
+            .replace('{count}' , medicine.stock.publicStock || 0)
             .replaceAll('{units}' , medicine.units || 1)
             .replaceAll('{discounts}' , medicine.discounts || 0)
             .replaceAll('{days}' , medicine.days || 1)

@@ -172,14 +172,9 @@ exports.deletePharmacy = apiCatchAsync(async (req , res)=>{
     })
 
     await Promise.all(staff.map(async s=>{
+        await Users.deleteById(s.userId)
         return await PharmacyStaff.deleteById(s.id);
     }))
-
-
-    await Users.update({
-        id : pharmacy.userId,
-        role : 'customer',
-    })
 
     await Pharmacies.deleteById(pharmacy.id);
 

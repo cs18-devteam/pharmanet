@@ -5,6 +5,7 @@ import { createStockAddEditForm } from "../../view/pharmacy/createStockAddEditFo
 import {  closeDrawer, closeSidebar, openDrawer, openSidebar, setDrawerContent, setSidebarContent } from "../../view/pharmacy/drawerView.js";
 import { createMedicineViewerContent } from "../../view/pharmacy/medicineViewer.js";
 import { createMedicineCards, renderMedicineCards } from "../../view/pharmacy/renderMedicineCards.js";
+import { swal } from "../../view/swal.js";
 import { extractFormData, stopPropagation } from "./helpers.js";
 
 
@@ -37,6 +38,9 @@ export default function searchAndRenderMedicineCard(value , limit = 6){
                     const target = e.target;
                     const form = formContainer.querySelector('form');
                     if(target.closest('.btn_save')){
+
+
+
                         updateMedicineStock({
                             pharmacyId : Application.pharmacyId,
                             
@@ -124,9 +128,57 @@ export default function searchAndRenderMedicineCard(value , limit = 6){
                     const target = e.target;
                     const form = formContainer.querySelector('form');
                     if(target.closest('.btn_add_to_stock')){
+                        const stockData = extractFormData(form);
+                        
+                        if(stockData.price == '' || stockData.stock == '' || stockData.publicStock == ''){
+                            swal({
+                                title: "missing some fields",
+                                icon:'error'
+                            })
+                            return;
+
+                        }
+
+
+                        if(+stockData.price < 0 ){
+                            swal({
+                                title: "price must be grater than 0",
+                                icon:'error'
+                            })
+                            return;
+                        }
+
+                        if(+stockData.publicStock < 0){
+                            swal({
+                                title:"public stock grater than to 0",
+                                icon:"error"
+                            })
+                            return;
+
+                        }
+                        if(+stockData.stock < 0){
+                            swal({
+                                title:"public stock grater than to 0",
+                                icon:"error"
+                            })
+                            return;
+
+                        }
+
+                        if(!(+stockData.publicStock <= +stockData.stock)){
+                            swal({
+                                title:"public stock must small than or equal to stock",
+                                icon:"error"
+                            })
+                            return;
+                        }
+
+                        
+
+
                         createStockMedicine({
                             pharmacyId : Application.pharmacyId,
-                            stock : {...selectedMedicine,...extractFormData(form)}
+                            stock : {...selectedMedicine, ...stockData}
                         }).then(data=>{
                             if(data.status == "success"){
                                 Swal?.fire({

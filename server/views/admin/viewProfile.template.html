@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -35,7 +35,7 @@
         <!-- ABOUT -->
         <div class="card about-card">
           <h3>About</h3>
-          <p>
+          <p id="detailDescription">
             Experienced pharmacy administrator with over 10 years in healthcare
             management.
           </p>
@@ -102,20 +102,24 @@
 
       // Get user data from server (will be injected as JSON)
       const userData = JSON.parse(
-        document.getElementById("userDataJson").textContent
+        document.getElementById("userDataJson").textContent,
       );
       console.log("userData: ", userData);
 
-      if (userData && userData.name) {
-        document.getElementById("userAvatar").textContent = (
-          userData.name || ""
-        )
-          .split(" ")
-          .map((n) => n[0])
-          .join("")
-          .toUpperCase();
+      if (userData) {
+        document.getElementById("userAvatar").textContent =
+          (userData.firstName || "")
+            .split(" ")
+            .map((n) => n[0])
+            .join("")
+            .toUpperCase() +
+          (userData.lastName || "")
+            .split(" ")
+            .map((n) => n[0])
+            .join("")
+            .toUpperCase();
         document.getElementById("userName").textContent =
-          userData.name || "N/A";
+          (userData.firstName || "N/A") + "" + (userData.lastName || "N/A");
         document.getElementById("userEmail").textContent =
           userData.email || "N/A";
         document.getElementById("userRole").textContent =
@@ -128,6 +132,12 @@
         ).toLowerCase()}`;
 
         // Populate details grid
+        document.getElementById("detailDescription").textContent =
+          "Experienced pharmacy" +
+          " " +
+          userData.role +
+          " " +
+          "within healthcare management.";
         document.getElementById("detailEmail").textContent =
           userData.email || "N/A";
         document.getElementById("detailPharmacy").textContent =

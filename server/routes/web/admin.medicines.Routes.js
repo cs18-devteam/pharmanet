@@ -16,9 +16,16 @@ exports.adminMedicineRouter = SubRouter.route('/admin/:adminId')
 .subRoute('/medicines/:medicineId/delete',{
     delete:[authenticate('adminId')  , adminMedicineController.deleteMedicine],
 })
+.subRoute('/medicines/:medicineId/update',{
+    patch: adminMedicineController.updateMedicine,
+})
+.subRoute('/medicines/upload/api',{
+    post: adminMedicineController.uploadMedicine,
+})
 
 
 exports.adminApiMedicineRouter = SubRouter.route('/api/v1/admin/:adminId')
 .subRoute('/medicines' , {
         get : [authenticate('adminId')  ,adminMedicineController.sendJsonMedicinesList],
 })
+    

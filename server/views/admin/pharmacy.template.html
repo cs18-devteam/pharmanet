@@ -6,6 +6,56 @@
     <title>Document</title>
  
     <link rel="stylesheet" href="/css/style.css">
+    <style>
+      /* Image popup styles */
+      .image-popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .image-popup.active {
+        display: flex;
+      }
+      
+      .popup-content {
+        position: relative;
+        max-width: 90%;
+        max-height: 90%;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+      }
+      .popup-content img {
+        max-width: 100%;
+        max-height: 80vh;
+        object-fit: contain;
+      }
+      
+      .close-popup {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: #ff4444;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 18px;
+      }
+      
+      .close-popup:hover {
+        background: #cc0000;
+      }
+    </style>
 </head>
 <body class="pharmarcy">
     <div class="container">
@@ -61,19 +111,25 @@
   </div>
   </div>
 
+  <!-- Image Popup Modal -->
+  <div id="imagePopup" class="image-popup">
+    <div class="popup-content">
+      <button class="close-popup" onclick="closeImagePopup()">✕</button>
+      <h3 id="popupPharmacyName"></h3>
+      <img id="popupImage" src="" alt="Pharmacy Image">
+    </div>
+  </div>
+
   <script>
     const pathParts = window.location.pathname.split('/');
     const adminIdIndex = pathParts.indexOf('admin') + 1;
     const adminId = pathParts[adminIdIndex];
-
-    // Set the buttons links
-    document.getElementById('addPharmacyBtn').addEventListener('click', () => {
-      window.location.href = `/admin/${adminId}/pharmacies/create`;
-    });
    
 
     async function renderPharmacies(){
+      try{
       const res = await fetch(`${window.location.origin}/api/v1/admin/${adminId}/pharmacies`);
+      console.log('Reponse Status :', res.status);
       const pharmacies = await res.json();
       
       if(!Array.isArray(pharmacies) || pharmacies.length === 0) return;
@@ -86,19 +142,58 @@
         </div>
         <p>Manager: ${p.pharmacist || 'N/A'}</p>
         <ul class="details">
-          <li><span class="address"></span>${p.street || ''}, ${p.town || ''}, ${p.province || ''}</li>
-          <li><span class="email"></span> ${p.email || ''}</li>
-          <li><span class="telephoneNo"></span> ${p.contact || ''}</li>
+          <li><span class="address"></span>${p.street || 'N/A'}, ${p.town || ''}, ${p.province || ''}</li>
+          <li><span class="email"></span> ${p.email || 'N/A'}</li>
+          <li><span class="telephoneNo"></span> ${p.contact || 'N/A'}</li>
         </ul>
         <hr>
         <div class= "pharmacyCardFooter">
           <!-- <p>Inventory: <strong>N/A</strong></p> -->
-          <button class="details-btn">View Details</button>
+          <button class="details-btn" data-img = "${p.image_url} || ${p.image} || ${p.img}}" data-name = "${p.name || ''}">View License</button>
         </div>
       </a>`).join('');
       document.querySelector('.pharmacy-grid').innerHTML = html;
+    }catch (error) {
+      console.error('Error fetching pharmacies : ', error);
+      document.querySelector('.pharmacy-grid').innerHTML = "<p>Error loading pharmacies.</p>";
     }
+  }
     renderPharmacies();
+  </script>
+
+
+  <script>
+  // image popup helpers
+  function openImagePopup(imgUrl, pharmacyName) {
+    if (!imgUrl) {
+      alert('No image available for this pharmacy.');
+      return;
+    }
+    const popup = document.getElementById('imagePopup');
+    const img = document.getElementById('popupImage');
+    const name = document.getElementById('popupPharmacyName');
+
+    img.src = imgUrl;
+    name.textContent = pharmacyName || '';
+    popup.classList.add('active');
+  }
+
+  function closeImagePopup() {
+    const popup = document.getElementById('imagePopup');
+    const img = document.getElementById('popupImage');
+    img.src = '';
+    popup.classList.remove('active');
+  }
+
+  // delegate click for dynamically created buttons
+  document.addEventListener('click', function (e) {
+    const btn = e.target.closest('.details-btn');
+    if (!btn) return;
+    e.preventDefault(); // prevent <a> navigation
+    const imgUrl = btn.getAttribute('data-img');
+    const name = btn.getAttribute('data-name');
+    openImagePopup(imgUrl, name);
+  });
   </script>
 
 

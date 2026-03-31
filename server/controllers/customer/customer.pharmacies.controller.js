@@ -430,21 +430,17 @@ exports.createPharmacy = async (req, res) => {
       userId: customer.id,
       pharmacyId: pharmacy.id,
     });
-    console.log(Users);
+
 
     const updatedUser = await Users.update({
       id: customer.id,
       role :"pharmacist",
     })
 
-    console.log(updatedUser);
-
-
-    ((pharmacy.pharmacist = pharmacist), await Pharmacies.query("commit"));
 
     return responseJson(res, 200, {
       status: "success",
-      results: pharmacy,
+      results: {...pharmacy , pharmacist},
     });
   } catch (e) {
     console.log(e);

@@ -65,9 +65,10 @@ pharmacyRegisterForm.addEventListener("submit", async (e) => {
   renderSpinner();
   const { status, results, message } = await submitPharmacyRegisterData(
     formData,
-    1,
+    Application.userId,
   );
   removeSpinner();
+
 
   if (status == "error") {
     swal({

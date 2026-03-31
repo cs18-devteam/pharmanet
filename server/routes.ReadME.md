@@ -6,7 +6,8 @@
 /verify/:userId/email
 /verify/:userId/email/otp
 /accounts/reset/email
-/accounts/reset/otp
+/accounts/:userId/reset/otp
+/accounts/:userId/reset/password
 /customers/:customerId
 /customers/:customerId/profile
 /customers/:customerId/medicines

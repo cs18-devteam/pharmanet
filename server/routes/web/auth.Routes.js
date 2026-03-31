@@ -1,9 +1,10 @@
 const SubRouter = require("../../common/SubRouter");
 const loginController = require('../../controllers/auth/login.controller');
 const signupController = require('../../controllers/auth/signup.controller');
-const verifyEmailController = require('../../public/js/controller/common/pdfmodule/verify.email.controller');
+const verifyEmailController = require('../../controllers/auth/verify.email.controller');
 const verifyNumberController = require('../../controllers/auth/verify.number.controller');
 const otpController = require('../../controllers/auth/sendOTP.controller');
+const resetPasswordController = require("../../controllers/auth/reset.password.controller");
 
 
 //:: USER / LOGIN
@@ -25,8 +26,13 @@ const authRouter = SubRouter.route('/')
 })
 .subRoute('/accounts/reset/email' , {
     get : verifyEmailController.renderForgotPasswordEmail,
-}).subRoute("/accounts/reset/otp" , {
-    get: verifyEmailController.renderResetPasswordOtp
+    post : verifyEmailController.forgotPassword,
+}).subRoute("/accounts/:userId/reset/otp" , {
+    get: verifyEmailController.renderResetPasswordOtp,
+    post : verifyEmailController.verifyRestPasswordOTP,
+}).subRoute("/accounts/:userId/reset/password",{
+    get : resetPasswordController.renderResetPassword,
+    post: resetPasswordController.resetPassword,
 })
 
 module.exports =  authRouter; 

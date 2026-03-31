@@ -1,8 +1,10 @@
-const { catchAsync, apiCatchAsync } = require("../../../../../common/catchAsync");
-const { getRequestData } = require("../../../../../common/getRequestData");
-const { response, responseJson } = require("../../../../../common/response");
-const view = require("../../../../../common/view");
-const Users = require("../../../../../models/UserModel");
+const { catchAsync, apiCatchAsync } = require("../../common/catchAsync");
+const generateOTP = require("../../common/generateOTP");
+const { getRequestData } = require("../../common/getRequestData");
+const { response, responseJson } = require("../../common/response");
+const view = require("../../common/view");
+const { sendEmailOTP } = require("./sendOTP.controller");
+const Users = require("../../models/UserModel");
 
 function getMinutesFromNow(sqlDateTime) {
   if (!sqlDateTime) return null;
@@ -72,7 +74,6 @@ exports.verifyEmail = async (req, res) => {
         id: user.id,
         emailOTP: null,
         verified: true,
-        // emailOTPInvalidAt : null,
       })
 
       return responseJson(res, 200, {
@@ -106,22 +107,82 @@ exports.renderForgotPasswordEmail = catchAsync(async (req, res) => {
 
 
 exports.renderResetPasswordOtp = catchAsync(async (req, res) => {
+  const userId = req.userId;
+
+
+  const [user] = await Users.getById(userId);
+
   return response(res, view('forgotpassword.otp', {
     header: view('component.header', {
       name: "Recovery Account",
-    })
+    }),
+    email: user.email,
+    id: user.id,
   }), 200);
 })
 
 
+exports.verifyRestPasswordOTP = apiCatchAsync(async (req , res)=>{
+  const userId = req.userId;
+  const {otp} = JSON.parse(await getRequestData(req));
+  const [user] = await Users.getById(userId);
+
+  if(user){
+    if(Number(user.emailOTP) == Number(otp)){
+      
+      await Users.update({
+        id : user.id,
+        emailOTP : -1,
+      })
+
+      return responseJson(res , 302 , {
+        status:"success",
+        message : "email verified",
+        location : `/accounts/${user.id}/reset/password`,
+      } )
+    }
+  }else{
+    throw new Error("email not verified");
+  }
+
+  return responseJson(res , 400 , {
+    status:"error",
+    error:"something went wrong",
+  })
+})
+
+
 exports.forgotPassword = apiCatchAsync(async (req , res)=>{
-  const data = JSON.parse(await getRequestData(req));
-  console.log(data);
+  const {email} = JSON.parse(await getRequestData(req));
 
+  const [user] = await Users.get({
+    email , 
+  })
 
+  if(user){
+    const otp = generateOTP();
+    user.emailOTP = otp;
+    
+    const updatedUser = await Users.update({
+      id : user.id,
+      emailOTP : otp,
+    })
 
+    sendEmailOTP(user);
+  
   return responseJson(res , 200 , {
     status:"success",
     message : "opt sent successfully",
+    data : {user :{
+      id : user.id,
+    }}
   })
+
+  }else{
+    return responseJson(res, 200 , {
+      status:"error",
+      message : "account not found",
+      error:"account not found"
+    })
+  }
 })

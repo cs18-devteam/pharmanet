@@ -314,9 +314,54 @@ exports.createPharmacy = async (req, res) => {
       });
     }
 
+    //validation of google map link come from regisration form
+    const googleMapLink = (pharmacyData.googleMapLink || "").trim();
+
+    if (!googleMapLink) {
+      await Pharmacies.query("rollback");
+      return responseJson(res, 400, {
+        status: "error",
+        message: "Google map link is required",
+        field: "googleMapLink",
+      });
+    }
+
+    if (
+      !googleMapLink.startsWith("https://maps.app.goo.gl") ||
+      !googleMapLink.startsWith("https://goo.gl/maps")
+    ) {
+      await Pharmacies.query("rollback");
+      return responseJson(res, 400, {
+        status: "error",
+        message: "check your google map link",
+        field: "googleMapLink",
+      });
+    }
+
+    // let url;
+    // try {
+    //   url = new URL(googleMapLink);
+    // } catch (e) {
+    //   await Pharmacies.query("rollback");
+    //   return responseJson(res, 400, {
+    //     status: "error",
+    //     message: "Invalid URL format",
+    //     field: "googleMapLink",
+    //   });
+    // }
+
     //validation of rang og latitede and longitude come from regisration form
     const latitude = parseFloat(pharmacyData.latitude);
     const longitude = parseFloat(pharmacyData.longitude);
+
+    if (!latitude) {
+      await Pharmacies.query("rollback");
+      return responseJson(res, 400, {
+        status: "error",
+        message: "latitute is required",
+        field: "latitude",
+      });
+    }
 
     if (isNaN(latitude) || latitude < 5.5 || latitude > 10.0) {
       await Pharmacies.query("rollback");
@@ -327,35 +372,21 @@ exports.createPharmacy = async (req, res) => {
       });
     }
 
+    if (!longitude) {
+      await Pharmacies.query("rollback");
+      return responseJson(res, 400, {
+        status: "error",
+        message: "Longitude is required",
+        field: "longitude",
+      });
+    }
+
     if (isNaN(longitude) || longitude < 79.5 || longitude > 82.0) {
       await Pharmacies.query("rollback");
       return responseJson(res, 400, {
         status: "error",
         message: "Longitude must be a number between 79.5 and 82.0",
         field: "longitude",
-      });
-    }
-
-    //validation of google map link come from regisration form
-    const googleMapLink = (pharmacyData.googleMapLink || "").trim();
-    if (!googleMapLink) {
-      await Pharmacies.query("rollback");
-      return responseJson(res, 400, {
-        status: "error",
-        message: "Google map link is required",
-        field: "googleMapLink",
-      });
-    }
-
-    let url;
-    try {
-      url = new URL(googleMapLink);
-    } catch (e) {
-      await Pharmacies.query("rollback");
-      return responseJson(res, 400, {
-        status: "error",
-        message: "Invalid URL format",
-        field: "googleMapLink",
       });
     }
 
@@ -431,16 +462,19 @@ exports.createPharmacy = async (req, res) => {
       pharmacyId: pharmacy.id,
     });
 
-    await Users.update({
+    const updateResult = await Users.update({
       id: customer.id,
-      role :"pharmacist",
-    })
+      role: "pharmacist",
+    });
 
     ((pharmacy.pharmacist = pharmacist), await Pharmacies.query("commit"));
 
     return responseJson(res, 200, {
       status: "success",
-      results: pharmacy,
+      results: {
+        ...pharmacy,
+        pharmacist,
+      },
     });
   } catch (e) {
     console.log(e);

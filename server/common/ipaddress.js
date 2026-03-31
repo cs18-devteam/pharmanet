@@ -8,7 +8,7 @@ if(!ipaddress) ipaddress = "localhost";
 //     ipaddress = newIp;
 // }
 
-module.exports = ipaddress;
+module.exports = "localhost" || ipaddress;
 
 
 

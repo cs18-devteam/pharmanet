@@ -114,6 +114,13 @@
         </div>
       </aside>
     </main>
+
+    <script>
+      try{
+        const res = await fetch(`${window.location.origin}`)
+      }
+    </script>
+
     <script>
       const form = document.getElementById("createBlog");
       form.addEventListener("submit", (e) => {

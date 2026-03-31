@@ -41,6 +41,7 @@
 /admin/:adminId/pharmacies/:pharmacyId/edit/step/4
 /admin/:adminId/pharmacies/:pharmacyId
 /api/v1/admin/:adminId/pharmacies
+/api/v1/admin/:adminId/pharmacies/:pharmacyId
 /pharmacies/:pharmacyId/pharmacist/:staffId
 /pharmacies/:pharmacyId/pharmacist/:staffId/staff
 /pharmacies/:pharmacyId/pharmacist/:staffId/attendance

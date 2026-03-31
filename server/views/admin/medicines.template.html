@@ -52,7 +52,7 @@
     <div class="uploadCard">
       <h3>Upload Medicines from Excel</h3>
       <input type="file" id="medicineFileInput" accept=".xlsx,.xls" />
-      <button id="uploadSubmitButton" type="button">Submit</button>
+      <button id="uploadSubmitButton" class="uploadSubmitBtn" type="button">Submit</button>
     </div>   
 </section>
 
@@ -100,7 +100,7 @@
 
       <div class="form-row">
         <label>Schedule</label>
-        <select id="edit-schedule" name="schedule">
+        <select id="edit-schedule" name="schedule" required>
           <option value="">Select schedule</option>
           <option value="I">I</option>
           <option value="IIA">IIA</option>
@@ -407,10 +407,10 @@
 </div>
 
 
-<div class="toggle">
+<!-- <div class="toggle">
 <span>Prescription Required</span>
 <input type="checkbox" id="edit-prescription" />
-</div>
+</div> -->
 
 
 <div class="actions">
@@ -539,55 +539,48 @@ async function loadMedicines() {
 
 
 //editMedicine
-  function attachEditListeners() {
-    document.querySelectorAll(".edit-btn").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const id = btn.dataset.id;
-        const med = medicinesData.find(m => String(m.id) === String(id));
-        console.log(med);
-        if (!med) {
-          alert('Medicine data not found');
-          return;
-        }
-        // populate edit form fields
-        document.getElementById('edit-name').value = med.name || '';
-        document.getElementById('edit-brandName').value = med.brandName || '';
-        document.getElementById('edit-dosage').value = med.dosage || '';
-         // ensure the schedule is shown even if it's not one of the predefined options
-        const scheduleSelect = document.getElementById('edit-schedule');
-        scheduleSelect.value = med.schedule || '';
-        if (med.schedule && !Array.from(scheduleSelect.options).some(o => o.value === med.schedule)) {
-          scheduleSelect.appendChild(new Option(med.schedule, med.schedule));
-          scheduleSelect.value = med.schedule;
-        };
-        document.getElementById('edit-manufacturer').value = med.manufacturer || '';
-        document.getElementById('edit-category').value = med.category || '';
-        if (med.expiryDate) {
-          document.getElementById('edit-expiryDate').value = new Date(med.expiryDate).toISOString().slice(0,10);
-        } else {
-          document.getElementById('edit-expiryDate').value = '';
-        }
-        document.getElementById('edit-prescription').checked = !!med.prescriptionRequired;
-        // store id for submit
-        document.getElementById('editPopup').dataset.medicineId = id;
-
-        const payload = {
-          name: document.getElementById('edit-name').value,
-          brandName: document.getElementById('edit-brandName').value,
-          manufacturer: document.getElementById('edit-manufacturer').value,
-          dosage: document.getElementById('edit-dosage').value,
-          category: document.getElementById('edit-category').value,
-          schedule: document.getElementById('edit-schedule').value,
-          expiryDate: document.getElementById('edit-expiryDate').value || null,
-          prescriptionRequired: !!document.getElementById('edit-prescription').checked,
-        };
-
-        console.log(payload);
-        openPopup('editPopup');
-      });
+function attachEditListeners() {
+  document.querySelectorAll(".edit-btn").forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const medicineId = btn.dataset.Id;
+      
+      // Find medicine data - check both _id and id
+      const medicine = medicinesData.find(m => m._id === medicineId || m.id === medicineId);
+      
+      if (!medicine) {
+        console.error('Medicine not found. ID:', medicineId);
+        console.log('Available medicines:', medicinesData);
+        alert('Medicine not found');
+        return;
+      }
+      
+      // Set dataset for submit handler
+      document.getElementById('editPopup').dataset.medicineId = medicineId;
+      
+      // Populate form fields
+      document.getElementById('edit-name').value = medicine.name || '';
+      document.getElementById('edit-brandName').value = medicine.brandName || '';
+      document.getElementById('edit-dosage').value = medicine.dosage || '';
+      document.getElementById('edit-schedule').value = medicine.schedule || '';
+      document.getElementById('edit-manufacturer').value = medicine.manufacturer || '';
+      document.getElementById('edit-category').value = medicine.category || '';
+      document.getElementById('edit-expiryDate').value = medicine.expiryDate ? medicine.expiryDate.split('T')[0] : '';
+      
+      if (document.getElementById('edit-prescription')) {
+        document.getElementById('edit-prescription').checked = medicine.prescriptionRequired || false;
+      }
+      
+      // Open popup
+      openPopup('editPopup');
     });
-  }
+  });
+}
+
+// Load medicines on page load
+document.addEventListener('DOMContentLoaded', () => {
+  loadMedicines();
+});
 
   
 
@@ -724,46 +717,57 @@ if (uploadForm) {
   </script>
 
   <script>
-    // submit edits to server
-  document.getElementById('editPo').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const id = document.getElementById('editPopup').dataset.medicineId;
-    if (!id) {
-      alert('No medicine selected for update.');
-      return;
-    }
-    const payload = {
-      name: document.getElementById('edit-name').value,
-      brandName: document.getElementById('edit-brandName').value,
-      manufacturer: document.getElementById('edit-manufacturer').value,
-      dosage: document.getElementById('edit-dosage').value,
-      category: document.getElementById('edit-category').value,
-      schedule: document.getElementById('edit-schedule').value,
-      expiryDate: document.getElementById('edit-expiryDate').value || null,
-      prescriptionRequired: !!document.getElementById('edit-prescription').checked,
-    };
-    try {
-      const res = await fetch(`${window.location.origin}/admin/${adminId}/medicines/${id}/update`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      
-      if (res.ok) {
-        closePopup('editPopup');
-        loadMedicines();
-        } else {
-        const err = await res.json().catch(() => ({}));
-        alert('Update failed: ' + (err.error || res.statusText));
+  // ...existing code...
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const editForm = document.getElementById('editMedicineModal');
+    const editPopup = document.getElementById('editPopup');
+
+    if (!editForm || !editPopup) return;
+
+    editForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const id = editPopup.dataset.medicineId;
+      if (!id) {
+        alert('No medicine selected for update.');
+        return;
       }
-    } catch (err) {
-      console.error('Update error', err);
-      alert('Update failed: ' + err.message);
-    }
+
+      const payload = {
+        name: document.getElementById('edit-name')?.value?.trim(),
+        brandName: document.getElementById('edit-brandName')?.value?.trim(),
+        dosage: document.getElementById('edit-dosage')?.value?.trim(),
+        schedule: document.getElementById('edit-schedule')?.value || '',
+        manufacturer: document.getElementById('edit-manufacturer')?.value?.trim() || '',
+        category: document.getElementById('edit-category')?.value || '',
+        expiryDate: document.getElementById('edit-expiryDate')?.value || null,
+        prescriptionRequired: document.getElementById('edit-prescription')?.checked || false
+      };
+
+      try {
+        const res = await fetch(`${window.location.origin}/admin/${adminId}/medicines/${id}/update`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err.error || res.statusText || 'Update failed');
+        }
+
+        closePopup('editPopup');
+        await loadMedicines();
+      } catch (err) {
+        console.error('Edit submit failed:', err);
+        alert(err.message);
+      }
+    });
   });
 
-  </script>
+  // ...existing code...
+</script>
 
 
   <script>

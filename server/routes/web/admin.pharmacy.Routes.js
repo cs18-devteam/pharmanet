@@ -21,7 +21,6 @@ exports.adminPharmacyRouter = SubRouter.route('/admin/:adminId')
 })
 .subRoute('/pharmacies/:pharmacyId/update' , {
         get : adminPharmacyController.renderAdminEditPharmacyViewStep01,
-        update : adminPharmacyController.updatePharmacy
 })
 .subRoute('/pharmacies/:pharmacyId/edit/step/2' , {
         get : adminPharmacyController.renderAdminCreatePharmacyViewStep02
@@ -41,6 +40,9 @@ exports.adminPharmacyRouter = SubRouter.route('/admin/:adminId')
 exports.adminApiPharmacyRouter = SubRouter.route('/api/v1/admin/:adminId')
 .subRoute('/pharmacies' , {
         get : adminPharmacyController.sendJsonPharmaciesList,
+})
+.subRoute('/pharmacies/:pharmacyId' , {
+        update : adminPharmacyController.updatePharmacy,
 })
 
 

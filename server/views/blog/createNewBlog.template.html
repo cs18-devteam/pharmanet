@@ -82,7 +82,7 @@
 
       console.log(data);
 
-      fetch("/admin/{id}/blogs/api/create" , {
+      fetch("/admin/{id}/blogs/api/" , {
         method:"POST" , 
         body : JSON.stringify(data),
       }).then((respond)=>respond.json()).then(()=>window.location.href="/admin/{id}/blogs/manage").catch(e=>console.log(e));

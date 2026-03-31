@@ -19,5 +19,5 @@ exports.adminUsersRouter = SubRouter.route('/admin/:adminId')
         get: adminUsersController.getAllUsers,
     })
     .subRoute('/api/users/:id', {
-        patch: adminUsersController.updateUserStatus,
+        update: adminUsersController.updateUserStatus,
     })

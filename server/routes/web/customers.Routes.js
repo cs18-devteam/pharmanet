@@ -6,6 +6,7 @@ const pharmacyController = require('../../controllers/pharmacy/pharmacy.controll
 const { authenticate } = require("../../middlewares/authenticate");
 const customerPaymentController = require("../../controllers/customer/customer.payments.controller");
 const productManagementController = require("../../controllers/pharmanet/products.controller");
+const loyaltyPointsController = require("../../controllers/customer/customer.loyaltypoints.controller");
 
  // :: CUSTOMER ROUTES
 const customerRouter = SubRouter.route('/customers/:customerId')
@@ -37,7 +38,7 @@ const customerRouter = SubRouter.route('/customers/:customerId')
     get : [authenticate('customerId') , customerController.renderCustomerOrders]
 })
 .subRoute('/loyalty' , {
-    get : [authenticate('customerId') ,customerController.renderLoyaltyPoints]
+    get : [authenticate('customerId') , loyaltyPointsController.renderLoyaltyPoints]
 })
 .subRoute('/orders/:orderId')
 .subRoute('/orders/:orderId/checkout' , {

@@ -154,6 +154,9 @@
     display: flex;
     gap: 2rem;
     margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+
     
     .card {
       flex: 1;
@@ -161,6 +164,7 @@
       padding: 1.8rem;
       border: 1px solid #e4e4e4;
       border-radius: 10px;
+      max-width: 60rem;
 
       .title {
         font-weight: 600;

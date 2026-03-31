@@ -327,8 +327,8 @@ exports.createPharmacy = async (req, res) => {
     }
 
     if (
-      !googleMapLink.startsWith("https://maps.app.goo.gl") ||
-      !googleMapLink.startsWith("https://goo.gl/maps")
+      !(googleMapLink.startsWith("https://maps.app.goo.gl") ||
+      googleMapLink.startsWith("https://goo.gl/maps"))
     ) {
       await Pharmacies.query("rollback");
       return responseJson(res, 400, {

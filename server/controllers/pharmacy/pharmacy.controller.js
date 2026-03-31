@@ -75,8 +75,6 @@ exports.renderPharmacyDashboard = async (req , res)=>{
 
         const pharmacyId = req.pharmacyId;
         const staffId = req.staffId;
-
-        console.log(pharmacyId);
         
         const [pharmacy] =await Pharmacies.getById(pharmacyId);
         const [staffMember] =await PharmacyStaff.getById(staffId);

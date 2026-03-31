@@ -9,9 +9,12 @@ class PharmacyOrderModel extends Model{
             type : "INT" , 
         }
 
-        this.userId = {
+        this.staffId = {
             type:"INT",
             null: false,
+        }
+        this.userId = {
+            type:"INT",
         }
 
         this.status = {

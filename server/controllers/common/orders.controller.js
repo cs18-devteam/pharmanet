@@ -2,6 +2,7 @@ const {apiCatchAsync} = require("../../common/catchAsync");
 const Convert = require("../../common/Convert");
 const getMultipartData = require("../../common/getMultipartData");
 const { getRequestData } = require("../../common/getRequestData");
+const readCookies = require("../../common/readCookies");
 const { response, responseJson } = require("../../common/response");
 const view = require("../../common/view");
 const Carts = require("../../models/CartModel");
@@ -23,11 +24,13 @@ exports.createOrder = apiCatchAsync(async (req , res)=>{
         const items = reqData.items;
         const pharmacyId = reqData.pharmacyId;
         const customerId = reqData.userId;
+        const {staffId} =  readCookies(req);
         let ordersData  = [];
-
+        let total = 0;
 
         
         const [order] =await  PharmacyOrders.save({
+            staffId : staffId,
             userId : reqData.userId,
             pharmacyId : pharmacyId,
             createdAt : Convert.toSqlDate(Date.now()),
@@ -54,26 +57,18 @@ exports.createOrder = apiCatchAsync(async (req , res)=>{
                     medicineId : item.itemId
                 });
 
-                console.log(orderItem , {
-                    pharmacyId : pharmacyId,
-                    medicineId : item.itemId
-                });
-
                 if(orderItem.publicStock < item.quantity){
                     throw new Error(`insufficient medicine stock`);
                 }
 
-                console.log({
-                    id: orderItem.id,
-                    publicStock : orderItem.publicStock - item.quantity,
-                    stock : orderItem.stock - item.quantity,
-                });
 
                 await PharmacyMedicines.update({
                     id: orderItem.id,
                     publicStock : orderItem.publicStock - item.quantity,
                     stock : orderItem.stock - item.quantity,
                 })
+
+                total += orderItem.price * item.quantity; 
             }else{
                 orderItem = (await Products.getById(item.itemId))[0];
 
@@ -81,15 +76,14 @@ exports.createOrder = apiCatchAsync(async (req , res)=>{
                     throw new Error(`insufficient product stock`);
                 }
 
+
                 await Products.update({
                     quantity: orderItem.quantity - item.quantity,
                 })
+
+                total += orderItem.price * item.quantity; 
+
             }
-
-
-            
-
-
 
 
             return await PharmacyOrdersItems.save({
@@ -109,19 +103,21 @@ exports.createOrder = apiCatchAsync(async (req , res)=>{
             if(!staff) throw new Error("staff member not found");
         }
 
-        const [user] = await Users.getById(reqData.userId);
-        if(!user){
-            throw new Error("You not part of our system");
+        if(reqData.userId){
+            const [user] = await Users.getById(reqData.userId);
+            if(!user) throw new Error("user not in our system");
         }
+
 
         const [transaction] = await Transactions.save({
             orderId : order.id,
-            staffID : reqData.staffId,
-            pharmacyId : staff?.pharmacyId , 
-            method: reqData.method,
-            amount: reqData.amount ,
+            staffID : staffId,
+            pharmacyId : reqData.pharmacyId , 
+            method: reqData.paymentMethod,
+            amount: total ,
             userId : reqData.userId,
-            type: reqData.type,
+            type: reqData.type || "offline",
+            status:reqData.paymentStatus,
             transactionDateTime : Convert.toSqlDate(Date.now()),
             
 

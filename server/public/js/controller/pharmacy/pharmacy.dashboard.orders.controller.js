@@ -112,9 +112,10 @@ createOrderCreateBtn?.addEventListener("click" ,async ()=>{
     if(paymentOption == "cash"){
         
         const order = await createOrder({
-            userId : Application.staffId ,
+            staffId : Application.staffId ,
             pharmacyId : Application.pharmacyId, 
             items ,
+            paymentMethod:"cash",
             
         })
 

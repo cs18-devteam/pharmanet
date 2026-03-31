@@ -430,11 +430,15 @@ exports.createPharmacy = async (req, res) => {
       userId: customer.id,
       pharmacyId: pharmacy.id,
     });
+    console.log(Users);
 
-    await Users.update({
+    const updatedUser = await Users.update({
       id: customer.id,
       role :"pharmacist",
     })
+
+    console.log(updatedUser);
+
 
     ((pharmacy.pharmacist = pharmacist), await Pharmacies.query("commit"));
 

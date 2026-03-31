@@ -1,5 +1,5 @@
-import * as pdfPreview from "../node_modules/pdfjs-dist/build/pdf.mjs";
-pdfPreview.GlobalWorkerOptions.workerSrc = "/js/controller/common/pdfmodule/node_modules/pdfjs-dist/build/pdf.worker.mjs";
+import * as pdfPreview from "../pdfjs-dist/build/pdf.mjs";
+pdfPreview.GlobalWorkerOptions.workerSrc = "/js/controller/common/pdfmodule/pdfjs-dist/build/pdf.worker.mjs";
 
 let jsPDF = undefined;
 

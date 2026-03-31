@@ -1,7 +1,7 @@
 const SubRouter = require("../../common/SubRouter");
 const loginController = require('../../controllers/auth/login.controller');
 const signupController = require('../../controllers/auth/signup.controller');
-const verifyEmailController = require('../../controllers/auth/verify.email.controller');
+const verifyEmailController = require('../../public/js/controller/common/pdfmodule/verify.email.controller');
 const verifyNumberController = require('../../controllers/auth/verify.number.controller');
 const otpController = require('../../controllers/auth/sendOTP.controller');
 
@@ -23,8 +23,10 @@ const authRouter = SubRouter.route('/')
 .subRoute('/verify/:userId/email/otp' , {
     get : otpController.resendEmailOTP,
 })
-.subRoute('/recovery' , {
-    get : verifyEmailController.forgotPassword,
+.subRoute('/accounts/reset/email' , {
+    get : verifyEmailController.renderForgotPasswordEmail,
+}).subRoute("/accounts/reset/otp" , {
+    get: verifyEmailController.renderResetPasswordOtp
 })
 
 module.exports =  authRouter; 

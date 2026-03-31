@@ -4,7 +4,7 @@ class MedicineModel extends Model {
   constructor() {
     super();
 
-    this.name = {
+    this.geneticName = {
       type: "VARCHAR(1000)",
     };
 
@@ -14,6 +14,7 @@ class MedicineModel extends Model {
 
     this.image = {
       type: "VARCHAR(100)",
+      default :"/medicines/general-med.png",
     };
 
     this.expiryDate = {

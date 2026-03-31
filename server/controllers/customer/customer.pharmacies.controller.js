@@ -1,3 +1,4 @@
+const { apiCatchAsync } = require("../../common/catchAsync");
 const { validateEmail } = require("../../common/emailValidator");
 const File = require("../../common/File");
 const getMultipartData = require("../../common/getMultipartData");
@@ -176,10 +177,8 @@ exports.renderPharmacyLandingPage = async (req, res) => {
   }
 };
 
-exports.createPharmacy = async (req, res) => {
-  await Pharmacies.query("start transaction");
+exports.createPharmacy = apiCatchAsync(async (req, res) => {
 
-  try {
     const pharmacyData = await getMultipartData(req);
 
     //validation name come from regisration form
@@ -475,13 +474,4 @@ exports.createPharmacy = async (req, res) => {
         pharmacist,
       },
     });
-  } catch (e) {
-    console.log(e);
-    await Pharmacies.query("rollback");
-    return responseJson(res, 400, {
-      status: "error",
-      message: "pharmacy not created",
-      error: e,
-    });
-  }
-};
+});

@@ -80,13 +80,15 @@ document.body.addEventListener("keydown" , (e)=>{
     if(checkKeys(e ,CTRL , SHIFT , 'p')) switchWindow('products');
     if(checkKeys(e ,CTRL , SHIFT , 'r')) switchWindow('transactions');
     if(checkKeys(e ,CTRL , SHIFT , 's')) switchWindow('staff');
+    if(checkKeys(e ,CTRL , SHIFT , 'd')) switchWindow('docs');
 
     if(checkKeys(e , F1)) switchWindow('orders');
     if(checkKeys(e , F2)) switchWindow('chats');
     if(checkKeys(e , F3)) switchWindow('medicines');
     if(checkKeys(e , F4)) switchWindow('transactions');
     if(checkKeys(e , F5)) switchWindow('products');
-    if(checkKeys(e , F6)) switchWindow('staff');
+    if(checkKeys(e , F6)) switchWindow('docs');
+    if(checkKeys(e , F7)) switchWindow('staff');
 
 
     //shortcuts base on window

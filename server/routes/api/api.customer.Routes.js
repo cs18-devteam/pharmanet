@@ -14,6 +14,6 @@ exports.customerApiRouter = SubRouter.route("/api/v1/customers/:customerId")
     post:customerCartController.addToCart,
     delete:customerCartController.deleteCart,
     update:customerCartController.updateCart
-})
+});
 
 

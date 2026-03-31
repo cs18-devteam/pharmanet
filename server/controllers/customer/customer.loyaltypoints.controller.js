@@ -23,9 +23,9 @@ exports.renderLoyaltyPoints = catchAsync(async (req, res) => {
   }))
 
   let total = 0;
-
-
-
+  loyaltypoints.forEach(p=>{
+    total += p.LoyaltyPoints;
+  })
 
 
   return (
@@ -52,11 +52,7 @@ exports.renderLoyaltyPoints = catchAsync(async (req, res) => {
         }))).join(' '),
         cart: view("customer/component.cart"),
         footer: view("footer"),
-        total : loyaltypoints.map(r=>{
-            total = total + r.LoyaltyPoints
-
-            return  `<h1 class="points">${total}</h1>`;
-        })[loyaltypoints.length - 1]
+        total ,
       }),
     ),
     200

@@ -68,7 +68,14 @@ exports.renderCustomerProfile = async (req, res) => {
                         }),
                         footer: view('footer'),
                         cart: view('customer/component.cart'),
-                        ...customer
+                        ...customer,
+                        address : !(customer.addressNo || customer.street || customer.town || customer.province) ?  
+                        `<button class="address_add_button"> + Add Your address</button>` 
+                        : 
+                        `<input type="text" value="${customer.addressNo == "unknown" ?  "-" : customer.addressNo}" disabled class="update-field update-field_no"><Br>
+                        <input type="text" value="${customer.street == "unknown" ?  "-" : customer.street}" disabled class="update-field update-field_street"><br>
+                        <input type="text" value="${customer.town == "unknown" ?  "-" : customer.town}" disabled class="update-field update-field_town"><br>
+                        <input type="text" value="${customer.province == "unknown" ?  "-" : customer.province}" disabled class="update-field update-field_province"><br>`,
                 }), 200);
         } catch (e) {
                 console.log(e);

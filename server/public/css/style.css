@@ -8780,7 +8780,7 @@ button.save {
 .loyaltyPoints .loyalty-info .header p {
   color: #000;
   font-size: 1.5rem;
-  font-weight: 500;
+  font-weight: 100;
   line-height: 2.5rem;
   align-self: stretch;
 }
@@ -21810,6 +21810,55 @@ p {
 .userProfileManage .mainContainer .rightContainer .switch input:checked + .slider:before {
   transform: translateX(2.4rem);
 }
+.userProfileManage .delete-account {
+  padding: 2rem;
+  border: 1px solid var(--color-red-01);
+  border-radius: 1rem;
+  background-image: linear-gradient(to right bottom, #fff, rgba(255, 0, 0, 0.0274509804));
+}
+.userProfileManage .delete-account__header {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+.userProfileManage .delete-account__para {
+  margin-bottom: 1rem;
+}
+.userProfileManage .delete-account__button {
+  background-color: var(--color-red-01);
+  color: #fff;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.userProfileManage .delete-account__button:hover {
+  background-color: #ff0000;
+}
+.userProfileManage .address_add_button {
+  color: #fff;
+  background-color: #000;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+.userProfileManage .edit {
+  border: 1px solid var(--color-green-01) !important;
+}
+.userProfileManage .buttons button {
+  border: none;
+  width: 10rem;
+  margin-left: 1rem;
+  height: 5rem;
+  border-radius: 1rem;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+.userProfileManage .buttons .cancel {
+  background-color: #eee;
+}
+.userProfileManage .buttons .save {
+  background-color: var(--color-green-01);
+}
 .userProfileManage .footer {
   background: #08374F;
   color: white;
@@ -21878,8 +21927,8 @@ p {
 }
 .userProfileManage {
   /* ===========================
-        LARGE SCREENS (120.0rem↓)
-     =========================== */
+      LARGE SCREENS (120.0rem↓)
+   =========================== */
 }
 @media (max-width: 120rem) {
   .userProfileManage .mainContainer {
@@ -21899,12 +21948,12 @@ p {
 }
 .userProfileManage {
   /* ===========================
-        TABLETS (99.2rem↓)
-     =========================== */
+      TABLETS (99.2rem↓)
+   =========================== */
 }
 @media (max-width: 99.2rem) {
   .userProfileManage .mainContainer {
-    flex-direction: row;
+    flex-direction: column;
     padding: 2rem 2rem;
     padding-left: 6rem;
     padding-right: 6rem;
@@ -21944,8 +21993,8 @@ p {
 }
 .userProfileManage {
   /* ===========================
-        MOBILE LARGE (76.8rem↓)
-     =========================== */
+      MOBILE LARGE (76.8rem↓)
+   =========================== */
 }
 @media (max-width: 76.8rem) {
   .userProfileManage .user-section span {
@@ -21995,8 +22044,8 @@ p {
 }
 .userProfileManage {
   /* ===========================
-        MOBILE SMALL (57.6rem↓)
-     =========================== */
+      MOBILE SMALL (57.6rem↓)
+   =========================== */
 }
 @media (max-width: 57.6rem) {
   .userProfileManage .search input {

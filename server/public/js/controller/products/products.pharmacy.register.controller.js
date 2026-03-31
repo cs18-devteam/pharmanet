@@ -5,6 +5,82 @@ import { swal } from "../../view/swal.js";
 
 const pharmacyRegisterForm = document.getElementById("pharmacy-form");
 
+const uploadStateConfig = {
+  idle: { text: "Upload", enabled: true },
+  uploading: { text: "Uploading...", enabled: false },
+  success: { text: "Uploaded", enabled: false },
+  error: { text: "Upload Failed. Try Again", enabled: true },
+};
+
+function setUploadLabelState(labelElement, state) {
+  const config = uploadStateConfig[state] || uploadStateConfig.idle;
+  labelElement.textContent = config.text;
+
+  if (config.enabled) {
+    labelElement.style.pointerEvents = "auto";
+    labelElement.style.opacity = "1";
+    labelElement.style.cursor = "pointer";
+  } else {
+    labelElement.style.pointerEvents = "none";
+    labelElement.style.opacity = "0.6";
+    labelElement.style.cursor = "not-allowed";
+  }
+}
+
+function getUploadPairs(formElement) {
+  return Array.from(formElement.querySelectorAll(".upload-btn"))
+    .map((labelElement) => {
+      const inputID = labelElement.getAttribute("for");
+      const inputElement = inputID ? document.getElementById(inputID) : null;
+      return { labelElement, inputElement };
+    })
+    .filter((pair) => pair.inputElement);
+}
+
+const uploadPairs = getUploadPairs(pharmacyRegisterForm);
+
+uploadPairs.forEach(({ labelElement, inputElement }) => {
+  setUploadLabelState(labelElement, "idle");
+
+  inputElement.addEventListener("change", () => {
+    if (inputElement.files && inputElement.files.length > 0) {
+      setUploadLabelState(labelElement, "success");
+    } else {
+      setUploadLabelState(labelElement, "idle");
+    }
+  });
+});
+
+function setUploadingStateForSelectedFiles() {
+  uploadPairs.forEach(({ labelElement, inputElement }) => {
+    if (inputElement.files && inputElement.files.length > 0) {
+      setUploadLabelState(labelElement, "uploading");
+    } else {
+      setUploadLabelState(labelElement, "idle");
+    }
+  });
+}
+
+function setErrorStateForSelectedFiles() {
+  uploadPairs.forEach(({ labelElement, inputElement }) => {
+    if (inputElement.files && inputElement.files.length > 0) {
+      setUploadLabelState(labelElement, "error");
+    } else {
+      setUploadLabelState(labelElement, "idle");
+    }
+  });
+}
+
+function setSuccessStateForSelectedFiles() {
+  uploadPairs.forEach(({ labelElement, inputElement }) => {
+    if (inputElement.files && inputElement.files.length > 0) {
+      setUploadLabelState(labelElement, "success");
+    } else {
+      setUploadLabelState(labelElement, "idle");
+    }
+  });
+}
+
 pharmacyRegisterForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -76,9 +152,7 @@ pharmacyRegisterForm.addEventListener("submit", async (e) => {
       text: message || " ",
       icon: "error",
     });
-  }
-
-  if (status == "success") {
+  } else if (status == "success") {
     swal({
       title: "Pharmacy Created",
       icon: "success",

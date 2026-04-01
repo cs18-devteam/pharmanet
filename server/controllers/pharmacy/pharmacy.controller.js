@@ -186,3 +186,5 @@ exports.deletePharmacy = apiCatchAsync(async (req , res)=>{
 
     
 })
+
+

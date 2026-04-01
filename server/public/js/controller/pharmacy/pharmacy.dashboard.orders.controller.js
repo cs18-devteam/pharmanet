@@ -11,7 +11,6 @@ import orders__searchAndRenderMedicineCard, { updateCardList } from "./orders/or
 const cartList = document.querySelector('.orders .cart_list');
 
 
-
 export default function init(){
     updateCardList(cartList , Application.getOrderItems());
     orders__searchAndRenderMedicineCard();
@@ -151,11 +150,32 @@ createOrderCreateBtn?.addEventListener("click" ,async ()=>{
     }
 
     if(paymentOption == "card"){
+
+        const order = await createOrder({
+            staffId : Application.staffId ,
+            pharmacyId : Application.pharmacyId, 
+            items ,
+            paymentMethod:"card",
+            
+        })
+
+        if(order.status == "error"){
+            swal({
+                title:"Order not Created",
+                icon:"error",
+                text : order.error,
+            })
+            return;
+        }
+
+        
+
+
         const payment = await Payment.create({
-            orderId : 12345,
-            amount: 1000,
-            first_name : formData.get('f-name'),
-            last_name : formData.get('l-name'),
+            orderId : order.results.orderId,
+            amount: order.results.amount || 0,
+            first_name : formData.get('f-name') || "no name",
+            last_name : formData.get('l-name') || "no name",
             email : "---",
             items:"---",
             phone :"--", 
@@ -167,7 +187,8 @@ createOrderCreateBtn?.addEventListener("click" ,async ()=>{
             delivery_country  :"sri lanka", 
         });
 
-        const results = await payment.makePayment();
+        await payment.makePayment();
+
     }
 
 
@@ -313,3 +334,7 @@ async function showOrders(e){
 
 
 }
+
+
+
+

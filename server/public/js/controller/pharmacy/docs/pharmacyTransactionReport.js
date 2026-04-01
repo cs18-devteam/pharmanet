@@ -18,7 +18,7 @@ async function pharmacyReportGenerator(e , report) {
     const [preview , editor] = renderPDFEditor(reportContainer , report.name);
 
     const {data} = await report.request({
-        // query : `pharmacyId = ${Application.pharmacyId}`
+        query : `pharmacyId = ${Application.pharmacyId}`
     })
 
     if(!data) return;

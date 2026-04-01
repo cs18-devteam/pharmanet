@@ -47,8 +47,8 @@ const templateSettings = html`
         <div class="banking-info info">
             <h3>Banking info</h3>
             <div>{accountNo}</div>
-            <div>{Bank}</div>
-            <div>{Branch}</div>
+            <div>{bank}</div>
+            <div>{branch}</div>
         </div>
 
         <div class="danger-zone">
@@ -102,19 +102,19 @@ export default function init() {
 
     setSidebarContent(templateSettings
         .replace("{role}", Application.staff.role || "standard")
-        .replace("{profile}", Application.user.profile)
-        .replace("{firstName}", Application.user.firstName)
-        .replace("{lastName}", Application.user.lastName)
-        .replace("{email}", Application.user.email)
-        .replace("{addressNo}", Application.user.addressNo)
-        .replace("{street}", Application.user.street)
-        .replace("{town}", Application.user.town)
-        .replace("{province}", Application.user.province)
+        .replace("{profile}", Application.user.profile || "-")
+        .replace("{firstName}", Application.user.firstName || "-")
+        .replace("{lastName}", Application.user.lastName || "-")
+        .replace("{email}", Application.user.email || "-")
+        .replace("{addressNo}", Application.user.addressNo || "-")
+        .replace("{street}", Application.user.street || "-")
+        .replace("{town}", Application.user.town || "-")
+        .replace("{province}", Application.user.province || "-")
         .replace("{accountNo}", Application.user.accountNo || "not available")
-        .replace("{bank}", Application.user.bank)
-        .replace("{bankBranch}", Application.user.bankBranch)
-        .replace("{staffId}", Application.staff.id)
-        .replace("{pharmacyId}", Application.staff.pharmacyId)
+        .replace("{bank}", Application.user.bank || "-")
+        .replace("{branch}", Application.user.bankBranch || "-")
+        .replace("{staffId}", Application.staff.id || "-")
+        .replace("{pharmacyId}", Application.staff.pharmacyId || "-")
     );
     openSidebar();
     handleSignOut();

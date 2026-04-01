@@ -28,8 +28,6 @@ const ALT = 'Alt'
  * @returns 
  */
 function checkKeys(e , ...keyCombination){
-    console.log(keyCombination);
-    console.log(e.key , e.metaKey ? "Meta" : "" , e.shiftKey ? "shift" : "" , e.ctrlKey ? "ctrl":"" , e.altKey ? "ALT" : "");
 
     if(e.key == CTRL) return;
     if(e.key == SHIFT) return;
@@ -66,7 +64,6 @@ function checkKeys(e , ...keyCombination){
 function checkContextKeys(e , targetContext , ...keyCombination){
     const context = getDashboardContext();
     if(context != targetContext ) return false;
-    console.log('context matched');
     return checkKeys(e , ...keyCombination);
 }
 
@@ -92,7 +89,6 @@ document.body.addEventListener("keydown" , (e)=>{
 
 
     //shortcuts base on window
-    console.log('context keys : ' , checkContextKeys(e , "orders" , 'n'));
     if(checkContextKeys(e , "orders" ,ALT , '/')) focusElement(".orders .search-bar__input");
     if(checkContextKeys(e , "orders" ,ALT , '÷')) focusElement(".orders .search-bar__input");
     if(checkContextKeys(e , "orders" , ALT , 'π')) clickElement(".orders .quick_access_2 .pay_button");

@@ -277,7 +277,7 @@ class Model {
 
         const value = data?.[columnName];
 
-        if (!value) continue;
+        if (!value && value != 0) continue;
 
         if (typeof value == "string") {
           dataArray.push(`${columnName}="${value}"`);

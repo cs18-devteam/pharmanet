@@ -1,14 +1,15 @@
 {header}
+
 <body class="pharmacyDashboard">
     <!-- <input type="radio"  name="navigation" id="docs"> -->
-    <input type="radio"  checked name="navigation" id="orders">
+    <input type="radio" checked name="navigation" id="orders">
     <input type="radio" name="navigation" id="chats">
-    <input type="radio"  name="navigation" id="medicines">
-    <input type="radio"  name="navigation" id="transactions">
-    <input type="radio"  name="navigation" id="products">
-    <input type="radio"  name="navigation" id="docs">
-    <input type="radio"  name="navigation" id="staff">
-    <input type="hidden" name="navigation" id="settings" >
+    <input type="radio" name="navigation" id="medicines">
+    <input type="radio" name="navigation" id="transactions">
+    <input type="radio" name="navigation" id="products">
+    <input type="radio" name="navigation" id="docs">
+    <input type="radio" name="navigation" id="staff">
+    <input type="hidden" name="navigation" id="settings">
 
 
 
@@ -21,11 +22,11 @@
 
         <ul class="nav_links">
             <!-- <li><label for="docs" >Docs</label></li> -->
-            <li ><label for="orders" >orders</label></li>
-            <li><label for="chats" >chats</label></li>
-            <li><label for="medicines" >medicines</label></li>
-            <li><label for="transactions" >transactions</label></li>
-            <li><label for="products" >products</label></li>
+            <li><label for="orders">orders</label></li>
+            <li><label for="chats">chats</label></li>
+            <li><label for="medicines">medicines</label></li>
+            <li><label for="transactions">transactions</label></li>
+            <li><label for="products">products</label></li>
             <li><label for="docs">docs</label></li>
             <li><label for="staff">staff</label></li>
             <li><label for="settings" id="settings">Settings</label></li>
@@ -35,19 +36,66 @@
     <div class="header-container">
 
         <header class="header">
-            <h1>Manage All Medicines</h1>
-            <p> 
-                Take charge of your medicine inventory with confidence.
-                Easily add new items, manage stock in real time, and 
-                keep your pharmacy running smoothly.
+
+
+            <!-- header for orders -->
+            <h1 class="header__orders">Manage Orders</h1>
+            <p class="header__orders">
+                Stay on top of every order with ease. Track, process, and fulfill requests
+                efficiently while keeping your workflow smooth and stress-free.
+            </p>
+
+            <!-- header for chats -->
+            <h1 class="header__chats">Manage Conversations</h1>
+            <p class="header__chats">
+                Keep communication clear and responsive. Handle customer and staff chats
+                in one place and never miss an important message.
+            </p>
+
+            <!-- header for medicines -->
+            <h1 class="header__medicines">Manage Medicines</h1>
+            <p class="header__medicines">
+                Take control of your medicine inventory with confidence. Add, update, and
+                monitor stock in real time to keep your pharmacy running seamlessly.
+            </p>
+
+            <!-- header for transactions -->
+            <h1 class="header__transactions">Manage Transactions</h1>
+            <p class="header__transactions">
+                Track every transaction with precision. Monitor sales, payments, and records
+                to maintain complete financial clarity.
+            </p>
+
+            <!-- header for products -->
+            <h1 class="header__products">Manage Products</h1>
+            <p class="header__products">
+                Organize and update your product catalog effortlessly. Keep everything accurate,
+                up-to-date, and ready for your customers.
+            </p>
+
+            <!-- header for docs -->
+            <h1 class="header__docs">Manage Documents</h1>
+            <p class="header__docs">
+                Store and access important documents in one secure place. Stay organized and
+                keep your records just a click away.
+            </p>
+
+            <!-- header for staff -->
+            <h1 class="header__staff">Manage Staff</h1>
+            <p class="header__staff">
+                Oversee your team with confidence. Manage roles, track performance, and ensure
+                everyone is aligned to deliver their best.
             </p>
         </header>
-        
+
+
+
+
         <div class="quick_look">
             <div class="title">quick look</div>
         </div>
-        
-        
+
+
     </div>
 
     <div class="dashboards">
@@ -71,22 +119,22 @@
     </div>
 
     <div class="drawer" status="close">
-         <div class="medicine-viewer" data-id="${medicine.id}">
+        <div class="medicine-viewer" data-id="${medicine.id}">
 
             <div class="topbar">
                 <div class="mini-header">
                     <h1 class="medicine_name">
                         ${medicine.geneticName}
                     </h1>
-                    <div class="tag available" >available</div>
+                    <div class="tag available">available</div>
                 </div>
-                
+
                 <div class="actions">
                     <!-- <div class="bookmark"></div> -->
                     <div class="edit">edit</div>
                     <div class="close">close</div>
                 </div>
-                
+
             </div>
 
 
@@ -155,14 +203,14 @@
                 <div class="right">
 
 
-                    
+
                 </div>
             </div>
 
-            
+
         </div>
     </div>
-    
+
     <div class="drawer-sidebar" status="close">
         <div class="sidebar_content">
 
@@ -172,19 +220,20 @@
 
 
     <div class="incoming_messege_box">
-            <h4>incoming message</h4>
-        
-            <img src="/xyz.png" alt="">
-        
+        <h4>incoming message</h4>
+
+        <img src="/xyz.png" alt="">
+
         <button class="accept">accept</button>
         <button class="reject">reject</button>
     </div>
 
-    <script src="/js/controller/pharmacy/pharmacy.dashboard.client.controller.js" type="module" ></script>
+    <script src="/js/controller/pharmacy/pharmacy.dashboard.client.controller.js" type="module"></script>
     <script type="module" src="/js/controller/pharmacy/connection.js"></script>
     <script type="module" src="/js/controller/pharmacy/pharmacy.dashboard.orders.controller.js"></script>
-    <script type="module" src="/js/utilities/Slider.js" ></script>
-    <script type="module" src="/js/utilities/Popup.js" ></script>
-    <script type="module" src="/js/controller/pharmacy/shortcuts.controller.js" ></script>
+    <script type="module" src="/js/utilities/Slider.js"></script>
+    <script type="module" src="/js/utilities/Popup.js"></script>
+    <script type="module" src="/js/controller/pharmacy/shortcuts.controller.js"></script>
 </body>
+
 </html>

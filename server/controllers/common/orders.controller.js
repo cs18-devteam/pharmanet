@@ -72,7 +72,7 @@ exports.createOrder = apiCatchAsync(async (req , res)=>{
             }else{
                 orderItem = (await Products.getById(item.itemId))[0];
 
-                if(orderItem.publicStock < item.quantity){
+                if(orderItem.quantity < item.quantity){
                     throw new Error(`insufficient product stock`);
                 }
 
@@ -109,20 +109,23 @@ exports.createOrder = apiCatchAsync(async (req , res)=>{
             if(!user) throw new Error("user not in our system");
         }
 
+        let transaction;
+        if(reqData.paymentMethod != "card"){
 
-        const [transaction] = await Transactions.save({
-            orderId : order.id,
-            staffID : staffId,
-            pharmacyId : reqData.pharmacyId , 
-            method: reqData.paymentMethod,
-            amount: total ,
-            userId : reqData.userId,
-            type: reqData.type || "offline",
-            status:reqData.paymentStatus,
-            transactionDateTime : Convert.toSqlDate(Date.now()),
-            
-
-        })
+            [transaction] = await Transactions.save({
+                orderId : order.id,
+                staffID : staffId,
+                pharmacyId : reqData.pharmacyId , 
+                method: reqData.paymentMethod,
+                amount: total ,
+                userId : reqData.userId,
+                type: reqData.type || "offline",
+                status:reqData.paymentStatus,
+                transactionDateTime : Convert.toSqlDate(Date.now()),
+                
+                
+            })
+        }
 
 
        await LoyaltyPoints.save({
@@ -140,6 +143,7 @@ exports.createOrder = apiCatchAsync(async (req , res)=>{
                 pharmacyId : order.pharmacyId,
                 items: orders,
                 userId : order.userId,
+                amount : total,
                 transaction : transaction,
             }
         })

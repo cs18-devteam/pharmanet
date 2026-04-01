@@ -1,4 +1,5 @@
 const { catchAsync, apiCatchAsync } = require("../../common/catchAsync");
+const { toSqlDate } = require("../../common/Convert");
 const { getRequestData } = require("../../common/getRequestData");
 const { responseJson } = require("../../common/response");
 const PharmacyStaff = require("../../models/PharmacyStaffModel");
@@ -68,7 +69,7 @@ exports.createTransaction = apiCatchAsync(async (req, res) => {
         type: reqData.type,
         staffID: reqData.staffID,
         method: reqData.method,
-        transactionDateTime: reqData.datetime || new Date(),
+        transactionDateTime: toSqlDate(reqData.datetime) || toSqlDate(new Date()),
     };
 
     const newTransaction = await Transactions.save(transactionObj);

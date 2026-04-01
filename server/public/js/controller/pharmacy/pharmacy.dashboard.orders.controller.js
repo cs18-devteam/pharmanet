@@ -16,7 +16,6 @@ export default function init(){
     updateCardList(cartList , Application.getOrderItems());
     orders__searchAndRenderMedicineCard();
 
-
     const ordersBtn = document.querySelector(".orders .right-btns .payment-btn");
     const searchBtn = document.querySelector(".orders .right-btns .search-btn");
 
@@ -52,7 +51,17 @@ function updatePaymentMethodScreen(){
             total += data.price;
 
             return data;
-        };
+        }else{
+            const data = {};
+            data.price = i.units * i.getProduct().price - i.discounts;
+            data.quantity = i.units;
+            data.name = i.getProduct().name;
+            data.days = 0;
+
+            total += data.price;
+
+            return data;
+        }
     })
 
 

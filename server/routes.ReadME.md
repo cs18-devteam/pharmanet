@@ -141,3 +141,4 @@
 /api/v1/admin/:adminId/activities
 /pharmacy/:pharmacyId
 /api/v1/docs/:pharmacyId
+/api/v1/pharmacies/:pharmacyId/stocks

@@ -4,10 +4,11 @@ import ChatTemplates from "./ChatTemplates.js";
 
 class OrderItem{
     #medicine = undefined;
+    #product = undefined;
 
 
-    constructor(units , days , discounts , medicineId){
-        if(!medicineId) throw new Error('medicine id must be defined');
+    constructor(units , days , discounts , medicineId , productId){
+        if(!medicineId && !productId) throw new Error('medicine id must be defined');
         if(!units) throw new Error("number of units are must be grater than 0");
         if(discounts < 0) throw new Error("discount amount can't be negative");
         if(!days) throw new Error('number of days must be grater than 0');
@@ -16,15 +17,26 @@ class OrderItem{
         this.days = days;
         this.discounts = discounts;
         this.medicineId = +medicineId;
+        this.productId = +productId;
         
     }   
 
-    setMedicine(medicine){
-        this.#medicine = medicine;
+    setMedicineOrProduct(stock){
+        if(this.medicineId){
+            this.#medicine = stock;
+
+        }else if(this.productId){
+            this.#product = stock;
+        }
+
     }
 
     getMedicine(){
         return this.#medicine;
+    }
+
+    getProduct(){
+        return this.#product;
     }
 }
 
@@ -126,12 +138,14 @@ export default class Application{
                 throw new Error("this is item is already in cart (order collection)")
             }
         });
-        const [medicine] = this.#orderMedicineResultsStack.filter(m=>m.id == orderItem.medicineId);
-        orderItem.setMedicine(medicine);
+        console.log(this.#orderMedicineResultsStack);
+        const [medicine] = this.#orderMedicineResultsStack.filter(m=>m.id == orderItem.medicineId && m.type != "product");
+        const  [product] = this.#orderMedicineResultsStack.filter(p=>p.id == orderItem.productId && p.type=="product");
+    
+        orderItem.setMedicineOrProduct(medicine || product);
         this.#orders.push(orderItem);
 
 
-        console.log(orderItem);
         this.onOrderPushCallBack(orderItem , this.#orders);
     }
 

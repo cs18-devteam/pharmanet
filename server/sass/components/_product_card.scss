@@ -1,0 +1,17 @@
+.product_card{
+    display: flex;
+    .details{
+        display: flex;
+        flex-direction: row;
+        > div{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    img{
+        width: 7rem;
+        height: 7rem;
+        object-fit: contain;
+    }
+}

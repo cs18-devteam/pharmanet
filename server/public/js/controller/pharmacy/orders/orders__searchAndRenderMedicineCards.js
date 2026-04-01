@@ -1,7 +1,8 @@
 import Application from "../../../model/application/Application.js";
-import { fetchMedicineData } from "../../../model/pharmacy/fetchMedicineData.js";
+import { fetchMedicineData, fetchStocksData } from "../../../model/pharmacy/fetchMedicineData.js";
 import { openOrdersPaymentMode } from "../../../view/pharmacy/orders__viewPaymentMode.js";
 import { createMedicineCards, renderMedicineCards } from "../../../view/pharmacy/renderMedicineCards.js";
+import { createProductCards } from "../../../view/pharmacy/renderProductCards.js";
 import { setTextContent } from "../helpers.js";
 const medicineCardContainer = document.querySelector(".orders .medicine_card_container");
 const orderCount = document.querySelector('.orders .total__orders__description__amount');
@@ -13,10 +14,12 @@ const cartList = document.querySelector('.orders .cart_list');
 
 
 export default function orders__searchAndRenderMedicineCard(search="" , limit=6){
-    fetchMedicineData(search , limit , Application.pharmacyId).then(({results})=>{
+    fetchStocksData(search , limit , Application.pharmacyId).then(({results})=>{
+        console.log(results);
         Application.setOrderMedicineResultsStack(results);
-        const medicineCards = createMedicineCards(results);
-        renderMedicineCards(medicineCardContainer , medicineCards);
+        const medicineCards = createMedicineCards(results.filter(p=>p.type != "product"));
+        const productCard = createProductCards(results.filter(p=>p.type == "product"))
+        renderMedicineCards(medicineCardContainer , [...medicineCards, ...productCard  ]);
     })
 }
 
@@ -25,7 +28,15 @@ export default function orders__searchAndRenderMedicineCard(search="" , limit=6)
  * @returns {number}
  */
 function calcCartPrice(){
+
+
     return Application.getOrderItems().reduce((acc , OItems)=>{
+        
+        let product = OItems.getProduct();
+        if(product){
+            return acc + product.price * OItems.units - OItems.discounts;
+        }
+        
         return acc + OItems.getMedicine()?.stock.price *  OItems.units - OItems.discounts;
     } , 0)
 }
@@ -36,7 +47,8 @@ function calcCartPrice(){
 export function updateCardList(cartList , orders ){
     setTextContent(numberOfItemsInCart , Application.getOrderItems().length);
     setTextContent(priceOfCartItems , calcCartPrice().toLocaleString('En-us'));
-    const orderCards = createMedicineCards(orders);
+    const orderCards = [ ... createMedicineCards(orders.filter(o=>o.medicineId)) , ...createProductCards(orders.filter(p=>p.productId))];
+    
     renderMedicineCards(cartList , orderCards);
 }
 
@@ -52,7 +64,7 @@ function onPushOrderItem (orderItem , orderItemsCollection){
 
     // re structure order collection
     const orders = orderItemsCollection.map(item=>{
-        const order ={...item , ...item.getMedicine()};
+        const order ={...item , ...item.getMedicine() , ...item.getProduct()};
         return order;
     });
 
@@ -89,9 +101,19 @@ medicineCardContainer?.addEventListener('click' , e=>{
             formData[i.name] = +i.value;
         })
 
-        formData.medicineId = card.dataset.id;
+        const type = card.dataset.type;
+        if(type == "medicine"){
+            formData.medicineId = card.dataset.id;
+        }else if(type == "product"){
+            formData.productId = card.dataset.id;
+        }
 
-        const orderItem = new Application.OrderItem(formData.units , formData.days , formData.discounts , formData.medicineId);
+
+        const orderItem = new Application.OrderItem(formData.units , formData.days , formData.discounts , formData.medicineId , formData.productId);
+
+
+
+        console.log(orderItem);
         Application.onPushOrderItems(onPushOrderItem);
         Application.addToOrders(orderItem);
 
@@ -110,7 +132,13 @@ cartList?.addEventListener('click' , (e)=>{
 
     if(removeBtn){
         const id = target.closest('.medicine_card').dataset.id;
-        Application.removeOrderItem({medicineId : id});
+        const type = target.closest(".medicine_card").dataset.type;
+
+        if(type == "product"){
+            Application.removeOrderItem({productId : id});
+        }else{
+            Application.removeOrderItem({medicineId : id});
+        }
         updateCardList(cartList , Application.getOrderItems());
     }
 })

@@ -27,6 +27,9 @@ const updateReceiptOptions = {
  * @param {receiptOption} options 
  */
 export function updateReceipt(options){
+
+    console.log(options);
+
     receiptPharmacyName.textContent = options.pharmacyName;
     receiptId.textContent = options.orderId;
     receiptTable.innerHTML = options.items.map(item=>html`<tr>

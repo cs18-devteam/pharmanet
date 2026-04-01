@@ -3570,6 +3570,23 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   outline: 1.5rem solid currentColor;
 }
 
+.product_card {
+  display: flex;
+}
+.product_card .details {
+  display: flex;
+  flex-direction: row;
+}
+.product_card .details > div {
+  display: flex;
+  flex-direction: column;
+}
+.product_card img {
+  width: 7rem;
+  height: 7rem;
+  object-fit: contain;
+}
+
 body.large-view .header-container {
   display: none;
   padding: 0;

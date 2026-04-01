@@ -78,6 +78,7 @@ exports.createOrder = apiCatchAsync(async (req , res)=>{
 
 
                 await Products.update({
+                    id : orderItem.id,
                     quantity: orderItem.quantity - item.quantity,
                 })
 
@@ -170,6 +171,12 @@ exports.getOrders = apiCatchAsync(async (req , res)=>{
                 return {
                     ...i,
                     name : medicine.geneticName,
+                }
+            }else{
+                const [product] = await Products.getById(i.itemId);
+                return {
+                    ...i,
+                    name : product.name,
                 }
             }
             return {...i};

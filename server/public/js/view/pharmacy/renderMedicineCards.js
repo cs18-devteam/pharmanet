@@ -1,7 +1,7 @@
 import html from "./../html.js";
 
 const medicineCardTemplate = html`
-<div class="medicine_card" data-id="{id}">
+<div class="medicine_card" data-type="medicine" data-id="{id}">
     <div class="close-btn">+</div>
 
 

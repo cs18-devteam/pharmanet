@@ -21,12 +21,7 @@ exports.adminPharmacyRouter = SubRouter.route('/admin/:adminId')
         get : [authenticate('adminId')  ,adminPharmacyController.renderAdminCreatePharmacyViewStep04],
 })
 .subRoute('/pharmacies/:pharmacyId/update' , {
-<<<<<<< HEAD
-        get : [authenticate('adminId')  ,adminPharmacyController.renderAdminEditPharmacyViewStep01],
-        update : [authenticate('adminId')  ,adminPharmacyController.updatePharmacy]
-=======
         get : adminPharmacyController.renderAdminEditPharmacyViewStep01,
->>>>>>> kasun/admin/3.8
 })
 .subRoute('/pharmacies/:pharmacyId/edit/step/2' , {
         get : [authenticate('adminId')  ,adminPharmacyController.renderAdminCreatePharmacyViewStep02]

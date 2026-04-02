@@ -6,11 +6,12 @@ exports.ordersApiRouter = SubRouter.route('/api/v1/orders')
     get: orderController.getOrders,
     post:orderController.createOrder,
     delete:orderController.deleteOrder,
-    update:orderController[""]
+    update:orderController.updateOrder,
 })
 .subRoute('/:orderId/items' , {
     post: orderController.addOrderItem,
     get: orderController.getOrderItems,
+    delete : orderController.removeOrderItems,
 })
 .subRoute("/:orderId" , {
     delete: orderController.deleteOrder,

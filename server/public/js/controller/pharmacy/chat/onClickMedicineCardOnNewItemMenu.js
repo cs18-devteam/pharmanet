@@ -7,8 +7,12 @@ import { swal } from "../../../view/swal.js";
 import { refreshCartList } from "./refreshCartList.js";
 
 export async function onClickMedicineCardOnNewItemMenu() {
-    const medicineCardContainer = document.querySelector(".chats.medicines_card_container");
-    medicineCardContainer?.addEventListener('click' , async (e)=>{
+    const body = document.body;
+    
+
+    body?.addEventListener('click', async (e) => {
+        if(!(e.target.closest(".medicines_card_container"))) return;
+
         const target = e.target;
 
         /**
@@ -18,37 +22,37 @@ export async function onClickMedicineCardOnNewItemMenu() {
         const orderAddForm = target.closest(".order-add-form");
         const addBtn = target.closest(".add");
 
-        if(medicineCard){
-            if(medicineCard.classList.contains("show-order-add-form" && !orderAddForm)){
+        if (medicineCard) {
+            if (medicineCard.classList.contains("show-order-add-form" && !orderAddForm)) {
                 medicineCard.classList.remove("show-order-add-form");
-                
-            }else{
+
+            } else {
                 medicineCard.classList.add("show-order-add-form");
             }
         }
 
-        if(addBtn){
+        if (addBtn) {
             const data = getOrderFormData(medicineCard);
-            const {status , results} = await addOrderItem({
-                productId : data.productId,
-                medicineId : data.medicineId ,
-                quantity : data.units,
-                discount : data.discounts,
-                orderId : Application.remoteOrderId,
+            const { status, results } = await addOrderItem({
+                productId: data.productId,
+                medicineId: data.medicineId,
+                quantity: data.units,
+                discount: data.discounts,
+                orderId: Application.remoteOrderId,
             });
 
-            if(status == "success"){
+            if (status == "success") {
                 swal({
-                    title:"item added to order",
-                    icon:"success",
-                }).then(()=>{
+                    title: "item added to order",
+                    icon: "success",
+                }).then(() => {
                     closeSidebar()
                 })
                 refreshCartList();
                 Application.connection.send(ChatTemplates.syncConnection(Application.remoteOrderId));
             }
         }
-        
+
     })
 }
 
@@ -62,18 +66,28 @@ export function getOrderFormData(medicineCard) {
     const units = medicineCard.querySelector("input[name='units']").value || 0;
     const days = medicineCard.querySelector("input[name='days']").value || 0;
     const discounts = medicineCard.querySelector("input[name='discounts']").value || 0;
+    const type = medicineCard.dataset.type;
 
-    if(!units){
+
+    if (!units) {
         swal({
-            title:"medicines must have a number of units",
-            text:"count of unit is necessary ",
+            title: "medicines must have a number of units",
+            text: "count of unit is necessary ",
         })
     }
 
-    return {
-        medicineId : medicineCard.dataset.id,
-        units , 
-        days , 
-        discounts , 
+    const returnObj = {
+        units,
+        days,
+        discounts,
     }
+
+    if (type == "medicine") {
+        returnObj.medicineId = medicineCard.dataset.id;
+    }
+    if (type == "product") {
+        returnObj.productId = medicineCard.dataset.id;
+    }
+
+    return returnObj;
 }

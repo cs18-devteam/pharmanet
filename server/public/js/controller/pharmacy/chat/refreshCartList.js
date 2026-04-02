@@ -1,5 +1,6 @@
 import { getOrderItems } from "../../../model/pharmacy/orders.js";
 import html from "../../../view/html.js";
+import { updateChatBoxReceipt } from "../../../view/pharmacy/chat/updateChatBoxReceipt.js";
 import { swal } from "../../../view/swal.js";
 
 export async function refreshCartList() {
@@ -80,6 +81,75 @@ export async function refreshCartList() {
     }))
 
 
-    document.querySelector('.chats .middle .body-section').innerHTML  =  medicineCards.join(' ');
+    console.log(items);
+
+    const productCards = items?.map((item=>{
+        if(item.itemType != "product") return;
+
+
+        return html`
+        <div class="medicine_card product_card" type="product" data-orderItemId="${item.id}" data-medicineId="${item.details.id}" >
+            <div class="medicine-card-header">
+                <div class="dosage-icon">
+                    <img width="60rem" src="${item.details.image}">  
+
+                </div>
+
+
+                <div class="details">
+                    <div class="medicine__name">
+                        <div class="name">Name</div>
+                        ${item.details.name}
+                    </div>
+                    <div class="medicine__info">
+                    
+                        <div class="medicine__info__price">
+                            <span>price</span>
+                            <span class="price">
+                                <span>Rs<div class="price__value">&nbsp;${item.details?.price || "Not Available"}</div></span>
+                                
+                            </span>
+                        </div>
+                    </div>
+                
+                    
+                </div>
+
+                <div class="remove-btn">
+                    remove
+                </div>
+            </div>
+            
+            <div class="medicine-card-footer">
+                ${item.details.quantity ? html`
+                    
+                    <div class="card-footer unit">
+                        Units <span>${item.quantity}</span>
+                    </div>
+
+                    <div class="card-footer days">
+                        Days <span>${items.days}</span>
+                    </div>
+
+                    <div class="card-footer discount">
+                        Discounts (Rs) <span>${items.discount}</span>
+                    </div>
+                    ` : html`this medicine not available in pharmacy`
+            
+                }
+            </div>
+
+        </div>`;
+
+    }))
+
+
+
+
+    document.querySelector('.chats .middle .body-section').innerHTML  =  [...medicineCards , ...productCards].join(' ');
+
+
+
+    updateChatBoxReceipt();
 
 }

@@ -55,7 +55,9 @@
         img {
             width: 10rem;
             aspect-ratio: 1;
-            object-fit: contain;
+            object-fit: cover;
+            border-radius: 50%;
+            transform: scale(.6);
         }
 
         .description {

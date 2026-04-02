@@ -147,7 +147,7 @@ export default class PharmacyChatbox{
                 <div class="left">
                             <div class="chat-box">                    
                     <div class="header-section">
-                        <div class="customer-name"><span class=".chat-customer-name">${user.firstName} ${user.lastName}</span> <br><span style="" class="chat-online-indicator"></span></div>
+                        <div class="customer-name"><span class="chat-customer-name">${user.firstName} ${user.lastName}</span> <br><span style="" class="chat-online-indicator"></span></div>
 
                         <div class="discount chat-disconnect-btn" style="height:fit-content;">Disconnect</div>
                     </div>
@@ -332,15 +332,15 @@ export default class PharmacyChatbox{
                                 </div>
                                 <div>
                                     <span>Discounts</span>
-                                    <span>-Rs<span class="total">100</span></span>
+                                    <span>-Rs<span class="discount">100</span></span>
                                 </div>
-                                <div>
+                                <!-- <div>
                                     <span>Loyality Dis</span>
-                                    <span>-Rs<span class="total">45</span></span>
-                                </div>
+                                    <span>-Rs<span class="loyalty">45</span></span>
+                                </div> -->
                                 <div class="final-price">
                                     <span>Final Price</span>
-                                    <span>Rs<span class="total">1,200</span></span>
+                                    <span>Rs<span class="final">1,200</span></span>
                                 </div>
             
                                 <div class="print-recipe">Print Recipe</div>

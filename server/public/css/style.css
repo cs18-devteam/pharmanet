@@ -1351,6 +1351,19 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
     scale: 1;
   }
 }
+.add-medicines-to-orders .cart_item_details {
+  opacity: 0 !important;
+}
+
+.chats.container .product_card .details {
+  display: flex;
+  flex-direction: column;
+}
+.chats.container .product_card .remove-btn {
+  position: absolute;
+  right: 1.5rem;
+}
+
 .btn-add-new {
   display: flex;
   align-items: center;
@@ -2128,7 +2141,9 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .cart_item .content img {
   width: 10rem;
   aspect-ratio: 1;
-  object-fit: contain;
+  object-fit: cover;
+  border-radius: 50%;
+  transform: scale(0.6);
 }
 .cart_item .content .description h4 div:first-child {
   font-size: 1.4rem;

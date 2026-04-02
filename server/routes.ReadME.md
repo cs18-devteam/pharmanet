@@ -45,18 +45,11 @@
 /admin/:adminId/pharmacies/:pharmacyId/edit/step/4
 /admin/:adminId/pharmacies/:pharmacyId
 /api/v1/admin/:adminId/pharmacies
-<<<<<<< HEAD
+/api/v1/admin/:adminId/pharmacies/:pharmacyId
 /pharmacies/:pharmacyId/staff/:staffId
 /pharmacies/:pharmacyId/staff/:staffId/staff
 /pharmacies/:pharmacyId/staff/:staffId/attendance
 /pharmacies/:pharmacyId/staff/:staffId/profile
-=======
-/api/v1/admin/:adminId/pharmacies/:pharmacyId
-/pharmacies/:pharmacyId/pharmacist/:staffId
-/pharmacies/:pharmacyId/pharmacist/:staffId/staff
-/pharmacies/:pharmacyId/pharmacist/:staffId/attendance
-/pharmacies/:pharmacyId/pharmacist/:staffId
->>>>>>> kasun/admin/3.8
 /pharmacies/:pharmacyId/medicines
 /pharmacies/:pharmacyId/cashiers/:cashierId/bills/get
 /pharmacies/:pharmacyId/cashiers/:cashierId/bills/get/:billId

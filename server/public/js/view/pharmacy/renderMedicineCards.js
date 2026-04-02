@@ -100,6 +100,8 @@ const medicineCardTemplate = html`
 export function createMedicineCards (data = []){
     try{
 
+        console.log(data);
+
         return data.map(medicine=>{
             let status = "not_available";
             let fullStockCount = medicine.stock.stock;

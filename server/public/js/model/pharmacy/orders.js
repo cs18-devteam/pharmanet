@@ -1,5 +1,6 @@
 import { swal } from "../../view/swal.js";
 import Application from "../application/Application.js";
+import ChatTemplates from "../application/ChatTemplates.js";
 
 export async function createOrder({
     userId  = undefined , 
@@ -44,30 +45,30 @@ export async function createOrder({
 
 export async function updateOrder({
     userId , 
+    id ,
     prescription , 
-    items = [{
-        itemId , 
-        itemType : "product" || "medicine",
-        quantity ,
-    }],
-    paymentMethod = "cash" || "card",
-    paymentStatus = "complete" || "pending",
+    paymentMethod,
+    paymentStatus ,
+    pharmacyId,
 }) {
 
     try{
 
+        if(!id) throw new Error("no order id");
+        const formData = {};
+        formData.id = id;
+        if(userId) formData.userId =  userId;
+        if(prescription) formData.prescription= prescription ;
+        if(paymentMethod) formData.paymentMethod= paymentMethod ;
+        if(paymentStatus) formData.paymentStatus= paymentStatus ;
+        if(pharmacyId) formData.pharmacyId= pharmacyId ;
         
-        const formData = new FormData();
-        formData.append('userId' , userId);
-        formData.append('prescription' , prescription);
-        formData.append('items' , items);
-        formData.append('paymentMethod' , paymentMethod);
-        formData.append('paymentStatus' , paymentStatus);
-        
+
+        console.log(formData);
         
         const response = await fetch("/api/v1/orders" , {
             method:"PATCH",
-            body : formData,
+            body : JSON.stringify(formData),
         })
         
         const data = await response.json();
@@ -183,6 +184,53 @@ export async function  deleteOrder(orderId) {
             status:'error',
             results : "",
             message:e.message || "internal server error",
+        }
+    }
+}
+
+
+export async function removeOrderItem(orderId , itemId) {
+    try{
+        const res = await fetch(`/api/v1/orders/${orderId}/items` , {
+            method:"DELETE",
+            body : JSON.stringify({
+                id : itemId,
+            }),
+        })
+
+        if(!res.ok) throw new Error("Item not removed");
+        if(res.status == 201){ 
+            return {
+                status:"success",
+                message:"item removed successful",
+            }
+        }else{
+            throw new Error("item not removed");
+        }
+
+
+    }catch(e){
+        console.log(e);
+        return {
+            status:"error",
+            error:'item cannot remove from the cart',
+            message: e.message || " ",
+
+        }
+    }
+}
+
+
+export async function getOrder(orderId) {
+    try{
+        const res = await fetch(`/api/v1/orders?id=${orderId}`);
+        const data = await res.json();
+        return data;
+    }catch(e){
+        console.log(e);
+        return {
+            status:"error",
+            error: e.message || "can not get order details"
         }
     }
 }

@@ -28,6 +28,11 @@ export function onClickAddNewItemButton(){
                </div> 
             `)
         openSidebar();
+        const searchBar = document.querySelector(".add-medicines-to-orders .search-bar #search-bar");
+        searchBar?.addEventListener('input' , (e)=>{
+            const value = searchBar.value;
+            searchAndRenderMedicinesAndProducts(value);
+        })
         searchAndRenderMedicinesAndProducts();
         
     })

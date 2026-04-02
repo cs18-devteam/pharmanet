@@ -157,8 +157,12 @@ exports.createOrder = apiCatchAsync(async (req, res) => {
 
 exports.getOrders = apiCatchAsync(async (req, res) => {
     const userId = req.params.get('user');
-    const pharmacyId = req.params.get('pharmacy')
+    let pharmacyId = req.params.get('pharmacy')
     const id = req.params.get('id');
+
+    if(!pharmacyId){
+        pharmacyId = readCookies(req).pharmacyId;
+    }
 
     const filter = {};
     if (userId) filter.userId = userId;
@@ -167,7 +171,74 @@ exports.getOrders = apiCatchAsync(async (req, res) => {
 
     if (!Object.entries(filter).length) throw new Error('pharmacy | userId | id are not defined');
 
+    if (id) {
+        const [order] = await PharmacyOrders.getById(id);
+
+        let items = await PharmacyOrdersItems.get({
+            orderId: order.id,
+        });
+
+        
+        console.log(order);
+
+        items = await Promise.all(items.map(async i => {
+            if (i.itemType == "medicine") {
+                const [medicine] = await Medicines.getById(i.itemId);
+
+                let stock;
+
+                if(order.pharmacyId){
+
+                    stock = (await PharmacyMedicines.get({
+                        pharmacyId : order.pharmacyId,
+                        medicineId : medicine.id
+                    }))[0]
+                }else{
+                    stock = (await PharmacyMedicines.get({
+                        medicineId : medicine.id
+                    }))[0]
+
+                }
+
+
+                console.log(stock ,{
+                    pharmacyId ,
+                    medicineId : medicine.id
+                } );
+                return {
+                    ...i,
+                    name: medicine.geneticName,
+                    price : stock?.price || 0,
+
+                }
+            } else {
+                const [product] = await Products.getById(i.itemId);
+                return {
+                    ...i,
+                    name: product.name,
+                    price : product.price,
+                }
+            }
+            return { ...i };
+        }))
+
+
+        return responseJson(res, 200, {
+            status: "success",
+            data: {
+                ...order,
+                items,
+                total: items.reduce((acc, item, i) => {
+                    return acc + item.price * item.quantity - item.discount;
+                }, 0)
+            },
+        })
+    }
+
+
+
     const results = await PharmacyOrders.get(filter);
+
 
     let orders = results.map(async (order) => {
         let items = await PharmacyOrdersItems.get({
@@ -218,15 +289,21 @@ exports.addOrderItem = apiCatchAsync(async (req, res) => {
     const id = req.orderId;
     const reqData = JSON.parse(await getRequestData(req));
 
+    console.log(reqData);
+
     let medicine;
     let product;
     if (reqData.medicineId) {
         medicine = await Medicines.getById(reqData.medicineId)[0];
     }
 
+    const { pharmacyId } = readCookies(req);
+
+
+
     const orderObj = {
         orderId: id,
-        itemId: reqData.medicineId || reqData.orderId,
+        itemId: +reqData.medicineId || +reqData.productId,
         itemType: reqData.medicineId ? "medicine" : "product",
         price: medicine?.price || product?.price,
         discount: reqData.discount,
@@ -265,9 +342,13 @@ exports.getOrderItems = apiCatchAsync(async (req, res) => {
                 }))[0],
             }
         } else if (i.itemType == "product") {
+            console.log(i);
+            const [product] = await Products.getById(i.itemId);
+            console.log(product);
+
             return {
                 ...i,
-                details: (await Products.getById(i.itemId))[0],
+                details: product,
             }
         }
     })
@@ -332,4 +413,51 @@ exports.deleteOrder = apiCatchAsync(async (req, res) => {
         message: "order deleted successful",
     });
 
+})
+
+
+exports.updateOrder = apiCatchAsync(async (req, res) => {
+    const data = JSON.parse(await getRequestData(req));
+    const { pharmacyId } = readCookies(req);
+    if (!pharmacyId) throw new Error("cannot find pharmacy");
+
+
+    const [order] = await PharmacyOrders.getById(data.id);
+
+    if (!order) throw new Error("order not found");
+
+    const orderObj = {
+        id: data.id,
+        staffId: data.staffID,
+        userId: data.userId,
+        pharmacyId: data.pharmacyId,
+    }
+
+    await PharmacyOrders.update(orderObj);
+
+
+
+
+    return responseJson(res, 200, {
+        status: "success",
+        message: "order updated successful",
+    })
+})
+
+
+exports.removeOrderItems = apiCatchAsync(async (req, res) => {
+    const { id } = JSON.parse(await getRequestData(req));
+    if (!id) {
+        throw new Error("item id not defined");
+    }
+
+    const [item] = await PharmacyOrdersItems.getById(id);
+    if (!item) throw new Error("item not found in order");
+
+    await PharmacyOrdersItems.deleteById(id);
+
+    return responseJson(res, 201, {
+        status: "success",
+        message: "order item removed from the cart",
+    })
 })

@@ -36,7 +36,10 @@ const { adminMedicineRouter } = require('./routes/web/admin.medicines.Routes');
 const { adminDashboardRouter } = require('./routes/web/admin.dashboard.Routes');
 const { adminApiDashboardRouter } = require('./routes/web/admin.dashboard.Routes');
 const { adminApiActivityRouter } = require('./routes/web/admin.dashboard.Routes');
-const { adminApiBlogRouter } = require('./routes/web/admin.blogs.Routes')
+const { adminApiBlogRouter } = require('./routes/web/admin.blogs.Routes');
+const { pharmacyDeleteRouter } = require('./routes/web/pharmacy.delete.Routes');
+const docsApiRouter = require('./routes/api/api.docs.Routes');
+const apiStocksRouter = require('./routes/api/api.stocks.Routes');
 
 const options = {
   key: fs.readFileSync('key.pem'),

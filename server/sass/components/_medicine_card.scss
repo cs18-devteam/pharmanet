@@ -450,6 +450,12 @@
 
 
 
+.add-medicines-to-orders{
+    .cart_item_details{
+        opacity: 0 !important;
+    }
+}
+
 
 // .landing{
 
@@ -503,3 +509,17 @@
 //         transform: translateX(100rem);
 //     }
 // }
+
+
+
+.chats.container .product_card{
+    .details{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .remove-btn{
+        position: absolute;
+        right: 1.5rem;
+    }
+}

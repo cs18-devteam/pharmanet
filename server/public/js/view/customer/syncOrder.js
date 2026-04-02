@@ -1,9 +1,14 @@
 import Application from "../../model/application/Application.js";
-import { getOrderItems } from "../../model/pharmacy/orders.js";
+import { getOrder, getOrderItems } from "../../model/pharmacy/orders.js";
 import html from "../html.js";
 import cart from "./Cart.js";
+import { displayUploadedPrescription } from "./displayUploadedPrescription.js";
 
 export async function customerSyncOrder(){
+    const {status , data : order} = await getOrder(Application.remoteOrderId);
+    console.log(order);
+    if(!order) return;
+    await displayUploadedPrescription(order.prescription)
     await refreshCartList();
 }
 
@@ -20,6 +25,9 @@ async function refreshCartList(){
             icon: "error",
         })
     };
+
+
+    console.log(data);
 
 
     let items = data.results.items;

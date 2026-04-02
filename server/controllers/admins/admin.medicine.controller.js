@@ -1,4 +1,3 @@
-const Bridge = require("../../common/Bridge");
 const { getRequestData } = require("../../common/getRequestData");
 const { response, responseJson } = require("../../common/response");
 const view = require("../../common/view");
@@ -216,14 +215,16 @@ exports.uploadMedicine = async (req, res) => {
 
 
         // Check if medicine already exists
-        const existing = await Medicines.getByName(medicineName);
+        const existing = await Medicines.get({
+          geneticName : medicineName
+        });
 
         // console.log(`Checking medicine: ${medicineName}, exists:`, existing ? existing.length : 0);
 
         if (!existing || existing.length === 0) {
           // Insert new medicine
           const medicineData = {
-            name: medicineName,
+            geneticName: medicineName,
             description: row.description || row.Description || '',
             expiryDate: row['Expiry Date'],
             schedule: row['Schedule '],

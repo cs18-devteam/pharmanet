@@ -8,7 +8,54 @@
     <style>
       /* Image popup styles */
       
+      .image-popup.active {
+        display: flex;
+      }
+      
+      .popup-content {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        max-width: 90%;
+        max-height: 90%;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+      }
+      .popup-content .accept-Btn{
+        background-color: green;
+        border-radius: 0.5rem;
+        border: none;
+        color: white;
+        margin-top: 0.5rem;
+    
+        }
+      .popup-content img {
+        max-width: 90%;
+        max-height: 75vh;
+        padding-top: 0.5rem;
+      }
+      
+      .close-popup {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: #ff4444;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 18px;
+      }
+      
+      .close-popup:hover {
+        background: #cc0000;
+      }
     </style>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body class="pharmarcy">
     <div class="container">
@@ -70,6 +117,7 @@
       <button class="close-popup" onclick="closeImagePopup()">✕</button>
       <h3 id="popupPharmacyName"></h3>
       <img id="popupImage" src="" alt="Pharmacy Image">
+      <button class="accept-Btn" id="accept-Btn" >Accept</button>
     </div>
   </div>
 
@@ -82,15 +130,17 @@
     async function renderPharmacies(){
       try{
       const res = await fetch(`${window.location.origin}/api/v1/admin/${adminId}/pharmacies`);
-      console.log('Reponse Status :', res.status);
       const pharmacies = await res.json();
+      
       
       if(!Array.isArray(pharmacies) || pharmacies.length === 0) return;
 
-      const html = pharmacies.map(p =>`
-      <a href = "/admin/pharmacy/view/${p.id}" class="pharmacy-card">
+      const html = pharmacies.map(p =>{
+      const isActive = Number(p.status) === 1;
+      return`
+       <div class = "pharmacy-card">
         <div class="header">
-          <h3>${p.name} <span class="status inactive">inactive</span></h3>
+          <h3>${p.name} ${isActive? `<span class="status inactive">active</span>` : `<span class="status inactive">inactive</span>`}</h3>
           <button class="menu-btn">⋮</button>
         </div>
         <p>Manager: ${p.pharmacist || 'N/A'}</p>
@@ -102,14 +152,19 @@
         <hr>
         <div class= "pharmacyCardFooter">
           <!-- <p>Inventory: <strong>N/A</strong></p> -->
-          <button class="details-btn" data-img = "${p.image_url} || ${p.image} || ${p.img}}" data-name = "${p.name || ''}">View License</button>
+          <button class="details-btn" data-img="${p.img}" data-name="${p.name || ''}" data-id="${p.id}" data-status="${isActive ? '1' : '0'}">View License</button>
+            ${isActive ? `<button class="deactivate-Btn" data-id="${p.id}">Deactivate</button>` : ''}
         </div>
-      </a>`).join('');
+      </div>`}).join('');
       document.querySelector('.pharmacy-grid').innerHTML = html;
+
+      
+      
     }catch (error) {
       console.error('Error fetching pharmacies : ', error);
       document.querySelector('.pharmacy-grid').innerHTML = "<p>Error loading pharmacies.</p>";
     }
+
   }
     renderPharmacies();
   </script>
@@ -117,7 +172,7 @@
 
   <script>
   // image popup helpers
-  function openImagePopup(imgUrl, pharmacyName) {
+  function openImagePopup(imgUrl, pharmacyName, status) {
     if (!imgUrl) {
       alert('No image available for this pharmacy.');
       return;
@@ -125,9 +180,17 @@
     const popup = document.getElementById('imagePopup');
     const img = document.getElementById('popupImage');
     const name = document.getElementById('popupPharmacyName');
+    const acceptBtn = document.getElementById('accept-Btn');
+
+    console.log(typeof status);
+    if(Number(status) === 1){
+      acceptBtn.style.display = 'none';
+    }else{
+      acceptBtn.style.display = 'flex';
+    }
 
     img.src = imgUrl;
-    name.textContent = pharmacyName || '';
+    name.textContent = (pharmacyName || '').toUpperCase();
     popup.classList.add('active');
   }
 
@@ -138,6 +201,7 @@
     popup.classList.remove('active');
   }
 
+  let selectedPharmacyId = null;
   // delegate click for dynamically created buttons
   document.addEventListener('click', function (e) {
     const btn = e.target.closest('.details-btn');
@@ -145,8 +209,79 @@
     e.preventDefault(); // prevent <a> navigation
     const imgUrl = btn.getAttribute('data-img');
     const name = btn.getAttribute('data-name');
-    openImagePopup(imgUrl, name);
+    const status = btn.getAttribute('data-status');
+    selectedPharmacyId = btn.getAttribute('data-id');
+    openImagePopup(imgUrl, name, status);
   });
+  document.querySelector('.accept-Btn').addEventListener('click',
+  function () {
+    swal({
+      title: "Are you sure you want to Activate this Pharmacy ?",
+      icon: "/logo/logo.svg",
+      buttons:{
+        cancel:{
+          text: "Cancel",
+          visible: true
+        },
+        confirm: {
+          text: "OK",
+          value: true
+        }
+      },
+      dangerMode: false
+    }).then(async (confirmed) => {
+      if(!confirmed) {
+        swal("Declined","Pharmacy Activation Declined", "warning");
+        closeImagePopup();
+        return;
+      };
+
+      fetch(`${window.location.origin}/api/v1/admin/${adminId}/pharmacies/${selectedPharmacyId}`,{
+        method: 'PATCH',
+        headers: {"Content-type": "application/json"},
+        body: JSON.stringify({status: "1",
+        id: selectedPharmacyId})
+      });
+      swal("Activated","Pharmacy activated succesfully.","success");
+      closeImagePopup();
+      renderPharmacies();
+    })
+  })
+ 
+  </script>
+
+  <script>
+    document.addEventListener('click', async function (e) {
+  const deactivateBtn = e.target.closest('.deactivate-Btn');
+  if (!deactivateBtn) return;
+
+  e.preventDefault();
+  const pharmacyId = deactivateBtn.getAttribute('data-id');
+
+  const confirmed = await swal({
+    title: "Are you sure you want to deactivate this Pharmacy?",
+    icon: "/logo/logo.svg",
+    buttons: {
+      cancel: { text: "Cancel", visible: true },
+      confirm: { text: "Ok", value: true }
+    },
+    dangerMode: false
+  });
+
+  if(!confirmed) {
+    swal("Declined", "Pharmacy Deactivation Declined", "warning");
+    return;
+  }
+
+  await fetch(`${window.location.origin}/api/v1/admin/${adminId}/pharmacies/${pharmacyId}`, {
+    method: 'PATCH',
+    headers: { "Content-type": "application/json" },
+    body: JSON.stringify({ status: "0", id: pharmacyId })
+  });
+  
+  swal("Deactivated", "Pharmacy Deactivated Successfully", "success");
+  renderPharmacies(); // Re-render to hide deactivate, but doesn't matter since status=0
+});
   </script>
 
 
@@ -167,8 +302,28 @@
 });
   </script>
 
-
   
     
 </body>
 </html>
+
+
+
+
+<!-- for(let i = 0; i< pharmacies.length; i++ ){
+        if(pharmacies?.[i]?.alive == 1){
+        document.querySelector('.deactivate-Btn').style.display = "flex";
+        document.querySelector('.accept-Btn').style.display = "none";
+        return;
+      }else{
+        document.querySelectorAll('.deactivate-Btn').style.display = "none";
+        document.querySelectorAll('.accept-Btn').style.display = "flex";
+      }
+    }
+ -->
+
+
+
+
+
+  <!-- <a href = "/admin/pharmacy/view/${p.id}" class="pharmacy-card"></a> -->

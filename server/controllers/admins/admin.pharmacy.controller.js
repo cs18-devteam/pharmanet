@@ -121,23 +121,21 @@ exports.createPharmacy = async (req, res) => {
 };
 
 exports.updatePharmacy = async (req, res) => {
-  let sent = false;
+  
 
   try {
     const data = JSON.parse(await getRequestData(req));
     const updatedPharmacy = await Pharmacies.update(data);
-    return (sent = true && response(res, JSON.stringify(updatedPharmacy), 200));
+    return (response(res,JSON.stringify(updatedPharmacy),201));
   } catch (e) {
     console.log(e);
     return (
       !sent &&
-      response(
-        res,
-        200,
-        JSON.stringify({
+      response(res,400,
+        {
           status: "error",
-          error: e,
-        })
+          error: e.message|| String(e)
+        }
       )
     );
   }

@@ -298,16 +298,23 @@
 
     .details-btn {
       background: linear-gradient(to right, #18978D, #083851);
-      border: 1px solid $primary;
+      border: none;
       color: #fff;
-      padding: 0.4rem 0.75rem;
+      padding: 1rem;
       border-radius: 6px;
       cursor: pointer;
-      font-size: 1.2rem;
     
       &:hover {
         background-color: #1e1e1e;
       }
+    }
+    .deactivate-Btn{
+      
+      background-color: red;
+      border: none;
+      color: white;
+      border-radius: 0.5rem;
+      margin-left: 0.5rem;
     }
   }
 }

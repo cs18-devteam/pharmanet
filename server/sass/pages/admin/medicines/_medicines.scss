@@ -195,6 +195,12 @@
             opacity: 0.6;
             margin-bottom: 3rem;
           }
+          .uploadSubmitBtn{
+            background-color: white;
+            color: black;
+            border-radius: 0.5rem;
+            margin: 0.5rem 0 0.5rem 0;
+          }
         }
       }
     }
@@ -221,13 +227,7 @@
         padding: 1.5rem 1.8rem;
         border-top-left-radius: 1.2rem;
         border-top-right-radius: 1.2rem;
-        background: linear-gradient(
-          113deg,
-          #69cdff 0%,
-          #127eb5 20%,
-          #006395 64.59%,
-          #006395 83.5%
-        );
+        background: linear-gradient(to right, #18978D, #083851);
 
         h2 {
           margin: 0;

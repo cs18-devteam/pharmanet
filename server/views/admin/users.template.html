@@ -327,25 +327,45 @@
   //Deactivate User
   async function deactivateUser(id) {
     console.log(id);
-    if (!confirm("Are you sure you want to deactivate this User?")) return;
     try{
-    const res = await fetch(`https://localhost:3000/admin/1/api/users/${id}`, {
+    swal({
+      title: "Are you sure you want to Deactivate this User ?",
+      icon: "/logo/logo.svg",
+      buttons:{
+        cancel:{
+          text: "Cancel",
+          visible: true
+        },
+        confirm: {
+          text: "OK",
+          value: true
+        }
+      },
+      dangerMode: false
+    }).then(async (confirmed) => {
+      if(!confirmed){
+      swal("Declined", "User Deactivation Declined", "warning");
+      return;
+    };
+    fetch(`${window.location.origin}/admin/${adminId}/api/users/${id}`,{
       method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ status: "Inactive" })
+      headers: { "Content-type": "application/json"},
+      body: JSON.stringify({
+        status: "Inactive",
+        id: id
+      })
     });
-    console.log(res);
-    if (res.ok) {
-      alert("User deactivated");
-      loadUsers();
-    } else {
-      alert("Failed to deactivate User");
-    }
-  }catch(error){
+    loadUsers();
+    swal("Deactivated", "User Successfully Deactivated", "success");
+    
+  })
+}catch(error){
     console.error('Error deactivating user', error);
-    alert("Network error: Failed to deactivate user");
+    alert("Failed to deactivate user");
   }
-  }
+}
+      
+  
 
   //Add new user
   document.querySelector("#addUserForm")?.addEventListener("submit", async (e) => {

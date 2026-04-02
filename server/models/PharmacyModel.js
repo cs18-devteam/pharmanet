@@ -90,6 +90,9 @@ class PharmacyModel extends Model{
             default : '/pharmacyImages/general-pharmacy.png'
         }
 
+        this.status = {
+            type: "bool"
+        }
     }
 }
 

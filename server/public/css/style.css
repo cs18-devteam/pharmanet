@@ -18605,6 +18605,12 @@ p {
   opacity: 0.6;
   margin-bottom: 3rem;
 }
+.medicines .container .container-2 .main .dashboard .uploadSubmitBtn {
+  background-color: white;
+  color: black;
+  border-radius: 0.5rem;
+  margin: 0.5rem 0 0.5rem 0;
+}
 .medicines .addMedicine {
   position: fixed;
   inset: 0;
@@ -18626,7 +18632,7 @@ p {
   padding: 1.5rem 1.8rem;
   border-top-left-radius: 1.2rem;
   border-top-right-radius: 1.2rem;
-  background: linear-gradient(113deg, #69cdff 0%, #127eb5 20%, #006395 64.59%, #006395 83.5%);
+  background: linear-gradient(to right, #18978D, #083851);
 }
 .medicines .addMedicine .modal .modal-header h2 {
   margin: 0;
@@ -21365,15 +21371,21 @@ p {
 }
 .pharmarcy .container .container-2 .main .dashboard .pharmacy-card .pharmacyCardFooter .details-btn {
   background: linear-gradient(to right, #18978D, #083851);
-  border: 1px solid #08374F;
+  border: none;
   color: #fff;
-  padding: 0.4rem 0.75rem;
+  padding: 1rem;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 1.2rem;
 }
 .pharmarcy .container .container-2 .main .dashboard .pharmacy-card .pharmacyCardFooter .details-btn:hover {
   background-color: #1e1e1e;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .pharmacyCardFooter .deactivate-Btn {
+  background-color: red;
+  border: none;
+  color: white;
+  border-radius: 0.5rem;
+  margin-left: 0.5rem;
 }
 .pharmarcy .container .container-2 .main .dashboard .status {
   padding: 0.2rem 0.5rem;

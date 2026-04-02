@@ -132,7 +132,7 @@
       const adminIdIndex = pathParts.indexOf("admin") + 1;
       const adminId = pathParts[adminIdIndex];
 
-      const API_URL = `${window.location.origin}/admin/${adminId}/blogs/api/create`;
+      const API_URL = `${window.location.origin}/api/admin/${adminId}/blogs`;
 
       // ================== FETCH ALL BLOGS ==================
       async function loadBlogs() {
@@ -145,15 +145,15 @@
         blogs.forEach((blog) => {
           const row = document.createElement("tr");
           row.innerHTML = `
-      <td>${blog.title}</td>
-      <td>${blog.category || "-"}</td>
-      <td>${blog.author}</td>
-      <td>${blog.status}</td>
-      <td class = "actions">
-        <button class="edit-btn" data-id="${blog.id}" >Edit</button>
-        <button class="delete-btn" data-id="${blog.id}">Delete</button>
-      </td>
-    `;
+        <td>${blog.title}</td>
+        <td>${blog.category || "-"}</td>
+        <td>${blog.author}</td>
+        <td>${blog.status}</td>
+        <td class = "actions">
+          <button class="edit-btn" data-id="${blog.id}" >Edit</button>
+          <button class="delete-btn" data-id="${blog.id}">Delete</button>
+        </td>
+      `;
           tableBody.appendChild(row);
         });
 
@@ -167,7 +167,9 @@
         document
           .querySelectorAll(".edit-btn")
           .forEach((btn) =>
-            btn.addEventListener("click", () => editBlog(btn.dataset.id)),
+            btn.addEventListener("click", () =>
+              renderEditBlog(btn.getAttribute("data-id")),
+            ),
           );
       }
 
@@ -215,8 +217,9 @@
         });
 
       // ================== EDIT BLOG ==================
-      async function editBlog(id) {
-        window.location.href = `/admin/${adminId}/blogs/${id}/edit`;
+      async function renderEditBlog(id) {
+        const blogId = id;
+        window.location.href = `/admin/${adminId}/blogs/${blogId}/edit`;
       }
 
       // ================== EDIT BLOG ==================

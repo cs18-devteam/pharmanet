@@ -24,16 +24,16 @@
 /customers/:customerId/orders/:orderId/checkout
 /customers/:customerId/products/pharmacy_management_system
 /customers/:customerId/products/pharmacy_management_system/register
-/admin/:adminId/blogs/api/create
-/admin/:adminId/blogs/manage
-/admin/:adminId/blogs/create
-/admin/:adminId/blogs/:blogId/edit
-/admin/:adminId/blogs/:blogId/delete
 /admin/:adminId
 /admin/:adminId/users
 /admin/:adminId/medicines
 /admin/:adminId/writes
 /admin/:adminId/writers/:writerId
+/admin/:adminId/blogs/create
+/admin/:adminId/blogs/manage
+/admin/:adminId/blogs/:blogId/edit
+/admin/:adminId/blogs/:blogId/delete
+/api/admin/:adminId/blogs
 /admin/:adminId/pharmacies
 /admin/:adminId/pharmacies/create
 /admin/:adminId/pharmacies/create/step/2
@@ -45,10 +45,18 @@
 /admin/:adminId/pharmacies/:pharmacyId/edit/step/4
 /admin/:adminId/pharmacies/:pharmacyId
 /api/v1/admin/:adminId/pharmacies
+<<<<<<< HEAD
 /pharmacies/:pharmacyId/staff/:staffId
 /pharmacies/:pharmacyId/staff/:staffId/staff
 /pharmacies/:pharmacyId/staff/:staffId/attendance
 /pharmacies/:pharmacyId/staff/:staffId/profile
+=======
+/api/v1/admin/:adminId/pharmacies/:pharmacyId
+/pharmacies/:pharmacyId/pharmacist/:staffId
+/pharmacies/:pharmacyId/pharmacist/:staffId/staff
+/pharmacies/:pharmacyId/pharmacist/:staffId/attendance
+/pharmacies/:pharmacyId/pharmacist/:staffId
+>>>>>>> kasun/admin/3.8
 /pharmacies/:pharmacyId/medicines
 /pharmacies/:pharmacyId/cashiers/:cashierId/bills/get
 /pharmacies/:pharmacyId/cashiers/:cashierId/bills/get/:billId

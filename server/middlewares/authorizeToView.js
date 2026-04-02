@@ -51,6 +51,7 @@ exports.authorizeToView = (permissions = []) => {
             return next();
 
         } catch (e) {
+            console.log(e);
             return response(res, "", 302, {
                 location: "/login",
             })
@@ -70,12 +71,23 @@ exports.authorizeToApi = (permissions = []) => {
                 message:"your are unauthorized",
             } )
 
+            
             let authorized = true;
-            permissions.forEach(p => {
-                if (!staff[p]) {
+
+            if(typeof permissions == "string"){
+                if(!staff[permissions]){
                     authorized = false;
                 }
-            })
+            }else{
+                permissions.forEach(p => {
+                    console.log(staff);
+                    if (!staff[p]) {
+                        authorized = false;
+                    }
+                })
+            }
+
+
 
             if (!authorized) return responseJson(res , 401 , {
                 status:"error",
@@ -85,8 +97,11 @@ exports.authorizeToApi = (permissions = []) => {
             return next();
 
         } catch (e) {
-            return response(res, "", 302, {
-                location: "/login",
+            console.log(e);
+
+            return responseJson(res , 401 , {
+                status:"error",
+                message:"your are unauthorized",
             })
         }
 

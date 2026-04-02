@@ -23,6 +23,8 @@ exports.adminApiBlogRouter = SubRouter.route('/api/admin/:adminId')
 .subRoute('/blogs', {
    get : blogController.getAllBlogs,  
    post : blogController.createBlog,
-    
+})
+.subRoute('/blogs/:blogId/edit', {
+    update: blogController.updateBlog,
 })
 

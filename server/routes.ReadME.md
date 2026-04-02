@@ -30,6 +30,7 @@
 /admin/:adminId/blogs/:blogId/edit
 /admin/:adminId/blogs/:blogId/delete
 /api/admin/:adminId/blogs
+/api/admin/:adminId/blogs/:blogId/edit
 /admin/:adminId/pharmacies
 /admin/:adminId/pharmacies/create
 /admin/:adminId/pharmacies/create/step/2

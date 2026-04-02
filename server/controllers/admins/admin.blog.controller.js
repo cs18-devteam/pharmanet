@@ -99,6 +99,10 @@ exports.renderEditView = catchAsync(async (req, res) => {
   const blogId = req.blogId;
 
   const [blog] = await Blogs.getById(blogId);
+  console.log(blog);
+
+  const other = (blog.category).toLowerCase() == "medicine" ? "Disease" : "Medicine";
+  
 
   return response(res, view('blog/editBlog', {
     ...admin,
@@ -106,10 +110,11 @@ exports.renderEditView = catchAsync(async (req, res) => {
     slug: blog.slug,
     excerpt:blog.excerpt,
     content: blog.content,
-    Date: blog.status,
+    date: blog.status,
     category: blog.category,
+    other: other,
     author: blog.author,
-    tag: blog.tag
+    tag: blog.tag,
 
   }), 200);
 })
@@ -163,11 +168,11 @@ exports.deleteBlog = catchAsync(async (req, res) => {
 
 exports.updateBlog = catchAsync(async (req, res) => {
   const blogId = req.blogId;
-  console.log(blogId);
   const rawData = await getRequestData(req);
   if (!rawData) {
     return response(res, "Empty request body", 400);
   }
+  console.log(rawData);
 
   let body;
   try {
@@ -176,9 +181,9 @@ exports.updateBlog = catchAsync(async (req, res) => {
     return response(res, "Invalid JSON", 400);
   }
 
-  const { title, slug, status, tag, category, author, excerpt, content } = body;
+  const { title, slug, status, tag, category, author, excerpt, content, id } = body;
   const newBlog = await Blogs.update({
-    title, slug, status, tag, category, author, excerpt, content
+    title, slug, status, tag, category, author, excerpt, content, id
   });
   return responseJson(res, 200, newBlog);
 })

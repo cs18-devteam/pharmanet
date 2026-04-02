@@ -58,7 +58,6 @@
 {content}</textarea
             >
           </div>
-        </form>
       </div>
 
       <aside class="sidebar">
@@ -74,9 +73,9 @@
 
           <label>Category</label>
           <select value="{category}" name="category">
-            <option>Select a category</option>
-            <option>Medicine</option>
-            <option>Disease</option>
+            <option>{category}</option>
+            <option>{other}</option>
+            
           </select>
 
           <label>Author</label>
@@ -90,16 +89,18 @@
           <label>Tags</label>
           <input
             type="text"
-            value="{tags}"
+            value="{tag}"
             name="tag"
             placeholder="Separate with commas"
           />
         </div>
 
         <div class="buttons">
-          <button class="save"><span></span> update Post</button>
-          <button class="preview"><span>👁</span> Preview</button>
+          <button class="save" action = "submit"><span></span> update Post</button>
+          <button class="preview"><span></span> Preview</button>
         </div>
+
+      </form>
 
         <div class="tip">
           <p>
@@ -114,8 +115,10 @@
     <script>
       const pathParts = window.location.pathname.split("/");
       const blogIdIndex = pathParts.indexOf("blogs") + 1;
+      const adminId = pathParts[pathParts.indexOf("admin") + 1];
       const blogId = pathParts[blogIdIndex];
       const form = document.getElementById("createBlog");
+      const saveBtn = document.querySelector("save");
 
       try {
         document.addEventListener("click", async function (e) {
@@ -137,15 +140,17 @@
             swal("Declined", "Blog update Declined", "warning");
             return;
           }
+        
+        const data = Object.fromEntries(new FormData(form).entries());
+        data.id = blogId;
+        console.log(data);
+
+        await fetch(`${window.location.origin}/api/admin/${adminId}/blogs/${blogId}/edit`,{
+          method: 'PATCH',
+          headers: {"content-type": "application/json"},
+          body : JSON.stringify(data)
         });
-        form.addEventListener("submit", (e) => {
-          e.preventDefault();
-          const data = {};
-          const formData = new FormData(form);
-          for (const [key, value] of formData.entries()) {
-            data[key] = value;
-          }
-          console.log(data);
+        swal("Updated", "Blog Updated Successfully","success");
         });
       } catch (error) {
         console.log("error in updating blog : ", error);
@@ -156,6 +161,7 @@
       async function renderBlogDetails() {
         try {
           const res = await fetch(`${windows.location.origin}`);
+          console.log(res);
         } catch (error) {
           console.error("Error fetching pharmacies :", error);
           document.getElementById("createBlog").innerHTML =

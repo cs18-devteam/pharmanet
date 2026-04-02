@@ -121,6 +121,9 @@ pharmacyRegisterForm.addEventListener("submit", async (e) => {
   const inputFile_ownerProof = pharmacyRegisterForm.querySelector(
     'input[name="OwnerProof"]',
   );
+  const inputFile_image = pharmacyRegisterForm.querySelector(
+    'input[name="image"]',
+  );
 
   formData.append("name", input_pharmacyName?.value);
   formData.append("email", input_email?.value);
@@ -136,12 +139,12 @@ pharmacyRegisterForm.addEventListener("submit", async (e) => {
   formData.append("registrationDoc", inputFile_pharmacyRegistration?.files[0]);
   formData.append("ownerDoc", inputFile_ownerProof?.files[0]);
   formData.append("addressDoc", inputFile_pharmacyAddressProof?.files[0]);
-  formData.append("image", inputFile_pharmacyRegistration?.files[0]);
+  formData.append("image", inputFile_image?.files[0]);
 
   renderSpinner();
   const { status, results, message } = await submitPharmacyRegisterData(
     formData,
-    1,
+    Application.userId,
   );
   removeSpinner();
 

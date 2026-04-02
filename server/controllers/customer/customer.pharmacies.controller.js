@@ -181,6 +181,7 @@ exports.createPharmacy = async (req, res) => {
 
   try {
     const pharmacyData = await getMultipartData(req);
+    console.log(pharmacyData);
 
     //validation name come from regisration form
     const pharmacyName = (pharmacyData.name || "").trim();
@@ -209,18 +210,6 @@ exports.createPharmacy = async (req, res) => {
         status: "error",
         message: "pharmacy name can only contain letters, numbers, and spaces",
         field: "name",
-      });
-    }
-
-    //validation email come from regisration form
-    //use common/emailValidator.js to validate email
-    const emailValidation = validateEmail(pharmacyData.email);
-    if (!emailValidation.valid) {
-      await Pharmacies.query("rollback");
-      return responseJson(res, 400, {
-        status: "error",
-        message: emailValidation.message,
-        field: "email",
       });
     }
 
@@ -327,8 +316,10 @@ exports.createPharmacy = async (req, res) => {
     }
 
     if (
-      !googleMapLink.startsWith("https://maps.app.goo.gl") ||
-      !googleMapLink.startsWith("https://goo.gl/maps")
+      !(
+        googleMapLink.startsWith("https://maps.app.goo.gl") ||
+        googleMapLink.startsWith("https://goo.gl/maps")
+      )
     ) {
       await Pharmacies.query("rollback");
       return responseJson(res, 400, {
@@ -352,13 +343,12 @@ exports.createPharmacy = async (req, res) => {
 
     //validation of rang og latitede and longitude come from regisration form
     const latitude = parseFloat(pharmacyData.latitude);
-    const longitude = parseFloat(pharmacyData.longitude);
 
     if (!latitude) {
       await Pharmacies.query("rollback");
       return responseJson(res, 400, {
         status: "error",
-        message: "latitute is required",
+        message: "latitude is required",
         field: "latitude",
       });
     }
@@ -367,10 +357,12 @@ exports.createPharmacy = async (req, res) => {
       await Pharmacies.query("rollback");
       return responseJson(res, 400, {
         status: "error",
-        message: "Latitude must be a number between 5.50 and 10.00",
+        message: "Check latitude",
         field: "latitude",
       });
     }
+
+    const longitude = parseFloat(pharmacyData.longitude);
 
     if (!longitude) {
       await Pharmacies.query("rollback");
@@ -385,8 +377,51 @@ exports.createPharmacy = async (req, res) => {
       await Pharmacies.query("rollback");
       return responseJson(res, 400, {
         status: "error",
-        message: "Longitude must be a number between 79.5 and 82.0",
+        message: "check longitude",
         field: "longitude",
+      });
+    }
+
+    //validation of registration document come from regisration form
+    // strict required docs
+    const registrationDoc = pharmacyData.registrationDoc;
+    const ownerDoc = pharmacyData.ownerDoc;
+    const addressDoc = pharmacyData.addressDoc;
+    const image = pharmacyData.image;
+
+    if (!registrationDoc || !(pharmacyData.registrationDoc instanceof File)) {
+      await Pharmacies.query("rollback");
+      return responseJson(res, 400, {
+        status: "error",
+        message: "registration document is required",
+        field: "registrationDoc",
+      });
+    }
+
+    if (!ownerDoc || !(pharmacyData.ownerDoc instanceof File)) {
+      await Pharmacies.query("rollback");
+      return responseJson(res, 400, {
+        status: "error",
+        message: "owner document is required",
+        field: "ownerDoc",
+      });
+    }
+
+    if (!addressDoc || !(pharmacyData.addressDoc instanceof File)) {
+      await Pharmacies.query("rollback");
+      return responseJson(res, 400, {
+        status: "error",
+        message: "address document is required",
+        field: "addressDoc",
+      });
+    }
+
+    if (!image || !image.fileName || !image.content) {
+      await Pharmacies.query("rollback");
+      return responseJson(res, 400, {
+        status: "error",
+        message: "Pharmacy image is required",
+        field: "image",
       });
     }
 

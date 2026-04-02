@@ -234,3 +234,23 @@ export async function getOrder(orderId) {
         }
     }
 }
+
+
+
+export async function getTotalOrdersAndOrderCount(){
+    try{
+        const res = await fetch(`/api/v1/orders/summery?pharmacy=${Application.pharmacyId}`)
+
+        const data = await res.json();
+        return data;
+
+    }catch(e){
+        console.log(e);
+        return {
+            status:"success",
+            error:"connection error",
+            data :[]
+        }
+    }
+    
+}

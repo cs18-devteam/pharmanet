@@ -22,7 +22,6 @@ export async function createStaff(formData) {
 
 export async function getStaffData() {
     try{
-
         const response = await fetch(`/pharmacies/${Application.pharmacyId}/staff` , {
             method: "GET",
         });

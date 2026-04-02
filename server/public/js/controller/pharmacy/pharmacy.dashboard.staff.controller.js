@@ -17,7 +17,6 @@ export default function init(){
     const waitForApplicationData = setInterval(() => {
         if (Application.pharmacyId && Application.staffId) {
             clearInterval(waitForApplicationData);
-            console.log("Fetching data with:", Application.pharmacyId, Application.staffId);
             
             // Fetch staff list
             fetchAndRenderStaff();

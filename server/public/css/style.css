@@ -15050,6 +15050,12 @@ button.save {
   padding-right: 8rem;
   width: 60%;
 }
+.pharmacyDashboard .dashboards .container.staff .page .actions .staff-member-name {
+  font-size: 2.8rem;
+  text-transform: capitalize;
+  margin-bottom: 6rem;
+  color: var(--color-green-01);
+}
 .pharmacyDashboard .dashboards .container.staff .page .action-row {
   display: flex;
   justify-content: space-between;

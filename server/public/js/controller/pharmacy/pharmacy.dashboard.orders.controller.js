@@ -1,6 +1,6 @@
 import Payment from "../../model/Payment.js";
 import Application from "../../model/application/Application.js";
-import { createOrder, deleteOrder, getOrdersList } from "../../model/pharmacy/orders.js";
+import { createOrder, deleteOrder, getOrdersList, getTotalOrdersAndOrderCount } from "../../model/pharmacy/orders.js";
 import { closeDrawer, openDrawer, setDrawerContent } from "../../view/pharmacy/drawerView.js";
 import { createOrderTable } from "../../view/pharmacy/orders/orderTableView.js";
 import { orderView } from "../../view/pharmacy/orders/orderView.js";
@@ -20,6 +20,7 @@ export default function init(){
 
     ordersBtn.addEventListener("click" , showOrders);
     searchBtn.addEventListener("click" , ()=>{closeDrawer()})
+    updateOrderSummery();
 
 
 
@@ -147,7 +148,7 @@ createOrderCreateBtn?.addEventListener("click" ,async ()=>{
             })
         }
 
-
+        updateOrderSummery();
 
 
     }
@@ -260,6 +261,7 @@ printBtn.addEventListener("click" , ()=>{
 
 
 
+
 async function showOrders(e){
     const data = await getOrdersList();
 
@@ -333,9 +335,23 @@ async function showOrders(e){
         }
     })
 
+}
 
 
 
+async function updateOrderSummery() {
+    try{
+        const {status , data: summery} = await getTotalOrdersAndOrderCount()
+        if(status != "success") return;
+        const totalAmount = document.querySelector(".total__sales__description__amount")
+        if(totalAmount) totalAmount.textContent = `Rs ${Number(summery.total).toLocaleString('si-LK')}`;
+        const totalOrders = document.querySelector('.total__orders__description__amount');
+        if(totalOrders) totalOrders.textContent =  summery.orders;
+
+
+    }catch(e){
+        console.log(e);
+    }
 }
 
 

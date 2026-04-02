@@ -2,26 +2,29 @@ import { getStaffData } from "../../../model/pharmacy/fetchStaffData.js";
 import { getLeaveRequests } from "../../../model/pharmacy/fetchLeaveData.js";
 import { setSelectedStaffData } from "./handleEditStaff.js";
 import html from "../../../view/html.js";
+import Application from "../../../model/application/Application.js";
 
 const template = html`
   <div class="staff-item" data-id="{userId}" data-staffId="{staffId}">
     <img src="{profile}" alt="avatar" />
     <div class="info">
       <h4>{firstName} {lastName}</h4>
-      <span>{role}</span>
+      <span>ID:{id} - </span><span>{role}</span>
+
     </div>
   </div>
 `;
 
-let allStaffMembers = [];
 
 export async function fetchAndRenderStaff() {
   try {
     console.log("Fetching staff data...");
     const response = await getStaffData();
     console.log("Staff response:", response);
+
     
     const { results } = response;
+    console.log(results);
 
     if (!results || results.length === 0) {
       console.log("No staff members found");
@@ -31,7 +34,7 @@ export async function fetchAndRenderStaff() {
       return;
     }
 
-    allStaffMembers = results; // Store for later use
+    Application.allStaffMembers = results; // Store for later use
     console.log("Found", results.length, "staff members");
 
     const allStaffCards = results
@@ -42,7 +45,8 @@ export async function fetchAndRenderStaff() {
           .replace("{profile}", member.profile || "/users/profile-general.jpg")
           .replace("{role}", member.role || "Staff")
           .replace("{firstName}", member.firstName || "Unknown")
-          .replace("{lastName}", member.lastName || ""),
+          .replace("{lastName}", member.lastName || "")
+          .replace("{id}", member.id || ""),
       )
       .join(" ");
 
@@ -59,32 +63,34 @@ export async function fetchAndRenderStaff() {
     document.querySelectorAll(".staff-item").forEach((item) => {
       item.addEventListener("click", function (e) {
         e.stopPropagation();
+
+
         
         // Get the userId and staffId from data attributes
         const userId = this.getAttribute("data-id");
         const staffId = this.getAttribute("data-staffId");
         
-        console.log("Selected staff:", { userId, staffId });
-
         // Find the full staff member data
-        const selectedStaff = allStaffMembers.find(m => 
+        const selectedStaff = Application.allStaffMembers.find(m => 
           m.userId == userId || m.staffId == staffId || m.id == staffId
         );
 
         if (selectedStaff) {
-          console.log("Staff member data:", selectedStaff);
+          Application.currentSelectedStaffMember = Application.allStaffMembers.find(m=>m.id == selectedStaff.id);
           // Pass the selected staff data to the edit form
           setSelectedStaffData(selectedStaff);
           
           // Hide recent leaves and show actions
           const recentLeaveContainer = document.querySelector(".recentLeaveContainer");
           const actions = document.querySelector(".actions");
+          const memberName = actions.querySelector('.staff-member-name');
 
           if (recentLeaveContainer) {
             recentLeaveContainer.style.display = "none";
           }
           if (actions) {
             actions.style.display = "block";
+             if(memberName) memberName.textContent = `${Application.currentSelectedStaffMember.firstName || " "} ${Application.currentSelectedStaffMember.lastName || " "}`
           }
         } else {
           console.error("Staff member data not found");

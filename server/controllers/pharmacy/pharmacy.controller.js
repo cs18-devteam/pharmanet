@@ -197,3 +197,13 @@ exports.deletePharmacy = apiCatchAsync(async (req , res)=>{
 })
 
 
+
+
+exports.getPharmacy = apiCatchAsync(async (req, res)=>{
+    const pharmacyId = req.pharmacyId;
+    const [pharmacy] = await Pharmacies.getById(pharmacyId);
+    return responseJson(res ,200 , {
+        status:"success",
+        results: pharmacy,
+    })
+})

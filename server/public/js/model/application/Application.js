@@ -78,7 +78,7 @@ function update(){
         .catch(e=>console.log(e));
     }
     if(Application.pharmacyId){
-        fetch(`//${Application.pharmacyId}`)
+        fetch(`/api/v1/pharmacies/${Application.pharmacyId}`)
         .then(data => data.json())
         .then(pharmacy=>Application.pharmacy = pharmacy.results)
         .catch(e=>console.log(e));
@@ -115,6 +115,9 @@ export default class Application{
     static staff = undefined;
     static latitude = undefined;
     static longitude = undefined;
+    static currentSelectedStaffMemberId = undefined;
+    static currentSelectedStaffMember = undefined;
+    static allStaffMembers = [];
 
 
     /**

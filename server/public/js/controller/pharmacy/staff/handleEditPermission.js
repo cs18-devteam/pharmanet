@@ -56,7 +56,7 @@ const sideBarTemplate = html`
                 <div class="permission">
                     <span>Search  Products</span>
                     <label class="switch">
-                        <input name="searchProducts" type="checkbox">
+                        <input name="searchProducts" {searchProducts} type="checkbox">
                         <span class="slider"></span>
                     </label>
                 </div>
@@ -113,7 +113,7 @@ const sideBarTemplate = html`
                 <div class="permission">
                     <span>Delete Medicine Stock</span>
                     <label class="switch">
-                        <input name="deleteMedicines" {deleteMedicines]} type="checkbox">
+                        <input name="deleteMedicines" {deleteMedicines} type="checkbox">
                         <span class="slider"></span>
                     </label>
                 </div>
@@ -140,8 +140,8 @@ const sideBarTemplate = html`
 
         <div class="permission">
         <span>Update Staff Member</span>
-        <label name="updateStaff" {updateStaff} class="switch">
-            <input type="checkbox">
+        <label   class="switch">
+            <input name="updateStaff" {updateStaff} type="checkbox">
             <span class="slider"></span>
         </label>
         </div>
@@ -173,11 +173,12 @@ export async function handleEditPermission() {
     const editPermissionsBtn = document.getElementById("btn-change-perssmions_staff");
     editPermissionsBtn.addEventListener("click" , ()=>{
         let content = sideBarTemplate;
-        Object.entries(Application.staff).forEach(([key ,value])=>{
+        Object.entries(Application.currentSelectedStaffMember).forEach(([key ,value])=>{
+            console.log(key , value);
             content = content.replace(`{${key}}` , value ? "checked" : " ");
         })
 
-        setSidebarContent(content.replace("{staffId}" , Application.staff.id));
+        setSidebarContent(content.replace("{staffId}" , Application.currentSelectedStaffMember.id));
         openSidebar();
 
 
@@ -194,6 +195,11 @@ export async function handleEditPermission() {
             const formData = new FormData(form);
             const {status , results} = await  updateStaffPermissions(formData);
             
+            Application.allStaffMembers =Application.allStaffMembers.map(m=>{
+                if(m.id != results.id ) return {...m};
+                return {...m , ...results}; 
+            });
+
             if(status == "success"){
                 renderToast('staff permission updated' , 'success');
             }else{

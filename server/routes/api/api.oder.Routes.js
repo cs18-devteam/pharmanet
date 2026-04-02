@@ -13,6 +13,9 @@ exports.ordersApiRouter = SubRouter.route('/api/v1/orders')
     get: orderController.getOrderItems,
     delete : orderController.removeOrderItems,
 })
+.subRoute('/summery' , {
+    get: orderController.getOrderSummery,
+})
 .subRoute("/:orderId" , {
     delete: orderController.deleteOrder,
 })

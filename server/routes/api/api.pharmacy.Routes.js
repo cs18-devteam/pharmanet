@@ -9,6 +9,9 @@ exports.pharmaciesApiRouter = SubRouter.route("/api/v1/pharmacies")
 .subRoute('/' , {
     get: pharmacyController.sendOnlinePharmacies,
 })
+.subRoute('/:pharmacyId' , {
+    get: pharmacyController.getPharmacy,
+})
 
 
 

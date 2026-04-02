@@ -96,6 +96,7 @@
 /payments/hash
 /products/pharmacy_management_system
 /api/v1/pharmacies
+/api/v1/pharmacies/:pharmacyId
 /api/v1/pharmacies/:pharmacyId/medicines
 /api/v1/pharmacies/:pharmacyId/medicines/info
 /api/v1/pharmacies/:pharmacyId/stock/medicines
@@ -111,6 +112,7 @@
 /api/v1/customers/:customerId/cart
 /api/v1/orders
 /api/v1/orders/:orderId/items
+/api/v1/orders/summery
 /api/v1/orders/:orderId
 /pharmacies/:pharmacyId/staff/create
 /pharmacies/:pharmacyId/staff

@@ -82,7 +82,12 @@ exports.getStaffMembers = apiCatchAsync(async (req, res) => {
     return { ...user, userId: user.id, ...m };
   });
 
+
+
+
   members = await Promise.all(members);
+
+  console.log(members);
 
   return responseJson(res, 200, {
     status: "success",
@@ -110,6 +115,8 @@ exports.changePermissions = apiCatchAsync(async (req, res) => {
   
   const data = await getMultipartData(req);
 
+
+
   const permissionObj = {
     id: data.staffId,
     createOrder: data.createOrder == "on" ? "1" : "0",
@@ -133,7 +140,7 @@ exports.changePermissions = apiCatchAsync(async (req, res) => {
     searchMedicines: data.searchMedicines == "on" ? "1" : "0",
     createMedicines: data.createMedicines == "on" ? "1" : "0",
     deleteMedicines: data.deleteMedicines == "on" ? "1" : "0",
-    createMedicines: data.createMedicines == "on" ? "1" : "0",
+    updateMedicines: data.updateMedicines == "on" ? "1" : "0",
 
     // staff permission
     searchStaff: data.searchStaff == "on" ? "1" : "0",
@@ -141,6 +148,7 @@ exports.changePermissions = apiCatchAsync(async (req, res) => {
     deleteStaff: data.deleteStaff == "on" ? "1" : "0",
     createStaff: data.createStaff == "on" ? "1" : "0",
   };
+
 
   const [staffMember] = await PharmacyStaff.update(permissionObj);
 

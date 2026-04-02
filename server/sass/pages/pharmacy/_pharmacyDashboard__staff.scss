@@ -18,13 +18,11 @@
     .page {
       min-height: 100vh;
       padding: 4rem;
-      background: linear-gradient(
-        113deg,
-        #69cdff 0%,
-        #127eb5 20%,
-        #006395 64.59%,
-        #006395 83.5%
-      );
+      background: linear-gradient(113deg,
+          #69cdff 0%,
+          #127eb5 20%,
+          #006395 64.59%,
+          #006395 83.5%);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -163,7 +161,7 @@
       text-transform: capitalize;
     }
 
-    > * {
+    >* {
       width: 100%;
     }
 
@@ -172,7 +170,7 @@
       max-width: 100rem;
       width: 100%;
 
-      > * {
+      >* {
         border-top: 0.1rem solid #eee;
         padding: 2rem;
       }
@@ -430,7 +428,7 @@
       display: block;
       padding-right: 2rem;
       width: 60%;
-      overflow-y:  auto;
+      overflow-y: auto;
 
       $border: #e5e7eb;
       $text-dark: #111827;
@@ -496,6 +494,14 @@
       padding-left: -1rem;
       padding-right: 8rem;
       width: 60%;
+
+
+      .staff-member-name {
+        font-size: 2.8rem;
+        text-transform: capitalize;
+        margin-bottom: 6rem;
+        color: var(--color-green-01);
+      }
     }
 
     .action-row {
@@ -791,18 +797,18 @@
         justify-content: space-between;
         align-items: baseline;
 
-        .title-block { 
-          display: flex; 
-          flex-direction: column; 
-          gap: 0.2rem; 
+        .title-block {
+          display: flex;
+          flex-direction: column;
+          gap: 0.2rem;
         }
 
-        .header-block{
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: -0.5rem;
+        .header-block {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: -0.5rem;
         }
 
         h2 {
@@ -811,8 +817,8 @@
           color: #000;
           margin-bottom: -0.7rem;
         }
-        
-        p{
+
+        p {
           padding-bottom: 1rem;
         }
       }
@@ -820,7 +826,7 @@
       .uid {
         color: #777;
         font-size: 1rem;
-        
+
       }
 
       .profile-section {
@@ -1167,10 +1173,8 @@
         border-radius: 1rem;
         border-color: var(--color-yellow-01);
         box-shadow: none;
-        background: var(
-          --yellow-gradient,
-          linear-gradient(91deg, #f9a550 0%, #fb8f21 100%)
-        );
+        background: var(--yellow-gradient,
+            linear-gradient(91deg, #f9a550 0%, #fb8f21 100%));
         font-size: 1.8rem;
         color: white;
         line-height: normal;
@@ -1464,6 +1468,7 @@
 
 @mixin pharmacyMemberInfo {
   .PharmacyMemberIntro {
+
     input,
     select {
       border: 0.1rem solid #eee;
@@ -1672,7 +1677,7 @@
         padding: 3rem;
         align-items: center;
 
-        > div {
+        >div {
           width: 100%;
         }
 
@@ -1680,7 +1685,7 @@
           display: flex;
           justify-content: space-between;
 
-          > div {
+          >div {
             width: 48%;
           }
         }
@@ -1700,7 +1705,7 @@
         padding: 3rem;
         align-items: center;
 
-        > div {
+        >div {
           width: 100%;
         }
 
@@ -1882,6 +1887,7 @@
           font-size: large;
         }
       }
+
       .barcode-container {
         display: grid;
         grid-template-columns: 20% 80%;
@@ -1891,6 +1897,7 @@
         border-radius: 1rem;
         margin-bottom: 1rem;
       }
+
       ul li a {
         color: var(--color-gray);
         font-size: 1.8rem;
@@ -1975,10 +1982,8 @@
 
       .create {
         position: absolute;
-        background: var(
-          --green-gradient,
-          linear-gradient(91deg, #18978d 0%, #083851 100%)
-        );
+        background: var(--green-gradient,
+            linear-gradient(91deg, #18978d 0%, #083851 100%));
         top: 10rem;
         left: 104rem;
         color: white;
@@ -2020,6 +2025,7 @@
           color: var(--color-gray);
           padding: 2rem;
         }
+
         td {
           position: relative;
           padding: 2rem;
@@ -2115,11 +2121,11 @@
     transition: 0.3s;
   }
 
-  .switch input:checked + .slider {
+  .switch input:checked+.slider {
     background: #000;
   }
 
-  .switch input:checked + .slider::before {
+  .switch input:checked+.slider::before {
     transform: translateX(2rem);
   }
 

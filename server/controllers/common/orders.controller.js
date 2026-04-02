@@ -163,7 +163,7 @@ exports.getOrders = apiCatchAsync(async (req, res) => {
     let pharmacyId = req.params.get('pharmacy')
     const id = req.params.get('id');
 
-    if(!pharmacyId){
+    if (!pharmacyId) {
         pharmacyId = readCookies(req).pharmacyId;
     }
 
@@ -181,7 +181,7 @@ exports.getOrders = apiCatchAsync(async (req, res) => {
             orderId: order.id,
         });
 
-        
+
         console.log(order);
 
         items = await Promise.all(items.map(async i => {
@@ -190,28 +190,28 @@ exports.getOrders = apiCatchAsync(async (req, res) => {
 
                 let stock;
 
-                if(order.pharmacyId){
+                if (order.pharmacyId) {
 
                     stock = (await PharmacyMedicines.get({
-                        pharmacyId : order.pharmacyId,
-                        medicineId : medicine.id
+                        pharmacyId: order.pharmacyId,
+                        medicineId: medicine.id
                     }))[0]
-                }else{
+                } else {
                     stock = (await PharmacyMedicines.get({
-                        medicineId : medicine.id
+                        medicineId: medicine.id
                     }))[0]
 
                 }
 
 
-                console.log(stock ,{
-                    pharmacyId ,
-                    medicineId : medicine.id
-                } );
+                console.log(stock, {
+                    pharmacyId,
+                    medicineId: medicine.id
+                });
                 return {
                     ...i,
                     name: medicine.geneticName,
-                    price : stock?.price || 0,
+                    price: stock?.price || 0,
 
                 }
             } else {
@@ -219,7 +219,7 @@ exports.getOrders = apiCatchAsync(async (req, res) => {
                 return {
                     ...i,
                     name: product.name,
-                    price : product.price,
+                    price: product.price,
                 }
             }
             return { ...i };
@@ -462,5 +462,44 @@ exports.removeOrderItems = apiCatchAsync(async (req, res) => {
     return responseJson(res, 201, {
         status: "success",
         message: "order item removed from the cart",
+    })
+})
+
+
+
+exports.getOrderSummery = apiCatchAsync(async (req, res) => {
+    const pharmacyId = req.params.get("pharmacy");
+    if (!pharmacyId) throw new Error("pharmacy id not found");
+
+    const orders = await PharmacyOrders.query(`select * from this.table where DATE(createdAt) = CURDATE() and pharmacyId=${pharmacyId}`);
+
+
+
+
+
+    const transactions = [];
+
+    await Promise.all(orders?.map(async o => {
+        const tr = await Transactions.get({
+            orderId: o.id,
+        });
+
+        transactions.push(...tr)
+    }));
+
+    total = transactions?.reduce((acc, tr) => {
+        return acc + (tr.amount || 0)
+    }, 0)
+
+
+    const summery = {
+        orders: orders.length,
+        total: total,
+    };
+
+
+    return responseJson(res, 200, {
+        status: "success",
+        data: summery,
     })
 })

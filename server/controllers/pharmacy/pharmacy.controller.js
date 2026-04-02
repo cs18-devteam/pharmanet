@@ -78,6 +78,11 @@ exports.renderPharmacyDashboard = async (req , res)=>{
         
         const [pharmacy] =await Pharmacies.getById(pharmacyId);
         const [staffMember] =await PharmacyStaff.getById(staffId);
+
+        const [totalProducts] = await Products.query(`select count(*) as total from this.table where pharmacyId = ${pharmacyId}`);
+        const [lowStockProduct] = await Products.query(`select count(*) as total from this.table where pharmacyId = ${pharmacyId} and quantity < 10`);
+        const [outofStockProducts] = await Products.query(`select count(*) as total from this.table where pharmacyId = ${pharmacyId} and quantity <= 0`);
+
         
         if(!pharmacy){
             throw new Error("pharmacy not found");
@@ -91,7 +96,11 @@ exports.renderPharmacyDashboard = async (req , res)=>{
             transactionsView : view('pharmacy/views/dashboard.transactions.view'),
             staffView : view('pharmacy/views/dashboard.staff.view'),
             chatsView : view('pharmacy/views/dashboard.chats.view'),
-            productsView : view('pharmacy/views/dashboard.product.view'),
+            productsView : view('pharmacy/views/dashboard.product.view' , {
+                total : totalProducts.total  ,
+                lowstock : lowStockProduct.total ,
+                outofstock  : outofStockProducts.total, 
+            }),
             medicinesView : view('pharmacy/views/dashboard.medicines.view'),
             ordersView : view('pharmacy/views/dashboard.orders.view'),
             docsView : view('pharmacy/views/dashboard.docs.view'),

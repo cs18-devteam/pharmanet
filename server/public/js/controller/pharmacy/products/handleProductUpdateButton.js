@@ -64,7 +64,7 @@ const sidebarContent = html`
         
         
         <div class="form-btns">
-            <button class="cancel-btn">cancel</button>
+            <div class="cancel-btn">cancel</div>
             <button class="update-btn" data-id="{id}">Update</button>
         </div>
 
@@ -78,6 +78,9 @@ export async function handleProductUpdateButton() {
     const updateButton = document.querySelector(".additional_setting .update");
     
     updateButton?.addEventListener("click" ,async (e)=>{
+        
+
+
         e.stopPropagation();
         const {results: product} =await getProductData(updateButton.dataset.id);
         setSidebarContent(sidebarContent

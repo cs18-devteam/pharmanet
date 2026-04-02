@@ -11,7 +11,6 @@ class PharmacyOrderModel extends Model{
 
         this.staffId = {
             type:"INT",
-            null: false,
         }
         this.userId = {
             type:"INT",

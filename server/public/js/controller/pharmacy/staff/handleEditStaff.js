@@ -4,6 +4,7 @@ import Application from "../../../model/application/Application.js";
 let selectedStaffData = null;
 let isEditInitialized = false;
 
+
 export function setSelectedStaffData(staffData) {
     // Add pharmacyId from Application if not present
     selectedStaffData = {

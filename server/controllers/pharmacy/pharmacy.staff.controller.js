@@ -5,6 +5,7 @@ const Users = require("../../models/UserModel");
 const view = require("../../common/view");
 const { apiCatchAsync } = require("../../common/catchAsync");
 const getMultipartData = require("../../common/getMultipartData");
+const { hashPassword } = require("../../common/Auth");
 
 exports.renderCreateStaff = async (req, res) => {
   try {
@@ -39,7 +40,7 @@ exports.createStaffMember = apiCatchAsync(async (req, res) => {
     firstName: reqData.firstName,
     lastName: reqData.lastName,
     email: reqData.email,
-    password: reqData.password || "1234567890",
+    password: hashPassword("1234567890"),
     nic: reqData.nic,
     fullName: reqData.fullName,
     dateOfBirth: reqData.dateOfBirth,
@@ -216,3 +217,35 @@ exports.updateStaffMember = apiCatchAsync(async (req, res) => {
     results: { ...updatedUser, userId: updatedUser.id || userId, staffId: staff.id },
   });
 });
+
+
+
+exports.resetPassword = apiCatchAsync(async (req , res)=>{
+    const staffId = req.staffId;
+    const [staff] = await PharmacyStaff.getById(staffId);
+    if(!staff) throw new Error("staff member not found");
+
+    await Users.update({
+      id : staff.userId,
+      password : hashPassword("1234567890")
+    })
+
+    return responseJson(res , 200 , {
+      status:"success",
+      message:"password reset successful",
+    })
+})
+
+exports.deleteMember = apiCatchAsync(async (req , res)=>{
+    const staffId = req.staffId;
+    const [staff] = await PharmacyStaff.getById(staffId);
+    if(!staff) throw new Error("staff member not found");
+
+    await Users.deleteById(staff.userId);
+    await PharmacyStaff.deleteById(staff.id);
+
+    return responseJson(res , 200 , {
+      status:"success",
+      message:"user deleted successful",
+    })
+})

@@ -62,3 +62,39 @@ export async function updateStaffPermissions(formData) {
         }
     }
 }
+
+export async function resetPassword(staffId) {
+    try{
+        const res = await fetch(`/api/v1/pharmacies/${Application.pharmacyId}/staff/${staffId}/reset` , {
+            method:"PATCH"
+        });
+
+        const data = await res.json();
+        return data;
+
+    }catch(e){
+        console.log(e);
+        return {
+            status:"error",
+            error:e.message,
+        }
+    }
+}
+
+export async function deleteStaffMemberAccount(staffId) {
+    try{
+        const res = await fetch(`/api/v1/pharmacies/${Application.pharmacyId}/staff/${staffId}/delete` , {
+            method:"DELETE"
+        });
+
+        const data = await res.json();
+        return data;
+
+    }catch(e){
+        console.log(e);
+        return {
+            status:"error",
+            error:e.message,
+        }
+    }
+}

@@ -35,12 +35,8 @@ exports.pharmacyApiRouter = SubRouter.route('/api/v1/pharmacies/:pharmacyId')
 
 
 exports.pharmacyApiStaffRouter = SubRouter.route('/api/v1/pharmacies/:pharmacyId')
-.subRoute("/staff" , {
-    get :pharmacyStaffController.getStaffMembers,
-    post: pharmacyStaffController.createStaffMember,
-    // update: ,
-    // delete: , 
-
+.subRoute("/staff/:staffId/reset" , {
+    update: pharmacyStaffController.resetPassword,
 })
 .subRoute("/staff/:staffId/leaves", {
     get: pharmacyStaffLeaveController.getLeaveRequests,
@@ -48,15 +44,20 @@ exports.pharmacyApiStaffRouter = SubRouter.route('/api/v1/pharmacies/:pharmacyId
 })
 
 
-exports.pharmacyApiStaffRouter = SubRouter.route('/api/v1/pharmacies/:pharmacyId')
-.subRoute("/staff" , {
+exports.pharmacyApiStaffRouter = SubRouter.route('/api/v1/pharmacies/:pharmacyId/staff')
+.subRoute("/" , {
     get: pharmacyStaffController.getStaffMembers,
     post: pharmacyStaffController.createStaffMember,
 })
-.subRoute("/staff/:staffId/update", {
+.subRoute("/:staffId/update", {
     post: pharmacyStaffController.updateStaffMember,
 })
-.subRoute("/staff/:staffId/leaves", {
+.subRoute("/:staffId/leaves", {
     get: pharmacyStaffLeaveController.getLeaveRequests,
     post: pharmacyStaffLeaveController.createLeaveRequest,
+}).subRoute("/:staffId/reset" , {
+    update: pharmacyStaffController.resetPassword,
+})
+.subRoute("/:staffId/delete" , {
+    delete: pharmacyStaffController.deleteMember,
 })

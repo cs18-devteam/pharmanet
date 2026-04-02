@@ -14702,7 +14702,7 @@ button.save {
 }
 .pharmacyDashboard .dashboards .container.staff .createStaff .card::before {
   width: 90%;
-  transform: translateY(-1.4rem) translateX(5rem);
+  transform: translateY(-1.6rem) translateX(5rem);
   opacity: 0.6;
 }
 .pharmacyDashboard .dashboards .container.staff .createStaff .card {
@@ -14729,7 +14729,7 @@ button.save {
   -webkit-text-fill-color: transparent;
 }
 .pharmacyDashboard .dashboards .container.staff .createStaff .card-header p {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: #000;
 }
 .pharmacyDashboard .dashboards .container.staff .createStaff .btn-create {
@@ -14738,7 +14738,7 @@ button.save {
   border: none;
   padding: 1rem 1.8rem;
   border-radius: 99.9rem;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   cursor: pointer;
   transition: 0.2s ease;
 }
@@ -14755,7 +14755,7 @@ button.save {
 .pharmacyDashboard .dashboards .container.staff .createStaff .staff-item {
   display: flex;
   align-items: center;
-  gap: 1.4rem;
+  gap: 1.6rem;
   padding: 1.2rem 0;
 }
 .pharmacyDashboard .dashboards .container.staff .createStaff .staff-item img {
@@ -14765,12 +14765,12 @@ button.save {
   object-fit: cover;
 }
 .pharmacyDashboard .dashboards .container.staff .createStaff .staff-item .info h4 {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: #000;
   margin-bottom: 0.4rem;
 }
 .pharmacyDashboard .dashboards .container.staff .createStaff .staff-item .info span {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   color: #000;
   font-weight: 400;
 }
@@ -14848,10 +14848,10 @@ button.save {
   font-size: 2.4rem;
 }
 .pharmacyDashboard .dashboards .container.staff .details .details__container .content .profile__details .nic {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 .pharmacyDashboard .dashboards .container.staff .details .details__container .content .profile__details .mobile_numbers {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: #333;
   margin-top: 1rem;
 }
@@ -14884,7 +14884,7 @@ button.save {
   align-items: center;
   text-align: center;
   height: 5rem;
-  padding-top: 1.4rem;
+  padding-top: 1.6rem;
   display: inline-block;
   margin: 0.2rem;
   border: 0.1rem solid #eee;
@@ -14964,7 +14964,7 @@ button.save {
 .pharmacyDashboard .dashboards .container.staff .page .staff-item {
   display: flex;
   align-items: center;
-  gap: 1.4rem;
+  gap: 1.6rem;
   padding: 1rem 1rem;
   border-radius: 1rem;
   cursor: pointer;
@@ -14985,7 +14985,7 @@ button.save {
   font-weight: 400;
 }
 .pharmacyDashboard .dashboards .container.staff .page .staff-item .info span {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: #000;
   font-weight: 100;
 }
@@ -15125,9 +15125,97 @@ button.save {
   color: #000;
   margin-bottom: 0.3rem;
 }
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .reset-password {
+  border-radius: 1rem;
+  border: 1px solid var(--color-yellow-01);
+  padding: 2rem;
+  margin-top: 2rem;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .reset-password:hover p span {
+  background-color: var(--color-yellow-01);
+  background-size: 200%;
+  color: #fff;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .reset-password h3 {
+  color: var(--color-yellow-01);
+  text-transform: capitalize;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .reset-password p {
+  color: var(--color-gray);
+  text-transform: capitalize;
+  font-size: 1.6rem;
+  font-weight: 100;
+  transition: all 0.2s ease;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .reset-password p span {
+  background-image: linear-gradient(to right, #000 50%, #fff 50%);
+  background-size: 0%;
+  background-repeat: no-repeat;
+  transition: all 0.3s ease;
+  background-position: left;
+  padding: 0rem 1rem;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .reset-password button {
+  background-color: var(--color-yellow-01);
+  color: #fff;
+  cursor: pointer;
+  padding: 1.5rem 3rem;
+  text-transform: capitalize;
+  margin: 1rem 0;
+  border-radius: 1rem;
+  transition: all 0.1s ease;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .reset-password button:hover {
+  transition: all 0.2s ease;
+  transform: scale(1.1);
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .danger-zone {
+  border-radius: 1rem;
+  border: 1px solid var(--color-red-01);
+  padding: 2rem;
+  margin-top: 2rem;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .danger-zone:hover p span {
+  background-color: var(--color-red-01);
+  background-size: 200%;
+  color: #fff;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .danger-zone h3 {
+  color: var(--color-red-01);
+  text-transform: capitalize;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .danger-zone p {
+  color: var(--color-gray);
+  text-transform: capitalize;
+  font-size: 1.6rem;
+  font-weight: 100;
+  transition: all 0.2s ease;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .danger-zone p span {
+  background-image: linear-gradient(to right, #000 50%, #fff 50%);
+  background-size: 0%;
+  background-repeat: no-repeat;
+  transition: all 0.3s ease;
+  background-position: left;
+  padding: 0rem 1rem;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .danger-zone button {
+  background-color: var(--color-red-01);
+  color: #fff;
+  cursor: pointer;
+  padding: 1.5rem 3rem;
+  text-transform: capitalize;
+  margin: 1rem 0;
+  border-radius: 1rem;
+  transition: all 0.1s ease;
+}
+.pharmacyDashboard .dashboards .container.staff .page .side-panel .danger-zone button:hover {
+  transition: all 0.2s ease;
+  transform: scale(1.1);
+}
 .pharmacyDashboard .dashboards .container.staff .page .side-panel .uid {
   color: #777;
-  font-size: 1rem;
+  font-size: 1.6rem;
   margin-bottom: 1rem;
 }
 .pharmacyDashboard .dashboards .container.staff .page .side-panel .profile-section {
@@ -15148,7 +15236,7 @@ button.save {
   align-items: center;
   background: #fff;
   border: 0.1rem solid #ddd;
-  padding: 0.8rem 1.4rem;
+  padding: 0.8rem 1.6rem;
   font-size: 1.1rem;
   border-radius: 2rem;
   cursor: pointer;
@@ -15174,7 +15262,7 @@ button.save {
   padding: 1rem;
   border: 0.1rem solid #ddd;
   border-radius: 0.6rem;
-  font-size: 1rem;
+  font-size: 1.6rem;
 }
 .pharmacyDashboard .dashboards .container.staff .page .side-panel .account-form input:focus,
 .pharmacyDashboard .dashboards .container.staff .page .side-panel .account-form select:focus,
@@ -15235,7 +15323,7 @@ button.save {
 }
 .pharmacyDashboard .dashboards .container.staff .page .side-panel .uid {
   color: #777;
-  font-size: 1rem;
+  font-size: 1.6rem;
 }
 .pharmacyDashboard .dashboards .container.staff .page .side-panel .profile-section {
   display: flex;
@@ -15255,7 +15343,7 @@ button.save {
   align-items: center;
   background: #fff;
   border: 0.1rem solid #ddd;
-  padding: 0.8rem 1.4rem;
+  padding: 0.8rem 1.6rem;
   font-size: 1.1rem;
   border-radius: 2rem;
   cursor: pointer;
@@ -15281,7 +15369,7 @@ button.save {
   padding: 1rem;
   border: 0.1rem solid #ddd;
   border-radius: 0.6rem;
-  font-size: 1rem;
+  font-size: 1.6rem;
 }
 .pharmacyDashboard .dashboards .container.staff .page .side-panel .account-form input:focus,
 .pharmacyDashboard .dashboards .container.staff .page .side-panel .account-form select:focus,
@@ -15328,7 +15416,7 @@ button.save {
   margin: 0.4rem 0 0;
   color: black;
   font-weight: 100;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 .pharmacyDashboard .dashboards .container.staff .page .modal-header .close-btn {
   background: none;
@@ -15345,7 +15433,7 @@ button.save {
 .pharmacyDashboard .dashboards .container.staff .page .section label {
   display: block;
   margin: 0.5rem 0;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 .pharmacyDashboard .dashboards .container.staff .page .section label span {
   color: red;
@@ -15357,7 +15445,7 @@ button.save {
   padding: 0.6rem;
   border: 0.1rem solid black;
   border-radius: 0.6rem;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 .pharmacyDashboard .dashboards .container.staff .page .section textarea {
   resize: none;
@@ -15407,7 +15495,7 @@ button.save {
   border-radius: 0.6rem;
   border: none;
   cursor: pointer;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 .pharmacyDashboard .dashboards .container.staff .page .modal-footer .cancel {
   background: white;
@@ -15550,7 +15638,7 @@ button.save {
   border: 0.1rem solid #ddd;
   border-radius: 0.8rem;
   background: #fff;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   width: 100%;
 }
 .pharmacyDashboard .dashboards .container.staff .staffMember .page-container .column2 .info-row .info-box {
@@ -15569,7 +15657,7 @@ button.save {
   font-weight: bold;
 }
 .pharmacyDashboard .dashboards .container.staff .staffMember .page-container .column2 .info-row .info-box .value {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: #000;
   font-weight: 500;
   border: 0.1rem solid #ddd;
@@ -15587,7 +15675,7 @@ button.save {
   border-radius: 0.8rem;
   background: #fff;
   font-family: "Poppins", sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   line-height: 1.6;
   margin-top: 1rem;
 }
@@ -15595,7 +15683,7 @@ button.save {
   margin-bottom: 2rem;
 }
 .pharmacyDashboard .dashboards .container.staff .staffMember .page-container .column2 .info-card .section .section-title {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 600;
   color: var(--color-yellow-01);
   border-bottom: 0.1rem solid #eee;
@@ -15640,7 +15728,7 @@ button.save {
 .pharmacyDashboard .dashboards .container.staff .staffMember .page-container .column3 .attendance-card {
   background: #fff;
   padding: 1.5rem;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 .pharmacyDashboard .dashboards .container.staff .staffMember .page-container .column3 .attendance-card .calendar {
   position: absolute;
@@ -17229,7 +17317,7 @@ p {
 .panel-content h5 {
   color: #000;
   font-family: Poppins;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-style: normal;
   font-weight: 200;
   line-height: normal;

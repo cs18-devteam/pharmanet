@@ -96,10 +96,21 @@ exports.renderEditView = catchAsync(async (req, res) => {
   if (!admin) {
     return response(res, "Admin not found", 404);
   }
+  const blogId = req.blogId;
 
+  const [blog] = await Blogs.getById(blogId);
 
   return response(res, view('blog/editBlog', {
-    ...admin
+    ...admin,
+    title: blog.title, 
+    slug: blog.slug,
+    excerpt:blog.excerpt,
+    content: blog.content,
+    Date: blog.status,
+    category: blog.category,
+    author: blog.author,
+    tag: blog.tag
+
   }), 200);
 })
 

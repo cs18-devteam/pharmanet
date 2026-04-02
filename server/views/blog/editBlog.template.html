@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/style.css" />
     <title>Document</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </head>
   <body class="createNewBlog">
     <header class="page-header">
@@ -65,12 +66,7 @@
           <h3>Publish Settings</h3>
 
           <label>Status</label>
-          <input
-            type="date"
-            name="status"
-            placeholder="DD-MM-YYYY"
-            value="{date}"
-          />
+          <input type="date" name="status" value="{date}" />
           <!-- <select name="status">
           <option>Draft</option>
           <option>Published</option>
@@ -116,12 +112,65 @@
     </main>
 
     <script>
+      const pathParts = window.location.pathname.split("/");
+      const blogIdIndex = pathParts.indexOf("blogs") + 1;
+      const blogId = pathParts[blogIdIndex];
+      const form = document.getElementById("createBlog");
+
+      try {
+        document.addEventListener("click", async function (e) {
+          const saveBtn = e.target.closest(".save");
+          if (!saveBtn) return;
+
+          e.preventDefault();
+          const confirmed = await swal({
+            title: "Are you sure you want to update this blog?",
+            icon: "/logo/logo.svg",
+            buttons: {
+              cancel: { text: "cancel", visible: true },
+              confirm: { text: "Ok", value: "true" },
+            },
+            dangerMode: false,
+          });
+
+          if (!confirmed) {
+            swal("Declined", "Blog update Declined", "warning");
+            return;
+          }
+        });
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const data = {};
+          const formData = new FormData(form);
+          for (const [key, value] of formData.entries()) {
+            data[key] = value;
+          }
+          console.log(data);
+        });
+      } catch (error) {
+        console.log("error in updating blog : ", error);
+      }
+    </script>
+
+    <script>
+      async function renderBlogDetails() {
+        try {
+          const res = await fetch(`${windows.location.origin}`);
+        } catch (error) {
+          console.error("Error fetching pharmacies :", error);
+          document.getElementById("createBlog").innerHTML =
+            "<p>Error in loading Blog details</p>";
+        }
+      }
+    </script>
+
+    <script>
       try{
         const res = await fetch(`${window.location.origin}`)
       }
     </script>
 
-    <script>
+    <!-- <script>
       const form = document.getElementById("createBlog");
       form.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -150,6 +199,6 @@
             Notify.showError(e.message);
           });
       });
-    </script>
+    </script> -->
   </body>
 </html>

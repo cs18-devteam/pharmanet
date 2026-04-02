@@ -2,16 +2,13 @@ const SubRouter = require("../../common/SubRouter");
 const blogController = require("../../controllers/admins/admin.blog.controller");
 
 
-const adminBlogsRouter = SubRouter.route('/admin/:adminId/blogs')
-.subRoute('/api/create' , {
-    post : blogController.createBlog,
-    get : blogController.getAllBlogs,
+exports.adminBlogsRouter = SubRouter.route('/admin/:adminId/blogs')
+
+.subRoute('/create' , {
+    get: blogController.renderAdminCreateNewBlog,
 })
 .subRoute('/manage' , {
     get: blogController.renderAdminBlogManageView,
-})
-.subRoute('/create' , {
-    get: blogController.renderAdminCreateNewBlog,
 })
 .subRoute('/:blogId/edit',{
     get: blogController.renderEditView,
@@ -22,5 +19,10 @@ const adminBlogsRouter = SubRouter.route('/admin/:adminId/blogs')
     delete : blogController.deleteBlog,
 });
 
-module.exports = adminBlogsRouter;
+exports.adminApiBlogRouter = SubRouter.route('/api/admin/:adminId')
+.subRoute('/blogs', {
+   get : blogController.getAllBlogs,  
+   post : blogController.createBlog,
+    
+})
 

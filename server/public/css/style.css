@@ -3906,9 +3906,6 @@ button.save {
     size: A4;
     margin: 2rem;
   }
-  body * {
-    visibility: hidden;
-  }
   .transaction_table_container,
   .transaction_table_container * {
     visibility: visible;
@@ -12940,6 +12937,41 @@ button.save {
   opacity: 1;
   transform: translateY(0);
 }
+@media print {
+  .pharmacyDashboard .dashboards input[type=radio]#orders {
+    opacity: 0;
+  }
+  .pharmacyDashboard .dashboards input[type=radio]#chats {
+    opacity: 0;
+  }
+  .pharmacyDashboard .dashboards input[type=radio]#medicines {
+    opacity: 0;
+  }
+  .pharmacyDashboard .dashboards input[type=radio]#transactions {
+    opacity: 0;
+  }
+  .pharmacyDashboard .dashboards input[type=radio]#products {
+    opacity: 0;
+  }
+  .pharmacyDashboard .dashboards input[type=radio]#docs {
+    opacity: 0;
+  }
+  .pharmacyDashboard .dashboards input[type=radio]#staff {
+    opacity: 0;
+  }
+  .pharmacyDashboard .dashboards .transaction_table_container {
+    opacity: 0;
+  }
+  .pharmacyDashboard .dashboards .orders .orderleft-side, .pharmacyDashboard .dashboards .orders .order-right-side {
+    opacity: 0;
+  }
+  .pharmacyDashboard .dashboards .orders .payment-section-container .receipt-wrapper {
+    background-color: #fff !important;
+  }
+  .pharmacyDashboard .drawer {
+    display: none;
+  }
+}
 .pharmacyDashboard .container {
   top: 1rem;
   left: 0;
@@ -13379,7 +13411,8 @@ button.save {
   position: relative;
   width: 100%;
 }
-.pharmacyDashboard .header-container .header > h1, .pharmacyDashboard .header-container .header p {
+.pharmacyDashboard .header-container .header > h1,
+.pharmacyDashboard .header-container .header p {
   position: absolute;
   top: 0;
 }

@@ -105,10 +105,13 @@ createOrderCreateBtn?.addEventListener("click" ,async ()=>{
     }
 
     const items = Application.getOrderItems().map(item=>{
+
+
         return {
             itemType : item.medicineId ? "medicine" : "product",
             itemId : item.medicineId || item.productId,
             quantity : item.units,
+            discount: item.discounts || 0,
         }
     })
 

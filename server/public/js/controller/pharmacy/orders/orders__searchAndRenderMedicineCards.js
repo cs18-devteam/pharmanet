@@ -112,8 +112,6 @@ medicineCardContainer?.addEventListener('click' , e=>{
         const orderItem = new Application.OrderItem(formData.units , formData.days , formData.discounts , formData.medicineId , formData.productId);
 
 
-
-        console.log(orderItem);
         Application.onPushOrderItems(onPushOrderItem);
         Application.addToOrders(orderItem);
 

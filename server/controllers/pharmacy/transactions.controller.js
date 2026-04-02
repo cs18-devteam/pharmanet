@@ -69,7 +69,7 @@ exports.createTransaction = apiCatchAsync(async (req, res) => {
         type: reqData.type,
         staffID: reqData.staffID,
         method: reqData.method,
-        transactionDateTime: toSqlDate(reqData.datetime) || toSqlDate(new Date()),
+        transactionDateTime: toSqlDate(new Date().toLocaleDateString('si-LK')),
     };
 
     const newTransaction = await Transactions.save(transactionObj);

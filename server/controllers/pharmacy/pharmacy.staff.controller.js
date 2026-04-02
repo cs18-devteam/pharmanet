@@ -107,11 +107,11 @@ exports.getStaffMember = apiCatchAsync(async (req, res) => {
 });
 
 exports.changePermissions = apiCatchAsync(async (req, res) => {
-  const staffId = req.staffId;
+  
   const data = await getMultipartData(req);
 
   const permissionObj = {
-    id: staffId,
+    id: data.staffId,
     createOrder: data.createOrder == "on" ? "1" : "0",
     deleteOrder: data.deleteOrder == "on" ? "1" : "0",
     readOrder: data.readOrder == "on" ? "1" : "0",

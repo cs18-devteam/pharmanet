@@ -7,6 +7,8 @@ import { renderToast } from "../../../view/renderToast.js";
 const sideBarTemplate = html`
         <!-- Permission Panel -->
     <div class="side-panel" id="permissionPanel">
+
+
         <div class="panel-header">
             <h3>Change Permissions</h3>
             <button class="close-btn" onclick="closeSidebar()">&times;</button>
@@ -14,6 +16,7 @@ const sideBarTemplate = html`
 
         <form class="panel-content">
             <h4>Change Member Permisions</h4>
+            <input type="text" name="staffId" value="{staffId}" hidden />
             <h5>Orders Management Permisions</h5>
 
             <div class="permission">
@@ -174,7 +177,7 @@ export async function handleEditPermission() {
             content = content.replace(`{${key}}` , value ? "checked" : " ");
         })
 
-        setSidebarContent(content);
+        setSidebarContent(content.replace("{staffId}" , Application.staff.id));
         openSidebar();
 
 

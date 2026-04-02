@@ -27,6 +27,7 @@ exports.createOrder = apiCatchAsync(async (req, res) => {
     const { staffId } = readCookies(req);
     let ordersData = [];
     let total = 0;
+    let discount = 0;
 
 
     const [order] = await PharmacyOrders.save({
@@ -53,6 +54,8 @@ exports.createOrder = apiCatchAsync(async (req, res) => {
         orders = await Promise.all(items.map(async (item) => {
 
 
+            console.log(item);
+
             let orderItem;
             if (item.itemType == "medicine") {
                 [orderItem] = await PharmacyMedicines.get({
@@ -71,7 +74,7 @@ exports.createOrder = apiCatchAsync(async (req, res) => {
                     stock: orderItem.stock - item.quantity,
                 })
 
-                total += orderItem.price * item.quantity;
+                total += orderItem.price * item.quantity - item.discount;
             } else {
                 orderItem = (await Products.getById(item.itemId))[0];
 
@@ -85,7 +88,7 @@ exports.createOrder = apiCatchAsync(async (req, res) => {
                     quantity: orderItem.quantity - item.quantity,
                 })
 
-                total += orderItem.price * item.quantity;
+                total += orderItem.price * item.quantity - item.discount;
 
             }
 

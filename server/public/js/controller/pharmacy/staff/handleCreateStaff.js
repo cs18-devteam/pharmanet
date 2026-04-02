@@ -1,3 +1,4 @@
+import Application from "../../../model/application/Application.js";
 import { createStaff } from "../../../model/pharmacy/fetchStaffData.js";
 import { closeSidebar, openSidebar, setSidebarContent } from "../../../view/pharmacy/drawerView.js";
 import { swal } from "../../../view/swal.js";
@@ -84,6 +85,7 @@ const sideBarTemplate = html`
 
 function handleFormSubmit(){
     const staffCreationForm = document.getElementById('create_new_pharmacy_staff_member');
+
 
     staffCreationForm.addEventListener("submit" , async e=>{
         e.preventDefault();

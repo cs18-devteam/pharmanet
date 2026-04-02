@@ -1,0 +1,95 @@
+const readCookies = require("../common/readCookies");
+const { responseJson, response } = require("../common/response");
+const PharmacyStaff = require("../models/PharmacyStaffModel");
+
+exports.PERMISSIONS = {
+    createOrder: 'createOrder',
+    deleteOrder: 'deleteOrder',
+    readOrder: "readOrder",
+    updateOrder: " updateOrder",
+    readTransactions: "readTransactions",
+    searchProducts: "searchProducts",
+    updateProducts: "updateProducts",
+    deleteProducts: "deleteProducts",
+    createProducts: "createProducts",
+    searchMedicines: "searchMedicines",
+    createMedicines: "createMedicines",
+    deleteMedicines: "deleteMedicines",
+    updateMedicines: "updateMedicines",
+    searchStaff: "searchStaff",
+    updateStaff: "updateStaff",
+    deleteStaff: "deleteStaff",
+    createStaff: "createStaff",
+}
+
+
+
+
+exports.authorizeToView = (permissions = []) => {
+    return async (req, res, next) => {
+        try {
+
+            const { staffId } = readCookies(req);
+            const [staff] = await PharmacyStaff.getById(staffId);
+
+            if (!staff) return response(res, "", 302, {
+                location: "/login",
+            })
+
+            let authorized = true;
+            permissions.forEach(p => {
+                if (!staff[p]) {
+                    authorized = false;
+                }
+            })
+
+            if (!authorized) return response(res, "", 302, {
+                location: "/login",
+            })
+
+
+            return next();
+
+        } catch (e) {
+            return response(res, "", 302, {
+                location: "/login",
+            })
+        }
+    }
+}
+
+exports.authorizeToApi = (permissions = []) => {
+    return async (req, res, next) => {
+        try {
+
+            const { staffId } = readCookies(req);
+            const [staff] = await PharmacyStaff.getById(staffId);
+
+            if (!staff) return responseJson(res , 401 , {
+                status:"error",
+                message:"your are unauthorized",
+            } )
+
+            let authorized = true;
+            permissions.forEach(p => {
+                if (!staff[p]) {
+                    authorized = false;
+                }
+            })
+
+            if (!authorized) return responseJson(res , 401 , {
+                status:"error",
+                message:"your are unauthorized",
+            })
+
+            return next();
+
+        } catch (e) {
+            return response(res, "", 302, {
+                location: "/login",
+            })
+        }
+
+
+    }
+}

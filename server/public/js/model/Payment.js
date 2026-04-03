@@ -59,6 +59,7 @@ class Payment{
         cancel_url , 
         custom_1 ="" , 
         custom_2 ="", 
+        callback = ()=>{}
     }){
         if(!orderId) throw new Error("order_id must be defined");
         this.order_id = orderId;
@@ -82,6 +83,7 @@ class Payment{
         this.cancel_url = cancel_url;
         this.custom_1 = custom_1;
         this.custom_2 = custom_2;
+        this.callback = callback;
 
     }
 
@@ -134,6 +136,7 @@ class Payment{
         cancel_url , 
         custom_1, 
         custom_2,
+        callback = ()=>{}
     }){
         const payhere = await this.getPayhere();
         const payment = new Payment({
@@ -155,6 +158,7 @@ class Payment{
             cancel_url , 
             custom_1, 
             custom_2, 
+            callback,
         });
 
         await payment.init()
@@ -205,6 +209,8 @@ class Payment{
                     icon:"success",
                 })
             }
+
+            Payment.#currentPayment.callback();
 
 
         }catch(e){
@@ -258,6 +264,7 @@ class Payment{
             "delivery_country": payment.delivery_country,
             "custom_1": payment.custom_1,
             "custom_2": payment.custom_2,
+            
         })
 
     }

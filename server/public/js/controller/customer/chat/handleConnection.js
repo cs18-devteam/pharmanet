@@ -2,13 +2,16 @@ import Application from "../../../model/application/Application.js";
 import ChatTemplates from "../../../model/application/ChatTemplates.js";
 import { createPrescriptionUploadCardContent } from "../../../view/chatbox.js";
 import cart from "../../../view/customer/Cart.js";
+import { createPaymentPopup } from "../../../view/customer/createPaymentPopup.js";
 import CustomerChatBox from "../../../view/customer/CustomerChatBox.js";
 import onClickSkipBtnOfPrescriptionPopup from "../../../view/customer/onClickSkipBtnOfPrescriptionPopup.js";
 import { customerSyncOrder } from "../../../view/customer/syncOrder.js";
+import html from "../../../view/html.js";
 import { renderToast } from "../../../view/renderToast.js";
 import { disconnect } from "../../common/disconnect.js";
 import { requestConnectionWithPharmacy } from "../connection.js";
 import getCartsIdsAndCreateOrder from "./getCartsIdsAndCreateOrder.js";
+import { handlePaymentPopup } from "./handlePaymentPopup.js";
 import onSelectPerscription from "./onSelectPerscription.js";
 import syncOrder from "./syncOrder.js";
 const Chat = Application.MessageTemplates;
@@ -66,6 +69,14 @@ export default function handleConnection(msg){
     }else{
         const {opcode , data} = ChatTemplates.decodeString(message);
         console.log(opcode , data);
+
+        if(ChatTemplates.isRequestPayment(message)){
+            cart.setPopupContent(createPaymentPopup())
+            cart.openPopup();
+            handlePaymentPopup();
+        }
+
+
 
         if(opcode == ChatTemplates.requestPrescriptionCode){
             cart.setPopupContent(createPrescriptionUploadCardContent());

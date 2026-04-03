@@ -69,39 +69,43 @@ export async function getStaffSummary() {
 
 
 
-export async function  createTransaction({
+export async function createTransaction({
   orderId,
   total,
   transactionId,
 }) {
-  try{
-       const transactionObj = {
-        orderId: orderId,
-        pharmacyId: Application.pharmacyId,
-        amount: total,
-        type: "card",
-        staffID: Application.staffId,
-        method: "card",
-        transactionId,
+  try {
+    let typeOfTransaction = "offline";
+    if(!Application.pharmacyId) typeOfTransaction = "online";
+
+    const transactionObj = {
+      orderId: orderId,
+      pharmacyId: (typeOfTransaction == "online") ?  Application.connectedWith : Application.pharmacyId,
+      amount: total,
+      type:  typeOfTransaction,
+      staffID: Application.staffId,
+      method: "card",
+      transactionId,
+      userId : (typeOfTransaction == "online") ? Application.userId : null,
     };
 
     console.log(transactionObj);
-    const res = await fetch(`/api/v1/pharmacies/${Application.pharmacyId}/transactions` , {
-      method:"POST",
-      body : JSON.stringify(transactionObj),
+    const res = await fetch(`/api/v1/pharmacies/${Application.pharmacyId}/transactions`, {
+      method: "POST",
+      body: JSON.stringify(transactionObj),
     })
 
-    if(!res.ok) throw new Error("transaction not complete");
+    if (!res.ok) throw new Error("transaction not complete");
     const data = await res.json();
     console.log(data);
     return data;
 
-  }catch(e){
+  } catch (e) {
     console.log(e);
     return {
-      status:"error",
-      results : [],
-      error:e.error || "something went wrong",
+      status: "error",
+      results: [],
+      error: e.error || "something went wrong",
     }
   }
 }

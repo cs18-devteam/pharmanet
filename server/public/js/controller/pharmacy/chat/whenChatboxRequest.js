@@ -9,6 +9,7 @@ import PharmacyChatbox from "../../../view/pharmacy/PharmacyChatBox.js";
 import { renderToast } from "../../../view/renderToast.js";
 import { onClickAddNewItemButton } from "./onClickAddNewItemButton.js";
 import { onClickMedicineCardOnNewItemMenu } from "./onClickMedicineCardOnNewItemMenu.js";
+import { onClickPaymentRequest } from "./onClickPaymentRequest.js";
 import { onClickRemoveItemOnCart } from "./onClickRemoveItemOnCart.js";
 import { onPrescriptionRequest } from "./onPrescriptionRequest.js";
 import { refreshCartList } from "./refreshCartList.js";
@@ -41,6 +42,7 @@ export async function whenChatBoxRequest(socket,message){
         PharmacyChatbox.handleInputMessage((message)=>Application.connection.send(ChatTemplates.message(message)));
         Application.preventReload();
         onPrescriptionRequest();
+        onClickPaymentRequest();
 
 
 

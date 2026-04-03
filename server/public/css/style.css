@@ -3602,6 +3602,47 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   object-fit: contain;
 }
 
+.payment-popup {
+  margin: 3rem;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.payment-popup h2 {
+  color: var(--color-green-01);
+  justify-self: flex-start;
+}
+.payment-popup p {
+  color: #000;
+  font-weight: 400;
+}
+.payment-popup .payment-methods {
+  display: flex;
+  gap: 2rem;
+  align-self: center;
+  margin-top: auto;
+}
+.payment-popup .payment-methods button {
+  border-radius: 1rem;
+  border: none;
+  background-color: #fff;
+  color: #000;
+  outline: 1px solid #fff;
+  outline-offset: 0rem;
+  transition: all 0.3s ease;
+  border: 1px solid #eee;
+  font-size: 1.8rem;
+  padding: 1rem 2rem;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+.payment-popup .payment-methods button:hover {
+  outline-offset: 1rem;
+  outline: 1px solid var(--color-green-01);
+  color: #fff;
+  background-color: var(--color-green-01);
+}
 body.large-view .header-container {
   display: none;
   padding: 0;

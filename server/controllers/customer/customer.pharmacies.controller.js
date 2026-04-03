@@ -56,11 +56,11 @@ exports.renderCustomerPharmacies = async (req, res) => {
               distance:
                 latitude && longitude
                   ? calculateDistanceKM(
-                      latitude,
-                      longitude,
-                      pharmacy.latitude,
-                      pharmacy.longitude,
-                    ).toFixed(1)
+                    latitude,
+                    longitude,
+                    pharmacy.latitude,
+                    pharmacy.longitude,
+                  ).toFixed(1)
                   : "not available",
               customerId: customer.id,
             }),
@@ -179,299 +179,316 @@ exports.renderPharmacyLandingPage = async (req, res) => {
 
 exports.createPharmacy = apiCatchAsync(async (req, res) => {
 
-    const pharmacyData = await getMultipartData(req);
+  const pharmacyData = await getMultipartData(req);
 
-    //validation name come from regisration form
-    const pharmacyName = (pharmacyData.name || "").trim();
+  //validation name come from regisration form
+  const pharmacyName = (pharmacyData.name || "").trim();
 
-    if (!pharmacyName) {
-      await Pharmacies.query("rollback");
-      return responseJson(res, 400, {
-        status: "error",
-        message: "pharmacy name is required",
-        field: "name",
-      });
-    }
+  if (!pharmacyName) {
+    await Pharmacies.query("rollback");
+    return responseJson(res, 400, {
+      status: "error",
+      message: "pharmacy name is required",
+      field: "name",
+    });
+  }
 
-    if (pharmacyName.length < 2 || pharmacyName.length > 100) {
-      await Pharmacies.query("rollback");
-      return responseJson(res, 400, {
-        status: "error",
-        message: "pharmacy name must be between 2 and 100 characters",
-        field: "name",
-      });
-    }
+  if (pharmacyName.length < 2 || pharmacyName.length > 100) {
+    await Pharmacies.query("rollback");
+    return responseJson(res, 400, {
+      status: "error",
+      message: "pharmacy name must be between 2 and 100 characters",
+      field: "name",
+    });
+  }
 
-    if (/[^a-zA-Z0-9\s]/.test(pharmacyName)) {
-      await Pharmacies.query("rollback");
-      return responseJson(res, 400, {
-        status: "error",
-        message: "pharmacy name can only contain letters, numbers, and spaces",
-        field: "name",
-      });
-    }
+  if (/[^a-zA-Z0-9\s]/.test(pharmacyName)) {
+    await Pharmacies.query("rollback");
+    return responseJson(res, 400, {
+      status: "error",
+      message: "pharmacy name can only contain letters, numbers, and spaces",
+      field: "name",
+    });
+  }
 
-    //validation email come from regisration form
-    //use common/emailValidator.js to validate email
-    const emailValidation = validateEmail(pharmacyData.email);
-    if (!emailValidation.valid) {
-      await Pharmacies.query("rollback");
-      return responseJson(res, 400, {
-        status: "error",
-        message: emailValidation.message,
-        field: "email",
-      });
-    }
+  //validation email come from regisration form
+  //use common/emailValidator.js to validate email
+  const emailValidation = validateEmail(pharmacyData.email);
+  if (!emailValidation.valid) {
+    await Pharmacies.query("rollback");
+    return responseJson(res, 400, {
+      status: "error",
+      message: emailValidation.message,
+      field: "email",
+    });
+  }
 
-    //validation owner name come from regisration form
-    const ownerName = (pharmacyData.owner || "").trim();
-    if (!ownerName) {
-      await Pharmacies.query("rollback");
-      return responseJson(res, 400, {
-        status: "error",
-        message: "owner name is required",
-        field: "owner",
-      });
-    }
+  //validation owner name come from regisration form
+  const ownerName = (pharmacyData.owner || "").trim();
+  if (!ownerName) {
+    await Pharmacies.query("rollback");
+    return responseJson(res, 400, {
+      status: "error",
+      message: "owner name is required",
+      field: "owner",
+    });
+  }
 
-    if (/[^a-zA-Z\s]/.test(ownerName)) {
-      await Pharmacies.query("rollback");
-      return responseJson(res, 400, {
-        status: "error",
-        message: "owner name can only contain letters and spaces",
-        field: "owner",
-      });
-    }
+  if (/[^a-zA-Z\s]/.test(ownerName)) {
+    await Pharmacies.query("rollback");
+    return responseJson(res, 400, {
+      status: "error",
+      message: "owner name can only contain letters and spaces",
+      field: "owner",
+    });
+  }
 
-    //validation address come from regisration form
-    const addressNo = (pharmacyData.addressNo || "").trim();
-    const street = (pharmacyData.street || "").trim();
-    const town = (pharmacyData.town || "").trim();
-    const province = (pharmacyData.province || "").trim();
-    const postalCode = (pharmacyData.postalCode || "").trim();
+  //validation address come from regisration form
+  const addressNo = (pharmacyData.addressNo || "").trim();
+  const street = (pharmacyData.street || "").trim();
+  const town = (pharmacyData.town || "").trim();
+  const province = (pharmacyData.province || "").trim();
+  const postalCode = (pharmacyData.postalCode || "").trim();
 
-    if (!addressNo && !street && !town && !province && !postalCode) {
-      await Pharmacies.query("rollback");
-      return responseJson(res, 400, {
-        status: "error",
-        message: "address is required",
-        field: "address",
-      });
-    }
+  if (!addressNo && !street && !town && !province && !postalCode) {
+    await Pharmacies.query("rollback");
+    return responseJson(res, 400, {
+      status: "error",
+      message: "address is required",
+      field: "address",
+    });
+  }
 
-    if (!addressNo) {
-      await Pharmacies.query("rollback");
-      return responseJson(res, 400, {
-        status: "error",
-        message: "address number is required",
-        field: "addressNo",
-      });
-    }
+  if (!addressNo) {
+    await Pharmacies.query("rollback");
+    return responseJson(res, 400, {
+      status: "error",
+      message: "address number is required",
+      field: "addressNo",
+    });
+  }
 
-    if (!street) {
-      await Pharmacies.query("rollback");
-      return responseJson(res, 400, {
-        status: "error",
-        message: "Street is required",
-        field: "street",
-      });
-    }
+  if (!street) {
+    await Pharmacies.query("rollback");
+    return responseJson(res, 400, {
+      status: "error",
+      message: "Street is required",
+      field: "street",
+    });
+  }
 
-    if (!town) {
-      await Pharmacies.query("rollback");
-      return responseJson(res, 400, {
-        status: "error",
-        message: "Town is required",
-        field: "town",
-      });
-    }
+  if (!town) {
+    await Pharmacies.query("rollback");
+    return responseJson(res, 400, {
+      status: "error",
+      message: "Town is required",
+      field: "town",
+    });
+  }
 
-    if (!province) {
-      await Pharmacies.query("rollback");
-      return responseJson(res, 400, {
-        status: "error",
-        message: "Province is required",
-        field: "province",
-      });
-    }
+  if (!province) {
+    await Pharmacies.query("rollback");
+    return responseJson(res, 400, {
+      status: "error",
+      message: "Province is required",
+      field: "province",
+    });
+  }
 
-    if (!/^\d{5}$/.test(postalCode)) {
-      await Pharmacies.query("rollback");
-      return responseJson(res, 400, {
-        status: "error",
-        message: "Postal code must be exactly 5 digits",
-        field: "postalCode",
-      });
-    }
+  if (!/^\d{5}$/.test(postalCode)) {
+    await Pharmacies.query("rollback");
+    return responseJson(res, 400, {
+      status: "error",
+      message: "Postal code must be exactly 5 digits",
+      field: "postalCode",
+    });
+  }
 
-    if (!postalCode) {
-      await Pharmacies.query("rollback");
-      return responseJson(res, 400, {
-        status: "error",
-        message: "Postal code is required",
-        field: "postalCode",
-      });
-    }
+  if (!postalCode) {
+    await Pharmacies.query("rollback");
+    return responseJson(res, 400, {
+      status: "error",
+      message: "Postal code is required",
+      field: "postalCode",
+    });
+  }
 
-    //validation of google map link come from regisration form
-    const googleMapLink = (pharmacyData.googleMapLink || "").trim();
+  //validation of google map link come from regisration form
+  const googleMapLink = (pharmacyData.googleMapLink || "").trim();
 
-    if (!googleMapLink) {
-      await Pharmacies.query("rollback");
-      return responseJson(res, 400, {
-        status: "error",
-        message: "Google map link is required",
-        field: "googleMapLink",
-      });
-    }
+  if (!googleMapLink) {
+    await Pharmacies.query("rollback");
+    return responseJson(res, 400, {
+      status: "error",
+      message: "Google map link is required",
+      field: "googleMapLink",
+    });
+  }
 
-    if (
-      !(googleMapLink.startsWith("https://maps.app.goo.gl") ||
+  if (
+    !(googleMapLink.startsWith("https://maps.app.goo.gl") ||
       googleMapLink.startsWith("https://goo.gl/maps"))
-    ) {
-      await Pharmacies.query("rollback");
-      return responseJson(res, 400, {
-        status: "error",
-        message: "check your google map link",
-        field: "googleMapLink",
-      });
-    }
-
-    // let url;
-    // try {
-    //   url = new URL(googleMapLink);
-    // } catch (e) {
-    //   await Pharmacies.query("rollback");
-    //   return responseJson(res, 400, {
-    //     status: "error",
-    //     message: "Invalid URL format",
-    //     field: "googleMapLink",
-    //   });
-    // }
-
-    //validation of rang og latitede and longitude come from regisration form
-    const latitude = parseFloat(pharmacyData.latitude);
-    const longitude = parseFloat(pharmacyData.longitude);
-
-    if (!latitude) {
-      await Pharmacies.query("rollback");
-      return responseJson(res, 400, {
-        status: "error",
-        message: "latitute is required",
-        field: "latitude",
-      });
-    }
-
-    if (isNaN(latitude) || latitude < 5.5 || latitude > 10.0) {
-      await Pharmacies.query("rollback");
-      return responseJson(res, 400, {
-        status: "error",
-        message: "Latitude must be a number between 5.50 and 10.00",
-        field: "latitude",
-      });
-    }
-
-    if (!longitude) {
-      await Pharmacies.query("rollback");
-      return responseJson(res, 400, {
-        status: "error",
-        message: "Longitude is required",
-        field: "longitude",
-      });
-    }
-
-    if (isNaN(longitude) || longitude < 79.5 || longitude > 82.0) {
-      await Pharmacies.query("rollback");
-      return responseJson(res, 400, {
-        status: "error",
-        message: "Longitude must be a number between 79.5 and 82.0",
-        field: "longitude",
-      });
-    }
-
-    const [customer] = await Users.getById(req.customerId);
-
-    if (!customer) {
-      throw new Error("customer is not found");
-    }
-
-    const pharmacyObj = {
-      name: pharmacyData.name,
-      licenseNumber: pharmacyData.licenseNumber,
-      email: pharmacyData.email,
-      expireDate: pharmacyData.expireDate,
-      addressNo: pharmacyData.addressNo,
-      street: pharmacyData.street,
-      town: pharmacyData.street,
-      province: pharmacyData.province,
-      latitude: pharmacyData.latitude,
-      longitude: pharmacyData.longitude,
-      googleMapLink: pharmacyData.googleMapLink,
-      contact: pharmacyData.contact,
-      postalCode: pharmacyData.postalCode,
-      pharmacist:
-        pharmacyData.pharmacist || `${customer.firstName} ${customer.lastName}`,
-      type: pharmacyData.type,
-      owner: pharmacyData.owner || `${customer.firstName} ${customer.lastName}`,
-      pharmacistLicense: pharmacyData.pharmacistLicense,
-      registrationDoc: undefined,
-      ownerDoc: undefined,
-      addressDoc: undefined,
-      img: "/pharmacyImages/general-pharmacy.png",
-    };
-
-    if (pharmacyData.registrationDoc instanceof File) {
-      const file = await saveFile(
-        pharmacyData.name,
-        pharmacyData.registrationDoc,
-        "/pharmacyRegistrations",
-      );
-      pharmacyObj.registrationDoc = file.destination;
-    }
-    if (pharmacyData.ownerDoc instanceof File) {
-      const file = await saveFile(
-        pharmacyData.name,
-        pharmacyData.ownerDoc,
-        "/pharmacyOwners",
-      );
-      pharmacyObj.ownerDoc = file.destination;
-    }
-    if (pharmacyData.addressDoc instanceof File) {
-      const file = await saveFile(
-        pharmacyData.name,
-        pharmacyData.addressDoc,
-        "/pharmacyOwners",
-      );
-      pharmacyObj.addressDoc = file.destination;
-    }
-    if (pharmacyData.image instanceof File) {
-      const file = await saveFile(
-        pharmacyData.name,
-        pharmacyData.image,
-        "/pharmacyImages",
-      );
-      pharmacyObj.img = file.destination;
-    }
-    const [pharmacy] = await Pharmacies.save(pharmacyObj);
-
-    //create pharmacist
-    const [pharmacist] = await PharmacyStaff.save({
-      role: "pharmacist",
-      userId: customer.id,
-      pharmacyId: pharmacy.id,
+  ) {
+    await Pharmacies.query("rollback");
+    return responseJson(res, 400, {
+      status: "error",
+      message: "check your google map link",
+      field: "googleMapLink",
     });
+  }
 
-    const updateResult = await Users.update({
-      id: customer.id,
-      role: "pharmacist",
+  // let url;
+  // try {
+  //   url = new URL(googleMapLink);
+  // } catch (e) {
+  //   await Pharmacies.query("rollback");
+  //   return responseJson(res, 400, {
+  //     status: "error",
+  //     message: "Invalid URL format",
+  //     field: "googleMapLink",
+  //   });
+  // }
+
+  //validation of rang og latitede and longitude come from regisration form
+  const latitude = parseFloat(pharmacyData.latitude);
+  const longitude = parseFloat(pharmacyData.longitude);
+
+  if (!latitude) {
+    await Pharmacies.query("rollback");
+    return responseJson(res, 400, {
+      status: "error",
+      message: "latitute is required",
+      field: "latitude",
     });
+  }
 
-
-    return responseJson(res, 200, {
-      status: "success",
-      results: {
-        ...pharmacy,
-        pharmacist,
-      },
+  if (isNaN(latitude) || latitude < 5.5 || latitude > 10.0) {
+    await Pharmacies.query("rollback");
+    return responseJson(res, 400, {
+      status: "error",
+      message: "Latitude must be a number between 5.50 and 10.00",
+      field: "latitude",
     });
+  }
+
+  if (!longitude) {
+    await Pharmacies.query("rollback");
+    return responseJson(res, 400, {
+      status: "error",
+      message: "Longitude is required",
+      field: "longitude",
+    });
+  }
+
+  if (isNaN(longitude) || longitude < 79.5 || longitude > 82.0) {
+    await Pharmacies.query("rollback");
+    return responseJson(res, 400, {
+      status: "error",
+      message: "Longitude must be a number between 79.5 and 82.0",
+      field: "longitude",
+    });
+  }
+
+  const [customer] = await Users.getById(req.customerId);
+
+  if (!customer) {
+    throw new Error("customer is not found");
+  }
+
+  const pharmacyObj = {
+    name: pharmacyData.name,
+    licenseNumber: pharmacyData.licenseNumber,
+    email: pharmacyData.email,
+    expireDate: pharmacyData.expireDate,
+    addressNo: pharmacyData.addressNo,
+    street: pharmacyData.street,
+    town: pharmacyData.street,
+    province: pharmacyData.province,
+    latitude: pharmacyData.latitude,
+    longitude: pharmacyData.longitude,
+    googleMapLink: pharmacyData.googleMapLink,
+    contact: pharmacyData.contact,
+    postalCode: pharmacyData.postalCode,
+    pharmacist:
+      pharmacyData.pharmacist || `${customer.firstName} ${customer.lastName}`,
+    type: pharmacyData.type,
+    owner: pharmacyData.owner || `${customer.firstName} ${customer.lastName}`,
+    pharmacistLicense: pharmacyData.pharmacistLicense,
+    registrationDoc: undefined,
+    ownerDoc: undefined,
+    addressDoc: undefined,
+    img: "/pharmacyImages/general-pharmacy.png",
+  };
+
+  if (pharmacyData.registrationDoc instanceof File) {
+    const file = await saveFile(
+      pharmacyData.name,
+      pharmacyData.registrationDoc,
+      "/pharmacyRegistrations",
+    );
+    pharmacyObj.registrationDoc = file.destination;
+  }
+  if (pharmacyData.ownerDoc instanceof File) {
+    const file = await saveFile(
+      pharmacyData.name,
+      pharmacyData.ownerDoc,
+      "/pharmacyOwners",
+    );
+    pharmacyObj.ownerDoc = file.destination;
+  }
+  if (pharmacyData.addressDoc instanceof File) {
+    const file = await saveFile(
+      pharmacyData.name,
+      pharmacyData.addressDoc,
+      "/pharmacyOwners",
+    );
+    pharmacyObj.addressDoc = file.destination;
+  }
+  if (pharmacyData.image instanceof File) {
+    const file = await saveFile(
+      pharmacyData.name,
+      pharmacyData.image,
+      "/pharmacyImages",
+    );
+    pharmacyObj.img = file.destination;
+  }
+  const [pharmacy] = await Pharmacies.save(pharmacyObj);
+
+  //create pharmacist
+  const [pharmacist] = await PharmacyStaff.save({
+    role: "pharmacist",
+    userId: customer.id,
+    pharmacyId: pharmacy.id,
+    createOrder: 1,
+    deleteOrder: 1,
+    readOrder: 1,
+    updateOrder: 1,
+    readTransactions: 1,
+    searchProducts: 1,
+    updateProducts: 1,
+    deleteProducts: 1,
+    createProducts: 1,
+    searchMedicines: 1,
+    createMedicines: 1,
+    deleteMedicines: 1,
+    updateMedicines: 1,
+    searchStaff: 1,
+    updateStaff: 1,
+    deleteStaff: 1,
+    createStaff: 1,
+  });
+
+  const updateResult = await Users.update({
+    id: customer.id,
+    role: "pharmacist",
+  });
+
+
+  return responseJson(res, 200, {
+    status: "success",
+    results: {
+      ...pharmacy,
+      pharmacist,
+    },
+  });
 });

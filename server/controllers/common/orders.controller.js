@@ -118,7 +118,7 @@ exports.createOrder = apiCatchAsync(async (req, res) => {
     }
 
     let transaction;
-    if (reqData.paymentMethod != "card") {
+    if (reqData.paymentMethod == "cash" && pharmacyId) {
 
         [transaction] = await Transactions.save({
             orderId: order.id,
@@ -182,7 +182,6 @@ exports.getOrders = apiCatchAsync(async (req, res) => {
         });
 
 
-        console.log(order);
 
         items = await Promise.all(items.map(async i => {
             if (i.itemType == "medicine") {
@@ -225,11 +224,18 @@ exports.getOrders = apiCatchAsync(async (req, res) => {
             return { ...i };
         }))
 
+        let transactions = await Transactions.get({
+            orderId : order.id,
+        });
 
+        
         return responseJson(res, 200, {
             status: "success",
             data: {
+
                 ...order,
+                transactions,
+                isPaid : transactions.length ? true :false, 
                 items,
                 total: items.reduce((acc, item, i) => {
                     return acc + item.price * item.quantity - item.discount;
@@ -240,7 +246,8 @@ exports.getOrders = apiCatchAsync(async (req, res) => {
 
 
 
-    const results = await PharmacyOrders.get(filter);
+    let results = await PharmacyOrders.get(filter);
+    results = results.sort((a , b)=>b.id - a.id)
 
 
     let orders = results.map(async (order) => {
@@ -265,10 +272,15 @@ exports.getOrders = apiCatchAsync(async (req, res) => {
             return { ...i };
         }))
 
+        let transactions = await Transactions.get({
+            orderId : order.id,
+        });
 
         return {
             ...order,
             items,
+            transactions,
+            isPaid : transactions.length ? true :false, 
             total: items.reduce((acc, item, i) => {
                 return acc + item.price * item.quantity - item.discount;
             }, 0)

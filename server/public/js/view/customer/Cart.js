@@ -119,6 +119,7 @@ class Cart{
     closePopup(){
         this.#modifyClassList(this.popup , 'open' , false , "popupVisibility");
         if(!this.leftPanelVisibility && !this.rightPanelVisibility && this.overlayVisibility && !this.popupVisibility){
+            this.setPopupContent('');
             this.close();
         }
     }

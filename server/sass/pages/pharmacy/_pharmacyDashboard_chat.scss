@@ -3,6 +3,54 @@
     display: grid;
     grid-template-columns: 45rem 1fr 1fr;
 
+
+    .disconnect-notice {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        background-color: var(--color-yellow-01);
+        position: absolute;
+        padding: 3rem;
+        align-items: center;
+        font-size: 1.8rem;
+        animation: top_tob_bottom .5s ease ;
+
+        button {
+            padding: 1.5rem 3rem;
+            border-radius: 5rem;
+            background-color: #fff;
+            border: none;
+            outline: 1px solid #fff;
+            outline-offset: 0rem;
+            transition: all .2s ease;
+            cursor: pointer;
+
+            &:hover {
+                outline-offset: 1rem;
+            }
+
+            &.delete-order {
+                color: var(--color-red-01);
+
+                &:hover {
+                    background-color: var(--color-red-01);
+                    color: #fff;
+
+                }
+            }
+
+            &.save-order {
+                color: var(--color-green-01);
+
+                &:hover {
+                    background-color: var(--color-green-01);
+                    color: #fff;
+
+                }
+            }
+        }
+    }
+
     &.open {
         // background-color: #09776e;
     }
@@ -12,6 +60,8 @@
         height: 1fr;
 
     }
+
+
 
 
     // .chat-box {
@@ -299,7 +349,7 @@
             align-items: center;
             overflow: hidden;
 
-            &:has(img):hover{
+            &:has(img):hover {
                 overflow: scroll;
                 position: fixed;
                 width: 100%;
@@ -308,7 +358,7 @@
                 height: 100%;
             }
 
-            img{
+            img {
                 width: 100%;
                 object-fit: cover;
 
@@ -432,10 +482,20 @@
 }
 
 
-.add-medicines-to-orders{
+.add-medicines-to-orders {
     padding: 2rem;
 
-    .medicines_card_container{
+    .medicines_card_container {
         margin-top: 3rem;
+    }
+}
+
+
+@keyframes top_to_bottom{
+    0%{
+        transform: translateY(-100%);
+    }
+    100%{
+        transform: translateY(0%);
     }
 }

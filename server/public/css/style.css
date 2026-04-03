@@ -12752,6 +12752,14 @@ button.save {
   margin-top: 3rem;
 }
 
+@keyframes top_to_bottom {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
 .deletion-notice {
   position: fixed;
   width: 100vw;
@@ -14415,6 +14423,44 @@ button.save {
   margin: auto;
   display: grid;
   grid-template-columns: 45rem 1fr 1fr;
+}
+.pharmacyDashboard .dashboards .container.chats .disconnect-notice {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--color-yellow-01);
+  position: absolute;
+  padding: 3rem;
+  align-items: center;
+  font-size: 1.8rem;
+  animation: top_tob_bottom 0.5s ease;
+}
+.pharmacyDashboard .dashboards .container.chats .disconnect-notice button {
+  padding: 1.5rem 3rem;
+  border-radius: 5rem;
+  background-color: #fff;
+  border: none;
+  outline: 1px solid #fff;
+  outline-offset: 0rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.pharmacyDashboard .dashboards .container.chats .disconnect-notice button:hover {
+  outline-offset: 1rem;
+}
+.pharmacyDashboard .dashboards .container.chats .disconnect-notice button.delete-order {
+  color: var(--color-red-01);
+}
+.pharmacyDashboard .dashboards .container.chats .disconnect-notice button.delete-order:hover {
+  background-color: var(--color-red-01);
+  color: #fff;
+}
+.pharmacyDashboard .dashboards .container.chats .disconnect-notice button.save-order {
+  color: var(--color-green-01);
+}
+.pharmacyDashboard .dashboards .container.chats .disconnect-notice button.save-order:hover {
+  background-color: var(--color-green-01);
+  color: #fff;
 }
 .pharmacyDashboard .dashboards .container.chats .left {
   max-width: 100vh;

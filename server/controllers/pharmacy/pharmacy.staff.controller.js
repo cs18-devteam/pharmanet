@@ -88,7 +88,6 @@ exports.getStaffMembers = apiCatchAsync(async (req, res) => {
 
   members = await Promise.all(members);
 
-  console.log(members);
 
   return responseJson(res, 200, {
     status: "success",

@@ -117,9 +117,19 @@ const sideBarTemplate = html`
                         <span class="slider"></span>
                     </label>
                 </div>
+            
+        <h5>Transactions Management Permissions</h5>
+
+
+                <div class="permission">
+                    <span>View Transactions</span>
+                    <label class="switch">
+                        <input name="readTransactions" {readTransactions} type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
 
         
-        <p>Make sure you give correct permission to correct user</p>
         <h5>Staff Management Permissions</h5>
 
         <div class="permission">
@@ -171,38 +181,38 @@ export async function handleEditPermission() {
 
 
     const editPermissionsBtn = document.getElementById("btn-change-perssmions_staff");
-    editPermissionsBtn.addEventListener("click" , ()=>{
+    editPermissionsBtn.addEventListener("click", () => {
         let content = sideBarTemplate;
-        Object.entries(Application.currentSelectedStaffMember).forEach(([key ,value])=>{
-            console.log(key , value);
-            content = content.replace(`{${key}}` , value ? "checked" : " ");
+        Object.entries(Application.currentSelectedStaffMember).forEach(([key, value]) => {
+            console.log(key, value);
+            content = content.replace(`{${key}}`, value ? "checked" : " ");
         })
 
-        setSidebarContent(content.replace("{staffId}" , Application.currentSelectedStaffMember.id));
+        setSidebarContent(content.replace("{staffId}", Application.currentSelectedStaffMember.id));
         openSidebar();
 
 
 
         const form = document.querySelector('#permissionPanel .panel-content');
-        form.addEventListener('click' ,async e=>{
+        form.addEventListener('click', async e => {
             e.stopPropagation();
             const target = e.target;
             const slider = target.closest('.switch');
 
 
-            if(!slider) return;
+            if (!slider) return;
 
             const formData = new FormData(form);
-            const {status , results} = await  updateStaffPermissions(formData);
-            
-            Application.allStaffMembers =Application.allStaffMembers.map(m=>{
-                if(m.id != results.id ) return {...m};
-                return {...m , ...results}; 
+            const { status, results } = await updateStaffPermissions(formData);
+
+            Application.allStaffMembers = Application.allStaffMembers.map(m => {
+                if (m.id != results.id) return { ...m };
+                return { ...m, ...results };
             });
 
-            if(status == "success"){
-                renderToast('staff permission updated' , 'success');
-            }else{
+            if (status == "success") {
+                renderToast('staff permission updated', 'success');
+            } else {
                 renderToast('permission update failed');
             }
 

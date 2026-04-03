@@ -16,7 +16,7 @@ export async function getRequestData() {
     //console.log(results);
     return results;
   } catch (e) {
-    console.log(error);
+    console.log(e);
     return {
       status: "error",
       results: [],

@@ -4,7 +4,7 @@ const { authorizeToApi, PERMISSIONS } = require("../../middlewares/authorizeToVi
 
 exports.pharmacyProductApiRouter = SubRouter.route('/api/v1/pharmacies/:pharmacyId/products')
 .subRoute('/' , {
-    get: pharmacyProductController.getProducts,
+    get: [authorizeToApi(PERMISSIONS.searchProducts) , pharmacyProductController.getProducts],
 })
 .subRoute('/create' , {
     post : [authorizeToApi(PERMISSIONS.createProducts) , pharmacyProductController.createProduct],
@@ -12,5 +12,8 @@ exports.pharmacyProductApiRouter = SubRouter.route('/api/v1/pharmacies/:pharmacy
 .subRoute("/:productId" , {
     delete:pharmacyProductController.deleteProduct,
     update: pharmacyProductController.updateProduct,
-    get:pharmacyProductController.getProductData,
+    get: [
+        authorizeToApi(PERMISSIONS.searchProducts),
+        pharmacyProductController.getProductData
+    ],
 })

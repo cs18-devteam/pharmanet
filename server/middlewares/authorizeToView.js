@@ -1,5 +1,6 @@
 const readCookies = require("../common/readCookies");
 const { responseJson, response } = require("../common/response");
+const Pharmacies = require("../models/PharmacyModel");
 const PharmacyStaff = require("../models/PharmacyStaffModel");
 
 exports.PERMISSIONS = {
@@ -75,6 +76,7 @@ exports.authorizeToApi = (permissions = []) => {
             let authorized = true;
 
             if(typeof permissions == "string"){
+
                 if(!staff[permissions]){
                     authorized = false;
                 }
@@ -108,3 +110,32 @@ exports.authorizeToApi = (permissions = []) => {
 
     }
 }
+
+exports.authenticateStaffApi = ()=>{
+    return async (req , res , next)=>{
+        try{
+            const {staffId , pharmacyId} = readCookies(req);
+            if(!staffId || !pharmacyId) throw new Error("don' t have staffId or pharmacyId");
+
+            const [staff] = await PharmacyStaff.getById(staffId);
+            if(!staff) throw new Error("fake staffId");
+
+            const [pharmacy] = await Pharmacies.getById(pharmacyId);
+            if(!pharmacy) throw new Error("fake pharmacyId");
+
+            if(staff.pharmacyId != pharmacy.id){
+                throw new Error("you're not member of this pharmacy");
+            }
+
+            return next();
+
+        }catch(e){
+            console.log(e);
+            return responseJson(res , 401 , {
+                status:"error",
+                message:"your are unauthorized",
+            })
+
+        }    
+    }
+} 

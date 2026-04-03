@@ -5,5 +5,6 @@ import { updateProductsCount } from "../../../view/pharmacy/products/updateProdu
 export async function fetchAndRenderProducts(search){
     const data = await getProducts(search); 
     createAndRenderProducts(data.results);
+    if(!(data.stat)) return;
     updateProductsCount(data.stat.count[0].count);
 }

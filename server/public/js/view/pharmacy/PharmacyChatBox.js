@@ -99,6 +99,19 @@ export default class PharmacyChatbox{
     }
 
 
+    static renderCloseAndSaveOrder(){
+        const chatContainer = document.querySelector('.chats.container');
+        chatContainer?.insertAdjacentHTML('afterbegin' , html`    
+            <div class="disconnect-notice">
+                <div>Your connection has lost . close window . Do you want to save order ?</div>
+                <div class="buttons">
+                    <button class="delete-order">Don't save</button>
+                    <button class="save-order" data-id="${Application.remoteOrderId}">Confirm</button>
+
+                </div>
+            </div>
+        `);
+    }
     
 
     /**

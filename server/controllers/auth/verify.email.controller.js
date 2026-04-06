@@ -72,7 +72,7 @@ exports.verifyEmail = async (req, res) => {
     if (otp == user.emailOTP) {
       await Users.update({
         id: user.id,
-        emailOTP: null,
+        emailOTP: "",
         verified: true,
       })
 

@@ -5,6 +5,8 @@ import PharmacyChatbox from "../../../view/pharmacy/PharmacyChatBox.js";
 
 export function whenIncomingMessage(message){
     const msgObj = ChatTemplates.readMessage(message)
-    if(Application.connectedWith !=  msgObj.toId) Application.connection.send(ChatTemplates.disconnect());
+    if(+Application.connectedWith !=  +msgObj.id){
+        Application.connection.send(ChatTemplates.disconnect());
+    } 
     PharmacyChatbox.incomingMessage(msgObj.message);
 }

@@ -70,6 +70,8 @@ export default class CustomerChatBox{
         this.chatStatus = status;
 
         const chatStatusIndicator = document.querySelector(".chat-online-indicator");
+        console.log(chatStatusIndicator);
+
         if(this.chatStatus == "connected"){
             chatStatusIndicator.style = "color:var(--color-green-01)";
             chatStatusIndicator.textContent = "connected";
@@ -161,13 +163,13 @@ export default class CustomerChatBox{
                     </div>
             </div>`)
 
+            debugger;
 
         this.#handleDisconnect();
-        this.setChatboxState(true);
-        this.setUserState("connected");
+        // this.setChatboxState(true);
+        // this.setUserState("connected");
         this.getChatBox();
         this.reloadMessages();
-        // this.handleInputMessage();
 
         cart.openLeftPanel();
         cart.openRightPanel()
@@ -190,7 +192,7 @@ export default class CustomerChatBox{
                 const message = input.value;
                 func(message);
                 input.value = "";
-                Application.connection?.send(ChatTemplates.message(message));
+                // Application.connection?.send(ChatTemplates.message(message));
                 CustomerChatBox.outgoingMessage(message);
             }catch(e){
                 swal({

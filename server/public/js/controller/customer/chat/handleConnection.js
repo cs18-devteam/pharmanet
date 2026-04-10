@@ -41,6 +41,9 @@ export default function handleConnection(msg){
             Application.remotePharmacy = e.data;
         })
 
+
+        
+
         if(resObj.accept){
             getCartsIdsAndCreateOrder();
             CustomerChatBox.renderChatBox();
@@ -52,6 +55,12 @@ export default function handleConnection(msg){
             })
             syncOrder(Application.remoteOrderId);
             // activateOnSubmitMessageCallback();
+
+        }else{
+            cart.closeLeftPanel();
+            renderToast("pharmacy rejected" , "error");
+
+
 
         }
     }else if(Chat.isMessage(message)){

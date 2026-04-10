@@ -101,6 +101,11 @@ server.onClientMessage((message , client)=>{
                 const pharmacy = connectedCustomers[`${reqClientObj.id}`];
                 customer.client.send(ChatTemplates.chatBoxAcceptRequestFromServerToClient(true , reqClientObj.id , reqClientObj.customerId));
 
+            }else{
+                 const customer = connectedCustomers[`${reqClientObj.customerId}`];
+                const pharmacy = connectedCustomers[`${reqClientObj.id}`];
+                customer.client.send(ChatTemplates.chatBoxAcceptRequestFromServerToClient(false , reqClientObj.id , reqClientObj.customerId));
+
             }
 
             return;

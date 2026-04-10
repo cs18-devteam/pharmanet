@@ -31,9 +31,10 @@ exports.renderAdminMedicinesView = async (req, res) => {
 exports.addMedicine = async (req, res) => {
   try {
     const data = JSON.parse(await getRequestData(req));
+    console.log(data);
     console.log("Received data:", data);
     await db.query(`USE ${process.env.DATABASE_NAME}`); // Select the database
-    const newMedicine = await Medicines.save(data);
+    const newMedicine = await Medicines.save({...data , geneticName : data.name});
     console.log("Saved medicine:", newMedicine);
 
     await ActivityLogService.logActivity(

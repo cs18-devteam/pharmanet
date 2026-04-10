@@ -1,10 +1,11 @@
 import Application from "../../model/application/Application.js";
 import { fetchLowStocks } from "../../model/pharmacy/fetchMedicineData.js";
 import html from "../../view/html.js";
+import { changeWindowTo } from "../../view/pharmacy/changeWindow.js";
 
 class QuickNotify {
 
-    constructor({ topic = '', value = '', priority = "low", changeWindowTo } = {}) {
+    constructor({ topic = '', value = '', priority = "low", changeWindowTo = "orders" } = {}) {
         this.topic = topic,
             this.value = value,
             this.priority = priority;
@@ -14,7 +15,7 @@ class QuickNotify {
 
     createHTMl(id) {
         return html`
-            <div id="notify-${id}" data-id="${id}" class="quick-notify ${this.priority}">
+            <div data-window="${this.changeWindowTo}" id="notify-${id}" data-id="${id}" class="quick-notify ${this.priority}">
                 <div class="topic">${this.topic}</div>
                 <div class="value">${this.value}</div>
             </div>
@@ -23,24 +24,66 @@ class QuickNotify {
 }
 
 
-const notifications = [];
+let notifications = [];
+let interval = 1000;
+let quickLook;
+let div;
 
 
 export default function init() {
-    const quickLook = document.querySelector(".quick_look");
-    console.log("hi");
+    quickLook = document.querySelector(".quick_look");
     if (!quickLook) return;
-    const div = document.createElement("div");
+    div = document.createElement("div");
     div.classList.add("quick_look_notify_container");
     quickLook.insertAdjacentElement("beforeend", div);
 
+    
+    setTimeout(updateView , 1000);
+    setInterval(updateView, 60000);
 
 
-    setInterval(async () => {
+    quickLook.addEventListener("click" , e=>{
+        const {target} = e;
+        const notify = target.closest(".quick-notify");
+        if(notify){
+            changeWindowTo(notify.dataset.window);
+        }
+    })
+
+
+}
+
+
+async function updateView() {
         const data = await update();
-        console.log(data);
+        if(Application.pharmacyId)  interval = 60000;
 
-        data.map()
+        notifications = [];
+        data.map(s=>{
+            let topic = "" 
+            let priority = ""
+            let changeWindowTo = s.type == "medicine" ? "medicines" : "products";
+            let value = s.name;
+
+            if(10 <= s.quantity){
+                topic = "low stock"
+                priority = "low";
+            }else if(s.quantity < 1){
+                topic  = "out of  stock";
+                priority = "high"
+            }else if(s.quantity < 10){
+                topic  = "low stock";
+                priority = "medium";
+            }
+
+
+            notifications.push(new QuickNotify({
+                topic ,
+                priority,
+                changeWindowTo , 
+                value,
+            }))
+        })
 
         if (notifications.length) {
             quickLook.classList.add("active")
@@ -49,12 +92,8 @@ export default function init() {
             return;
         }
 
-
+        div.innerHTML= ""
         div.insertAdjacentHTML("beforeend", notifications.map((n, i) => n.createHTMl(i + 1)).join(" "));
-    }, 1000);
-
-
-
 }
 
 

@@ -19,7 +19,7 @@ const requestCardTemplate = html`
             
             <div class="additional-details">
             <div class="status">{status}</div>
-            <div class="distance">{distance}Km</div>
+            <!-- <div class="distance">{distance}Km</div> -->
             </div>
             
         </div>

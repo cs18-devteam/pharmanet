@@ -63,11 +63,15 @@ exports.getLowStocks = apiCatchAsync(async (req , res)=>{
 
     medicines = await Promise.all(medicines.map(async m=>{
         const [details] = await Medicines.getById(m.medicineId);
-        return {...m , name : details.geneticName , quantity : m.publicStock}
+        return {...m , name : details.geneticName , quantity : m.publicStock , type:"medicine"}
     }))
     
 
-    const products = await Products.query(`select * from this.table where pharmacyId = ${pharmacyId} and quantity <= 10`);
+    let products = await Products.query(`select * from this.table where pharmacyId = ${pharmacyId} and quantity <= 10`);
+    products = products.map(p=>{
+        return {...p , type:"product"}
+    })
+
 
     return responseJson(res   , 200 , {
         status:"success",

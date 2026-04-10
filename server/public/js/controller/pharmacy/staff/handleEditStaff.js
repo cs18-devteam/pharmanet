@@ -162,7 +162,7 @@ function handleEditFormSubmit() {
                 });
 
                 // Reload the page to refresh all data
-                window.location.reload();
+                // window.location.reload();
             } else {
                 console.error("Update failed:", data);
                 newSubmitButton.disabled = false;

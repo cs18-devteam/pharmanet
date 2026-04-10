@@ -370,7 +370,7 @@ export async function updateStaffWiseSummary() {
       <div class="description">
         <div class="name">${staff.staffName}</div>
         <div class="orders">( ${staff.orders} Orders )</div>
-        <div class="amount">${Number(staff.totalAmount).toLocaleString()}</div>
+        <div class="amount">Rs. ${Number(staff.totalAmount).toLocaleString()}</div>
       </div>
       <div class="bar"></div>
     </div>

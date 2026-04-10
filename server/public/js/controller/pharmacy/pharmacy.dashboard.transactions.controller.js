@@ -22,15 +22,15 @@ export default async function init() {
 
   //print option
 
-  const printBtn = document.querySelector(".print-btn");
+  // ✅ Attach event AFTER DOM is ready
+  // Scope to transactions view only
+  const printBtn = document.querySelector(".transactions .print-btn");
 
   if (printBtn) {
-    printBtn.addEventListener("click", () => {
-      console.log("PRINT CLICKED");
-      window.print();
+    printBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      printTransactions();
     });
-  } else {
-    console.log("PRINT BUTTON NOT FOUND");
   }
 
   //console.log("init");
@@ -45,7 +45,97 @@ export default async function init() {
   totalAmountOfCardOffline(getRequestDatas);
   updateTodayTransaction(getRequestDatas);
   updateStaffWiseSummary();
-  //printTransaction()
+}
+
+function printTransactions() {
+  console.log("print function running");
+
+  const printSection = document.querySelector(
+    ".transactions .transaction_table_container",
+  );
+  const tableBody = document.querySelector(
+    ".transactions .transaction_table tbody",
+  );
+  if (!printSection) {
+    alert("Print section not found");
+    return;
+  }
+
+  if (!tableBody || tableBody.children.length === 0) {
+    alert("No transactions to print");
+    return;
+  }
+
+  // ✅ Get date values
+  const startDate = document.getElementById("date_start")?.value;
+  const endDate = document.getElementById("date_end")?.value;
+
+  function formatDate(date) {
+    if (!date) return "—";
+    const [y, m, d] = date.split("-");
+    return `${d}/${m}/${y}`;
+  }
+
+  const formattedStart = formatDate(startDate);
+  const formattedEnd = formatDate(endDate);
+
+  // ✅ Clone and modify
+  const cloned = printSection.cloneNode(true);
+  const dateRangeDiv = cloned.querySelector(".date_range");
+
+  if (dateRangeDiv) {
+    dateRangeDiv.innerHTML = `
+      <div style="font-size:14px;">
+        <strong>Date Range:</strong> ${formattedStart} - ${formattedEnd}
+      </div>
+    `;
+  }
+
+  const printWindow = window.open("", "_blank");
+
+  if (!printWindow) {
+    alert("Popup blocked. Allow popups.");
+    return;
+  }
+
+  printWindow.document.write(`
+    <html>
+      <head>
+        <title>Transactions</title>
+        <style>
+          body {
+            font-family: Arial;
+            padding: 20px;
+          }
+
+          .transaction_table {
+            width: 100%;
+            border-collapse: collapse;
+          }
+
+          .transaction_table th,
+          .transaction_table td {
+            border: 1px solid black;
+            padding: 8px;
+          }
+
+          .heading--2 {
+            margin-bottom: 15px;
+          }
+        </style>
+      </head>
+      <body>
+        ${cloned.outerHTML}
+      </body>
+    </html>
+  `);
+
+  printWindow.document.close();
+
+  printWindow.onload = () => {
+    printWindow.print();
+    printWindow.close();
+  };
 }
 
 export function filterTodayTransaction({ results: transactionData }) {
@@ -285,8 +375,4 @@ export async function updateStaffWiseSummary() {
     </div>
     ${html}
   `;
-}
-
-export function printTransaction() {
-  window.print();
 }

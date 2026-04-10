@@ -1,6 +1,7 @@
 const SubRouter = require("../../common/SubRouter")
 const { pharmacy } = require("../../controllers/admins/admin.controller")
 const pharmacyStaffController = require('../../controllers/pharmacy/pharmacy.staff.controller')
+const { authorizeToApi, PERMISSIONS } = require("../../middlewares/authorizeToView")
 
 exports.pharmacyStaffRouter = SubRouter.route('/pharmacies/:pharmacyId/staff')
 .subRoute('/create',{
@@ -14,5 +15,5 @@ exports.pharmacyStaffRouter = SubRouter.route('/pharmacies/:pharmacyId/staff')
     get : pharmacyStaffController.renderStaffOptions,
 })
 .subRoute('/:staffId/permissions' , {
-    post: pharmacyStaffController.changePermissions,
+    post: [ authorizeToApi(PERMISSIONS.updateStaff) ,pharmacyStaffController.changePermissions],
 })

@@ -195,28 +195,35 @@ export async function handleEditPermission() {
 
         const form = document.querySelector('#permissionPanel .panel-content');
         form.addEventListener('click', async e => {
-            e.stopPropagation();
-            const target = e.target;
-            const slider = target.closest('.switch');
+            try {
+
+                e.stopPropagation();
+                const target = e.target;
+                const slider = target.closest('.switch');
 
 
-            if (!slider) return;
+                if (!slider) return;
 
-            const formData = new FormData(form);
-            const { status, results } = await updateStaffPermissions(formData);
+                const formData = new FormData(form);
+                const { status, results } = await updateStaffPermissions(formData);
 
-            Application.allStaffMembers = Application.allStaffMembers.map(m => {
-                if (m.id != results.id) return { ...m };
-                return { ...m, ...results };
-            });
+                Application.allStaffMembers = Application.allStaffMembers.map(m => {
+                    if (m.id != results.id) return { ...m };
+                    return { ...m, ...results };
+                });
 
-            if (status == "success") {
-                renderToast('staff permission updated', 'success');
-            } else {
-                renderToast('permission update failed');
+                console.log(status, results);
+
+                if (status == "success") {
+                    renderToast('staff permission updated', 'success');
+                } else {
+                    renderToast('permission update failed' , "error");
+                }
+
+                Application.update();
+            } catch (e) {
+                renderToast(e.message || "permission not updated" , "error");
             }
-
-            Application.update();
         })
 
     })

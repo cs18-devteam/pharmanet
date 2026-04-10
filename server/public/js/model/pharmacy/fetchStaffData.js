@@ -49,6 +49,10 @@ export async function updateStaffPermissions(formData) {
             body: formData,
         });
 
+        if(response.status == 401){
+            throw new Error("unauthorized access");
+        }
+
         const data = await response.json();
         return data;
         

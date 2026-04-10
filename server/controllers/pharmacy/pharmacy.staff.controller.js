@@ -6,6 +6,7 @@ const view = require("../../common/view");
 const { apiCatchAsync } = require("../../common/catchAsync");
 const getMultipartData = require("../../common/getMultipartData");
 const { hashPassword } = require("../../common/Auth");
+const readCookies = require("../../common/readCookies");
 
 exports.renderCreateStaff = async (req, res) => {
   try {
@@ -114,6 +115,7 @@ exports.getStaffMember = apiCatchAsync(async (req, res) => {
 exports.changePermissions = apiCatchAsync(async (req, res) => {
   
   const data = await getMultipartData(req);
+  const {staffId} = readCookies(req);
 
 
 
@@ -144,11 +146,13 @@ exports.changePermissions = apiCatchAsync(async (req, res) => {
 
     // staff permission
     searchStaff: data.searchStaff == "on" ? "1" : "0",
-    updateStaff: data.updateStaff == "on" ? "1" : "0",
     deleteStaff: data.deleteStaff == "on" ? "1" : "0",
     createStaff: data.createStaff == "on" ? "1" : "0",
   };
 
+  if(staffId != data.staffId){
+    permissionObj.updateStaff =  data.updateStaff == "on"  ? "1" : "0";
+  }
 
   const [staffMember] = await PharmacyStaff.update(permissionObj);
 

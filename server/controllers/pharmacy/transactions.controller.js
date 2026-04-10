@@ -91,7 +91,7 @@ exports.getStaffWiseSummary = catchAsync(async (req, res) => {
   const sql=`
     SELECT 
         ps.id AS staffID,
-        u.fullName AS staffName,
+        u.firstName AS staffName,
         COUNT(t.orderId) AS orders,
         IFNULL(SUM(t.amount),0) AS totalAmount
 
@@ -105,6 +105,7 @@ exports.getStaffWiseSummary = catchAsync(async (req, res) => {
 
 
   const summary = await Transactions.query(sql);
+
 
   return responseJson(res, 200, {
     status: "success",

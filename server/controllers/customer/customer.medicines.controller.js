@@ -15,9 +15,6 @@ exports.renderCustomerMedicines = async (req, res) => {
         let medicines = await Medicines.query("select * from this.table where id > 0  " + (search ? ` and geneticName like "${"%" + Array.from(search).join("%") + "%"}" limit 10` : "limit 10"));
         const pharmacies = await Pharmacies.query("select * from this.table where id > 0  " + (search ? ` and town like "${"%" + Array.from(search).join("%") + "%"}" ` : "") + " limit 10");
 
-
-        console.log("select * from this.table where id > 0  " + (search ? ` and name like "${"%" + Array.from(search).join("%") + "%"}" ` : "") + (search ? ` and name like "${"%" + Array.from(search).join("%") + "%"}" ` : "") + " limit 10");
-
         medicines = await Promise.all(medicines.map((async m => {
             const [c] = await Carts.get({
                 userId: customer.id,

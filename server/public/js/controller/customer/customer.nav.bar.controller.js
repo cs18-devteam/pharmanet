@@ -35,7 +35,7 @@ async function createAndRenderCarts(){
 btn_navMyCartBtn?.addEventListener('click' ,async ()=>{
     cart.openRightPanel();
     await createAndRenderCarts();
-    const cartContainer = document.querySelector('.overlay-cart .carts_container');
+    const cartContainer = document.querySelector('.overlay-cart');
     
     cartContainer.addEventListener('click' ,async e=>{
         const removeFromCartBtn = e.target.closest('.remove-from-cart-btn');

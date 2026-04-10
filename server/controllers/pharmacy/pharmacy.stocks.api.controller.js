@@ -17,7 +17,7 @@ exports.getStocksByName = async (req , res)=>{
         const medicines = await Medicines.query(`select * from this.table ${searchName ? `where geneticName like '%${searchName}%' ` : '' } limit ${limit || 100}`);
 
 
-        const products = await Products.query(`select * from this.table ${searchName ? `where pharmacyId=${pharmacyId} and name like '%${searchName}%' ` : ''} limit ${limit || 100}`);
+        const products = await Products.query(`select * from this.table where pharmacyId=${pharmacyId} ${searchName ? `and name like '%${searchName}%' ` : ''} limit ${limit || 100}`);
 
         const stockMedicines = medicines.map(async med=>{
             try{

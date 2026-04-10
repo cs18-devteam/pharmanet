@@ -243,7 +243,7 @@ function handleDeletePharmacyOperation() {
             </p>
             
             <div class="actions">
-                <button class='btn-back' >I don't want to delete</button>
+                <button class='btn-back' id="pharmacy-account-final-final-final-delete-btn-back" >I don't want to delete</button>
                 <button class="btn-danger" id="pharmacy-account-final-final-final-delete-btn">
                     Continue & Delete Account
                 </button>
@@ -273,6 +273,11 @@ function handleDeletePharmacyOperation() {
             }
 
 
+        })
+
+        document.getElementById("pharmacy-account-final-final-final-delete-btn-back")?.addEventListener("click" , ()=>{
+            container.classList.remove("deletion-notice");
+            container.remove();
         })
     })
 }

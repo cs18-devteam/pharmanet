@@ -5,8 +5,10 @@ const ipaddress = require("../../common/ipaddress");
 const { response, responseJson } = require("../../common/response");
 const view = require("../../common/view");
 const connectedPharmacies = require("../../memory/pharmacies.memory.temp");
+const Carts = require("../../models/CartModel");
 const PharmacyMedicines = require("../../models/PharmacyMedicinesModel");
 const Pharmacies = require("../../models/PharmacyModel");
+const PharmacyOrdersItems = require("../../models/PharmacyOrderItemsModel");
 const PharmacyStaff = require("../../models/PharmacyStaffModel");
 const Products = require("../../models/ProductModel");
 const Users = require("../../models/UserModel");
@@ -131,12 +133,35 @@ exports.sendOnlinePharmacies = async (req , res)=>{
 
         pharmacies = await Promise.all(pharmacies);
         pharmacies = pharmacies.map(p=>p[0]);
+        let availablePharmacies = [];
+
+        const cartList = req.params.get("carts");
+        if(cartList){
+
+            const carts = cartList?.split(",").map(m=>+m);
+            
+            let availability = await Promise.all(carts?.map(async id=>{
+                
+                const [cart] = await Carts.getById(id);
+                if(!cart) return;
+                const pharmacyIds = await PharmacyMedicines.query(`select * from this.table where medicineId = ${cart.medicineId}`);
+                return pharmacyIds.map(p=>p.pharmacyId);
+            }))
+            
+            availability = availability.flat();
+            
+            availability = Array.from(new Set(availability));
+            availablePharmacies = await Promise.all(availability.map(async id=> await Pharmacies.getById(id)));
+        }
+        
 
 
         return responseJson(res, 200 , {
             status:"success",
             results: pharmacies,
             count: pharmacies.length,
+            online : pharmacies,
+            available : availablePharmacies,
         })
 
 

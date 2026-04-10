@@ -14,11 +14,10 @@ if(!geoLocation){
 
         window.location.href += `?latitude=${Application.latitude}&longitude=${Application.longitude}`;
      }) , (error)=>{
-        console.log(error);
         swal({
-            title:"can't detect your location",
-            text: error.message,
-            icon:"warn",
+            title:"Can't detect your location",
+            text: "Location base services not be available",
+            icon:"warning",
         })
      });
 }

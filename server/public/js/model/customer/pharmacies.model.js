@@ -1,9 +1,10 @@
 import Application from "../application/Application.js";
 
-export async function getPharmacies({mode="online"}={}){
+export async function getPharmacies({mode="online" , carts = []}={}){
     try{
 
-        const response = await fetch(`/api/v1/pharmacies?mode=${mode}`);
+        console.log(carts);
+        const response = await fetch(`/api/v1/pharmacies?mode=${mode}${carts.length ? `&&carts=${carts.join(',')}` : " "}`);
         const data = await response.json();
         if(data.status == "error"){
             throw new Error(data.error);

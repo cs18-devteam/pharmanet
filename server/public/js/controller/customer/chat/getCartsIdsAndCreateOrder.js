@@ -1,7 +1,7 @@
 import Application from "../../../model/application/Application.js";
 import { createOrder } from "../../../model/customer/orders.js";
 
-export default async function getCartsIdsAndCreateOrder() {
+export function getCartIds(){
     const carts = document.querySelectorAll('.carts_container > .cart_item .action-box .select input[type="checkbox"]');
     const cartsIds = new Set();
     Array.from(carts).forEach(el=>{
@@ -10,8 +10,18 @@ export default async function getCartsIdsAndCreateOrder() {
         }
     });
 
-    const data = await createOrder(Array.from(cartsIds));
+    return Array.from(cartsIds)
 
+}
+
+
+
+export default async function getCartsIdsAndCreateOrder() {
+    
+
+    const data = await createOrder(getCartIds());
+
+    console.log(data);
 
     Application.remoteOrderId = data.results.orderId; 
 

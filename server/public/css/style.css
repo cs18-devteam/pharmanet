@@ -2452,6 +2452,17 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   color: #fff;
   font-size: 1.8rem;
   justify-content: flex-end;
+  cursor: pointer;
+}
+.overlay-cart .right-side .cart-footer .continue:hover {
+  transform: scale(1.1);
+}
+.overlay-cart .right-side .cart-footer .continue:active {
+  transform: scale(0.9);
+  background-color: black;
+}
+.overlay-cart .right-side .cart-footer .cancel {
+  cursor: pointer;
 }
 .overlay-cart .left-side {
   display: flex;
@@ -22029,7 +22040,7 @@ p {
 }
 .userProfileManage .mainContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding: 20rem;
   padding-top: 2rem;
   padding-bottom: 2rem;

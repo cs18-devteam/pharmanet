@@ -5,7 +5,7 @@ import { createRequestCards, renderRequestCards } from "../../view/customer/phar
 import { openLiveConnection, requestConnectionWithPharmacy } from "./connection.js";
 import cart from "./../../view/customer/Cart.js";
 import handleConnection from "./chat/handleConnection.js";
-import getCartsIdsAndCreateOrder from "./chat/getCartsIdsAndCreateOrder.js";
+import getCartsIdsAndCreateOrder, { getCartIds } from "./chat/getCartsIdsAndCreateOrder.js";
 
 
 const overlayRightSide = document.querySelector(".overlay-cart .right-side");
@@ -16,7 +16,7 @@ overlayRightSide?.addEventListener("click" , (e)=>{
     
     cartContinueButton?.addEventListener('click' ,async ()=>{
         cart.openLeftPanel();
-        const {results: pharmacies} = await getPharmacies({mode :'online'});
+        const {results: pharmacies} = await getPharmacies({mode :'online' , carts : getCartIds()});
         const pharmacyRequestCards = createRequestCards(pharmacies);
         renderRequestCards(pharmacyRequestCards);
         

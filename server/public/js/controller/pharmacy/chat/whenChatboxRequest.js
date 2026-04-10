@@ -23,7 +23,7 @@ export async function whenChatBoxRequest(socket,message){
     };
     user.user = Application.getUserData(reqObj.customerId),
     
-    Application.waitingList.push(reqObj);
+    // Application.waitingList.push(reqObj);
     renderWaitingList();
     showIncomingMessage(user);
     

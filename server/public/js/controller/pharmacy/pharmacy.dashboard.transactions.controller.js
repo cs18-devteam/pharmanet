@@ -3,6 +3,7 @@ import Application from "../../model/application/Application.js";
 import { getRequestData } from "../../model/pharmacy/fetchTransactionsData.js";
 import { updateTable } from "../../view/pharmacy/updateTransactionTable.js";
 import { getStaffSummary } from "../../model/pharmacy/fetchTransactionsData.js";
+import { swal } from "../../view/swal.js";
 
 export default async function init() {
   const table = document.querySelector(".transaction_table tbody");
@@ -57,12 +58,18 @@ function printTransactions() {
     ".transactions .transaction_table tbody",
   );
   if (!printSection) {
-    alert("Print section not found");
+    swal({
+      title:"print section not found",
+      icon:"warning",
+    })
     return;
   }
 
   if (!tableBody || tableBody.children.length === 0) {
-    alert("No transactions to print");
+    swal({
+      title:"No transactions",
+      icon:"warning",
+    })
     return;
   }
 
@@ -94,7 +101,10 @@ function printTransactions() {
   const printWindow = window.open("", "_blank");
 
   if (!printWindow) {
-    alert("Popup blocked. Allow popups.");
+    swal({
+      title:"print window closed with out printing",
+      icon:"warning",
+    })
     return;
   }
 

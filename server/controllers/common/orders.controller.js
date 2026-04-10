@@ -54,7 +54,6 @@ exports.createOrder = apiCatchAsync(async (req, res) => {
         orders = await Promise.all(items.map(async (item) => {
 
 
-            console.log(item);
 
             let orderItem;
             if (item.itemType == "medicine") {
@@ -133,6 +132,13 @@ exports.createOrder = apiCatchAsync(async (req, res) => {
 
 
         })
+
+        if(transaction){
+            PharmacyOrders.update({
+                id: order.id,
+                status:"completed",
+            })
+        }
     }
 
 
@@ -202,11 +208,6 @@ exports.getOrders = apiCatchAsync(async (req, res) => {
 
                 }
 
-
-                console.log(stock, {
-                    pharmacyId,
-                    medicineId: medicine.id
-                });
                 return {
                     ...i,
                     name: medicine.geneticName,
@@ -303,24 +304,60 @@ exports.getOrders = apiCatchAsync(async (req, res) => {
 exports.addOrderItem = apiCatchAsync(async (req, res) => {
     const id = req.orderId;
     const reqData = JSON.parse(await getRequestData(req));
+    const { pharmacyId } = readCookies(req);
 
-    console.log(reqData);
 
     let medicine;
     let product;
     if (reqData.medicineId) {
-        medicine = await Medicines.getById(reqData.medicineId)[0];
+        medicine = (await Medicines.getById(reqData.medicineId))[0];
+
+
+        if(!medicine) throw new Error("no medicine found")
+
+
+        medicine.stock = await PharmacyMedicines.get({
+            medicineId : medicine.id , 
+            pharmacyId : pharmacyId,
+        })
+
+        if(!medicine.stock){
+            throw new Error("this medicine not in stock");
+        }
     }
 
-    const { pharmacyId } = readCookies(req);
 
+    if(reqData.medicineId){
+        if(reqData.quantity > medicine.stock?.[0].publicStock){
+            throw new Error("medicine quantity must be low than current order amount");
+        }
+
+        console.log(medicine);
+
+        await PharmacyMedicines.update({
+            id: medicine.stock?.[0]?.id,
+            publicStock : medicine.stock?.[0].publicStock - reqData.quantity,
+        })
+    }
+
+    if(reqData.productId){
+        product = (await Products.getById(reqData.productId))[0];
+        if(reqData.quantity > product.quantity){
+            throw new Error("product quantity must be lower than current stock");
+        }
+        
+        await Products.update({
+            id: product.id,
+            quantity : product.quantity - reqData.quantity,
+        })
+    }
 
 
     const orderObj = {
         orderId: id,
         itemId: +reqData.medicineId || +reqData.productId,
         itemType: reqData.medicineId ? "medicine" : "product",
-        price: medicine?.price || product?.price,
+        price: medicine?.stock?.price || product?.price,
         discount: reqData.discount,
         quantity: reqData.quantity,
     }
@@ -443,10 +480,13 @@ exports.updateOrder = apiCatchAsync(async (req, res) => {
 
     const orderObj = {
         id: data.id,
+        status : data.status,
         staffId: data.staffID,
         userId: data.userId,
         pharmacyId: data.pharmacyId,
     }
+
+    console.log(orderObj , data);
 
     await PharmacyOrders.update(orderObj);
 
@@ -462,12 +502,33 @@ exports.updateOrder = apiCatchAsync(async (req, res) => {
 
 exports.removeOrderItems = apiCatchAsync(async (req, res) => {
     const { id } = JSON.parse(await getRequestData(req));
+    const {pharmacyId} = readCookies(req);
     if (!id) {
         throw new Error("item id not defined");
     }
 
     const [item] = await PharmacyOrdersItems.getById(id);
     if (!item) throw new Error("item not found in order");
+
+    
+    if(item.itemType == "medicine"){
+        const [stock] = await PharmacyMedicines.get({
+            pharmacyId :  pharmacyId,
+            medicineId : item.itemId,
+        })
+        await PharmacyMedicines.update({
+            id :stock.id,
+            publicStock : stock.publicStock + item.quantity,
+        })
+
+
+    }else if(item.itemType == "product"){
+        const [stock] = await Products.getById(item.itemId);
+        await Products.update({
+            id : item.itemId,
+            quantity : stock.quantity + item.quantity,
+        })
+    }
 
     await PharmacyOrdersItems.deleteById(id);
 

@@ -16,10 +16,10 @@ export function orderView(order){
       <h2>Order #ORD-${order.id}</h2>
       <div class="order-settings">
 
-          <select class="order-status" value=${order.status || "pending"}>
-              <option value="pending">Pending</option>
-              <option value="processing">Processing</option>
-              <option value="completed">Completed</option>
+          <select class="order-status">
+              <option ${order.status == "pending" ? "selected" : ""} value="pending">Pending</option>
+              <option ${order.status == "processing" ? "selected" : ""} value="processing">Processing</option>
+              <option ${order.status == "complete" ? "selected" : ""} value="completed">Completed</option>
             </select>
             <button data-id="${order.id}" class="btn print">print</button>
             <button data-id="${order.id}" class="btn delete">delete</button>

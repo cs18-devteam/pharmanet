@@ -11,6 +11,7 @@ import docs_init from "./pharmacy.dashboard.docs.controller.js";
 import medicines_init from "./pharmacy.dashboard.medicines.controller.js";
 import orders_init from "./pharmacy.dashboard.orders.controller.js";
 import products_init from "./pharmacy.dashboard.products.controller.js";
+import quickLook__init from "./pharmacy.dashboard.quickView.controller.js";
 import staff_init from "./pharmacy.dashboard.staff.controller.js";
 import transactions_init from "./pharmacy.dashboard.transactions.controller.js";
 // import { createTransactionsRow } from "/js/controller/pharmacy/transactions__searchAndRender.js";
@@ -31,7 +32,7 @@ ordersSearchBar?.addEventListener('input' , e=>{
 
 // createTransactionsRow();
 
-
+quickLook__init()
 
 export function initialize(view){
      switch(view){

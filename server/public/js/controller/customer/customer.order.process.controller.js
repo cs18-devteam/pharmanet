@@ -6,27 +6,33 @@ import { openLiveConnection, requestConnectionWithPharmacy } from "./connection.
 import cart from "./../../view/customer/Cart.js";
 import handleConnection from "./chat/handleConnection.js";
 import getCartsIdsAndCreateOrder from "./chat/getCartsIdsAndCreateOrder.js";
-const nearByPharmaciesContainer = document.querySelector('.pharmacyRequestContainer--nearby');
 
 
-const cartContinueButton = document.querySelector('.overlay-cart__continue.continue');
-const cartCancelButton = document.querySelector('.overlay-cart__continue.cancel')
+const overlayRightSide = document.querySelector(".overlay-cart .right-side");
+overlayRightSide?.addEventListener("click" , (e)=>{
+    
+    const target = e.target;
+    const cartContinueButton = target.closest('.overlay-cart__continue.continue');
+    
+    cartContinueButton?.addEventListener('click' ,async ()=>{
+        cart.openLeftPanel();
+        const {results: pharmacies} = await getPharmacies({mode :'online'});
+        const pharmacyRequestCards = createRequestCards(pharmacies);
+        renderRequestCards(pharmacyRequestCards);
+        
+    })
 
-cartContinueButton?.addEventListener('click' ,async ()=>{
-    cart.openLeftPanel();
-    const {results: pharmacies} = await getPharmacies({mode :'online'});
-    const pharmacyRequestCards = createRequestCards(pharmacies);
-    renderRequestCards(nearByPharmaciesContainer , pharmacyRequestCards);
-
+    const cartCancelButton = target.closest(".overlay-cart__continue.cancel");
+    
+    
+    cartCancelButton?.addEventListener("click" , ()=>{
+        cart.close();
+    })
 })
 
+const overlayLeftSide = document.querySelector(".overlay-cart .left-side");
 
-cartCancelButton?.addEventListener("click" , ()=>{
-    cart.close();
-})
-
-
-nearByPharmaciesContainer?.addEventListener('click' , async (e)=>{
+overlayLeftSide?.addEventListener('click' ,async e=>{
     const {target} =  e;
 
     const requestBtn = target.closest('.request-btn')
@@ -37,7 +43,10 @@ nearByPharmaciesContainer?.addEventListener('click' , async (e)=>{
         Application.connection = await openLiveConnection();
         Application.connection.addEventListener('message' , handleConnection)
     }
+    
 })
+
+
 
 
 

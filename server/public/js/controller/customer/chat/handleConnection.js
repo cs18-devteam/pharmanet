@@ -1,5 +1,6 @@
 import Application from "../../../model/application/Application.js";
 import ChatTemplates from "../../../model/application/ChatTemplates.js";
+import { getPharmacyDetailsById } from "../../../model/customer/pharmacies.model.js";
 import { createPrescriptionUploadCardContent } from "../../../view/chatbox.js";
 import cart from "../../../view/customer/Cart.js";
 import { createPaymentPopup } from "../../../view/customer/createPaymentPopup.js";
@@ -36,6 +37,10 @@ export default function handleConnection(msg){
         const resObj = Chat.readChatBoxAcceptRequestFromServerToClient(message);
 
         Application.connectedWith = resObj.pharmacyId;
+        getPharmacyDetailsById(resObj.pharmacyId).then(e=>{
+            Application.remotePharmacy = e.data;
+        })
+
         if(resObj.accept){
             getCartsIdsAndCreateOrder();
             CustomerChatBox.renderChatBox();

@@ -1,7 +1,9 @@
+const { apiCatchAsync } = require("../../common/catchAsync");
 const { getRequestData } = require("../../common/getRequestData");
 const { response, responseJson } = require("../../common/response");
 const Carts = require("../../models/CartModel");
 const Medicines = require("../../models/MedicineModel");
+const Pharmacies = require("../../models/PharmacyModel");
 const Products = require("../../models/ProductModel");
 
 exports.addToCart = async (req , res)=>{
@@ -171,3 +173,15 @@ exports.deleteCart = async (req , res)=>{
         })
     }
 }
+
+
+exports.getPharmacyById = apiCatchAsync(async (req , res)=>{
+    
+    const [pharmacy] = await Pharmacies.getById(req.pharmacyId);
+    if(!pharmacy) throw new Error("no pharmacy for this id");
+
+    return responseJson(res , 200 , {
+        status:"success",
+        data: pharmacy,
+    })
+})

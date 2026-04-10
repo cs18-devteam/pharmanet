@@ -50,6 +50,7 @@ export async function updateOrder({
     paymentMethod,
     paymentStatus ,
     pharmacyId,
+    status , 
 }) {
 
     try{
@@ -62,6 +63,7 @@ export async function updateOrder({
         if(paymentMethod) formData.paymentMethod= paymentMethod ;
         if(paymentStatus) formData.paymentStatus= paymentStatus ;
         if(pharmacyId) formData.pharmacyId= pharmacyId ;
+        if(status) formData.status= status ;
         
 
         console.log(formData);
@@ -112,6 +114,13 @@ export async function addOrderItem({orderId , medicineId , productId , price , d
         return data;
     }catch(e){
         console.log(e);
+        swal({
+            title :"Stock error",
+            icon:"error",
+            message: e.message,
+        })
+
+
         return {
             results:"",
         }

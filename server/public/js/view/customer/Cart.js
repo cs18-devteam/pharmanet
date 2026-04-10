@@ -3,6 +3,7 @@ class Cart{
     rightPanelVisibility = false;
     leftPanelVisibility = false;
     popupVisibility = false;
+    locked = false;
 
     /**
      * @type {HTMLElement}
@@ -46,6 +47,14 @@ class Cart{
         }
     }
 
+
+    lock(){
+        this.locked = true;
+    }
+
+    unlock(){
+        this.locked = false;
+    }
     /**
      * 
      * @param {string} html 
@@ -65,7 +74,7 @@ class Cart{
 
     #autoClose(){
         this.element.addEventListener('click' , (e)=>{
-            if(e.target == this.element){
+            if(e.target == this.element && !this.locked){
                 this.close();
             }
         })

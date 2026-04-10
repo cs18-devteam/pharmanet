@@ -46,7 +46,7 @@ exports.renderLoyaltyPoints = catchAsync(async (req, res) => {
 
 
            return `<div class="row">
-                <a href="#">${pharmacy.name}</a>
+                <a href="#">${pharmacy?.name}</a>
                 <span>${r.LoyaltyPoints} Points</span>
             </div>`
         }))).join(' '),

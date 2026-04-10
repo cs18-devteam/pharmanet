@@ -44,7 +44,6 @@ try{
                       break;
                     case "pharmacist":
                       console.log(result.user);
-                      debugger;
                       redirectUrl = `/pharmacies/${result.user.pharmacyId}/staff/${result.user.id}`;
                       break;
                     case "cashier":

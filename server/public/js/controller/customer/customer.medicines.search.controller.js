@@ -1,4 +1,5 @@
 import { addToCart } from "../../model/customer/cart.model.js";
+import cart from "../../view/customer/Cart.js";
 import { renderToast } from "../../view/renderToast.js";
 
 const cardsContainer = document.querySelector(".grid");
@@ -37,3 +38,4 @@ if(cardsContainer){
 }else{
     console.warn("medicine cards container can't find");
 }
+

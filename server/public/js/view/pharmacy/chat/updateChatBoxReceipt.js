@@ -22,7 +22,7 @@ export async function updateChatBoxReceipt(){
 
 
         const total = order.items?.reduce((acc, c , i)=>{
-            return acc + c.price
+            return acc + c.price * c.quantity;
         } , 0);
 
         const totalTag  = receipt.querySelector(".total");

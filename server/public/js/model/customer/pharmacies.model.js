@@ -1,3 +1,5 @@
+import Application from "../application/Application.js";
+
 export async function getPharmacies({mode="online"}={}){
     try{
 
@@ -17,6 +19,29 @@ export async function getPharmacies({mode="online"}={}){
             status:"error",
             results:[],
             message:"something went wrong"
+        }
+    }
+}
+
+
+export async function getPharmacyDetailsById(id) {
+    try{
+
+        if(!id) return {
+            status:"error",
+            message:"no id",
+        }   
+        
+        const res = await fetch(`/api/v1/customers/${Application.userId}/pharmacies/${id}`);
+        const data = await res.json();
+        console.log(data);
+        return data;
+    }catch(e){
+        console.log(e);
+
+        return {
+            status:"error",
+            message:e.message || "some thing went wrong"
         }
     }
 }

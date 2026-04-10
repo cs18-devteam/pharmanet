@@ -338,6 +338,13 @@ $list_len : list.length($containers);
         position: relative;
         overflow: hidden;
 
+        &.active{
+            &::after , &::before{
+                display: none;
+            }
+
+        }
+
 
         &::after {
             width: 100%;

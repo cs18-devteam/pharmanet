@@ -118,6 +118,7 @@ export default class Application{
     static currentSelectedStaffMemberId = undefined;
     static currentSelectedStaffMember = undefined;
     static allStaffMembers = [];
+    static remotePharmacy = undefined;
 
 
     /**

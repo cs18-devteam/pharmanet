@@ -1,11 +1,12 @@
 import Payment from "../../model/Payment.js";
 import Application from "../../model/application/Application.js";
-import { createOrder, deleteOrder, getOrdersList, getTotalOrdersAndOrderCount } from "../../model/pharmacy/orders.js";
+import { createOrder, deleteOrder, getOrdersList, getTotalOrdersAndOrderCount, updateOrder } from "../../model/pharmacy/orders.js";
 import { closeDrawer, openDrawer, setDrawerContent } from "../../view/pharmacy/drawerView.js";
 import { createOrderTable } from "../../view/pharmacy/orders/orderTableView.js";
 import { orderView } from "../../view/pharmacy/orders/orderView.js";
 import { updateReceipt } from "../../view/pharmacy/orders/reciptView.js";
 import { closeOrdersPaymentMode, openOrdersPaymentMode } from "../../view/pharmacy/orders__viewPaymentMode.js";
+import { renderToast } from "../../view/renderToast.js";
 import { swal } from "../../view/swal.js";
 import orders__searchAndRenderMedicineCard, { updateCardList } from "./orders/orders__searchAndRenderMedicineCards.js";
 const cartList = document.querySelector('.orders .cart_list');
@@ -307,7 +308,6 @@ async function showOrders(e){
                             return deleteOrder(deleteBtn.dataset.id);
                         }
                     }).then(data=>{
-                        console.log(data);
                         if(data.status == "error"){
                             swal({
                                 icon:"error",
@@ -324,6 +324,22 @@ async function showOrders(e){
                         }
                     })
                 }
+
+
+                const dropDown = target.closest("select.order-status");
+                dropDown?.addEventListener('input' ,async ()=>{
+                    const state = dropDown.value;
+                    const res = await updateOrder({
+                        id: orderId,
+                        status: state,
+                    })
+
+                    if(res.status == "success") renderToast("updated" , "success");
+                    else renderToast("try again" , "error");
+                })
+
+
+
             })
         
 

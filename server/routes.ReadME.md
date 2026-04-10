@@ -112,6 +112,7 @@
 /api/v1/customers/:customerId/chats/assets/prescriptions
 /api/v1/customers/:customerId/pharmacy/register
 /api/v1/customers/:customerId/cart
+/api/v1/customers/:customerId/pharmacies/:pharmacyId
 /api/v1/orders
 /api/v1/orders/:orderId/items
 /api/v1/orders/summery

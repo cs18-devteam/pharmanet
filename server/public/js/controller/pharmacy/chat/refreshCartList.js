@@ -4,6 +4,7 @@ import { updateChatBoxReceipt } from "../../../view/pharmacy/chat/updateChatBoxR
 import { swal } from "../../../view/swal.js";
 
 export async function refreshCartList() {
+
     const data = await getOrderItems();
     if (data.status == "error") {
         swal({
@@ -15,6 +16,7 @@ export async function refreshCartList() {
 
 
     const items = data.results.items;
+    console.log(items);
 
     const medicineCards = items?.map((item=>{
         if(item.itemType != "medicine") return;
@@ -127,12 +129,9 @@ export async function refreshCartList() {
                         Units <span>${item.quantity}</span>
                     </div>
 
-                    <div class="card-footer days">
-                        Days <span>${items.days}</span>
-                    </div>
 
                     <div class="card-footer discount">
-                        Discounts (Rs) <span>${items.discount}</span>
+                        Discounts (Rs) <span>${items.discount || 0}</span>
                     </div>
                     ` : html`this medicine not available in pharmacy`
             

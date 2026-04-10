@@ -1,0 +1,47 @@
+.cus-disconnect-notice{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 3rem;
+    background-color: var(--color-yellow-01);
+    z-index: 1000;
+    height: 50vh;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    font-size: 1.8rem;
+    text-transform: capitalize;
+    text-align: center;
+
+    p{
+        color: currentColor;
+        font-size: inherit;
+        margin-bottom: 3rem;
+
+    }
+
+    div{
+        font-size: 1.4rem;
+    }
+
+    .name  , .tel{
+        font-size: 2rem;
+    }
+
+
+    .close-btn{
+        border: 1px solid #fff;
+        padding: 1.5rem 2rem;
+        border-radius: 3rem;
+        margin-top: 2rem;
+
+        
+
+        &:hover{
+            color: #000;
+            background-color: #fff;
+        }
+    }
+}

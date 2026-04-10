@@ -3,34 +3,35 @@
 // import html from "../html.js";
 // import { swal } from "../swal.js";
 
+import { disconnect } from "../../controller/pharmacy/chat/disconnectNoticeHandler.js";
 import Application from "../../model/application/Application.js";
 import ChatTemplates from "../../model/application/ChatTemplates.js";
 import html from "../html.js";
 import { swal } from "../swal.js";
 
 
-class Message{
+class Message {
     isRendered = false;
     /**
      * 
      * @param {string} message 
      * @param {"message" | "reply"} type 
      */
-    constructor(message , type="message" | "reply"){
+    constructor(message, type = "message" | "reply") {
         this.message = message;
         this.type = type;
         this.time = Date.now();
     }
 
-    reset(){
+    reset() {
         this.isRendered = false;
     }
 
-    render(){
-        if(this.isRendered) return;
+    render() {
+        if (this.isRendered) return;
 
         const element = document.querySelector('.chat-box .body-section');
-        
+
         const message = html`
             <div class="${this.type} message">
                 <span class="profile-pic">
@@ -41,8 +42,8 @@ class Message{
             </div>
             <div class="${this.type}-time message-time">${new Date(this.time).toLocaleTimeString()}</div>
             `;
-        
-        element?.insertAdjacentHTML("beforeend" , message);
+
+        element?.insertAdjacentHTML("beforeend", message);
 
         this.isRendered = true;
     }
@@ -52,14 +53,14 @@ class Message{
 
 
 
-export default class PharmacyChatbox{
+export default class PharmacyChatbox {
     /**
      * @type {Message[]}
      */
     static history = [];
     static isOpen = false;
     static chatBox = undefined;
-    static onDisconnect = ()=>{};
+    static onDisconnect = () => { };
 
     /**
      * @type {"closed" | "connected" | "loading" | "error" }
@@ -69,39 +70,39 @@ export default class PharmacyChatbox{
     /**
      * @param {"closed" | "connected" | "loading" | "error" } status
     */
-    static setUserState(status){
+    static setUserState(status) {
         this.chatStatus = status;
 
         const chatStatusIndicator = document.querySelector(".chat-online-indicator");
-        if(this.chatStatus == "connected"){
+        if (this.chatStatus == "connected") {
             chatStatusIndicator.style = "color:var(--color-green-01)";
             chatStatusIndicator.textContent = "connected";
-        }else if(this.chatStatus == "closed"){
-            chatStatusIndicator.style =  "color:var(--color-yellow-01)" ;
+        } else if (this.chatStatus == "closed") {
+            chatStatusIndicator.style = "color:var(--color-yellow-01)";
             chatStatusIndicator.textContent = "disconnected";
-        }else if(this.chatStatus == "loading"){
+        } else if (this.chatStatus == "loading") {
             // cart.setLeftSideContent(spinner());
-        }else{
-            swal({title:"some thing wrong with the connection" , icon:'error'});
+        } else {
+            swal({ title: "some thing wrong with the connection", icon: 'error' });
             this.setChatboxState(false);
             // cart.close();
         }
     }
 
-    static getChatBox(){
-        if(this.chatBox) return this.chatBox;
+    static getChatBox() {
+        if (this.chatBox) return this.chatBox;
         this.chatBox = document.querySelector(".chat-box");
         return this.chatBox;
     }
 
-    static attachOnDisconnectHandler(handler = this.onDisconnect){
+    static attachOnDisconnectHandler(handler = this.onDisconnect) {
         this.onDisconnect = handler;
     }
 
 
-    static renderCloseAndSaveOrder(){
+    static renderCloseAndSaveOrder() {
         const chatContainer = document.querySelector('.chats.container');
-        chatContainer?.insertAdjacentHTML('afterbegin' , html`    
+        chatContainer?.insertAdjacentHTML('afterbegin', html`    
             <div class="disconnect-notice">
                 <div>Your connection has lost . close window . Do you want to save order ?</div>
                 <div class="buttons">
@@ -112,13 +113,13 @@ export default class PharmacyChatbox{
             </div>
         `);
     }
-    
+
 
     /**
      * 
      * @param {true | false} state 
      */
-    static setChatboxState(state){
+    static setChatboxState(state) {
         this.isOpen = state;
 
         // const floatingChatButton = document.querySelector("div");
@@ -142,15 +143,15 @@ export default class PharmacyChatbox{
     }
 
 
-    static loading(){
+    static loading() {
         this.setUserState("loading");
     }
 
-    static active(){
+    static active() {
         this.setUserState("connected");
     }
 
-    static renderChatBox(user = {firstName :"Unknown" , lastName :"Unknown"}){
+    static renderChatBox(user = { firstName: "Unknown", lastName: "Unknown" }) {
         this.isOpen = true;
 
         const chatsContainer = document.querySelector(".container.chats");
@@ -356,7 +357,7 @@ export default class PharmacyChatbox{
                                     <span>Rs<span class="final">1,200</span></span>
                                 </div>
             
-                                <div class="print-recipe">Print Recipe</div>
+                                <!-- <div class="print-recipe">Print Recipe</div> -->
                                 
                             </div>
                         </div>
@@ -370,16 +371,16 @@ export default class PharmacyChatbox{
         this.reloadMessages();
     }
 
-    static closeChatBox(){
+    static closeChatBox() {
         this.isOpen = false;
-        
+
     }
 
 
-    static handleInputMessage(func = ()=>{}){
+    static handleInputMessage(func = () => { }) {
         const form = document.querySelector(".chat-box .type-bar-container");
         console.log(form);
-        form.addEventListener("submit" , (e)=>{
+        form.addEventListener("submit", (e) => {
             e.preventDefault();
 
             const input = form.querySelector("input");
@@ -387,71 +388,84 @@ export default class PharmacyChatbox{
             func(message);
             input.value = "";
             this.outgoingMessage(message);
-            
+
         })
     }
 
-    static reloadMessages(){
-        this.history.forEach(msg=>{
+    static reloadMessages() {
+        this.history.forEach(msg => {
             msg.reset();
             msg.render();
         })
     }
 
-    static renderMessages(){
-        this.history.forEach(msg=>msg.render());
+
+    static clearHistory() {
+        this.history = []
+        Application.remoteOrderId = undefined;
+        Application.waitingList = [];
+        Application.connectedWith = undefined;
+        Application.connectedUser = undefined;
+
+    }
+
+    static renderMessages() {
+        this.history.forEach(msg => msg.render());
         this.scrollToBottom();
     }
 
-    static incomingMessage(msg){
-        this.history.push(new Message(msg , 'message'));
+    static incomingMessage(msg) {
+        this.history.push(new Message(msg, 'message'));
         this.renderMessages();
     }
 
-    static scrollToBottom(){
+    static scrollToBottom() {
         /**
          * @type {HTMLElement}
          */
 
-        
+
         const body = this.getChatBox().querySelector(".body-section");
         console.log(body.getBoundingClientRect().height);
         body.scrollTo({
             behavior: "smooth",
-            top:body.scrollHeight,
+            top: body.scrollHeight,
         })
     }
 
     /**
      * @param {string} msg - Incoming message
      */
-    static outgoingMessage(msg){
-        this.history.push(new Message(msg , 'reply'));
+    static outgoingMessage(msg) {
+        this.history.push(new Message(msg, 'reply'));
         this.renderMessages();
     }
 
 
-    static disconnect(){
+    static disconnect() {
         this.setUserState("closed");
         this.getChatBox().classList.add("disconnect");
-        Application.connection?.send(ChatTemplates.disconnect());
     }
 
 
-    static #handleDisconnect(){
+    static #handleDisconnect() {
         const disconnectBtn = document.querySelector('.chat-disconnect-btn');
-        disconnectBtn?.addEventListener("click" ,async ()=>{
+        disconnectBtn?.addEventListener("click", async () => {
             const results = await swal({
-                title:"Do you want to disconnect ?",
-                icon:"question",
+                title: "Do you want to disconnect ?",
+                icon: "question",
                 showConfirmButton: true,
-                showCancelButton : true,
+                showCancelButton: true,
             })
 
-            if(!results.isConfirmed) return;
+            if (!results.isConfirmed) return;
+            Application.connection?.send(ChatTemplates.disconnect());
+            this.renderCloseAndSaveOrder();
+            disconnect();
             this.disconnect();
+            this.clearHistory();
 
-            
+
         })
     }
 

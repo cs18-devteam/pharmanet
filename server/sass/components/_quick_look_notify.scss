@@ -1,0 +1,54 @@
+.quick_look_notify_container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    overflow: scroll;
+    height: 12rem;
+    padding-top: 2rem;
+
+
+    .quick-notify {
+        width: 100%;
+        padding: 1rem;
+        overflow: hidden;
+        border-radius: 2rem;
+        background-color: black;
+        color: #fff;
+        width: fit-content;
+        max-width: 20rem;
+        height: min-content;
+        cursor: pointer;
+        transition: all .2s ease;
+
+        &:hover{
+            transform: scale(1.1);
+            box-shadow: 0px 10px 5px rgba(0,0,0,.10);
+        }
+
+
+        &.high{
+            background-color: var(--color-red-01);
+        }
+
+        &.medium{
+            background-color: var(--color-yellow-01);
+        }
+
+        &.low{
+            background-color: var(--color-green-01);
+        }
+
+        .topic{
+            font-size: 1.6rem;
+            text-transform: capitalize;
+        }
+
+        .value{
+            font-size: 1.4rem;
+            font-weight: 100;
+            text-wrap-mode: nowrap;
+        }
+    }
+}

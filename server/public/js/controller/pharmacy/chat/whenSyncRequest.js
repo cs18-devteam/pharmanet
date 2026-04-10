@@ -16,7 +16,6 @@ function renderPrescription(url){
     img.addEventListener('load' , ()=>{
         prescriptions.innerHTML = "";
         prescriptions.insertAdjacentElement('beforeend',img);
-        debugger;
     })
 }
 

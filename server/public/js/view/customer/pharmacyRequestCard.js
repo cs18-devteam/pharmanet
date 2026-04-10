@@ -1,6 +1,7 @@
 import html from "../html.js";
+import cart from "./Cart.js";
 
-const requestCardTemplate =   html`
+const requestCardTemplate = html`
     <div class="pharmacy-request" id="{id}">
         <div class="request-btn" data-id="{id}">
             <button>request</button>
@@ -33,29 +34,43 @@ const requestCardTemplate =   html`
 `;
 
 
-export function createRequestCards(data=[]){
+export function createRequestCards(data = []) {
 
-    return data.map(pharmacy=>{
+    return data.map(pharmacy => {
         return requestCardTemplate
-            .replace('{id}' , pharmacy.id)
-            .replace('{id}' , pharmacy.id)
-            .replace('{name}' , pharmacy.name)
-            .replace('{med-status}' , pharmacy.medStatus || '')
-            .replace('{no}' , pharmacy.addressNo || '')
-            .replace('{street}' , pharmacy.street || '')
-            .replace('{town}' , pharmacy.town || '')
-            .replace('{town}' , pharmacy.town || '')
-            .replace('{status}' , pharmacy.alive ? 'open' : 'close')
-            .replace('{points}' , 0);
+            .replace('{id}', pharmacy.id)
+            .replace('{id}', pharmacy.id)
+            .replace('{name}', pharmacy.name)
+            .replace('{med-status}', pharmacy.medStatus || '')
+            .replace('{no}', pharmacy.addressNo || '')
+            .replace('{street}', pharmacy.street || '')
+            .replace('{town}', pharmacy.town || '')
+            .replace('{town}', pharmacy.town || '')
+            .replace('{status}', pharmacy.alive ? 'open' : 'close')
+            .replace('{points}', 0);
     })
 }
 
 
-export function renderRequestCards(el , cards){
-    if(!cards.length){
+export function renderRequestCards(cards) {
+    cart.setLeftSideContent(`<h3 class="near_by_pharmacies">near by pharmacies</h3>
+        
+        <div class="pharmacyRequestContainer pharmacyRequestContainer--nearby"></div>
+        
+        
+        <h3>base on availability</h3>
+        <div class="pharmacyRequestContainer pharmacyRequestContainer--availibility"></div>`)
+
+
+
+
+
+    const el = document.querySelector(".pharmacyRequestContainer.pharmacyRequestContainer--nearby");
+
+
+    if (!cards.length) {
         el.innerHTML = `<p style="opacity: .6; margin: 2rem auto; text-align: center;">oops , no available pharmacies this time</p>`;
         return;
     }
-
     el.innerHTML = cards.join(' ');
 }

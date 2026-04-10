@@ -107,6 +107,15 @@ exports.renderCustomerOrders = catchAsync(async (req, res) => {
                 userId: customer.id,
         })
 
+        orders = orders.sort((a , b) => b.id - a.id);
+        orders = orders.filter(o=>o.pharmacyId);
+
+        garbageOrders = orders.filter(o=>!o.pharmacyId);
+        garbageOrders.map(o=>{
+                PharmacyOrders.deleteById(o.id);
+        })
+
+
         orders = await Promise.all(orders.map(async o => {
                 if (o.pharmacyId) {
                         const [pharmacy] = await Pharmacies.getById(o.pharmacyId);
@@ -172,11 +181,11 @@ exports.renderCustomerOrders = catchAsync(async (req, res) => {
                         items: o.items.map(i => ` 
                         <div class="product ${i.itemType}">
                                 <span>${(i.itemType == "medicine" ? "M" : "P") + i.itemId}</span>
-                                <a href="/customers/${customer.id}/${i.itemType == "medicine" ? "medicines" : "products"}/${i.itemId}"><span style="color: #1A7F78;"><u>${i?.details?.name?.slice(0 , 50) || i?.details.geneticName?.slice(0 , 50) || "Name is not available"}</u></span></a>
-                                <p>Rs: ${i.price.toFixed(2)}</p>
+                                <a href="/customers/${customer.id}/${i.itemType == "medicine" ? "medicines" : "products"}/${i.itemId}"><span style="color: #1A7F78;"><u>${i?.details?.name?.slice(0 , 50) || i?.details?.geneticName?.slice(0 , 50) || "Name is not available"}</u></span></a>
+                                <p>Rs: ${i.price?.toFixed(2)}</p>
                                 <p>X</p>
                                 <p>${i.quantity} units</p>
-                                <p class="price">Rs ${(i.price * i.quantity).toFixed(2)}</p>
+                                <p class="price">Rs ${(i.price * i.quantity)?.toFixed(2)}</p>
                                 </div>
                         `).join(' '),
                         price : o.summery.price,

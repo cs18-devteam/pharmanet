@@ -46,6 +46,7 @@ exports.renderCustomerHome = async (req, res) => {
                                 medicineCards : medicine.map(m=>view('customer/component.home.medicine.card' , {
                                         name : m.geneticName,
                                         image: m.image,
+                                        id: m.id,
                                 })).join(' ')
                         }), 200)
                 } else {

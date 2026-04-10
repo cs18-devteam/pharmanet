@@ -82,15 +82,22 @@
     async function renderPharmacies(){
       try{
       const res = await fetch(`${window.location.origin}/api/v1/admin/${adminId}/pharmacies`);
-      console.log('Reponse Status :', res.status);
       const pharmacies = await res.json();
+
+      if(pharmacies.status == "1"){
+        const status = "Active";
+      }else{
+        status = "ctive";
+      }
+
       
       if(!Array.isArray(pharmacies) || pharmacies.length === 0) return;
 
       const html = pharmacies.map(p =>`
-      <a href = "/admin/pharmacy/view/${p.id}" class="pharmacy-card">
+      console.log(${p.status});
+      <a href = "/admin/${adminId}/pharmacies/${p.id}/viewPharmacy" class="pharmacy-card">
         <div class="header">
-          <h3>${p.name} <span class="status inactive">inactive</span></h3>
+          <h3>${p.name} <span class="status inactive">${status}</span></h3>
           <button class="menu-btn">⋮</button>
         </div>
         <p>Manager: ${p.pharmacist || 'N/A'}</p>

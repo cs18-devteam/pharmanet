@@ -36,6 +36,9 @@ exports.adminPharmacyRouter = SubRouter.route('/admin/:adminId')
 .subRoute('/pharmacies/:pharmacyId' , {
         get : [authenticate('adminId')  ,adminPharmacyController.renderPharmacyDetailsView],
 })
+.subRoute('/pharmacies/:pharmacyId/viewPharmacy' , {
+        get : [authenticate('adminId'), adminPharmacyController.renderPharmacyView],
+}) 
 
 
 

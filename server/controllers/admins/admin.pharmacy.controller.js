@@ -175,6 +175,20 @@ exports.renderPharmacyDetailsView = async (req, res) => {
   }
 };
 
+exports.renderPharmacyView = async (req, res) => {
+  try{
+    
+    const [users] = await Users.getById(req.pharmacyId);
+    console.log(users);
+
+    return response(res, view("admin/viewPharmacy" , { users:JSON.stringify(users) }), 200);
+
+  }catch(e){
+    console.log(e);
+    return response(res, JSON.stringify({}), 400)
+  }
+}
+
 exports.deletePharmacy = async (req, res) => {
   try {
     console.log({ pharmacyId: req.pharmacyId });

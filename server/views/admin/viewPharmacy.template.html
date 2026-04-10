@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pharmacy Inventory</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body class="viewPharmacy">
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <h1>Downtown Pharmacy - Inventory</h1>
+        <p>Manage and monitor medicine stock levels and expiry dates</p>
+      </header>
+
+      <!-- Stats Cards -->
+      <section class="cards">
+        <div class="card">
+          <h4>Total Items</h4>
+          <h2>1,482</h2>
+          <span class="positive">+12% from last month</span>
+        </div>
+
+        <div class="card warning">
+          <h4>Low Stock</h4>
+          <h2>234</h2>
+          <span class="negative">+8% from last month</span>
+        </div>
+
+        <div class="card">
+          <h4>Expiring Soon</h4>
+          <h2>45</h2>
+          <span class="positive">-2% from last month</span>
+        </div>
+
+        <div class="card">
+          <h4>Inventory Value</h4>
+          <h2>$45,230</h2>
+          <span class="positive">+5.2% from last month</span>
+        </div>
+      </section>
+
+      <!-- Search + Actions -->
+      <section class="toolbar">
+        <input type="text" placeholder="Search medicines by name..." />
+        <div class="actions">
+          <button>Filter</button>
+          <button>Export</button>
+          <!-- <button>Sync</button> -->
+        </div>
+      </section>
+
+      <!-- Tabs -->
+      <section class="tabs">
+        <button class="active">All Items</button>
+        <button>Low Stock (234)</button>
+        <button>Expiring Soon (45)</button>
+        <button>Optimal Stock (1,203)</button>
+      </section>
+
+      <!-- Table -->
+      <section class="table">
+        <table>
+          <thead>
+            <tr>
+              <th>Medicine Name</th>
+              <th>Code</th>
+              <th>Category</th>
+              <th>Quantity</th>
+              <th>Unit Price</th>
+              <th>Expiry Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Amoxicillin 500mg</td>
+              <td>AMX-500</td>
+              <td>Antibiotics</td>
+              <td>450</td>
+              <td>$0.45</td>
+              <td>12/15/2025</td>
+              <td><span class="badge optimal">Optimal</span></td>
+            </tr>
+
+            <tr>
+              <td>Ibuprofen 400mg</td>
+              <td>IBU-400</td>
+              <td>Pain Relief</td>
+              <td class="low">25</td>
+              <td>$0.25</td>
+              <td>3/20/2026</td>
+              <td><span class="badge critical">Critical</span></td>
+            </tr>
+
+            <tr>
+              <td>Aspirin 100mg</td>
+              <td>ASP-100</td>
+              <td>Cardiovascular</td>
+              <td>850</td>
+              <td>$0.15</td>
+              <td>8/10/2026</td>
+              <td><span class="badge optimal">Optimal</span></td>
+            </tr>
+
+            <tr>
+              <td>Metformin 1000mg</td>
+              <td>MET-1000</td>
+              <td>Diabetes</td>
+              <td class="low">120</td>
+              <td>$0.35</td>
+              <td>10/5/2025</td>
+              <td><span class="badge warning">Low Stock</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+
+    <header class="header">
+      <h1>Downtown Pharmacy - Staff</h1>
+      <p>Manage User accounts and Permissions</p>
+    </header>
+
+    <section class="toolbar">
+      <input type="text" placeholder="Search users by name..." />
+      <div class="actions">
+        <button>Filter</button>
+        <button>Export</button>
+        <!-- <button>Sync</button> -->
+      </div>
+    </section>
+
+    <!-- Table -->
+    <section class="table">
+      <table>
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Role</th>
+            <th>Pharmacy</th>
+            <th>Status</th>
+            <!-- <th>Last Active</th> -->
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="users-table-body">
+          <!-- <tr>
+          <td>
+            <div class="user-info">
+              <div class="avatar">JS</div>
+              <div class="details">
+                <div class="name">John Smith</div>
+                <div class="email">john.smith@pharmacy.com</div>
+              </div>
+            </div>
+          </td>
+          <td><span class="role admin">Admin</span></td>
+          <td>Downtown Pharmacy</td>
+          <td><span class="status active">Active</span></td>
+          <td>2 hours ago</td>
+          <td class="actions">
+            <div class="dropdownMenu">
+              <button class="dots">⋮</button>
+              <ul class="dropdown">
+                <a href="/admin/viewProfile">View Profile</a>
+                <a href="">Edit User</a>
+                <a href="">Change Role</a>
+                <a href="">Reset Password</a>
+                <a href="#" class="deactivate-btn danger" data-id="">Deactivate</a>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td>
+            <div class="user-info">
+              <div class="avatar">SJ</div>
+              <div class="details">
+                <div class="name">Sarah Johnson</div>
+                <div class="email">sarah.j@pharmacy.com</div>
+              </div>
+            </div>
+          </td>
+          <td><span class="role admin">Manager</span></td>
+          <td>Central Medicine Pharmacy</td>
+          <td><span class="status active">Active</span></td>
+          <td>5 minutes ago</td>
+          <td class="actions">
+            <div class="dropdownMenu">
+              <button class="dots">⋮</button>
+              <ul class="dropdown">
+                <a href="/admin/viewProfile">View Profile</a>
+                <a href="">Edit User</a>
+                <a href="">Change Role</a>
+                <a href="">Reset Password</a>
+                <a href="" class="danger">Deactivate</a>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+    
+        <tr>
+          <td>
+            <div class="user-info">
+              <div class="avatar">MD</div>
+              <div class="details">
+                <div class="name">Mike Davis</div>
+                <div class="email">mike.davis@pharmacy.com</div>
+              </div>
+            </div>
+          </td>
+          <td><span class="role admin">Pharmarcist</span></td>
+          <td>Westside Pharmacy</td>
+          <td><span class="status active">Active</span></td>
+          <td>1 hour ago</td>
+          <td class="actions">
+            <div class="dropdownMenu">
+              <button class="dots">⋮</button>
+              <ul class="dropdown">
+                <a href="/admin/viewProfile">View Profile</a>
+                <a href="">Edit User</a>
+                <a href="">Change Role</a>
+                <a href="">Reset Password</a>
+                <a href="" class="danger">Deactivate</a>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="user-info">
+              <div class="avatar">LA</div>
+              <div class="details">
+                <div class="name">Lisa Anderson</div>
+                <div class="email">lisa.a@pharmacy.com</div>
+              </div>
+            </div>
+          </td>
+          <td><span class="role admin">Manager</span></td>
+          <td>Eastgate Pharmacy</td>
+          <td><span class="status active">Active</span></td>
+          <td>2 hours ago</td>
+          <td class="actions">
+            <div class="dropdownMenu">
+              <button class="dots">⋮</button>
+              <ul class="dropdown">
+                <a href="/admin/viewProfile">View Profile</a>
+                <a href="">Edit User</a>
+                <a href="">Change Role</a>
+                <a href="">Reset Password</a>
+                <a href="" class="danger">Deactivate</a>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="user-info">
+              <div class="avatar">TW</div>
+              <div class="details">
+                <div class="name">Tom Wilson</div>
+                <div class="email">tom.wilson@pharmacy.com</div>
+              </div>
+            </div>
+          </td>
+          <td><span class="role admin">Pharmarcist</span></td>
+          <td>Downtown Pharmacy</td>
+          <td><span class="status active">Active</span></td>
+          <td>30 minutes ago</td>
+          <td class="actions">
+            <div class="dropdownMenu">
+              <button class="dots">⋮</button>
+              <ul class="dropdown">
+                <a href="/admin/viewProfile">View Profile</a>
+                <a href="">Edit User</a>
+                <a href="">Change Role</a>
+                <a href="">Reset Password</a>
+                <a href="" class="danger">Deactivate</a>
+              </ul>
+            </div>
+          </td>
+        </tr> -->
+        </tbody>
+      </table>
+    </section>
+    <script>
+      const pathParts = window.location.pathname.split("/");
+      const adminIdIndex = pathParts.indexOf("admin") + 1;
+      const adminId = pathParts[adminIdIndex];
+      const pharmacyId = pathParts[pathParts.indexOf("pharmacies") + 1];
+      const API_URL = `${window.location.origin}/pharmacies/${pharmacyId}/api/staff`;
+      console.log(API_URL);
+
+      window.addEventListener("load", loadUsers);
+
+      //FETCH ALL USERS
+      async function loadUsers() {
+        const res = await fetch(API_URL);
+        const payload = await res.json();
+        console.log(payload.results);
+
+        const users = payload.results;
+
+        const tableBody = document.getElementById("users-table-body");
+        tableBody.innerHTML = "";
+
+        if (!Array.isArray(users) || users.length === 0) {
+          tableBody.innerHTML = '<tr><td colspan="6">No users found</td></tr>';
+          return;
+        }
+
+        users.forEach((user) => {
+          const initials = (
+            user.firstName ||
+            user.lastName ||
+            user.fullName ||
+            "U"
+          )
+            .split(" ")
+            .map((n) => n[0])
+            .join("")
+            .toUpperCase();
+          const avatar = user.avatar || initials;
+          const status = user.status || "Active";
+          const row = document.createElement("tr");
+          row.innerHTML = `
+              <td>
+                <div class="user-info">
+                  <div class="avatar">${avatar}</div>
+                  <div class="details">
+                    <div class="name">${user.firstName + " " + user.lastName || user.fullName}</div>
+                    <div class="email">${user.email}</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="role">${user.role || "N/A"}</span></td>
+              <td>${user.pharmacy || "N/A"}</td>
+              <td><span class="status ${status.toLowerCase()}">${status}</span></td>
+              <!-- <td>2 hours ago</td> -->
+              
+            `;
+          tableBody.appendChild(row);
+        });
+      }
+    </script>
+  </body>
+</html>

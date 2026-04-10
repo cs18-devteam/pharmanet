@@ -77,14 +77,17 @@ exports.createStaffMember = apiCatchAsync(async (req, res) => {
 
 exports.getStaffMembers = apiCatchAsync(async (req, res) => {
   let members = await PharmacyStaff.get({ pharmacyId: req.pharmacyId });
-
+  
   members = members.map(async (m) => {
     const [user] = await Users.getById(m.userId);
+    
+  
     return { ...m, ...user, userId: user.id };
   });
 
 
   members = await Promise.all(members);
+  
 
   return responseJson(res, 200, {
     status: "success",

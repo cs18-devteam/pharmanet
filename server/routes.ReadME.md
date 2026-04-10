@@ -44,6 +44,7 @@
 /admin/:adminId/pharmacies/:pharmacyId/edit/step/3
 /admin/:adminId/pharmacies/:pharmacyId/edit/step/4
 /admin/:adminId/pharmacies/:pharmacyId
+/admin/:adminId/pharmacies/:pharmacyId/viewPharmacy
 /api/v1/admin/:adminId/pharmacies
 /pharmacies/:pharmacyId/staff/:staffId
 /pharmacies/:pharmacyId/staff/:staffId/staff
@@ -115,6 +116,7 @@
 /pharmacies/:pharmacyId/staff
 /pharmacies/:pharmacyId/staff/options
 /pharmacies/:pharmacyId/staff/:staffId/permissions
+/pharmacies/:pharmacyId/api/staff
 /api/v1/users/:userId
 /api/v1/pharmacy/:pharmacyId
 /api/v1/staff/:staffId

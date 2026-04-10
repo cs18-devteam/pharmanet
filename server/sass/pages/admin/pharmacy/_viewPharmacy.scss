@@ -1,0 +1,202 @@
+.viewPharmacy{
+  padding: 20px 90px;
+
+
+
+$bg: #0b0f14;
+$card-bg: #f7f7f7;
+$text: #08374f;
+$muted: #9ca3af;
+$green: #22c55e;
+$red: #ef4444;
+$yellow: #f59e0b;
+$border: #1f2937;
+$accent-green: #00a676;
+
+
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: $bg;
+  color: $text;
+}
+
+/* Header */
+.header {
+  h1 {
+    margin: 0;
+    font-size: 28px;
+  }
+
+  p {
+    color: $muted;
+    margin-top: 1px;
+  }
+}
+
+/* Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0px;
+  margin: 20px 0;
+
+  .card {
+    background: $card-bg;
+    padding: 20px;
+    
+    &:not(&:last-child){
+    border-right: 1px solid var(--color-green-01);
+    }
+
+    h4 {
+      color: $text;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin: 0;
+      color: $text;
+    }
+
+    .positive {
+      color: $green;
+      font-size: 14px;
+       display: none;
+    }
+
+    .negative {
+      color: $red;
+      font-size: 14px;
+       display: none;
+    }
+  }
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+
+  input {
+    width: 70%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid $border;
+    background: transparent;
+    color: black;
+  }
+
+  .actions button {
+    margin-left: 10px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    background: $card-bg;
+    color: $text;
+    cursor: pointer;
+
+    &:hover {
+      background: $card-bg;
+    }
+  }
+}
+
+/* Tabs */
+.tabs {
+  margin-bottom: 20px;
+
+  button {
+    margin-right: 10px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid $border;
+    background: transparent;
+    color: $text;
+    cursor: pointer;
+
+    &.active {
+      background: $green;
+      color: black;
+    }
+  }
+}
+
+/* Table */
+.table {
+  background: $card-bg;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      
+    }
+
+    th {
+      color: $muted;
+      font-size: 14px;
+      border-bottom: 1px solid $border;
+    }
+
+    tr {
+      border-bottom: 1px solid $border;
+    }
+
+    .low {
+      color: $red;
+      font-weight: bold;
+    }
+  }
+}
+
+/* Badges */
+.badge {
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+
+  &.optimal {
+    background: rgba($green, 0.2);
+    color: $green;
+  }
+
+  &.critical {
+    background: rgba($red, 0.2);
+    color: $red;
+  }
+
+  &.warning {
+    background: rgba($yellow, 0.2);
+    color: $yellow;
+  }
+}
+
+#users-table-body{
+  .user-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      .avatar{
+        width: 35px;
+        height: 35px;
+        background-color: #1f1f1f;
+        color: $accent-green;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-weight: 600;
+ }
+}
+
+}   
+}

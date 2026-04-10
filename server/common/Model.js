@@ -309,6 +309,17 @@ class Model {
     }
   }
 
+  //get using variable id
+  async getByVarId(column,id) {
+    try {
+      const query = `SELECT * FROM ${this.#table} WHERE ${column}=${id}`;
+      const customer = await db.query(query);
+      return customer;
+    } catch (e) {
+      throw e;
+    }
+  }
+
   //delete using id
   async deleteById(id) {
     try {

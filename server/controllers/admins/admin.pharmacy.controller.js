@@ -126,7 +126,7 @@ exports.updatePharmacy = async (req, res) => {
   try {
     const data = JSON.parse(await getRequestData(req));
     const updatedPharmacy = await Pharmacies.update(data);
-    return (sent = true && response(res, JSON.stringify(updatedPharmacy), 200));
+    return (sent = true && response(res, JSON.stringify(updatedPharmacy), 201));
   } catch (e) {
     console.log(e);
     return (

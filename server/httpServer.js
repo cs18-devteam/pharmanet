@@ -36,6 +36,7 @@ const { adminMedicineRouter } = require('./routes/web/admin.medicines.Routes');
 const { adminDashboardRouter } = require('./routes/web/admin.dashboard.Routes');
 const { adminApiDashboardRouter } = require('./routes/web/admin.dashboard.Routes');
 const { pharmacyDeleteRouter } = require('./routes/web/pharmacy.delete.Routes');
+const { pharmacyMedicineApiRouter } = require('./routes/web/pharmacy.medicine.Routes');
 
 const { adminApiActivityRouter } = require('./routes/web/admin.dashboard.Routes');
 const docsApiRouter = require('./routes/api/api.docs.Routes');
@@ -113,6 +114,7 @@ const server = https.createServer(options,(req , res)=>{
         pharmacyTransactionsRouter.pipe(req,res);
         pharmacyProductApiRouter.pipe(req , res);
         pharmacyDeleteRouter.pipe(req ,res);
+        pharmacyMedicineApiRouter.pipe(req,res);
         docsApiRouter.pipe(req , res);
         apiStocksRouter.pipe(req , res);
 

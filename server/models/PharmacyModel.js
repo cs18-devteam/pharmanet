@@ -89,6 +89,10 @@ class PharmacyModel extends Model{
             type : "VARCHAR(100)",
             default : '/pharmacyImages/general-pharmacy.png'
         }
+        this.status = {
+            type : "bool",
+            default : "0",
+        }
 
     }
 }

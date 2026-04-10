@@ -17782,6 +17782,7 @@ p {
 }
 .users .container .container-2 .main .dashboard .sectionHeading .addBtn {
   background-color: #08374f;
+  display: none;
   color: white;
   font-size: 1.4rem;
   border-radius: 1rem;
@@ -21365,15 +21366,21 @@ p {
 }
 .pharmarcy .container .container-2 .main .dashboard .pharmacy-card .pharmacyCardFooter .details-btn {
   background: linear-gradient(to right, #18978D, #083851);
-  border: 1px solid #08374F;
+  border: none;
   color: #fff;
-  padding: 0.4rem 0.75rem;
+  padding: 1rem;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 1.2rem;
 }
 .pharmarcy .container .container-2 .main .dashboard .pharmacy-card .pharmacyCardFooter .details-btn:hover {
   background-color: #1e1e1e;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .pharmacyCardFooter .deactivate-Btn {
+  background-color: red;
+  border: none;
+  color: white;
+  border-radius: 0.5rem;
+  margin-left: 0.5rem;
 }
 .pharmarcy .container .container-2 .main .dashboard .status {
   padding: 0.2rem 0.5rem;
@@ -21508,6 +21515,9 @@ p {
 .viewPharmacy .table table th, .viewPharmacy .table table td {
   padding: 12px;
   text-align: left;
+}
+.viewPharmacy .table table th .badge, .viewPharmacy .table table td .badge {
+  white-space: nowrap;
 }
 .viewPharmacy .table table th {
   color: #9ca3af;

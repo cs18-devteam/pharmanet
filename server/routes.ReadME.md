@@ -46,6 +46,7 @@
 /admin/:adminId/pharmacies/:pharmacyId
 /admin/:adminId/pharmacies/:pharmacyId/viewPharmacy
 /api/v1/admin/:adminId/pharmacies
+/api/v1/admin/:adminId/pharmacies/:pharmacyId
 /pharmacies/:pharmacyId/staff/:staffId
 /pharmacies/:pharmacyId/staff/:staffId/staff
 /pharmacies/:pharmacyId/staff/:staffId/attendance
@@ -142,5 +143,6 @@
 /api/v1/admin/:adminId/dashboard
 /api/v1/admin/:adminId/activities
 /pharmacy/:pharmacyId
+/pharmacies/:pharmacyId/api/medicines
 /api/v1/docs/:pharmacyId
 /api/v1/pharmacies/:pharmacyId/stocks

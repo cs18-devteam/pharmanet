@@ -138,6 +138,10 @@ body {
     th, td {
       padding: 12px;
       text-align: left;
+
+      .badge{
+        white-space: nowrap;
+      }
       
     }
 

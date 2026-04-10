@@ -19,6 +19,6 @@ exports.pharmacyStaffRouter = SubRouter.route('/pharmacies/:pharmacyId/staff')
 
 
 exports.pharmacyStaffApiRouter = SubRouter.route('/pharmacies/:pharmacyId/api')
-.subRoute('/staff', { 
+    .subRoute('/staff', { 
     get : pharmacyStaffController.getStaffMembers,
 })

@@ -45,6 +45,10 @@ exports.adminPharmacyRouter = SubRouter.route('/admin/:adminId')
 exports.adminApiPharmacyRouter = SubRouter.route('/api/v1/admin/:adminId')
 .subRoute('/pharmacies' , {
         get : [authenticate('adminId')  ,adminPharmacyController.sendJsonPharmaciesList],
+        update : [authenticate('adminId') , adminPharmacyController.updatePharmacy],
+})
+.subRoute('/pharmacies/:pharmacyId' , {
+        update : [authenticate('adminId') , adminPharmacyController.updatePharmacy],
 })
 
 

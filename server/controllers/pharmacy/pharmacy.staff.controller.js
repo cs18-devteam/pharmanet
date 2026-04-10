@@ -5,6 +5,7 @@ const Users = require("../../models/UserModel");
 const view = require("../../common/view");
 const { apiCatchAsync } = require("../../common/catchAsync");
 const getMultipartData = require("../../common/getMultipartData");
+const Pharmacies = require("../../models/PharmacyModel");
 
 exports.renderCreateStaff = async (req, res) => {
   try {
@@ -77,12 +78,15 @@ exports.createStaffMember = apiCatchAsync(async (req, res) => {
 
 exports.getStaffMembers = apiCatchAsync(async (req, res) => {
   let members = await PharmacyStaff.get({ pharmacyId: req.pharmacyId });
-  
   members = members.map(async (m) => {
-    const [user] = await Users.getById(m.userId);
     
-  
-    return { ...m, ...user, userId: user.id };
+    const [staff] = await PharmacyStaff.getByVarId('userId',m.userId);
+    const [user] = await Users.getById(staff.userId);
+    const [pharmacy] = await Pharmacies.get(user.pharmacyId);
+   
+
+    
+    return { ...staff, ...user, ...pharmacy, userId: user.id };
   });
 
 

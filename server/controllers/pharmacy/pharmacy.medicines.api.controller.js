@@ -26,6 +26,32 @@ exports.getAllMedicines = async (req, res) => {
   }
 };
 
+exports.getMedicinesById = async (req, res) => {
+    try{
+        let data = await PharmacyMedicines.getByVarId("pharmacyId", req.pharmacyId);
+        
+        data = data.map(async (m) => {
+        const [medicine] = await Medicines.getById(m.medicineId);
+        const [stock] = await PharmacyMedicines.getById(m.id);
+
+    
+    return { ...stock, ...medicine, medicineId: medicine.id };
+  });
+  
+
+  data = await Promise.all(data);
+  
+
+  return responseJson(res, 200, {
+    status: "success",
+    results: data,
+    count: data.length,
+  });
+    }catch(e){
+        console.log(e);
+        return response(res, view('404'), 500);
+    }
+};
 
 
 exports.getMedicineDetailsByStockId = async (req , res)=>{

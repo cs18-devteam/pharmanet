@@ -202,6 +202,34 @@ $list_len : list.length($containers);
 
 }
 
+.not-verified{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    background-color: var(--color-yellow-01);
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    
+    p{
+        font-size: 1.8rem;
+        color : #ffff;
+
+    }
+
+    button{
+        padding: 1.2rem 2rem;
+        border-radius: 3rem;
+        border: 1px solid #fff;
+        color : #fff;
+        background-color: transparent;
+        cursor: pointer;
+        text-transform: capitalize;
+    }
+}
+
 
 .nav {
 

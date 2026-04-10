@@ -109,6 +109,7 @@ exports.renderPharmacyDashboard = async (req , res)=>{
             header : view('component.header' , {
                 name:"Pharmacy Dashboard",
             }),
+            notverified : (!pharmacy.status) ? view("pharmacy/component.pharmacy.notverified"): '', 
         }) , 200 , {
             "Set-Cookie" : [
                 createCookie('staffId' , staffMember.id) ,

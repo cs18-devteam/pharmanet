@@ -1,0 +1,17 @@
+    <div class="not-verified">
+        <p>
+
+            You’re not verified yet. We’re currently processing your forms. Once verification is complete, you’ll be able to experience the full potential of the system.
+        </p>
+            
+        <button class="btn-close">close</button>
+    </div>
+
+    <script>
+        document.querySelector(".not-verified")?.addEventListener("click" , e=>{
+            if(e.target.closest(".btn-close")){
+                document.querySelector(".not-verified")?.remove();
+            }
+        })
+
+    </script>

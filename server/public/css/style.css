@@ -13490,6 +13490,30 @@ button.save {
   opacity: 1;
   transform: translate(0) scale(1);
 }
+.pharmacyDashboard .not-verified {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem;
+  background-color: var(--color-yellow-01);
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+}
+.pharmacyDashboard .not-verified p {
+  font-size: 1.8rem;
+  color: white;
+}
+.pharmacyDashboard .not-verified button {
+  padding: 1.2rem 2rem;
+  border-radius: 3rem;
+  border: 1px solid #fff;
+  color: #fff;
+  background-color: transparent;
+  cursor: pointer;
+  text-transform: capitalize;
+}
 .pharmacyDashboard .nav .logo {
   background-color: #fff;
   padding: 1rem 2rem;

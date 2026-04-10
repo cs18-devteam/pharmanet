@@ -2,6 +2,8 @@ import { getCustomerCarts, removeFromCart } from "../../model/customer/cart.mode
 import { createCartCards } from "../../view/customer/cart.card.js";
 import { swal } from "../../view/swal.js";
 import cart from "./../../view/customer/Cart.js";
+import { activateLocations } from "./location.controller.js";
+activateLocations();
 
 const btn_navMyCartBtn = document.querySelector('.setting-dropdown .cart-btn');
 

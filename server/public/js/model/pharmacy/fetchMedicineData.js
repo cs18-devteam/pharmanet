@@ -44,3 +44,20 @@ export async function fetchStocksData(name , limit , pharmacyId = 1){
         }
     }
 }
+export async function fetchLowStocks(pharmacyId){
+    try{
+        if(!pharmacyId) return;
+        const respond = await fetch(`/api/v1/pharmacies/${pharmacyId}/stocks/low`);
+        const data = await respond.json();
+        return data;
+
+    }catch(e){
+        return {
+            status:"error",
+            message:e.message,
+        }
+    }
+}
+
+
+

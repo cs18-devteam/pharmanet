@@ -148,3 +148,4 @@
 /pharmacy/:pharmacyId
 /api/v1/docs/:pharmacyId
 /api/v1/pharmacies/:pharmacyId/stocks
+/api/v1/pharmacies/:pharmacyId/stocks/low

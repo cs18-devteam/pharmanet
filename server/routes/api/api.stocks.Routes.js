@@ -5,6 +5,8 @@ const { authorizeToApi, PERMISSIONS } = require("../../middlewares/authorizeToVi
 const apiStocksRouter = SubRouter.route("/api/v1/pharmacies/:pharmacyId/stocks")
 .subRoute("/" , {
     get: [authorizeToApi(PERMISSIONS.createOrder) , apiProductsController.getStocksByName]
+}).subRoute("/low" , {
+    get : apiProductsController.getLowStocks,
 })
 
 module.exports = apiStocksRouter;

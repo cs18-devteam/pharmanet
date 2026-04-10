@@ -1,4 +1,5 @@
 const { apiCatchAsync } = require("../../common/catchAsync");
+const readCookies = require("../../common/readCookies");
 const { responseJson } = require("../../common/response");
 const Medicines = require("../../models/MedicineModel");
 const PharmacyMedicines = require("../../models/PharmacyMedicinesModel");
@@ -54,3 +55,23 @@ exports.getStocksByName = async (req , res)=>{
         })
     }
 }
+
+
+exports.getLowStocks = apiCatchAsync(async (req , res)=>{
+    const {pharmacyId} = readCookies(req);
+    let medicines = await PharmacyMedicines.query(`select * from this.table where pharmacyId = ${pharmacyId} and publicStock <= 10 `);
+
+    medicines = await Promise.all(medicines.map(async m=>{
+        const [details] = await Medicines.getById(m.medicineId);
+        return {...m , name : details.geneticName , quantity : m.publicStock}
+    }))
+    
+
+    const products = await Products.query(`select * from this.table where pharmacyId = ${pharmacyId} and quantity <= 10`);
+
+    return responseJson(res   , 200 , {
+        status:"success",
+        data : [...medicines , ...products],
+    })
+
+})

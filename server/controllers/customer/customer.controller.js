@@ -23,6 +23,11 @@ exports.renderCustomerHome = async (req, res) => {
                 const [{ count: medicineCount }] = await Medicines.query('select count(*) as count from this.table');
                 const [{ count: pharmacyCount }] = await Pharmacies.query('select count(*) as count from this.table');
                 console.log({customer , staffMember});
+                const range = Number.parseInt(Math.random() * (medicineCount - 12));
+                console.log(range);
+                const medicine = await Medicines.query(`select * from this.table where ${range} < id limit 12 `);
+                
+
 
                 if (!staffMember) {
                         return response(res, view('customer/customer.home', {
@@ -38,6 +43,10 @@ exports.renderCustomerHome = async (req, res) => {
                                 cart: view('customer/component.cart'),
                                 MedicineCount: medicineCount,
                                 PharmacyCount: pharmacyCount,
+                                medicineCards : medicine.map(m=>view('customer/component.home.medicine.card' , {
+                                        name : m.geneticName,
+                                        image: m.image,
+                                })).join(' ')
                         }), 200)
                 } else {
                         return response(res, 'redirect', 301, {

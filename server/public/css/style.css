@@ -12865,6 +12865,35 @@ button.save {
   padding: 12px 0;
 }
 
+.create-transaction {
+  width: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: capitalize;
+  border-radius: 0.2rem;
+}
+.create-transaction p {
+  color: #fff;
+  margin: 1rem;
+}
+.create-transaction .buttons button {
+  font-weight: 100;
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  font-size: 1.8rem;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 0.2rem;
+  cursor: pointer;
+}
+.create-transaction .buttons button:hover {
+  background-color: #fff;
+  color: #000;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .order-info {

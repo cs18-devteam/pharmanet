@@ -1,7 +1,10 @@
 import Application from "../../../model/application/Application.js";
 import html from "../../html.js";
+import { swal } from "../../swal.js";
 
 export function orderView(order) {
+  try{
+
   console.log(order);
   if(!order) return;
   
@@ -9,7 +12,6 @@ export function orderView(order) {
   if(order.staffId && Application.staffData.length){
     staffMember = Application.staffData.find(s=>s.id == order.staffId)
   }
-
 
   return html`
 
@@ -53,7 +55,7 @@ export function orderView(order) {
 
       <div>
         <label>Payment Status </label>
-        <p>${order.isPaid ? "paid" : "pending"}</p>
+        <p>${order.isPaid ? "Paid" : "<span style='color:var(--color-red-01);'>Pending</span>"}</p>
       </div>
 
 
@@ -141,34 +143,52 @@ export function orderView(order) {
       <section class="order-items">
       <h3>Transactions List</h3>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>method</th>
-            <th>StaffId</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Type</th>
-            <th>Amount</th>
-          </tr>
-        </thead>
+      ${(order.transactions.length) ?  
+        html`
+        <table>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>method</th>
+              <th>StaffId</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Type</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
 
-        <tbody>
-            ${order.transactions?.map(tr => {
-    return html`<tr>
-                    <td>${tr.id}</td>
-                    <td>${tr.method || "-"}</td>
-                    <td>${tr.staffId || "-"}</td>
-                    <td>${new Date(tr.transactionDateTime).toLocaleDateString('si-LK') || "-"}</td>
-                    <td>${new Date(tr.transactionDateTime).toLocaleTimeString('si-LK') || "-"}</td>
-                    <td>${tr.type || "-"}</td>
-                    <td> Rs. ${tr.amount || "0.00"}</td>
-                </tr>
-`
-  }).join(" ")}
-        </tbody>
-      </table>
+          <tbody>
+              ${order.transactions?.map(tr => {
+                  return html`<tr>
+                                  <td>${tr.id}</td>
+                                  <td>${tr.method || "-"}</td>
+                                  <td>${tr.staffID || "-"}</td>
+                                  <td>${new Date(tr.transactionDateTime).toLocaleDateString('si-LK') || "-"}</td>
+                                  <td>${new Date(tr.transactionDateTime).toLocaleTimeString('si-LK') || "-"}</td>
+                                  <td>${tr.type || "-"}</td>
+                                  <td> Rs. ${tr.amount || "0.00"}</td>
+                              </tr>
+              `
+                }).join(" ")}
+            </tbody>
+          </table>`
+
+      :
+           
+           html`<div class="create-transaction">
+              <p class="para">Add Transaction 
+                <span style="color:var(--color-yellow-01);">
+                (Rs. ${order.total})</p>
+              </span>
+              <div class="buttons">
+                <button class="pay-cash">Pay by Cash</button>
+                <button class="pay-card">Pay by Card</button>
+
+              </div>
+            </div>`
+        }
+      
     </section>   
 
 
@@ -176,4 +196,15 @@ export function orderView(order) {
 
   </div>
 `;
+
+
+  }catch(e){
+    console.log(e);
+    swal({
+      title:"something wrong with order menu",
+      text:e.message,
+      icon:'error',
+    })
+  }
+
 }

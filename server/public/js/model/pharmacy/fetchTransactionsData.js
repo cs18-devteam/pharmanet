@@ -73,6 +73,7 @@ export async function createTransaction({
   orderId,
   total,
   transactionId,
+  method = "card",
 }) {
   try {
     let typeOfTransaction = "offline";
@@ -84,7 +85,7 @@ export async function createTransaction({
       amount: total,
       type:  typeOfTransaction,
       staffID: Application.staffId,
-      method: "card",
+      method: method,
       transactionId,
       userId : (typeOfTransaction == "online") ? Application.userId : null,
     };

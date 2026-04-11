@@ -327,6 +327,29 @@
   border: 1px solid var(--color-border-gray-01);
   border-radius: .8rem;
   padding: 2.4rem;
+  position: relative;
+
+  .order-search-bar{
+    position: absolute;
+    right: 0;
+    height: 5rem;
+    border: 1px solid var(--color-green-01);
+    top: 0;
+    border-radius: 3rem;
+    margin: 1rem;
+    padding: 1rem;
+    font-size: 2rem;
+    width: 15rem;
+
+    &::placeholder{
+      color: var(--color-green-01);
+      opacity: .5;
+      font-size: 1.8rem;
+      font-weight: 100;
+    }
+
+
+  }
 }
 
 .table-title {

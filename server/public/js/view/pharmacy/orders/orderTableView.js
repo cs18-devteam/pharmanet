@@ -8,7 +8,11 @@ export function createOrderTable(data){
         <button>close</button>
     </div>
     <div class="table-wrapper">
+
     <h2 class="table-title">Order List</h2>
+    <input type="text" class="order-search-bar"  placeholder="Type Order ID"/>
+
+
 
     <table class="orders-table pharmacy-order-records">
       <thead>

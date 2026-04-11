@@ -25,10 +25,10 @@ export default function init() {
     searchBtn.addEventListener("click", () => { closeDrawer() })
     updateOrderSummery();
 
-
-
-
 }
+
+
+
 
 
 const paymentForm = document.querySelector('.orders .payment-section form');
@@ -263,20 +263,30 @@ printBtn.addEventListener("click", () => {
 
 
 
+let searchId = "";
 
 
 async function showOrders(e) {
     const data = await getOrdersList();
+    const results = data.results.filter(o=>String(o.id).includes(searchId || ""))
 
 
-    setDrawerContent(createOrderTable(data.results));
+    setDrawerContent(createOrderTable(results));
     openDrawer(e);
     const orderCloseBtn = document.querySelector(".order-table-close-btn.close-btn > button");
     orderCloseBtn?.addEventListener("click", (e) => {
         closeDrawer();
         init();
-    })
+    });
 
+    const searchBar = document.querySelector(".drawer .order-search-bar");
+    searchBar.value = searchId;
+    searchBar.focus();
+
+    searchBar?.addEventListener("change" , e=>{
+        searchId = searchBar.value;
+        showOrders();
+    })
 
     const orderTable = document.querySelector(".pharmacy-order-records");
     orderTable?.addEventListener("click", (e) => {

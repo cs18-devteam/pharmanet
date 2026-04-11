@@ -101,6 +101,7 @@
 /api/v1/pharmacies/:pharmacyId/medicines/info
 /api/v1/pharmacies/:pharmacyId/stock/medicines
 /api/v1/pharmacies/:pharmacyId/stock/medicines/:stockId
+/api/v1/pharmacies/:pharmacyId/medicines/stat
 /api/v1/pharmacies/:pharmacyId/staff/:staffId/reset
 /api/v1/pharmacies/:pharmacyId/staff/:staffId/leaves
 /api/v1/pharmacies/:pharmacyId/staff

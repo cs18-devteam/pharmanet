@@ -1,3 +1,5 @@
+import Application from "../application/Application.js";
+
 export async function fetchMedicineData(name , limit , pharmacyId = 1){
     try{
 
@@ -48,6 +50,21 @@ export async function fetchLowStocks(pharmacyId){
     try{
         if(!pharmacyId) return;
         const respond = await fetch(`/api/v1/pharmacies/${pharmacyId}/stocks/low`);
+        const data = await respond.json();
+        return data;
+
+    }catch(e){
+        return {
+            status:"error",
+            message:e.message,
+        }
+    }
+}
+
+export async function fetchMedicineStats(){
+    try{
+        if(!Application.pharmacyId) return;
+        const respond = await fetch(`/api/v1/pharmacies/${Application.pharmacyId}/medicines/stat`);
         const data = await respond.json();
         return data;
 

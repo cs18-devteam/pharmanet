@@ -10,6 +10,8 @@ const ActivityLogService = require("../../../services/activityLogService/activit
 const fs = require("fs");
 const path = require("path");
 const readExcel = require("../../../services/excelRead-service/excelReader");
+const getMultipartData = require("../../common/getMultipartData");
+const File = require("../../common/File");
 
 
 
@@ -277,6 +279,38 @@ exports.uploadMedicine = async (req, res) => {
 exports.updateMedicine = async (req, res) => {
   try {
     console.log("Hi");
+  }catch (e) {
+    return responseJson(res, 400, {
+      error: e.message || "update failed"
+    });
+  }
+}
+
+
+exports.uploadImage = async (req, res) => {
+  try {
+    const medicineId = req.medicineId;
+    /**
+     * @typedef {File}
+     */
+    const {image} =await getMultipartData(req);
+    const fileName = `med-${Date.now()}-${medicineId}.${image.fileName.split(".").slice(-1)}`
+    image.rename(fileName);
+
+    const results = await image.save("/medicines");
+    if(results.status == "error") throw new Error("image upload failed");
+
+    await Medicines.update({
+      id: medicineId,
+      image: "/medicines/"+fileName,
+    })
+
+    return responseJson(res , 200 , {
+      status:"success",
+      image: "/medicines/"+fileName,
+    })
+
+
   }catch (e) {
     return responseJson(res, 400, {
       error: e.message || "update failed"

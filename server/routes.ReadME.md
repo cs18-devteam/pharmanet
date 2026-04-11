@@ -143,6 +143,7 @@
 /admin/:adminId/medicines/:medicineId/delete
 /admin/:adminId/medicines/:medicineId/update
 /admin/:adminId/medicines/upload/api
+/admin/:adminId/medicines/:medicineId/update/image
 /api/v1/admin/:adminId/medicines
 /admin/:adminId/dashboard
 /api/v1/admin/:adminId/dashboard

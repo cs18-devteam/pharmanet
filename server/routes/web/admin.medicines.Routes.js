@@ -22,6 +22,9 @@ exports.adminMedicineRouter = SubRouter.route('/admin/:adminId')
 .subRoute('/medicines/upload/api',{
     post: adminMedicineController.uploadMedicine,
 })
+.subRoute("/medicines/:medicineId/update/image" , {
+    post : adminMedicineController.uploadImage,
+})
 
 
 exports.adminApiMedicineRouter = SubRouter.route('/api/v1/admin/:adminId')

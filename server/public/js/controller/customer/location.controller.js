@@ -15,7 +15,7 @@ export function activateLocations(){
             
             if(`${window.location.href}`.includes("latitude") && window.location.href?.includes("longitude")) return;
             
-            window.location.href += `?latitude=${Application.latitude}&longitude=${Application.longitude}`;
+            // window.location.href += `?latitude=${Application.latitude}&longitude=${Application.longitude}`;
         }) , (error)=>{
             // swal({
             //     title:"Can't detect your location",

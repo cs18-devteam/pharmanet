@@ -56,11 +56,11 @@ exports.renderCustomerPharmacies = async (req, res) => {
               distance:
                 latitude && longitude
                   ? calculateDistanceKM(
-                    latitude,
-                    longitude,
-                    pharmacy.latitude,
-                    pharmacy.longitude,
-                  ).toFixed(1)
+                      latitude,
+                      longitude,
+                      pharmacy.latitude,
+                      pharmacy.longitude,
+                    ).toFixed(1)
                   : "not available",
               customerId: customer.id,
             }),
@@ -178,7 +178,6 @@ exports.renderPharmacyLandingPage = async (req, res) => {
 };
 
 exports.createPharmacy = apiCatchAsync(async (req, res) => {
-
   const pharmacyData = await getMultipartData(req);
 
   //validation name come from regisration form
@@ -220,6 +219,24 @@ exports.createPharmacy = apiCatchAsync(async (req, res) => {
       status: "error",
       message: emailValidation.message,
       field: "email",
+    });
+  }
+
+  const contactNumber = (pharmacyData.contactNumber || "").trim();
+  if (!contactNumber) {
+    await Pharmacies.query("rollback");
+    return responseJson(res, 400, {
+      status: "error",
+      message: "contact number is required",
+      field: "contactNumber",
+    });
+  }
+  if (!/^\d{10}$/.test(contactNumber)) {
+    await Pharmacies.query("rollback");
+    return responseJson(res, 400, {
+      status: "error",
+      message: "contact number must be a 10-digit number",
+      field: "contactNumber",
     });
   }
 
@@ -326,8 +343,10 @@ exports.createPharmacy = apiCatchAsync(async (req, res) => {
   }
 
   if (
-    !(googleMapLink.startsWith("https://maps.app.goo.gl") ||
-      googleMapLink.startsWith("https://goo.gl/maps"))
+    !(
+      googleMapLink.startsWith("https://maps.app.goo.gl") ||
+      googleMapLink.startsWith("https://goo.gl/maps")
+    )
   ) {
     await Pharmacies.query("rollback");
     return responseJson(res, 400, {
@@ -482,7 +501,6 @@ exports.createPharmacy = apiCatchAsync(async (req, res) => {
     id: customer.id,
     role: "pharmacist",
   });
-
 
   return responseJson(res, 200, {
     status: "success",

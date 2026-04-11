@@ -92,6 +92,9 @@ pharmacyRegisterForm.addEventListener("submit", async (e) => {
   const input_email = pharmacyRegisterForm.querySelector(
     'input[ name="ParmacyEmail"]',
   );
+  const input_contactNumber = pharmacyRegisterForm.querySelector(
+    'input[name="contact-number"]',
+  );
   const input_addressNo = pharmacyRegisterForm.querySelector(
     'input[name="address-no"]',
   );
@@ -125,6 +128,7 @@ pharmacyRegisterForm.addEventListener("submit", async (e) => {
   formData.append("name", input_pharmacyName?.value);
   formData.append("email", input_email?.value);
   formData.append("owner", input_owner?.value);
+  formData.append("contactNumber", input_contactNumber?.value);
   formData.append("addressNo", input_addressNo?.value);
   formData.append("street", input_addressStreet?.value);
   formData.append("town", input_addressTown?.value);
@@ -144,7 +148,6 @@ pharmacyRegisterForm.addEventListener("submit", async (e) => {
     Application.userId,
   );
   removeSpinner();
-
 
   if (status == "error") {
     swal({

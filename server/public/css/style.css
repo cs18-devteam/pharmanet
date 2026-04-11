@@ -12732,7 +12732,7 @@ button.save {
 .orders-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
 }
 .orders-table thead {
   background-color: var(--color-green-01);
@@ -12760,7 +12760,7 @@ button.save {
 .status {
   padding: 0.4rem 1rem;
   border-radius: 2rem;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   font-weight: 500;
   display: inline-block;
 }
@@ -12774,6 +12774,9 @@ button.save {
 }
 .status.cancelled {
   background-color: rgba(251, 88, 33, 0);
+}
+.status.processing {
+  background-color: rgb(255, 219, 136);
 }
 
 .order-container-order-view {

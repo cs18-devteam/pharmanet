@@ -603,3 +603,16 @@ exports.getOrderSummery = apiCatchAsync(async (req, res) => {
         data: summery,
     })
 })
+
+
+exports.getOrderSummeryStatusWise = apiCatchAsync(async (req, res) => {
+    const pharmacyId = req.params.get("pharmacy");
+    if (!pharmacyId) throw new Error("pharmacy id not found");
+
+    const orders = await PharmacyOrders.query(`select status ,count(id) as count from this.table where pharmacyId = ${pharmacyId} group by status`)
+
+    return responseJson(res, 200, {
+        status: "success",
+        data: orders,
+    })
+})

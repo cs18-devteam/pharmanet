@@ -117,6 +117,7 @@
 /api/v1/orders
 /api/v1/orders/:orderId/items
 /api/v1/orders/summery
+/api/v1/orders/summery/status
 /api/v1/orders/:orderId
 /pharmacies/:pharmacyId/staff/create
 /pharmacies/:pharmacyId/staff

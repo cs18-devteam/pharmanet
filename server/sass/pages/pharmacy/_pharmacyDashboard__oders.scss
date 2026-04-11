@@ -362,7 +362,7 @@
 .orders-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
 
   thead {
     background-color: var(--color-green-01);
@@ -397,7 +397,7 @@
 .status {
   padding: .4rem 1.0rem;
   border-radius: 2.0rem;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   font-weight: 500;
   display: inline-block;
 
@@ -413,6 +413,12 @@
 
   &.cancelled {
     background-color: rgba(251, 88, 33, 0);
+  }
+  
+  
+  &.processing{
+    background-color: rgb(255, 219, 136);
+
   }
 }
 

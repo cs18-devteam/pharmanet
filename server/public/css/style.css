@@ -19357,14 +19357,8 @@ p {
 .blogManage .blog-table table .actions button.edit-btn {
   color: #0a7b83;
 }
-.blogManage .blog-table table .actions button.edit-btn::before {
-  content: "✏️";
-}
 .blogManage .blog-table table .actions button.delete-btn {
   color: #c0392b;
-}
-.blogManage .blog-table table .actions button.delete-btn::before {
-  content: "🗑️";
 }
 .blogManage .tag {
   padding: 0.2rem 0.7rem;

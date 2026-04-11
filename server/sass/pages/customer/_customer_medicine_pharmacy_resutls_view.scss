@@ -139,14 +139,13 @@
             .card {
                 width: 25rem;
                 margin: 2rem;
-                border-radius: 10rem 10rem 0 0;
                 overflow: hidden;
 
                 img {
                     background-color: #eee;
                     width: 100%;
                     height: 25rem;
-                    object-fit: cover;
+                    object-fit: contain;
                 }
 
                 .name-container {

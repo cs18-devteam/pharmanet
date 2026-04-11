@@ -2163,6 +2163,13 @@
     align-items: center;
   }
 
+  .permission{
+    &:hover{
+      color : var(--color-green-01);
+      background-color: #eee;
+    }
+  }
+
   /* Toggle Switch */
   .switch {
     position: relative;

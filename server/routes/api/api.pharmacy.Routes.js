@@ -29,15 +29,26 @@ exports.pharmacyApiRouter = SubRouter.route('/api/v1/pharmacies/:pharmacyId')
     ],
 })
 .subRoute('/stock/medicines' , {
-    post : pharmacyMedicinesApiController.createMedicineStock,
-    update: pharmacyMedicinesApiController.updateMedicineStock
+    post : [
+        authorizeToApi(PERMISSIONS.createMedicines) ,
+        pharmacyMedicinesApiController.createMedicineStock
+    ],
+    update: [
+        authorizeToApi(PERMISSIONS.updateMedicines) ,pharmacyMedicinesApiController.updateMedicineStock
+    ]
 })
 .subRoute('/stock/medicines/:stockId' , {
-    get: pharmacyMedicinesApiController.getMedicineDetailsByStockId,
-    delete:pharmacyMedicinesApiController.deleteMedicineStock,
+    get: [
+        authorizeToApi(PERMISSIONS.searchMedicines) ,
+        pharmacyMedicinesApiController.getMedicineDetailsByStockId
+    ],
+    delete:[
+        authorizeToApi(PERMISSIONS.deleteMedicines),
+        pharmacyMedicinesApiController.deleteMedicineStock,
+    ]
 })
 .subRoute("/medicines/stat" , {
-    get: pharmacyMedicinesApiController.getMedicineStatics,
+    get: [ authorizeToApi(PERMISSIONS.searchMedicines),pharmacyMedicinesApiController.getMedicineStatics],
 })
 
 

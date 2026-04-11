@@ -80,7 +80,7 @@ img {
   color: rgb(33, 33, 2);
 }
 
-.error, .danger {
+.error {
   background-color: var(--color-yellow-02);
   color: #222;
 }
@@ -17976,9 +17976,6 @@ p {
   background-color: #fb8f21;
   border-radius: 0.5rem;
 }
-.users .container .actions .dropdownMenu .dropdown a.danger {
-  color: #ff4444;
-}
 .users .container .actions .dropdownMenu .dropdown.show {
   display: block;
 }
@@ -18577,6 +18574,11 @@ p {
   font-weight: bold;
   color: #08374f;
 }
+.medicines .container .container-2 .main .dashboard .uploadButton {
+  border-radius: 0.5rem;
+  border-color: black;
+  margin-bottom: 1rem;
+}
 .medicines .container .container-2 .main .dashboard .sectionHeading {
   display: flex;
   justify-content: space-between;
@@ -18944,6 +18946,9 @@ p {
   width: 520px;
   background: #fff;
   border-radius: 12px;
+}
+.medicines .editModal .subtitle {
+  color: white;
 }
 .medicines .editModal .modal-header {
   padding: 18px 20px;
@@ -21409,6 +21414,16 @@ p {
 }
 .viewPharmacy {
   /* Header */
+}
+.viewPharmacy .header {
+  display: flex;
+  align-items: stretch;
+}
+.viewPharmacy .header .back-btn {
+  text-decoration: none;
+  font-size: 2.5rem;
+  color: #0b0f14;
+  margin-right: 1rem;
 }
 .viewPharmacy .header h1 {
   margin: 0;

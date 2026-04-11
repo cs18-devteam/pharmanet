@@ -82,7 +82,7 @@ exports.getStaffMembers = apiCatchAsync(async (req, res) => {
     
     const [staff] = await PharmacyStaff.getByVarId('userId',m.userId);
     const [user] = await Users.getById(staff.userId);
-    const [pharmacy] = await Pharmacies.get(user.pharmacyId);
+    const [pharmacy] = await Pharmacies.getById(req.pharmacyId);
    
 
     

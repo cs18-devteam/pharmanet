@@ -24,6 +24,16 @@ body {
 
 /* Header */
 .header {
+  display: flex;
+  align-items: stretch;
+
+  .back-btn {
+    text-decoration: none;
+    font-size: 2.5rem;
+    color: $bg;
+    margin-right: 1rem;
+  }
+
   h1 {
     margin: 0;
     font-size: 28px;

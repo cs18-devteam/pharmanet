@@ -10,9 +10,13 @@
     <div class="container">
       <!-- Header -->
       <header class="header">
-        <a href="admin/${adminId}/pharmacies" class="back-btn">←</a>
-        <h1 id="header1">Downtown Pharmacy - Inventory</h1>
-        <p>Manage and monitor medicine stock levels and expiry dates</p>
+        <div class="container1">
+          <a href="admin/{adminId}/pharmacies" class="back-btn">←</a>
+        </div>
+        <div class="container2">
+          <h1 id="header1">Downtown Pharmacy - Inventory</h1>
+          <p>Manage and monitor medicine stock levels and expiry dates</p>
+        </div>
       </header>
 
       <!-- Stats Cards -->
@@ -25,7 +29,7 @@
 
         <div class="card warning">
           <h4>Low Stock</h4>
-          <h2 id="lowStock">234</h2>
+          <h2 id="lowStock">0</h2>
           <span class="negative">+8% from last month</span>
         </div>
 
@@ -50,7 +54,7 @@
           id="medicineSearch"
         />
         <div class="actions">
-          <button>Filter</button>
+          <!-- <button>Filter</button> -->
           <button>Export</button>
           <!-- <button>Sync</button> -->
         </div>
@@ -96,7 +100,7 @@
         id="staffSearch"
       />
       <div class="actions">
-        <button>Filter</button>
+        <!-- <button>Filter</button> -->
         <button>Export</button>
         <!-- <button>Sync</button> -->
       </div>
@@ -134,7 +138,7 @@
         const payload = await res.json();
 
         const users = payload.results;
-        console.log(users);
+
         const pharmacyName = users[0].name.toUpperCase();
         const header1 = document.getElementById("header1");
         const header2 = document.getElementById("header2");
@@ -197,7 +201,6 @@
         const payload = await res.json();
         const medicines = payload.results;
         let stock = [];
-        console.log(medicines.length);
 
         const totalItems = document.getElementById("totalItems");
         totalItems.innerHTML = `<h2>${medicines.length}</h2>`;
@@ -214,7 +217,7 @@
         medicines.forEach((medicine) => {
           const row = document.createElement("tr");
           row.innerHTML = `
-              <td>${medicine.name}</td>
+              <td>${medicine.geneticName}</td>
               <td>${medicine.category}</td>
               <td>${medicine.stock}</td>
               <td>${medicine.publicStock}</td>
@@ -229,7 +232,7 @@
           tableBody.appendChild(row);
         });
 
-        document.getElementById("lowStock").innerHTML = stock.length;
+        document.getElementById("lowStock").innerHTML = stock.length || "0";
       }
     </script>
 
@@ -308,6 +311,10 @@
             }
           });
         });
+    </script>
+
+    <script>
+      document.querySelector(".back-btn").href = `/admin/${adminId}/pharmacies`;
     </script>
   </body>
 </html>

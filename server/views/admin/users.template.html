@@ -1,4 +1,5 @@
 {header}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <body class="users">
   <div class="container">
     <div class="container-1">
@@ -265,6 +266,10 @@
         const initials = (user.firstName || user.lastName || user.fullName || 'U').split(' ').map(n => n[0]).join('').toUpperCase();
         const avatar = user.avatar || initials;
         const status = user.status || 'Active';
+        console.log(status == "Active");
+        const pharmacyObj = user.pharmacies?.[0];
+        const pharmacyName = pharmacyObj?.name.toUpperCase() || 'N/A';
+        console.log(pharmacyObj);
         const row = document.createElement("tr");
         row.innerHTML = `
           <td>
@@ -277,17 +282,16 @@
             </div>
           </td>
           <td><span class="role">${user.role || 'N/A'}</span></td>
-          <td>${user.pharmacy || 'N/A'}</td>
+          <td>${pharmacyName}</td>
           <td><span class="status ${status.toLowerCase()}">${status}</span></td>
           <!-- <td>2 hours ago</td> -->
           <td class="actions">
             <div class="dropdownMenu">
               <button class="dots">⋮</button>
               <ul class="dropdown">
-                <!-- <a href="/admin/viewProfile?id=${user.id}">View Profile</a> -->
                 <a href="#" class="view-profile-btn" data-id="${user.id}" data-name="${user.name || user.fullName}" data-email="${user.email}" data-role="${user.role}" data-pharmacy="${user.pharmacy}" data-status="${status}">View Profile</a>
+                ${status == "Active"? `<a href="#" class="deactivate-btn danger" data-id="${user.id}">Deactivate</a>` : `<a href="#" class="activate-btn danger" data-id="${user.id}">Activate</a>`}
                 
-                <a href="#" class="deactivate-btn danger" data-id="${user.id}">Deactivate</a>
               </ul>
             </div>
           </td>
@@ -304,6 +308,14 @@
           dropdownMenu.classList.toggle('show');
         });
       });
+
+      //Add event listeners to buttons
+      document.querySelectorAll(".activate-btn").forEach(btn =>
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          activateUser(btn.dataset.id);
+        })
+      );
 
       //Add event listeners to buttons
       document.querySelectorAll(".deactivate-btn").forEach(btn =>
@@ -325,25 +337,75 @@
   //Deactivate User
   async function deactivateUser(id) {
     console.log(id);
-    if (!confirm("Are you sure you want to deactivate this User?")) return;
+    const confirmed = await swal({
+    title: "Are you sure you want to deactivate this User?",
+    icon: '/logo/logo.svg',
+    buttons: {
+      cancel: { text: "Cancel", visible: true },
+      confirm: { text: "Ok", value: true }
+    },
+    dangerMode: false
+  });
+    if (!confirmed){
+      swal("Declined"," User Deactivation Declined", "warning")
+      return;
+    }
     try{
-    const res = await fetch(`https://localhost:3000/admin/1/api/users/${id}`, {
+    const res = await fetch(`${window.location.origin}/admin/${adminId}/api/users/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ status: "Inactive" })
     });
     console.log(res);
     if (res.ok) {
-      alert("User deactivated");
+      swal("Deactivated"," User Deactivated successfully", "success")
       loadUsers();
     } else {
-      alert("Failed to deactivate User");
+      swal("Failed"," User Deactivation Failed", "warning")
     }
   }catch(error){
     console.error('Error deactivating user', error);
     alert("Network error: Failed to deactivate user");
   }
   }
+
+
+  //Activate User
+  async function activateUser(id) {
+    console.log(id);
+    const confirmed = await swal({
+    title: "Are you sure you want to activate this User?",
+    icon: '/logo/logo.svg',
+    buttons: {
+      cancel: { text: "Cancel", visible: true },
+      confirm: { text: "Ok", value: true }
+    },
+    dangerMode: false
+  });
+    if (!confirmed){
+      swal("Declined"," User Activation Declined", "warning")
+      return;
+    }
+    try{
+    const res = await fetch(`${window.location.origin}/admin/${adminId}/api/users/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ status: "Active" })
+    });
+    console.log(res);
+    if (res.ok) {
+      swal("Activated"," User Activated successfully", "success")
+      loadUsers();
+    } else {
+      swal("Failed"," User Activation Failed", "warning")
+    }
+    
+  }catch(error){
+    console.error('Error activating user', error);
+    alert("Network error: Failed to activate user");
+  }
+  }
+
 
   //Add new user
   document.querySelector("#addUserForm")?.addEventListener("submit", async (e) => {

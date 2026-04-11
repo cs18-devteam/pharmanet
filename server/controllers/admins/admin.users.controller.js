@@ -4,7 +4,10 @@ const { responseJson, response } = require("../../common/response");
 const { hashPassword } = require("../../common/Auth");
 const view = require("../../common/view");
 const Users = require("../../models/UserModel");
+const PharmacyStaff = require("../../models/PharmacyStaffModel");
 const ActivityLogService = require("../../../services/activityLogService/activityLogService");
+const Pharmacies = require("../../models/PharmacyModel");
+
 
 exports.renderAdminUsersView = async (req, res) => {
   console.log(`renderAdminUsersView called with adminId: ${req.adminId}`);
@@ -160,10 +163,10 @@ exports.renderViewProfilePage = async (req, res) => {
       return response(res, "Admin ID is required", 400);
     }
 
-    console.log(`Fetching user ${userId} for admin ${adminId}`);
 
     // Fetch user details
     const [user] = await Users.getById(userId);
+    
 
     if (!user) {
       return response(res, "User not found", 404);
@@ -172,15 +175,17 @@ exports.renderViewProfilePage = async (req, res) => {
     // Fetch admin for sidebar
     const [admin] = await Users.getById(adminId);
 
+    const [staffRow] = await PharmacyStaff.getByVarId("userId",userId);
+    const [pharmacy] = await Pharmacies.getById(staffRow.pharmacyId);
+    console.log(pharmacy);
+    
+    
+
     return response(
       res,
       view("admin/viewProfile", {
         user: JSON.stringify(user), // ← Stringify here
-        adminId: adminId,
-        sidebar: view("admin/component.sidebar", admin),
-        header: view("component.header", {
-          name: "User Profile || Pharmanet",
-        }),
+        pharmacy: JSON.stringify(pharmacy),
       }),
       200
     );
@@ -191,6 +196,37 @@ exports.renderViewProfilePage = async (req, res) => {
 };
 
 exports.getAllUsers = async (req, res) => {
+  try{
   const users = await Users.get();
-  return responseJson(res, 200, users);
+
+    const usersWithPharmacy = await Promise.all(
+      users.map(async (user) => {
+        // find all pharmacy-staff records for this user
+        const staffRows = await PharmacyStaff.getByVarId("userId", user.id);
+
+        // if user is not linked to any pharmacy
+        if (!staffRows || staffRows.length === 0) {
+          return { ...user, pharmacies: [] };
+        }
+
+        // load pharmacy details for each linked pharmacyId
+        const pharmacies = await Promise.all(
+          staffRows.map(async (staff) => {
+            const [pharmacy] = await Pharmacies.getById(staff.pharmacyId);
+            return pharmacy || null;
+          })
+        );
+
+        return {
+          ...user,
+          pharmacies: pharmacies.filter(Boolean),
+        };
+      })
+    );
+  
+  return responseJson(res, 200, usersWithPharmacy);
+  }catch(e){
+    console.error("Error in getAllUsers:",e);
+    return responseJson(res, 500,{ message: "Failed to fetch usrs"})
+  }
 };

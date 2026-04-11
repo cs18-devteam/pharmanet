@@ -216,30 +216,11 @@
 
       // ================== EDIT BLOG ==================
       async function editBlog(id) {
-        window.location.href = `/admin/${adminId}/blogs/${id}/edit`;
+        
+        window.location.href = `/admin/${adminId}/blogs/:id/edit`;
+        
       }
 
-      // ================== EDIT BLOG ==================
-      async function editblog(id) {
-        const newTitle = prompt("Enter new blog title:");
-        if (!newTitle) return;
-
-        const res = await fetch(
-          `${window.location.origin}/admin/${adminId}/blogs/${blogId}/edit`,
-          {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ title: newTitle }),
-          },
-        );
-
-        if (res.ok) {
-          alert("Blog updated!");
-          loadBlogs();
-        } else {
-          alert("Failed to update blog");
-        }
-      }
 
       // Load blogs when page opens
       loadBlogs();

@@ -160,6 +160,11 @@
         }
 
         .dashboard {
+          .uploadButton{
+            border-radius: 0.5rem;
+            border-color:  black;
+            margin-bottom: 1rem;
+          }
           .sectionHeading {
             display: flex;
             justify-content: space-between;
@@ -594,6 +599,9 @@
       width: 520px;
       background: #fff;
       border-radius: 12px;
+    }
+    .subtitle{
+      color: white;
     }
     .modal-header {
       padding: 18px 20px;

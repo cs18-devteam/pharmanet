@@ -1,4 +1,5 @@
 {header}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <body class="medicines" id="pageContent">
     <div class="container">
     <div class="container-1">
@@ -45,7 +46,7 @@
     <div class="uploadCard">
       <h3>Upload Medicines from Excel</h3>
       <input type="file" id="medicineFileInput" accept=".xlsx,.xls" />
-      <button id="uploadSubmitButton" type="button">Submit</button>
+      <button id="uploadSubmitButton" class="uploadButton" type="button">Submit</button>
     </div>   
 </section>
 
@@ -62,7 +63,7 @@
     <form class="medicine-form" id="addMedicineForm" action="post">
       <div class="form-row">
         <label>Medicine Name</label>
-        <input type="" name="name" placeholder="e.g., Amoxicillin" required>
+        <input type="" name="geneticName" placeholder="e.g., Amoxicillin" required>
       </div>
 
       <div class="form-row">
@@ -450,6 +451,7 @@ async function loadMedicines() {
       if (!response.ok){
         throw new Error(`API error: ${response.status} ${response.statusText}`);
       }
+      
       const data = await response.json();
       if(!Array.isArray(data)){
           console.error('API returned non-array data:', data);
@@ -508,14 +510,28 @@ async function loadMedicines() {
 
   //=======DELETE medicine=======
   async function deleteMedicine(medicineId) {
-    if(!confirm("Are you sure you want to delete this medicine?")) return;
+    const confirmed = await swal({
+    title: "Are you sure you want to delete this medicine?",
+    icon: '/logo/logo.svg',
+    buttons: {
+      cancel: { text: "Cancel", visible: true },
+      confirm: { text: "Ok", value: true }
+    },
+    dangerMode: false
+  });
+
+    if(!confirmed){
+      swal("Declined"," Medicine Deletion Declined", "warning")
+      return;
+    }
+     
 
   const res = await fetch(`${window.location.origin}/admin/${adminId}/medicines/${medicineId}/delete`, { method: "DELETE" });
   if (res.ok) {
-    alert("Medicine deleted!");
+    swal("Deleted", "Medicine Deleted Successfully", "success");
     loadMedicines();
   } else {
-    alert("Failed to delete medicine");
+    swal("Failed"," Medicine Deletion Failed", "warning")
   }
   }  
 
@@ -546,7 +562,7 @@ async function loadMedicines() {
           return;
         }
         // populate edit form fields
-        document.getElementById('edit-name').value = med.name || '';
+        document.getElementById('edit-name').value = med.geneticName || '';
         document.getElementById('edit-brandName').value = med.brandName || '';
         document.getElementById('edit-dosage').value = med.dosage || '';
          // ensure the schedule is shown even if it's not one of the predefined options
@@ -597,8 +613,9 @@ async function loadMedicines() {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
+    console.log(data.geneticName);
     const medicineData = {
-      name: data.name,
+      geneticName: data.geneticName,
       brandName: data.brandName,
       manufacturer: data.manufacturer,
       dosage: data.dosage,
@@ -648,7 +665,7 @@ if (uploadForm) {
     
   
     try {
-      console.log(data);
+      console.log(medicineData);
       const response = await fetch(`${window.location.origin}/admin/${adminId}/medicines/create`, {
         method: 'POST',
         headers: {'Content-Type' : 'application/json',},
@@ -656,6 +673,7 @@ if (uploadForm) {
       });
       if (response.ok) {
         closePopup('addMedicineModal');
+        swal("Added","Medicine added successfully", "success");
         e.target.reset();
         loadMedicines();  // Reload the table
       } else {
@@ -664,7 +682,8 @@ if (uploadForm) {
       }
     } catch (error) {
       console.error('Error adding medicine:', error);
-      alert('Failed to add medicine: ' + error.message);
+      swal("Failed","Medicine adding failed", "fail");
+      
     }
   });
 
@@ -720,7 +739,7 @@ if (uploadForm) {
 
   <script>
     // submit edits to server
-  document.getElementById('editPo').addEventListener('submit', async (e) => {
+  document.getElementById('editPopup').addEventListener('submit', async (e) => {
     e.preventDefault();
     const form = e.target;
     const id = document.getElementById('editPopup').dataset.medicineId;
@@ -729,7 +748,7 @@ if (uploadForm) {
       return;
     }
     const payload = {
-      name: document.getElementById('edit-name').value,
+      geneticName: document.getElementById('edit-name').value,
       brandName: document.getElementById('edit-brandName').value,
       manufacturer: document.getElementById('edit-manufacturer').value,
       dosage: document.getElementById('edit-dosage').value,
@@ -747,10 +766,12 @@ if (uploadForm) {
       
       if (res.ok) {
         closePopup('editPopup');
+        swal("Updated","Medicine Updated Successfully","success");
         loadMedicines();
         } else {
         const err = await res.json().catch(() => ({}));
-        alert('Update failed: ' + (err.error || res.statusText));
+        swal("Failed", "Medicine Update Failed","fail");
+        
       }
     } catch (err) {
       console.error('Update error', err);

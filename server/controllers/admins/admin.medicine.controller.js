@@ -11,6 +11,7 @@ const ActivityLogService = require("../../../services/activityLogService/activit
 const fs = require("fs");
 const path = require("path");
 const readExcel = require("../../../services/excelRead-service/excelReader");
+const Blogs = require("../../models/BlogModel");
 
 
 
@@ -223,7 +224,7 @@ exports.uploadMedicine = async (req, res) => {
         if (!existing || existing.length === 0) {
           // Insert new medicine
           const medicineData = {
-            name: medicineName,
+            geneticName: medicineName,
             description: row.description || row.Description || '',
             expiryDate: row['Expiry Date'],
             schedule: row['Schedule '],
@@ -274,7 +275,21 @@ exports.uploadMedicine = async (req, res) => {
 
 exports.updateMedicine = async (req, res) => {
   try {
-    console.log("Hi");
+    const medicineId = req.medicineId;
+    const rawData = await getRequestData(req);
+    if (!rawData){
+      return response(res, "Empty request body", 400);
+    }
+
+    let body = JSON.parse(rawData);
+   
+    const{ geneticName, brandName, manufacturer, dosage, category, shedule, expiryDate} = body;
+    const newMedicine = await Medicines.update({
+      id:medicineId,geneticName,brandName,manufacturer,dosage,category,shedule,expiryDate
+    });
+    return responseJson(res, 200, newMedicine);
+
+
   }catch (e) {
     return responseJson(res, 400, {
       error: e.message || "update failed"

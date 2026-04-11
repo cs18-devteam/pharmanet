@@ -79,6 +79,7 @@ exports.renderAdminCreateNewBlog = catchAsync(async (req, res) => {
 exports.renderEditView = catchAsync(async (req, res) => {
   // const adminId = req.params.adminId;
   let adminId = req.adminId;
+  console.log(req);
 
   if (!adminId && req.url) {
     const parts = req.url.split('/');
@@ -97,6 +98,9 @@ exports.renderEditView = catchAsync(async (req, res) => {
     return response(res, "Admin not found", 404);
   }
 
+  const [blog] = await Blogs.getById(req.blogId);
+  console.log(blog);
+  
 
   return response(res, view('blog/editBlog', {
     ...admin

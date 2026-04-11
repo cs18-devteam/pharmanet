@@ -3,6 +3,7 @@ const view = require("../../common/view");
 const Medicines = require("../../models/MedicineModel");
 const PharmacyMedicines = require("../../models/PharmacyMedicinesModel");
 const { getRequestData } = require("../../common/getRequestData");
+const Pharmacies = require("../../models/PharmacyModel");
 
 
 
@@ -28,20 +29,19 @@ exports.getAllMedicines = async (req, res) => {
 
 exports.getMedicinesById = async (req, res) => {
     try{
-        let data = await PharmacyMedicines.getByVarId("pharmacyId", req.pharmacyId);
-        
+        console.log(req.pharmacyId);
+        let data = await PharmacyMedicines.getByVarId('pharmacyId',req.pharmacyId);
+        const [pharmacy] = await Pharmacies.getById(req.pharmacyId);
         data = data.map(async (m) => {
         const [medicine] = await Medicines.getById(m.medicineId);
-        const [stock] = await PharmacyMedicines.getById(m.id);
-
+        if (!medicine) return null;
     
-    return { ...stock, ...medicine, medicineId: medicine.id };
+    return { ...m, ...medicine, ...pharmacy, medicineId: medicine.id };
   });
   
 
-  data = await Promise.all(data);
-  
-
+  data = (await Promise.all(data)).filter(Boolean);
+  console.log(data);
   return responseJson(res, 200, {
     status: "success",
     results: data,

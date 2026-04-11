@@ -428,7 +428,7 @@ class Model {
 
   async getByName(name) {
     try {
-      const query = `SELECT * FROM ${this.#table} medicines WHERE name = "${name}" `;
+      const query = `SELECT * FROM ${this.#table} medicines WHERE geneticName = "${name}" `;
       const [result] = await db.query(query);
       return result;
     } catch (error) {

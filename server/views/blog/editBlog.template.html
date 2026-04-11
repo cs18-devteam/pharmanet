@@ -126,7 +126,7 @@
 
         console.log(data);
 
-        fetch("/api/blog/{id}/edit", {
+        fetch("/api/blog/${id}/edit", {
           method: "PATCH",
           body: JSON.stringify(data),
         })

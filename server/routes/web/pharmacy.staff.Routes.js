@@ -16,4 +16,11 @@ exports.pharmacyStaffRouter = SubRouter.route('/pharmacies/:pharmacyId/staff')
 })
 .subRoute('/:staffId/permissions' , {
     post: [ authorizeToApi(PERMISSIONS.updateStaff) ,pharmacyStaffController.changePermissions],
+    post: pharmacyStaffController.changePermissions,
+})
+
+
+exports.pharmacyStaffApiRouter = SubRouter.route('/pharmacies/:pharmacyId/api')
+    .subRoute('/staff', { 
+    get : pharmacyStaffController.getStaffMembers,
 })

@@ -99,6 +99,10 @@ exports.renderEditView = catchAsync(async (req, res) => {
   const blogId = req.blogId;
 
   const [blog] = await Blogs.getById(blogId);
+  console.log(blog);
+
+  const other = (blog.category).toLowerCase() == "medicine" ? "Disease" : "Medicine";
+  
 
   return response(res, view('blog/editBlog', {
     ...admin,
@@ -106,10 +110,11 @@ exports.renderEditView = catchAsync(async (req, res) => {
     slug: blog.slug,
     excerpt:blog.excerpt,
     content: blog.content,
-    Date: blog.status,
+    date: blog.status,
     category: blog.category,
+    other: other,
     author: blog.author,
-    tag: blog.tag
+    tag: blog.tag,
 
   }), 200);
 })

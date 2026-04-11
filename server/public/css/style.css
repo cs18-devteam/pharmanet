@@ -80,7 +80,7 @@ img {
   color: rgb(33, 33, 2);
 }
 
-.error, .danger {
+.error {
   background-color: var(--color-yellow-02);
   color: #222;
 }
@@ -18275,6 +18275,7 @@ p {
 }
 .users .container .container-2 .main .dashboard .sectionHeading .addBtn {
   background-color: #08374f;
+  display: none;
   color: white;
   font-size: 1.4rem;
   border-radius: 1rem;
@@ -18467,9 +18468,6 @@ p {
 .users .container .actions .dropdownMenu .dropdown a:hover {
   background-color: #fb8f21;
   border-radius: 0.5rem;
-}
-.users .container .actions .dropdownMenu .dropdown a.danger {
-  color: #ff4444;
 }
 .users .container .actions .dropdownMenu .dropdown.show {
   display: block;
@@ -19069,6 +19067,11 @@ p {
   font-weight: bold;
   color: #08374f;
 }
+.medicines .container .container-2 .main .dashboard .uploadButton {
+  border-radius: 0.5rem;
+  border-color: black;
+  margin-bottom: 1rem;
+}
 .medicines .container .container-2 .main .dashboard .sectionHeading {
   display: flex;
   justify-content: space-between;
@@ -19442,6 +19445,9 @@ p {
   width: 520px;
   background: #fff;
   border-radius: 12px;
+}
+.medicines .editModal .subtitle {
+  color: white;
 }
 .medicines .editModal .modal-header {
   padding: 18px 20px;
@@ -19850,14 +19856,8 @@ p {
 .blogManage .blog-table table .actions button.edit-btn {
   color: #0a7b83;
 }
-.blogManage .blog-table table .actions button.edit-btn::before {
-  content: "✏️";
-}
 .blogManage .blog-table table .actions button.delete-btn {
   color: #c0392b;
-}
-.blogManage .blog-table table .actions button.delete-btn::before {
-  content: "🗑️";
 }
 .blogManage .tag {
   padding: 0.2rem 0.7rem;
@@ -21894,6 +21894,186 @@ p {
 .pharmarcy .container .container-2 .main .dashboard .status.inactive {
   background-color: #424242;
   color: #ccc;
+}
+
+.viewPharmacy {
+  padding: 20px 90px;
+}
+.viewPharmacy body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #0b0f14;
+  color: #08374f;
+}
+.viewPharmacy {
+  /* Header */
+}
+.viewPharmacy .header {
+  display: flex;
+  align-items: stretch;
+}
+.viewPharmacy .header .back-btn {
+  text-decoration: none;
+  font-size: 2.5rem;
+  color: #0b0f14;
+  margin-right: 1rem;
+}
+.viewPharmacy .header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+.viewPharmacy .header p {
+  color: #9ca3af;
+  margin-top: 1px;
+}
+.viewPharmacy {
+  /* Cards */
+}
+.viewPharmacy .cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0px;
+  margin: 20px 0;
+}
+.viewPharmacy .cards .card {
+  background: #f7f7f7;
+  padding: 20px;
+}
+.viewPharmacy .cards .card:not(.viewPharmacy .cards .card:last-child) {
+  border-right: 1px solid var(--color-green-01);
+}
+.viewPharmacy .cards .card h4 {
+  color: #08374f;
+  margin-bottom: 10px;
+}
+.viewPharmacy .cards .card h2 {
+  margin: 0;
+  color: #08374f;
+}
+.viewPharmacy .cards .card .positive {
+  color: #22c55e;
+  font-size: 14px;
+  display: none;
+}
+.viewPharmacy .cards .card .negative {
+  color: #ef4444;
+  font-size: 14px;
+  display: none;
+}
+.viewPharmacy {
+  /* Toolbar */
+}
+.viewPharmacy .toolbar {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+.viewPharmacy .toolbar input {
+  width: 70%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #1f2937;
+  background: transparent;
+  color: black;
+}
+.viewPharmacy .toolbar .actions button {
+  margin-left: 10px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  background: #f7f7f7;
+  color: #08374f;
+  cursor: pointer;
+}
+.viewPharmacy .toolbar .actions button:hover {
+  background: #f7f7f7;
+}
+.viewPharmacy {
+  /* Tabs */
+}
+.viewPharmacy .tabs {
+  margin-bottom: 20px;
+}
+.viewPharmacy .tabs button {
+  margin-right: 10px;
+  padding: 8px 15px;
+  border-radius: 20px;
+  border: 1px solid #1f2937;
+  background: transparent;
+  color: #08374f;
+  cursor: pointer;
+}
+.viewPharmacy .tabs button.active {
+  background: #22c55e;
+  color: black;
+}
+.viewPharmacy {
+  /* Table */
+}
+.viewPharmacy .table {
+  background: #f7f7f7;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.viewPharmacy .table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.viewPharmacy .table table th, .viewPharmacy .table table td {
+  padding: 12px;
+  text-align: left;
+}
+.viewPharmacy .table table th .badge, .viewPharmacy .table table td .badge {
+  white-space: nowrap;
+}
+.viewPharmacy .table table th {
+  color: #9ca3af;
+  font-size: 14px;
+  border-bottom: 1px solid #1f2937;
+}
+.viewPharmacy .table table tr {
+  border-bottom: 1px solid #1f2937;
+}
+.viewPharmacy .table table .low {
+  color: #ef4444;
+  font-weight: bold;
+}
+.viewPharmacy {
+  /* Badges */
+}
+.viewPharmacy .badge {
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+.viewPharmacy .badge.optimal {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+}
+.viewPharmacy .badge.critical {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+.viewPharmacy .badge.warning {
+  background: rgba(245, 158, 11, 0.2);
+  color: #f59e0b;
+}
+.viewPharmacy #users-table-body .user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.viewPharmacy #users-table-body .user-info .avatar {
+  width: 35px;
+  height: 35px;
+  background-color: #1f1f1f;
+  color: #00a676;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 600;
 }
 
 .addUsers {

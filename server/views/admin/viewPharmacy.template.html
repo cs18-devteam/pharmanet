@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pharmacy Inventory</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body class="viewPharmacy">
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <div class="container1">
+          <a href="admin/{adminId}/pharmacies" class="back-btn">←</a>
+        </div>
+        <div class="container2">
+          <h1 id="header1">Downtown Pharmacy - Inventory</h1>
+          <p>Manage and monitor medicine stock levels and expiry dates</p>
+        </div>
+      </header>
+
+      <!-- Stats Cards -->
+      <section class="cards">
+        <div class="card">
+          <h4>Total Items</h4>
+          <h2 id="totalItems">1,482</h2>
+          <span class="positive">+12% from last month</span>
+        </div>
+
+        <div class="card warning">
+          <h4>Low Stock</h4>
+          <h2 id="lowStock">0</h2>
+          <span class="negative">+8% from last month</span>
+        </div>
+
+        <div class="card">
+          <h4>Expiring Soon</h4>
+          <h2 id="expiringSoon">45</h2>
+          <span class="positive">-2% from last month</span>
+        </div>
+
+        <div class="card">
+          <h4>Expired</h4>
+          <h2 id="expired">$45,230</h2>
+          <span class="positive">+5.2% from last month</span>
+        </div>
+      </section>
+
+      <!-- Search + Actions -->
+      <section class="toolbar">
+        <input
+          type="text"
+          placeholder="Search medicines by name..."
+          id="medicineSearch"
+        />
+        <div class="actions">
+          <!-- <button>Filter</button> -->
+          <button>Export</button>
+          <!-- <button>Sync</button> -->
+        </div>
+      </section>
+
+      <!-- Tabs -->
+      <section class="tabs">
+        <button class="active">All Items</button>
+        <button>Low Stock (234)</button>
+        <button>Expiring Soon (45)</button>
+        <button>Optimal Stock (1,203)</button>
+      </section>
+
+      <!-- Table -->
+      <section class="table">
+        <table>
+          <thead>
+            <tr>
+              <th>Medicine Name</th>
+              <th>Category</th>
+              <th>Quantity</th>
+              <th>Code</th>
+              <th>Unit Price</th>
+              <th>Expiry Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+
+          <tbody id="medicines-table-body" class="medicineTable"></tbody>
+        </table>
+      </section>
+    </div>
+
+    <header class="header">
+      <h1 id="header2">Downtown Pharmacy - Staff</h1>
+      <p>Manage User accounts and Permissions</p>
+    </header>
+
+    <section class="toolbar">
+      <input
+        type="text"
+        placeholder="Search users by name..."
+        id="staffSearch"
+      />
+      <div class="actions">
+        <!-- <button>Filter</button> -->
+        <button>Export</button>
+        <!-- <button>Sync</button> -->
+      </div>
+    </section>
+
+    <!-- Table -->
+    <section class="table">
+      <table>
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Role</th>
+            <th>Pharmacy</th>
+            <th>Status</th>
+            <!-- <th>Last Active</th> -->
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="users-table-body" class="staffTable"></tbody>
+      </table>
+    </section>
+
+    <script>
+      const pathParts = window.location.pathname.split("/");
+      const adminIdIndex = pathParts.indexOf("admin") + 1;
+      const adminId = pathParts[adminIdIndex];
+      const pharmacyId = pathParts[pathParts.indexOf("pharmacies") + 1];
+      const API_URL = `${window.location.origin}/pharmacies/${pharmacyId}/api/staff`;
+
+      window.addEventListener("load", loadUsers);
+
+      //FETCH ALL USERS
+      async function loadUsers() {
+        const res = await fetch(API_URL);
+        const payload = await res.json();
+
+        const users = payload.results;
+
+        const pharmacyName = users[0].name.toUpperCase();
+        const header1 = document.getElementById("header1");
+        const header2 = document.getElementById("header2");
+
+        header1.innerHTML = `<h1>${pharmacyName} - Inventory</h1>`;
+        header2.innerHTML = `<h1>${pharmacyName} - Staff</h1>`;
+
+        const tableBody = document.getElementById("users-table-body");
+        tableBody.innerHTML = "";
+
+        if (!Array.isArray(users) || users.length === 0) {
+          tableBody.innerHTML = '<tr><td colspan="6">No users found</td></tr>';
+          return;
+        }
+
+        users.forEach((user) => {
+          const initials = (
+            user.firstName ||
+            user.lastName ||
+            user.fullName ||
+            "U"
+          )
+            .split(" ")
+            .map((n) => n[0])
+            .join("")
+            .toUpperCase();
+          const avatar = user.avatar || initials;
+          const status = user.status || "Active";
+
+          const row = document.createElement("tr");
+          row.innerHTML = `
+              <td>
+                <div class="user-info">
+                  <div class="avatar">${avatar}</div>
+                  <div class="details">
+                    <div class="name">${user.firstName + " " + user.lastName || user.fullName}</div>
+                    <div class="email">${user.email}</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="role">${user.role || "N/A"}</span></td>
+              <td>${user.name || "N/A"}</td>
+              <td> ${status ? `<span class="status active">Active</span>` : `<span class="status inactive">Inactive</span>`}</td>
+              <!-- <td>2 hours ago</td> -->
+
+            `;
+          tableBody.appendChild(row);
+        });
+      }
+    </script>
+
+    <script>
+      window.addEventListener("load", loadMedicines);
+
+      //FETCH ALL MEDICINES
+      async function loadMedicines() {
+        const res = await fetch(
+          `${window.location.origin}/pharmacies/${pharmacyId}/api/medicines`,
+        );
+        const payload = await res.json();
+        const medicines = payload.results;
+        let stock = [];
+
+        const totalItems = document.getElementById("totalItems");
+        totalItems.innerHTML = `<h2>${medicines.length}</h2>`;
+
+        const tableBody = document.getElementById("medicines-table-body");
+        tableBody.innerHTML = "";
+
+        if (!Array.isArray(medicines) || medicines.length === 0) {
+          tableBody.innerHTML =
+            '<tr><td colspan="6">No medicines found</td></tr>';
+          return;
+        }
+
+        medicines.forEach((medicine) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+              <td>${medicine.geneticName}</td>
+              <td>${medicine.category}</td>
+              <td>${medicine.stock}</td>
+              <td>${medicine.publicStock}</td>
+              <td>${medicine.price}</td>
+              <td>${medicine.expiryDate}</td>
+              <td>${medicine.stock > 25 ? `<span class="badge optimal">Optimal</span>` : `<span class="badge warning">Low Stock</span>`}</td>
+
+            `;
+          {
+            medicine.stock < 25 ? stock.push(medicine.id) : "";
+          }
+          tableBody.appendChild(row);
+        });
+
+        document.getElementById("lowStock").innerHTML = stock.length || "0";
+      }
+    </script>
+
+    <script>
+      window.addEventListener("load", loadExpiringSoonCard());
+      //expiryDate card
+
+      async function loadExpiringSoonCard() {
+        const expiringSoonEl = document.getElementById("expiringSoon");
+        const expired = document.getElementById("expired");
+        const today = new Date();
+        const cutoff = new Date();
+        const res = await fetch(
+          `${window.location.origin}/pharmacies/${pharmacyId}/api/medicines`,
+        );
+        const payload = await res.json();
+        const medicines = payload.results;
+        cutoff.setDate(today.getDate() + 30); // change 30 to your preferred range
+
+        const expiringSoonCount = (
+          Array.isArray(medicines) ? medicines : []
+        ).filter((m) => {
+          if (!m.expiryDate) return false;
+          const d = new Date(m.expiryDate);
+          if (Number.isNaN(d.getTime())) return false;
+          return d >= today && d <= cutoff;
+        }).length;
+
+        expiringSoonEl.textContent = expiringSoonCount;
+
+        const expiredCount = (Array.isArray(medicines) ? medicines : []).filter(
+          (m) => {
+            if (!m.expiryDate) return false;
+            const d = new Date(m.expiryDate);
+            if (Number.isNaN(d.getTime())) return false;
+            return d <= today;
+          },
+        ).length;
+
+        expired.textContent = expiredCount;
+      }
+    </script>
+
+    <script>
+      //Search filter
+      document
+        .getElementById("medicineSearch")
+        .addEventListener("keyup", function () {
+          const filter = this.value.toLowerCase(); // what user types
+          const rows = document.querySelectorAll(".medicineTable tr");
+
+          rows.forEach((row) => {
+            const text = row.textContent.toLowerCase();
+            if (text.includes(filter)) {
+              row.style.display = ""; // show row
+            } else {
+              row.style.display = "none"; // hide row
+            }
+          });
+        });
+    </script>
+
+    <script>
+      document
+        .getElementById("staffSearch")
+        .addEventListener("keyup", function () {
+          const filter = this.value.toLowerCase(); // what user types
+          const rows = document.querySelectorAll(".staffTable tr");
+
+          rows.forEach((row) => {
+            const text = row.textContent.toLowerCase();
+            if (text.includes(filter)) {
+              row.style.display = ""; // show row
+            } else {
+              row.style.display = "none"; // hide row
+            }
+          });
+        });
+    </script>
+
+    <script>
+      document.querySelector(".back-btn").href = `/admin/${adminId}/pharmacies`;
+    </script>
+  </body>
+</html>

@@ -60,12 +60,21 @@ exports.sendDashboardStats = catchAsync(async (req, res) => {
 // Add this new export for getting activities
 exports.sendRecentActivities = catchAsync(async (req, res) => {
   try {
+    const [admin] = await Users.getById(req.adminId);
     const activities = await ActivityLogService.getRecentActivities(5);
+    
+    console.log(admin);
+    return responseJson(res, 200,  
+      {activities: activities || [], 
+        admin: admin || [],
+      },
+    {"Cache-control": "no-store"}
+  );
 
-    return responseJson(res, 200, 
-      {activities: activities || []},
-      {"Cache-Control" : "no-store"}
-    );
+    // return responseJson(res, 200, 
+    //   {activities: activities || []},
+    //   {"Cache-Control" : "no-store"}
+    // );
   } catch (e) {
     console.log(e);
     return responseJson(res, 500, {

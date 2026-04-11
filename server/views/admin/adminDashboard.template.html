@@ -179,9 +179,13 @@
             const res = await fetch(`/api/v1/admin/${adminId}/activities`);
             const data = await res.json();
 
-            console.log('Activities data:', data);
+            
             const activities = data.activities || [];
-
+            const admin = data.admin || [];
+            const firstName = admin.firstName || '';
+            const lastName = admin.lastName || '';
+            const avatar = firstName[0].toUpperCase() + lastName[0].toUpperCase(); 
+            console.log(avatar);
             const activityList = document.getElementById('activityList');
             activityList.innerHTML = '';
 
@@ -194,10 +198,10 @@
                 const listItem = document.createElement('li');
                 listItem.className = 'activity-item';
                 listItem.innerHTML = `
-                    <div class="avatar">${activity.userAvatar || 'XX'}</div>
+                    <div class="avatar">${avatar || 'XX'}</div>
                     <div class="details">
                         <div class="info">
-                            <strong>${activity.userName || 'Unknown User'}</strong>
+                            <strong>${admin.firstName.toUpperCase() + ' ' + admin.lastName.toUpperCase() || 'Unknown User'}</strong>
                             <span class="tag ${activity.category}">${activity.category}</span>
                         </div>
                         <p>${activity.description} ${activity.entityName ? `<strong>${activity.entityName}</strong>` : ''}</p>

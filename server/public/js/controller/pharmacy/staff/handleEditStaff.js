@@ -19,6 +19,7 @@ function populateEditForm(staffData) {
     const editForm = document.querySelector('#editAccount form');
     if (!editForm) return;
 
+    console.log(staffData);
     // Populate form fields with staff data
     editForm.querySelector('input[name="firstName"]').value = staffData.firstName || '';
     editForm.querySelector('input[name="lastName"]').value = staffData.lastName || '';

@@ -76,6 +76,13 @@ const sideBarTemplate = html`
             </select>
         </div>
 
+        <div class = "password">
+            <label for = "password">Password</label><br>
+            <input type = "password" name = "password" id="new_member_password"><br>
+            <label for = "password">Confirm Password</label><br>
+            <input type = "password" name = "password" id="new_member_password"><br>
+        </div>
+
 
         <button class="save">Create</button>
 
@@ -99,6 +106,7 @@ function handleFormSubmit(){
                 icon:"success",
             }).then(()=>{
                 closeSidebar();
+                getStaffData();
             })
         }else{
             swal({
@@ -109,6 +117,7 @@ function handleFormSubmit(){
         }
     })
 }
+
 
 
 export async function handleCreateStaff() {

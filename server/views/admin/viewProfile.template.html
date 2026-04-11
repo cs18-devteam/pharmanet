@@ -27,7 +27,7 @@
         </div>
 
         <!-- <button class="btn primary">Send Message</button> -->
-        <button class="btn secondary" id="editBtn">Edit Profile</button>
+        <!-- <button class="btn secondary" id="editBtn">Edit Profile</button> -->
       </div>
 
       <!-- RIGHT SIDE -->
@@ -62,8 +62,8 @@
             </div>
 
             <div class="item">
-              <span class="label">Join Date</span>
-              <p id="detailJoined">January 15, 2023</p>
+              <span class="label">Birthday</span>
+              <p id="birthDay"></p>
             </div>
 
             <div class="item">
@@ -72,8 +72,8 @@
             </div>
 
             <div class="item">
-              <span class="label">Last Active</span>
-              <p>2 hours ago</p>
+              <span class="label">Join Date</span>
+              <p id="detailJoined">January 15, 2023</p>
             </div>
           </div>
         </div>
@@ -95,6 +95,9 @@
     <script type="application/json" id="userDataJson">
       {user}
     </script>
+    <script type="application/json" id="pharmacyDataJson">
+      {pharmacy}
+    </script>
     <script>
       const pathParts = window.location.pathname.split("/");
       const adminIdIndex = pathParts.indexOf("admin") + 1;
@@ -105,6 +108,11 @@
         document.getElementById("userDataJson").textContent,
       );
       console.log("userData: ", userData);
+
+      const pharmacyData = JSON.parse(
+        document.getElementById("pharmacyDataJson").textContent,
+      );
+      console.log("pharmacyData: ", pharmacyData);
 
       if (userData) {
         document.getElementById("userAvatar").textContent =
@@ -141,12 +149,18 @@
         document.getElementById("detailEmail").textContent =
           userData.email || "N/A";
         document.getElementById("detailPharmacy").textContent =
-          userData.pharmacy || "N/A";
+          pharmacyData.name.toUpperCase() || "N/A";
         document.getElementById("detailContact").textContent =
           userData.contact || "N/A";
         document.getElementById("detailJoined").textContent =
-          userData.createdAt || "N/A";
+          userData.emailOTPCreatedAt || "N/A";
+        document.getElementById("birthDay").textContent =
+          userData.dateOfBirth || "N/A";
       }
+    </script>
+
+    <script>
+      document.querySelector(".backLink").href = `/admin/${adminId}/users`;
     </script>
   </body>
 </html>

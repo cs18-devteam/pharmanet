@@ -1,4 +1,5 @@
-{header}
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,18 @@
     <link rel="stylesheet" href="/css/style.css">
     <style>
       /* Image popup styles */
+      .image-popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+      }
       
       .image-popup.active {
         display: flex;
@@ -80,7 +93,7 @@
   <div class="container-2">
   <div class="main">
     <header>
-      <input type="text" style="height: 5rem; font-size: 2rem; font-weight: 400; color: var(--color-green-02);"  id="searchInput" placeholder="Search pharmacies..." />
+      <input type="text" id="searchInput" placeholder="Search pharmacies..." />
       <!-- <div class="user-section">
         <span class="bell"></span>
         <div class="admin">AD</div>
@@ -138,6 +151,7 @@
       const html = pharmacies.map(p =>{
       const isActive = Number(p.status) === 1;
       return`
+      <a href = "/admin/${adminId}/pharmacies/${p.id}/viewPharmacy">
        <div class = "pharmacy-card">
         <div class="header">
           <h3>${p.name} ${isActive? `<span class="status inactive">active</span>` : `<span class="status inactive">inactive</span>`}</h3>
@@ -155,7 +169,7 @@
           <button class="details-btn" data-img="${p.img}" data-name="${p.name || ''}" data-id="${p.id}" data-status="${isActive ? '1' : '0'}">View License</button>
             ${isActive ? `<button class="deactivate-Btn" data-id="${p.id}">Deactivate</button>` : ''}
         </div>
-      </div>`}).join('');
+      </div></a>`}).join('');
       document.querySelector('.pharmacy-grid').innerHTML = html;
 
       
@@ -251,7 +265,7 @@
   </script>
 
   <script>
-    document.addEventListener('click', async function (e) {
+  document.addEventListener('click', async function (e) {
   const deactivateBtn = e.target.closest('.deactivate-Btn');
   if (!deactivateBtn) return;
 

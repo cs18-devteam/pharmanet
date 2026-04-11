@@ -25,6 +25,7 @@ export async function fetchAndRenderStaff() {
     
     const { results } = response;
     console.log(results);
+    Application.staffData = results;
 
     if (!results || results.length === 0) {
       console.log("No staff members found");

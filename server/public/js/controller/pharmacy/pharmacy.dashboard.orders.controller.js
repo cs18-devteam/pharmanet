@@ -282,6 +282,7 @@ async function showOrders(e){
         if(tr){
             const orderId = tr.dataset.id;
             const order = data.results.filter(order=>order.id == orderId)[0];
+            if(!orderId) return;
 
             setDrawerContent(orderView(order));
             openDrawer();

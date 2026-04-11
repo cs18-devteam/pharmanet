@@ -61,6 +61,11 @@ function update(){
             .then(data => data.json())
             .then(pharmacy=>Application.pharmacy = pharmacy.results)
             .catch(e=>console.log(e));
+
+            fetch(`/api/v1/pharmacies/${Application.pharmacyId}/staff`)
+            .then(data=>data.json())
+            .then(({results: staff})=>Application.staffData = staff)
+            .catch(e=>console.log(e));
         }
         if(Application.staffId){
             fetch(`/api/v1/staff/${Application.staffId}`)
@@ -68,6 +73,7 @@ function update(){
             .then(pharmacy=>Application.staff = pharmacy.results)
             .catch(e=>console.log(e));
         }
+
         
     })
 
@@ -120,6 +126,7 @@ export default class Application{
     static allStaffMembers = [];
     static remotePharmacy = undefined;
     static city = undefined;
+    static staffData = [];
 
 
     /**

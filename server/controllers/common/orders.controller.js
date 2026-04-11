@@ -240,6 +240,14 @@ exports.getOrders = apiCatchAsync(async (req, res) => {
             orderId : order.id,
         });
 
+        if(order.userId){
+            const [user] = (await Users.getById(order.userId));
+            if(user){
+                order.customer = user.name;
+            }
+
+        }
+
         
         return responseJson(res, 200, {
             status: "success",
@@ -287,6 +295,14 @@ exports.getOrders = apiCatchAsync(async (req, res) => {
         let transactions = await Transactions.get({
             orderId : order.id,
         });
+
+        if(order.userId){
+            const [user] = await Users.getById(order.userId);
+            if(user){
+                order.customer = `${user.firstName} ${user.lastName}`;
+                order.address = `${user.addressNo},${user.street},${user.town},${user.province}`
+            }
+        }
 
         return {
             ...order,

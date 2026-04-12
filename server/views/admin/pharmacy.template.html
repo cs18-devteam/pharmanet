@@ -98,7 +98,7 @@
       </div>
       </div>
     
-    <div class="content-wrapper">
+    <!-- <div class="content-wrapper"> -->
     <div class="pharmacy-grid">
     
 
@@ -121,9 +121,10 @@
         id="popupPdf"
         style="display:none; width:90vw; height:75vh; border:none;"
       ></iframe>
-      <button class="accept-Btn" id="accept-Btn" >Accept</button>
+      <!-- <button class="accept-Btn" id="accept-Btn" >Accept</button> -->
     </div>
   </div>
+
 
   <script>
     const pathParts = window.location.pathname.split('/');
@@ -156,8 +157,13 @@
         <hr>
         <div class= "pharmacyCardFooter">
           <!-- <p>Inventory: <strong>N/A</strong></p> -->
+          <button class="details-btn" data-img="${p.ownerDoc}" data-name="${p.name || ''}" data-id="${p.id}" }">View Owner Document</button>
+          <button class="details-btn" data-img="${p.addressDoc}" data-name="${p.name || ''}" data-id="${p.id}" data-status="${isActive ? '1' : '0'}">View Address Document</button>
           <button class="details-btn" data-img="${p.img}" data-name="${p.name || ''}" data-id="${p.id}" data-status="${isActive ? '1' : '0'}">View License</button>
-            ${isActive ? `<button class="deactivate-Btn" data-id="${p.id}">Deactivate</button>` : ''}
+
+           ${isActive 
+            ? `<button class="deactivate-Btn" data-id="${p.id}">Deactivate</button>` 
+            : `<button class="activate-Btn" data-id="${p.id}">Activate</button>`}
         </div>
       </div>`}).join('');
       document.querySelector('.pharmacy-grid').innerHTML = html;
@@ -185,7 +191,7 @@
     const img = document.getElementById('popupImage');
     const pdf = document.getElementById('popupPdf');
     const name = document.getElementById('popupPharmacyName');
-    const acceptBtn = document.getElementById('accept-Btn');
+    // const acceptBtn = document.getElementById('accept-Btn');
 
     let normalized = String(fileUrl).trim();
   normalized = normalized.replace(/^(\.\.\/)+/, '/');
@@ -210,7 +216,7 @@
     img.style.display = 'block';
   }
 
-  acceptBtn.style.display = Number(status) === 1 ? 'none' : 'flex';
+  // acceptBtn.style.display = Number(status) === 1 ? 'none' : 'flex';
   name.textContent = (pharmacyName || '').toUpperCase();
   popup.classList.add('active');
   }
@@ -226,6 +232,7 @@
     popup.classList.remove('active');
   }
 
+
   let selectedPharmacyId = null;
   // delegate click for dynamically created buttons
   document.addEventListener('click', function (e) {
@@ -238,76 +245,115 @@
     selectedPharmacyId = btn.getAttribute('data-id');
     openImagePopup(imgUrl, name, status);
   });
-  document.querySelector('.accept-Btn').addEventListener('click',
-  function () {
-    swal({
-      title: "Are you sure you want to Activate this Pharmacy ?",
-      icon: "/logo/logo.svg",
-      buttons:{
-        cancel:{
-          text: "Cancel",
-          visible: true
-        },
-        confirm: {
-          text: "OK",
-          value: true
-        }
-      },
-      dangerMode: false
-    }).then(async (confirmed) => {
-      if(!confirmed) {
-        swal("Declined","Pharmacy Activation Declined", "warning");
-        closeImagePopup();
-        return;
-      };
+  // document.querySelector('.accept-Btn').addEventListener('click',
+  // function () {
+  //   swal({
+  //     title: "Are you sure you want to Activate this Pharmacy ?",
+  //     icon: "/logo/logo.svg",
+  //     buttons:{
+  //       cancel:{
+  //         text: "Cancel",
+  //         visible: true
+  //       },
+  //       confirm: {
+  //         text: "OK",
+  //         value: true
+  //       }
+  //     },
+  //     dangerMode: false
+  //   }).then(async (confirmed) => {
+  //     if(!confirmed) {
+  //       swal("Declined","Pharmacy Activation Declined", "warning");
+  //       closeImagePopup();
+  //       return;
+  //     };
 
-      fetch(`${window.location.origin}/api/v1/admin/${adminId}/pharmacies/${selectedPharmacyId}`,{
-        method: 'PATCH',
-        headers: {"Content-type": "application/json"},
-        body: JSON.stringify({status: "1",
-        id: selectedPharmacyId})
-      });
-      swal("Activated","Pharmacy activated succesfully.","success");
-      closeImagePopup();
-      renderPharmacies();
-    })
-  })
+  //     fetch(`${window.location.origin}/api/v1/admin/${adminId}/pharmacies/${selectedPharmacyId}`,{
+  //       method: 'PATCH',
+  //       headers: {"Content-type": "application/json"},
+  //       body: JSON.stringify({status: "1",
+  //       id: selectedPharmacyId})
+  //     });
+  //     swal("Activated","Pharmacy activated succesfully.","success");
+  //     closeImagePopup();
+  //     renderPharmacies();
+  //   })
+  // })
  
   </script>
 
-  <script>
-    document.addEventListener('click', async function (e) {
-  const deactivateBtn = e.target.closest('.deactivate-Btn');
-  if (!deactivateBtn) return;
+<script>
+  // One delegated click handler for both Activate + Deactivate buttons
+  document.addEventListener('click', async function (e) {
+    const activateBtn = e.target.closest('.activate-Btn');
+    const deactivateBtn = e.target.closest('.deactivate-Btn');
 
-  e.preventDefault();
-  const pharmacyId = deactivateBtn.getAttribute('data-id');
+    if (!activateBtn && !deactivateBtn) return;
+    e.preventDefault();
 
-  const confirmed = await swal({
-    title: "Are you sure you want to deactivate this Pharmacy?",
-    icon: "/logo/logo.svg",
-    buttons: {
-      cancel: { text: "Cancel", visible: true },
-      confirm: { text: "Ok", value: true }
-    },
-    dangerMode: false
+    const isActivate = !!activateBtn;
+    const btn = activateBtn || deactivateBtn;
+    const pharmacyId = btn.getAttribute('data-id');
+
+    if (!pharmacyId) {
+      swal("Error", "Pharmacy ID not found.", "error");
+      return;
+    }
+
+    const confirmed = await swal({
+      title: isActivate
+        ? "Are you sure you want to activate this Pharmacy?"
+        : "Are you sure you want to deactivate this Pharmacy?",
+      icon: "/logo/logo.svg",
+      buttons: {
+        cancel: { text: "Cancel", visible: true },
+        confirm: { text: "Ok", value: true }
+      },
+      dangerMode: false
+    });
+
+    if (!confirmed) {
+      swal(
+        "Declined",
+        isActivate
+          ? "Pharmacy Activation Declined"
+          : "Pharmacy Deactivation Declined",
+        "warning"
+      );
+      return;
+    }
+
+    try {
+      const res = await fetch(
+        `${window.location.origin}/api/v1/admin/${adminId}/pharmacies/${pharmacyId}`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            status: isActivate ? "1" : "0",
+            id: pharmacyId
+          })
+        }
+      );
+
+      if (!res.ok) throw new Error("Request failed");
+
+      swal(
+        isActivate ? "Activated" : "Deactivated",
+        isActivate
+          ? "Pharmacy Activated Successfully"
+          : "Pharmacy Deactivated Successfully",
+        "success"
+      );
+
+      renderPharmacies();
+    } catch (err) {
+      console.error(err);
+      swal("Error", "Failed to update pharmacy status.", "error");
+    }
   });
-
-  if(!confirmed) {
-    swal("Declined", "Pharmacy Deactivation Declined", "warning");
-    return;
-  }
-
-  await fetch(`${window.location.origin}/api/v1/admin/${adminId}/pharmacies/${pharmacyId}`, {
-    method: 'PATCH',
-    headers: { "Content-type": "application/json" },
-    body: JSON.stringify({ status: "0", id: pharmacyId })
-  });
+</script>
   
-  swal("Deactivated", "Pharmacy Deactivated Successfully", "success");
-  renderPharmacies(); // Re-render to hide deactivate, but doesn't matter since status=0
-});
-  </script>
 
 
   <script>

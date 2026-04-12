@@ -21866,6 +21866,7 @@ p {
   border: none;
   color: #fff;
   padding: 1rem;
+  margin: 1rem;
   border-radius: 6px;
   cursor: pointer;
 }
@@ -21876,8 +21877,17 @@ p {
   background-color: red;
   border: none;
   color: white;
+  font-weight: 600;
   border-radius: 0.5rem;
   margin-left: 0.5rem;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .pharmacyCardFooter .activate-Btn {
+  background-color: orange;
+  border: none;
+  color: white;
+  border-radius: 0.5rem;
+  margin-left: 0.5rem;
+  font-weight: 600;
 }
 .pharmarcy .container .container-2 .main .dashboard .status {
   padding: 0.2rem 0.5rem;

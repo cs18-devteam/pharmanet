@@ -116,7 +116,11 @@
     <div class="popup-content">
       <button class="close-popup" onclick="closeImagePopup()">✕</button>
       <h3 id="popupPharmacyName"></h3>
-      <img id="popupImage" src="" alt="Pharmacy Image">
+      <img id="popupImage" src="" alt="Pharmacy Image" style="display:none; max-width:90%; max-height:75vh;">
+      <iframe
+        id="popupPdf"
+        style="display:none; width:90vw; height:75vh; border:none;"
+      ></iframe>
       <button class="accept-Btn" id="accept-Btn" >Accept</button>
     </div>
   </div>
@@ -172,32 +176,53 @@
 
   <script>
   // image popup helpers
-  function openImagePopup(imgUrl, pharmacyName, status) {
-    if (!imgUrl) {
-      alert('No image available for this pharmacy.');
+  function openImagePopup(fileUrl, pharmacyName, status) {
+    if (!fileUrl) {
+      alert('No files available for this pharmacy.');
       return;
     }
     const popup = document.getElementById('imagePopup');
     const img = document.getElementById('popupImage');
+    const pdf = document.getElementById('popupPdf');
     const name = document.getElementById('popupPharmacyName');
     const acceptBtn = document.getElementById('accept-Btn');
 
-    console.log(typeof status);
-    if(Number(status) === 1){
-      acceptBtn.style.display = 'none';
-    }else{
-      acceptBtn.style.display = 'flex';
-    }
+    let normalized = String(fileUrl).trim();
+  normalized = normalized.replace(/^(\.\.\/)+/, '/');
+  if (!normalized.startsWith('/')) normalized = '/' + normalized;
 
-    img.src = imgUrl;
-    name.textContent = (pharmacyName || '').toUpperCase();
-    popup.classList.add('active');
+  const safeUrl = encodeURI(normalized);
+
+  // detect pdf even with query/hash
+  const isPdf = /\.pdf(\?|#|$)/i.test(safeUrl);
+
+  // reset visibility
+  img.style.display = 'none';
+  pdf.style.display = 'none';
+  img.src = '';
+  pdf.src = '';
+
+  if (isPdf) {
+    pdf.src = safeUrl;
+    pdf.style.display = 'block';
+  } else {
+    img.src = safeUrl;
+    img.style.display = 'block';
+  }
+
+  acceptBtn.style.display = Number(status) === 1 ? 'none' : 'flex';
+  name.textContent = (pharmacyName || '').toUpperCase();
+  popup.classList.add('active');
   }
 
   function closeImagePopup() {
     const popup = document.getElementById('imagePopup');
     const img = document.getElementById('popupImage');
+    const pdf = document.getElementById('popupPdf');
     img.src = '';
+    pdf.src = '';
+    img.style.display = 'none';
+    pdf.style.display = 'none';
     popup.classList.remove('active');
   }
 

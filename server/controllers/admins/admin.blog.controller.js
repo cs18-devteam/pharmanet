@@ -12,8 +12,8 @@ exports.renderAdminBlogManageView = catchAsync(async (req, res) => {
   let adminId = req.adminId;
 
   if (!adminId && req.url) {
-    const parts = req.url.split('/');
-    if (parts[1] === 'admin' && parts[2]) {
+    const parts = req.url.split("/");
+    if (parts[1] === "admin" && parts[2]) {
       adminId = parts[2];
     }
   }
@@ -28,26 +28,28 @@ exports.renderAdminBlogManageView = catchAsync(async (req, res) => {
     return response(res, "Admin not found", 404);
   }
 
-
-  return response(res, view('admin/blogManage', {
-    sidebar: view('admin/component.sidebar', admin),
-    header: view('component.header', {
-      name: "Blogs || Pharmanet - Manage all blogs here",
-      ...admin
+  return response(
+    res,
+    view("admin/blogManage", {
+      sidebar: view("admin/component.sidebar", admin),
+      header: view("component.header", {
+        name: "Blogs || Pharmanet - Manage all blogs here",
+        ...admin,
+      }),
+      ...admin,
     }),
-    ...admin
-  }), 200);
-})
+    200,
+  );
+});
 
 exports.renderAdminCreateNewBlog = catchAsync(async (req, res) => {
-
   let adminId = req.adminId;
 
   // Fallback: extract from URL if not in req
   if (!adminId && req.url) {
-    const parts = req.url.split('/');
+    const parts = req.url.split("/");
     // Assuming /admin/:id/blogs/create -> id is index 2 (empty, admin, id, ...)
-    if (parts[1] === 'admin' && parts[2]) {
+    if (parts[1] === "admin" && parts[2]) {
       adminId = parts[2];
     }
   }
@@ -64,25 +66,26 @@ exports.renderAdminCreateNewBlog = catchAsync(async (req, res) => {
     return response(res, "Admin not found", 404);
   }
 
-  return response(res, view('blog/createNewBlog', {
-    sidebar: view('admin/component.sidebar', admin),
-    header: view('component.header', {
-      name: "Blogs || Create new",
-      ...admin
+  return response(
+    res,
+    view("blog/createNewBlog", {
+      sidebar: view("admin/component.sidebar", admin),
+      header: view("component.header", {
+        name: "Blogs || Create new",
+        ...admin,
+      }),
+      ...admin,
     }),
-    ...admin
-  }));
-})
-
-
+  );
+});
 
 exports.renderEditView = catchAsync(async (req, res) => {
   // const adminId = req.params.adminId;
   let adminId = req.adminId;
 
   if (!adminId && req.url) {
-    const parts = req.url.split('/');
-    if (parts[1] === 'admin' && parts[2]) {
+    const parts = req.url.split("/");
+    if (parts[1] === "admin" && parts[2]) {
       adminId = parts[2];
     }
   }
@@ -100,20 +103,22 @@ exports.renderEditView = catchAsync(async (req, res) => {
 
   const [blog] = await Blogs.getById(blogId);
 
-  return response(res, view('blog/editBlog', {
-    ...admin,
-    title: blog.title, 
-    slug: blog.slug,
-    excerpt:blog.excerpt,
-    content: blog.content,
-    Date: blog.status,
-    category: blog.category,
-    author: blog.author,
-    tag: blog.tag
-
-  }), 200);
-})
-
+  return response(
+    res,
+    view("blog/editBlog", {
+      ...admin,
+      title: blog.title,
+      slug: blog.slug,
+      excerpt: blog.excerpt,
+      content: blog.content,
+      Date: blog.status,
+      category: blog.category,
+      author: blog.author,
+      tag: blog.tag,
+    }),
+    200,
+  );
+});
 
 exports.createBlog = catchAsync(async (req, res) => {
   const rawData = await getRequestData(req);
@@ -133,8 +138,8 @@ exports.createBlog = catchAsync(async (req, res) => {
   let adminId = req.adminId;
 
   if (!adminId && req.url) {
-    const parts = req.url.split('/');
-    if (parts[1] === 'admin' && parts[2]) {
+    const parts = req.url.split("/");
+    if (parts[1] === "admin" && parts[2]) {
       adminId = parts[2];
     }
   }
@@ -146,10 +151,17 @@ exports.createBlog = catchAsync(async (req, res) => {
   // console.log(adminId);
 
   const newBlog = await Blogs.save({
-    title, slug, status, category, author, excerpt, content, tag
+    title,
+    slug,
+    status,
+    category,
+    author,
+    excerpt,
+    content,
+    tag,
   });
   return responseJson(res, 201, newBlog);
-})
+});
 
 exports.deleteBlog = catchAsync(async (req, res) => {
   const blogId = req.blogId;
@@ -178,18 +190,25 @@ exports.updateBlog = catchAsync(async (req, res) => {
 
   const { title, slug, status, tag, category, author, excerpt, content } = body;
   const newBlog = await Blogs.update({
-    title, slug, status, tag, category, author, excerpt, content
+    title,
+    slug,
+    status,
+    tag,
+    category,
+    author,
+    excerpt,
+    content,
   });
   return responseJson(res, 200, newBlog);
-})
+});
 
 exports.getAllBlogs = catchAsync(async (req, res) => {
   let adminId = req.adminId;
   console.log(adminId);
 
   if (!adminId && req.url) {
-    const parts = req.url.split('/');
-    if (parts[1] === 'admin' && parts[2]) {
+    const parts = req.url.split("/");
+    if (parts[1] === "admin" && parts[2]) {
       adminId = parts[2];
     }
   }
@@ -197,4 +216,4 @@ exports.getAllBlogs = catchAsync(async (req, res) => {
   // const query = adminId ? { author: adminId } : undefined;
   const blogs = await Blogs.get();
   return responseJson(res, 201, blogs);
-})
+});

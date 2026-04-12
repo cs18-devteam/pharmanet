@@ -23,3 +23,27 @@ export async function createOrder(cartsIds=[]) {
         }
     }
 }
+
+
+export async function uploadPrescriptionAndCreateOrder(prescription){
+    try{
+        if(!prescription) return;
+        const form = new FormData();
+        form.append("prescription" , prescription)
+
+        const response = await fetch("/api/v1/orders/prescription" , {
+            method :"POST",
+            body : form,
+        });
+
+        const results = await response.json();
+        return results;
+
+    }catch(e){
+        return {
+            status:"error",
+            message: e.message || "file not uploaded"
+        }
+
+    }
+}

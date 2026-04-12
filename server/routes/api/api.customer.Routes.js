@@ -9,7 +9,12 @@ exports.customerApiRouter = SubRouter.route("/api/v1/customers/:customerId")
 })
 .subRoute('/pharmacy/register' , {
     post: customerPharmacyController.createPharmacy,
-}).subRoute('/cart' ,{
+})
+.subRoute("/pharmacies/nearby" , {
+    get : customerPharmacyController.getNearByPharmacies,
+})
+
+.subRoute('/cart' ,{
     get:customerCartController.getCart,
     post:customerCartController.addToCart,
     delete:customerCartController.deleteCart,

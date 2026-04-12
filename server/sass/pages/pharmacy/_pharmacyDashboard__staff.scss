@@ -570,14 +570,15 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 2rem;
-
+      
       span {
         font-size: 1.8rem;
         color: $text-dark;
       }
     }
-
+    
     .btn-outline {
+      color: #000;
       background: #fff;
       border: 0.1rem solid #9ca3af;
       padding: 1rem 2rem;

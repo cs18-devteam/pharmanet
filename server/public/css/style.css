@@ -5586,6 +5586,36 @@ button.save {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  outline: 1px dashed #fff;
+  transition: all 0.2s ease;
+  position: relative;
+}
+.landing .upload-container .upload-box::after, .landing .upload-container .upload-box::before {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  display: inline-block;
+  content: " ";
+  border: 1px dashed #fff;
+  border-radius: 50%;
+  transition: all 0.5s ease;
+}
+.landing .upload-container .upload-box:-moz-drag-over {
+  outline-offset: 1rem;
+}
+.landing .upload-container .upload-box:hover {
+  outline-offset: 1rem;
+}
+.landing .upload-container .upload-box:hover::after {
+  width: 120%;
+  height: 120%;
+}
+.landing .upload-container .upload-box:hover::before {
+  width: 150%;
+  height: 150%;
 }
 .landing .upload-container .upload-box .icon {
   margin-bottom: 1.2rem;
@@ -5594,6 +5624,7 @@ button.save {
   font-size: 2.4rem;
   font-weight: bold;
   margin: 0;
+  color: #fff;
 }
 .landing .upload-container .upload-box:hover {
   transform: scale(1.05);
@@ -15558,6 +15589,7 @@ button.save {
   color: #111827;
 }
 .pharmacyDashboard .dashboards .container.staff .page .btn-outline {
+  color: #000;
   background: #fff;
   border: 0.1rem solid #9ca3af;
   padding: 1rem 2rem;

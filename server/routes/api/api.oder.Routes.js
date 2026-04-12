@@ -19,6 +19,9 @@ exports.ordersApiRouter = SubRouter.route('/api/v1/orders')
 .subRoute('/summery/status' , {
     get: orderController.getOrderSummeryStatusWise,
 })
+.subRoute('/prescription' , {
+    post : orderController.createOrderFormPrescription,
+})
 .subRoute("/:orderId" , {
     delete: orderController.deleteOrder,
 })

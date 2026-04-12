@@ -3,6 +3,7 @@ const { validateEmail } = require("../../common/emailValidator");
 const File = require("../../common/File");
 const getMultipartData = require("../../common/getMultipartData");
 const { getRequestData } = require("../../common/getRequestData");
+const readCookies = require("../../common/readCookies");
 const { response, responseJson } = require("../../common/response");
 const view = require("../../common/view");
 const connectedPharmacies = require("../../memory/pharmacies.memory.temp");
@@ -551,3 +552,35 @@ exports.createPharmacy = apiCatchAsync(async (req, res) => {
     },
   });
 });
+
+
+
+
+exports.getNearByPharmacies = apiCatchAsync(async (req , res)=>{
+  const distance = req.params.get('distance');
+  const {latitude , longitude} = readCookies(req);
+
+  let pharmacies = [];
+  for(const [id , phrClient] of Object.entries(connectedPharmacies)){
+    const [pharmacy] = await Pharmacies.getById(id);
+    if(!pharmacy) continue;
+
+    if(latitude && longitude){
+      const dis = calculateDistanceKM(latitude , longitude , pharmacy.latitude , pharmacy.longitude);
+      pharmacy.distance = dis;
+
+      if(distance){
+        if(distance < dis) continue;
+      }
+    }
+
+    pharmacies.push(pharmacy);
+  }
+
+  console.log(pharmacies);
+
+  responseJson(res , 200 , {
+    status:"success",
+    data : pharmacies,
+  })
+})

@@ -1,5 +1,6 @@
 const { apiCatchAsync } = require("../../common/catchAsync");
 const Convert = require("../../common/Convert");
+const File = require("../../common/File");
 const getMultipartData = require("../../common/getMultipartData");
 const { getRequestData } = require("../../common/getRequestData");
 const readCookies = require("../../common/readCookies");
@@ -615,4 +616,38 @@ exports.getOrderSummeryStatusWise = apiCatchAsync(async (req, res) => {
         status: "success",
         data: orders,
     })
+})
+
+
+exports.createOrderFormPrescription = apiCatchAsync(async (req , res)=>{
+    const {prescription} = await getMultipartData(req);
+    const {userId} = readCookies(req);
+    if(!prescription) throw new Error("prescription not found");
+    if(!(prescription instanceof File)){
+        throw new Error("prescription must be a file");
+    }
+
+
+
+
+    const filePath = "/prescriptions";
+    const fileName = `${Date.now()}.${prescription.fileName.split(".").slice(-1)}`
+    prescription.rename(fileName);
+
+    const fileStatus = await prescription.save(filePath);
+    if(fileStatus.status != "success") throw new Error("file not saved");
+
+    const [order] = await PharmacyOrders.save({
+        userId : userId,
+        prescription : `${filePath}/${fileName}`,
+        status:"pending",
+    })
+    console.log(order);
+
+    responseJson(res , 200 , {
+        status:"success",
+        data : order,
+        
+    })
+
 })

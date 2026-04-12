@@ -7,8 +7,8 @@ const pharmacyRegisterForm = document.getElementById("pharmacy-form");
 
 const uploadStateConfig = {
   idle: { text: "Upload", enabled: true },
-  uploading: { text: "Uploading...", enabled: false },
-  success: { text: "Uploaded", enabled: false },
+  uploading: { text: "Uploading...", enabled: true },
+  success: { text: "Uploaded", enabled: true },
   error: { text: "Upload Failed. Try Again", enabled: true },
 };
 
@@ -124,6 +124,9 @@ pharmacyRegisterForm.addEventListener("submit", async (e) => {
   const inputFile_ownerProof = pharmacyRegisterForm.querySelector(
     'input[name="OwnerProof"]',
   );
+  const inputFile_pharmacyImage = pharmacyRegisterForm.querySelector(
+    'input[name="image"]',
+  );
 
   formData.append("name", input_pharmacyName?.value);
   formData.append("email", input_email?.value);
@@ -140,7 +143,7 @@ pharmacyRegisterForm.addEventListener("submit", async (e) => {
   formData.append("registrationDoc", inputFile_pharmacyRegistration?.files[0]);
   formData.append("ownerDoc", inputFile_ownerProof?.files[0]);
   formData.append("addressDoc", inputFile_pharmacyAddressProof?.files[0]);
-  formData.append("image", inputFile_pharmacyRegistration?.files[0]);
+  formData.append("image", inputFile_pharmacyImage?.files[0]);
 
   renderSpinner();
   const { status, results, message } = await submitPharmacyRegisterData(

@@ -3,6 +3,7 @@ const Pharmacies = require('./models/PharmacyModel');
 const ChatTemplates = require('./common/ChatTemplates');
 const connectedPharmacies = require('./memory/pharmacies.memory.temp');
 const connectedCustomers = require('./memory/customers.memory.temp');
+const pharmaciesConnectionStatus = require('./memory/pharmacies.connection.status.temp');
 
 const server = new WebSocket();
 
@@ -66,6 +67,13 @@ server.onClientMessage((message , client)=>{
     try{
 
         console.log({message});
+        if(ChatTemplates.isHealthCheck(message)){
+            const id  = ChatTemplates.getIdFromHealthCheck(message);
+            pharmaciesConnectionStatus[id] = Date.now();
+            return;
+        }
+
+
         // create connection with server
         if(ChatTemplates.isRequestConnection(message)){
             const stabObj = ChatTemplates.readStablishConn(message);
@@ -99,12 +107,12 @@ server.onClientMessage((message , client)=>{
             
                 const customer = connectedCustomers[`${reqClientObj.customerId}`];
                 const pharmacy = connectedCustomers[`${reqClientObj.id}`];
-                customer.client.send(ChatTemplates.chatBoxAcceptRequestFromServerToClient(true , reqClientObj.id , reqClientObj.customerId));
+                customer?.client.send(ChatTemplates.chatBoxAcceptRequestFromServerToClient(true , reqClientObj.id , reqClientObj.customerId));
 
             }else{
                  const customer = connectedCustomers[`${reqClientObj.customerId}`];
                 const pharmacy = connectedCustomers[`${reqClientObj.id}`];
-                customer.client.send(ChatTemplates.chatBoxAcceptRequestFromServerToClient(false , reqClientObj.id , reqClientObj.customerId));
+                customer?.client.send(ChatTemplates.chatBoxAcceptRequestFromServerToClient(false , reqClientObj.id , reqClientObj.customerId));
 
             }
 
@@ -126,9 +134,9 @@ server.onClientMessage((message , client)=>{
             if(!msgObj.toId || !msgObj.id || !msgObj.to) return; 
 
             if(msgObj.to == "pharmacy"){
-                connectedPharmacies[`${msgObj.toId}`].client.send(message)
+                connectedPharmacies[`${msgObj.toId}`]?.client.send(message)
             }else if(msgObj.to == "customer"){
-                connectedCustomers[`${msgObj.toId}`].client.send(message)
+                connectedCustomers[`${msgObj.toId}`]?.client.send(message)
             }else{
                 
             }
@@ -145,9 +153,26 @@ server.onClientMessage((message , client)=>{
     }
 })
 
-
+setInterval(()=>{
+    for(const [id , pharmacy] of Object.entries(connectedPharmacies)){
+        pharmacy.client.send(ChatTemplates.healthCheck());
+        if(!pharmaciesConnectionStatus[id]){
+            pharmaciesConnectionStatus[id] = Date.now();
+        }
+    }
+} , 3000)
  
 
+
+setInterval(()=>{
+    for(const [id , timestamp] of Object.entries(pharmaciesConnectionStatus)){
+        if(Date.now() - timestamp > 10000){
+            console.log(`ID ${id} : pharmacy disconnected`);
+            delete connectedPharmacies[id];
+            delete pharmaciesConnectionStatus[id];
+        }
+    }
+} , 3000);
 
 
 module.exports  = server;

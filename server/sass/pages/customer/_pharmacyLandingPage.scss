@@ -17,7 +17,7 @@
             border-radius: 1rem;
             border: 0.1rem solid rgba(255, 255, 255, 0.21);
             padding: 2rem 2rem;
-            background-image: linear-gradient(to bottom, #00000090 50%, transparent), url("/pharmacyImages/general-pharmacy.png");
+            background-image: linear-gradient(to bottom, #00000090 50%, transparent), var(--profile);
             //margin: 5rem;
             background-position: center;
             background-repeat: no-repeat;

@@ -1,3 +1,4 @@
+import Application from "../../../model/application/Application.js";
 import ChatTemplates from "../../../model/application/ChatTemplates.js";
 import { renderChatBox } from "../../../view/pharmacy/chat/renderChatbox.js";
 import { onDisconnect } from "./onDisconnect.js";
@@ -11,6 +12,9 @@ export function startSocketListening(socket){
     socket.addEventListener('message' , (msgEvent)=>{
         const message = msgEvent.data;
         console.log(message);
+        if(ChatTemplates.isHealthCheck(message)){
+            return Application.connection.send(ChatTemplates.healthString())
+        }
 
         if(ChatTemplates.isConnectionResponse(message)){
             whenConnected(message)

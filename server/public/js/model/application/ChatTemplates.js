@@ -15,6 +15,7 @@ class ChatTemplates {
     static #MINOR_ERROR = "MINOR_ERROR="
     static #SYNC = "SYNC="
     static #DISCONNECT = "DCN="
+    static #HEALTH = "HL="
 
 
 
@@ -37,6 +38,18 @@ class ChatTemplates {
             })}`
         }
     }
+
+    static isHealthCheck(message){
+        return message.startsWith(this.#HEALTH);
+    }
+
+    static healthString(){
+        return `${this.#HEALTH}${JSON.stringify({
+            id:Application.pharmacyId,
+        })}`
+    }
+
+    
 
 
     static acceptClient(isAccept, clientId) {
@@ -67,7 +80,6 @@ class ChatTemplates {
     }
 
     static isDisconnect(message) {
-        console.log(message);
         return message.startsWith(this.#DISCONNECT);
     }
 

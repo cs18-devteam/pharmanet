@@ -12,6 +12,7 @@ class ChatTemplates{
     static #STAT_PRSC = "RES_PHR="
     static #MINOR_ERROR = "MINOR_ERROR="
     static #DISCONNECT="DCN="
+    static #HEALTH="HL="
 
 
     static message({msg ,from , to , toId , fromId}){
@@ -24,6 +25,18 @@ class ChatTemplates{
             })}`
         
     } 
+
+    static healthCheck(){
+        return `${this.#HEALTH}${JSON.stringify({})}`
+    }
+
+    static getIdFromHealthCheck(message){
+        return JSON.parse(message.replace(this.#HEALTH , ""))?.id;
+    }
+
+    static isHealthCheck(message){
+        return message.startsWith(this.#HEALTH);
+    }
 
 
     static disconnect(){

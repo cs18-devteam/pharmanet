@@ -5,6 +5,7 @@ const getMultipartData = require("../../common/getMultipartData");
 const { getRequestData } = require("../../common/getRequestData");
 const { response, responseJson } = require("../../common/response");
 const view = require("../../common/view");
+const connectedPharmacies = require("../../memory/pharmacies.memory.temp");
 const Medicines = require("../../models/MedicineModel");
 const PharmacyMedicines = require("../../models/PharmacyMedicinesModel");
 const Pharmacies = require("../../models/PharmacyModel");
@@ -68,7 +69,7 @@ exports.renderCustomerPharmacies = async (req, res) => {
 
 async function saveFile(name, file, destination) {
   try {
-    const fileName = `${name}-${Date.now()}-${file.fileName}`;
+    const fileName = `${name}-${Date.now()}.${file.fileName.split(".").slice(-1)}`;
     file.rename(fileName);
     const regSaveData = await file.save(destination);
     if (regSaveData.status == "success") {
@@ -125,7 +126,6 @@ exports.renderPharmacyLandingPage = async (req, res) => {
 
     let staff = await Promise.all(pharmacyStaff.map(async s=>{
       const [user] = await Users.getById(s.userId);
-      console.log(s.userId);
       if(!user) return undefined;
 
       return {image : user.profile ,role : s.role ,firstName : user.firstName , lastName : user.lastName}
@@ -137,12 +137,9 @@ exports.renderPharmacyLandingPage = async (req, res) => {
       pharmacyId: pharmacy.id,
     });
 
-    console.log(staff);
-
     const medicineCards = medicines.map(async (m) => {
       const [medicine] = await Medicines.getById(m.medicineId);
       if(!medicine) return undefined;
-      
       if (search) {
         console.log(medicine.geneticName ,medicine.geneticName.toLowerCase().includes(search));
         if (!medicine?.geneticName.toLowerCase().includes(search) && !medicine.category?.toLowerCase().includes(search)) {
@@ -152,20 +149,26 @@ exports.renderPharmacyLandingPage = async (req, res) => {
 
 
       return view("customer/component.medicine.card", {
-        id: m.id,
+        id: m.medicineId,
         price: m.price,
         stock: Number(m.publicStock).toLocaleString('si-LK'),
         status: m.publicStock <= 0 ? "low" : "",
         userId : customer.id,
         name: medicine.geneticName,
         image: medicine.image,
+        medicineId: m.medicineId,
       });
     });
 
     let medicineCardsText = await Promise.all(medicineCards);
     medicineCardsText = medicineCardsText.filter(t => t != undefined);
     if(!medicineCardsText.length){
-      medicineCardsText.push(`<div style="position: absolute; left: 50% ; transform : translateX(-50%) ;text-align: center;color: #555; font-size : 3rem;">"${search}" Not found any Medicine</div>`);
+
+      if(search){
+        medicineCardsText.push(`<div style="position: absolute; left: 50% ; transform : translateX(-50%) ;text-align: center;color: #555; font-size : 3rem;">"${search}" Not found any Medicine</div>`);
+      }else{
+        medicineCardsText.push(`<div style="position: absolute; left: 50% ; transform : translateX(-50%) ;text-align: center;color: #555; font-size : 3rem;">No medicines in Stock</div>`)
+      }
     }
 
     return response(
@@ -179,8 +182,10 @@ exports.renderPharmacyLandingPage = async (req, res) => {
         ...pharmacyData,
         medicineCards: medicineCardsText.join(" "),
         cart: view("customer/component.cart"),
-        status: pharmacy.alive ? "online" : "offline",
+        status: connectedPharmacies[pharmacy.id] ? "online" : "offline",
         footer: view('footer'),
+        contact : pharmacy.contact || "+00 000 0000 000",
+        image: `'${pharmacy.img}'`,
         staff : staff.map(s=>`<div class="owner">
           <img src="${s.image}" alt="${s.role}">
           <div class="title">${s.role}</div>
@@ -459,6 +464,8 @@ exports.createPharmacy = apiCatchAsync(async (req, res) => {
     img: "/pharmacyImages/general-pharmacy.png",
   };
 
+
+
   if (pharmacyData.registrationDoc instanceof File) {
     const file = await saveFile(
       pharmacyData.name,
@@ -466,7 +473,10 @@ exports.createPharmacy = apiCatchAsync(async (req, res) => {
       "/pharmacyRegistrations",
     );
     pharmacyObj.registrationDoc = file.destination;
+  }else{
+    throw new Error("registration document not found")
   }
+
   if (pharmacyData.ownerDoc instanceof File) {
     const file = await saveFile(
       pharmacyData.name,
@@ -474,7 +484,11 @@ exports.createPharmacy = apiCatchAsync(async (req, res) => {
       "/pharmacyOwners",
     );
     pharmacyObj.ownerDoc = file.destination;
+  }else{
+    throw new Error("owner identification doc not found");
   }
+
+
   if (pharmacyData.addressDoc instanceof File) {
     const file = await saveFile(
       pharmacyData.name,
@@ -482,7 +496,10 @@ exports.createPharmacy = apiCatchAsync(async (req, res) => {
       "/pharmacyOwners",
     );
     pharmacyObj.addressDoc = file.destination;
+  }else{
+    throw new Error("address verification document not found");
   }
+
   if (pharmacyData.image instanceof File) {
     const file = await saveFile(
       pharmacyData.name,
@@ -490,7 +507,11 @@ exports.createPharmacy = apiCatchAsync(async (req, res) => {
       "/pharmacyImages",
     );
     pharmacyObj.img = file.destination;
+  }else{
+    throw new Error("pharmacy profile image not found");
   }
+
+
   const [pharmacy] = await Pharmacies.save(pharmacyObj);
 
   //create pharmacist

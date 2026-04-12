@@ -52,7 +52,7 @@ class ChatTemplates{
         return `${this.#RES_CLIENT}${JSON.stringify({
             accept: isAccept,
             customerId : clientId,
-            id : Application?.pharmacyId,
+            // id : Application?.pharmacyId,
             type :"pharmacy"
         })}`
     }

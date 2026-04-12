@@ -17,16 +17,8 @@ export function getCartIds(){
 
 
 export default async function getCartsIdsAndCreateOrder() {
-    
-
     const data = await createOrder(getCartIds());
-
-    console.log(data);
-
     Application.remoteOrderId = data.results.orderId; 
-
-    console.log(data.results);
-    
     return Application.requestPharmacyId;
 
 

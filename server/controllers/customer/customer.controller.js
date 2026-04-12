@@ -22,11 +22,11 @@ exports.renderCustomerHome = async (req, res) => {
                 const [staffMember] = await PharmacyStaff.get({ userId: customer.id });
                 const [{ count: medicineCount }] = await Medicines.query('select count(*) as count from this.table');
                 const [{ count: pharmacyCount }] = await Pharmacies.query('select count(*) as count from this.table');
-                console.log({customer , staffMember});
+                console.log({ customer, staffMember });
                 const range = Number.parseInt(Math.random() * (medicineCount - 12));
                 console.log(range);
                 const medicine = await Medicines.query(`select * from this.table where ${range} < id limit 12 `);
-                
+
 
 
                 if (!staffMember) {
@@ -43,8 +43,8 @@ exports.renderCustomerHome = async (req, res) => {
                                 cart: view('customer/component.cart'),
                                 MedicineCount: medicineCount,
                                 PharmacyCount: pharmacyCount,
-                                medicineCards : medicine.map(m=>view('customer/component.home.medicine.card' , {
-                                        name : m.geneticName,
+                                medicineCards: medicine.map(m => view('customer/component.home.medicine.card', {
+                                        name: m.geneticName,
                                         image: m.image,
                                         id: m.id,
                                 })).join(' ')
@@ -79,13 +79,13 @@ exports.renderCustomerProfile = async (req, res) => {
                         footer: view('footer'),
                         cart: view('customer/component.cart'),
                         ...customer,
-                        address : !(customer.addressNo || customer.street || customer.town || customer.province) ?  
-                        `<button class="address_add_button"> + Add Your address</button>` 
-                        : 
-                        `<input type="text" value="${customer.addressNo == "unknown" ?  "-" : customer.addressNo}" disabled class="update-field update-field_no"><Br>
-                        <input type="text" value="${customer.street == "unknown" ?  "-" : customer.street}" disabled class="update-field update-field_street"><br>
-                        <input type="text" value="${customer.town == "unknown" ?  "-" : customer.town}" disabled class="update-field update-field_town"><br>
-                        <input type="text" value="${customer.province == "unknown" ?  "-" : customer.province}" disabled class="update-field update-field_province"><br>`,
+                        address: !(customer.addressNo || customer.street || customer.town || customer.province) ?
+                                `<button class="address_add_button"> + Add Your address</button>`
+                                :
+                                `<input type="text" value="${customer.addressNo == "unknown" ? "-" : customer.addressNo}" disabled class="update-field update-field_no"><Br>
+                        <input type="text" value="${customer.street == "unknown" ? "-" : customer.street}" disabled class="update-field update-field_street"><br>
+                        <input type="text" value="${customer.town == "unknown" ? "-" : customer.town}" disabled class="update-field update-field_town"><br>
+                        <input type="text" value="${customer.province == "unknown" ? "-" : customer.province}" disabled class="update-field update-field_province"><br>`,
                 }), 200);
         } catch (e) {
                 console.log(e);
@@ -117,11 +117,11 @@ exports.renderCustomerOrders = catchAsync(async (req, res) => {
                 userId: customer.id,
         })
 
-        orders = orders.sort((a , b) => b.id - a.id);
-        orders = orders.filter(o=>o.pharmacyId);
+        orders = orders.sort((a, b) => b.id - a.id);
+        orders = orders.filter(o => o.pharmacyId);
 
-        garbageOrders = orders.filter(o=>!o.pharmacyId);
-        garbageOrders.map(o=>{
+        garbageOrders = orders.filter(o => !o.pharmacyId);
+        garbageOrders.map(o => {
                 PharmacyOrders.deleteById(o.id);
         })
 
@@ -143,26 +143,26 @@ exports.renderCustomerOrders = catchAsync(async (req, res) => {
                 })
 
                 const summery = {
-                        price : 0 , 
+                        price: 0,
                         discount: 0,
-                        loyalty : 0,
-                        total : 0,
+                        loyalty: 0,
+                        total: 0,
                 }
-                items = await Promise.all(items.map(async i=>{
-                        if(i.itemType == "medicine"){
+                items = await Promise.all(items.map(async i => {
+                        if (i.itemType == "medicine") {
                                 i.details = (await Medicines.getById(i.itemId))[0];
                         }
 
                         summery.price += i.price * i.quantity;
-                        summery.discount +- i.discount; 
-                        summery.total = summery.price - summery.discount  - summery.loyalty;
+                        summery.discount + - i.discount;
+                        summery.total = summery.price - summery.discount - summery.loyalty;
                         return i
                 }))
 
-                
-                
-                
-                
+
+
+
+
                 o.summery = summery;
                 o.items = items;
 
@@ -191,17 +191,17 @@ exports.renderCustomerOrders = catchAsync(async (req, res) => {
                         items: o.items.map(i => ` 
                         <div class="product ${i.itemType}">
                                 <span>${(i.itemType == "medicine" ? "M" : "P") + i.itemId}</span>
-                                <a href="/customers/${customer.id}/${i.itemType == "medicine" ? "medicines" : "products"}/${i.itemId}"><span style="color: #1A7F78;"><u>${i?.details?.name?.slice(0 , 50) || i?.details?.geneticName?.slice(0 , 50) || "Name is not available"}</u></span></a>
+                                <a href="/customers/${customer.id}/${i.itemType == "medicine" ? "medicines" : "products"}/${i.itemId}"><span style="color: #1A7F78;"><u>${i?.details?.name?.slice(0, 50) || i?.details?.geneticName?.slice(0, 50) || "Name is not available"}</u></span></a>
                                 <p>Rs: ${i.price?.toFixed(2)}</p>
                                 <p>X</p>
                                 <p>${i.quantity} units</p>
                                 <p class="price">Rs ${(i.price * i.quantity)?.toFixed(2)}</p>
                                 </div>
                         `).join(' '),
-                        price : o.summery.price,
-                        total : o.summery.total,
-                        discount : o.summery.discount,
-                        loyalty : o.summery.loyalty,
+                        price: o.summery.price,
+                        total: o.summery.total,
+                        discount: o.summery.discount,
+                        loyalty: o.summery.loyalty,
 
                 })).join(' ')) : view("components/component.404", {
                         message: "Look like still no orders",
@@ -209,7 +209,7 @@ exports.renderCustomerOrders = catchAsync(async (req, res) => {
                 }),
                 cart: view('customer/component.cart'),
                 footer: view('footer'),
-                
+
         })), 200
 })
 

@@ -14,7 +14,7 @@
 
         .header-image {
             position: absolute;
-            width: 30rem;
+            height: 30rem;
             transform: rotateY(180deg);
             mix-blend-mode: luminosity;
             right: 0;
@@ -111,6 +111,43 @@
     }
 
 
+    .section-pharmacies{
+
+        .grid{
+            gap: 2rem;
+        }
+         .pharmacy{
+            height: 40rem;
+            width: 20%;
+
+                &__name{
+                    font-size: 2rem;
+                }
+
+                .status{
+                    font-size: 1.4rem;
+                }
+
+                &__address , &__tel{
+                    font-size: 1.6rem;
+                }
+
+                 &__distance {
+                    font-size: 1.4rem;
+                 }
+
+                
+
+                &__image{
+                    height: 15rem;
+                }
+            
+                &__stock{
+                    display: none;
+                }
+            }
+    }
+
     section {
         margin: 3rem;
         margin-top: 6rem;
@@ -135,76 +172,6 @@
             flex-wrap: wrap;
             justify-content: center;
 
-
-            .card {
-                width: 25rem;
-                margin: 2rem;
-                overflow: hidden;
-
-                img {
-                    background-color: #eee;
-                    width: 100%;
-                    height: 25rem;
-                    object-fit: contain;
-                }
-
-                .name-container {
-                    span {
-                        font-size: 1.4rem;
-                        color: #000;
-                        opacity: .5;
-                        text-transform: capitalize;
-                    }
-
-
-                    .name {
-                        font-size: 1.8rem;
-                        display: -webkit-box;
-                        -webkit-line-clamp: 2;
-                        -webkit-box-orient: vertical;
-                        text-overflow: ellipsis;
-                        overflow: hidden;
-                        width: 100%;
-                    }
-
-                }
-
-                .status {
-                    color: var(--color-green-01);
-                    font-size: 1.4rem;
-                    text-transform: capitalize;
-                    margin: 0;
-                    padding: 0;
-
-                    &.not-available{
-                        color: var(--color-red-01);
-                    }
-                }
-
-                button {
-                    padding: 1.5rem 2rem;
-                    font-size: 1.6rem;
-                    text-transform: capitalize;
-                    color: #fff;
-                    background-color: var(--color-green-01);
-                    cursor: pointer;
-                    border-radius: 2px;
-                    margin-top: 1rem;
-
-                    &:hover {
-                        background-color: var(--color-blue-01);
-
-                    }
-
-
-                   &.added{
-                        background-color: #000;
-                    }
-
-                    
-                
-                }
-            }
         }
     }
 

@@ -1,38 +1,27 @@
-<div class="pharmacy-card" data-id="{id}">
-        <div class="pharmacy-img" >
-            <img    src="{img}" alt=" p1" width="250rem" class="pharmacy-image">  
-        </div>
+<div class="pharmacy" data-id="{pharmacyId}" data-stockId="{id}">
+    <a href="#">
+        <img class="pharmacy__image" src="{image}" />
+    </a>
+    <a href="#" class="pharmacy__name">{pharmacy}</a>
+    <div class="pharmacy__distance">Distance : {distance}</div>
+
+    <div class="status {status}">
+        <div class="online"><span></span>online</div>
+        <div class="offline"><span></span>offline</div>
+    </div>
+    <div class="pharmacy__address">
+        {addressNo} , {street} , {town} , {province}
+    </div>
+    <div class="pharmacy__tel">
+        <img src="/images/call-img.svg">
+        {contact}
+    </div>
+    <div class="pharmacy__stock">
+        <h4>stock</h4>
+        <div class="pharmacy__stock__value"> {stock} Stock</div>
+        <div class="pharmacy__stock__price">Rs. {price}</div>
+    </div>
 
 
-        <div class="pharmacy_infomation">
-
-
-            <div class="pharmacy_name_info">
-                <div class="name">Name</div>
-                <div class="pharmacy_name">{name}</div>
-            </div>
-
-            
-            <div class="pharmacy_address">
-                {addressNo} , {street} , {town}
-            </div>
-
-            
-            <div class="results">
-                <div class="distance">
-                    <img src="/images/double-arrow.svg" class="distance_img" width="27px" >
-                    <span class="distance__value">{distance} Km</span>
-                </div>
-                <a href="/customers/{customerId}/pharmacies/{id}"  class="view-btn">
-                    <div class="view_pharmacy">
-                        View
-                    </div>
-                    <img src="/images/views-img.svg" class="view_img" width="27px">
-                </a>
-            </div>
-
-
-        </div>
-        
-
+    <a href="/customers/{customerId}/pharmacies/{pharmacyId}" class="pharmacy__view buttons">view</a>
 </div>

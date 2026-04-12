@@ -1,10 +1,15 @@
+const { calculateDistanceKM } = require("../../common/calcDistance");
+const { catchAsync } = require("../../common/catchAsync");
+const readCookies = require("../../common/readCookies");
 const { response } = require("../../common/response");
 const view = require("../../common/view");
+const connectedPharmacies = require("../../memory/pharmacies.memory.temp");
 const Carts = require("../../models/CartModel");
 const Medicines = require("../../models/MedicineModel");
 const PharmacyMedicines = require("../../models/PharmacyMedicinesModel");
 const Pharmacies = require("../../models/PharmacyModel");
 const Users = require("../../models/UserModel");
+
 
 
 exports.renderCustomerMedicines = async (req, res) => {
@@ -13,7 +18,9 @@ exports.renderCustomerMedicines = async (req, res) => {
         const search = req.params.get('search');
         const customer = (await Users.getById(req.customerId))[0];
         let medicines = await Medicines.query("select * from this.table where id > 0  " + (search ? ` and geneticName like "${"%" + Array.from(search).join("%") + "%"}" limit 10` : "limit 10"));
-        const pharmacies = await Pharmacies.query("select * from this.table where id > 0  " + (search ? ` and town like "${"%" + Array.from(search).join("%") + "%"}" ` : "") + " limit 10");
+        const pharmacies = await Pharmacies.query(`select * from this.table where id > 0   ${(search ? ` and ( town like "%${Array.from(search).join("%")}%" or name like "%${Array.from(search).join("%")}%") ` : "")} limit 10`);
+        const {latitude , longitude} = readCookies(req);
+
 
         medicines = await Promise.all(medicines.map((async m => {
             const [c] = await Carts.get({
@@ -22,7 +29,7 @@ exports.renderCustomerMedicines = async (req, res) => {
             });
 
             const av = await PharmacyMedicines.get({
-                medicineId : m.id,
+                medicineId: m.id,
             });
 
             if (c) {
@@ -31,14 +38,19 @@ exports.renderCustomerMedicines = async (req, res) => {
                 m.card = false;
             }
 
-            if(av.length){
+            if (av.length) {
                 m.available = true;
-            }else{
+            } else {
                 m.available = false;
             }
 
             return m;
-        })))
+        })));
+
+
+
+
+        console.log(pharmacies);
 
 
         if (!customer) return view('404');
@@ -57,18 +69,31 @@ exports.renderCustomerMedicines = async (req, res) => {
                 ...m,
                 name: m.geneticName,
                 img: m.image,
-                status : m.available ? "available at pharmanet" : "not available",
-                status_class :m.available ? "available" : "not-available",
-                link :  `/customers/${customer.id}/medicines/${m.id}`,
+                status: m.available ? "available at pharmanet" : "not available",
+                status_class: m.available ? "available" : "not-available",
+                link: `/customers/${customer.id}/medicines/${m.id}`,
                 cta: m.card ? 'already added' : 'add to card',
                 cta_class: m.card ? "added medicine" : 'medicine',
             })).join(' ') : `"${search}" not available any medicine for this`,
-            pharmacies: pharmacies.map(p => view('customer/component.search.view.card', {
-                ...p,
-                name: p.name,
-                img: p.img,
-                cta: 'view'
-            })).join(' '),
+            pharmacies: pharmacies.map(p => {
+                let distance = "unavailable";
+                if(latitude && longitude && p.latitude && p.longitude){
+                    distance = calculateDistanceKM(latitude , longitude , p.latitude , p.longitude);
+                    distance = distance.toFixed(2) + "KM";
+                }
+
+
+                return view('customer/component.pharmacy.card', {
+                    ...p,
+                    pharmacy: p.name,
+                    pharmacyId: p.id,
+                    image: p.img,
+                    status: connectedPharmacies[p.id] ? "online" : "offline",
+                    distance,
+                    contact : p.contact || "+00 000 0000 000",
+                    customerId : customer.id,
+                })
+            }).join(' '),
             count: medicines.length,
             navbar: view('customer/navbar.customer', customer),
             footer: view('footer'),
@@ -84,26 +109,70 @@ exports.renderCustomerMedicines = async (req, res) => {
 
 
 }
-exports.renderCustomerSelectedMedicine = async (req, res) => {
-    try {
-        const [medicine] = await Medicines.getById(req.medicineId);
-        const [customer] = await Users.getById(req.customerId);
+exports.renderCustomerSelectedMedicine = catchAsync(async (req, res) => {
+    const [medicine] = await Medicines.getById(req.medicineId);
+    const [customer] = await Users.getById(req.customerId);
+    const { latitude, longitude } = readCookies(req);
 
 
-        return response(res, view("customer/customer.medicine.blog", {
-            header: view('component.header', {
-                name: medicine.geneticName,
-            }),
-            navbar: view('customer/navbar.customer', customer),
-            footer: view('footer'),
-            ...medicine,
-            cart: view('customer/component.cart'),
-        }), 200);
-    } catch (e) {
-        console.log(e);
-        return response(res, view('404'), 404);
-    }
-}
+    if (!medicine) throw new Error("medicine not found");
+    if (!customer) throw new Error("customer not found");
+
+    const stocks = await PharmacyMedicines.get({
+        medicineId: medicine.id,
+    });
+
+    const pharmacies = await Promise.all(stocks.map(async s => {
+        const [pharmacy] = await Pharmacies.getById(s.pharmacyId);
+
+        if (!pharmacy) return undefined;
+
+        let distance = "unavailable";
+        if (latitude && longitude && pharmacy.latitude && pharmacy.longitude) {
+            distance = calculateDistanceKM(latitude, longitude, pharmacy.latitude, pharmacy.longitude);
+            distance = distance.toFixed(2) + "KM"
+        }
+
+
+        return {
+            ...s,
+            stock: Number(s.stock).toLocaleString('si-LK'),
+            price: Number(s.price).toFixed(2).toLocaleString('si-LK'),
+            pharmacy: pharmacy.name,
+            addressNo: pharmacy.addressNo,
+            street: pharmacy.street,
+            town: pharmacy.town,
+            province: pharmacy.province,
+            contact: pharmacy.contact || "+00 000 000000",
+            pharmacyId: pharmacy.id,
+            image: pharmacy.img,
+            customerId: customer.id,
+            status: connectedPharmacies[pharmacy.id] ? "online" : "offline",
+            distance,
+        }
+    }))
+
+    const filteredPharmacies = pharmacies.filter(e => e != undefined);
+
+    console.log(filteredPharmacies);
+
+    console.log(connectedPharmacies);
+
+
+
+
+    return response(res, view("customer/customer.medicine.blog", {
+        header: view('component.header', {
+            name: medicine.geneticName,
+        }),
+        navbar: view('customer/navbar.customer', customer),
+        footer: view('footer'),
+        ...medicine,
+        cart: view('customer/component.cart'),
+        availablePharmacies: filteredPharmacies.map(phr => view('customer/component.pharmacy.card', phr)).join(' ')
+    }), 200);
+
+})
 
 
 

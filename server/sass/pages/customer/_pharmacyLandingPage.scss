@@ -1,324 +1,373 @@
-.landingPage{
-  margin-right: 0%;
+.landingPage {
+    margin-right: 0%;
 
-$primary: #0a8f8f;
-$secondary: #ff8c42;
-$dark: #222;
-$light: #fff;
+    $primary: #0a8f8f;
+    $secondary: #ff8c42;
+    $dark: #222;
+    $light: #fff;
 
-/* Header */
-.header {
-    margin: 3rem 5rem 1rem 5rem ;
-    position: relative;
-    padding: 4rem;
-    
-    .header-content{
-      width: 100%;
-      border-radius: 1rem;
-      border: 0.1rem solid rgba(255, 255, 255, 0.21);
-      background: url("/images/pharmarcyLandingPage.png") lightgray 50% / cover no-repeat;
-      padding: 2rem 2rem;
-      //margin: 5rem;
+    /* Header */
+    .header {
+        margin: 3rem 5rem 1rem 5rem;
+        position: relative;
+        padding: 4rem;
 
-    h1{
-    display: flex;
-    color: #FFF;
-    font-family: "Red Hat Display";
-    font-size: 4.8rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal; 
-    justify-content: center; 
-    }
-
-    p{
-        color: #FFF;
-        font-family: "Red Hat Display";
-        font-style: normal;
-        line-height: normal;
-        font-size: 1.8rem;
-        font-weight: 600;
-
-        strong{
-            opacity: 0.5;
-            font-size: 2.8rem;
-            font-weight: 700;
-            
-        }
-    }
-
-}
-
-   
-
-  .btn {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin: 0.3rem;
-    padding: 0.7rem 1.5rem;
-    border: none;
-    border-radius: 8px;
-    background: $primary;
-    color: $light;
-    align-items: center;
-    cursor: pointer;
-
-    &.secondary {
-      background: $light;
-      color: $primary;
-    }
-  }
-
-  .contact-card {
-    position: absolute;
-    right: 7rem;
-    top: 30rem;
-    color: $light;
-    padding: 2.5rem;
-    border-radius: 20px;
-    border: 1px solid #000;
-    background: #121212;
-    width: 25.2rem;
-    height: 23.2rem;
-    text-align: left;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-
-
-    &.offline{
-        filter: saturate(0);
-
-        .btn{
-            display: none;
-        }
-    }
-
-    span{
-        color: #FFF;
-        font-family: "Red Hat Display";
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-    }
-
-    h3{
-        color: #F9A550;
-        font-family: "Red Hat Display";
-        font-size: 32px;
-        font-style: normal;
-        font-weight: 700;
-        margin-top: -1rem;
-    }
-
-    p{
-        color: #FFF;
-        font-family: "Red Hat Display";
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-    }
-    
-
-    .btn {
-      display: flex;
-      margin-top: 2rem;
-      background: $light;
-      color: $dark;
-      height: 3.8rem;
-      width: 15rem;
-      border-radius: 30px;
-      border: 2px solid #FFF;
-      background: #FFF;
-      justify-content: center;
-
-      svg{
-        margin-left: 0.4rem;
-      }
-    }
-  }
-}
-
-/* Store */
-.store {
-  padding: 2rem;
-  margin: 0 3rem;
-
-  .store-shape {
-    display: flex;
-    width:12rem;
-    height: 40px;
-    background-color: var(--color-yellow-01);
-    color: #000;
-    padding: 1rem;
-    align-items: center;
-    justify-content: left;
-    position: relative;
-    
-}
-.store-shape:before{
-    content:" ";
-    position: absolute;
-    right: -20px;
-    bottom: 0;
-    width: 0;
-    height: 0;
-    border-left: 20px solid var(--color-yellow-01);
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-}
-  p{
-    color: #004848;
-    font-family: "Red Hat Display";
-    font-size: 3.5rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 4rem; 
-    letter-spacing: -0.036rem;
-    width: 70.2rem;
-    height: 8rem;
-  }
-
-  .search-bar {
-    display: flex;
-    margin: 1rem 0;
-    justify-content: space-between;
-    align-items: baseline;
-    input {
-      
-      width: 64rem;
-      height: 4rem;
-      
-      align-items: center;
-      padding: 1rem 1.5rem;
-      border-radius: 1rem;
-      border: 0.1rem solid #ccc;
-    }
-
-    .cartbtn{
-      display: flex;
-      justify-content: center;
-      gap:1rem;
-      align-items:center;
-      background-color: var(--color-blue-02);
-      border-radius: 2rem;
-      color: white;
-      font-size: 1.5rem;
-      font-weight: 500;
-      padding: 1rem;
-      position: relative;
-      
-    }
-
-    .cartbtn.viewCart::before{
-
-      content: ' ';
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left:0;
-      background-color: var(--font-linear-secondary-color);
-      border-radius: 2rem;
-      z-index: -1;
-      transform: scaleX(0);
-      transform-origin:left ;
-      transition: transform 300ms ease-in-out;
-      
-    }
-
-    .cartbtn.viewCart:hover::before{
-      transform: scaleX(1);
-      cursor: pointer;
-    }
-
-    
-
-    .cartbtn.viewCart{
-      transition: color 300ms easy-in-out;
-      z-index: 1;
-    }
-
-
-  }
-
-//medicine grid
-.medicine-section{
-    display: flex;
-    justify-content: center;
-    .Medicines_grid {
-            display: grid;
-            align-items: center;
-            grid-template-columns: repeat(4, 32rem);  /* 4 columns */
-            margin: 5rem ;
-            justify-content: center;
-            max-width: fit-content;
-            border-top: 0.1rem solid #ccc;
-            border-right: 0.1rem solid #ccc;
-            
-
-        .medicine-card{
-            padding:2rem;
-            border-left: 0.1rem solid #ccc;
-            border-bottom: 0.1rem solid #ccc;
+        .header-content {
             width: 100%;
-            //height: 15rem;
-            //margin: 1rem;
+            border-radius: 1rem;
+            border: 0.1rem solid rgba(255, 255, 255, 0.21);
+            padding: 2rem 2rem;
+            background-image: linear-gradient(to bottom, #00000090 50%, transparent), url("/pharmacyImages/general-pharmacy.png");
+            //margin: 5rem;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            height: 35rem;
+            flex-direction: column;
 
-            .medi-img{
+            h1 {
+                display: flex;
+                color: #FFF;
+                text-transform: capitalize;
+                font-family: "Red Hat Display";
+                font-size: 4.8rem;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                justify-content: center;
+                padding: 2rem;
+                background-image: linear-gradient(120deg, var(--color-green-01), var(--color-green-02));
+                display: inline-block;
+                max-width: 80%;
+                margin: -4rem auto;
                 text-align: center;
+            }
+
+            p {
+                color: #FFF;
+                font-family: "Red Hat Display";
+                font-style: normal;
+                line-height: normal;
+                font-size: 1.8rem;
+                font-weight: 600;
+
+                strong {
+                    opacity: 0.5;
+                    font-size: 2.8rem;
+                    font-weight: 700;
+
+                }
+            }
+
+        }
+
+
+
+
+        .btn {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin: 0.3rem;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            background: $primary;
+            color: $light;
+            align-items: center;
+            cursor: pointer;
+
+            &.google-location-pin {
+                display: flex;
+                width: fit-content;
+                padding: 2rem;
+                align-items: center;
+                justify-content: center;
+                border-radius: 3rem;
+                outline: 1px dashed #fff;
+                outline-offset: 1rem;
+                box-shadow: 0 0 12px rgba(0, 0, 0, 0.50);
+                border: 1px solid #eee;
+                bottom: 0;
+                margin-top: auto;
 
             }
 
-            .med_infomation{
-                .medicine_name{
-                    font-weight: 500;
-                    .name{
-                        font-weight: 600;
-                        color: #979696;
+            &.secondary {
+                background: $light;
+                color: $primary;
+            }
+        }
+
+        .contact-card {
+            position: absolute;
+            right: 7rem;
+            top: 30rem;
+            color: $light;
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid #000;
+            background: #121212;
+            width: 25.2rem;
+            height: 23.2rem;
+            text-align: left;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+
+            &.offline {
+                filter: saturate(0);
+
+                .btn {
+                    display: none;
+                }
+            }
+
+            span {
+                color: #FFF;
+                font-family: "Red Hat Display";
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
+
+            h3 {
+                color: #F9A550;
+                font-family: "Red Hat Display";
+                font-size: 32px;
+                font-style: normal;
+                font-weight: 700;
+                margin-top: -1rem;
+            }
+
+            p {
+                color: #FFF;
+                font-family: "Red Hat Display";
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
+
+
+            .btn {
+                display: flex;
+                margin-top: 2rem;
+                background: $light;
+                color: $dark;
+                height: 3.8rem;
+                width: 15rem;
+                border-radius: 30px;
+                border: 2px solid #FFF;
+                background: #FFF;
+                justify-content: center;
+
+                svg {
+                    margin-left: 0.4rem;
+                }
+            }
+        }
+    }
+
+    /* Store */
+    .store {
+        padding: 2rem;
+        margin: 0 auto;
+        max-width: 132rem;
+
+        > .header{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            width: 100%;
+            margin: 0;
+        }
+
+        .store-shape {
+            display: flex;
+            width: 12rem;
+            height: 40px;
+            background-color: var(--color-yellow-01);
+            color: #000;
+            padding: 1rem;
+            align-items: center;
+            justify-content: left;
+            position: relative;
+
+        }
+
+        .store-shape:before {
+            content: " ";
+            position: absolute;
+            right: -20px;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-left: 20px solid var(--color-yellow-01);
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+        }
+
+        p {
+            color: #004848;
+            font-family: "Red Hat Display";
+            font-size: 3.5rem;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 4rem;
+            letter-spacing: -0.036rem;
+            width: 70.2rem;
+            height: 8rem;
+        }
+
+        .search-bar {
+            display: flex;
+            width: 100%;
+            margin: 1rem 0;
+            justify-content: space-between;
+            align-items: baseline;
+
+
+            input {
+
+                width: 100%;
+                height: 5rem;
+                
+
+                font-size: 1.8rem;
+                align-items: center;
+                padding: 1rem 1.5rem;
+                border-radius: 3rem;
+                border: 0.1rem solid #ccc;
+            }
+
+            .cartbtn {
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+                align-items: center;
+                background-color: var(--color-blue-02);
+                border-radius: 2rem;
+                color: white;
+                font-size: 1.5rem;
+                font-weight: 500;
+                padding: 1rem;
+                position: relative;
+
+            }
+
+            .cartbtn.viewCart::before {
+
+                content: ' ';
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background-color: var(--font-linear-secondary-color);
+                border-radius: 2rem;
+                z-index: -1;
+                transform: scaleX(0);
+                transform-origin: left;
+                transition: transform 300ms ease-in-out;
+
+            }
+
+            .cartbtn.viewCart:hover::before {
+                transform: scaleX(1);
+                cursor: pointer;
+            }
+
+
+
+            .cartbtn.viewCart {
+                transition: color 300ms easy-in-out;
+                z-index: 1;
+            }
+
+
+        }
+
+        //medicine grid
+        .medicine-section {
+            display: flex;
+            justify-content: center;
+
+            .Medicines_grid {
+                display: grid;
+                align-items: center;
+                grid-template-columns: repeat(4, 32rem);
+                /* 4 columns */
+                margin: 5rem;
+                justify-content: center;
+                max-width: fit-content;
+                border-top: 0.1rem solid #ccc;
+                border-right: 0.1rem solid #ccc;
+
+
+                .medicine-card {
+                    padding: 2rem;
+                    border-left: 0.1rem solid #ccc;
+                    border-bottom: 0.1rem solid #ccc;
+                    width: 100%;
+                    //height: 15rem;
+                    //margin: 1rem;
+
+                    .medi-img {
+                        text-align: center;
+
                     }
 
-                    div{
-                        text-overflow: ellipsis;
-                        width: 100%;
-                        height: 2rem;
-                        overflow: hidden;
-                        text-wrap-mode: nowrap;
+                    .med_infomation {
+                        .medicine_name {
+                            font-weight: 500;
 
-                        @media screen and (max-width:890px){
-                            text-overflow: ellipsis;
-                            width: 60rem;
-                            height: 2rem;
-                            overflow: hidden;
-                            text-wrap-mode: nowrap;
+                            .name {
+                                font-weight: 600;
+                                color: #979696;
+                            }
+
+                            div {
+                                text-overflow: ellipsis;
+                                width: 100%;
+                                height: 2rem;
+                                overflow: hidden;
+                                text-wrap-mode: nowrap;
+
+                                @media screen and (max-width:890px) {
+                                    text-overflow: ellipsis;
+                                    width: 60rem;
+                                    height: 2rem;
+                                    overflow: hidden;
+                                    text-wrap-mode: nowrap;
+                                }
+                            }
+                        }
+
+                        .medicine__info__price {
+                            display: flex;
+                            gap: 2rem;
+                            color: #1A7F89;
+                            padding: 1rem 0;
+                            font-weight: 600;
+
+                            span {
+                                display: flex;
+                            }
                         }
                     }
-                }
-
-                .medicine__info__price{
-                    display: flex;
-                    gap:2rem;
-                    color:#1A7F89 ;
-                    padding:1rem 0;
-                    font-weight: 600;
-                    span{
-                        display:flex;
-                    }
-                }
-                }
 
 
-                    .results{
+                    .results {
                         display: flex;
                         justify-content: space-between;
-                        
-                        .map-serach{
+
+                        .map-serach {
                             display: flex;
                             background-color: #E8F7FF;
                             border-radius: 3rem;
                             padding: 1rem;
-                            font-size:1.6rem;
+                            font-size: 1.6rem;
                             color: #08374F;
                             font-weight: 500;
                             //margin: 1rem;
@@ -328,16 +377,16 @@ $light: #fff;
 
                             //gap:1rem;
 
-                            .world_img{
-                            margin-right: 1rem ;
-                        }
+                            .world_img {
+                                margin-right: 1rem;
+                            }
                         }
 
-                        .add-to-cart{
+                        .add-to-cart {
                             display: flex;
                             justify-content: center;
-                            gap:1rem;
-                            align-items:center;
+                            gap: 1rem;
+                            align-items: center;
                             background-color: var(--color-blue-02);
                             border-radius: 3rem;
                             color: white;
@@ -349,620 +398,644 @@ $light: #fff;
 
                     }
 
-                    &:hover{
-                            transition: all 0.3s;
-                            cursor: pointer;
-                            border: 0.1rem solid black;
-                        }
+                    &:hover {
+                        transition: all 0.3s;
+                        cursor: pointer;
+                        border: 0.1rem solid black;
+                    }
 
-                    
 
-                        @media screen and (max-width:890px){
-                            display: flex;
-                            justify-content: center;
-                            //gap: 3rem;
-                            padding: 1rem;
-                        }
+
+                    @media screen and (max-width:890px) {
+                        display: flex;
+                        justify-content: center;
+                        //gap: 3rem;
+                        padding: 1rem;
+                    }
+                }
+
+                @media screen and (max-width:1297px) {
+                    grid-template-columns: repeat(4, 26rem);
+                }
+
+                @media (min-width:890px) and (max-width:1100px) {
+                    grid-template-columns: repeat(3, 30rem);
+                }
+
+                @media (min-width:0px) and (max-width:890px) {
+                    display: block;
+                    margin: 5rem;
+                    //grid-template-columns: repeat(2, 30rem);
+
+                }
+
+            }
         }
-        @media screen and (max-width:1297px){
-            grid-template-columns: repeat(4, 26rem);
-        }
 
-        @media  (min-width:890px) and (max-width:1100px) {
-            grid-template-columns: repeat(3, 30rem);
-        }
 
-         @media (min-width:0px) and (max-width:890px){
-            display: block;
+        .contactBtn {
+            display: flex;
+            position: absolute;
+            width: 21rem;
+            padding: 1rem;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            top: 170%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 5rem;
+            border: 0.1rem solid #1E1E1E;
+
+            button {
+                display: flex;
+                justify-content: center;
+                color: #1E1E1E;
+                font-family: "Red Hat Display";
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 4rem;
+                letter-spacing: -0.018rem;
+                border: none;
+                background-color: transparent;
+
+
+                svg {
+                    margin-top: 0.4rem;
+                }
+            }
+        }
+    }
+
+    // /* Footer */
+    // .footer {
+    //   text-align: center;
+    //   padding: 2rem;
+
+    //   .btn {
+    //     background: $primary;
+    //     color: $light;
+    //     font-size: 1rem;
+    //   }
+    // }
+
+
+    //feedback section
+    .feedback {
+        margin: 10rem;
+        //display: block;
+        //justify-content: center;
+
+        .feedbackHeading {
+            color: #000;
+            font-family: "Red Hat Display";
+            font-size: 3rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            text-align: center;
+            text-transform: capitalize;
             margin: 5rem;
-             //grid-template-columns: repeat(2, 30rem);
-
-         }
-         
         }
-}
- 
-
-.contactBtn{
-    display: flex;
-    position: absolute;
-    width: 21rem;
-    padding: 1rem;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    top: 170%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    border-radius: 5rem;
-    border: 0.1rem solid #1E1E1E;
-    button{
-        display: flex;
-        justify-content: center;
-        color: #1E1E1E;
-        font-family: "Red Hat Display";
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 4rem; 
-        letter-spacing: -0.018rem;
-        border: none;
-        background-color: transparent;
 
 
-        svg{
-            margin-top: 0.4rem;
+        .feedbackCards {
+            display: flex;
+            //position: absolute;
+            top: 180%;
+            left: 12%;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            //width: 118.6rem;
+            height: 37.8rem;
+            background: #FFE5CA;
+            margin: 2rem 10rem;
+
+            .cardOne {
+                position: relative;
+                padding: 2rem;
+                align-items: center;
+                transform: rotate(-20deg);
+                width: 25rem;
+                height: 31.3535rem;
+                border-radius: 1.7236rem;
+                background: #004848;
+
+                .stars {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 0.4rem;
+
+                    div {
+                        width: 2rem;
+                        height: 2rem;
+                        border-radius: 50%;
+                    }
+
+                    .active {
+                        background-color: #F9A550;
+                    }
+
+                    .inactive {
+                        background-color: #1E1E1E;
+                    }
+                }
+
+                p {
+                    color: #FFF;
+                    width: 21.2869rem;
+                    height: 9.8247rem;
+                    font-family: "Red Hat Display";
+                    font-size: 1.723rem;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    margin-top: 1.5rem;
+                    padding: 1rem 1rem 1rem 0rem;
+                }
+
+                .fSemiColon {
+                    display: flex;
+                    position: absolute;
+                    top: -5%;
+                    left: 0%;
+                    color: #fff;
+                    font-size: 22.6227rem;
+                    font-weight: 400;
+                    line-height: normal;
+                    opacity: 0.2;
+                }
+
+                .sSemiColon {
+                    display: flex;
+                    position: absolute;
+                    top: 0%;
+                    left: 60%;
+                    color: #fff;
+                    font-size: 22.6227rem;
+                    font-weight: 400;
+                    line-height: normal;
+                    opacity: 0.2;
+                    transform: rotate(180deg);
+                }
+
+                .cardFooter {
+                    display: flex;
+                    position: absolute;
+                    top: 90%;
+                    left: 48%;
+                    color: #FFF;
+                    font-family: "Red Hat Display";
+                    font-size: 15.513px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    text-transform: capitalize;
+
+                    .fWord {
+                        opacity: 0.34;
+                        margin-right: 1rem;
+                    }
+
+                    .lWord {
+                        opacity: 0.7;
+
+                    }
+                }
+            }
+
+            .cardTwo {
+                position: relative;
+                padding: 2rem;
+                align-items: center;
+                width: 25rem;
+                transform: rotate(30deg);
+                height: 31.3535rem;
+                border-radius: 1.7236rem;
+                background: #000;
+
+                .stars {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 0.4rem;
+
+                    div {
+                        width: 2rem;
+                        height: 2rem;
+                        border-radius: 50%;
+                    }
+
+                    .active {
+                        background-color: #F9A550;
+                    }
+
+                    .inactive {
+                        background-color: #1E1E1E;
+                    }
+                }
+
+                p {
+                    color: #FFF;
+                    width: 21.2869rem;
+                    height: 9.8247rem;
+                    font-family: "Red Hat Display";
+                    font-size: 1.723rem;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    margin-top: 1.5rem;
+                    padding: 1rem 1rem 1rem 0rem;
+                }
+
+                .fSemiColon {
+                    display: flex;
+                    position: absolute;
+                    top: -5%;
+                    left: 0%;
+                    color: #fff;
+                    font-size: 22.6227rem;
+                    font-weight: 400;
+                    line-height: normal;
+                    opacity: 0.2;
+                }
+
+                .sSemiColon {
+                    display: flex;
+                    position: absolute;
+                    top: 0%;
+                    left: 60%;
+                    color: #fff;
+                    font-size: 22.6227rem;
+                    font-weight: 400;
+                    line-height: normal;
+                    opacity: 0.2;
+                    transform: rotate(180deg);
+                }
+
+                .cardFooter {
+                    display: flex;
+                    position: absolute;
+                    top: 90%;
+                    left: 48%;
+                    color: #FFF;
+                    font-family: "Red Hat Display";
+                    font-size: 15.513px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    text-transform: capitalize;
+
+                    .fWord {
+                        opacity: 0.34;
+                        margin-right: 1rem;
+                    }
+
+                    .lWord {
+                        opacity: 0.7;
+
+                    }
+                }
+            }
+
+            .cardThree {
+                position: relative;
+                padding: 2rem;
+                align-items: center;
+                transform: rotate(-30deg);
+                width: 25rem;
+                height: 31.3535rem;
+                border-radius: 1.7236rem;
+                background: #000;
+
+                .stars {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 0.4rem;
+
+                    div {
+                        width: 2rem;
+                        height: 2rem;
+                        border-radius: 50%;
+                    }
+
+                    .active {
+                        background-color: #F9A550;
+                    }
+
+                    .inactive {
+                        background-color: #1E1E1E;
+                    }
+                }
+
+                p {
+                    color: #FFF;
+                    width: 21.2869rem;
+                    height: 9.8247rem;
+                    font-family: "Red Hat Display";
+                    font-size: 1.723rem;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    margin-top: 1.5rem;
+                    padding: 1rem 1rem 1rem 0rem;
+                }
+
+                .fSemiColon {
+                    display: flex;
+                    position: absolute;
+                    top: -5%;
+                    left: 0%;
+                    color: #fff;
+                    font-size: 22.6227rem;
+                    font-weight: 400;
+                    line-height: normal;
+                    opacity: 0.2;
+                }
+
+                .sSemiColon {
+                    display: flex;
+                    position: absolute;
+                    top: 0%;
+                    left: 60%;
+                    color: #fff;
+                    font-size: 22.6227rem;
+                    font-weight: 400;
+                    line-height: normal;
+                    opacity: 0.2;
+                    transform: rotate(180deg);
+                }
+
+                .cardFooter {
+                    display: flex;
+                    position: absolute;
+                    top: 90%;
+                    left: 48%;
+                    color: #FFF;
+                    font-family: "Red Hat Display";
+                    font-size: 15.513px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    text-transform: capitalize;
+
+                    .fWord {
+                        opacity: 0.34;
+                        margin-right: 1rem;
+                    }
+
+                    .lWord {
+                        opacity: 0.7;
+
+                    }
+                }
+            }
+
+            .cardFour {
+                position: relative;
+                padding: 2rem;
+                align-items: center;
+                width: 25rem;
+                height: 31.3535rem;
+                border-radius: 1.7236rem;
+                background: #004848;
+                transform: rotate(30deg);
+
+                .stars {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 0.4rem;
+
+                    div {
+                        width: 2rem;
+                        height: 2rem;
+                        border-radius: 50%;
+                    }
+
+                    .active {
+                        background-color: #F9A550;
+                    }
+
+                    .inactive {
+                        background-color: #1E1E1E;
+                    }
+                }
+
+                p {
+                    color: #FFF;
+                    width: 21.2869rem;
+                    height: 9.8247rem;
+                    font-family: "Red Hat Display";
+                    font-size: 1.723rem;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    margin-top: 1.5rem;
+                    padding: 1rem 1rem 1rem 0rem;
+                }
+
+                .fSemiColon {
+                    display: flex;
+                    position: absolute;
+                    top: -5%;
+                    left: 0%;
+                    color: #fff;
+                    font-size: 22.6227rem;
+                    font-weight: 400;
+                    line-height: normal;
+                    opacity: 0.2;
+                }
+
+                .sSemiColon {
+                    display: flex;
+                    position: absolute;
+                    top: 0%;
+                    left: 60%;
+                    color: #fff;
+                    font-size: 22.6227rem;
+                    font-weight: 400;
+                    line-height: normal;
+                    opacity: 0.2;
+                    transform: rotate(180deg);
+                }
+
+                .cardFooter {
+                    display: flex;
+                    position: absolute;
+                    top: 90%;
+                    left: 48%;
+                    color: #FFF;
+                    font-family: "Red Hat Display";
+                    font-size: 15.513px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    text-transform: capitalize;
+
+                    .fWord {
+                        opacity: 0.34;
+                        margin-right: 1rem;
+                    }
+
+                    .lWord {
+                        opacity: 0.7;
+
+                    }
+                }
+            }
+
         }
+
     }
-}
-}
-
-// /* Footer */
-// .footer {
-//   text-align: center;
-//   padding: 2rem;
-
-//   .btn {
-//     background: $primary;
-//     color: $light;
-//     font-size: 1rem;
-//   }
-// }
 
 
-//feedback section
-.feedback{
-    margin: 10rem;
-    //display: block;
-    //justify-content: center;
-  
-    .feedbackHeading{
-        color: #000;
-        font-family: "Red Hat Display";
-        font-size: 3rem;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        text-align: center;
-        text-transform: capitalize;
+    //meet our team
+
+    .meetOurTeam {
         margin: 5rem;
-    }
+        margin-bottom: 15rem;
+        text-align: center;
 
+        .header-section {
 
-    .feedbackCards{
-       display: flex;
-       //position: absolute;
-       top: 180%;
-       left: 12%;
-       flex-direction: row;
-       align-items: center;
-       justify-content: center;
-       gap: 1rem;
-       //width: 118.6rem;
-       height: 37.8rem;
-       background: #FFE5CA;
-       margin: 2rem 10rem ;
-
-        .cardOne{
-        position :relative;
-        padding: 2rem;
-        align-items: center;
-        transform: rotate(-20deg);
-        width: 25rem;
-        height: 31.3535rem;
-        border-radius: 1.7236rem;
-        background: #004848;
-        
-            .stars{
+            .header-row {
                 display: flex;
-                flex-direction: row;
-                gap: 0.4rem;
-               
-                div{
-                width: 2rem;
-                height: 2rem;
-                border-radius: 50%;
+                justify-content: center;
+                align-items: center;
+
+                .line {
+                    //flex-grow: 1;
+                    width: 50rem;
+                    height: 0.1rem;
+                    background-color: #000; // make it black so it's visible
+
                 }
-                
-                .active{
-                   background-color: #F9A550;
-                }
-                .inactive{
-                    background-color: #1E1E1E;
+
+                .header {
+                    font-size: 3rem;
+                    text-transform: capitalize;
+                    font-weight: 500;
+                    padding: 1rem;
+                    text-align: center;
+                    margin: 1rem;
+
                 }
             }
-            p{
-                color: #FFF;
-                width: 21.2869rem;
-                height: 9.8247rem;
-                font-family: "Red Hat Display";
-                font-size: 1.723rem;
-                font-style: normal;
-                font-weight: 400;
-                line-height: normal;
-                margin-top: 1.5rem;
-                padding: 1rem 1rem 1rem 0rem;
-            }
 
-            .fSemiColon{
-                display: flex;
-                position: absolute;
-                top: -5%;
-                left: 0%;
-                color : #fff;
-                font-size: 22.6227rem;
-                font-weight: 400;
-                line-height: normal;
-                opacity: 0.2;
-            }
-            .sSemiColon{
-                display: flex;
-                position: absolute;
-                top: 0%;
-                left: 60%;
-                color : #fff;
-                font-size: 22.6227rem;
-                font-weight: 400;
-                line-height: normal;
-                opacity: 0.2;
-                transform: rotate(180deg);
-            }
 
-            .cardFooter{
-                display:flex;
-                position: absolute;
-                top: 90%;
-                left: 48%;
-                color: #FFF;
-                font-family: "Red Hat Display";
-                font-size: 15.513px;
-                font-style: normal;
-                font-weight: 400;
-                line-height: normal;
+            .description {
+                font-size: 2rem;
                 text-transform: capitalize;
-
-                .fWord{
-                    opacity: 0.34;
-                    margin-right: 1rem;
-                }
-                .lWord{
-                    opacity: 0.7;
-                    
-                }
+                text-align: center;
+                padding: 1rem;
+                margin: 1rem;
             }
         }
 
-        .cardTwo{
-        position :relative;
-        padding: 2rem;
-        align-items: center;
-        width: 25rem;
-        transform: rotate(30deg);
-        height: 31.3535rem;
-        border-radius: 1.7236rem;
-        background: #000;
-        
-            .stars{
-                display: flex;
-                flex-direction: row;
-                gap: 0.4rem;
-               
-                div{
-                width: 2rem;
-                height: 2rem;
-                border-radius: 50%;
+        .teamMembers {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            text-align: center;
+            align-items: center;
+            font-size: 2rem;
+            font-weight: 500;
+
+
+            .owner {
+                font-size: 1.5rem;
+                align-items: center;
+
+                img {
+                    width: 15rem;
+                    height: 15rem;
+                    border-radius: 50%;
                 }
-                
-                .active{
-                   background-color: #F9A550;
+
+                .title {
+                    color: var(--color-green-01);
+                    text-transform: capitalize;
+
                 }
-                .inactive{
-                    background-color: #1E1E1E;
+
+                .owner-name {
+                    font-size: 2rem;
                 }
-            }
-            p{
-                color: #FFF;
-                width: 21.2869rem;
-                height: 9.8247rem;
-                font-family: "Red Hat Display";
-                font-size: 1.723rem;
-                font-style: normal;
-                font-weight: 400;
-                line-height: normal;
-                margin-top: 1.5rem;
-                padding: 1rem 1rem 1rem 0rem;
+
             }
 
-            .fSemiColon{
-                display: flex;
-                position: absolute;
-                top: -5%;
-                left: 0%;
-                color : #fff;
-                font-size: 22.6227rem;
-                font-weight: 400;
-                line-height: normal;
-                opacity: 0.2;
-            }
-            .sSemiColon{
-                display: flex;
-                position: absolute;
-                top: 0%;
-                left: 60%;
-                color : #fff;
-                font-size: 22.6227rem;
-                font-weight: 400;
-                line-height: normal;
-                opacity: 0.2;
-                transform: rotate(180deg);
-            }
+            .contac-information {
+                font-size: 2rem;
+                align-items: center;
 
-            .cardFooter{
-                display:flex;
-                position: absolute;
-                top: 90%;
-                left: 48%;
-                color: #FFF;
-                font-family: "Red Hat Display";
-                font-size: 15.513px;
-                font-style: normal;
-                font-weight: 400;
-                line-height: normal;
-                text-transform: capitalize;
-
-                .fWord{
-                    opacity: 0.34;
-                    margin-right: 1rem;
+                .title {
+                    color: var(--color-green-01);
+                    text-transform: capitalize;
                 }
-                .lWord{
-                    opacity: 0.7;
-                    
+
+                .email {
+                    font-size: 2rem;
                 }
             }
-        }
 
-        .cardThree{
-        position :relative;
-        padding: 2rem;
-        align-items: center;
-        transform: rotate(-30deg);
-        width: 25rem;
-        height: 31.3535rem;
-        border-radius: 1.7236rem;
-        background: #000;
-        
-            .stars{
-                display: flex;
-                flex-direction: row;
-                gap: 0.4rem;
-               
-                div{
-                width: 2rem;
-                height: 2rem;
-                border-radius: 50%;
+            .pharmacist {
+                font-size: 1.5rem;
+                align-items: center;
+
+                img {
+                    width: 15rem;
+                    height: 15rem;
+                    border-radius: 50%;
                 }
-                
-                .active{
-                   background-color: #F9A550;
+
+                .title {
+                    color: var(--color-green-01);
+                    text-transform: capitalize;
+
                 }
-                .inactive{
-                    background-color: #1E1E1E;
+
+                .pharmacist-name {
+                    font-size: 2rem;
                 }
             }
-            p{
-                color: #FFF;
-                width: 21.2869rem;
-                height: 9.8247rem;
-                font-family: "Red Hat Display";
-                font-size: 1.723rem;
-                font-style: normal;
-                font-weight: 400;
-                line-height: normal;
-                margin-top: 1.5rem;
-                padding: 1rem 1rem 1rem 0rem;
-            }
 
-            .fSemiColon{
-                display: flex;
-                position: absolute;
-                top: -5%;
-                left: 0%;
-                color : #fff;
-                font-size: 22.6227rem;
-                font-weight: 400;
-                line-height: normal;
-                opacity: 0.2;
-            }
-            .sSemiColon{
-                display: flex;
-                position: absolute;
-                top: 0%;
-                left: 60%;
-                color : #fff;
-                font-size: 22.6227rem;
-                font-weight: 400;
-                line-height: normal;
-                opacity: 0.2;
-                transform: rotate(180deg);
-            }
-
-            .cardFooter{
-                display:flex;
-                position: absolute;
-                top: 90%;
-                left: 48%;
-                color: #FFF;
-                font-family: "Red Hat Display";
-                font-size: 15.513px;
-                font-style: normal;
-                font-weight: 400;
-                line-height: normal;
-                text-transform: capitalize;
-
-                .fWord{
-                    opacity: 0.34;
-                    margin-right: 1rem;
-                }
-                .lWord{
-                    opacity: 0.7;
-                    
-                }
-            }
-        }
-
-        .cardFour{
-        position :relative;
-        padding: 2rem;
-        align-items: center;
-        width: 25rem;
-        height: 31.3535rem;
-        border-radius: 1.7236rem;
-        background: #004848;
-        transform: rotate(30deg);
-        
-            .stars{
-                display: flex;
-                flex-direction: row;
-                gap: 0.4rem;
-               
-                div{
-                width: 2rem;
-                height: 2rem;
-                border-radius: 50%;
-                }
-                
-                .active{
-                   background-color: #F9A550;
-                }
-                .inactive{
-                    background-color: #1E1E1E;
-                }
-            }
-            p{
-                color: #FFF;
-                width: 21.2869rem;
-                height: 9.8247rem;
-                font-family: "Red Hat Display";
-                font-size: 1.723rem;
-                font-style: normal;
-                font-weight: 400;
-                line-height: normal;
-                margin-top: 1.5rem;
-                padding: 1rem 1rem 1rem 0rem;
-            }
-
-            .fSemiColon{
-                display: flex;
-                position: absolute;
-                top: -5%;
-                left: 0%;
-                color : #fff;
-                font-size: 22.6227rem;
-                font-weight: 400;
-                line-height: normal;
-                opacity: 0.2;
-            }
-            .sSemiColon{
-                display: flex;
-                position: absolute;
-                top: 0%;
-                left: 60%;
-                color : #fff;
-                font-size: 22.6227rem;
-                font-weight: 400;
-                line-height: normal;
-                opacity: 0.2;
-                transform: rotate(180deg);
-            }
-
-            .cardFooter{
-                display:flex;
-                position: absolute;
-                top: 90%;
-                left: 48%;
-                color: #FFF;
-                font-family: "Red Hat Display";
-                font-size: 15.513px;
-                font-style: normal;
-                font-weight: 400;
-                line-height: normal;
-                text-transform: capitalize;
-
-                .fWord{
-                    opacity: 0.34;
-                    margin-right: 1rem;
-                }
-                .lWord{
-                    opacity: 0.7;
-                    
-                }
-            }
-        }
-        
-    }
-
-}
-
-
-//meet our team
-
-.meetOurTeam{
-  margin: 5rem;
-  margin-bottom: 15rem;
-  text-align: center;
-  .header-section{
-
-    .header-row{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      .line {
-          //flex-grow: 1;
-          width:50rem;
-          height: 0.1rem;
-          background-color: #000; // make it black so it's visible
-                
-        }
-
-       .header{
-          font-size: 3rem;
-          text-transform: capitalize;
-          font-weight: 500;
-          padding: 1rem;
-          text-align: center;
-          margin: 1rem;
-          
         }
     }
 
-   
-    .description{
-      font-size: 2rem;
-      text-transform: capitalize;
-      text-align: center;
-      padding: 1rem;
-      margin: 1rem;
-    }
-  }
-
-  .teamMembers{
-    display: flex;
-    justify-content: center;
-    gap:3rem;
-    text-align: center;
-    align-items: center;
-    font-size: 2rem;
-    font-weight: 500;
-
-
-    .owner{
-      font-size: 1.5rem;
-      align-items: center;
-      img{
-        width: 15rem;
-        height: 15rem;
-        border-radius: 50%;
-      }
-
-      .title{
-        color: var(--color-green-01);
-        text-transform: capitalize;
-
-      }
-
-      .owner-name{
-        font-size: 2rem;
-      }
-
-    }
-
-    .contac-information{
-      font-size: 2rem;
-      align-items: center;
-      .title{
-        color: var(--color-green-01);
-        text-transform: capitalize;
-      }
-
-      .email{
-        font-size: 2rem;
-      }
-    }
-
-    .pharmacist{
-      font-size: 1.5rem;
-      align-items: center;
-      img{
-        width: 15rem;
-        height: 15rem;
-        border-radius: 50%;
-      }
-
-      .title{
-        color: var(--color-green-01);
-        text-transform: capitalize;
-
-      }
-
-      .pharmacist-name{
-        font-size: 2rem;
-      }
-    }
-    
-  }
-}
-
-//footer section
- .footer{
+    //footer section
+    .footer {
         // background-color: var(--color-green-02);
         //position : relative;
-        color:var(--white);
+        color: var(--white);
         font-family: var(--primary-font);
-        padding:3rem;
-        height:57.9rem;
+        padding: 3rem;
+        height: 57.9rem;
         //background-image: linear-gradient(183deg, transparent 12%, var(--color-green-02) 10%) , linear-gradient(178deg, transparent 10%, var(--color-green-01) 10%);
-         clip-path:polygon(0% 0%, 100% 10%, 100% 100%, 0% 100% );
-         background-color: var(--color-green-02);
+        clip-path: polygon(0% 0%, 100% 10%, 100% 100%, 0% 100%);
+        background-color: var(--color-green-02);
 
 
-        
+
 
         .main {
 
-        padding:8rem 3rem;
-        color: #cfd8dc;
-        display: flex;
-        justify-content: space-between;
-        align-items:self-start;
-        color:var(--white);
-        font-size: 2.4rem;;
+            padding: 8rem 3rem;
+            color: #cfd8dc;
+            display: flex;
+            justify-content: space-between;
+            align-items: self-start;
+            color: var(--white);
+            font-size: 2.4rem;
+            ;
         }
 
         .logo {
-        font-family: var(--secondary-font);
-        display: flex;
-        align-items: center;
-        mix-blend-mode: plus-lighter;
+            font-family: var(--secondary-font);
+            display: flex;
+            align-items: center;
+            mix-blend-mode: plus-lighter;
 
             .logopic {
                 height: 4.6rem;
@@ -976,52 +1049,53 @@ $light: #fff;
             }
         }
 
-        .site-map{
-        
-            li{
+        .site-map {
+
+            li {
                 list-style: none;
             }
-            a{
-            color:#bdc6cb;
-            line-height: 5rem;
-            text-decoration: none;
-            color:#bdc6cb;
-            font-size:1.8rem;
-            font-family: var(--primary-font);
+
+            a {
+                color: #bdc6cb;
+                line-height: 5rem;
+                text-decoration: none;
+                color: #bdc6cb;
+                font-size: 1.8rem;
+                font-family: var(--primary-font);
             }
         }
 
-        .footer-title{
-            color:var(--white);
-            margin:5rem 0;
+        .footer-title {
+            color: var(--white);
+            margin: 5rem 0;
         }
 
-        .footer-discription{
-            p{
-                color:#bdc6cb;
-                margin:2rem 0;
+        .footer-discription {
+            p {
+                color: #bdc6cb;
+                margin: 2rem 0;
                 font-size: 1.8rem;
             }
-        
+
         }
 
-        .bottom{
+        .bottom {
             margin: 10rem 0 2rem 0;
-            
-            nav{
-                display:flex;
-                justify-content:space-between;
+
+            nav {
+                display: flex;
+                justify-content: space-between;
                 align-items: center;
                 padding: 1rem 2rem;
-                color:#75a6cd;
+                color: #75a6cd;
                 gap: 2rem;
                 font-size: 1.6rem;
-                
-                
-                >a{
+
+
+                >a {
                     text-decoration: none;
-                    color:var(--white);
-                    font-size:1.6rem;
+                    color: var(--white);
+                    font-size: 1.6rem;
                     font-family: var(--primary-font);
 
                 }
@@ -1033,5 +1107,5 @@ $light: #fff;
 
 
 
-    
+
 }

@@ -11,25 +11,6 @@ const Pharmacies = require("../../models/PharmacyModel");
 const PharmacyStaff = require("../../models/PharmacyStaffModel");
 const Users = require("../../models/UserModel");
 
-function calculateDistanceKM(clientLat, clientLng, pharmacyLat, pharmacyLng) {
-  const R = 6371; // Earth radius in kilometers
-
-  const toRad = (value) => (value * Math.PI) / 180;
-
-  const dLat = toRad(pharmacyLat - clientLat);
-  const dLng = toRad(pharmacyLng - clientLng);
-
-  const lat1 = toRad(clientLat);
-  const lat2 = toRad(pharmacyLat);
-
-  const a =
-    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) * Math.sin(dLng / 2);
-
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-  return R * c; // distance in KM
-}
 
 exports.renderCustomerPharmacies = async (req, res) => {
   try {
@@ -56,11 +37,11 @@ exports.renderCustomerPharmacies = async (req, res) => {
               distance:
                 latitude && longitude
                   ? calculateDistanceKM(
-                      latitude,
-                      longitude,
-                      pharmacy.latitude,
-                      pharmacy.longitude,
-                    ).toFixed(1)
+                    latitude,
+                    longitude,
+                    pharmacy.latitude,
+                    pharmacy.longitude,
+                  ).toFixed(1)
                   : "not available",
               customerId: customer.id,
             }),
@@ -128,31 +109,64 @@ exports.renderPharmacyLandingPage = async (req, res) => {
   try {
     const [pharmacy] = await Pharmacies.getById(req.pharmacyId);
     const [customer] = await Users.getById(req.customerId);
+    const search = req.params.get('search');
     if (!customer) throw new Error("customer not found");
     if (!pharmacy) throw new Error("no pharmacy found");
 
     const pharmacyData = {
       ...pharmacy,
       contact1: pharmacy.contact,
-      contact2: "****",
     };
+
+    const pharmacyStaff = await PharmacyStaff.get({
+      pharmacyId : pharmacy.id,
+    });
+
+
+    let staff = await Promise.all(pharmacyStaff.map(async s=>{
+      const [user] = await Users.getById(s.userId);
+      console.log(s.userId);
+      if(!user) return undefined;
+
+      return {image : user.profile ,role : s.role ,firstName : user.firstName , lastName : user.lastName}
+    }))
+
+    staff = staff.filter(s=>s!=undefined);
 
     const medicines = await PharmacyMedicines.get({
       pharmacyId: pharmacy.id,
     });
 
+    console.log(staff);
+
     const medicineCards = medicines.map(async (m) => {
       const [medicine] = await Medicines.getById(m.medicineId);
+      if(!medicine) return undefined;
+      
+      if (search) {
+        console.log(medicine.geneticName ,medicine.geneticName.toLowerCase().includes(search));
+        if (!medicine?.geneticName.toLowerCase().includes(search) && !medicine.category?.toLowerCase().includes(search)) {
+          return undefined;
+        }
+      }
+
+
       return view("customer/component.medicine.card", {
         id: m.id,
         price: m.price,
-        publicStock: m.publicStock,
+        stock: Number(m.publicStock).toLocaleString('si-LK'),
+        status: m.publicStock <= 0 ? "low" : "",
+        userId : customer.id,
         name: medicine.geneticName,
         image: medicine.image,
       });
     });
 
-    const medicineCardsText = await Promise.all(medicineCards);
+    let medicineCardsText = await Promise.all(medicineCards);
+    medicineCardsText = medicineCardsText.filter(t => t != undefined);
+    if(!medicineCardsText.length){
+      medicineCardsText.push(`<div style="position: absolute; left: 50% ; transform : translateX(-50%) ;text-align: center;color: #555; font-size : 3rem;">"${search}" Not found any Medicine</div>`);
+    }
 
     return response(
       res,
@@ -166,6 +180,12 @@ exports.renderPharmacyLandingPage = async (req, res) => {
         medicineCards: medicineCardsText.join(" "),
         cart: view("customer/component.cart"),
         status: pharmacy.alive ? "online" : "offline",
+        footer: view('footer'),
+        staff : staff.map(s=>`<div class="owner">
+          <img src="${s.image}" alt="${s.role}">
+          <div class="title">${s.role}</div>
+          <div class="owner-name">${s.firstName} ${s.lastName}</div>
+        </div>`).join(' '),
 
         // {...pharmacy , contact1 : pharmacy.contact , contact2 : ""}
       }),

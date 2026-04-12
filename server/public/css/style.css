@@ -1109,7 +1109,8 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .medicine_card .details .medicine__info__store-as {
   align-items: center;
 }
-.medicine_card .details .medicine__info__store-as span:first-child { /* "store as" text */
+.medicine_card .details .medicine__info__store-as span:first-child {
+  /* "store as" text */
   font-size: 1.6rem;
   opacity: 0.5;
   font-weight: 400;
@@ -1133,7 +1134,8 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   color: var(--color-green-01);
   font-weight: 600;
 }
-.medicine_card .details .medicine__info__price > span:first-child { /* "price" text */
+.medicine_card .details .medicine__info__price > span:first-child {
+  /* "price" text */
   font-size: 1.6rem;
   opacity: 0.5;
   font-weight: 400;
@@ -1338,7 +1340,8 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .orders .cart_list .medicine_card .cart_item_details .cart_item_details__summery > * {
   margin-right: 1rem;
 }
-.orders .cart_list .medicine_card .cart_item_details .cart_item_details__summery span:nth-child(1), .orders .cart_list .medicine_card .cart_item_details .cart_item_details__summery span:nth-child(5) {
+.orders .cart_list .medicine_card .cart_item_details .cart_item_details__summery span:nth-child(1),
+.orders .cart_list .medicine_card .cart_item_details .cart_item_details__summery span:nth-child(5) {
   color: var(--color-green-01);
 }
 .orders .cart_list .medicine_card .cart_item_details .cart_item_details__total {
@@ -1362,6 +1365,59 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .chats.container .product_card .remove-btn {
   position: absolute;
   right: 1.5rem;
+}
+
+.card {
+  width: 25rem;
+  margin: 2rem;
+  overflow: hidden;
+}
+.card img {
+  background-color: #eee;
+  width: 100%;
+  height: 25rem;
+  object-fit: contain;
+}
+.card .name-container span {
+  font-size: 1.4rem;
+  color: #000;
+  opacity: 0.5;
+  text-transform: capitalize;
+}
+.card .name-container .name {
+  font-size: 1.8rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+}
+.card .status {
+  color: var(--color-green-01);
+  font-size: 1.4rem;
+  text-transform: capitalize;
+  margin: 0;
+  padding: 0;
+}
+.card .status.not-available {
+  color: var(--color-red-01);
+}
+.card button {
+  padding: 1.5rem 2rem;
+  font-size: 1.6rem;
+  text-transform: capitalize;
+  color: #fff;
+  background-color: var(--color-green-01);
+  cursor: pointer;
+  border-radius: 2px;
+  margin-top: 1rem;
+}
+.card button:hover {
+  background-color: var(--color-blue-01);
+}
+.card button.added {
+  background-color: #000;
 }
 
 .btn-add-new {
@@ -2557,16 +2613,19 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .medicine-section .section-title {
   margin-top: 25rem;
 }
-.medicine-section .Medicines_grid {
+
+.Medicines_grid {
   display: grid;
   align-items: center;
-  grid-template-columns: repeat(4, 32rem); /* 4 columns */
+  grid-template-columns: repeat(4, 32rem);
+  /* 4 columns */
   justify-content: center;
   max-width: fit-content;
   border: 1px solid #e8e8e8;
   margin: auto;
 }
-.medicine-section .Medicines_grid .medicine-card {
+
+.medicine-card {
   padding: 2rem;
   background-color: white;
   width: 100%;
@@ -2574,14 +2633,18 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   border: 1px solid #e8e8e8;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05);
 }
-.medicine-section .Medicines_grid .medicine-card .medi-img {
+.medicine-card .medi-img {
   width: 15rem;
   height: 15rem;
-  object-fit: contain;
   display: block;
   margin: auto;
 }
-.medicine-section .Medicines_grid .medicine-card .med_infomation .medicine_name > a {
+.medicine-card .medi-img img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+.medicine-card .med_infomation .medicine_name > a {
   font-weight: 500;
   overflow: hidden;
   text-wrap-mode: nowrap;
@@ -2590,21 +2653,21 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   display: inline-block;
   height: 4rem;
 }
-.medicine-section .Medicines_grid .medicine-card .med_infomation .medicine_name .name {
+.medicine-card .med_infomation .medicine_name .name {
   font-weight: 600;
   color: #979696;
 }
-.medicine-section .Medicines_grid .medicine-card .med_infomation .medicine__info__price {
+.medicine-card .med_infomation .medicine__info__price {
   display: flex;
   gap: 2rem;
   color: #1A7F89;
   padding: 1rem 0;
   font-weight: 600;
 }
-.medicine-section .Medicines_grid .medicine-card .med_infomation .medicine__info__price span {
+.medicine-card .med_infomation .medicine__info__price span {
   display: flex;
 }
-.medicine-section .Medicines_grid .medicine-card .results .map-serach {
+.medicine-card .results .map-serach {
   display: flex;
   background-color: #E8F7FF;
   border-radius: 3rem;
@@ -2616,13 +2679,16 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   justify-content: center;
   align-items: center;
 }
-.medicine-section .Medicines_grid .medicine-card .results .map-serach .world_img {
+.medicine-card .results .map-serach.low {
+  background-color: var(--color-red-01) !important;
+}
+.medicine-card .results .map-serach .world_img {
   margin-right: 1rem;
 }
-.medicine-section .Medicines_grid .medicine-card .results.add-to-cart .map-serach:first-child {
+.medicine-card .results.add-to-cart .map-serach:first-child {
   display: none;
 }
-.medicine-section .Medicines_grid .medicine-card .results.add-to-cart .map-serach:last-child {
+.medicine-card .results.add-to-cart .map-serach:last-child {
   background-color: #08374F;
   padding: 1.5rem 2rem;
   margin-left: auto;
@@ -2630,10 +2696,7 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
   text-transform: capitalize;
   transition: all 0.2s ease;
 }
-.medicine-section .Medicines_grid .medicine-card .results.add-to-cart .map-serach:last-child:hover {
-  scale: 1.1;
-}
-.medicine-section .Medicines_grid .medicine-card:hover {
+.medicine-card:hover {
   transition: all 0.3s;
   background-color: white;
   border: 1px solid black;
@@ -3748,6 +3811,126 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
     transform: scale(1);
   }
 }
+.pharmacy {
+  width: 30%;
+  height: 58rem;
+  border: 1px solid #eee;
+  border-radius: 1rem;
+  padding: 1rem;
+  position: relative;
+  transition: all 0.2s ease;
+}
+.pharmacy * {
+  transition: all 0.2s ease;
+}
+.pharmacy:hover {
+  border: 1px solid #333;
+}
+.pharmacy:hover .pharmacy__stock {
+  background-color: var(--color-green-01);
+  color: #000;
+}
+.pharmacy__image {
+  width: 100%;
+  height: 30rem;
+  border-radius: 1rem;
+}
+.pharmacy__name {
+  font-size: 2.4rem;
+  display: inline;
+  text-wrap-mode: wrap;
+  height: 3rem;
+  overflow: hidden;
+  width: 100%;
+  text-overflow: ellipsis;
+}
+.pharmacy .status {
+  width: 100%;
+}
+.pharmacy .status span {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 1rem;
+  background-color: currentColor;
+}
+.pharmacy .status.online .online {
+  display: inline-block;
+  color: var(--color-green-01);
+}
+.pharmacy .status.online .offline {
+  display: none;
+}
+.pharmacy .status.offline .online {
+  display: none;
+  color: var(--color-red-01);
+}
+.pharmacy .status.offline .offline {
+  display: inline-block;
+}
+.pharmacy__address {
+  font-size: 1.6rem;
+  width: 80%;
+  font-weight: 100;
+  height: 5rem;
+}
+.pharmacy__tel {
+  font-size: 1.6rem;
+}
+.pharmacy__tel img {
+  width: 1.5rem;
+}
+.pharmacy__view {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: calc(100% - 2rem);
+  background-color: var(--color-green-01);
+  padding: 1rem;
+  text-align: center;
+  color: #fff;
+  margin: 1rem;
+  border-radius: 1rem;
+}
+.pharmacy__view:hover {
+  background-color: var(--color-green-02);
+}
+.pharmacy__stock {
+  position: absolute;
+  top: 0;
+  padding: 2rem;
+  border-radius: 10rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fff;
+  font-size: 1.8rem;
+  width: 50%;
+  color: var(--color-green-01);
+  color: #fff;
+  background-color: #000;
+  top: 5rem;
+  right: 0%;
+  outline: 1px dashed var(--color-green-01);
+  outline-offset: 0.5rem;
+  box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.25);
+  transform: translate(1rem, -74%);
+}
+.pharmacy__stock h4 {
+  display: none;
+  color: var(--color-green-01);
+  text-transform: capitalize;
+}
+.pharmacy__distance {
+  font-size: 1.6rem;
+  opacity: 0.8;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  border: 1px dashed #333;
+  display: inline-block;
+}
+
 body.large-view .header-container {
   display: none;
   padding: 0;
@@ -7599,18 +7782,30 @@ button.save {
   width: 100%;
   border-radius: 1rem;
   border: 0.1rem solid rgba(255, 255, 255, 0.21);
-  background: url("/images/pharmarcyLandingPage.png") lightgray 50%/cover no-repeat;
   padding: 2rem 2rem;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5647058824) 50%, transparent), url("/pharmacyImages/general-pharmacy.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  height: 35rem;
+  flex-direction: column;
 }
 .landingPage .header .header-content h1 {
   display: flex;
   color: #FFF;
+  text-transform: capitalize;
   font-family: "Red Hat Display";
   font-size: 4.8rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   justify-content: center;
+  padding: 2rem;
+  background-image: linear-gradient(120deg, var(--color-green-01), var(--color-green-02));
+  display: inline-block;
+  max-width: 80%;
+  margin: -4rem auto;
+  text-align: center;
 }
 .landingPage .header .header-content p {
   color: #FFF;
@@ -7637,6 +7832,20 @@ button.save {
   color: #fff;
   align-items: center;
   cursor: pointer;
+}
+.landingPage .header .btn.google-location-pin {
+  display: flex;
+  width: fit-content;
+  padding: 2rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3rem;
+  outline: 1px dashed #fff;
+  outline-offset: 1rem;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+  border: 1px solid #eee;
+  bottom: 0;
+  margin-top: auto;
 }
 .landingPage .header .btn.secondary {
   background: #fff;
@@ -7706,7 +7915,15 @@ button.save {
 }
 .landingPage .store {
   padding: 2rem;
-  margin: 0 3rem;
+  margin: 0 auto;
+  max-width: 132rem;
+}
+.landingPage .store > .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  margin: 0;
 }
 .landingPage .store .store-shape {
   display: flex;
@@ -7743,16 +7960,18 @@ button.save {
 }
 .landingPage .store .search-bar {
   display: flex;
+  width: 100%;
   margin: 1rem 0;
   justify-content: space-between;
   align-items: baseline;
 }
 .landingPage .store .search-bar input {
-  width: 64rem;
-  height: 4rem;
+  width: 100%;
+  height: 5rem;
+  font-size: 1.8rem;
   align-items: center;
   padding: 1rem 1.5rem;
-  border-radius: 1rem;
+  border-radius: 3rem;
   border: 0.1rem solid #ccc;
 }
 .landingPage .store .search-bar .cartbtn {
@@ -7797,7 +8016,8 @@ button.save {
 .landingPage .store .medicine-section .Medicines_grid {
   display: grid;
   align-items: center;
-  grid-template-columns: repeat(4, 32rem); /* 4 columns */
+  grid-template-columns: repeat(4, 32rem);
+  /* 4 columns */
   margin: 5rem;
   justify-content: center;
   max-width: fit-content;
@@ -8438,23 +8658,38 @@ button.save {
   font-family: var(--primary-font);
 }
 
-.medicine-review .medicine {
-  margin: 5rem;
-}
-.medicine-review .medicine .main-info {
+.medicine-review .main-info {
   display: flex;
   gap: 2rem;
+  flex-direction: column;
+  align-items: center;
 }
-.medicine-review .medicine .main-info img {
+.medicine-review .main-info div span.name {
+  font-size: 2.8rem;
+  background-image: linear-gradient(120deg, var(--color-green-01), var(--color-green-02));
+  padding: 1rem;
+  color: #fff;
+  text-align: center;
+  max-width: 114rem;
+  margin: 1rem auto;
+  display: inline-block;
+  margin-top: 10rem;
+}
+.medicine-review .main-info img {
   margin: 1rem;
+  height: 40rem;
   object-fit: contain;
   object-position: center;
 }
-.medicine-review .medicine .main-info .right-side {
+.medicine-review .main-info .right-side {
   padding: 1rem;
   margin: 1rem;
-  font-weight: 500;
+  font-weight: 100;
   font-size: 1.8rem;
+  text-align: center;
+}
+.medicine-review .medicine {
+  margin: 5rem;
 }
 .medicine-review .medicine .title {
   color: var(--color-green-01);
@@ -8550,6 +8785,19 @@ button.save {
   color: var(--white);
   font-size: 1.4rem;
   font-family: var(--primary-font);
+}
+.medicine-review .pharmacies {
+  max-width: 114rem;
+  margin: 3rem auto 10rem auto;
+}
+.medicine-review .pharmacies h2 {
+  color: var(--color-green-02);
+  text-align: center;
+  margin-bottom: 8rem;
+}
+.medicine-review .pharmacies .pharmacy-container {
+  display: flex;
+  gap: 3rem;
 }
 
 .manageBill {
@@ -9559,7 +9807,7 @@ button.save {
 }
 .customer_medicine_pharmacy_resutls_view .header-main.header .header-image {
   position: absolute;
-  width: 30rem;
+  height: 30rem;
   transform: rotateY(180deg);
   mix-blend-mode: luminosity;
   right: 0;
@@ -9634,6 +9882,31 @@ button.save {
   display: inline-block;
   border: none;
 }
+.customer_medicine_pharmacy_resutls_view .section-pharmacies .grid {
+  gap: 2rem;
+}
+.customer_medicine_pharmacy_resutls_view .section-pharmacies .pharmacy {
+  height: 40rem;
+  width: 20%;
+}
+.customer_medicine_pharmacy_resutls_view .section-pharmacies .pharmacy__name {
+  font-size: 2rem;
+}
+.customer_medicine_pharmacy_resutls_view .section-pharmacies .pharmacy .status {
+  font-size: 1.4rem;
+}
+.customer_medicine_pharmacy_resutls_view .section-pharmacies .pharmacy__address, .customer_medicine_pharmacy_resutls_view .section-pharmacies .pharmacy__tel {
+  font-size: 1.6rem;
+}
+.customer_medicine_pharmacy_resutls_view .section-pharmacies .pharmacy__distance {
+  font-size: 1.4rem;
+}
+.customer_medicine_pharmacy_resutls_view .section-pharmacies .pharmacy__image {
+  height: 15rem;
+}
+.customer_medicine_pharmacy_resutls_view .section-pharmacies .pharmacy__stock {
+  display: none;
+}
 .customer_medicine_pharmacy_resutls_view section {
   margin: 3rem;
   margin-top: 6rem;
@@ -9655,58 +9928,6 @@ button.save {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-.customer_medicine_pharmacy_resutls_view section .grid .card {
-  width: 25rem;
-  margin: 2rem;
-  overflow: hidden;
-}
-.customer_medicine_pharmacy_resutls_view section .grid .card img {
-  background-color: #eee;
-  width: 100%;
-  height: 25rem;
-  object-fit: contain;
-}
-.customer_medicine_pharmacy_resutls_view section .grid .card .name-container span {
-  font-size: 1.4rem;
-  color: #000;
-  opacity: 0.5;
-  text-transform: capitalize;
-}
-.customer_medicine_pharmacy_resutls_view section .grid .card .name-container .name {
-  font-size: 1.8rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  width: 100%;
-}
-.customer_medicine_pharmacy_resutls_view section .grid .card .status {
-  color: var(--color-green-01);
-  font-size: 1.4rem;
-  text-transform: capitalize;
-  margin: 0;
-  padding: 0;
-}
-.customer_medicine_pharmacy_resutls_view section .grid .card .status.not-available {
-  color: var(--color-red-01);
-}
-.customer_medicine_pharmacy_resutls_view section .grid .card button {
-  padding: 1.5rem 2rem;
-  font-size: 1.6rem;
-  text-transform: capitalize;
-  color: #fff;
-  background-color: var(--color-green-01);
-  cursor: pointer;
-  border-radius: 2px;
-  margin-top: 1rem;
-}
-.customer_medicine_pharmacy_resutls_view section .grid .card button:hover {
-  background-color: var(--color-blue-01);
-}
-.customer_medicine_pharmacy_resutls_view section .grid .card button.added {
-  background-color: #000;
 }
 
 @keyframes gradient-animation {

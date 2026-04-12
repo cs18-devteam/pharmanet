@@ -1,27 +1,19 @@
-import { fetchCustomerCartData } from "../../model/customer/fetchCustomerCartData.js";
-import Cart from "../../view/customer/Cart.js";
-const cart = new Cart('.overlay-cart');
-const btn_yourCart = document.querySelector('.cartbtn.viewCart');
-const btn_cartContinue = document.querySelector('.overlay-cart__continue');
-const btn_messagePharmacy = document.querySelector('.contact-card .btn');
+const searchbar = document.querySelector('.search-bar input');
 
+const url =  new URL(window.location.href);
+console.log(url);
 
-async function startOrderProcess(e){
-    const data = await fetchCustomerCartData();
-    console.log(data);
-    cart.openLeftPanel();
+if(searchbar){
+    
+    searchbar.value = url.searchParams.get('search')
 }
 
-
-btn_yourCart?.addEventListener('click' ,async (e)=>{
-    cart.openRightPanel();
-    btn_cartContinue?.addEventListener('click' , startOrderProcess);
+searchbar?.addEventListener("change", e=>{
+    const value = e.target.value;
+    if(value){
+        window.location.href = `${url.origin}${url.pathname}?search=${value}`;
+    }else{
+        window.location.href = `${url.origin}${url.pathname}`;
+        
+    }
 })
-
-
-btn_messagePharmacy?.addEventListener('click' , (e)=>{
-    cart.openLeftPanel();
-})
-
-
-

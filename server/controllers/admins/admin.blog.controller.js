@@ -102,23 +102,26 @@ exports.renderEditView = catchAsync(async (req, res) => {
   const blogId = req.blogId;
 
   const [blog] = await Blogs.getById(blogId);
+  console.log(blog);
 
-  return response(
-    res,
-    view("blog/editBlog", {
-      ...admin,
-      title: blog.title,
-      slug: blog.slug,
-      excerpt: blog.excerpt,
-      content: blog.content,
-      Date: blog.status,
-      category: blog.category,
-      author: blog.author,
-      tag: blog.tag,
-    }),
-    200,
-  );
-});
+  const other = (blog.category).toLowerCase() == "medicine" ? "Disease" : "Medicine";
+  
+
+  return response(res, view('blog/editBlog', {
+    ...admin,
+    title: blog.title, 
+    slug: blog.slug,
+    excerpt:blog.excerpt,
+    content: blog.content,
+    date: blog.status,
+    category: blog.category,
+    other: other,
+    author: blog.author,
+    tag: blog.tag,
+
+  }), 200);
+})
+
 
 exports.createBlog = catchAsync(async (req, res) => {
   const rawData = await getRequestData(req);

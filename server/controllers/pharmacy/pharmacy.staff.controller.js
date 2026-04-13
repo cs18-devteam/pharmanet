@@ -69,6 +69,7 @@ exports.createStaffMember = apiCatchAsync(async (req, res) => {
   const [newStaffMember] = await PharmacyStaff.save(userData);
 
   await Users.query("commit");
+  
 
   return responseJson(res, 200, {
     status: "success",
@@ -78,16 +79,22 @@ exports.createStaffMember = apiCatchAsync(async (req, res) => {
 
 exports.getStaffMembers = apiCatchAsync(async (req, res) => {
   let members = await PharmacyStaff.get({ pharmacyId: req.pharmacyId });
-
   members = members.map(async (m) => {
-    const [user] = await Users.getById(m.userId);
-    return { ...user, userId: user.id, ...m };
+    
+    const [staff] = await PharmacyStaff.getByVarId('userId',m.userId);
+    const [user] = await Users.getById(staff.userId);
+    const [pharmacy] = await Pharmacies.getById(req.pharmacyId);
+   
+
+    
+    return { ...staff, ...user, ...pharmacy, userId: user.id };
   });
 
 
 
 
   members = await Promise.all(members);
+  
 
 
   return responseJson(res, 200, {
@@ -108,7 +115,7 @@ exports.getStaffMember = apiCatchAsync(async (req, res) => {
 
   return responseJson(res, 200, {
     status: "success",
-    results: { ...user, userId: user.id, staffId: member.id, ...member },
+    results: { ...member, ...user, userId: user.id, staffId: member.id  },
   });
 });
 
@@ -165,7 +172,6 @@ exports.changePermissions = apiCatchAsync(async (req, res) => {
 
 exports.updateStaffMember = apiCatchAsync(async (req, res) => {
   const staffId = req.staffId;
-  if (!staffId) throw new Error("staffId is required");
 
   console.log("Update staff request - staffId:", staffId);
 
@@ -177,6 +183,8 @@ exports.updateStaffMember = apiCatchAsync(async (req, res) => {
 
   const userId = staff.userId;
   const data = await getMultipartData(req);
+  const normalizedRole = data.role? String(data.role).trim().toLowerCase : undefined;
+  if (!staffId) throw new Error("staffId is required");
 
   console.log("Received data:", data);
 
@@ -188,7 +196,7 @@ exports.updateStaffMember = apiCatchAsync(async (req, res) => {
     contact: data.contact,
     email: data.email,
     nic: data.nic,
-    role: data.role,
+    role: normalizedRole,
   };
 
   console.log("User data to update:", userData);
@@ -208,6 +216,7 @@ exports.updateStaffMember = apiCatchAsync(async (req, res) => {
   }
 
   const [updatedUser] = await Users.update(userData);
+  Users.update(userData);
 
   if (!updatedUser) {
     throw new Error("Failed to update user");

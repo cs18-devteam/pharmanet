@@ -5,6 +5,7 @@ const PharmacyMedicines = require("../../models/PharmacyMedicinesModel");
 const { getRequestData } = require("../../common/getRequestData");
 const { apiCatchAsync } = require("../../common/catchAsync");
 const PharmacyOrdersItems = require("../../models/PharmacyOrderItemsModel");
+const Pharmacies = require("../../models/PharmacyModel");
 
 
 
@@ -28,6 +29,31 @@ exports.getAllMedicines = async (req, res) => {
     }
 };
 
+exports.getMedicinesById = async (req, res) => {
+    try{
+        console.log(req.pharmacyId);
+        let data = await PharmacyMedicines.getByVarId('pharmacyId',req.pharmacyId);
+        const [pharmacy] = await Pharmacies.getById(req.pharmacyId);
+        data = data.map(async (m) => {
+        const [medicine] = await Medicines.getById(m.medicineId);
+        if (!medicine) return null;
+    
+    return { ...m, ...medicine, ...pharmacy, medicineId: medicine.id };
+  });
+  
+
+  data = (await Promise.all(data)).filter(Boolean);
+  console.log(data);
+  return responseJson(res, 200, {
+    status: "success",
+    results: data,
+    count: data.length,
+  });
+    }catch(e){
+        console.log(e);
+        return response(res, view('404'), 500);
+    }
+};
 
 
 exports.getMedicineDetailsByStockId = async (req, res) => {

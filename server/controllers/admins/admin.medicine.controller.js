@@ -12,6 +12,7 @@ const path = require("path");
 const readExcel = require("../../../services/excelRead-service/excelReader");
 const getMultipartData = require("../../common/getMultipartData");
 const File = require("../../common/File");
+const Blogs = require("../../models/BlogModel");
 
 
 
@@ -278,7 +279,21 @@ exports.uploadMedicine = async (req, res) => {
 
 exports.updateMedicine = async (req, res) => {
   try {
-    console.log("Hi");
+    const medicineId = req.medicineId;
+    const rawData = await getRequestData(req);
+    if (!rawData){
+      return response(res, "Empty request body", 400);
+    }
+
+    let body = JSON.parse(rawData);
+   
+    const{ geneticName, brandName, manufacturer, dosage, category, shedule, expiryDate} = body;
+    const newMedicine = await Medicines.update({
+      id:medicineId,geneticName,brandName,manufacturer,dosage,category,shedule,expiryDate
+    });
+    return responseJson(res, 200, newMedicine);
+
+
   }catch (e) {
     return responseJson(res, 400, {
       error: e.message || "update failed"

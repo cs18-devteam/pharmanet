@@ -108,21 +108,6 @@
             </tbody>
           </table>
         </section>
-
-        <section class="summary">
-          <div class="card">
-            <h3>Total Blogs</h3>
-            <p>4</p>
-          </div>
-          <div class="card">
-            <h3>Diseases</h3>
-            <p>2</p>
-          </div>
-          <div class="card">
-            <h3>Medicines</h3>
-            <p>2</p>
-          </div>
-        </section>
       </div>
     </div>
 
@@ -217,32 +202,12 @@
         });
 
       // ================== EDIT BLOG ==================
-      async function renderEditBlog(id) {
+      async function editBlog(id) {
         const blogId = id;
         window.location.href = `/admin/${adminId}/blogs/${blogId}/edit`;
+        
       }
 
-      // ================== EDIT BLOG ==================
-      async function editblog(id) {
-        const newTitle = prompt("Enter new blog title:");
-        if (!newTitle) return;
-
-        const res = await fetch(
-          `${window.location.origin}/admin/${adminId}/blogs/${blogId}/edit`,
-          {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ title: newTitle }),
-          },
-        );
-
-        if (res.ok) {
-          alert("Blog updated!");
-          loadBlogs();
-        } else {
-          alert("Failed to update blog");
-        }
-      }
 
       // Load blogs when page opens
       loadBlogs();

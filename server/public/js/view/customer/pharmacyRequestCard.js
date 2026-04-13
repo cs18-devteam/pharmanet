@@ -19,13 +19,13 @@ const requestCardTemplate = html`
             
             <div class="additional-details">
             <div class="status">{status}</div>
-            <!-- <div class="distance">{distance}Km</div> -->
+            <div class="distance">{distance} Km</div>
             </div>
             
         </div>
         
         <div class="available">{med-status}</div>
-        <div class="points">
+        <div style="opacity:0;" class="points">
             <img src="/cart/coin.svg">
             {points} points
         </div>
@@ -37,6 +37,9 @@ const requestCardTemplate = html`
 export function createRequestCards(data = []) {
 
     return data.map(pharmacy => {
+
+        console.log(pharmacy);
+
         return requestCardTemplate
             .replace('{id}', pharmacy.id)
             .replace('{id}', pharmacy.id)
@@ -47,19 +50,17 @@ export function createRequestCards(data = []) {
             .replace('{town}', pharmacy.town || '')
             .replace('{town}', pharmacy.town || '')
             .replace('{status}', pharmacy.alive ? 'open' : 'close')
+            .replace('{distance}', pharmacy.distance  || 'Not available')
             .replace('{points}', 0);
     })
 }
 
 
 export function renderRequestCards(cards) {
-    cart.setLeftSideContent(`<h3 class="near_by_pharmacies">near by pharmacies</h3>
+    cart.setLeftSideContent(`<h3 class="near_by_pharmacies">base on availability</h3>
         
         <div class="pharmacyRequestContainer pharmacyRequestContainer--nearby"></div>
-        
-        
-        <h3>base on availability</h3>
-        <div class="pharmacyRequestContainer pharmacyRequestContainer--availibility"></div>`)
+        `)
 
 
 

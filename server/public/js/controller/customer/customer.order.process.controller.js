@@ -6,44 +6,57 @@ import { openLiveConnection, requestConnectionWithPharmacy } from "./connection.
 import cart from "./../../view/customer/Cart.js";
 import handleConnection from "./chat/handleConnection.js";
 import getCartsIdsAndCreateOrder, { getCartIds } from "./chat/getCartsIdsAndCreateOrder.js";
+import { removeSpinner, renderSpinner } from "../../view/spinner.js";
+import { swal } from "../../view/swal.js";
 
 
 const overlayRightSide = document.querySelector(".overlay-cart .right-side");
-overlayRightSide?.addEventListener("click" , (e)=>{
-    
+overlayRightSide?.addEventListener("click", (e) => {
+
     const target = e.target;
     const cartContinueButton = target.closest('.overlay-cart__continue.continue');
-    
-    cartContinueButton?.addEventListener('click' ,async ()=>{
+
+    cartContinueButton?.addEventListener('click', async () => {
         cart.openLeftPanel();
-        const {results: pharmacies} = await getPharmacies({mode :'online' , carts : getCartIds()});
+        renderSpinner();
+        const { results: pharmacies } = await getPharmacies({ mode: 'online', carts: getCartIds() });
+        removeSpinner();
+
+        if (!pharmacies.length) {
+            swal({
+                title: "Pharmacies not available this time",
+                text: "try again later or you can directly call",
+                icon: 'warning',
+            })
+        }
         const pharmacyRequestCards = createRequestCards(pharmacies);
         renderRequestCards(pharmacyRequestCards);
-        
+
+
     })
 
     const cartCancelButton = target.closest(".overlay-cart__continue.cancel");
-    
-    
-    cartCancelButton?.addEventListener("click" , ()=>{
+
+
+    cartCancelButton?.addEventListener("click", () => {
         cart.close();
     })
 })
 
 const overlayLeftSide = document.querySelector(".overlay-cart .left-side");
 
-overlayLeftSide?.addEventListener('click' ,async e=>{
-    const {target} =  e;
+overlayLeftSide?.addEventListener('click', async e => {
+    const { target } = e;
 
     const requestBtn = target.closest('.request-btn')
-    if(requestBtn){
+    if (requestBtn) {
         Application.requestPharmacyId = requestBtn.dataset.id;
         cart.setLeftSideContent('');
         await getCartsIdsAndCreateOrder();
         Application.connection = await openLiveConnection();
-        Application.connection.addEventListener('message' , handleConnection)
+        Application.connection.addEventListener('message', handleConnection)
     }
-    
+
 })
 
 
@@ -58,4 +71,3 @@ overlayLeftSide?.addEventListener('click' ,async e=>{
 
 
 
- 

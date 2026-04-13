@@ -1,9 +1,19 @@
 const uploadBox = document.querySelector(".upload-box");
 
 export function setWait(){
-    uploadBox.classList.add("waiting");
+    try{
+        if(!uploadBox) return;
+        uploadBox.classList.add("waiting");
+    }catch(e){
+        console.log(e);
+    }
 }
 
 export function removeWait(){
-    uploadBox.classList.remove("waiting");
+    try{
+        if(!uploadBox) return;
+        uploadBox.classList.remove("waiting");
+    }catch(e){
+        console.log(e);
+    }
 }

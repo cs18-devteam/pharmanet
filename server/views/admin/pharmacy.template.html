@@ -190,7 +190,7 @@
   });
   // document.querySelector('.accept-Btn').addEventListener('click',
   // function () {
-  //   swal({
+  //   Swal.fire.fire({
   //     title: "Are you sure you want to Activate this Pharmacy ?",
   //     icon: "/logo/logo.svg",
   //     buttons:{
@@ -206,7 +206,7 @@
   //     dangerMode: false
   //   }).then(async (confirmed) => {
   //     if(!confirmed) {
-  //       swal("Declined","Pharmacy Activation Declined", "warning");
+  //       Swal.fire.fire("Declined","Pharmacy Activation Declined", "warning");
   //       closeImagePopup();
   //       return;
   //     };
@@ -217,7 +217,7 @@
   //       body: JSON.stringify({status: "1",
   //       id: selectedPharmacyId})
   //     });
-  //     swal("Activated","Pharmacy activated succesfully.","success");
+  //     Swal.fire("Activated","Pharmacy activated succesfully.","success");
   //     closeImagePopup();
   //     renderPharmacies();
   //   })
@@ -228,6 +228,8 @@
 <script>
   // One delegated click handler for both Activate + Deactivate buttons
   document.addEventListener('click', async function (e) {
+    try{
+
     const activateBtn = e.target.closest('.activate-Btn');
     const deactivateBtn = e.target.closest('.deactivate-Btn');
 
@@ -239,24 +241,22 @@
     const pharmacyId = btn.getAttribute('data-id');
 
     if (!pharmacyId) {
-      swal("Error", "Pharmacy ID not found.", "error");
+      Swal.fire("Error", "Pharmacy ID not found.", "error");
       return;
     }
 
-    const confirmed = await swal({
+    const confirmed = await Swal.fire({
       title: isActivate
         ? "Are you sure you want to activate this Pharmacy?"
         : "Are you sure you want to deactivate this Pharmacy?",
-      icon: "/logo/logo.svg",
-      buttons: {
-        cancel: { text: "Cancel", visible: true },
-        confirm: { text: "Ok", value: true }
-      },
+      icon: "question",
+      showConfirmButton : true,
+      showCancelButton:true,
       dangerMode: false
     });
 
     if (!confirmed) {
-      swal(
+      Swal.fire(
         "Declined",
         isActivate
           ? "Pharmacy Activation Declined"
@@ -281,7 +281,7 @@
 
       if (!res.ok) throw new Error("Request failed");
 
-      swal(
+      Swal.fire(
         isActivate ? "Activated" : "Deactivated",
         isActivate
           ? "Pharmacy Activated Successfully"
@@ -292,8 +292,13 @@
       renderPharmacies();
     } catch (err) {
       console.error(err);
-      swal("Error", "Failed to update pharmacy status.", "error");
+      Swal.fire("Error", "Failed to update pharmacy status.", "error");
     }
+
+    }catch(e){
+      console.log(e);
+    }
+
   });
 </script>
   

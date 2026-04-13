@@ -23,8 +23,6 @@ exports.renderCustomerProfile = async (req , res)=>{
             }
         }
 
-        console.log("fuck");
-        
         return view("customer.profile" , {
             header : view('component.header' , {
                 name:`${customer.firstName} ${customer.lastName} || Account - Pharmanet`,

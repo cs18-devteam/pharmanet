@@ -46,6 +46,13 @@ exports.renderStaffProfile = catchAsync(async (req , res)=>{
                             }) ,
                 footer : view('footer'),
                 cart : view('customer/component.cart'),
+                address : (customer.street || customer.addressNo || customer.street || customer.town || customer.province) ?  
+                `<button class="address_add_button"> + Add Your address</button>` 
+            : 
+                `<input type="text" value="{addressNo}" disabled class="update-field update-field_no"><Br>
+                <input type="text" value="{street}" disabled class="update-field update-field_street"><br>
+                <input type="text" value="{town}" disabled class="update-field update-field_town"><br>
+                <input type="text" value="{province}" disabled class="update-field update-field_province"><br>`,
                 ...customer,
                 ...staff,
         }) , 200);

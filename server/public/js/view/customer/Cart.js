@@ -24,6 +24,7 @@ class Cart{
      */
     constructor(selector=".overlay-cart"){
         this.element = document.querySelector(selector);
+        if(!this.element) return;
         this.leftSide = this.element.querySelector('.left-side');
         this.rightSide = this.element.querySelector('.right-side');
         this.popup = this.element.querySelector('.popup');

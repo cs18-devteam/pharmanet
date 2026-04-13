@@ -241,7 +241,7 @@ nav {
 }
 .profile .profileName {
   text-align: left;
-  font-size: 1.6rem;
+  font-size: 2rem;
   color: #666;
   text-decoration: none;
 }
@@ -6611,16 +6611,16 @@ button.save {
 }
 @media screen and (max-width: 710rem) {
   .landing .action-btn {
-    font-size: 1.2rem;
+    font-size: 1.8rem;
   }
   .landing a {
-    font-size: 1.2rem;
+    font-size: 1.8rem;
   }
   .landing .profileName .welcome {
-    font-size: 1.2rem;
+    font-size: 1.8rem;
   }
   .landing .profile .profileName > a {
-    font-size: 1.1rem;
+    font-size: 1.8rem;
   }
 }
 @media screen and (max-width: 697px) {
@@ -9741,6 +9741,9 @@ button.save {
 }
 .orderManage .mainContainer .leftContainer .section .pending {
   color: red;
+}
+.orderManage .mainContainer .leftContainer .section .completed {
+  color: var(--color-green-01);
 }
 .orderManage .mainContainer .leftContainer .products .product {
   display: grid;
@@ -17244,6 +17247,9 @@ button.save {
   justify-self: flex-end;
   margin-left: auto;
 }
+.pharmacyDashboard .dashboards .container.transactions .summery_block .analytics .description .amount::before {
+  content: "Rs. ";
+}
 .pharmacyDashboard .dashboards .container.transactions .summery_block .analytics .bar {
   width: 100%;
   height: 2px;
@@ -17301,16 +17307,16 @@ button.save {
   border: 1px solid #eee;
   border-radius: 3rem;
   margin: 1rem;
-  padding: 0.5rem;
-  width: 8rem;
+  padding: 1rem 2rem;
   align-items: center;
   text-align: center;
   font-weight: 500;
-  background-color: #eee;
+  background-color: #000;
+  color: #fff;
 }
 .pharmacyDashboard .dashboards .container.transactions .transaction_table_container .captions .date_range .print-btn:hover {
   cursor: pointer;
-  background-color: #ccc;
+  background-color: var(--color-green-01);
 }
 .pharmacyDashboard .dashboards .container.transactions .transaction_table_container .captions .date_range .print-btn:active {
   transform: scale(0.95);
@@ -17330,7 +17336,7 @@ button.save {
 .pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table {
   width: 100%;
   margin-top: 2rem;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
 }
 .pharmacyDashboard .dashboards .container.transactions .transaction_table_container .transaction_table thead tr th {
   padding: 1rem 0;

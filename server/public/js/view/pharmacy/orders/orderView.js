@@ -42,15 +42,15 @@ export function orderView(order) {
     <section class="order-info basic" >
        ${order?.prescription ? html`<div>
         <p>
-          <a href="/${order.prescription}" target="_black">
-            <img src="/${order.prescription}" style="cursor : pointer;width : 10rem; aspect-ratio:1; border-radius: 1rem;"  />
+          <a href="${order.prescription.startsWith("/") ? order.prescription : `/${order.prescription}`}" target="_black">
+            <img src="${order.prescription.startsWith("/") ? order.prescription : `/${order.prescription}`}" style="cursor : pointer;width : 10rem; aspect-ratio:1; border-radius: 1rem;"  />
           </a>
         </p>
       </div>` : ""}
 
       <div>
         <label>Order Date</label>
-        <p>${order.createdAt.replace('.000Z', '').split("T").join(' ') || "-"}</p>
+        <p>${order.createdAt?.replace('.000Z', '').split("T").join(' ') || "-"}</p>
       </div>
 
       <div>
@@ -143,7 +143,7 @@ export function orderView(order) {
       <section class="order-items">
       <h3>Transactions List</h3>
 
-      ${(order.transactions.length) ?  
+      ${(order.transactions?.length) ?  
         html`
         <table>
           <thead>

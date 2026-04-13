@@ -130,7 +130,7 @@ exports.renderPharmacyDashboard = async (req, res) => {
 
 exports.sendOnlinePharmacies = apiCatchAsync(async (req, res) => {
 
-    // const { latitude, longitude } = readCookies(req);
+    const { latitude, longitude } = readCookies(req);
     const cartList = req.params.get("carts");
     let medicineIds = [];
     let pharmacies = [];
@@ -179,8 +179,6 @@ exports.sendOnlinePharmacies = apiCatchAsync(async (req, res) => {
 
     pharmacies = pharmacies.flat();
 
-    let latitude = 7.3343434;
-    let longitude = 80.434343;
     //distance check
     if (latitude && longitude) {
         pharmacies = pharmacies.map(p => {
@@ -194,7 +192,6 @@ exports.sendOnlinePharmacies = apiCatchAsync(async (req, res) => {
         pharmacies = pharmacies.sort((a, b) => a.distance - b.distance)
     }
 
-    console.log(pharmacies);
 
     return responseJson(res, 200, {
         status: "success",

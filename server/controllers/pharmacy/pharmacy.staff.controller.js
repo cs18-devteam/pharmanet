@@ -86,17 +86,15 @@ exports.getStaffMembers = apiCatchAsync(async (req, res) => {
     const [user] = await Users.getById(staff.userId);
     const [pharmacy] = await Pharmacies.getById(req.pharmacyId);
    
-
-    
+    if(!user) return undefined;
+  
     return { ...staff, ...user, ...pharmacy, userId: user.id };
   });
 
-
-
-
-  members = await Promise.all(members);
   
-
+  members = await Promise.all(members);
+  members = members.filter(m=>m!= undefined);
+  
 
   return responseJson(res, 200, {
     status: "success",

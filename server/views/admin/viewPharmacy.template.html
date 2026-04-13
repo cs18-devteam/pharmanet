@@ -134,59 +134,64 @@
 
       //FETCH ALL USERS
       async function loadUsers() {
-        const res = await fetch(API_URL);
-        const payload = await res.json();
+        try{
 
-        const users = payload.results;
-
-        const pharmacyName = users[0].name.toUpperCase();
-        const header1 = document.getElementById("header1");
-        const header2 = document.getElementById("header2");
-
-        header1.innerHTML = `<h1>${pharmacyName} - Inventory</h1>`;
-        header2.innerHTML = `<h1>${pharmacyName} - Staff</h1>`;
-
-        const tableBody = document.getElementById("users-table-body");
-        tableBody.innerHTML = "";
-
-        if (!Array.isArray(users) || users.length === 0) {
-          tableBody.innerHTML = '<tr><td colspan="6">No users found</td></tr>';
-          return;
-        }
-
-        users.forEach((user) => {
-          const initials = (
-            user.firstName ||
-            user.lastName ||
-            user.fullName ||
-            "U"
-          )
+          const res = await fetch(API_URL);
+          const payload = await res.json();
+          
+          const users = payload.results;
+          
+          const pharmacyName = users[0].name.toUpperCase();
+          const header1 = document.getElementById("header1");
+          const header2 = document.getElementById("header2");
+          
+          header1.innerHTML = `<h1>${pharmacyName} - Inventory</h1>`;
+          header2.innerHTML = `<h1>${pharmacyName} - Staff</h1>`;
+          
+          const tableBody = document.getElementById("users-table-body");
+          tableBody.innerHTML = "";
+          
+          if (!Array.isArray(users) || users.length === 0) {
+            tableBody.innerHTML = '<tr><td colspan="6">No users found</td></tr>';
+            return;
+          }
+          
+          users.forEach((user) => {
+            const initials = (
+              user.firstName ||
+              user.lastName ||
+              user.fullName ||
+              "U"
+            )
             .split(" ")
             .map((n) => n[0])
             .join("")
             .toUpperCase();
-          const avatar = user.avatar || initials;
-          const status = user.status || "Active";
-
-          const row = document.createElement("tr");
-          row.innerHTML = `
-              <td>
-                <div class="user-info">
-                  <div class="avatar">${avatar}</div>
-                  <div class="details">
-                    <div class="name">${user.firstName + " " + user.lastName || user.fullName}</div>
-                    <div class="email">${user.email}</div>
+            const avatar = user.avatar || initials;
+            const status = user.status || "Active";
+            
+            const row = document.createElement("tr");
+            row.innerHTML = `
+            <td>
+              <div class="user-info">
+                <div class="avatar">${avatar}</div>
+                <div class="details">
+                  <div class="name">${user.firstName + " " + user.lastName || user.fullName}</div>
+                  <div class="email">${user.email}</div>
                   </div>
-                </div>
-              </td>
-              <td><span class="role">${user.role || "N/A"}</span></td>
-              <td>${user.name || "N/A"}</td>
-              <td> ${status ? `<span class="status active">Active</span>` : `<span class="status inactive">Inactive</span>`}</td>
-              <!-- <td>2 hours ago</td> -->
-
-            `;
-          tableBody.appendChild(row);
-        });
+                  </div>
+                  </td>
+                  <td><span class="role">${user.role || "N/A"}</span></td>
+                  <td>${user.name || "N/A"}</td>
+                  <td> ${status ? `<span class="status active">Active</span>` : `<span class="status inactive">Inactive</span>`}</td>
+                  <!-- <td>2 hours ago</td> -->
+                  
+                  `;
+                  tableBody.appendChild(row);
+                });
+              }catch(e){
+                  console.log(e);
+              }
       }
     </script>
 
@@ -195,44 +200,49 @@
 
       //FETCH ALL MEDICINES
       async function loadMedicines() {
-        const res = await fetch(
-          `${window.location.origin}/pharmacies/${pharmacyId}/api/medicines`,
-        );
-        const payload = await res.json();
-        const medicines = payload.results;
-        let stock = [];
+        try{
 
-        const totalItems = document.getElementById("totalItems");
-        totalItems.innerHTML = `<h2>${medicines.length}</h2>`;
-
-        const tableBody = document.getElementById("medicines-table-body");
-        tableBody.innerHTML = "";
-
-        if (!Array.isArray(medicines) || medicines.length === 0) {
-          tableBody.innerHTML =
+          const res = await fetch(
+            `${window.location.origin}/pharmacies/${pharmacyId}/api/medicines`,
+          );
+          const payload = await res.json();
+          const medicines = payload.results;
+          let stock = [];
+          
+          const totalItems = document.getElementById("totalItems");
+          totalItems.innerHTML = `<h2>${medicines.length}</h2>`;
+          
+          const tableBody = document.getElementById("medicines-table-body");
+          tableBody.innerHTML = "";
+          
+          if (!Array.isArray(medicines) || medicines.length === 0) {
+            tableBody.innerHTML =
             '<tr><td colspan="6">No medicines found</td></tr>';
-          return;
-        }
-
-        medicines.forEach((medicine) => {
-          const row = document.createElement("tr");
-          row.innerHTML = `
-              <td>${medicine.geneticName}</td>
-              <td>${medicine.category}</td>
-              <td>${medicine.stock}</td>
-              <td>${medicine.publicStock}</td>
-              <td>${medicine.price}</td>
-              <td>${medicine.expiryDate}</td>
-              <td>${medicine.stock > 25 ? `<span class="badge optimal">Optimal</span>` : `<span class="badge warning">Low Stock</span>`}</td>
-
-            `;
-          {
-            medicine.stock < 25 ? stock.push(medicine.id) : "";
+            return;
           }
-          tableBody.appendChild(row);
-        });
-
-        document.getElementById("lowStock").innerHTML = stock.length || "0";
+          
+          medicines.forEach((medicine) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+            <td>${medicine.geneticName}</td>
+            <td>${medicine.category}</td>
+            <td>${medicine.stock}</td>
+            <td>${medicine.publicStock}</td>
+            <td>${medicine.price}</td>
+            <td>${medicine.expiryDate}</td>
+            <td>${medicine.stock > 25 ? `<span class="badge optimal">Optimal</span>` : `<span class="badge warning">Low Stock</span>`}</td>
+            
+            `;
+            {
+              medicine.stock < 25 ? stock.push(medicine.id) : "";
+            }
+            tableBody.appendChild(row);
+          });
+          
+          document.getElementById("lowStock").innerHTML = stock.length || "0";
+        }catch(e){
+          console.log(e);
+        }
       }
     </script>
 
@@ -241,38 +251,43 @@
       //expiryDate card
 
       async function loadExpiringSoonCard() {
-        const expiringSoonEl = document.getElementById("expiringSoon");
-        const expired = document.getElementById("expired");
-        const today = new Date();
-        const cutoff = new Date();
-        const res = await fetch(
-          `${window.location.origin}/pharmacies/${pharmacyId}/api/medicines`,
-        );
-        const payload = await res.json();
-        const medicines = payload.results;
-        cutoff.setDate(today.getDate() + 30); // change 30 to your preferred range
+        try{
 
-        const expiringSoonCount = (
-          Array.isArray(medicines) ? medicines : []
-        ).filter((m) => {
-          if (!m.expiryDate) return false;
-          const d = new Date(m.expiryDate);
-          if (Number.isNaN(d.getTime())) return false;
-          return d >= today && d <= cutoff;
-        }).length;
-
-        expiringSoonEl.textContent = expiringSoonCount;
-
-        const expiredCount = (Array.isArray(medicines) ? medicines : []).filter(
-          (m) => {
+          const expiringSoonEl = document.getElementById("expiringSoon");
+          const expired = document.getElementById("expired");
+          const today = new Date();
+          const cutoff = new Date();
+          const res = await fetch(
+            `${window.location.origin}/pharmacies/${pharmacyId}/api/medicines`,
+          );
+          const payload = await res.json();
+          const medicines = payload.results;
+          cutoff.setDate(today.getDate() + 30); // change 30 to your preferred range
+          
+          const expiringSoonCount = (
+            Array.isArray(medicines) ? medicines : []
+          ).filter((m) => {
             if (!m.expiryDate) return false;
             const d = new Date(m.expiryDate);
             if (Number.isNaN(d.getTime())) return false;
-            return d <= today;
-          },
-        ).length;
-
-        expired.textContent = expiredCount;
+            return d >= today && d <= cutoff;
+          }).length;
+          
+          expiringSoonEl.textContent = expiringSoonCount;
+          
+          const expiredCount = (Array.isArray(medicines) ? medicines : []).filter(
+            (m) => {
+              if (!m.expiryDate) return false;
+              const d = new Date(m.expiryDate);
+              if (Number.isNaN(d.getTime())) return false;
+              return d <= today;
+            },
+          ).length;
+          
+          expired.textContent = expiredCount;
+        }catch(e){
+          console.log(e);
+        }
       }
     </script>
 

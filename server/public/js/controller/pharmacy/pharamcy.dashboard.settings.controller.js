@@ -32,6 +32,7 @@ const templateSettings = html`
         </div>
 
         <div class="basic-info info">
+            <div style="color:var(--color-green-01); text-transform : capitalize;">( {pharmacyName} )</div>
             <div>{firstName} {lastName}</div>
             <div>{email}</div>
         </div>
@@ -43,13 +44,13 @@ const templateSettings = html`
             <div>{street} , {town}</div>
             <div>{province}</div>
         </div>
-
+<!-- 
         <div class="banking-info info">
             <h3>Banking info</h3>
             <div>{accountNo}</div>
             <div>{bank}</div>
             <div>{branch}</div>
-        </div>
+        </div> -->
 
         <div class="danger-zone">
             <h2 class="danger-zone__heading--2">danger zone</h2>
@@ -98,23 +99,22 @@ function getFullViewToggleState() {
 // openSidebar();
 
 export default function init() {
-
-
     setSidebarContent(templateSettings
-        .replace("{role}", Application.staff.role || "standard")
-        .replace("{profile}", Application.user.profile || "-")
-        .replace("{firstName}", Application.user.firstName || "-")
-        .replace("{lastName}", Application.user.lastName || "-")
-        .replace("{email}", Application.user.email || "-")
-        .replace("{addressNo}", Application.user.addressNo || "-")
+        .replace("{role}", Application.staff?.role || "standard")
+        .replace("{profile}", Application.user?.profile || "-")
+        .replace("{firstName}", Application.user?.firstName || "-")
+        .replace("{lastName}", Application.user?.lastName || "-")
+        .replace("{email}", Application.user?.email || "-")
+        .replace("{addressNo}", Application.user?.addressNo || "-")
         .replace("{street}", Application.user.street || "-")
-        .replace("{town}", Application.user.town || "-")
-        .replace("{province}", Application.user.province || "-")
-        .replace("{accountNo}", Application.user.accountNo || "not available")
-        .replace("{bank}", Application.user.bank || "-")
-        .replace("{branch}", Application.user.bankBranch || "-")
-        .replace("{staffId}", Application.staff.id || "-")
-        .replace("{pharmacyId}", Application.staff.pharmacyId || "-")
+        .replace("{town}", Application.user?.town || "-")
+        .replace("{province}", Application.user?.province || "-")
+        .replace("{accountNo}", Application.user?.accountNo || "not available")
+        .replace("{bank}", Application.user?.bank || "-")
+        .replace("{branch}", Application.user?.bankBranch || "-")
+        .replace("{staffId}", Application.staff?.id || "-")
+        .replace("{pharmacyId}", Application.staff?.pharmacyId || "-")
+        .replace("{pharmacyName}", Application.pharmacy?.name || "-")
     );
     openSidebar();
     handleSignOut();

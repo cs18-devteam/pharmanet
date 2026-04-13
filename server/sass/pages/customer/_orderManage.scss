@@ -167,6 +167,10 @@ $pending-color: #cccccc;
         .pending { 
             color: red; 
         }
+
+        .completed{
+          color: var(--color-green-01);
+        }
       }
 
       .products {

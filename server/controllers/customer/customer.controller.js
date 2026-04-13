@@ -136,7 +136,7 @@ exports.renderCustomerOrders = catchAsync(async (req, res) => {
                         o.pharmacy = undefined;
                 }
 
-                const [transaction] = await Transactions.get({
+                const transaction = await Transactions.get({
                         orderId: o.id,
                 })
 
@@ -175,7 +175,6 @@ exports.renderCustomerOrders = catchAsync(async (req, res) => {
 
 
 
-
         return response(res, view('customer/customer.orders.history', {
                 ...customer,
                 navbar: view('customer/navbar.customer', customer),
@@ -185,10 +184,11 @@ exports.renderCustomerOrders = catchAsync(async (req, res) => {
                 }),
                 orders: orders.length ? (orders.map(o => view("customer/component.order.card", {
                         ...o,
+                        customerId: customer.id,
                         pharmacy: o.pharmacy ? o.pharmacy.name || "can't find name" : " No pharmacy Involved ",
                         pharmacist: o.pharmacy ? o.pharmacy.pharmacist || "No Pharmacist" : " No pharmacy Involved ",
                         pharmacyId: o.pharmacy ? o.pharmacy.id || "000" : "000",
-                        status: o.transaction ? "Paid" : "Pending",
+                        status: o.status ? (o.status == "completed" ? "completed" :(o.status != "pending" ? "active" : "pending") ) : "pending",
                         createdAt: o.createdAt ? new Date(o.createdAt) : "Date not available",
                         items: o.items.map(i => ` 
                         <div class="product ${i.itemType}">
@@ -204,6 +204,7 @@ exports.renderCustomerOrders = catchAsync(async (req, res) => {
                         total: o.summery.total,
                         discount: o.summery.discount,
                         loyalty: o.summery.loyalty,
+                        paymentStatus : o.transaction?.length ? "completed" : "pending", 
 
                 })).join(' ')) : view("components/component.404", {
                         message: "Look like still no orders",

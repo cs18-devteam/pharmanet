@@ -168,7 +168,7 @@ exports.renderCustomerSelectedMedicine = catchAsync(async (req, res) => {
         footer: view('footer'),
         ...medicine,
         cart: view('customer/component.cart'),
-        availablePharmacies: filteredPharmacies.map(phr => view('customer/component.pharmacy.card', phr)).join(' ')
+        availablePharmacies: filteredPharmacies?.length ? filteredPharmacies.map(phr => view('customer/component.pharmacy.card', phr)).join(' ') : `<div style="display:inline-block ; margin:0 auto; font-size: 3rem; color: #999;">This medicine not available in any pharmacy</div>`,
     }), 200);
 
 })

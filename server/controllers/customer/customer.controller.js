@@ -49,6 +49,7 @@ exports.renderCustomerHome = async (req, res) => {
                                         name: m.geneticName,
                                         image: m.image,
                                         id: m.id,
+                                        customerId : customer.id,
                                 })).join(' ')
                         }), 200)
                 } else {

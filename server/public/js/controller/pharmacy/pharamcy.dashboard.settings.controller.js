@@ -105,10 +105,10 @@ export default function init() {
         .replace("{firstName}", Application.user?.firstName || "-")
         .replace("{lastName}", Application.user?.lastName || "-")
         .replace("{email}", Application.user?.email || "-")
-        .replace("{addressNo}", Application.user?.addressNo || "-")
-        .replace("{street}", Application.user.street || "-")
-        .replace("{town}", Application.user?.town || "-")
-        .replace("{province}", Application.user?.province || "-")
+        .replace("{addressNo}", Application.pharmacy?.addressNo || "-")
+        .replace("{street}", Application.pharmacy.street || "-")
+        .replace("{town}", Application.pharmacy?.town || "-")
+        .replace("{province}", Application.pharmacy?.province || "-")
         .replace("{accountNo}", Application.user?.accountNo || "not available")
         .replace("{bank}", Application.user?.bank || "-")
         .replace("{branch}", Application.user?.bankBranch || "-")
@@ -164,7 +164,6 @@ function handleFullViewToggle() {
 
 function handleSignOut() {
     document.querySelector('.signout#signout').addEventListener('click', () => {
-
         swal({
             title: "do you want to signout ?",
             icon: 'question',
@@ -174,6 +173,7 @@ function handleSignOut() {
         }).then((value) => {
 
             window.cookieStore.getAll().then((cookies) => {
+                console.log(cookies);
                 cookies.forEach(c => window.cookieStore.delete(c.name));
         })
 

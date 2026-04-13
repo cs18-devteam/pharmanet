@@ -1,4 +1,6 @@
 const { apiCatchAsync } = require("../common/catchAsync");
+const File = require("../common/File");
+const getMultipartData = require("../common/getMultipartData");
 const { getRequestData } = require("../common/getRequestData");
 const { responseJson } = require("../common/response");
 const Pharmacies = require("../models/PharmacyModel");
@@ -89,4 +91,36 @@ exports.updateProfile = apiCatchAsync(async (req , res)=>{
     })
 
     
+})
+
+
+exports.updateUserProfile = apiCatchAsync(async (req , res)=>{
+    const {profile} = await getMultipartData(req);
+    const userId = req.userId;
+    const [user] = await Users.getById(userId)
+    if(!user) throw new Error("user not found");
+
+
+    if(!profile && !(profile instanceof File)) throw new Error("Unsupported file format");
+
+    const fileName = `${Date.now()}-${userId}.${profile.fileName.split('.').slice(-1)}`;
+    const filePath =  `/users`;
+
+    profile.rename(fileName);
+    const status = await profile.save(filePath);
+
+    await Users.update({
+        id: userId,
+        profile: filePath +"/"+ fileName,
+    })
+
+    
+    if(status.status != "success") throw new Error("file not saved");
+
+    return responseJson(res , 200 , {
+        status:"success",
+        profile : filePath +"/"+ fileName,
+    })
+
+
 })

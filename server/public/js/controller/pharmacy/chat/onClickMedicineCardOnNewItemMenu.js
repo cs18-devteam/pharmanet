@@ -41,6 +41,8 @@ export async function onClickMedicineCardOnNewItemMenu() {
                 orderId: Application.remoteOrderId,
             });
 
+
+
             if (status == "success") {
                 swal({
                     title: "item added to order",

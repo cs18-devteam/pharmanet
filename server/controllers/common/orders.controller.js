@@ -455,11 +455,12 @@ exports.deleteOrder = apiCatchAsync(async (req, res) => {
         orderId: id,
     })
 
-
+    console.log(items);
 
     items = await Promise.all(items.map(async i => {
         if (i.itemType == "medicine") {
             const [med] = await PharmacyMedicines.getById(i.itemId);
+            if(!med) return undefined;
             console.log(med, med.publicStock + i.quantity);
 
             await PharmacyMedicines.update({

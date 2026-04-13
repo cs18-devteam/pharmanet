@@ -1,6 +1,7 @@
 import Application from "../../../model/application/Application.js";
 import ChatTemplates from "../../../model/application/ChatTemplates.js";
 import cart from "../../../view/customer/Cart.js";
+import { renderToast } from "../../../view/renderToast.js";
 import { swal } from "../../../view/swal.js";
 
 export default async function onSelectPrescription(e, input, card, skip) {

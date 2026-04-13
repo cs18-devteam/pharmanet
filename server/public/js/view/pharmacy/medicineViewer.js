@@ -3,6 +3,7 @@ import html from "../html.js";
 export function createMedicineViewerContent(medicine){
     if(!medicine) return "";
 
+    console.log(medicine);
     
 
     const isAvailable = medicine.stock.stock;
@@ -43,7 +44,7 @@ export function createMedicineViewerContent(medicine){
                 
                 <div class="actions">
                     <!-- <div class="bookmark"></div> -->
-                    <div class="edit">edit</div>
+                   ${!isAvailable ? "" : `<div class="edit">edit</div>` }
                     <div class="close" onclick="this.closest('.drawer').setAttribute('status' , 'close')">close</div>
                 </div>
 

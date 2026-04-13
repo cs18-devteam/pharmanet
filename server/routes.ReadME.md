@@ -129,6 +129,7 @@
 /pharmacies/:pharmacyId/staff/:staffId/permissions
 /pharmacies/:pharmacyId/api/staff
 /api/v1/users/:userId
+/api/v1/users/:userId/upload/profile
 /api/v1/pharmacy/:pharmacyId
 /api/v1/staff/:staffId
 /api/v1/pharmacies/:pharmacyId/transactions

@@ -7,6 +7,9 @@ exports.profileDetailsApiRouter = SubRouter.route('/api/v1')
     delete : profileApiController.deleteProfile,
     update : profileApiController.updateProfile,
 })
+.subRoute("/users/:userId/upload/profile" , {
+    post : profileApiController.updateUserProfile,
+})
 .subRoute('/pharmacy/:pharmacyId' , {
     get: profileApiController.getPharmacyProfileJsonData,
 })

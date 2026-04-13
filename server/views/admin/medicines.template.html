@@ -1,138 +1,140 @@
 {header}
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <body class="medicines" id="pageContent">
-    <div class="container">
+  <div class="container">
     <div class="container-1">
-    <div class="sideBar">
-    <div class="logo">
-      <img class="logopic" src="/logo/logo.svg" alt="logo">
-      <div>
-        <h3>System Admin</h3>
-        <p>Management System</p>
-      </div>
-    </div>
+      <div class="sideBar">
+        <div class="logo">
+          <img class="logopic" src="/logo/logo.svg" alt="logo">
+          <div>
+            <h3>System Admin</h3>
+            <p>Management System</p>
+          </div>
+        </div>
 
-  {sidebar}
+        {sidebar}
 
-    <!-- <div class="menuItem">
+        <!-- <div class="menuItem">
         <button class="text setting"> Settings</button>
         <button class="text signOut"> Sign Out</button>
     </div> -->
-  </div>
-  </div>
+      </div>
+    </div>
 
-  <div class="container-2">
-  <div class="main">
-    <header>
-      <input type="text" style="height: 5rem; font-size: 2rem; font-weight: 400; color: var(--color-green-02);"  id="searchInput" placeholder="Search medicines..." />
-      <!-- <div class="user-section">
+    <div class="container-2">
+      <div class="main">
+        <header>
+          <input type="text" style="height: 5rem; font-size: 2rem; font-weight: 400; color: var(--color-green-02);"
+            id="searchInput" placeholder="Search medicines..." />
+          <!-- <div class="user-section">
         <span class="bell"></span>
         <div class="admin">AD</div>
       </div> -->
-    </header>
+        </header>
 
-    <section class="dashboard">
-     <div class="sectionHeading">
-    <div>
-      <h1>Medicines</h1>
-      <p>Manage medicine inventory across all pharmacies.</p>
-      </div>
-      <div>
-      <button class="addBtn" onclick="openPopup('addMedicineModal')">Add Medicines</button>
-      </div>
-      </div>
-
-
-    <div class="uploadCard">
-      <h3>Upload Medicines from Excel</h3>
-      <input type="file" id="medicineFileInput" accept=".xlsx,.xls" />
-      <button id="uploadSubmitButton" class="uploadButton" type="button">Submit</button>
-    </div>   
-</section>
-
-<div class="addMedicine" id="addMedicineModal">
-  <div class="modal">
-    <div class="modal-header">
-      <div>
-        <h2>Add New Medicine</h2>
-        <p>Enter the medicine details below. Click save when you're done.</p>
-      </div>
-      <button class="close-btn" onclick="closePopup('addMedicineModal')">&times;</button>
-    </div>
-
-    <form class="medicine-form" id="addMedicineForm" action="post">
-      <div class="form-row">
-        <label>Medicine Name</label>
-        <input type="" name="geneticName" placeholder="e.g., Amoxicillin" required>
-      </div>
-
-      <div class="form-row">
-        <label>Dosage</label>
-        <input type="text" name="dosage" placeholder="e.g., 500mg" required>
-      </div>
-
-      <div class="form-row">
-        <label>Category</label>
-        <select name="category" required>
-          <option>Select category</option>
-          <option value="Antibiotic">Antibiotic</option>
-          <option value="Pain-relief">Pain-relief</option>
-          <option value="Cardiac">Cardiac</option>
-          <option value="Gastric">Gastric</option>
-        </select>
-      </div>
-
-      <div class="form-row">
-        <label>Manufacturer</label>
-        <input type="text" name="manufacturer" placeholder="e.g., PharmaCorp" required>
-      </div>
-
-      <div class="form-row">
-        <label>Brand Name</label>
-        <input type="text" name="brandName" placeholder="e.g., Medistol" required>
-      </div>
-
-      <div class="form-row">
-        <label>Schedule</label>
-        <select id="edit-schedule" name="schedule" required>
-          <option value="">Select schedule</option>
-          <option value="I">I</option>
-          <option value="IIA">IIA</option>
-          <option value="IIB">IIB</option>
-        </select>
-      </div>
-
-      <div class="form-row">
-        <label>Expiry Date</label>
-        <input type="date" name="expiryDate" required>
-      </div>
-
-      <div class="modal-footer">
-        <button class="cancel-btn" onclick="closePopup('addMedicineModal')">Cancel</button>
-        <button type="submit" class="save-btn">Save Medicine</button>
-      </div>
-    </form>
-  </div>
-</div>
+        <section class="dashboard">
+          <div class="sectionHeading">
+            <div>
+              <h1>Medicines</h1>
+              <p>Manage medicine inventory across all pharmacies.</p>
+            </div>
+            <div>
+              <button class="addBtn" onclick="openPopup('addMedicineModal')">Add Medicines</button>
+            </div>
+          </div>
 
 
- <div class="table-container">
-    <table class="medicine-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Medicine</th>
-          <th>Category</th>
-          <th>Manufacturer</th>
-          <th>Brand Name</th>
-          <th>Shedule</th>
-          <th>Expiry Date</th>
-          <!-- <th>Status</th> -->
-          <th></th>
-        </tr>
-      </thead>
-      <tbody id="medicineTableBody">
-        <!-- <tr>
+          <div class="uploadCard">
+            <h3>Upload Medicines from Excel</h3>
+            <input type="file" id="medicineFileInput" accept=".xlsx,.xls" />
+            <button id="uploadSubmitButton" class="uploadButton" type="button">Submit</button>
+          </div>
+        </section>
+
+        <div class="addMedicine" id="addMedicineModal">
+          <div class="modal">
+            <div class="modal-header">
+              <div>
+                <h2>Add New Medicine</h2>
+                <p>Enter the medicine details below. Click save when you're done.</p>
+              </div>
+              <button class="close-btn" onclick="closePopup('addMedicineModal')">&times;</button>
+            </div>
+
+            <form class="medicine-form" id="addMedicineForm" action="post">
+              <div class="form-row">
+                <label>Medicine Name</label>
+                <input type="" name="geneticName" placeholder="e.g., Amoxicillin" required>
+              </div>
+
+              <div class="form-row">
+                <label>Dosage</label>
+                <input type="text" name="dosage" placeholder="e.g., 500mg" required>
+              </div>
+
+              <div class="form-row">
+                <label>Category</label>
+                <select name="category" required>
+                  <option>Select category</option>
+                  <option value="Antibiotic">Antibiotic</option>
+                  <option value="Pain-relief">Pain-relief</option>
+                  <option value="Cardiac">Cardiac</option>
+                  <option value="Gastric">Gastric</option>
+                </select>
+              </div>
+
+              <div class="form-row">
+                <label>Manufacturer</label>
+                <input type="text" name="manufacturer" placeholder="e.g., PharmaCorp" required>
+              </div>
+
+              <div class="form-row">
+                <label>Brand Name</label>
+                <input type="text" name="brandName" placeholder="e.g., Medistol" required>
+              </div>
+
+              <div class="form-row">
+                <label>Schedule</label>
+                <select id="edit-schedule" name="schedule" required>
+                  <option value="">Select schedule</option>
+                  <option value="I">I</option>
+                  <option value="IIA">IIA</option>
+                  <option value="IIB">IIB</option>
+                </select>
+              </div>
+
+              <div class="form-row">
+                <label>Expiry Date</label>
+                <input type="date" name="expiryDate" required>
+              </div>
+
+              <div class="modal-footer">
+                <button class="cancel-btn" onclick="closePopup('addMedicineModal')">Cancel</button>
+                <button type="submit" class="save-btn">Save Medicine</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+
+        <div class="table-container">
+          <table class="medicine-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Medicine</th>
+                <th>Category</th>
+                <th>Manufacturer</th>
+                <th>Brand Name</th>
+                <th>Shedule</th>
+                <th>Expiry Date</th>
+                <!-- <th>Status</th> -->
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="medicineTableBody">
+              <!-- <tr>
           <td>Amoxicillin<br><small>500mg</small></td>
           <td><span class="tag antibiotics">Antibiotics</span></td>
           <td>PharmaCorp</td>
@@ -140,7 +142,7 @@
           <td>11B</td>
           <td>2025-08-15</td>
            <td><span class="status in-stock">In Stock</span></td> -->
-          <!-- <td class="actions">
+              <!-- <td class="actions">
             <div class="dropdownMenu">
               <button class="dots">⋮</button>
               <ul class="dropdown">
@@ -152,7 +154,7 @@
           </td>
         </tr>  -->
 
-        <!-- <tr>
+              <!-- <tr>
           <td>Ibuprofen<br><small>400mg</small></td>
           <td><span class="tag pain-relief">Pain Relief</span></td>
           <td>MediLife</td>
@@ -256,217 +258,217 @@
             </div>
           </td>
         </tr> -->
-      </tbody>
-    </table>
-  </div>
+            </tbody>
+          </table>
+        </div>
 
-<!-- view medicine details modal -->
-<!-- Modal -->
-<div id="viewPopup" class="viewMedicine">
-  <div class="modal">
-  <div class="modal-header">
-    <div class="title-block">
-      <div>
-        <h2>Amoxicillin</h2>
-        <p>500mg</p>
+        <!-- view medicine details modal -->
+        <!-- Modal -->
+        <div id="viewPopup" class="viewMedicine">
+          <div class="modal">
+            <div class="modal-header">
+              <div class="title-block">
+                <div>
+                  <h2>Amoxicillin</h2>
+                  <p>500mg</p>
+                </div>
+              </div>
+
+              <button id="closeModal" class="close-icon" onclick="closePopup('viewPopup')">✕</button>
+            </div>
+
+            <div class="alert-box">
+              <span class="alert-icon">⚠</span>
+              <div>
+                <strong>Expiry Alert</strong>
+                <p>Expires on <span>2025-08-15</span></p>
+              </div>
+            </div>
+
+            <div class="info-grid">
+              <div class="info-card">
+                <p class="label">Category</p>
+                <h4>Antibiotics</h4>
+              </div>
+
+              <div class="info-card">
+                <p class="label">Manufacturer</p>
+                <h4>PharmaCorp</h4>
+              </div>
+
+              <div class="info-card">
+                <p class="label">Current Stock</p>
+                <h4 class="highlight">847 units</h4>
+              </div>
+
+              <div class="info-card">
+                <p class="label">Price Per Unit</p>
+                <h4>$12.99</h4>
+              </div>
+            </div>
+
+            <div class="section">
+              <p class="label">Batch Number</p>
+              <div class="field">PC-2024-001</div>
+            </div>
+
+            <div class="section">
+              <p class="label">Storage Temperature</p>
+              <p>15–25°C</p>
+            </div>
+
+            <div class="section">
+              <p class="label">Description</p>
+              <p>Broad-spectrum antibiotic for bacterial infections</p>
+            </div>
+
+            <div class="section">
+              <p class="label">Status</p>
+              <span class="status in-stock">In Stock</span>
+            </div>
+
+            <div class="modal-footer">
+              <button class="footer-close" onclick="closePopup('viewPopup')">Close</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
-    <button id="closeModal" class="close-icon" onclick="closePopup('viewPopup')">✕</button>
   </div>
 
-  <div class="alert-box">
-    <span class="alert-icon">⚠</span>
-    <div>
-      <strong>Expiry Alert</strong>
-      <p>Expires on <span>2025-08-15</span></p>
-    </div>
-  </div>
 
-  <div class="info-grid">
-    <div class="info-card">
-      <p class="label">Category</p>
-      <h4>Antibiotics</h4>
-    </div>
-
-    <div class="info-card">
-      <p class="label">Manufacturer</p>
-      <h4>PharmaCorp</h4>
-    </div>
-
-    <div class="info-card">
-      <p class="label">Current Stock</p>
-      <h4 class="highlight">847 units</h4>
-    </div>
-
-    <div class="info-card">
-      <p class="label">Price Per Unit</p>
-      <h4>$12.99</h4>
-    </div>
-  </div>
-
-  <div class="section">
-    <p class="label">Batch Number</p>
-    <div class="field">PC-2024-001</div>
-  </div>
-
-  <div class="section">
-    <p class="label">Storage Temperature</p>
-    <p>15–25°C</p>
-  </div>
-
-  <div class="section">
-    <p class="label">Description</p>
-    <p>Broad-spectrum antibiotic for bacterial infections</p>
-  </div>
-
-  <div class="section">
-    <p class="label">Status</p>
-    <span class="status in-stock">In Stock</span>
-  </div>
-
-  <div class="modal-footer">
-    <button class="footer-close" onclick="closePopup('viewPopup')">Close</button>
-  </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-
-<div class="editModal" id="editPopup">
-<div class="modal">
-<div class="modal-header">
-<div>
-<h2>Edit Medicine Details</h2>
-<p class="subtitle">Update information for Amoxicillin</p>
-</div>
-<button class="close-icon" onclick="closePopup('editPopup')">×</button>
-</div>
+  <div class="editModal" id="editPopup">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <h2>Edit Medicine Details</h2>
+          <p class="subtitle">Update information for Amoxicillin</p>
+        </div>
+        <button class="close-icon" onclick="closePopup('editPopup')">×</button>
+      </div>
 
 
 
-<form class="form" id="editMedicineModal">
-<div class="row">
-<div class="field">
-<label>Medicine Name *</label>
-<input type="text" id="edit-name" name="name" value="" required />
-</div>
-<div class="field">
-<label>Brand Name *</label>
-<input type="text" id="edit-brandName" name="brandName" value="" required />
-</div>
-</div>
+      <form class="form" id="editMedicineModal">
+        <div class="row">
+          <div class="field">
+            <label>Medicine Name *</label>
+            <input type="text" id="edit-name" name="name" value="" required />
+          </div>
+          <div class="field">
+            <label>Brand Name *</label>
+            <input type="text" id="edit-brandName" name="brandName" value="" required />
+          </div>
+        </div>
 
 
-<div class="row">
-<div class="field">
-<label>Dosage *</label>
-<input type="text" id="edit-dosage" name="dosage" value="" required />
-</div>
-<div class="field">
-<label>Schedule</label>
-<select id="edit-schedule" name="schedule">
-   <option value="">Select schedule</option>
-   <option value="I">I</option>
-   <option value="IIA">IIA</option>
-   <option value="IIB">IIB</option>
-</select>
-</div>
-</div>
+        <div class="row">
+          <div class="field">
+            <label>Dosage *</label>
+            <input type="text" id="edit-dosage" name="dosage" value="" required />
+          </div>
+          <div class="field">
+            <label>Schedule</label>
+            <select id="edit-schedule" name="schedule">
+              <option value="">Select schedule</option>
+              <option value="I">I</option>
+              <option value="IIA">IIA</option>
+              <option value="IIB">IIB</option>
+            </select>
+          </div>
+        </div>
 
 
-<div class="row">
-<div class="field">
-<label>Manufacturer</label>
-<input type="text" id="edit-manufacturer" name="manufacturer" value="" />
-</div>
-<div class="field">
-<label>Category</label>
-<select id="edit-category" name="category">
-   <option value="">Select category</option>
-   <option value="Antibiotic">Antibiotic</option>
-   <option value="Pain-relief">Pain-relief</option>
-   <option value="Cardiac">Cardiac</option>
-   <option value="Gastric">Gastric</option>
-</select>
-</div>
-</div>
+        <div class="row">
+          <div class="field">
+            <label>Manufacturer</label>
+            <input type="text" id="edit-manufacturer" name="manufacturer" value="" />
+          </div>
+          <div class="field">
+            <label>Category</label>
+            <select id="edit-category" name="category">
+              <option value="">Select category</option>
+              <option value="Antibiotic">Antibiotic</option>
+              <option value="Pain-relief">Pain-relief</option>
+              <option value="Cardiac">Cardiac</option>
+              <option value="Gastric">Gastric</option>
+            </select>
+          </div>
+        </div>
 
-<div class="row">
-  <div class="field">
-    <label>Date</label>
-    <input type="date" id="edit-expiryDate" name="expiryDate"/>
-  </div>
-</div>
+        <div class="row">
+          <div class="field">
+            <label>Date</label>
+            <input type="date" id="edit-expiryDate" name="expiryDate" />
+          </div>
+        </div>
 
 
-<!-- <div class="toggle">
+        <!-- <div class="toggle">
 <span>Prescription Required</span>
 <input type="checkbox" id="edit-prescription" />
 </div> -->
 
 
-<div class="actions">
-<button type="button" class="cancel" onclick="closePopup('editPopup')">Cancel</button>
-<button type="submit" class="save">Save Changes</button>
-</div>
-</form>
-</div>
-</div>
+        <div class="actions">
+          <button type="button" class="cancel" onclick="closePopup('editPopup')">Cancel</button>
+          <button type="submit" class="save">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
 
 
 
 
- 
+
   <script>
-  const pathParts = window.location.pathname.split('/');
-  const adminIdIndex = pathParts.indexOf('admin') + 1;
-  const adminId = pathParts[adminIdIndex];
-
-  
-  //Search filter
-  document.getElementById('searchInput').addEventListener('keyup', function () {
-  const filter = this.value.toLowerCase(); // what user types
-  const rows = document.querySelectorAll('.medicine-table tr');
- 
-
-  rows.forEach(row => {
-    const text = row.textContent.toLowerCase();
-    if (text.includes(filter)) {
-      row.style.display = ''; // show row
-    } else {
-      row.style.display = 'none'; // hide row
-    }
-  });
-});
+    const pathParts = window.location.pathname.split('/');
+    const adminIdIndex = pathParts.indexOf('admin') + 1;
+    const adminId = pathParts[adminIdIndex];
 
 
-let medicinesData = []; 
+    //Search filter
+    document.getElementById('searchInput').addEventListener('keyup', function () {
+      const filter = this.value.toLowerCase(); // what user types
+      const rows = document.querySelectorAll('.medicine-table tr');
 
-async function loadMedicines() {
-    try {
-      const response = await fetch(`${window.location.origin}/admin/${adminId}/medicines/api`);
-      if (!response.ok){
-        throw new Error(`API error: ${response.status} ${response.statusText}`);
-      }
-      
-      const data = await response.json();
-      if(!Array.isArray(data)){
+
+      rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        if (text.includes(filter)) {
+          row.style.display = ''; // show row
+        } else {
+          row.style.display = 'none'; // hide row
+        }
+      });
+    });
+
+
+    let medicinesData = [];
+
+    async function loadMedicines() {
+      try {
+        const response = await fetch(`${window.location.origin}/admin/${adminId}/medicines/api`);
+        if (!response.ok) {
+          throw new Error(`API error: ${response.status} ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        if (!Array.isArray(data)) {
           console.error('API returned non-array data:', data);
           alert('Failed to load medicines: ' + (data.error || 'Unknown error'));
           return;
-          }
+        }
 
-      console.log(data);
-      medicinesData = data;
-      const tbody = document.getElementById('medicineTableBody');
-      tbody.innerHTML = '';
-      data.forEach(medicine => {
-        const formattedExpiryDate = medicine.expiryDate ?  new Date(medicine.expiryDate).toLocaleDateString('en-CA') : "---";
-        const row = `
+        console.log(data);
+        medicinesData = data;
+        const tbody = document.getElementById('medicineTableBody');
+        tbody.innerHTML = '';
+        data.forEach(medicine => {
+          const formattedExpiryDate = medicine.expiryDate ? new Date(medicine.expiryDate).toLocaleDateString('en-CA') : "---";
+          const row = `
           <tr>
             <td style="display:flex; align-items: center;gap: 1rem;">
               <img style="width: 8rem; aspect-ratio:1; border-radius : 50%;" src="${medicine.image}">
@@ -493,257 +495,256 @@ async function loadMedicines() {
             </td>
           </tr>
         `;
-        tbody.insertAdjacentHTML('beforeend', row);
-      });
-       attachDropdownListeners();
-       attachDeleteListeners();
-       attachEditListeners();
-       attachImageUploadListeners();
+          tbody.insertAdjacentHTML('beforeend', row);
+        });
+        attachDropdownListeners();
+        attachDeleteListeners();
+        attachEditListeners();
+        attachImageUploadListeners();
 
-   } catch (error) {
-      console.error('Error loading medicines:', error);
-      alert('Error loading medicines: ' + error.message);
+      } catch (error) {
+        console.error('Error loading medicines:', error);
+        alert('Error loading medicines: ' + error.message);
+      }
     }
-  }
 
 
-  // Attach delete event listeners to buttons
-  function attachDeleteListeners() {
-    document.querySelectorAll(".delete-btn").forEach(btn =>
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        deleteMedicine(btn.dataset.id);
-      })
-    );
-  }
-
-  //=======DELETE medicine=======
-  async function deleteMedicine(medicineId) {
-    const confirmed = await swal({
-    title: "Are you sure you want to delete this medicine?",
-    icon: '/logo/logo.svg',
-    buttons: {
-      cancel: { text: "Cancel", visible: true },
-      confirm: { text: "Ok", value: true }
-    },
-    dangerMode: false
-  });
-
-    if(!confirmed){
-      swal("Declined"," Medicine Deletion Declined", "warning")
-      return;
+    // Attach delete event listeners to buttons
+    function attachDeleteListeners() {
+      document.querySelectorAll(".delete-btn").forEach(btn =>
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          deleteMedicine(btn.dataset.id);
+        })
+      );
     }
-     
 
-  const res = await fetch(`${window.location.origin}/admin/${adminId}/medicines/${medicineId}/delete`, { method: "DELETE" });
-  if (res.ok) {
-    swal("Deleted", "Medicine Deleted Successfully", "success");
-    loadMedicines();
-  } else {
-    swal("Failed"," Medicine Deletion Failed", "warning")
-  }
-  }  
-
-
-  // Toggle dropdown menu
-  function attachDropdownListeners() {
-    document.querySelectorAll('.dots').forEach(btn => {
-      btn.addEventListener('click', e => {
-        e.stopPropagation();
-        document.querySelectorAll('.dropdown').forEach(dropdownMenu => dropdownMenu.classList.remove('show'));
-        const dropdownMenu = btn.nextElementSibling;
-        dropdownMenu.classList.toggle('show');
+    //=======DELETE medicine=======
+    async function deleteMedicine(medicineId) {
+      const confirmed = await swal({
+        title: "Are you sure you want to delete this medicine?",
+        icon: '/logo/logo.svg',
+        buttons: {
+          cancel: { text: "Cancel", visible: true },
+          confirm: { text: "Ok", value: true }
+        },
+        dangerMode: false
       });
-    });
-  }
 
-  let commonInput = undefined;
-  async function attachImageUploadListeners(){
-    try{
-      // document.getElementById('medicineTableBody')
-      document.body?.addEventListener('click' , (e)=>{
-        const tr = e.target.closest('tr');
-        const input = tr?.querySelector("input[type='file']");
-        if(input == commonInput) return;
-        commonInput = input;
-        input?.addEventListener("change" ,async e=>{
-          console.log(e);
-          const file = e.target.files[0];
-          if(!file) return;
+      if (!confirmed) {
+        swal("Declined", " Medicine Deletion Declined", "warning")
+        return;
+      }
 
-          const form = new FormData();
-          form.append("image" , file);
-          
-          const response = await fetch(`/admin/${adminId}/medicines/${input.dataset.id}/update/image` , {
-            method :"POST",
-            body : form,
-          });
 
-          const results = await response.json();
-          console.log(results);
+      const res = await fetch(`${window.location.origin}/admin/${adminId}/medicines/${medicineId}/delete`, { method: "DELETE" });
+      if (res.ok) {
+        swal("Deleted", "Medicine Deleted Successfully", "success");
+        loadMedicines();
+      } else {
+        swal("Failed", " Medicine Deletion Failed", "warning")
+      }
+    }
 
-          if(results.status == "success"){
-            const img = tr?.querySelector('img');
-            if(img) img.src = results.image;
-          }
+
+    // Toggle dropdown menu
+    function attachDropdownListeners() {
+      document.querySelectorAll('.dots').forEach(btn => {
+        btn.addEventListener('click', e => {
+          e.stopPropagation();
+          document.querySelectorAll('.dropdown').forEach(dropdownMenu => dropdownMenu.classList.remove('show'));
+          const dropdownMenu = btn.nextElementSibling;
+          dropdownMenu.classList.toggle('show');
+        });
+      });
+    }
+
+    let commonInput = undefined;
+    async function attachImageUploadListeners() {
+      try {
+        // document.getElementById('medicineTableBody')
+        document.body?.addEventListener('click', (e) => {
+          const tr = e.target.closest('tr');
+          const input = tr?.querySelector("input[type='file']");
+          if (input == commonInput) return;
+          commonInput = input;
+          input?.addEventListener("change", async e => {
+            console.log(e);
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const form = new FormData();
+            form.append("image", file);
+
+            const response = await fetch(`/admin/${adminId}/medicines/${input.dataset.id}/update/image`, {
+              method: "POST",
+              body: form,
+            });
+
+            const results = await response.json();
+            console.log(results);
+
+            if (results.status == "success") {
+              const img = tr?.querySelector('img');
+              if (img) img.src = results.image;
+            }
+
+          })
 
         })
 
-      })
 
-
-    }catch(e){
-      Swal?.fire({
-        title: "something went wrong",
-      })
+      } catch (e) {
+        Swal?.fire({
+          title: "something went wrong",
+        })
+      }
     }
-  }
 
 
-//editMedicine
-function attachEditListeners() {
-  document.querySelectorAll(".edit-btn").forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const medicineId = btn.dataset.Id;
-      
-      // Find medicine data - check both _id and id
-      const medicine = medicinesData.find(m => m._id === medicineId || m.id === medicineId);
-      
-      if (!medicine) {
-        console.error('Medicine not found. ID:', medicineId);
-        console.log('Available medicines:', medicinesData);
-        alert('Medicine not found');
-        return;
-      }
-      
-      // Set dataset for submit handler
-      document.getElementById('editPopup').dataset.medicineId = medicineId;
-      
-      // Populate form fields
-      document.getElementById('edit-name').value = medicine.name || '';
-      document.getElementById('edit-brandName').value = medicine.brandName || '';
-      document.getElementById('edit-dosage').value = medicine.dosage || '';
-      document.getElementById('edit-schedule').value = medicine.schedule || '';
-      document.getElementById('edit-manufacturer').value = medicine.manufacturer || '';
-      document.getElementById('edit-category').value = medicine.category || '';
-      document.getElementById('edit-expiryDate').value = medicine.expiryDate ? medicine.expiryDate.split('T')[0] : '';
-      
-      if (document.getElementById('edit-prescription')) {
-        document.getElementById('edit-prescription').checked = medicine.prescriptionRequired || false;
-      }
-      
-      // Open popup
-      openPopup('editPopup');
+    //editMedicine
+    function attachEditListeners() {
+      document.querySelectorAll(".edit-btn").forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const medicineId = btn.dataset.Id;
+
+          // Find medicine data - check both _id and id
+          const medicine = medicinesData.find(m => m._id === medicineId || m.id === medicineId);
+
+          if (!medicine) {
+            console.error('Medicine not found. ID:', medicineId);
+            console.log('Available medicines:', medicinesData);
+            alert('Medicine not found');
+            return;
+          }
+
+          // Set dataset for submit handler
+          document.getElementById('editPopup').dataset.medicineId = medicineId;
+
+          // Populate form fields
+          document.getElementById('edit-name').value = medicine.name || '';
+          document.getElementById('edit-brandName').value = medicine.brandName || '';
+          document.getElementById('edit-dosage').value = medicine.dosage || '';
+          document.getElementById('edit-schedule').value = medicine.schedule || '';
+          document.getElementById('edit-manufacturer').value = medicine.manufacturer || '';
+          document.getElementById('edit-category').value = medicine.category || '';
+          document.getElementById('edit-expiryDate').value = medicine.expiryDate ? medicine.expiryDate.split('T')[0] : '';
+
+          if (document.getElementById('edit-prescription')) {
+            document.getElementById('edit-prescription').checked = medicine.prescriptionRequired || false;
+          }
+
+          // Open popup
+          openPopup('editPopup');
+        });
+      });
+    }
+
+    // Load medicines on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      loadMedicines();
     });
-  });
-}
-
-// Load medicines on page load
-document.addEventListener('DOMContentLoaded', () => {
-  loadMedicines();
-});
-
-  
-
-
-  // Load medicines on page load
-  document.addEventListener('DOMContentLoaded', () => {
-    loadMedicines();
-  });
-
-
-  document.getElementById('addMedicineForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData);
-    console.log(data.geneticName);
-    const medicineData = {
-      geneticName: data.geneticName,
-      brandName: data.brandName,
-      manufacturer: data.manufacturer,
-      dosage: data.dosage,
-      category: data.category,
-      schedule: data.schedule,
-      expiryDate: data.expiryDate,
-
-    }
 
 
 
 
-const uploadForm = document.getElementById("bulkUploadForm");
-const uploadStatus = document.getElementById("uploadStatus");
+    // Load medicines on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      loadMedicines();
+    });
 
-if (uploadForm) {
-  uploadForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    uploadStatus.textContent = "Uploading...";
-    const fileInput = document.getElementById("medicineFile");
-    if (!fileInput.files.length) {
-      uploadStatus.textContent = "Select a file first.";
-      return;
-    }
 
-    const formData = new FormData();
-    formData.append("file", fileInput.files[0]);
+    document.getElementById('addMedicineForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData);
+      const medicineData = {
+        geneticName: data.geneticName,
+        brandName: data.brandName,
+        manufacturer: data.manufacturer,
+        dosage: data.dosage,
+        category: data.category,
+        schedule: data.schedule,
+        expiryDate: data.expiryDate,
 
-    try {
-      const res = await fetch(`${window.location.origin}/admin/${adminId}/medicines/import`, {
-        method: "POST",
-        body: formData,
-      });
-      const result = await res.json();
-      if (res.ok) {
-        uploadStatus.textContent = `Imported ${result.inserted} of ${result.total}.`;
-        loadMedicines();
-        fileInput.value = "";
-      } else {
-        uploadStatus.textContent = result.error || "Upload failed.";
       }
-    } catch (err) {
-      uploadStatus.textContent = err.message || "Upload failed.";
-    }
-  });
-}
-    
-  
-    try {
-      console.log(medicineData);
-      const response = await fetch(`${window.location.origin}/admin/${adminId}/medicines/create`, {
-        method: 'POST',
-        headers: {'Content-Type' : 'application/json',},
-        body: JSON.stringify(medicineData),
-      });
-      if (response.ok) {
-        closePopup('addMedicineModal');
-        swal("Added","Medicine added successfully", "success");
-        e.target.reset();
-        loadMedicines();  // Reload the table
-      } else {
-        const error = await response.json();
-        alert('Failed to add medicine: ' + (error.error || 'Unknown error'));
+
+
+
+
+      const uploadForm = document.getElementById("bulkUploadForm");
+      const uploadStatus = document.getElementById("uploadStatus");
+
+      if (uploadForm) {
+        uploadForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          uploadStatus.textContent = "Uploading...";
+          const fileInput = document.getElementById("medicineFile");
+          if (!fileInput.files.length) {
+            uploadStatus.textContent = "Select a file first.";
+            return;
+          }
+
+          const formData = new FormData();
+          formData.append("file", fileInput.files[0]);
+
+          try {
+            const res = await fetch(`${window.location.origin}/admin/${adminId}/medicines/import`, {
+              method: "POST",
+              body: formData,
+            });
+            const result = await res.json();
+            if (res.ok) {
+              uploadStatus.textContent = `Imported ${result.inserted} of ${result.total}.`;
+              loadMedicines();
+              fileInput.value = "";
+            } else {
+              uploadStatus.textContent = result.error || "Upload failed.";
+            }
+          } catch (err) {
+            uploadStatus.textContent = err.message || "Upload failed.";
+          }
+        });
       }
-    } catch (error) {
-      console.error('Error adding medicine:', error);
-      swal("Failed","Medicine adding failed", "fail");
-      
-    }
-  });
 
 
-    function openPopup(Id){
+      try {
+        console.log(medicineData);
+        const response = await fetch(`${window.location.origin}/admin/${adminId}/medicines/create`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', },
+          body: JSON.stringify(medicineData),
+        });
+        if (response.ok) {
+          closePopup('addMedicineModal');
+          swal("Added", "Medicine added successfully", "success");
+          e.target.reset();
+          loadMedicines();  // Reload the table
+        } else {
+          const error = await response.json();
+          alert('Failed to add medicine: ' + (error.error || 'Unknown error'));
+        }
+      } catch (error) {
+        console.error('Error adding medicine:', error);
+        swal("Failed", "Medicine adding failed", "fail");
+
+      }
+    });
+
+
+    function openPopup(Id) {
       document.getElementById(Id).style.display = "flex";
       document.getElementById("pageContent").classList.add("blur");
     }
 
-    function closePopup(Id){
+    function closePopup(Id) {
       document.getElementById(Id).style.display = "none";
     }
-    
+
 
     document.querySelectorAll('.close').forEach(btn => {
-      btn.addEventListener('click',function(){
+      btn.addEventListener('click', function () {
         const popup = this.closest('.popup-overlay');
         popup.style.display = "none";
 
@@ -751,25 +752,25 @@ if (uploadForm) {
       });
     });
 
-    
-      // close any open action dropdowns when clicking/tapping outside
-      document.addEventListener('click', (e) => {
-        if (!e.target.closest('.dropdown') && !e.target.closest('.dots')) {
-          document.querySelectorAll('.dropdown.show').forEach(d => d.classList.remove('show'));
-        }
-      });
-      // also handle touch devices
-      document.addEventListener('touchstart', (e) => {
-        if (!e.target.closest('.dropdown') && !e.target.closest('.dots')) {
-          document.querySelectorAll('.dropdown.show').forEach(d => d.classList.remove('show'));
-        }
-      });
+
+    // close any open action dropdowns when clicking/tapping outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.dropdown') && !e.target.closest('.dots')) {
+        document.querySelectorAll('.dropdown.show').forEach(d => d.classList.remove('show'));
+      }
+    });
+    // also handle touch devices
+    document.addEventListener('touchstart', (e) => {
+      if (!e.target.closest('.dropdown') && !e.target.closest('.dots')) {
+        document.querySelectorAll('.dropdown.show').forEach(d => d.classList.remove('show'));
+      }
+    });
 
 
     //close when clicking outside of the window
     document.querySelectorAll('.popup-overlay').forEach(overlay => {
-      overlay.addEventListener('click', function(e){
-        if(e.target === this){
+      overlay.addEventListener('click', function (e) {
+        if (e.target === this) {
           this.style.display = "none";
           document.getElementById("pageContent").classList.remove("blur");
 
@@ -778,139 +779,142 @@ if (uploadForm) {
     });
 
     attachDropdownListeners();
-    
+
   </script>
 
   <script>
     // submit edits to server
-  document.getElementById('editPopup').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const id = document.getElementById('editPopup').dataset.medicineId;
-    if (!id) {
-      alert('No medicine selected for update.');
-      return;
-    }
-    const payload = {
-      geneticName: document.getElementById('edit-name').value,
-      brandName: document.getElementById('edit-brandName').value,
-      manufacturer: document.getElementById('edit-manufacturer').value,
-      dosage: document.getElementById('edit-dosage').value,
-      category: document.getElementById('edit-category').value,
-      schedule: document.getElementById('edit-schedule').value,
-      expiryDate: document.getElementById('edit-expiryDate').value || null,
-      prescriptionRequired: !!document.getElementById('edit-prescription').checked,
-    };
-    try {
-      const res = await fetch(`${window.location.origin}/admin/${adminId}/medicines/${id}/update`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      
-      if (res.ok) {
-        closePopup('editPopup');
-        swal("Updated","Medicine Updated Successfully","success");
-        loadMedicines();
-        } else {
-        const err = await res.json().catch(() => ({}));
-        swal("Failed", "Medicine Update Failed","fail");
-        
+    document.getElementById('editPopup').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const id = document.getElementById('editPopup').dataset.medicineId;
+      if (!id) {
+        alert('No medicine selected for update.');
+        return;
       }
-
       const payload = {
-        name: document.getElementById('edit-name')?.value?.trim(),
-        brandName: document.getElementById('edit-brandName')?.value?.trim(),
-        dosage: document.getElementById('edit-dosage')?.value?.trim(),
-        schedule: document.getElementById('edit-schedule')?.value || '',
-        manufacturer: document.getElementById('edit-manufacturer')?.value?.trim() || '',
-        category: document.getElementById('edit-category')?.value || '',
-        expiryDate: document.getElementById('edit-expiryDate')?.value || null,
-        prescriptionRequired: document.getElementById('edit-prescription')?.checked || false
+        geneticName: document.getElementById('edit-name').value,
+        brandName: document.getElementById('edit-brandName').value,
+        manufacturer: document.getElementById('edit-manufacturer').value,
+        dosage: document.getElementById('edit-dosage').value,
+        category: document.getElementById('edit-category').value,
+        schedule: document.getElementById('edit-schedule').value,
+        expiryDate: document.getElementById('edit-expiryDate').value || null,
+        prescriptionRequired: !!document.getElementById('edit-prescription').checked,
       };
-
       try {
         const res = await fetch(`${window.location.origin}/admin/${adminId}/medicines/${id}/update`, {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
+          body: JSON.stringify(payload),
         });
 
-        if (!res.ok) {
+        if (res.ok) {
+          closePopup('editPopup');
+          swal("Updated", "Medicine Updated Successfully", "success");
+          loadMedicines();
+        } else {
           const err = await res.json().catch(() => ({}));
-          throw new Error(err.error || res.statusText || 'Update failed');
+          swal("Failed", "Medicine Update Failed", "fail");
+
         }
 
-        closePopup('editPopup');
-        await loadMedicines();
-      } catch (err) {
-        console.error('Edit submit failed:', err);
-        alert(err.message);
-      }
-    });
-  });
+        const payload = {
+          geneticName: document.getElementById('edit-name')?.value?.trim(),
+          brandName: document.getElementById('edit-brandName')?.value?.trim(),
+          dosage: document.getElementById('edit-dosage')?.value?.trim(),
+          schedule: document.getElementById('edit-schedule')?.value || '',
+          manufacturer: document.getElementById('edit-manufacturer')?.value?.trim() || '',
+          category: document.getElementById('edit-category')?.value || '',
+          expiryDate: document.getElementById('edit-expiryDate')?.value || null,
+          prescriptionRequired: document.getElementById('edit-prescription')?.checked || false
+        };
 
-  // ...existing code...
-</script>
+        try {
+          const res = await fetch(`${window.location.origin}/admin/${adminId}/medicines/${id}/update`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+
+          if (!res.ok) {
+            const err = await res.json().catch(() => ({}));
+            throw new Error(err.error || res.statusText || 'Update failed');
+          }
+
+          closePopup('editPopup');
+          await loadMedicines();
+        } catch (err) {
+          console.error('Edit submit failed:', err);
+          alert(err.message);
+        }
+      }catch(e){
+        console.log(e);
+      }
+    })
+
+    // ...existing code...
+  </script>
 
 
   <script>
-      // Upload medicines from Excel file
-      const uploadSubmitButton = document.querySelector('#uploadSubmitButton');
-      const medicineFileInput = document.querySelector('#medicineFileInput');
+    // Upload medicines from Excel file
+    const uploadSubmitButton = document.querySelector('#uploadSubmitButton');
+    const medicineFileInput = document.querySelector('#medicineFileInput');
 
-      if (uploadSubmitButton && medicineFileInput) {
-        uploadSubmitButton.addEventListener('click', async (e) => {
-          e.preventDefault();
+    if (uploadSubmitButton && medicineFileInput) {
+      uploadSubmitButton.addEventListener('click', async (e) => {
+        e.preventDefault();
 
-          const file = medicineFileInput.files[0];
-          
-          if (!file) {
-            alert('Please select an Excel file first');
-            return;
+        const file = medicineFileInput.files[0];
+
+        if (!file) {
+          alert('Please select an Excel file first');
+          return;
+        }
+
+        // Validate file type
+        if (!file.name.match(/\.(xlsx|xls)$/)) {
+          alert('Please select a valid Excel file (.xlsx or .xls)');
+          return;
+        }
+
+        const formData = new FormData();
+        formData.append('file', file);
+
+        try {
+          uploadSubmitButton.disabled = true;
+          uploadSubmitButton.textContent = 'Uploading...';
+
+          const response = await fetch(`${window.location.origin}/admin/${adminId}/medicines/upload/api`, {
+            method: 'POST',
+            body: formData
+          });
+
+          const result = await response.text();
+          console.log(response);
+
+          if (response.ok) {
+            alert('Success: ' + result);
+            medicineFileInput.value = ''; // Clear file input
+            // Refresh medicines list
+            loadMedicines(); // Call your existing function to reload medicines
+          } else {
+            alert('Upload failed: ' + result);
           }
-
-          // Validate file type
-          if (!file.name.match(/\.(xlsx|xls)$/)) {
-            alert('Please select a valid Excel file (.xlsx or .xls)');
-            return;
-          }
-
-          const formData = new FormData();
-          formData.append('file', file);
-
-          try {
-            uploadSubmitButton.disabled = true;
-            uploadSubmitButton.textContent = 'Uploading...';
-
-            const response = await fetch(`${window.location.origin}/admin/${adminId}/medicines/upload/api`, {
-              method: 'POST',
-              body: formData
-            });
-
-            const result = await response.text();
-            console.log(response);
-
-            if (response.ok) {
-              alert('Success: ' + result);
-              medicineFileInput.value = ''; // Clear file input
-              // Refresh medicines list
-              loadMedicines(); // Call your existing function to reload medicines
-            } else {
-              alert('Upload failed: ' + result);
-            }
-          } catch (error) {
-            console.error('Upload error:', error);
-            alert('Upload failed: ' + error.message);
-          } finally {
-            uploadSubmitButton.disabled = false;
-            uploadSubmitButton.textContent = 'Submit';
-          }
-        });
-      }
+        } catch (error) {
+          console.error('Upload error:', error);
+          alert('Upload failed: ' + error.message);
+        } finally {
+          uploadSubmitButton.disabled = false;
+          uploadSubmitButton.textContent = 'Submit';
+        }
+      });
+    }
   </script>
-  
+
   </div>
   </div>
 </body>
+
 </html>

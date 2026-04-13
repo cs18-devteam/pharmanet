@@ -1,26 +1,27 @@
 <nav>
-        <a href="/" class="logo">
-            <img class="logopic" src="/logo/logo.svg" alt="logo">
-            <p class="logoname">PharmaNet</p>
-        </a>
+    <a href="/" class="logo">
+        <img class="logopic" src="/logo/logo.svg" alt="logo">
+        <p class="logoname">PharmaNet</p>
+    </a>
 
 
-        <!-- <div class="search">
+    <!-- <div class="search">
             <form class="search-bar" method="GET" action="/customers/{id}/medicines">
                 <input type="search" name="search" placeholder="Try searching ...">
                 <input type="submit" value="Find">
             </form>
         </div> -->
-        
-        <a style="margin:0 2rem 0 auto ; border: none; display: flex; align-items: center;" href="/customers/{id}/medicines" class="find-medicines action-btn">
-            <img style="width: 2rem; margin-right: 1rem;" src="/images/customerpage/Pharmacy/search-img.svg" />
-            search
-        </a>
-        <!-- <a href="/customers/{id}/pharmacies" class="find-pharmacy action-btn">find pharmacy</a> -->
+
+    <a style="margin:0 2rem 0 auto ; border: none; display: flex; align-items: center;" href="/customers/{id}/medicines"
+        class="find-medicines action-btn">
+        <img style="width: 2rem; margin-right: 1rem;" src="/images/customerpage/Pharmacy/search-img.svg" />
+        search
+    </a>
+    <!-- <a href="/customers/{id}/pharmacies" class="find-pharmacy action-btn">find pharmacy</a> -->
 
 
 
-        <!-- <div class="dropdown">
+    <!-- <div class="dropdown">
             <a href="#">Services</a>
                 <ul class="navbar">
             <li><a href="/contactus">contact us</a></li>
@@ -29,94 +30,102 @@
                 </ul>
         </div> -->
 
-        <!-- <div><a href="/aboutus">about us</a></div> -->
-        <!-- <div><a href="/customers/{id}/products/pharmacy_management_system">Join with us</a></div> -->
+    <!-- <div><a href="/aboutus">about us</a></div> -->
+    <!-- <div><a href="/customers/{id}/products/pharmacy_management_system">Join with us</a></div> -->
 
-        <div id="toggle-placeholder"></div>
+    <div id="toggle-placeholder"></div>
 
-        <div  class="profile">
-            <div class="profilePic">
-                <img  src="{profile}" alt="{firstName} {lastName}">
-
-            </div>
-            <div class="profileName">
-                <a href="/customers/{id}/profile">{firstName} {lastName}</a>
-                <div class="welcome">Welcome</div>
-            </div>
-            </div>
-        </div>     
-        
-        
-        <div class="setting-dropdown">
-            <ul>
-                <li><a href="/customers/{id}/profile">Profile</a></li>
-                <li><a href="/aboutus">about us</a></li>
-                <li><a href="/customers/{id}/products/pharmacy_management_system">Join with us</a></li>
-                <li class="cart-btn">my cart</li>
-                <li><div id="signout">signout</div></li>
-            </ul>
+    <div class="profile">
+        <div class="profilePic">
+            <img src="{profile}" alt="{firstName} {lastName}">
 
         </div>
+        <div class="profileName">
+            <a href="/customers/{id}/profile">{firstName} {lastName}</a>
+            <div class="welcome">Welcome</div>
+        </div>
+    </div>
+    </div>
 
-    </nav>
+
+    <div class="setting-dropdown">
+        <ul>
+            <li><a href="/customers/{id}/profile">Profile</a></li>
+            <li><a href="/aboutus">about us</a></li>
+            <li><a href="/customers/{id}/products/pharmacy_management_system">Join with us</a></li>
+            <li class="cart-btn">my cart</li>
+            <li>
+                <div id="signout">signout</div>
+            </li>
+        </ul>
+
+    </div>
+
+</nav>
 
 
-    <script>
-        const search = document.querySelector('.search-bar');
-        const signOutBtn = document.getElementById('signout');
-        const profile = document.querySelector('.profile');
-        const settingDropdown = document.querySelector('.setting-dropdown');
+<script>
+    const search = document.querySelector('.search-bar');
+    const signOutBtn = document.getElementById('signout');
+    const profile = document.querySelector('.profile');
+    const settingDropdown = document.querySelector('.setting-dropdown');
 
-        profile.addEventListener('mouseenter' , ()=>{
-            settingDropdown.style.display = "inline-block";
+    profile.addEventListener('mouseenter', () => {
+        settingDropdown.style.display = "inline-block";
+    })
+
+    settingDropdown.addEventListener('mouseleave', () => {
+        settingDropdown.style.display = "none";
+    });
+
+
+    function signout() {
+        document.cookie = `token="";path="/";expire=${Date.now()}`;
+        window.cookieStore.getAll().then(cookie => {
+            cookie.map(c => window.cookieStore.delete(c.name));
         })
+    }
 
-        settingDropdown.addEventListener('mouseleave' , ()=>{
-            settingDropdown.style.display = "none";
-        });
+    function redirect() {
+        window.location.href = "/login";
+    }
 
-        function signout(){
-            document.cookie = `token="";path="/";expire=${Date.now()}`;
-        }
-
-        function redirect(){
-            window.location.href = "/login";
-        }
-
-        signOutBtn.addEventListener('click' , ()=>{
-            if(Swal){
-                Swal?.fire({
-                    title: "Do you want signout?",
-                    showDenyButton: true,
-                    // showCancelButton: true,
-                    confirmButtonText: "Signout",
-                    denyButtonText: "cancel",
-                    icon:"question"
-                }).then(results=>{
+    signOutBtn.addEventListener('click', () => {
+        if (Swal) {
+            Swal?.fire({
+                title: "Do you want signout?",
+                showDenyButton: true,
+                // showCancelButton: true,
+                confirmButtonText: "Signout",
+                denyButtonText: "cancel",
+                icon: "question"
+            }).then(results => {
+                signout();
+                if (results.isConfirmed) {
                     signout();
-                    if(results.isConfirmed){
-                        Swal?.fire({
-                            icon:"success",
-                            title:"You're signout"
-                        }).then(()=>{
-                            redirect();
-                        })
-                    }
-                })
-            }else{
-                const confirmSignout = confirm('do you want to signout ?');
-                if(confirmSignout){
-                    signout();
-                    alert("you're signout");
-                    setTimeout(()=>{
+
+                    Swal?.fire({
+                        icon: "success",
+                        title: "You're signout"
+                    }).then(() => {
                         redirect();
-                    } , 2000);
+                    })
                 }
+            })
+        } else {
+            const confirmSignout = confirm('do you want to signout ?');
+            if (confirmSignout) {
+                signout();
+                alert("you're signout");
+                setTimeout(() => {
+                    redirect();
+                }, 2000);
             }
-        })
+        }
+    })
 
 
-    </script>
+</script>
 
 
 <script type="module" src="/js/controller/customer/customer.nav.bar.controller.js"></script>

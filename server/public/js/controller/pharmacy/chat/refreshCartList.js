@@ -16,10 +16,11 @@ export async function refreshCartList() {
 
 
     const items = data.results.items;
-    console.log(items);
 
     const medicineCards = items?.map((item=>{
         if(item.itemType != "medicine") return;
+
+        console.log(item.stock , item.discount , item );
 
         return html`
         <div class="medicine_card" data-orderItemId="${item.id}" data-medicineId="${item.details.id}" >
@@ -63,15 +64,15 @@ export async function refreshCartList() {
                 ${item.stock ? html`
                     
                     <div class="card-footer unit">
-                        Units <span>${item.quantity}</span>
+                        Units <span>${item.quantity || 0}</span>
                     </div>
-
+<!-- 
                     <div class="card-footer days">
-                        Days <span>${items.days}</span>
-                    </div>
+                        Days <span>${item.days || 0}</span>
+                    </div> -->
 
                     <div class="card-footer discount">
-                        Discounts (Rs) <span>${items.discount}</span>
+                        Discounts (Rs) <span>${item.discount || 0}</span>
                     </div>
                     ` : html`this medicine not available in pharmacy`
             

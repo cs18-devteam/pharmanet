@@ -17,8 +17,9 @@ exports.renderCustomerMedicines = async (req, res) => {
     try {
         const search = req.params.get('search');
         const customer = (await Users.getById(req.customerId))[0];
-        let medicines = await Medicines.query("select * from this.table where id > 0  " + (search ? ` and geneticName like "${"%" + Array.from(search).join("%") + "%"}" limit 10` : "limit 10"));
-        const pharmacies = await Pharmacies.query(`select * from this.table where id > 0  and status = 1  ${(search ? ` and ( town like "%${Array.from(search).join("%")}%" or name like "%${Array.from(search).join("%")}%") ` : "")} limit 10`);
+        let medicines = await Medicines.query(`select * from this.table where id > 0  ${search ? ` and  geneticName like "%${search}%" limit 10` : "limit 10"}`);
+
+        const pharmacies = await Pharmacies.query(`select * from this.table where id > 0  and status = 1  ${(search ? ` and ( town like "%${Array.from(search).join("%")}%" or name like "%${Array.from(search).join("%")}%" or name="%${search}%") ` : "")} limit 10`);
         const {latitude , longitude} = readCookies(req);
 
 

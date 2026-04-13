@@ -2,7 +2,7 @@ import html from "../html.js";
 
 const template = html`<div class="cart_item" data-id="{id}">
     <div class="content">
-        <img src="/medicines/general-med.png" alt="">
+        <img src="{image}" alt="">
         <div class="description">
             <h4>
                 <div>Name</div>
@@ -67,10 +67,13 @@ const template = html`<div class="cart_item" data-id="{id}">
 
 
 export function createCartCards(data){
+
+
     return data.map(cart=>{
         return template
                     .replace('{state}' , 'select')
                     .replace('{name}' , cart.medicineId ? cart.geneticName : cart.name)
+                    .replace('{image}' , cart.image)
                     .replaceAll("{id}",  cart.id);
     })
 }

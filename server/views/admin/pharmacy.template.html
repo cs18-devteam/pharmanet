@@ -296,10 +296,11 @@
  
   </script>
 
-  <script>
+<script>
+  // One delegated click handler for both Activate + Deactivate buttons
   document.addEventListener('click', async function (e) {
-  const deactivateBtn = e.target.closest('.deactivate-Btn');
-  if (!deactivateBtn) return;
+    const activateBtn = e.target.closest('.activate-Btn');
+    const deactivateBtn = e.target.closest('.deactivate-Btn');
 
     if (!activateBtn && !deactivateBtn) return;
     e.preventDefault();

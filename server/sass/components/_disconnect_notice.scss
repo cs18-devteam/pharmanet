@@ -1,4 +1,4 @@
-.cus-disconnect-notice{
+.cus-disconnect-notice {
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -15,31 +15,76 @@
     text-transform: capitalize;
     text-align: center;
 
-    p{
+    p {
         color: currentColor;
         font-size: inherit;
         margin-bottom: 3rem;
 
     }
 
-    div{
+    div {
         font-size: 1.4rem;
     }
 
-    .name  , .tel{
+    .name,
+    .tel {
         font-size: 2rem;
     }
 
 
-    .close-btn{
+    .redirect-container{
+        background-color: #000;
+        display: inline;
+        width: 100%;
+        padding: 3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 2rem;
+
+        div{
+            font-size: 1.8rem;
+        }
+    }
+
+    .redirect {
+        display: flex; 
+        gap: 2rem; 
+
+        .redirect-btn {
+            border: 1px solid #fff;
+            padding: 1.5rem 2rem;
+            border-radius: 3rem;
+            margin-top: 2rem;
+            width: 13rem;
+            background-color: var(--color-green-01);
+            cursor: pointer;
+
+
+
+            &:hover {
+                color: #000;
+                background-color: #fff;
+            }
+
+        }
+
+
+        .close-btn {
+            width: 13rem;
+        }
+    }
+
+
+    .close-btn {
         border: 1px solid #fff;
         padding: 1.5rem 2rem;
         border-radius: 3rem;
         margin-top: 2rem;
 
-        
 
-        &:hover{
+
+        &:hover {
             color: #000;
             background-color: #fff;
         }

@@ -1,4 +1,5 @@
 
+import { redirect } from "../../controller/customer/chat/redirectChat.js";
 import Application from "../../model/application/Application.js";
 import ChatTemplates from "../../model/application/ChatTemplates.js";
 import { getPharmacyDetailsById } from "../../model/customer/pharmacies.model.js";
@@ -290,7 +291,7 @@ export default class CustomerChatBox {
 
         const pharmacy = Application.remotePharmacy;
 
-        document.body.insertAdjacentHTML("beforeend", `
+        document.body.insertAdjacentHTML("beforeend", !(Application.remoteRedirectMode && Application.remotePharmacyList.length) ? `
     <div class="cus-disconnect-notice">
         <p>You have Disconnected , and if you want to contact or any issue you can connect pharmacy directly</p>
         <div>
@@ -300,23 +301,30 @@ export default class CustomerChatBox {
             <div class="tel">${pharmacy.email}</div>
         </div>
 
-        ${Application.remoteRedirectMode && Application.remotePharmacyList.length ?
-        `
-            <div class="buttons">
+        <div class="buttons redirect">
+                <div class="close-btn">close</div>
+            </div>
+        
+    </div>` : 
+    
+    `<div class="cus-disconnect-notice">
+        <p>You have Disconnected , and if you want to contact or any issue you can connect pharmacy directly</p>
+        <div>
+            <div>contact Details</div>
+            <div class="name">${pharmacy.name}</div>
+            <div class="tel">${pharmacy.contact}</div>
+            <div class="tel">${pharmacy.email}</div>
+        </div>
+
+        <div class="redirect-container">
+
+            <div style="margin-top: 2rem;">If you Wish , You can redirect to another available pharmacy</div>
+            
+            <div class="buttons redirect">
                 <div class="close-btn">close</div>
                 <div class="redirect-btn">Redirect</div>
             </div>
-        ` 
-        
-        :
-
-        `<div class="buttons">
-            <div class="close-btn">close</div>
-        </div>`
-            }
-
-        
-    </div>`)
+        </div>`)
 
     }
 
@@ -327,6 +335,8 @@ document.body.addEventListener("click", e => {
     const target = e.target;
     const closeBtn = target.closest(".cus-disconnect-notice .buttons .close-btn");
     const notice = target.closest(".cus-disconnect-notice");
+    const redirectBtn = target.closest(".cus-disconnect-notice .buttons .redirect-btn");
+    
 
     if (closeBtn) {
         notice.remove();
@@ -335,6 +345,15 @@ document.body.addEventListener("click", e => {
         cart.setLeftSideContent(" ");
         cart.setRightSideContent(" ");
 
+    }
+
+    if(redirectBtn){
+        notice.remove();
+        cart.close();
+        cart.unlock();
+        cart.setLeftSideContent("");
+        cart.setRightSideContent("");
+        redirect();
     }
 })
 

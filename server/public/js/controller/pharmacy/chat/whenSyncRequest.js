@@ -12,7 +12,8 @@ function renderPrescription(url){
     if(!url) return;
     const img = document.createElement("img");
     img.classList.add("prescription-img");
-    img.src = "/"+url;
+    img.src = (url.startsWith("/")) ? url : "/"+url;
+
     img.addEventListener('load' , ()=>{
         prescriptions.innerHTML = "";
         prescriptions.insertAdjacentElement('beforeend',img);

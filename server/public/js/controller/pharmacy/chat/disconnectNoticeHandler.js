@@ -1,4 +1,5 @@
 import Application from "../../../model/application/Application.js";
+import { deleteOrder } from "../../../model/pharmacy/orders.js";
 import { renderWaitingList } from "../../../view/pharmacy/chat/renderWaitingList.js";
 import { swal } from "../../../view/swal.js";
 

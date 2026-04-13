@@ -9,11 +9,14 @@ import onClickSkipBtnOfPrescriptionPopup from "../../../view/customer/onClickSki
 import { customerSyncOrder } from "../../../view/customer/syncOrder.js";
 import html from "../../../view/html.js";
 import { renderToast } from "../../../view/renderToast.js";
+import { swal } from "../../../view/swal.js";
 import { disconnect } from "../../common/disconnect.js";
 import { requestConnectionWithPharmacy } from "../connection.js";
 import getCartsIdsAndCreateOrder from "./getCartsIdsAndCreateOrder.js";
 import { handlePaymentPopup } from "./handlePaymentPopup.js";
 import onSelectPerscription from "./onSelectPerscription.js";
+import { redirect } from "./redirectChat.js";
+import { removeWait } from "./setUploadBoxToWaitingState.js";
 import syncOrder from "./syncOrder.js";
 const Chat = Application.MessageTemplates;
 
@@ -45,6 +48,7 @@ export default function handleConnection(msg){
         
 
         if(resObj.accept){
+            removeWait();
             getCartsIdsAndCreateOrder();
             CustomerChatBox.renderChatBox();
             Application.connection.send(ChatTemplates.syncConnection(Application.remoteOrderId));
@@ -57,6 +61,17 @@ export default function handleConnection(msg){
             // activateOnSubmitMessageCallback();
 
         }else{
+            if(Application.remoteRedirectMode){
+                if(Application.remotePharmacyList.length){
+                    redirect();
+                }else{
+                    swal({
+                        title:"Couldn't connect any pharmacy",
+                        icon:"warning",
+                        text :"you can try again , by uploading prescription again",
+                    })
+                }
+            }
             cart.closeLeftPanel();
             renderToast("pharmacy rejected" , "error");
 

@@ -2,9 +2,11 @@ import Application from "../../model/application/Application.js";
 import { getNearByPharmacies } from "../../model/customer/getNearbyPharmacies.js";
 import { createOrder, uploadPrescriptionAndCreateOrder } from "../../model/customer/orders.js";
 import { deleteOrder } from "../../model/pharmacy/orders.js";
+import CustomerChatBox from "../../view/customer/CustomerChatBox.js";
 import { removeSpinner, renderSpinner } from "../../view/spinner.js";
 import { swal } from "../../view/swal.js";
 import { sendConnectionRequests } from "./chat/sendBatchConnectionRequest.js";
+import { removeWait, setWait } from "./chat/setUploadBoxToWaitingState.js";
 
 const inputFile = document.getElementById("fileUpload");
 let pharmacies = [];
@@ -32,9 +34,11 @@ eventList.forEach(event => {
 async function startOrderProcess(prescription) {
     try{
         renderSpinner();
+        setWait();
         const results = await uploadPrescriptionAndCreateOrder(prescription);
         if (results.status == "error") {
             removeSpinner();
+            removeWait();
             swal({
                 title: "File not uploaded",
                 icon: "error",
@@ -55,10 +59,15 @@ async function startOrderProcess(prescription) {
             if(10 < pharmacies.length) return;
             radius = distance;
             const pharmacyList = await getNearByPharmacies(distance);
-            Application.remotePharmacyList = [...pharmacies , ...pharmacyList];
+            pharmacyList.forEach(p=>{
+                const pharmacy = Application.remotePharmacyList.find(p1=>p1.id == p.id);
+                if(pharmacy) return; 
+                Application.remotePharmacyList.push(p);
+            })
+            
         }));
 
-        if(!pharmacies.length){
+        if(!Application.remotePharmacyList.length){
             swal({
                 title:`No Pharmacy Found`,
                 icon:"error",
@@ -67,35 +76,18 @@ async function startOrderProcess(prescription) {
 
             await deleteOrder(Application.remoteOrderId);
             Application.remoteOrderId = undefined;
+        }else{
+            sendConnectionRequests(Application.remoteOrderId);
         }
-
-
-        sendConnectionRequests(Application.remoteOrderId);
         
     }catch(e){
+        removeWait();
+        removeSpinner();
         console.log(e);
     }
 }
 
 
-
-async function redirect(){
-    try{
-
-        const order = await createOrder([] , Application.remotePrescription);
-        if(order.status == "error"){
-            throw new Error("some thing went wrong");
-        }
-        sendConnectionRequests(order.data.id);
-    }catch(e){
-        console.log(e);
-        swal({
-            title:"error",
-            icon:"error",
-            text:  e.message,
-        })
-    }
-}
 
 
 

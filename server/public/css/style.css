@@ -3742,8 +3742,42 @@ div[data-role=slide-container] div[data-role=slide-set] div[data-role=slide] {
 .cus-disconnect-notice div {
   font-size: 1.4rem;
 }
-.cus-disconnect-notice .name, .cus-disconnect-notice .tel {
+.cus-disconnect-notice .name,
+.cus-disconnect-notice .tel {
   font-size: 2rem;
+}
+.cus-disconnect-notice .redirect-container {
+  background-color: #000;
+  display: inline;
+  width: 100%;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+.cus-disconnect-notice .redirect-container div {
+  font-size: 1.8rem;
+}
+.cus-disconnect-notice .redirect {
+  display: flex;
+  gap: 2rem;
+}
+.cus-disconnect-notice .redirect .redirect-btn {
+  border: 1px solid #fff;
+  padding: 1.5rem 2rem;
+  border-radius: 3rem;
+  margin-top: 2rem;
+  width: 13rem;
+  background-color: var(--color-green-01);
+  cursor: pointer;
+}
+.cus-disconnect-notice .redirect .redirect-btn:hover {
+  color: #000;
+  background-color: #fff;
+}
+.cus-disconnect-notice .redirect .close-btn {
+  width: 13rem;
 }
 .cus-disconnect-notice .close-btn {
   border: 1px solid #fff;
@@ -5617,6 +5651,69 @@ button.save {
   width: 150%;
   height: 150%;
 }
+.landing .upload-container .upload-box .upload-text {
+  transform: translateY(170%);
+}
+.landing .upload-container .upload-box .upload-spinner,
+.landing .upload-container .upload-box .upload-text {
+  opacity: 0;
+  position: absolute;
+}
+.landing .upload-container .upload-box.waiting {
+  transition: all 0.2s ease;
+}
+.landing .upload-container .upload-box.waiting .upload-spinner {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 1s linear infinite;
+}
+.landing .upload-container .upload-box.waiting .upload-spinner::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0px;
+  border-radius: 50%;
+  border: 5px solid #FFF;
+  animation: prixClipFix 2s linear infinite;
+}
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes prixClipFix {
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
+  }
+  25% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
+  }
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
+  }
+  75% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
+  }
+}
+.landing .upload-container .upload-box.waiting .upload-text {
+  transform: translateY(170%);
+}
+.landing .upload-container .upload-box.waiting .upload-spinner,
+.landing .upload-container .upload-box.waiting .upload-text {
+  opacity: 1;
+  position: absolute;
+}
+.landing .upload-container .upload-box.waiting .icon {
+  opacity: 0;
+}
+.landing .upload-container .upload-box.waiting p {
+  opacity: 0;
+}
 .landing .upload-container .upload-box .icon {
   margin-bottom: 1.2rem;
 }
@@ -5959,7 +6056,8 @@ button.save {
   .landing .pharmacy_grid .results {
     margin-left: -1.5rem;
   }
-  .landing .distance_img, .landing .view_img {
+  .landing .distance_img,
+  .landing .view_img {
     width: 2rem;
   }
   .landing .upload-container {
@@ -6010,7 +6108,8 @@ button.save {
   .landing .pharmacy_grid .results {
     margin-left: -1.9rem;
   }
-  .landing .distance__value, .landing .view_pharmacy {
+  .landing .distance__value,
+  .landing .view_pharmacy {
     font-size: 1.4rem;
   }
 }
@@ -6018,7 +6117,8 @@ button.save {
   .landing .pillBW {
     top: 40%;
   }
-  .landing .pillBW img, .landing .pillblue img {
+  .landing .pillBW img,
+  .landing .pillblue img {
     width: 18rem;
   }
   .landing .pillwhite {
@@ -6110,7 +6210,9 @@ button.save {
   .landing .pharmacy_grid {
     grid-template-columns: repeat(4, 22rem);
   }
-  .landing .medicine_name, .landing .medicine__info__price, .landing .map__search__value {
+  .landing .medicine_name,
+  .landing .medicine__info__price,
+  .landing .map__search__value {
     font-size: 1.4rem;
   }
   .landing .store-as__icon img {
@@ -6448,7 +6550,9 @@ button.save {
   .landing .pharmacy_grid {
     grid-template-columns: repeat(4, 16rem);
   }
-  .landing .medicine_name, .landing .medicine__info__price, .landing .map__search__value {
+  .landing .medicine_name,
+  .landing .medicine__info__price,
+  .landing .map__search__value {
     font-size: 1.2rem;
   }
   .landing .world_img {
@@ -22120,6 +22224,7 @@ p {
   border: none;
   color: #fff;
   padding: 1rem;
+  margin: 1rem;
   border-radius: 6px;
   cursor: pointer;
 }
@@ -22130,8 +22235,17 @@ p {
   background-color: red;
   border: none;
   color: white;
+  font-weight: 600;
   border-radius: 0.5rem;
   margin-left: 0.5rem;
+}
+.pharmarcy .container .container-2 .main .dashboard .pharmacy-card .pharmacyCardFooter .activate-Btn {
+  background-color: orange;
+  border: none;
+  color: white;
+  border-radius: 0.5rem;
+  margin-left: 0.5rem;
+  font-weight: 600;
 }
 .pharmarcy .container .container-2 .main .dashboard .status {
   padding: 0.2rem 0.5rem;

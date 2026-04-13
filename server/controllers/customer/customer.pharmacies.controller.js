@@ -1,3 +1,4 @@
+const { file } = require("googleapis/build/src/apis/file");
 const { apiCatchAsync } = require("../../common/catchAsync");
 const { validateEmail } = require("../../common/emailValidator");
 const File = require("../../common/File");
@@ -434,6 +435,140 @@ exports.createPharmacy = apiCatchAsync(async (req, res) => {
     });
   }
 
+  const allowedMimeTypes = [
+    "application/pdf",
+    "image/jpeg",
+    "image/jpg",
+    "image/png",
+  ];
+  const maxFileSizeBytes = 5 * 1024 * 1024; // 5MB
+
+  function validateUpload(file, fieldName, label) {
+    // Must be parsed as your custom File object from getMultipartData
+    if (!(file instanceof File)) {
+      return {
+        status: "error",
+        message: `${label} is required`,
+        field: fieldName,
+      };
+    }
+
+    // Empty filename means user did not really select a file
+    if (!file.fileName || !file.fileName.trim()) {
+      return {
+        status: "error",
+        message: `${label} is required`,
+        field: fieldName,
+      };
+    }
+
+    // Restrict file type
+    if (!allowedMimeTypes.includes((file.mimeType || "").toLowerCase())) {
+      return {
+        status: "error",
+        message: `${label} must be PDF, JPG, or PNG`,
+        field: fieldName,
+      };
+    }
+
+    // File content checks (Buffer in your implementation)
+    const fileSize = Buffer.isBuffer(file.content)
+      ? file.content.length
+      : (file.content || "").length;
+
+    if (!fileSize) {
+      return {
+        status: "error",
+        message: `${label} is empty or invalid`,
+        field: fieldName,
+      };
+    }
+
+    if (fileSize > maxFileSizeBytes) {
+      return {
+        status: "error",
+        message: `${label} must be less than 5MB`,
+        field: fieldName,
+      };
+    }
+
+    return null;
+  }
+
+  const documentChecks = [
+    {
+      file: pharmacyData.registrationDoc,
+      field: "registrationDoc",
+      label: "Registration document",
+    },
+    {
+      file: pharmacyData.ownerDoc,
+      field: "ownerDoc",
+      label: "Owner document",
+    },
+    {
+      file: pharmacyData.addressDoc,
+      field: "addressDoc",
+      label: "Address proof document",
+    },
+  ];
+
+  for (const doc of documentChecks) {
+    const validationResult = validateUpload(doc.file, doc.field, doc.label);
+    if (validationResult) {
+      await Pharmacies.query("rollback");
+      return responseJson(res, 400, validationResult);
+    }
+  }
+
+  //validate of pharamacy image if user upload image
+  const imageAllowedMimeTypes = ["image/jpeg", "image/jpg", "image/png"];
+  const imageMaxFileSizeBytes = 5 * 1024 * 1024; // 5MB
+
+  if (
+    !(pharmacyData.image instanceof File) ||
+    !pharmacyData.image.fileName?.trim()
+  ) {
+    await Pharmacies.query("rollback");
+    return responseJson(res, 400, {
+      status: "error",
+      message: "Pharmacy image is required",
+      field: "image",
+    });
+  }
+
+  const imageMimeType = (pharmacyData.image.mimeType || "").toLowerCase();
+  const imageSize = Buffer.isBuffer(pharmacyData.image.content)
+    ? pharmacyData.image.content.length
+    : (pharmacyData.image.content || "").length;
+
+  if (!imageAllowedMimeTypes.includes(imageMimeType)) {
+    await Pharmacies.query("rollback");
+    return responseJson(res, 400, {
+      status: "error",
+      message: "Pharmacy image must be JPG, JPEG, or PNG",
+      field: "image",
+    });
+  }
+
+  if (!imageSize || imageSize <= 0) {
+    await Pharmacies.query("rollback");
+    return responseJson(res, 400, {
+      status: "error",
+      message: "Pharmacy image is empty or invalid",
+      field: "image",
+    });
+  }
+
+  if (imageSize > imageMaxFileSizeBytes) {
+    await Pharmacies.query("rollback");
+    return responseJson(res, 400, {
+      status: "error",
+      message: "Pharmacy image must be less than 5MB",
+      field: "image",
+    });
+  }
+
   const [customer] = await Users.getById(req.customerId);
 
   if (!customer) {
@@ -452,7 +587,7 @@ exports.createPharmacy = apiCatchAsync(async (req, res) => {
     latitude: pharmacyData.latitude,
     longitude: pharmacyData.longitude,
     googleMapLink: pharmacyData.googleMapLink,
-    contact: pharmacyData.contact,
+    contact: pharmacyData.contactNumber,
     postalCode: pharmacyData.postalCode,
     pharmacist:
       pharmacyData.pharmacist || `${customer.firstName} ${customer.lastName}`,

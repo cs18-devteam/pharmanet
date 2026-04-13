@@ -1,12 +1,13 @@
 import Application from "../../model/application/Application.js";
-import { uploadPrescriptionAndCreateOrder } from "../../model/customer/orders.js";
+import { getNearByPharmacies } from "../../model/customer/getNearbyPharmacies.js";
+import { createOrder, uploadPrescriptionAndCreateOrder } from "../../model/customer/orders.js";
 import { deleteOrder } from "../../model/pharmacy/orders.js";
-import { renderToast } from "../../view/renderToast.js";
 import { removeSpinner, renderSpinner } from "../../view/spinner.js";
 import { swal } from "../../view/swal.js";
+import { sendConnectionRequests } from "./chat/sendBatchConnectionRequest.js";
 
 const inputFile = document.getElementById("fileUpload");
-const uploadbox = document.querySelector(".upload-box");
+let pharmacies = [];
 
 inputFile.addEventListener("change", e => {
     const prescription = e.target.files[0];
@@ -43,15 +44,18 @@ async function startOrderProcess(prescription) {
             removeSpinner();
         }
         
+        // init default variables for chatbox
         Application.remoteOrderId = results.data.id;
-        let pharmacies = [];
+        Application.remotePrescription = results.data.prescription;
+        Application.remoteRedirectMode = true;
+        Application.remotePharmacyList = [];
         let radius = 0;
 
         await Promise.all([3 , 5, 7 , 10 , 20 , 30 , 100 ].map(async distance=>{
             if(10 < pharmacies.length) return;
             radius = distance;
             const pharmacyList = await getNearByPharmacies(distance);
-            pharmacies = [...pharmacies , ...pharmacyList];
+            Application.remotePharmacyList = [...pharmacies , ...pharmacyList];
         }));
 
         if(!pharmacies.length){
@@ -66,8 +70,8 @@ async function startOrderProcess(prescription) {
         }
 
 
+        sendConnectionRequests(Application.remoteOrderId);
         
-
     }catch(e){
         console.log(e);
     }
@@ -75,16 +79,26 @@ async function startOrderProcess(prescription) {
 
 
 
-async function getNearByPharmacies(distance) {
+async function redirect(){
     try{
-        const response = await fetch(`/api/v1/customers/${Application.userId}/pharmacies/nearby`);
-        const data = await response.json();
-        if(data.status == "error") return [];
-        return data.data;
 
+        const order = await createOrder([] , Application.remotePrescription);
+        if(order.status == "error"){
+            throw new Error("some thing went wrong");
+        }
+        sendConnectionRequests(order.data.id);
     }catch(e){
         console.log(e);
-        return [];
+        swal({
+            title:"error",
+            icon:"error",
+            text:  e.message,
+        })
     }
 }
+
+
+
+
+
 

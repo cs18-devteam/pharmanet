@@ -300,9 +300,22 @@ export default class CustomerChatBox {
             <div class="tel">${pharmacy.email}</div>
         </div>
 
-        <div class="buttons">
+        ${Application.remoteRedirectMode && Application.remotePharmacyList.length ?
+        `
+            <div class="buttons">
+                <div class="close-btn">close</div>
+                <div class="redirect-btn">Redirect</div>
+            </div>
+        ` 
+        
+        :
+
+        `<div class="buttons">
             <div class="close-btn">close</div>
-        </div>
+        </div>`
+            }
+
+        
     </div>`)
 
     }
@@ -315,13 +328,13 @@ document.body.addEventListener("click", e => {
     const closeBtn = target.closest(".cus-disconnect-notice .buttons .close-btn");
     const notice = target.closest(".cus-disconnect-notice");
 
-    if(closeBtn){
+    if (closeBtn) {
         notice.remove();
         cart.close();
         cart.unlock();
         cart.setLeftSideContent(" ");
         cart.setRightSideContent(" ");
-        
+
     }
 })
 

@@ -127,6 +127,10 @@ export default class Application{
     static remotePharmacy = undefined;
     static city = undefined;
     static staffData = [];
+    static remoteOrder = undefined;
+    static remotePharmacyList = [];
+    static remoteRedirectMode = false;
+    static remotePrescription = undefined;
 
 
     /**

@@ -1,6 +1,6 @@
 import Application from "../application/Application.js";
 
-export async function createOrder(cartsIds=[]) {
+export async function createOrder(cartsIds=[] , prescription) {
     try{
         const response = await fetch('/api/v1/orders' , {
             method: "POST",
@@ -8,6 +8,7 @@ export async function createOrder(cartsIds=[]) {
                 staffId : Application.staffId,
                 userId : Application.userId,
                 carts: cartsIds,
+                prescription : prescription,
             })
         })
 

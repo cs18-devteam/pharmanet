@@ -35,6 +35,7 @@ exports.createOrder = apiCatchAsync(async (req, res) => {
         userId: reqData.userId,
         pharmacyId: pharmacyId,
         createdAt: Convert.toSqlDate(Date.now()),
+        prescription : reqData.prescription,
     })
 
     if (carts && carts.length) {

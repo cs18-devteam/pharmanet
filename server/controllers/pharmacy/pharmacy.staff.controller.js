@@ -7,6 +7,7 @@ const { apiCatchAsync } = require("../../common/catchAsync");
 const getMultipartData = require("../../common/getMultipartData");
 const { hashPassword } = require("../../common/Auth");
 const readCookies = require("../../common/readCookies");
+const Pharmacies = require("../../models/PharmacyModel");
 
 exports.renderCreateStaff = async (req, res) => {
   try {

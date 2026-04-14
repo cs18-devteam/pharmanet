@@ -256,9 +256,9 @@ let searchId = "";
 
 async function showOrders(e) {
   const data = await getOrdersList();
-  const results = data.results.filter((o) =>
+  const results = data.results?.filter((o) =>
     String(o.id).includes(searchId || ""),
-  );
+  ) || [];
 
   setDrawerContent(createOrderTable(results));
   openDrawer(e);

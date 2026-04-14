@@ -26,7 +26,12 @@ function populateEditForm(staffData) {
     editForm.querySelector('input[name="contact"]').value = staffData.contact || '';
     editForm.querySelector('input[name="email"]').value = staffData.email || '';
     editForm.querySelector('input[name="nic"]').value = staffData.nic || '';
-    editForm.querySelector('input[name="role"]').value = staffData.role || '';
+    const selectTag = editForm.querySelector('select[name="role"]');
+    Array.from(selectTag.querySelectorAll('option')).forEach(el=>{
+        if(el.getAttribute("value") == staffData.role){
+            el.setAttribute("selected" , "true");
+        }
+    })
 
     // Update UID display
     const uidElement = document.querySelector('#editAccount .uid');
@@ -115,7 +120,9 @@ function handleEditFormSubmit() {
         const contact = editForm.querySelector('input[name="contact"]').value;
         const email = editForm.querySelector('input[name="email"]').value;
         const nic = editForm.querySelector('input[name="nic"]').value;
-        const role = editForm.querySelector('input[name="role"]').value;
+        const role = editForm.querySelector('select[name="role"]').value;
+
+    
 
         console.log("Form data:", { firstName, lastName, role, contact, email, nic });
 

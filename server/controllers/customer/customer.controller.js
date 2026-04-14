@@ -157,7 +157,7 @@ exports.renderCustomerOrders = catchAsync(async (req, res) => {
                         }
 
                         summery.price += i.price * i.quantity;
-                        summery.discount + - i.discount;
+                        summery.discount += i.discount;
                         summery.total = summery.price - summery.discount - summery.loyalty;
                         return i
                 }))

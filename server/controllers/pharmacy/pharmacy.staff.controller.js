@@ -182,7 +182,7 @@ exports.updateStaffMember = apiCatchAsync(async (req, res) => {
 
   const userId = staff.userId;
   const data = await getMultipartData(req);
-  const normalizedRole = data.role? String(data.role).trim().toLowerCase : undefined;
+
   if (!staffId) throw new Error("staffId is required");
 
   console.log("Received data:", data);
@@ -195,7 +195,7 @@ exports.updateStaffMember = apiCatchAsync(async (req, res) => {
     contact: data.contact,
     email: data.email,
     nic: data.nic,
-    role: normalizedRole,
+    role: data.role,
   };
 
   console.log("User data to update:", userData);

@@ -1,67 +1,6 @@
 <div class="staff container">
   <div class="createStaff">
     <div class="page">
-      <!-- <div class="card">
-
-    <div class="card-header">
-    <div>
-        <h2>Staff Management</h2>
-        <p>All your staff members can Manage from here</p>
-    </div>
-
-    <button class="btn-create">Create +</button>
-    </div>
-
-    <div class="card-body">
-    <div class="staff-list">
-
-        <div class="staff-item">
-        <img src="https://i.pravatar.cc/48?img=1" alt="avatar" />
-        <div class="info">
-            <h4>Chathura Priyashan</h4>
-            <span>Pharmacy Owner</span>
-        </div>
-        </div>
-
-        <div class="staff-item">
-        <img src="https://i.pravatar.cc/48?img=2" alt="avatar" />
-        <div class="info">
-            <h4>Chathura Priyashan</h4>
-            <span>Pharmacist</span>
-        </div>
-        </div>
-
-        <div class="staff-item">
-        <img src="https://i.pravatar.cc/48?img=3" alt="avatar" />
-        <div class="info">
-            <h4>Chathura Priyashan</h4>
-            <span>Cashier</span>
-        </div>
-        </div>
-
-        <div class="staff-item">
-        <img src="https://i.pravatar.cc/48?img=4" alt="avatar" />
-        <div class="info">
-            <h4>Chathura Priyashan</h4>
-            <span>Cashier</span>
-        </div>
-        </div>
-
-        <div class="staff-item">
-        <img src="https://i.pravatar.cc/48?img=5" alt="avatar" />
-        <div class="info">
-            <h4>Chathura Priyashan</h4>
-            <span>Cashier</span>
-        </div>
-        </div>
-
-    </div>
-
-    <div class="divider"></div>
-
-    </div>
-
-</div> -->
     </div>
   </div>
 
@@ -81,93 +20,12 @@
 
       <div class="card-body">
         <div class="staff-list">
-          <!-- <div class="staff-item">
-                <img src="https://i.pravatar.cc/48?img=1" alt="avatar" />
-                <div class="info">
-                <h4>Chathura Priyashan</h4>
-                <span>Pharmacy Owner</span>
-                </div>
-            </div>
-
-            <div class="staff-item">
-                <img src="https://i.pravatar.cc/48?img=2" alt="avatar" />
-                <div class="info">
-                <h4>Chathura Priyashan</h4>
-                <span>Pharmacist</span>
-                </div>
-            </div>
-
-            <div class="staff-item">
-                <img src="https://i.pravatar.cc/48?img=3" alt="avatar" />
-                <div class="info">
-                <h4>Chathura Priyashan</h4>
-                <span>Cashier</span>
-                </div>
-            </div>
-
-            <div class="staff-item">
-                <img src="https://i.pravatar.cc/48?img=4" alt="avatar" />
-                <div class="info">
-                <h4>Chathura Priyashan</h4>
-                <span>Cashier</span>
-                </div>
-            </div>
-
-            <div class="staff-item">
-                <img src="https://i.pravatar.cc/48?img=5" alt="avatar" />
-                <div class="info">
-                <h4>Chathura Priyashan</h4>
-                <span>Cashier</span>
-                </div>
-            </div> -->
+          
         </div>
         <div class="divider"></div>
 
         <div class="recentLeaveContainer">
 
-          <div class="leave-card">
-            <div class="card-content">
-              <h4>Annual Leave</h4>
-              <p class="date">1 Sep 2023 – 1 Sep 2023 (Half day)</p>
-              <p class="desc">
-                Lorem ipsum nebaligt benyda diapågt rösm al. Pepulig vabenat.
-              </p>
-            </div>
-            <span class="status approved">Approved</span>
-          </div>
-
-          <div class="leave-card">
-            <div class="card-content">
-              <h4>Medical Leave</h4>
-              <p class="date">1 Sep 2023 – 1 Sep 2023 (Full day)</p>
-              <p class="desc">
-                Lorem ipsum nebaligt benyda diapågt rösm al. Pepulig vabenat.
-              </p>
-            </div>
-            <span class="status approved">Approved</span>
-          </div>
-
-          <div class="leave-card">
-            <div class="card-content">
-              <h4>Annual Leave</h4>
-              <p class="date">1 Sep 2023 – 1 Sep 2023 (Full day)</p>
-              <p class="desc">
-                Lorem ipsum nebaligt benyda diapågt rösm al. Pepulig vabenat.
-              </p>
-            </div>
-            <span class="status rejected">Rejected</span>
-          </div>
-
-          <div class="leave-card">
-            <div class="card-content">
-              <h4>Annual Leave</h4>
-              <p class="date">1 Sep 2023 – 1 Sep 2023 (Full day)</p>
-              <p class="desc">
-                Lorem ipsum nebaligt benyda diapågt rösm al. Pepulig vabenat.
-              </p>
-            </div>
-            <span class="status approved">Approved</span>
-          </div> -->
         </div>
 
         <!-- right actions -->
@@ -286,7 +144,7 @@
           class="profile-img"
         />
 
-        <button class="change-btn">
+        <button style="display: none;" class="change-btn">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -349,8 +207,11 @@
         <label>NIC</label>
         <input type="text" name="nic" placeholder="National Identification Number" />
 
-        <label>Role</label>
-        <input type="text" name="role" placeholder="Role" />
+        <label id="Role">Role</label>
+        <select name="role" id="Role">
+          <option value="pharmacist">Pharmacist</option>
+          <option value="cashier">Cashier</option>
+        </select>
 
 
         <button type="button" class="save-btn">Save Changes</button>

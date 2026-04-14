@@ -361,7 +361,6 @@ exports.addOrderItem = apiCatchAsync(async (req, res) => {
             throw new Error("medicine quantity must be low than current order amount");
         }
 
-        console.log(medicine);
 
         await PharmacyMedicines.update({
             id: medicine.stock?.[0]?.id,

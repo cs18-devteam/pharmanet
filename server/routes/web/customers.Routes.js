@@ -32,8 +32,6 @@ const customerRouter = SubRouter.route('/customers/:customerId')
 .subRoute('/pharmacies/:pharmacyId' , {
     get : [authenticate('customerId') , customerPharmacyController.renderPharmacyLandingPage],
 })
-.subRoute('/history')
-.subRoute('/transaction')
 .subRoute('/orders' , {
     get : [authenticate('customerId') , customerController.renderCustomerOrders]
 })

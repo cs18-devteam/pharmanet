@@ -4,7 +4,6 @@ const pharmacyStaffController = require('../../controllers/pharmacy/pharmacy.sta
 const pharmacyMedicinesApiController = require('../../controllers/pharmacy/pharmacy.medicines.api.controller');
 const pharmacyController = require("../../controllers/pharmacy/pharmacy.controller");
 const pharmacyStaffProfileController = require("../../controllers/pharmacy/pharmacy.staff.profile.controller");
-const { authorizeToView, PERMISSIONS } = require("../../middlewares/authorizeToView");
 const { authenticateStaff } = require("../../middlewares/authenticate");
 
 

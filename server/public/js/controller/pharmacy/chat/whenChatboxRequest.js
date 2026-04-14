@@ -16,15 +16,19 @@ import { refreshCartList } from "./refreshCartList.js";
 
 export async function whenChatBoxRequest(socket,message){
     const reqObj = ChatTemplates.readChatBoxRequest(message);
-    console.log(reqObj);
 
     const user = {
         ...reqObj,
     };
-    user.user = Application.getUserData(reqObj.customerId),
+    user.user = Application.getUserData(reqObj.customerId);
+
+    if(Application.remoteOrderId){
+        console.log("already processing order");
+        return Application.connection?.send(ChatTemplates.acceptClient(false , reqObj.customerId));
+    }
     
     // Application.waitingList.push(reqObj);
-    renderWaitingList();
+    // renderWaitingList();
     showIncomingMessage(user);
     
     onAcceptIncomingMessage(async ()=>{

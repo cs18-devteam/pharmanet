@@ -10,7 +10,6 @@ const incomingMessage = document.querySelector('.incoming_messege_box');
 
 
 export function showIncomingMessage(data){
-     console.log(data);
 
      tone_incomingCall.play();
      data.user.then(data=>{
@@ -19,7 +18,7 @@ export function showIncomingMessage(data){
 
 
      incomingMessage?.classList.add("open");
-     renderWaitingList();
+     // renderWaitingList();
      handleIncomingMessageBtns();
 }
     

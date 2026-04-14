@@ -16,8 +16,6 @@
 /customers/:customerId/profile/edit
 /customers/:customerId/pharmacies
 /customers/:customerId/pharmacies/:pharmacyId
-/customers/:customerId/history
-/customers/:customerId/transaction
 /customers/:customerId/orders
 /customers/:customerId/loyalty
 /customers/:customerId/orders/:orderId

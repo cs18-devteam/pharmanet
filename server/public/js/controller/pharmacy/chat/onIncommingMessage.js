@@ -12,6 +12,8 @@ export function startSocketListening(socket){
     socket.addEventListener('message' , (msgEvent)=>{
         const message = msgEvent.data;
         console.log(message);
+
+        
         if(ChatTemplates.isHealthCheck(message)){
             return Application.connection.send(ChatTemplates.healthString())
         }

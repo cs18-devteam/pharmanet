@@ -6,8 +6,18 @@ import { closeSidebar } from "../../../view/pharmacy/drawerView.js";
 import { swal } from "../../../view/swal.js";
 import { refreshCartList } from "./refreshCartList.js";
 
+
+let isClickMedicineCartInitialized = false;
 export async function onClickMedicineCardOnNewItemMenu() {
     const body = document.body;
+
+    if(isClickMedicineCartInitialized){
+        console.log("prevent reinitialized event listener request");
+        return;
+    }else{
+        isClickMedicineCartInitialized = true;
+
+    }
     
 
     body?.addEventListener('click', async (e) => {

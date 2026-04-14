@@ -171,18 +171,17 @@ function handleSignOut() {
             dangerMode: true,
             confirmButtonText: "signout"
         }).then((value) => {
-
-            window.cookieStore.getAll().then((cookies) => {
-                console.log(cookies);
-                cookies.forEach(c => window.cookieStore.delete(c.name));
-        })
-
-
-
-            if (value.isConfirmed) {
-                window.location.href = "/login";
+            if(value.isConfirmed){
+                window.cookieStore.getAll().then((cookies) => {
+                    cookies.forEach(c => window.cookieStore.delete(c.name));
+                })
+                swal({
+                    title:"Signout Successful",
+                    icon:"success",
+                })
 
             }
+
         })
 
     })

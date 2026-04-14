@@ -454,20 +454,31 @@ exports.deleteOrder = apiCatchAsync(async (req, res) => {
     let items = await PharmacyOrdersItems.get({
         orderId: id,
     })
+    const {pharmacyId} = readCookies(req);
 
     console.log(items);
 
     items = await Promise.all(items.map(async i => {
         if (i.itemType == "medicine") {
-            const [med] = await PharmacyMedicines.getById(i.itemId);
+            const [stock] = await PharmacyMedicines.get({
+                pharmacyId: pharmacyId,
+                medicineId : i.itemId,
+            });
+
+            const [med] = await Medicines.getById(i.itemId);
+
+            console.log(med , stock);
+
             if(!med) return undefined;
-            console.log(med, med.publicStock + i.quantity);
+            if(!stock) return undefined;
 
             await PharmacyMedicines.update({
-                id: i.itemId,
-                publicStock: med.publicStock + i.quantity,
-                stock: med.stock + i.quantity,
+                id: stock.id,
+                publicStock: stock.publicStock + i.quantity,
+                stock: med.stock,
             })
+            
+
 
 
         } else if (i.itemType == "product") {

@@ -7924,6 +7924,7 @@ button.save {
   display: flex;
   height: 35rem;
   flex-direction: column;
+  background-size: cover;
 }
 .landingPage .header .header-content h1 {
   display: flex;

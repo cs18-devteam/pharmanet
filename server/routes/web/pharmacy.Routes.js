@@ -5,6 +5,7 @@ const pharmacyMedicinesApiController = require('../../controllers/pharmacy/pharm
 const pharmacyController = require("../../controllers/pharmacy/pharmacy.controller");
 const pharmacyStaffProfileController = require("../../controllers/pharmacy/pharmacy.staff.profile.controller");
 const { authorizeToView, PERMISSIONS } = require("../../middlewares/authorizeToView");
+const { authenticateStaff } = require("../../middlewares/authenticate");
 
 
 // exports.pharmacyStaffRouter = SubRouter.route('/pharmacies/:pharmacyId/staff')
@@ -19,7 +20,7 @@ const { authorizeToView, PERMISSIONS } = require("../../middlewares/authorizeToV
 
 exports.pharmacistRouter = SubRouter.route('/pharmacies/:pharmacyId/staff/:staffId')
 .subRoute('/' , {
-    get : pharmacyController.renderPharmacyDashboard,
+    get : [authenticateStaff('staffId') ,pharmacyController.renderPharmacyDashboard],
 })
 .subRoute('/staff' , {
     get: pharmacyStaffController.renderPharmacyStaff,

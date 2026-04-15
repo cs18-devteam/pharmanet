@@ -151,7 +151,7 @@ mainContainer.addEventListener("click", async (e) => {
 
 
 
-const profileImage = document.querySelector(".profile-card");
+const profileImage = document.querySelector(".profile-card img");
 
 profileImage?.addEventListener('click', e => {
     const inputEl = document.createElement("input");
@@ -175,10 +175,9 @@ profileImage?.addEventListener('click', e => {
             
             if (results.status == "error") throw new Error("file not uploaded")
 
-                console.log(results);
 
             if(results.status == "success"){
-                const img = profileImage.querySelector("img")
+                const img = profileImage;
                 if(img) img.src = results.profile;
             }
 

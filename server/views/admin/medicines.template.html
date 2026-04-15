@@ -104,10 +104,10 @@
                 </select>
               </div>
 
-              <div class="form-row">
+              <!-- <div class="form-row">
                 <label>Expiry Date</label>
                 <input type="date" name="expiryDate" required>
-              </div>
+              </div> -->
 
               <div class="modal-footer">
                 <button class="cancel-btn" onclick="closePopup('addMedicineModal')">Cancel</button>
@@ -357,7 +357,7 @@
           </div>
           <div class="field">
             <label>Brand Name *</label>
-            <input type="text" id="edit-brandName" name="brandName" value="" required />
+            <input type="text" id="edit-brandName" name="brandName" value="" />
           </div>
         </div>
 
@@ -365,7 +365,7 @@
         <div class="row">
           <div class="field">
             <label>Dosage *</label>
-            <input type="text" id="edit-dosage" name="dosage" value="" required />
+            <input type="text" id="edit-dosage" name="dosage" value=""  />
           </div>
           <div class="field">
             <label>Schedule</label>
@@ -396,12 +396,12 @@
           </div>
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
           <div class="field">
             <label>Date</label>
             <input type="date" id="edit-expiryDate" name="expiryDate" />
           </div>
-        </div>
+        </div> -->
 
 
         <!-- <div class="toggle">
@@ -621,15 +621,14 @@
 
           // Set dataset for submit handler
           document.getElementById('editPopup').dataset.medicineId = medicineId;
-
           // Populate form fields
-          document.getElementById('edit-name').value = medicine.name || '';
+          document.getElementById('edit-name').value = medicine.geneticName || '';
           document.getElementById('edit-brandName').value = medicine.brandName || '';
           document.getElementById('edit-dosage').value = medicine.dosage || '';
           document.getElementById('edit-schedule').value = medicine.schedule || '';
           document.getElementById('edit-manufacturer').value = medicine.manufacturer || '';
           document.getElementById('edit-category').value = medicine.category || '';
-          document.getElementById('edit-expiryDate').value = medicine.expiryDate ? medicine.expiryDate.split('T')[0] : '';
+          // document.getElementById('edit-expiryDate').value = medicine.expiryDate ? medicine.expiryDate.split('T')[0] : '';
 
           if (document.getElementById('edit-prescription')) {
             document.getElementById('edit-prescription').checked = medicine.prescriptionRequired || false;
@@ -710,7 +709,6 @@
 
 
       try {
-        console.log(medicineData);
         const response = await fetch(`${window.location.origin}/admin/${adminId}/medicines/create`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', },
@@ -799,7 +797,7 @@
         dosage: document.getElementById('edit-dosage').value,
         category: document.getElementById('edit-category').value,
         schedule: document.getElementById('edit-schedule').value,
-        expiryDate: document.getElementById('edit-expiryDate').value || null,
+        // expiryDate: document.getElementById('edit-expiryDate').value || null,
         prescriptionRequired: !!document.getElementById('edit-prescription').checked,
       };
       try {
@@ -826,7 +824,7 @@
           schedule: document.getElementById('edit-schedule')?.value || '',
           manufacturer: document.getElementById('edit-manufacturer')?.value?.trim() || '',
           category: document.getElementById('edit-category')?.value || '',
-          expiryDate: document.getElementById('edit-expiryDate')?.value || null,
+          // expiryDate: document.getElementById('edit-expiryDate')?.value || null,
           prescriptionRequired: document.getElementById('edit-prescription')?.checked || false
         };
 

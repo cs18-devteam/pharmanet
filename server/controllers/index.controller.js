@@ -9,7 +9,10 @@ const Users = require("../models/UserModel");
 exports.renderIndexPage =  async (req , res)=>{
     try{
                         
+    
         const {token} = readCookies(req);
+    
+        console.log(token);
         if(token){
             
             let redirectURL = undefined;

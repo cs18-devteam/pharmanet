@@ -73,6 +73,7 @@ async function startOrderProcess(prescription) {
                 icon:"error",
                 text : `We search for ${radius}KM , but couldn't find any one`,
             })
+            removeWait();
 
             await deleteOrder(Application.remoteOrderId);
             Application.remoteOrderId = undefined;

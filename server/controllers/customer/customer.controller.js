@@ -25,9 +25,6 @@ exports.renderCustomerHome = async (req, res) => {
                 const range = Number.parseInt(Math.random() * (medicineCount - 12));
                 const medicine = await Medicines.query(`select * from this.table where ${0} < id limit 12`);
 
-                console.log(medicine);
-
-
 
                 if (!staffMember) {
                         return response(res, view('customer/customer.home', {
@@ -105,7 +102,6 @@ exports.renderPharmacyView = async (req, res) => {
                 cart: view('customer/component.cart'),
         }), 200)
 }
-
 
 
 

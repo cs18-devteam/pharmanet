@@ -9,18 +9,19 @@ exports.uploadPrescriptions = apiCatchAsync(async (req , res)=>{
         const orderId = reqData.orderId;
 
         if(file){
-            file.rename(`${req.customerId}-${Date.now()}.${file.fileName.split('.').slice(-1)[0]}`);
-            const saved = await file.save("/prescriptions");
-            const path = saved.path.split('/storage/').slice(-1)[0];
+            const fileName = `${req.customerId}-${Date.now()}.${file.fileName.split('.').slice(-1)}`
+            const filePath = "/prescriptions";
+            file.rename(fileName);
+            const saved = await file.save(filePath);
 
             const order = await PharmacyOrders.update({
                 id: orderId ,
-                prescription : path,
+                prescription : filePath + "/" + fileName,
             })
 
             return responseJson(res , 200 , {
                 status:"success",
-                path ,
+                path :filePath + "/" + fileName ,
                 orderId : orderId,
             })
 

@@ -66,7 +66,7 @@ function sendChatBoxRequest(pharmacies=[] , customerId){
 server.onClientMessage((message , client)=>{
     try{
 
-        console.log({message});
+        // console.log({message});
         if(ChatTemplates.isHealthCheck(message)){
             const id  = ChatTemplates.getIdFromHealthCheck(message);
             pharmaciesConnectionStatus[id] = Date.now();

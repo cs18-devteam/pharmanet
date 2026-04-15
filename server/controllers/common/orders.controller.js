@@ -331,6 +331,7 @@ exports.getOrders = apiCatchAsync(async (req, res) => {
 
 
 exports.addOrderItem = apiCatchAsync(async (req, res) => {
+
     const id = req.orderId;
     const reqData = JSON.parse(await getRequestData(req));
     const { pharmacyId } = readCookies(req);
@@ -503,10 +504,10 @@ exports.deleteOrder = apiCatchAsync(async (req, res) => {
 
 })
 
-
+let orderUpdateLock = false;
 exports.updateOrder = apiCatchAsync(async (req, res) => {
     const data = JSON.parse(await getRequestData(req));
-    const { pharmacyId } = readCookies(req);
+    const { pharmacyId , staffId } = readCookies(req);
     if (!pharmacyId) throw new Error("cannot find pharmacy");
 
 
@@ -522,10 +523,40 @@ exports.updateOrder = apiCatchAsync(async (req, res) => {
         pharmacyId: data.pharmacyId,
     }
 
+    if(pharmacyId && !(order.pharmacyId) && data.pharmacyId){
+        if(orderUpdateLock) return responseJson(res , 400 , {
+            status:"error",
+            message:"atomic operation overlapped error",
+        })
+        orderUpdateLock = true;
+        console.log('hi');
 
-    await PharmacyOrders.update(orderObj);
+        const orderItems = await PharmacyOrdersItems.get({
+            orderId : data.id
+        })
 
+        await Promise.all(orderItems.map(async o=>{
+            const [stock] = await PharmacyMedicines.get({
+                medicineId : o.itemId,
+                pharmacyId : data.pharmacyId,
+            })
+            
+            console.log("fuck : " ,   stock);
+            if(!stock) throw new Error("this medicine is not in stock")
 
+            if(stock){
+                await PharmacyMedicines.update({
+                    id : stock.id,
+                    publicStock : stock.publicStock - 1,
+
+                })
+            }
+
+        }));
+    }
+
+    const updatedOrder = await PharmacyOrders.update(orderObj);
+    if(orderUpdateLock) orderUpdateLock = false;
 
 
     return responseJson(res, 200, {

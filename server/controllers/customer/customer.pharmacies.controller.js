@@ -13,6 +13,7 @@ const PharmacyMedicines = require("../../models/PharmacyMedicinesModel");
 const Pharmacies = require("../../models/PharmacyModel");
 const PharmacyStaff = require("../../models/PharmacyStaffModel");
 const Users = require("../../models/UserModel");
+const { calculateDistanceKM } = require("../../common/calcDistance");
 
 
 exports.renderCustomerPharmacies = async (req, res) => {

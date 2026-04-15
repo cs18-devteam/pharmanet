@@ -14,7 +14,7 @@ const template = html`<div class="cart_item" data-id="{id}">
                     <img src="/cart/tag.svg" alt="🏷️">
                     price
                 </div>
-                <div class="amount">1,234</div>
+                <div class="amount"></div>
             </div>
 
         </div>

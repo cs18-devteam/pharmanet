@@ -104,6 +104,10 @@ class UserModel extends Model {
             default: "Active",
         }
 
+        this.contact = {
+            type:"VARCHAR(15)",
+        }
+
     }
 }
 

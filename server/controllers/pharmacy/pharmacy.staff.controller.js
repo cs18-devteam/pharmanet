@@ -38,12 +38,28 @@ exports.renderStaffOptions = async (req, res) => {
 exports.createStaffMember = apiCatchAsync(async (req, res) => {
   const pharmacyId = req.pharmacyId;
   const reqData = await getMultipartData(req);
+
+  const [emailDuplicatedUser] = await Users.get({
+    email : reqData.email,
+  });
+
+
+  const [phoneDuplicateUser] = await Users.get({
+    contact : reqData.contactNo,
+  })
+
+  if(phoneDuplicateUser) throw new Error("Mobile number is already used");
+
+  if(emailDuplicatedUser) throw new Error("Email is already used");
+  
+
   const userData = {
     firstName: reqData.firstName,
     lastName: reqData.lastName,
     email: reqData.email,
     password: hashPassword("1234567890"),
     nic: reqData.nic,
+    contact : reqData.contactNo,
     fullName: reqData.fullName,
     dateOfBirth: reqData.dateOfBirth,
     addressNo: reqData.addressNo,

@@ -12,11 +12,9 @@ export async function handleResetPasswordAndDeleteAcc() {
     try {
         const panel = document.querySelector('.side-panel#editAccount');
 
-        console.log(panel);
         if (!eventListener) removeEventListener("click", eventListener);
 
         eventListener = panel?.addEventListener("click", e => {
-            console.log(e);
             const target = e.target;
             if (target.classList.contains("reset")) {
 
@@ -30,10 +28,7 @@ export async function handleResetPasswordAndDeleteAcc() {
 
                 }).then(async v => {
                     if (v.isConfirmed) {
-                        const results = await resetPassword(Application.currentSelectedStaffMember.id);
-
-
-
+                        const results = await resetPassword(Application.currentSelectedStaffMember.staffId);
 
                         if (results.status == "success") {
                             swal({
@@ -67,7 +62,6 @@ export async function handleResetPasswordAndDeleteAcc() {
                     return;
                 }
 
-
                 swal({
                     title: "Do you want to delete staff member",
                     icon: "question",
@@ -75,7 +69,7 @@ export async function handleResetPasswordAndDeleteAcc() {
                     confirmButtonText: "delete"
                 }).then(async v => {
                     if (v.isConfirmed) {
-                        const results = await deleteStaffMemberAccount(Application.currentSelectedStaffMember.id);
+                        const results = await deleteStaffMemberAccount(Application.currentSelectedStaffMember.staffId);
 
                         if (results.status == "success") {
                             swal({

@@ -10,11 +10,11 @@ const template = html`<div class="cart_item" data-id="{id}">
             
             </h4>
             <div class="price">
-                <div class="label">
+                <!-- <div class="label">
                     <img src="/cart/tag.svg" alt="🏷️">
                     price
-                </div>
-                <div class="amount"></div>
+                </div> -->
+                <!-- <div class="amount"></div> -->
             </div>
 
         </div>

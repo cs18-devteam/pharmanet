@@ -104,7 +104,7 @@ exports.getStaffMembers = apiCatchAsync(async (req, res) => {
    
     if(!user) return undefined;
   
-    return { ...staff, ...user, ...pharmacy, userId: user.id  , staffId : staff.id , pharmacyId : pharmacy.id};
+    return { ...staff, ...user, ...pharmacy, userId: user.id  , staffId : staff.id , pharmacyId : pharmacy.id , email: user.email , contact :user.contact};
   });
 
   
@@ -210,6 +210,30 @@ exports.updateStaffMember = apiCatchAsync(async (req, res) => {
     nic: data.nic,
     role: data.role,
   };
+
+  if(data.email){
+    const [dublicateEmailUser] = await Users.get({
+      email : data.email,
+    })
+
+    if(dublicateEmailUser) throw new Error("email is already used");
+  }
+
+  if(data.contact){
+    const [duplicateContact] = await Users.get({
+      contact : data.contact,
+    })
+
+    if(duplicateContact) throw new Error("mobile number is already used");
+  }
+
+  if(data.nic){
+    const [duplicateNic] = await Users.get({
+      nic : data.nic,
+    })
+
+    if(duplicateNic) throw new Error("nic number already used");
+  }
 
 
   // Remove undefined and empty fields

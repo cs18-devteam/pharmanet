@@ -24,9 +24,7 @@ export async function fetchAndRenderStaff() {
 
     
     const { results } = response;
-    console.log(results);
     Application.staffData = results;
-    console.log(results);
 
     if (!results || results.length === 0) {
       console.log("No staff members found");
@@ -74,13 +72,17 @@ export async function fetchAndRenderStaff() {
         
         // Find the full staff member data
         const selectedStaff = Application.allStaffMembers.find(m => 
-          m.userId == userId || m.staffId == staffId || m.id == staffId
+          m.userId == userId && m.staffId == staffId
         );
 
         if (selectedStaff) {
-          Application.currentSelectedStaffMember = Application.allStaffMembers.find(m=>m.id == selectedStaff.id);
+          Application.currentSelectedStaffMember = Application.allStaffMembers.find(m=>{
+            return m.staffId == selectedStaff.staffId
+          });
+
+        
           // Pass the selected staff data to the edit form
-          setSelectedStaffData(selectedStaff);
+          setSelectedStaffData(Application.currentSelectedStaffMember);
           
           // Hide recent leaves and show actions
           const recentLeaveContainer = document.querySelector(".recentLeaveContainer");

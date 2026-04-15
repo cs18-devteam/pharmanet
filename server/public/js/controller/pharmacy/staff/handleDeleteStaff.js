@@ -57,7 +57,9 @@ export async function handleResetPasswordAndDeleteAcc() {
             }
 
             if (target.classList.contains("delete")) {
-                if (Application.currentSelectedStaffMember.id == Application.staffId) {
+
+
+                if (+Application.currentSelectedStaffMember.staffId == +Application.staffId) {
                     swal({
                         title: "You cannot delete your self",
                         icon: "warning",

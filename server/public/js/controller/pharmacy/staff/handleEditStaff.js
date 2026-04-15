@@ -6,12 +6,12 @@ let isEditInitialized = false;
 
 
 export function setSelectedStaffData(staffData) {
+
     // Add pharmacyId from Application if not present
     selectedStaffData = {
         ...staffData,
         pharmacyId: staffData.pharmacyId || Application.pharmacyId
     };
-    console.log("Selected staff data set:", selectedStaffData);
     populateEditForm(selectedStaffData);
 }
 
@@ -19,13 +19,14 @@ function populateEditForm(staffData) {
     const editForm = document.querySelector('#editAccount form');
     if (!editForm) return;
 
-    console.log(staffData);
     // Populate form fields with staff data
     editForm.querySelector('input[name="firstName"]').value = staffData.firstName || '';
     editForm.querySelector('input[name="lastName"]').value = staffData.lastName || '';
     editForm.querySelector('input[name="contact"]').value = staffData.contact || '';
     editForm.querySelector('input[name="email"]').value = staffData.email || '';
     editForm.querySelector('input[name="nic"]').value = staffData.nic || '';
+    document.querySelector(".danger-zone .delete")?.setAttribute("data-id" , staffData.staffId)
+    
     const selectTag = editForm.querySelector('select[name="role"]');
     Array.from(selectTag.querySelectorAll('option')).forEach(el=>{
         if(el.getAttribute("value") == staffData.role){
@@ -111,9 +112,6 @@ function handleEditFormSubmit() {
         // Disable button to prevent double-clicks
         newSubmitButton.disabled = true;
 
-        console.log("Edit form submission started...");
-        console.log("Selected staff data:", selectedStaffData);
-
         // Get form data
         const firstName = editForm.querySelector('input[name="firstName"]').value;
         const lastName = editForm.querySelector('input[name="lastName"]').value;
@@ -122,7 +120,9 @@ function handleEditFormSubmit() {
         const nic = editForm.querySelector('input[name="nic"]').value;
         const role = editForm.querySelector('select[name="role"]').value;
 
-    
+   
+
+
 
         console.log("Form data:", { firstName, lastName, role, contact, email, nic });
 

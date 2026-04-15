@@ -26,6 +26,7 @@ export async function fetchAndRenderStaff() {
     const { results } = response;
     console.log(results);
     Application.staffData = results;
+    console.log(results);
 
     if (!results || results.length === 0) {
       console.log("No staff members found");
@@ -47,7 +48,7 @@ export async function fetchAndRenderStaff() {
           .replace("{role}", member.role || "Staff")
           .replace("{firstName}", member.firstName || "Unknown")
           .replace("{lastName}", member.lastName || "")
-          .replace("{id}", member.id || ""),
+          .replace("{id}", member.staffId || ""),
       )
       .join(" ");
 

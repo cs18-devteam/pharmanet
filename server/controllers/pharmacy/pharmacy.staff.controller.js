@@ -88,7 +88,7 @@ exports.getStaffMembers = apiCatchAsync(async (req, res) => {
    
     if(!user) return undefined;
   
-    return { ...staff, ...user, ...pharmacy, userId: user.id };
+    return { ...staff, ...user, ...pharmacy, userId: user.id  , staffId : staff.id , pharmacyId : pharmacy.id};
   });
 
   

@@ -12,7 +12,6 @@ exports.renderIndexPage =  async (req , res)=>{
     
         const {token} = readCookies(req);
     
-        console.log(token);
         if(token){
             
             let redirectURL = undefined;
@@ -20,7 +19,6 @@ exports.renderIndexPage =  async (req , res)=>{
             if(tokenData?.id){
                 
                 const [user] = await Users.getById(tokenData.id);
-                console.log(user);
                 if(user){
                     switch (user.role){
                         case "customer":

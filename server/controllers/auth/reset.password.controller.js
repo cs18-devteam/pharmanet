@@ -8,7 +8,6 @@ const Users = require("../../models/UserModel");
 exports.resetPassword = apiCatchAsync(async (req , res)=>{
     const userId = req.userId;
     const data = JSON.parse(await getRequestData(req));
-    console.log(userId,data);
     if(!data.password) throw new Error("no password");
 
     const [user] = await Users.getById(userId);

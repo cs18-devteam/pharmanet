@@ -22,9 +22,7 @@ exports.renderCustomerHome = async (req, res) => {
                 const [staffMember] = await PharmacyStaff.get({ userId: customer.id });
                 const [{ count: medicineCount }] = await Medicines.query('select count(*) as count from this.table');
                 const [{ count: pharmacyCount }] = await Pharmacies.query('select count(*) as count from this.table where status = 1');
-                console.log({ customer, staffMember });
                 const range = Number.parseInt(Math.random() * (medicineCount - 12));
-                console.log(range);
                 const medicine = await Medicines.query(`select * from this.table where ${0} < id limit 12`);
 
                 console.log(medicine);

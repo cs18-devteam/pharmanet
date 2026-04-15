@@ -422,9 +422,7 @@ exports.getOrderItems = apiCatchAsync(async (req, res) => {
                 }))[0],
             }
         } else if (i.itemType == "product") {
-            console.log(i);
             const [product] = await Products.getById(i.itemId);
-            console.log(product);
 
             return {
                 ...i,
@@ -455,7 +453,6 @@ exports.deleteOrder = apiCatchAsync(async (req, res) => {
     })
     const {pharmacyId} = readCookies(req);
 
-    console.log(items);
 
     items = await Promise.all(items.map(async i => {
         if (i.itemType == "medicine") {
@@ -466,7 +463,6 @@ exports.deleteOrder = apiCatchAsync(async (req, res) => {
 
             const [med] = await Medicines.getById(i.itemId);
 
-            console.log(med , stock);
 
             if(!med) return undefined;
             if(!stock) return undefined;
@@ -526,7 +522,6 @@ exports.updateOrder = apiCatchAsync(async (req, res) => {
         pharmacyId: data.pharmacyId,
     }
 
-    console.log(orderObj , data);
 
     await PharmacyOrders.update(orderObj);
 
@@ -654,7 +649,6 @@ exports.createOrderFormPrescription = apiCatchAsync(async (req , res)=>{
         prescription : `${filePath}/${fileName}`,
         status:"pending",
     })
-    console.log(order);
 
     responseJson(res , 200 , {
         status:"success",

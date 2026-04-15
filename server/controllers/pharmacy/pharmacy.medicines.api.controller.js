@@ -31,7 +31,6 @@ exports.getAllMedicines = async (req, res) => {
 
 exports.getMedicinesById = async (req, res) => {
     try{
-        console.log(req.pharmacyId);
         let data = await PharmacyMedicines.getByVarId('pharmacyId',req.pharmacyId);
         const [pharmacy] = await Pharmacies.getById(req.pharmacyId);
         data = data.map(async (m) => {
@@ -43,7 +42,6 @@ exports.getMedicinesById = async (req, res) => {
   
 
   data = (await Promise.all(data)).filter(Boolean);
-  console.log(data);
   return responseJson(res, 200, {
     status: "success",
     results: data,

@@ -86,7 +86,6 @@ exports.resendEmailOTP =async (req , res)=>{
             emailOTPCreatedAt : new Date(Date.now()).toISOString().slice(0, 19).replace("T", " ")
         })
 
-        console.log(updatedUser);
         this.sendEmailOTP(updatedUser);
 
         return responseJson(res , 200 , {

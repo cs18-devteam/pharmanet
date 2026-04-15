@@ -36,7 +36,6 @@ exports.addMedicine = async (req, res) => {
     const data = JSON.parse(await getRequestData(req));
     await db.query(`USE ${process.env.DATABASE_NAME}`); // Select the database
     const newMedicine = await Medicines.save({...data , geneticName : data.geneticName});
-    console.log("Saved medicine:", newMedicine);
 
     await ActivityLogService.logActivity(
       req.adminId, // WHO did it (the admin's ID)
@@ -234,11 +233,9 @@ exports.uploadMedicine = async (req, res) => {
             manufacturer: row.manufacturer || row.Manufacturer || '',
             // Add other fields based on your Excel columns and database schema
           };
-          console.log('Inserting medicine:', medicineData);
           await Medicines.save(medicineData);
           insertedCount++;
         } else {
-          console.log(`Medicine ${medicineName} already exists, skipping`);
           skippedCount++;
         }
       } catch (err) {

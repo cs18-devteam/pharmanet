@@ -41,7 +41,6 @@ exports.renderLoyaltyPoints = catchAsync(async (req, res) => {
 
 
             const pharmacy = (await  Pharmacies.getById(r.PharmacyId))[0];
-            console.log(pharmacy)
 
 
 

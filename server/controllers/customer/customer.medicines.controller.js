@@ -154,12 +154,6 @@ exports.renderCustomerSelectedMedicine = catchAsync(async (req, res) => {
 
     const filteredPharmacies = pharmacies.filter(e => e != undefined);
 
-    console.log(filteredPharmacies);
-
-    console.log(connectedPharmacies);
-
-
-
 
     return response(res, view("customer/customer.medicine.blog", {
         header: view('component.header', {

@@ -172,20 +172,17 @@ exports.changePermissions = apiCatchAsync(async (req, res) => {
 exports.updateStaffMember = apiCatchAsync(async (req, res) => {
   const staffId = req.staffId;
 
-  console.log("Update staff request - staffId:", staffId);
 
   // Get the staff member
   const [staff] = await PharmacyStaff.getById(staffId);
   if (!staff) throw new Error("Staff member not found");
 
-  console.log("Staff found:", staff);
 
   const userId = staff.userId;
   const data = await getMultipartData(req);
 
   if (!staffId) throw new Error("staffId is required");
 
-  console.log("Received data:", data);
 
   // Update user data
   const userData = {
@@ -198,7 +195,6 @@ exports.updateStaffMember = apiCatchAsync(async (req, res) => {
     role: data.role,
   };
 
-  console.log("User data to update:", userData);
 
   // Remove undefined and empty fields
   Object.keys(userData).forEach(key => {
@@ -207,7 +203,6 @@ exports.updateStaffMember = apiCatchAsync(async (req, res) => {
     }
   });
 
-  console.log("Cleaned user data:", userData);
 
   // Verify we have data to update
   if (Object.keys(userData).length <= 1) {
@@ -215,13 +210,11 @@ exports.updateStaffMember = apiCatchAsync(async (req, res) => {
   }
 
   const [updatedUser] = await Users.update(userData);
-  Users.update(userData);
 
   if (!updatedUser) {
     throw new Error("Failed to update user");
   }
 
-  console.log("User updated:", updatedUser);
 
   return responseJson(res, 200, {
     status: "success",

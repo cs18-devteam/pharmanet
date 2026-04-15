@@ -45,8 +45,6 @@ exports.login = async (req, res) => {
         }
         const isVerified = verifyPassword(password , user[0].password);
 
-        console.log({password , stored : user[0].password})
-        console.log(isVerified);
         if(!isVerified){
             return responseJson(res , 400 , {
                 status:"error",
@@ -58,7 +56,6 @@ exports.login = async (req, res) => {
         const cookie = createCookieToken(token);
 
 
-        console.log(cookie)
         const role = user[0].role;
         if(role == "pharmacist" || role == "cashier" || "stockmanager" || "accountant"){
             const [member] = await PharmacyStaff.get({

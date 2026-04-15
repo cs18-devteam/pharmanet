@@ -82,7 +82,6 @@ exports.authorizeToApi = (permissions = []) => {
                 }
             }else{
                 permissions.forEach(p => {
-                    console.log(staff);
                     if (!staff[p]) {
                         authorized = false;
                     }

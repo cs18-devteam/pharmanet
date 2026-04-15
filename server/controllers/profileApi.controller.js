@@ -72,7 +72,6 @@ exports.updateProfile = apiCatchAsync(async (req , res)=>{
     const [user] = await Users.getById(userId);
     const data = JSON.parse(await getRequestData(req));
 
-    console.log(data);
 
     if(!user) throw new Error("Account not found");
     const updatedUser = await Users.update({

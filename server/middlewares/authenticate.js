@@ -59,7 +59,6 @@ exports.authenticate = (userId, roles = ['*'], permissions = ['*']) => {
 exports.grantAccess = (...roles) => {
     return async (req, res, next) => {
         if (!req.user) throw new Error('need run authenticate middleware first for use grant access ')
-        console.log(roles);
         return next();
     }
 }

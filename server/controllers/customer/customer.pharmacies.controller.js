@@ -143,7 +143,6 @@ exports.renderPharmacyLandingPage = async (req, res) => {
       const [medicine] = await Medicines.getById(m.medicineId);
       if(!medicine) return undefined;
       if (search) {
-        console.log(medicine.geneticName ,medicine.geneticName.toLowerCase().includes(search));
         if (!medicine?.geneticName.toLowerCase().includes(search) && !medicine.category?.toLowerCase().includes(search)) {
           return undefined;
         }
@@ -712,7 +711,6 @@ exports.getNearByPharmacies = apiCatchAsync(async (req , res)=>{
     pharmacies.push(pharmacy);
   }
 
-  console.log(pharmacies);
 
   responseJson(res , 200 , {
     status:"success",

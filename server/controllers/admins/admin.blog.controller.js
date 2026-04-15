@@ -102,7 +102,6 @@ exports.renderEditView = catchAsync(async (req, res) => {
   const blogId = req.blogId;
 
   const [blog] = await Blogs.getById(blogId);
-  console.log(blog);
 
   const other = (blog.category).toLowerCase() == "medicine" ? "Disease" : "Medicine";
   
@@ -168,7 +167,6 @@ exports.createBlog = catchAsync(async (req, res) => {
 
 exports.deleteBlog = catchAsync(async (req, res) => {
   const blogId = req.blogId;
-  console.log(blogId);
   if (!blogId || isNaN(blogId)) {
     return response(res, "Invalid Blog ID", 400);
   }
@@ -178,7 +176,6 @@ exports.deleteBlog = catchAsync(async (req, res) => {
 
 exports.updateBlog = catchAsync(async (req, res) => {
   const blogId = req.blogId;
-  console.log(blogId);
   const rawData = await getRequestData(req);
   if (!rawData) {
     return response(res, "Empty request body", 400);
@@ -207,7 +204,6 @@ exports.updateBlog = catchAsync(async (req, res) => {
 
 exports.getAllBlogs = catchAsync(async (req, res) => {
   let adminId = req.adminId;
-  console.log(adminId);
 
   if (!adminId && req.url) {
     const parts = req.url.split("/");

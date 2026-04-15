@@ -161,7 +161,6 @@ exports.sendOnlinePharmacies = apiCatchAsync(async (req, res) => {
 
     if (medicineIds.length) {
 
-        console.log(medicineIds);
 
         await Promise.all(medicineIds.map(async m => {
             pharmacies = await Promise.all(pharmacies.map(async p => {

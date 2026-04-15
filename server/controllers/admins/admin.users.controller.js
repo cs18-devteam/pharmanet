@@ -10,9 +10,7 @@ const Pharmacies = require("../../models/PharmacyModel");
 
 
 exports.renderAdminUsersView = async (req, res) => {
-  console.log(`renderAdminUsersView called with adminId: ${req.adminId}`);
   const [admin] = await Users.getById(req.adminId);
-  console.log("Admin fetched:", admin);
 
   return response(
     res,
@@ -104,14 +102,12 @@ exports.createUser = catchAsync(async (req, res) => {
 });
 
 exports.updateUserStatus = async (req, res) => {
-  console.log("updateUserStatus called");
   try {
     const urlParts = req.url.split("/");
     // Extract ID from the end of the URL
     const id = urlParts[urlParts.length - 1];
     // Pass req object to getRequestData, NOT req.adminId
     const requestData = await getRequestData(req);
-    console.log("Request Data:", requestData);
     if (!requestData) {
       return responseJson(res, 400, { message: "Empty request body" });
     }
@@ -122,12 +118,10 @@ exports.updateUserStatus = async (req, res) => {
       console.error("JSON parse error in updateUserStatus:", parseErr);
       return responseJson(res, 400, { message: "Invalid JSON" });
     }
-    console.log(`Updating user ${id} status to ${status}`);
 
     // Use Users model to update status
     await Users.update({ id: id, status: status, role: role });
 
-    console.log("Update successful");
     return responseJson(res, 200, { message: "Status updated" });
   } catch (e) {
     console.error("Error in updateUserStatus:", e);
@@ -177,7 +171,6 @@ exports.renderViewProfilePage = async (req, res) => {
 
     const [staffRow] = await PharmacyStaff.getByVarId("userId",userId);
     const [pharmacy] = await Pharmacies.getById(staffRow.pharmacyId);
-    console.log(pharmacy);
     
     
 

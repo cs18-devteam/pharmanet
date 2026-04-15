@@ -131,6 +131,7 @@ export default class Application{
     static remotePharmacyList = [];
     static remoteRedirectMode = false;
     static remotePrescription = undefined;
+    static remoteUser = undefined;
 
 
     /**

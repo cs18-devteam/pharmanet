@@ -3,6 +3,7 @@ import ChatTemplates from "../../../model/application/ChatTemplates.js";
 import { getPharmacyDetailsById } from "../../../model/customer/pharmacies.model.js";
 import { createPrescriptionUploadCardContent } from "../../../view/chatbox.js";
 import cart from "../../../view/customer/Cart.js";
+import { changeChatBoxName } from "../../../view/customer/changeChatboxName.js";
 import { createPaymentPopup } from "../../../view/customer/createPaymentPopup.js";
 import CustomerChatBox from "../../../view/customer/CustomerChatBox.js";
 import onClickSkipBtnOfPrescriptionPopup from "../../../view/customer/onClickSkipBtnOfPrescriptionPopup.js";
@@ -21,85 +22,89 @@ import syncOrder from "./syncOrder.js";
 const Chat = Application.MessageTemplates;
 
 
-export default function handleConnection(msg){
+export default async function handleConnection(msg) {
     const message = msg.data;
     console.log(message);
 
-    if(Chat.isRequestConnection(message)){
-        const {status} = Chat.readStablishConn(message)
-
-        if(status == "success"){
-            renderToast("connected  :)" , "success");
+    if (Chat.isRequestConnection(message)) {
+        const { status } = Chat.readStablishConn(message)
+        if (status == "success") {
+            renderToast("connected  :)", "success");
             requestConnectionWithPharmacy(Application.requestPharmacyId);
             CustomerChatBox.loading();
-        }else{
+        } else {
             CustomerChatBox.setUserState("error");
         }
 
-    }else if(Chat.isChatBoxResponseFromPharmacy(message)){
+    } else if (Chat.isChatBoxResponseFromPharmacy(message)) {
         const resObj = Chat.readChatBoxAcceptRequestFromServerToClient(message);
 
         Application.connectedWith = resObj.pharmacyId;
-        getPharmacyDetailsById(resObj.pharmacyId).then(e=>{
-            Application.remotePharmacy = e.data;
-        })
+        const data = await getPharmacyDetailsById(resObj.pharmacyId)
+        Application.remotePharmacy = data.data;
 
 
-        
 
-        if(resObj.accept){
+
+        if (resObj.accept) {
             removeWait();
             getCartsIdsAndCreateOrder();
             CustomerChatBox.renderChatBox();
             Application.connection.send(ChatTemplates.syncConnection(Application.remoteOrderId));
 
-            CustomerChatBox.handleInputMessage((message)=>{
+            CustomerChatBox.handleInputMessage((message) => {
                 Application.connection.send(Chat.message(message));
-                
+
             })
             syncOrder(Application.remoteOrderId);
+            try {
+                console.log(Application.remotePharmacy);
+                changeChatBoxName();
+            } catch (e) {
+                console.log("can't change chat box name");
+            }
             // activateOnSubmitMessageCallback();
 
-        }else{
-            if(Application.remoteRedirectMode){
-                if(Application.remotePharmacyList.length){
+        } else {
+            if (Application.remoteRedirectMode) {
+                if (Application.remotePharmacyList.length) {
                     redirect();
-                }else{
+                } else {
                     swal({
-                        title:"Couldn't connect any pharmacy",
-                        icon:"warning",
-                        text :"you can try again , by uploading prescription again",
+                        title: "Couldn't connect any pharmacy",
+                        icon: "warning",
+                        text: "you can try again , by uploading prescription again",
                     })
                 }
             }
             cart.closeLeftPanel();
-            renderToast("pharmacy rejected" , "error");
+            renderToast("pharmacy rejected", "error");
 
 
 
         }
-    }else if(Chat.isMessage(message)){
+    } else if (Chat.isMessage(message)) {
         const msgObj = Chat.readMessage(message);
         CustomerChatBox.incomingMessage(msgObj.message);
 
-    
-    
-    }else if(Chat.isMinorError(message)){
-        renderToast("something wrong with connection" , "error");
+
+
+    } else if (Chat.isMinorError(message)) {
+        renderToast("something wrong with connection", "error");
         return;
-    }else if(Chat.isDisconnect(message)){
+    } else if (Chat.isDisconnect(message)) {
         CustomerChatBox.disconnect();
         console.log("disconnecting");
         disconnect();
-        renderToast("disconnected" , "error");
-    }else if(Chat.isSyncRequest(message)){
+        renderToast("disconnected", "error");
+    } else if (Chat.isSyncRequest(message)) {
         Application.remoteOrderId = ChatTemplates.decodeString(message).data.orderId;
         customerSyncOrder();
-    }else{
-        const {opcode , data} = ChatTemplates.decodeString(message);
-        console.log(opcode , data);
+    } else {
+        const { opcode, data } = ChatTemplates.decodeString(message);
+        console.log(opcode, data);
 
-        if(ChatTemplates.isRequestPayment(message)){
+        if (ChatTemplates.isRequestPayment(message)) {
             cart.setPopupContent(createPaymentPopup())
             cart.openPopup();
             handlePaymentPopup();
@@ -107,7 +112,7 @@ export default function handleConnection(msg){
 
 
 
-        if(opcode == ChatTemplates.requestPrescriptionCode){
+        if (opcode == ChatTemplates.requestPrescriptionCode) {
             cart.setPopupContent(createPrescriptionUploadCardContent());
             CustomerChatBox.onSelectPrescription(onSelectPerscription)
             onClickSkipBtnOfPrescriptionPopup();

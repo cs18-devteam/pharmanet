@@ -1,5 +1,6 @@
 import Application from "../../../model/application/Application.js";
 import ChatTemplates from "../../../model/application/ChatTemplates.js";
+import { getPharmacyDetailsById } from "../../../model/customer/pharmacies.model.js";
 import { updateOrder } from "../../../model/pharmacy/orders.js";
 import { onAcceptIncomingMessage, onAnyCaseIncomingMessage, onRejectIncomingMessage, removeIncomingMessage, showIncomingMessage } from "../../../view/chatbox.js";
 import { changeWindowTo } from "../../../view/pharmacy/changeWindow.js";
@@ -34,7 +35,7 @@ export async function whenChatBoxRequest(socket,message){
     onAcceptIncomingMessage(async ()=>{
         
         Application.connectedWith = reqObj.customerId;
-        Application.connectedUser = Application.getUserData(Application.connectedWith);
+        Application.connectedUser =  await Application.getUserData(Application.connectedWith);
         
     
         socket.send(ChatTemplates.acceptClient(true , reqObj.customerId));

@@ -28,14 +28,20 @@ class Message {
     }
 
     render() {
-        if (this.isRendered) return;
+        try {
 
-        const element = document.querySelector('.chat-box .body-section');
 
-        const message = html`
+
+
+            if (this.isRendered) return;
+            const photo = this.type != "message" ? Application.user?.profile : Application.connectedUser?.profile;
+
+            const element = document.querySelector('.chat-box .body-section');
+
+            const message = html`
             <div class="${this.type} message">
                 <span class="profile-pic">
-                        <img src="/users/1.jpg" alt="" width="40rem" height="40rem">
+                    <img src="${photo || "/users/1.jpg"}" alt="" width="40rem" height="40rem">
                 </span>
                 ${this.message}
                 <br>
@@ -43,9 +49,12 @@ class Message {
             <div class="${this.type}-time message-time">${new Date(this.time).toLocaleTimeString()}</div>
             `;
 
-        element?.insertAdjacentHTML("beforeend", message);
+            element?.insertAdjacentHTML("beforeend", message);
 
-        this.isRendered = true;
+            this.isRendered = true;
+        } catch (e) {
+            console.log(e);
+        }
     }
 }
 

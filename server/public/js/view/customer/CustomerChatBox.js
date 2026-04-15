@@ -27,14 +27,19 @@ class Message {
     }
 
     render() {
-        if (this.isRendered) return;
+        try {
 
-        const element = document.querySelector('.chat-box .body-section');
+            if (this.isRendered) return;
 
-        const message = html`
+            const photo = this.type != "message" ? Application.user?.profile : Application.remotePharmacy?.img;
+
+
+            const element = document.querySelector('.chat-box .body-section');
+
+            const message = html`
             <div class="${this.type} message">
                 <span class="profile-pic">
-                        <img src="/users/1.jpg" alt="" width="40rem" height="40rem">
+                    <img src="${photo || "/users/1.jpg"}" alt="" width="40rem" height="40rem">
                 </span>
                 ${this.message}
                 <br>
@@ -42,9 +47,12 @@ class Message {
             <div class="${this.type}-time message-time">${new Date(this.time).toLocaleTimeString()}</div>
             `;
 
-        element?.insertAdjacentHTML("beforeend", message);
+            element?.insertAdjacentHTML("beforeend", message);
 
-        this.isRendered = true;
+            this.isRendered = true;
+        } catch (e) {
+            console.log(e);
+        }
     }
 }
 
@@ -147,7 +155,7 @@ export default class CustomerChatBox {
             html`
                 <div class="chat-box">                    
                     <div class="header-section">
-                        <div class="customer-name"><span class=".chat-customer-name">${user.firstName} ${user.lastName}</span> <br><span style="" class="chat-online-indicator"></span></div>
+                        <div class="customer-name"><span class="chat-customer-name">${user.firstName} ${user.lastName}</span> <br><span style="" class="chat-online-indicator"></span></div>
 
                         <div class="discount chat-disconnect-btn" style="height:fit-content;">Disconnect</div>
                     </div>
@@ -305,9 +313,9 @@ export default class CustomerChatBox {
                 <div class="close-btn">close</div>
             </div>
         
-    </div>` : 
-    
-    `<div class="cus-disconnect-notice">
+    </div>` :
+
+            `<div class="cus-disconnect-notice">
         <p>You have Disconnected , and if you want to contact or any issue you can connect pharmacy directly</p>
         <div>
             <div>contact Details</div>
@@ -336,7 +344,7 @@ document.body.addEventListener("click", e => {
     const closeBtn = target.closest(".cus-disconnect-notice .buttons .close-btn");
     const notice = target.closest(".cus-disconnect-notice");
     const redirectBtn = target.closest(".cus-disconnect-notice .buttons .redirect-btn");
-    
+
 
     if (closeBtn) {
         notice.remove();
@@ -347,7 +355,7 @@ document.body.addEventListener("click", e => {
 
     }
 
-    if(redirectBtn){
+    if (redirectBtn) {
         notice.remove();
         cart.close();
         cart.unlock();

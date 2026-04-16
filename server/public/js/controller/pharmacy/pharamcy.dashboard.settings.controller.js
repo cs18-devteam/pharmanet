@@ -178,6 +178,8 @@ function handleSignOut() {
                 swal({
                     title:"Signout Successful",
                     icon:"success",
+                }).then(()=>{
+                    window.location.href = "/login";
                 })
 
             }

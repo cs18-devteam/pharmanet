@@ -97,6 +97,10 @@ class PharmacyModel extends Model{
         this.status = {
             type: "bool"
         }
+
+        this.ownerId = {
+            type :"INT",
+        }
     }
 }
 

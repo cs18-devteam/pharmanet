@@ -679,6 +679,12 @@ exports.createPharmacy = apiCatchAsync(async (req, res) => {
     role: "pharmacist",
   });
 
+
+  await Pharmacies.update({
+    id: pharmacy.id,
+    ownerId : pharmacist.id, 
+  })
+
   return responseJson(res, 200, {
     status: "success",
     results: {

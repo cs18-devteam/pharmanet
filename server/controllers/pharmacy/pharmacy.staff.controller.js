@@ -216,7 +216,7 @@ exports.updateStaffMember = apiCatchAsync(async (req, res) => {
       email : data.email,
     })
 
-    if(dublicateEmailUser) throw new Error("email is already used");
+    if(dublicateEmailUser && dublicateEmailUser.id != userId) throw new Error("email is already used");
   }
 
   if(data.contact){
@@ -224,7 +224,7 @@ exports.updateStaffMember = apiCatchAsync(async (req, res) => {
       contact : data.contact,
     })
 
-    if(duplicateContact) throw new Error("mobile number is already used");
+    if(duplicateContact && duplicateContact.id != userId) throw new Error("mobile number is already used");
   }
 
   if(data.nic){
@@ -232,7 +232,7 @@ exports.updateStaffMember = apiCatchAsync(async (req, res) => {
       nic : data.nic,
     })
 
-    if(duplicateNic) throw new Error("nic number already used");
+    if(duplicateNic && duplicateNic.id != userId) throw new Error("nic number already used");
   }
 
 

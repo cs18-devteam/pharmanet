@@ -203,12 +203,18 @@ exports.sendOnlinePharmacies = apiCatchAsync(async (req, res) => {
 
 exports.deletePharmacy = apiCatchAsync(async (req, res) => {
     const pharmacyId = req.pharmacyId;
+    const {staffId} = readCookies(req);
+
+    if(!staffId) throw new Error("staffId not found");
+
     if (!pharmacyId) throw new Error("no pharmacy id");
 
 
     const [pharmacy] = await Pharmacies.getById(pharmacyId);
     if (!pharmacy) throw new Error("no pharmacy found");
 
+
+    if(staffId != pharmacy.ownerId) throw new Error("You're not the owner of the pharmacy");
 
     const medicines = await PharmacyMedicines.get({
         pharmacyId: pharmacy.id,

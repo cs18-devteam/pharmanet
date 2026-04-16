@@ -139,10 +139,15 @@ exports.changePermissions = apiCatchAsync(async (req, res) => {
   const data = await getMultipartData(req);
   const {staffId} = readCookies(req);
 
+  const [member] = await PharmacyStaff.getById(staffId);
+  const [pharmacy] = await Pharmacies.getById(member.pharmacyId);
+
+  if(!member) throw new Error("staff member not found");
+  if(!pharmacy) throw new Error("pharmacy not found");
 
 
   const permissionObj = {
-    id: data.staffId,
+    id: member.id,
     createOrder: data.createOrder == "on" ? "1" : "0",
     deleteOrder: data.deleteOrder == "on" ? "1" : "0",
     readOrder: data.readOrder == "on" ? "1" : "0",
@@ -171,8 +176,9 @@ exports.changePermissions = apiCatchAsync(async (req, res) => {
     deleteStaff: data.deleteStaff == "on" ? "1" : "0",
     createStaff: data.createStaff == "on" ? "1" : "0",
   };
+  
 
-  if(staffId != data.staffId){
+  if((staffId != data.staffId) && (member.id != pharmacy.ownerId)){
     permissionObj.updateStaff =  data.updateStaff == "on"  ? "1" : "0";
   }
 

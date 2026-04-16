@@ -7,10 +7,11 @@ $bg: #0b0f14;
 $card-bg: #f7f7f7;
 $text: #08374f;
 $muted: #9ca3af;
-$green: #22c55e;
+$green: #1ca04c;
 $red: #ef4444;
 $yellow: #f59e0b;
 $border: #1f2937;
+$primary: #08374F;
 $accent-green: #00a676;
 
 
@@ -30,13 +31,14 @@ body {
   .back-btn {
     text-decoration: none;
     font-size: 2.5rem;
-    color: $bg;
+    color: $primary;
     margin-right: 1rem;
   }
 
   h1 {
     margin: 0;
     font-size: 28px;
+    color: $primary;
   }
 
   p {
@@ -52,9 +54,10 @@ body {
   gap: 0px;
   margin: 20px 0;
 
-  .card {
-    background: $card-bg;
-    padding: 20px;
+  .card {  
+  padding: 20px;
+  background: $card-bg;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     
     &:not(&:last-child){
     border-right: 1px solid var(--color-green-01);
@@ -71,7 +74,7 @@ body {
     }
 
     .positive {
-      color: $green;
+      color: #dcfce7;
       font-size: 14px;
        display: none;
     }
@@ -91,12 +94,13 @@ body {
   margin: 20px 0;
 
   input {
-    width: 70%;
+    width: 40%;
     padding: 10px;
-    border-radius: 8px;
     border: 1px solid $border;
     background: transparent;
     color: black;
+    border-radius: 10px;
+  padding-left: 40px;
   }
 
   .actions button {
@@ -144,6 +148,15 @@ body {
   table {
     width: 100%;
     border-collapse: collapse;
+
+    tr:nth-child(even) {
+      background: #f9fafb;
+    }
+    tr:hover {
+      background: #eef2ff;
+      cursor: pointer;
+    }
+
 
     th, td {
       padding: 12px;

@@ -22,13 +22,13 @@
 
     <div class="container-2">
       <div class="main">
-        <!-- <header>
-      <input type="text" placeholder="Search users..." />
-      <div class="user-section">
+        <header>
+      <input type="text" id="searchInput" style="height: 5rem; font-size: 2rem; font-weight: 400; color: var(--color-green-02);" placeholder="Search users..." />
+      <!-- <div class="user-section">
         <span class="bell"></span>
         <div class="admin">AD</div>
-      </div>
-    </header> -->
+      </div> -->
+    </header>
 
         <section class="dashboard">
           <div class="sectionHeading">
@@ -474,8 +474,24 @@ document.addEventListener('click', function(e) {
   }
 });
 </script>
-      </div>
-    </div>
+  <script>
+    //search filter
+  document.getElementById('searchInput').addEventListener('keyup', function () {
+  const filter = this.value.toLowerCase(); // what user types
+  const rows = document.querySelectorAll('.user-table tr');
+ 
+
+  rows.forEach(row => {
+    const text = row.textContent.toLowerCase();
+    if (text.includes(filter)) {
+      row.style.display = ''; // show row
+    } else {
+      row.style.display = 'none'; // hide row
+    }
+  });
+});
+  </script>
+  
 </body>
 
 </html>

@@ -13,6 +13,8 @@ const readExcel = require("../../../services/excelRead-service/excelReader");
 const getMultipartData = require("../../common/getMultipartData");
 const File = require("../../common/File");
 const Blogs = require("../../models/BlogModel");
+const { log, count } = require("console");
+const PharmacyMedicines = require("../../models/PharmacyMedicinesModel");
 
 
 
@@ -37,7 +39,7 @@ exports.addMedicine = async (req, res) => {
     console.log(data);
     console.log("Received data:", data);
     await db.query(`USE ${process.env.DATABASE_NAME}`); // Select the database
-    const newMedicine = await Medicines.save({...data , geneticName : data.name});
+    const newMedicine = await Medicines.save({...data });
     console.log("Saved medicine:", newMedicine);
 
     await ActivityLogService.logActivity(
@@ -301,6 +303,40 @@ exports.updateMedicine = async (req, res) => {
   }
 }
 
+exports.getPharmacyMedicines = async(req,res) => {
+  try{
+    let medicines = await PharmacyMedicines.getByVarId('pharmacyId', req.pharmacyId);
+    medicines = await medicines.map(async (m) => {
+      const [medicineRows] = await Medicines.getById(m.medicineId)
+      
+      if(!medicineRows){
+         
+        return null;
+      }
+      
+      return {...m, ...medicineRows, medicineId: m.medicineId};
+    });
+   
+    medicines = await Promise.all(medicines);
+    
+    medicines = medicines.filter( async (medicine) =>  medicine !== null);
+     
+    if(medicines == 0){
+      medicines = [];
+    }
+
+   
+    return responseJson(res, 200, {
+      status: "success",
+      results: medicines,
+      count: medicines.length,
+    })
+  }catch(e){
+    return responseJson(res, 400, {
+      error: e.message || "update failed"
+    });
+  }
+}
 
 exports.uploadImage = async (req, res) => {
   try {

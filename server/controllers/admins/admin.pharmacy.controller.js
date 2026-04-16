@@ -5,6 +5,7 @@ const view = require("../../common/view");
 const Pharmacies = require("../../models/PharmacyModel");
 const ActivityLogService = require("../../../services/activityLogService/activityLogService");
 const Users = require("../../models/UserModel");
+const { pharmacy } = require("./admin.controller");
 
 exports.renderAllPharmacies = catchAsync(async (req, res) => {
   const pharmacies = await Pharmacies.get();
@@ -176,14 +177,14 @@ exports.renderPharmacyDetailsView = async (req, res) => {
 exports.renderPharmacyView = async (req, res) => {
   try{
     
-    const [users] = await Users.getById(req.pharmacyId);
-    console.log(users);
+    const [Pharmacy] = await Pharmacies.getById(req.pharmacyId);
 
-    return response(res, view("admin/viewPharmacy" , { users:JSON.stringify(users) }), 200);
+    return response(res, view("admin/viewPharmacy" , { name: JSON.stringify(Pharmacy.name) }), 200);
 
   }catch(e){
     console.log(e);
-    return response(res, JSON.stringify({}), 400)
+    if (res.headersSent || res.writableEnded) return;
+    return response(res, JSON.stringify(e), 400)
   }
 }
 

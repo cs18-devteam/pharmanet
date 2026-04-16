@@ -42,7 +42,7 @@ exports.renderPharmacyRegister = async (req, res) => {
 
     } catch (e) {
         console.log(e);
-        return response(200, view('404'), 400);
+        return response(res, view('404'), 400);
     }
 
 }

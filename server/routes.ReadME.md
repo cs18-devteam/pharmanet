@@ -150,6 +150,7 @@
 /admin/:adminId/medicines/upload/api
 /admin/:adminId/medicines/:medicineId/update/image
 /api/v1/admin/:adminId/medicines
+/api/v1/admin/:adminId/pharmacies/:pharmacyId/medicines
 /admin/:adminId/dashboard
 /api/v1/admin/:adminId/dashboard
 /api/v1/admin/:adminId/activities
@@ -157,3 +158,4 @@
 /api/v1/docs/:pharmacyId
 /api/v1/pharmacies/:pharmacyId/stocks
 /api/v1/pharmacies/:pharmacyId/stocks/low
+/pharmacies/:pharmacyId/api/medicines

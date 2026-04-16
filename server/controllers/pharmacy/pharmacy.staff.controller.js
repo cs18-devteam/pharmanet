@@ -79,24 +79,28 @@ exports.createStaffMember = apiCatchAsync(async (req, res) => {
 });
 
 exports.getStaffMembers = apiCatchAsync(async (req, res) => {
-  let members = await PharmacyStaff.get({ pharmacyId: req.pharmacyId });
-  members = members.map(async (m) => {
-    
-    const [staff] = await PharmacyStaff.getByVarId('userId',m.userId);
-    const [user] = await Users.getById(staff.userId);
-    const [pharmacy] = await Pharmacies.getById(req.pharmacyId);
-   
 
+  let members = await PharmacyStaff.get({ pharmacyId: req.pharmacyId });
+  
+  members = members.map(async (m) => {
+  
+    const [user] = await Users.getById(m.userId);
+    const [pharmacy] = await Pharmacies.getById(req.pharmacyId);
+
+    if(!user){
+      return null;
+
+    }
     
-    return { ...staff, ...user, ...pharmacy, userId: user.id };
+    return { ...m,...user, ...pharmacy, userId: user.id };
   });
 
-
-
-
   members = await Promise.all(members);
-  
-
+  members = members.filter((member) => member !== null);
+ 
+  if(members == 0){
+    members = [];
+  }
 
   return responseJson(res, 200, {
     status: "success",

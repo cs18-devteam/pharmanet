@@ -31,7 +31,7 @@ exports.getAllMedicines = async (req, res) => {
 
 exports.getMedicinesById = async (req, res) => {
     try{
-        console.log(req.pharmacyId);
+        console.log('Hi');
         let data = await PharmacyMedicines.getByVarId('pharmacyId',req.pharmacyId);
         const [pharmacy] = await Pharmacies.getById(req.pharmacyId);
         data = data.map(async (m) => {

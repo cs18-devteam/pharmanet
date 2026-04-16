@@ -32,7 +32,7 @@ const { pharmacyTransactionsRouter } = require('./routes/api/api.pharmacy.transa
 
 const { pharmacyProductApiRouter } = require('./routes/api/api.pharmacy.product.Routes');
 const { adminUsersRouter } = require('./routes/web/admin.users.Routes');
-const { adminMedicineRouter } = require('./routes/web/admin.medicines.Routes');
+const { adminMedicineRouter, adminApiMedicineRouter } = require('./routes/web/admin.medicines.Routes');
 const { adminDashboardRouter } = require('./routes/web/admin.dashboard.Routes');
 const { adminApiDashboardRouter } = require('./routes/web/admin.dashboard.Routes');
 const { adminApiActivityRouter } = require('./routes/web/admin.dashboard.Routes');
@@ -40,6 +40,7 @@ const { adminApiBlogRouter } = require('./routes/web/admin.blogs.Routes');
 const { pharmacyDeleteRouter } = require('./routes/web/pharmacy.delete.Routes');
 const docsApiRouter = require('./routes/api/api.docs.Routes');
 const apiStocksRouter = require('./routes/api/api.stocks.Routes');
+const pharmacyMedicineApiRouter = require('./routes/web/pharmacy.medicine.Routes');
 
 const options = {
   key: fs.readFileSync('key.pem'),
@@ -109,12 +110,13 @@ const server = https.createServer(options,(req , res)=>{
         // customerCartApiRouter.pipe(req , res);
         adminApiPharmacyRouter.pipe(req , res);
         adminApiBlogRouter.pipe(req , res);
+        adminApiMedicineRouter.pipe(req,res);
         customerApiRouter.pipe(req , res);
         pharmaciesApiRouter.pipe(req ,res);
         pharmacyTransactionsRouter.pipe(req,res);
         pharmacyProductApiRouter.pipe(req , res);
         pharmacyDeleteRouter.pipe(req ,res);
-        // pharmacyMedicineApiRouter.pipe(req,res);
+        // pharmacyMedicineApiRouter.pipe(req, res);
         docsApiRouter.pipe(req , res);
         apiStocksRouter.pipe(req , res);
 

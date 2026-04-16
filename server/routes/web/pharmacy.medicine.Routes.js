@@ -4,5 +4,5 @@ const pharmacyMedicinesApiController = require('../../controllers/pharmacy/pharm
 
 exports.pharmacyMedicineApiRouter = SubRouter.route('/pharmacies/:pharmacyId/api')
 .subRoute('/medicines', {
-    get: pharmacyMedicinesApiController.getMedicinesById,
+    get: authenticate['adminId',pharmacyMedicinesApiController.getMedicinesById],
 })

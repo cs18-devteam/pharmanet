@@ -178,7 +178,6 @@ exports.deleteBlog = catchAsync(async (req, res) => {
 
 exports.updateBlog = catchAsync(async (req, res) => {
   const blogId = req.blogId;
-  console.log(blogId);
   const rawData = await getRequestData(req);
   if (!rawData) {
     return response(res, "Empty request body", 400);
@@ -193,6 +192,7 @@ exports.updateBlog = catchAsync(async (req, res) => {
 
   const { title, slug, status, tag, category, author, excerpt, content } = body;
   const newBlog = await Blogs.update({
+    id:blogId,
     title,
     slug,
     status,

@@ -8,7 +8,7 @@ const template = html`
   <div class="staff-item" data-id="{userId}" data-staffId="{staffId}">
     <img src="{profile}" alt="avatar" />
     <div class="info">
-      <h4>{firstName} {lastName}</h4>
+      <h4>{you} {firstName} {lastName}</h4>
       <span>ID:{id} - </span><span>{role}</span>
 
     </div>
@@ -37,9 +37,12 @@ export async function fetchAndRenderStaff() {
     Application.allStaffMembers = results; // Store for later use
     console.log("Found", results.length, "staff members");
 
+    console.log(Application.staffData);
+
     const allStaffCards = results
       .map((member) =>
         template
+          .replace("{you}" , member.staffId == Application.staffId ? "(You)" : "")
           .replace("{userId}", member.userId || "")
           .replace("{staffId}", member.staffId || member.id || "")
           .replace("{profile}", member.profile || "/users/profile-general.jpg")

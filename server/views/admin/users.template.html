@@ -14,7 +14,7 @@
 
         {sidebar}
 
-        <!-- <div class="menuItem">
+        <!-- <div class="mesfsfnuItem">
           <button class="text signOut"> Sign Out</button>
         </div> -->
       </div>
@@ -29,7 +29,6 @@
         <div class="admin">AD</div>
       </div>
     </header> -->
-
         <section class="dashboard">
           <div class="sectionHeading">
             <div>
@@ -269,12 +268,12 @@
         console.log(status == "Active");
         const pharmacyObj = user.pharmacies?.[0];
         const pharmacyName = pharmacyObj?.name.toUpperCase() || 'N/A';
-        console.log(pharmacyObj);
+
         const row = document.createElement("tr");
         row.innerHTML = `
           <td>
             <div class="user-info">
-              <div class="avatar">${avatar}</div>
+              <img src="${user.profile}" class="avatar" alt="${avatar}">
               <div class="details">
                 <div class="name">${user.firstName +" " + user.lastName || user.fullName}</div>
                 <div class="email">${user.email}</div>

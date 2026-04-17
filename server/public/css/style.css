@@ -22186,6 +22186,7 @@ p {
 }
 .viewPharmacy .cards {
   display: grid;
+  display: flex;
   grid-template-columns: repeat(4, 1fr);
   gap: 0px;
   margin: 20px 0;
@@ -22193,6 +22194,8 @@ p {
 .viewPharmacy .cards .card {
   padding: 20px;
   background: #f7f7f7;
+  margin: 0rem !important;
+  width: 32rem !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 .viewPharmacy .cards .card:not(.viewPharmacy .cards .card:last-child) {

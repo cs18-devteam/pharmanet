@@ -141,7 +141,8 @@
         const res = await fetch(API_URL);
         const payload = await res.json();
 
-        const users = payload.results;
+        const users = payload.members;
+        const pharmacy = payload.pharmacy;
         const totalStaff = document.getElementById("totalStaff");
         totalStaff.textContent = users.length;
 
@@ -179,8 +180,8 @@
                 </div>
               </td>
               <td><span class="role">${user.role || "N/A"}</span></td>
-              <td>${user.name || "N/A"}</td>
-              <td> ${status ? `<span class="status active">Active</span>` : `<span class="status inactive">Inactive</span>`}</td>
+              <td>${pharmacy.name || "N/A"}</td>
+              <td> ${user.status}</td>
               <!-- <td>2 hours ago</td> -->
 
             `;
@@ -218,7 +219,7 @@
         medicines.forEach((medicine) => {
           const row = document.createElement("tr");
           row.innerHTML = `
-              <td>${medicine.geneticName}</td>
+              <td class = "mediName">${medicine.geneticName}</td>
               <td>${medicine.category}</td>
               <td>${medicine.stock}</td>
               <td>${medicine.publicStock}</td>
@@ -289,7 +290,8 @@
           const rows = document.querySelectorAll(".medicineTable tr");
 
           rows.forEach((row) => {
-            const text = row.textContent.toLowerCase();
+            const text =
+              row.querySelector(".mediName")?.textContent.toLowerCase() || "";
             if (text.includes(filter)) {
               row.style.display = ""; // show row
             } else {
@@ -304,10 +306,11 @@
         .getElementById("staffSearch")
         .addEventListener("keyup", function () {
           const filter = this.value.toLowerCase(); // what user types
-          const rows = document.querySelectorAll(".staffTable tr");
+          const rows = document.querySelectorAll("#users-table-body tr");
 
           rows.forEach((row) => {
-            const text = row.textContent.toLowerCase();
+            const text =
+              row.querySelector(".name")?.textContent?.toLowerCase() || "";
             if (text.includes(filter)) {
               row.style.display = ""; // show row
             } else {

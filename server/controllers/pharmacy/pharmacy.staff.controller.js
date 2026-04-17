@@ -100,13 +100,14 @@ exports.getStaffMembers = apiCatchAsync(async (req, res) => {
     
     const [staff] = await PharmacyStaff.getByVarId('userId',m.userId);
     const [user] = await Users.getById(staff.userId);
-    const [pharmacy] = await Pharmacies.getById(req.pharmacyId);
+   
    
     if(!user) return undefined;
   
-    return { ...staff, ...user, ...pharmacy, userId: user.id  , staffId : staff.id , pharmacyId : pharmacy.id , email: user.email , contact :user.contact};
+    return { ...staff, ...user, userId: user.id  , staffId : staff.id , pharmacyId : pharmacy.id , email: user.email , contact :user.contact};
   });
 
+   const [pharmacy] = await Pharmacies.getById(req.pharmacyId);
   
   members = await Promise.all(members);
   members = members.filter(m=>m!= undefined);
@@ -114,7 +115,8 @@ exports.getStaffMembers = apiCatchAsync(async (req, res) => {
 
   return responseJson(res, 200, {
     status: "success",
-    results: members,
+    members: members,
+    pharmacy: pharmacy,
     count: members.length,
   });
 });

@@ -50,6 +50,7 @@ body {
 /* Cards */
 .cards {
   display: grid;
+  display: flex;
   grid-template-columns: repeat(4, 1fr);
   gap: 0px;
   margin: 20px 0;
@@ -57,6 +58,8 @@ body {
   .card {  
   padding: 20px;
   background: $card-bg;
+  margin: 0rem  !important;
+  width: 32rem !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     
     &:not(&:last-child){

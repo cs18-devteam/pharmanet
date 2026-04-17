@@ -63,6 +63,7 @@ exports.sendRecentActivities = catchAsync(async (req, res) => {
     const [admin] = await Users.getById(req.adminId);
     const activities = await ActivityLogService.getRecentActivities(5);
     
+    console.log(admin);
     return responseJson(res, 200,  
       {activities: activities || [], 
         admin: admin || [],

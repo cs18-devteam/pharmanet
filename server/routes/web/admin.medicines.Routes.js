@@ -27,8 +27,13 @@ exports.adminMedicineRouter = SubRouter.route('/admin/:adminId')
 })
 
 
+    
+
 exports.adminApiMedicineRouter = SubRouter.route('/api/v1/admin/:adminId')
 .subRoute('/medicines' , {
         get : [authenticate('adminId')  ,adminMedicineController.sendJsonMedicinesList],
+})
+.subRoute('/pharmacies/:pharmacyId/medicines',{
+    get: [authenticate('adminId') ,adminMedicineController.getPharmacyMedicines],
 })
     

@@ -13,6 +13,7 @@ const readExcel = require("../../../services/excelRead-service/excelReader");
 const getMultipartData = require("../../common/getMultipartData");
 const File = require("../../common/File");
 const Blogs = require("../../models/BlogModel");
+const PharmacyMedicines = require("../../models/PharmacyMedicinesModel");
 
 
 
@@ -322,6 +323,42 @@ exports.uploadImage = async (req, res) => {
 
 
   }catch (e) {
+    return responseJson(res, 400, {
+      error: e.message || "update failed"
+    });
+  }
+}
+
+exports.getPharmacyMedicines = async(req,res) => {
+  try{
+    let medicines = await PharmacyMedicines.getByVarId('pharmacyId', req.pharmacyId);
+    medicines = await medicines.map(async (m) => {
+      const [medicineRows] = await Medicines.getById(m.medicineId)
+      
+      if(!medicineRows){
+         
+        return null;
+      }
+      
+      return {...m, ...medicineRows, medicineId: m.medicineId};
+    });
+   
+    medicines = await Promise.all(medicines);
+    
+    medicines = medicines.filter( async (medicine) =>  medicine !== null);
+     
+    if(medicines == 0){
+      medicines = [];
+    }
+
+   
+    return responseJson(res, 200, {
+      status: "success",
+      results: medicines,
+      count: medicines.length,
+    })
+  }catch(e){
+    console.log(e);
     return responseJson(res, 400, {
       error: e.message || "update failed"
     });

@@ -14,7 +14,7 @@
           <a href="admin/{adminId}/pharmacies" class="back-btn">←</a>
         </div>
         <div class="container2">
-          <h1 id="header1">Downtown Pharmacy - Inventory</h1>
+          <h1 id="header1"></h1>
           <p>Manage and monitor medicine stock levels and expiry dates</p>
         </div>
       </header>
@@ -34,15 +34,15 @@
         </div>
 
         <div class="card">
-          <h4>Expiring Soon</h4>
-          <h2 id="expiringSoon">45</h2>
+          <h4>Optimal Stock</h4>
+          <h2 id="optStock">0</h2>
           <span class="positive">-2% from last month</span>
         </div>
 
         <div class="card">
-          <h4>Expired</h4>
-          <h2 id="expired">$45,230</h2>
-          <span class="positive">+5.2% from last month</span>
+          <h4>Total Staff</h4>
+          <h2 id="totalStaff">45</h2>
+          <span class="positive">-2% from last month</span>
         </div>
       </section>
 
@@ -53,20 +53,14 @@
           placeholder="Search medicines by name..."
           id="medicineSearch"
         />
-        <div class="actions">
-          <!-- <button>Filter</button> -->
-          <button>Export</button>
-          <!-- <button>Sync</button> -->
-        </div>
       </section>
 
       <!-- Tabs -->
-      <section class="tabs">
+      <!-- <section class="tabs">
         <button class="active">All Items</button>
-        <button>Low Stock (234)</button>
-        <button>Expiring Soon (45)</button>
-        <button>Optimal Stock (1,203)</button>
-      </section>
+        <button id="lowStock-Btn">Low Stock</button>
+        <button id="optStock-Btn">Optimal Stock</button>
+      </section> -->
 
       <!-- Table -->
       <section class="table">
@@ -78,7 +72,6 @@
               <th>Quantity</th>
               <th>Code</th>
               <th>Unit Price</th>
-              <th>Expiry Date</th>
               <th>Status</th>
             </tr>
           </thead>
@@ -89,8 +82,10 @@
     </div>
 
     <header class="header">
-      <h1 id="header2">Downtown Pharmacy - Staff</h1>
-      <p>Manage User accounts and Permissions</p>
+      <div>
+        <h1 id="header2">{name} - Staff</h1>
+        <p>Manage User accounts and Permissions</p>
+      </div>
     </header>
 
     <section class="toolbar">
@@ -101,7 +96,7 @@
       />
       <div class="actions">
         <!-- <button>Filter</button> -->
-        <button>Export</button>
+        <!-- <button>Export</button> -->
         <!-- <button>Sync</button> -->
       </div>
     </section>
@@ -124,6 +119,15 @@
     </section>
 
     <script>
+      const header1 = document.getElementById("header1");
+      const header2 = document.getElementById("header2");
+      const pharmacyName = `{name}`.replaceAll('"', "").toUpperCase();
+
+      header1.innerHTML = `<h1>${pharmacyName} - Inventory</h1>`;
+      header2.innerHTML = `<h1>${pharmacyName} - Staff</h1>`;
+    </script>
+
+    <script>
       const pathParts = window.location.pathname.split("/");
       const adminIdIndex = pathParts.indexOf("admin") + 1;
       const adminId = pathParts[adminIdIndex];
@@ -134,64 +138,54 @@
 
       //FETCH ALL USERS
       async function loadUsers() {
-        try{
+        const res = await fetch(API_URL);
+        const payload = await res.json();
 
-          const res = await fetch(API_URL);
-          const payload = await res.json();
-          
-          const users = payload.results;
-          
-          const pharmacyName = users[0].name.toUpperCase();
-          const header1 = document.getElementById("header1");
-          const header2 = document.getElementById("header2");
-          
-          header1.innerHTML = `<h1>${pharmacyName} - Inventory</h1>`;
-          header2.innerHTML = `<h1>${pharmacyName} - Staff</h1>`;
-          
-          const tableBody = document.getElementById("users-table-body");
-          tableBody.innerHTML = "";
-          
-          if (!Array.isArray(users) || users.length === 0) {
-            tableBody.innerHTML = '<tr><td colspan="6">No users found</td></tr>';
-            return;
-          }
-          
-          users.forEach((user) => {
-            const initials = (
-              user.firstName ||
-              user.lastName ||
-              user.fullName ||
-              "U"
-            )
+        const users = payload.results;
+        const totalStaff = document.getElementById("totalStaff");
+        totalStaff.textContent = users.length;
+
+        const tableBody = document.getElementById("users-table-body");
+        tableBody.innerHTML = "";
+
+        if (!Array.isArray(users) || users.length === 0) {
+          tableBody.innerHTML = '<tr><td colspan="6">No users found</td></tr>';
+          return;
+        }
+
+        users.forEach((user) => {
+          const initials = (
+            user.firstName ||
+            user.lastName ||
+            user.fullName ||
+            "U"
+          )
             .split(" ")
             .map((n) => n[0])
             .join("")
             .toUpperCase();
-            const avatar = user.avatar || initials;
-            const status = user.status || "Active";
-            
-            const row = document.createElement("tr");
-            row.innerHTML = `
-            <td>
-              <div class="user-info">
-                <div class="avatar">${avatar}</div>
-                <div class="details">
-                  <div class="name">${user.firstName + " " + user.lastName || user.fullName}</div>
-                  <div class="email">${user.email}</div>
+          const avatar = user.avatar || initials;
+          const status = user.status || "Active";
+
+          const row = document.createElement("tr");
+          row.innerHTML = `
+              <td>
+                <div class="user-info">
+                  <div class="avatar">${avatar}</div>
+                  <div class="details">
+                    <div class="name">${user.firstName + " " + user.lastName || user.fullName}</div>
+                    <div class="email">${user.email}</div>
                   </div>
-                  </div>
-                  </td>
-                  <td><span class="role">${user.role || "N/A"}</span></td>
-                  <td>${user.name || "N/A"}</td>
-                  <td> ${status ? `<span class="status active">Active</span>` : `<span class="status inactive">Inactive</span>`}</td>
-                  <!-- <td>2 hours ago</td> -->
-                  
-                  `;
-                  tableBody.appendChild(row);
-                });
-              }catch(e){
-                  console.log(e);
-              }
+                </div>
+              </td>
+              <td><span class="role">${user.role || "N/A"}</span></td>
+              <td>${user.name || "N/A"}</td>
+              <td> ${status ? `<span class="status active">Active</span>` : `<span class="status inactive">Inactive</span>`}</td>
+              <!-- <td>2 hours ago</td> -->
+
+            `;
+          tableBody.appendChild(row);
+        });
       }
     </script>
 
@@ -200,94 +194,88 @@
 
       //FETCH ALL MEDICINES
       async function loadMedicines() {
-        try{
+        const res = await fetch(
+          `${window.location.origin}/api/v1/admin/${adminId}/pharmacies/${pharmacyId}/medicines`,
+        );
+        const payload = await res.json();
+        const medicines = payload.results;
+        let stock = [];
+        let optStock = [];
 
-          const res = await fetch(
-            `${window.location.origin}/pharmacies/${pharmacyId}/api/medicines`,
-          );
-          const payload = await res.json();
-          const medicines = payload.results;
-          let stock = [];
-          
-          const totalItems = document.getElementById("totalItems");
-          totalItems.innerHTML = `<h2>${medicines.length}</h2>`;
-          
-          const tableBody = document.getElementById("medicines-table-body");
-          tableBody.innerHTML = "";
-          
-          if (!Array.isArray(medicines) || medicines.length === 0) {
-            tableBody.innerHTML =
+        const totalItems = document.getElementById("totalItems");
+        totalItems.innerHTML = `<h2>${medicines.length}</h2>`;
+
+        const tableBody = document.getElementById("medicines-table-body");
+        tableBody.innerHTML = "";
+
+        if (!Array.isArray(medicines) || medicines.length === 0) {
+          tableBody.innerHTML =
             '<tr><td colspan="6">No medicines found</td></tr>';
-            return;
-          }
-          
-          medicines.forEach((medicine) => {
-            const row = document.createElement("tr");
-            row.innerHTML = `
-            <td>${medicine.geneticName}</td>
-            <td>${medicine.category}</td>
-            <td>${medicine.stock}</td>
-            <td>${medicine.publicStock}</td>
-            <td>${medicine.price}</td>
-            <td>${medicine.expiryDate}</td>
-            <td>${medicine.stock > 25 ? `<span class="badge optimal">Optimal</span>` : `<span class="badge warning">Low Stock</span>`}</td>
-            
-            `;
-            {
-              medicine.stock < 25 ? stock.push(medicine.id) : "";
-            }
-            tableBody.appendChild(row);
-          });
-          
-          document.getElementById("lowStock").innerHTML = stock.length || "0";
-        }catch(e){
-          console.log(e);
+          return;
         }
+
+        medicines.forEach((medicine) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+              <td>${medicine.geneticName}</td>
+              <td>${medicine.category}</td>
+              <td>${medicine.stock}</td>
+              <td>${medicine.publicStock}</td>
+              <td>${medicine.price}</td>
+              <td>${medicine.stock > 25 ? `<span class="badge optimal">Optimal</span>` : `<span class="badge warning">Low Stock</span>`}</td>
+
+            `;
+          tableBody.appendChild(row);
+          {
+            medicine.stock < 25
+              ? stock.push(medicine.id)
+              : optStock.push(medicine.id);
+          }
+
+          document.getElementById("lowStock").innerHTML = stock.length || "0";
+          document.getElementById("optStock").innerHTML =
+            optStock.length || "0";
+        });
       }
     </script>
 
     <script>
-      window.addEventListener("load", loadExpiringSoonCard());
+      window.addEventListener("load", loadCards());
       //expiryDate card
 
       async function loadExpiringSoonCard() {
-        try{
+        const expiringSoonEl = document.getElementById("expiringSoon");
+        const expired = document.getElementById("expired");
+        const today = new Date();
+        const cutoff = new Date();
+        const res = await fetch(
+          `${window.location.origin}/pharmacies/${pharmacyId}/api/medicines`,
+        );
+        const payload = await res.json();
+        const medicines = payload.results;
+        cutoff.setDate(today.getDate() + 30); // change 30 to your preferred range
 
-          const expiringSoonEl = document.getElementById("expiringSoon");
-          const expired = document.getElementById("expired");
-          const today = new Date();
-          const cutoff = new Date();
-          const res = await fetch(
-            `${window.location.origin}/pharmacies/${pharmacyId}/api/medicines`,
-          );
-          const payload = await res.json();
-          const medicines = payload.results;
-          cutoff.setDate(today.getDate() + 30); // change 30 to your preferred range
-          
-          const expiringSoonCount = (
-            Array.isArray(medicines) ? medicines : []
-          ).filter((m) => {
+        const expiringSoonCount = (
+          Array.isArray(medicines) ? medicines : []
+        ).filter((m) => {
+          if (!m.expiryDate) return false;
+          const d = new Date(m.expiryDate);
+          if (Number.isNaN(d.getTime())) return false;
+          return d >= today && d <= cutoff;
+        }).length;
+
+        expiringSoonEl.textContent = expiringSoonCount;
+
+        const expiredCount = (Array.isArray(medicines) ? medicines : []).filter(
+          (m) => {
             if (!m.expiryDate) return false;
             const d = new Date(m.expiryDate);
             if (Number.isNaN(d.getTime())) return false;
-            return d >= today && d <= cutoff;
-          }).length;
-          
-          expiringSoonEl.textContent = expiringSoonCount;
-          
-          const expiredCount = (Array.isArray(medicines) ? medicines : []).filter(
-            (m) => {
-              if (!m.expiryDate) return false;
-              const d = new Date(m.expiryDate);
-              if (Number.isNaN(d.getTime())) return false;
-              return d <= today;
-            },
-          ).length;
-          
-          expired.textContent = expiredCount;
-        }catch(e){
-          console.log(e);
-        }
+            return d <= today;
+          },
+        ).length;
+
+        expired.textContent = expiredCount;
       }
     </script>
 

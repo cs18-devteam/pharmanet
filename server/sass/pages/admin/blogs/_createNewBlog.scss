@@ -80,6 +80,7 @@
   border-radius: 10px;
   margin-bottom: 1rem;
   padding: 25px;
+  width: 90% !important;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 
   h3 {
@@ -148,6 +149,8 @@
     background: linear-gradient(to right, #18978D, #083851);
     color: #fff;
     font-size: 1.4rem;
+    width: 25%;
+    margin-left: 2rem;
 
     &:hover {
       background: $accent;

@@ -1,4 +1,5 @@
 {header}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <body class="createNewBlog">
   <header class="page-header">
     <a href="/admin/{id}/blogs/manage" class="back-btn">←</a>
@@ -15,11 +16,16 @@
         <h3>Post Details</h3>
         <p class="subtitle">Enter the basic information for your blog post</p>
 
-        <label>Post Title</label>
-        <input type="text" id="title" name="title" placeholder="e.g., 5 Tips for Managing Your Medications">
+        <label>Medicine Title</label>
+        <select id="title" name="title">
+          <option>Select a medicine</option>
+          <option>Antibiotic</option>
+          <option>Pain-relief</option>
+        </select>
 
-        <label>URL Slug</label>
-        <input type="text" id="slug" name="slug" placeholder="">
+        <label>Reference URL</label>
+        <input type="text" id="websiteUrl" name="slug" placeholder="eg: www.google.com" required/>
+        <small id="urlError" style="color: red; display: none;">Enter a valid link like www.google.com or https://google.com</small>
 
         <label>Excerpt</label>
         <textarea id="excerpt" name="excerpt" placeholder="Brief summary of your post (shown in listings)" name="excerpt"></textarea>
@@ -38,8 +44,8 @@
       <div class="card">
         <h3>Publish Settings</h3>
 
-        <label>Status</label>
-        <input id="date" type="date" name="status" placeholder="DD-MM-YYYY">
+        <!-- <label>Status</label>
+        <input id="date" type="date" name="status" placeholder="DD-MM-YYYY"> -->
         <!-- <select name="status">
           <option>Draft</option>
           <option>Published</option>
@@ -48,15 +54,15 @@
         <label>Category</label>
         <select id="category" name="category">
           <option>Select a category</option>
-          <option>Medicine</option>
-          <option>Disease</option>
+          <option>Antibiotic</option>
+          <option>Pain-relief</option>
         </select>
 
         <label>Author</label>
         <input id="author" type="text" name="author" placeholder="Your name">
 
-        <label>Tags</label>
-        <input id="tag" type="text" name="tag" placeholder="Separate with commas">
+        <!-- <label>Tags</label>
+        <input id="tag" type="text" name="tag" placeholder="Separate with commas"> -->
       </div>
 
       <div class="buttons">
@@ -70,22 +76,93 @@
   </div>
   <script>
     const  form = document.getElementById('createBlogForm');
-    form.addEventListener("submit" , (e)=>{
+    form.addEventListener("submit" , async (e)=>{
 	    e.preventDefault();
 	    const data = {}
 	    const formData = new FormData(form);
+      console.log(formData);
       for(const  [key , value] of formData.entries()){
         data[key] = value;
       }
 
       console.log(data);
 
-      fetch("/api/admin/{id}/blogs" , {
+      try{
+      const response =  await fetch("/api/admin/{id}/blogs" , {
         method:"POST" , 
         body : JSON.stringify(data),
-      }).then((respond)=>respond.json()).then(()=>window.location.href="/admin/{id}/blogs/manage").catch(e=>console.log(e));
-	
-})
+      });
+
+      if(!response.ok){
+        throw new Error("Blog creation failed");
+      }
+   swal("Success", "Blog created successfully", "success").then(() => {
+        window.location.href = "/admin/{id}/blogs/manage";
+      });
+    } catch (error) {
+      swal("Failed", error.message || "Something went wrong", "error");
+    }
+});
+
   </script>
+
+  <script>
+  async function loadMedicineTitleOptions() {
+    const titleSelect = document.getElementById("title");
+    if (!titleSelect) return;
+
+    // URL shape: /admin/:adminId/blogs/create
+    const parts = window.location.pathname.split("/").filter(Boolean);
+    const adminId = parts[0] === "admin" ? parts[1] : null;
+    if (!adminId) return;
+
+    try {
+      const res = await fetch(`${window.location.origin}/admin/${adminId}/medicines/api`);
+      if (!res.ok) throw new Error(`Failed to fetch medicines: ${res.status}`);
+
+      const medicines = await res.json();
+      const list = Array.isArray(medicines) ? medicines : [];
+
+      titleSelect.innerHTML = '<option value="">Select a medicine</option>';
+
+      const uniqueNames = (
+        list.map(m => (m.geneticName || "").trim()).filter(Boolean)
+      );
+
+      uniqueNames.sort((a, b) => a.localeCompare(b));
+
+      uniqueNames.forEach(name => {
+        const option = document.createElement("option");
+        option.value = name;
+        option.textContent = name;
+        titleSelect.appendChild(option);
+      });
+    } catch (err) {
+      console.error("Could not load medicine options:", err);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", loadMedicineTitleOptions);
+
+  // existing submit code...
+</script>
+
+<script>
+      const websiteUrlInput = document.getElementById("websiteUrl");
+      const urlError = document.getElementById("urlError");
+
+      function validateWebsiteUrl() {
+        const value = websiteUrlInput.value.trim();
+        console.log(value);
+        const urlPattern =
+          /^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,}(:\d+)?(\/.*)?$/i;
+
+        const isValid = urlPattern.test(value);
+        urlError.style.display = isValid ? "none" : "block";
+        return isValid;
+      }
+
+      websiteUrlInput.addEventListener("input", validateWebsiteUrl);
+    </script>
 </body>
 </html>

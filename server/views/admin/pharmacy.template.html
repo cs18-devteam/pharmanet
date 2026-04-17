@@ -1,4 +1,79 @@
-{header}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ 
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+      /* Image popup styles */
+      .image-popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .image-popup.active {
+        display: flex;
+      }
+      
+      .popup-content {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        width: min(600px, 96vw);   
+        max-height: 92vh;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-y: auto;
+      }
+      #regDocPopup, #ownerDocPopup, #addressDocPopup {
+        width: 100%;
+      }
+      .popup-content .accept-Btn{
+        background-color: green;
+        border-radius: 0.5rem;
+        border: none;
+        color: white;
+        margin-top: 0.5rem;
+    
+        }
+      .popup-content img {
+        max-width: 90%;
+        max-height: 75vh;
+        padding-top: 0.5rem;
+      }
+      
+      .close-popup {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: #ff4444;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 18px;
+      }
+      
+      .close-popup:hover {
+        background: #cc0000;
+      }
+    </style>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
 <body class="pharmarcy">
     <div class="container">
     <div class="container-1">
@@ -40,7 +115,7 @@
       </div>
       </div>
     
-    <!-- <div class="content-wrapper"> -->
+    <div class="content-wrapper">
     <div class="pharmacy-grid">
     
 
@@ -58,15 +133,16 @@
     <div class="popup-content">
       <button class="close-popup" onclick="closeImagePopup()">✕</button>
       <h3 id="popupPharmacyName"></h3>
-      <img id="popupImage" src="" alt="Pharmacy Image" style="display:none; max-width:90%; max-height:75vh;">
-      <iframe
-        id="popupPdf"
-        style="display:none; width:90vw; height:75vh; border:none;"
-      ></iframe>
-      <!-- <button class="accept-Btn" id="accept-Btn" >Accept</button> -->
+      <h4>Registration Document</h4>
+      <iframe src="" id="regDocPopup" width="100%" height="800px" style="border:0;"></iframe>
+      <h4>Owner Details Document</h4>
+      <iframe src="" id="ownerDocPopup" width="100%" height="600px" style="border:0;"></iframe>
+      <h4>Address Confirmation Document</h4>
+      <iframe src="" id="addressDocPopup" width="100%" height="600px" style="border:0;"></iframe>
+      <!-- <img id="popupImage" src="" alt="Pharmacy Image"> -->
+      <button class="accept-Btn" id="accept-Btn" >Accept</button>
     </div>
   </div>
-
 
   <script>
     const pathParts = window.location.pathname.split('/');
@@ -79,10 +155,18 @@
       const res = await fetch(`${window.location.origin}/api/v1/admin/${adminId}/pharmacies`);
       const pharmacies = await res.json();
       
+      const sortedPharmacies = [...pharmacies].sort((a, b) => {
+      const aStatus = Number(a.status || 0); // 0 = inactive
+      const bStatus = Number(b.status || 0); // 1 = active
+      if (aStatus !== bStatus) return aStatus - bStatus; // inactive first
+      return (a.name || '').localeCompare(b.name || ''); // optional stable order
+     
+    });
+      
       
       if(!Array.isArray(pharmacies) || pharmacies.length === 0) return;
 
-      const html = pharmacies.map(p =>{
+      const html = sortedPharmacies.map(p =>{
       const isActive = Number(p.status) === 1;
       return`
       <a href = "/admin/${adminId}/pharmacies/${p.id}/viewPharmacy">
@@ -100,13 +184,8 @@
         <hr>
         <div class= "pharmacyCardFooter">
           <!-- <p>Inventory: <strong>N/A</strong></p> -->
-          <button class="details-btn" data-img="${p.ownerDoc}" data-name="${p.name || ''}" data-id="${p.id}" }">View Owner Document</button>
-          <button class="details-btn" data-img="${p.addressDoc}" data-name="${p.name || ''}" data-id="${p.id}" data-status="${isActive ? '1' : '0'}">View Address Document</button>
-          <button class="details-btn" data-img="${p.img}" data-name="${p.name || ''}" data-id="${p.id}" data-status="${isActive ? '1' : '0'}">View License</button>
-
-           ${isActive 
-            ? `<button class="deactivate-Btn" data-id="${p.id}">Deactivate</button>` 
-            : `<button class="activate-Btn" data-id="${p.id}">Activate</button>`}
+          <button class="details-btn" data-regDoc="${p.registrationDoc}" data-ownerDoc="${p.ownerDoc}" data-addressDoc="${p.addressDoc}" data-name="${p.name || ''}" data-id="${p.id}" data-status="${isActive ? '1' : '0'}">View Docs</button>
+            ${isActive ? `<button class="deactivate-Btn" data-id="${p.id}">Deactivate</button>` : ''}
         </div>
       </div></a>`}).join('');
       document.querySelector('.pharmacy-grid').innerHTML = html;
@@ -125,56 +204,44 @@
 
   <script>
   // image popup helpers
-  function openImagePopup(fileUrl, pharmacyName, status) {
-    if (!fileUrl) {
-      alert('No files available for this pharmacy.');
+  function openImagePopup(regDocUrl, ownerDocUrl, addressDocUrl, pharmacyName, status) {
+    if (!regDocUrl) {
+      alert('No image available for this pharmacy.');
       return;
     }
     const popup = document.getElementById('imagePopup');
-    const img = document.getElementById('popupImage');
-    const pdf = document.getElementById('popupPdf');
+    const regDoc = document.getElementById('regDocPopup');
+    const ownerDoc = document.getElementById('ownerDocPopup');
+    const addressDoc = document.getElementById('addressDocPopup');
     const name = document.getElementById('popupPharmacyName');
-    // const acceptBtn = document.getElementById('accept-Btn');
+    const acceptBtn = document.getElementById('accept-Btn');
 
-    let normalized = String(fileUrl).trim();
-  normalized = normalized.replace(/^(\.\.\/)+/, '/');
-  if (!normalized.startsWith('/')) normalized = '/' + normalized;
+    console.log(typeof status);
+    if(Number(status) === 1){
+      acceptBtn.style.display = 'none';
+    }else{
+      acceptBtn.style.display = 'flex';
+    }
 
-  const safeUrl = encodeURI(normalized);
+    ownerDoc.src = encodeURI(ownerDoc);
+    addressDoc.src = encodeURI(addressDoc);
+    regDoc.src = encodeURI(regDocUrl);
+    
 
-  // detect pdf even with query/hash
-  const isPdf = /\.pdf(\?|#|$)/i.test(safeUrl);
-
-  // reset visibility
-  img.style.display = 'none';
-  pdf.style.display = 'none';
-  img.src = '';
-  pdf.src = '';
-
-  if (isPdf) {
-    pdf.src = safeUrl;
-    pdf.style.display = 'block';
-  } else {
-    img.src = safeUrl;
-    img.style.display = 'block';
-  }
-
-  // acceptBtn.style.display = Number(status) === 1 ? 'none' : 'flex';
-  name.textContent = (pharmacyName || '').toUpperCase();
-  popup.classList.add('active');
+    name.textContent = (pharmacyName || '').toUpperCase();
+    popup.classList.add('active');
   }
 
   function closeImagePopup() {
     const popup = document.getElementById('imagePopup');
-    const img = document.getElementById('popupImage');
-    const pdf = document.getElementById('popupPdf');
-    img.src = '';
-    pdf.src = '';
-    img.style.display = 'none';
-    pdf.style.display = 'none';
+    const regDoc = document.getElementById('regDocPopup');
+    const ownerDoc = document.getElementById('ownerDocPopup');
+    const addressDoc = document.getElementById('addressDocPopup');
+    regDoc.src = '';
+    ownerDoc.src = '';
+    addressDoc.src = '';
     popup.classList.remove('active');
   }
-
 
   let selectedPharmacyId = null;
   // delegate click for dynamically created buttons
@@ -182,143 +249,120 @@
     const btn = e.target.closest('.details-btn');
     if (!btn) return;
     e.preventDefault(); // prevent <a> navigation
-    const imgUrl = btn.getAttribute('data-img');
+    const regDocUrl = btn.getAttribute('data-regDoc');
+    const ownerDocUrl = btn.getAttribute('data-ownerDoc');
+    const addressDocUrl = btn.getAttribute('data-addressDoc');
+    console.log(regDocUrl);
+    console.log(ownerDocUrl);
+    console.log(addressDocUrl);
     const name = btn.getAttribute('data-name');
     const status = btn.getAttribute('data-status');
     selectedPharmacyId = btn.getAttribute('data-id');
-    openImagePopup(imgUrl, name, status);
+    openImagePopup(regDocUrl, ownerDocUrl, addressDocUrl, name, status);
   });
-  // document.querySelector('.accept-Btn').addEventListener('click',
-  // function () {
-  //   Swal.fire.fire({
-  //     title: "Are you sure you want to Activate this Pharmacy ?",
-  //     icon: "/logo/logo.svg",
-  //     buttons:{
-  //       cancel:{
-  //         text: "Cancel",
-  //         visible: true
-  //       },
-  //       confirm: {
-  //         text: "OK",
-  //         value: true
-  //       }
-  //     },
-  //     dangerMode: false
-  //   }).then(async (confirmed) => {
-  //     if(!confirmed) {
-  //       Swal.fire.fire("Declined","Pharmacy Activation Declined", "warning");
-  //       closeImagePopup();
-  //       return;
-  //     };
+  document.querySelector('.accept-Btn').addEventListener('click',
+  function () {
+    swal({
+      title: "Are you sure you want to Activate this Pharmacy ?",
+      icon: "/logo/logo.svg",
+      buttons:{
+        cancel:{
+          text: "Cancel",
+          visible: true
+        },
+        confirm: {
+          text: "OK",
+          value: true
+        }
+      },
+      dangerMode: false
+    }).then(async (confirmed) => {
+      if(!confirmed) {
+        swal("Declined","Pharmacy Activation Declined", "warning");
+        closeImagePopup();
+        return;
+      };
 
-  //     fetch(`${window.location.origin}/api/v1/admin/${adminId}/pharmacies/${selectedPharmacyId}`,{
-  //       method: 'PATCH',
-  //       headers: {"Content-type": "application/json"},
-  //       body: JSON.stringify({status: "1",
-  //       id: selectedPharmacyId})
-  //     });
-  //     Swal.fire("Activated","Pharmacy activated succesfully.","success");
-  //     closeImagePopup();
-  //     renderPharmacies();
-  //   })
-  // })
+      fetch(`${window.location.origin}/api/v1/admin/${adminId}/pharmacies/${selectedPharmacyId}`,{
+        method: 'PATCH',
+        headers: {"Content-type": "application/json"},
+        body: JSON.stringify({status: "1",
+        id: selectedPharmacyId})
+      });
+      swal("Activated","Pharmacy activated succesfully.","success");
+      closeImagePopup();
+      renderPharmacies();
+    })
+  })
  
   </script>
 
-<script>
-  // One delegated click handler for both Activate + Deactivate buttons
+  <script>
   document.addEventListener('click', async function (e) {
-    try{
+  const deactivateBtn = e.target.closest('.deactivate-Btn');
+  if (!deactivateBtn) return;
 
-    const activateBtn = e.target.closest('.activate-Btn');
-    const deactivateBtn = e.target.closest('.deactivate-Btn');
+  e.preventDefault();
+  const pharmacyId = deactivateBtn.getAttribute('data-id');
 
-    if (!activateBtn && !deactivateBtn) return;
-    e.preventDefault();
-
-    const isActivate = !!activateBtn;
-    const btn = activateBtn || deactivateBtn;
-    const pharmacyId = btn.getAttribute('data-id');
-
-    if (!pharmacyId) {
-      Swal.fire("Error", "Pharmacy ID not found.", "error");
-      return;
-    }
-
-    const confirmed = await Swal.fire({
-      title: isActivate
-        ? "Are you sure you want to activate this Pharmacy?"
-        : "Are you sure you want to deactivate this Pharmacy?",
-      icon: "question",
-      showConfirmButton : true,
-      showCancelButton:true,
-      dangerMode: false
-    });
-
-    if (!confirmed) {
-      Swal.fire(
-        "Declined",
-        isActivate
-          ? "Pharmacy Activation Declined"
-          : "Pharmacy Deactivation Declined",
-        "warning"
-      );
-      return;
-    }
-
-    try {
-      const res = await fetch(
-        `${window.location.origin}/api/v1/admin/${adminId}/pharmacies/${pharmacyId}`,
-        {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            status: isActivate ? "1" : "0",
-            id: pharmacyId
-          })
-        }
-      );
-
-      if (!res.ok) throw new Error("Request failed");
-
-      Swal.fire(
-        isActivate ? "Activated" : "Deactivated",
-        isActivate
-          ? "Pharmacy Activated Successfully"
-          : "Pharmacy Deactivated Successfully",
-        "success"
-      );
-
-      renderPharmacies();
-    } catch (err) {
-      console.error(err);
-      Swal.fire("Error", "Failed to update pharmacy status.", "error");
-    }
-
-    }catch(e){
-      console.log(e);
-    }
-
+  const confirmed = await swal({
+    title: "Are you sure you want to deactivate this Pharmacy?",
+    icon: "/logo/logo.svg",
+    buttons: {
+      cancel: { text: "Cancel", visible: true },
+      confirm: { text: "Ok", value: true }
+    },
+    dangerMode: false
   });
-</script>
+
+  if(!confirmed) {
+    swal("Declined", "Pharmacy Deactivation Declined", "warning");
+    return;
+  }
+
+  await fetch(`${window.location.origin}/api/v1/admin/${adminId}/pharmacies/${pharmacyId}`, {
+    method: 'PATCH',
+    headers: { "Content-type": "application/json" },
+    body: JSON.stringify({ status: "0", id: pharmacyId })
+  });
   
+  swal("Deactivated", "Pharmacy Deactivated Successfully", "success");
+  renderPharmacies(); // Re-render to hide deactivate, but doesn't matter since status=0
+});
+  </script>
 
 
   <script>
   //Search filter
-  document.getElementById('searchInput').addEventListener('keyup', function () {
-  const filter = this.value.toLowerCase(); // what user types
-  const rows = document.querySelectorAll('.pharmacy-card');
+ document.getElementById('searchInput').addEventListener('keyup', function () {
+    const filter = this.value.toLowerCase().trim();
+    const grid = document.querySelector('.pharmacy-grid');
 
-  rows.forEach(row => {
-    const text = row.textContent.toLowerCase();
-    if (text.includes(filter)) {
-      row.style.display = ''; // show row
-    } else {
-      row.style.display = 'none'; // hide row
-    }
+    // Each pharmacy card is inside an <a> wrapper
+    const items = Array.from(grid.querySelectorAll(':scope > a'));
+
+    const matched = [];
+    const unmatched = [];
+
+    items.forEach(item => {
+      const card = item.querySelector('.pharmacy-card');
+      const text = (card?.textContent || '').toLowerCase();
+
+      if (!filter || text.includes(filter)) {
+        item.style.display = '';
+        matched.push(item);
+      } else {
+        item.style.display = 'none';
+        unmatched.push(item);
+       
+      }
+    });
+
+    // Reorder DOM: matched first, then unmatched
+    [...matched, ...unmatched].forEach(item => grid.appendChild(item));
+   
   });
-});
+  
   </script>
 
   

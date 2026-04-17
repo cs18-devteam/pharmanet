@@ -13,7 +13,8 @@ exports.adminBlogsRouter = SubRouter.route('/admin/:adminId/blogs')
 })
 .subRoute('/:blogId/edit',{
     get: [  authenticate('adminId'), blogController.renderEditView ],
-    patch :[ authenticate('adminId') , blogController.updateBlog ],
+    update :[ authenticate('adminId') , blogController.updateBlog ],
+    
 })
 .subRoute('/:blogId/delete' , {
     get : [ authenticate('adminId') , blogController.renderDeleteConfirm ],

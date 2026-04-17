@@ -20074,11 +20074,10 @@ p {
   flex-direction: row;
 }
 .blogManage .container .container-1 {
-  flex: -2;
+  flex: 0 0 26rem;
   margin-right: 0rem;
   align-items: stretch;
   min-height: 95vh;
-  background: #F7F7F7;
   border-radius: 1rem;
   background-color: #08374F;
 }
@@ -20258,128 +20257,6 @@ p {
   font-size: 2rem;
   font-weight: 700;
   margin: 0;
-}
-@media (max-width: 1200px) {
-  .blogManage .container {
-    flex-direction: column;
-  }
-  .blogManage .container-1 {
-    width: 100%;
-    min-height: auto;
-  }
-  .blogManage .container-2 {
-    max-width: 100%;
-    margin: 2rem auto;
-  }
-  .blogManage header h1 {
-    font-size: 2.2rem;
-  }
-}
-@media (max-width: 992px) {
-  .blogManage .navbar {
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-  }
-  .blogManage .navbar .nav-buttons {
-    justify-content: center;
-  }
-  .blogManage .container {
-    flex-direction: column;
-  }
-  .blogManage .sideBar {
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 1.5rem;
-  }
-  .blogManage .menu {
-    flex-direction: row;
-    gap: 0.5rem;
-    margin-top: 1rem;
-    overflow-x: auto;
-  }
-  .blogManage .menu a {
-    white-space: nowrap;
-  }
-  .blogManage header .btn-create {
-    position: static;
-    margin-top: 1rem;
-    width: 100%;
-  }
-}
-@media (max-width: 768px) {
-  .blogManage .navbar {
-    padding: 1rem;
-  }
-  .blogManage .navbar .logo span {
-    font-size: 1.6rem;
-  }
-  .blogManage .navbar .btn {
-    font-size: 1.2rem;
-    padding: 6px 12px;
-  }
-  .blogManage .sideBar {
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-  }
-  .blogManage .menu {
-    width: 100%;
-  }
-  .blogManage .container-2 {
-    padding: 1.5rem;
-    margin: 2rem 0;
-  }
-  .blogManage .summary {
-    flex-direction: column;
-  }
-  .blogManage .blog-table {
-    overflow-x: auto;
-  }
-  .blogManage .blog-table table {
-    min-width: 700px;
-  }
-}
-@media (max-width: 576px) {
-  .blogManage header h1 {
-    font-size: 1.8rem;
-  }
-  .blogManage header p {
-    font-size: 1.2rem;
-  }
-  .blogManage .navbar .logo img {
-    width: 3rem;
-    height: 3rem;
-  }
-  .blogManage .btn-create {
-    padding: 1rem;
-    font-size: 1.2rem;
-  }
-  .blogManage .menu a {
-    font-size: 1.2rem;
-    padding: 8px 10px;
-  }
-  .blogManage td strong {
-    font-size: 1.4rem;
-  }
-  .blogManage td p {
-    font-size: 1.1rem;
-  }
-}
-@media (max-width: 400px) {
-  .blogManage .navbar {
-    padding: 0.8rem;
-  }
-  .blogManage .btn {
-    width: 100%;
-  }
-  .blogManage .menu {
-    gap: 0.3rem;
-  }
-  .blogManage .summary .card p {
-    font-size: 1.6rem;
-  }
 }
 
 .blogView .navbar {
@@ -20605,6 +20482,7 @@ p {
   border-radius: 10px;
   margin-bottom: 1rem;
   padding: 25px;
+  width: 90% !important;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 .createNewBlog .card h3 {
@@ -20664,6 +20542,8 @@ p {
   background: linear-gradient(to right, #18978D, #083851);
   color: #fff;
   font-size: 1.4rem;
+  width: 25%;
+  margin-left: 2rem;
 }
 .createNewBlog .buttons .save:hover {
   background: #FB8F21;
@@ -22289,12 +22169,13 @@ p {
 .viewPharmacy .header .back-btn {
   text-decoration: none;
   font-size: 2.5rem;
-  color: #0b0f14;
+  color: #08374F;
   margin-right: 1rem;
 }
 .viewPharmacy .header h1 {
   margin: 0;
   font-size: 28px;
+  color: #08374F;
 }
 .viewPharmacy .header p {
   color: #9ca3af;
@@ -22310,8 +22191,9 @@ p {
   margin: 20px 0;
 }
 .viewPharmacy .cards .card {
-  background: #f7f7f7;
   padding: 20px;
+  background: #f7f7f7;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 .viewPharmacy .cards .card:not(.viewPharmacy .cards .card:last-child) {
   border-right: 1px solid var(--color-green-01);
@@ -22325,12 +22207,12 @@ p {
   color: #08374f;
 }
 .viewPharmacy .cards .card .positive {
-  color: #22c55e;
+  color: #dcfce7;
   font-size: 14px;
   display: none;
 }
 .viewPharmacy .cards .card .negative {
-  color: #ef4444;
+  color: #e10707;
   font-size: 14px;
   display: none;
 }
@@ -22343,12 +22225,13 @@ p {
   margin: 20px 0;
 }
 .viewPharmacy .toolbar input {
-  width: 70%;
+  width: 40%;
   padding: 10px;
-  border-radius: 8px;
   border: 1px solid #1f2937;
   background: transparent;
   color: black;
+  border-radius: 10px;
+  padding-left: 40px;
 }
 .viewPharmacy .toolbar .actions button {
   margin-left: 10px;
@@ -22378,7 +22261,7 @@ p {
   cursor: pointer;
 }
 .viewPharmacy .tabs button.active {
-  background: #22c55e;
+  background: #1ca04c;
   color: black;
 }
 .viewPharmacy {
@@ -22387,12 +22270,21 @@ p {
 .viewPharmacy .table {
   background: #f7f7f7;
   border-radius: 12px;
+  border: 1px solid #1f2937;
   padding: 20px;
+  width: 90%;
   margin-bottom: 20px;
 }
 .viewPharmacy .table table {
   width: 100%;
   border-collapse: collapse;
+}
+.viewPharmacy .table table tr:nth-child(even) {
+  background: #f9fafb;
+}
+.viewPharmacy .table table tr:hover {
+  background: #eef2ff;
+  cursor: pointer;
 }
 .viewPharmacy .table table th, .viewPharmacy .table table td {
   padding: 12px;
@@ -22410,7 +22302,7 @@ p {
   border-bottom: 1px solid #1f2937;
 }
 .viewPharmacy .table table .low {
-  color: #ef4444;
+  color: #e10707;
   font-weight: bold;
 }
 .viewPharmacy {
@@ -22422,12 +22314,12 @@ p {
   font-size: 12px;
 }
 .viewPharmacy .badge.optimal {
-  background: rgba(34, 197, 94, 0.2);
-  color: #22c55e;
+  background: rgba(28, 160, 76, 0.2);
+  color: #1ca04c;
 }
 .viewPharmacy .badge.critical {
-  background: rgba(239, 68, 68, 0.2);
-  color: #ef4444;
+  background: rgba(225, 7, 7, 0.2);
+  color: #e10707;
 }
 .viewPharmacy .badge.warning {
   background: rgba(245, 158, 11, 0.2);
@@ -22675,6 +22567,8 @@ p {
 .userProfile .right-content .card {
   background: #fff;
   padding: 24px;
+  margin: 0 !important;
+  width: 75rem !important;
   border-radius: 16px;
   border: 1px solid #777777;
 }

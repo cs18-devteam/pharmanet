@@ -282,10 +282,11 @@ exports.updateMedicine = async (req, res) => {
     }
 
     let body = JSON.parse(rawData);
+    console.log(body);
    
-    const{ geneticName, brandName, manufacturer, dosage, category, shedule, expiryDate} = body;
+    const{ geneticName, brandName, manufacturer, dosage, category, schedule, expiryDate} = body;
     const newMedicine = await Medicines.update({
-      id:medicineId,geneticName,brandName,manufacturer,dosage,category,shedule,expiryDate
+      id:medicineId,geneticName,brandName,manufacturer,dosage,category,schedule,expiryDate
     });
     return responseJson(res, 200, newMedicine);
 
@@ -342,11 +343,12 @@ exports.getPharmacyMedicines = async(req,res) => {
       
       return {...m, ...medicineRows, medicineId: m.medicineId};
     });
+    
    
     medicines = await Promise.all(medicines);
     
-    medicines = medicines.filter( async (medicine) =>  medicine !== null);
-     
+    medicines = medicines.filter((medicine) => medicine !== null);
+    
     if(medicines == 0){
       medicines = [];
     }

@@ -190,6 +190,7 @@ exports.updateBlog = catchAsync(async (req, res) => {
 
   const { title, slug, status, tag, category, author, excerpt, content } = body;
   const newBlog = await Blogs.update({
+    id: blogId,
     title,
     slug,
     status,

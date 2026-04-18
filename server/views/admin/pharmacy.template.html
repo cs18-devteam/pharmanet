@@ -246,6 +246,7 @@
       return;
     }
 
+
     const confirmed = await Swal.fire({
       title: isActivate
         ? "Are you sure you want to activate this Pharmacy?"
@@ -254,18 +255,19 @@
       showConfirmButton : true,
       showCancelButton:true,
       dangerMode: false
-    });
+    })
 
-    if (!confirmed) {
+    if (!confirmed.isConfirmed) {
       Swal.fire(
         "Declined",
         isActivate
           ? "Pharmacy Activation Declined"
           : "Pharmacy Deactivation Declined",
         "warning"
-      );
+      )
       return;
     }
+
 
     try {
       const res = await fetch(
@@ -304,22 +306,37 @@
 </script>
   
 
-
-  <script>
+<script>
   //Search filter
-  document.getElementById('searchInput').addEventListener('keyup', function () {
-  const filter = this.value.toLowerCase(); // what user types
-  const rows = document.querySelectorAll('.pharmacy-card');
+ document.getElementById('searchInput').addEventListener('keyup', function () {
+    const filter = this.value.toLowerCase().trim();
+    const grid = document.querySelector('.pharmacy-grid');
 
-  rows.forEach(row => {
-    const text = row.textContent.toLowerCase();
-    if (text.includes(filter)) {
-      row.style.display = ''; // show row
-    } else {
-      row.style.display = 'none'; // hide row
-    }
+    // Each pharmacy card is inside an <a> wrapper
+    const items = Array.from(grid.querySelectorAll(':scope > a'));
+
+    const matched = [];
+    const unmatched = [];
+
+    items.forEach(item => {
+      const card = item.querySelector('.pharmacy-card');
+      const text = (card?.textContent || '').toLowerCase();
+
+      if (!filter || text.includes(filter)) {
+        item.style.display = '';
+        matched.push(item);
+      } else {
+        item.style.display = 'none';
+        unmatched.push(item);
+       
+      }
+    });
+
+    // Reorder DOM: matched first, then unmatched
+    [...matched, ...unmatched].forEach(item => grid.appendChild(item));
+   
   });
-});
+  
   </script>
 
   

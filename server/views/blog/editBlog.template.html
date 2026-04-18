@@ -25,16 +25,17 @@
               Enter the basic information for your blog post
             </p>
 
-            <label>Post Title</label>
+            <label>Medicine Name</label>
             <input
               type="text"
               name="title"
               value="{title}"
-              placeholder="e.g., 5 Tips for Managing Your Medications"
+              readonly
             />
 
-            <label>URL Slug</label>
-            <input type="text" value="{slug}" name="slug" placeholder="" />
+            <label>Reference Link</label>
+            <input type="text" id="websiteUrl" value="{slug}" name="slug" placeholder="eg: www.google.com" required/>
+            <small id="urlError" style="color: red; display: none;">Enter a valid link like www.google.com or https://google.com</small>
 
             <label>Excerpt</label>
             <textarea
@@ -65,16 +66,16 @@
         <div class="card">
           <h3>Publish Settings</h3>
 
-          <label>Status</label>
-          <input type="date" name="status" value="{date}" />
+          <!-- <label>Status</label>
+          <input type="date" name="status" value="{date}" /> -->
           <!-- <select name="status">
           <option>Draft</option>
           <option>Published</option>
         </select> -->
 
           <label>Category</label>
-          <select value="{category}" name="category">
-            <option>Select a category</option>
+          <select value="" name="category" form="createBlog">
+            <option>{category}</option>
             <option>Medicine</option>
             <option>Disease</option>
           </select>
@@ -84,16 +85,17 @@
             type="text"
             value="{author}"
             name="author"
+            form="createBlog"
             placeholder="Your name"
           />
 
-          <label>Tags</label>
+          <!-- <label>Tags</label>
           <input
             type="text"
             value="{tags}"
             name="tag"
             placeholder="Separate with commas"
-          />
+          /> -->
         </div>
 
         <div class="buttons">
@@ -108,6 +110,8 @@
 
     <script>
       const pathParts = window.location.pathname.split("/");
+      const adminIdIndex = pathParts.indexOf("admin") + 1;
+      const adminId = pathParts[adminIdIndex];
       const blogIdIndex = pathParts.indexOf("blogs") + 1;
       const blogId = pathParts[blogIdIndex];
       const form = document.getElementById("createBlog");
@@ -132,16 +136,28 @@
             swal("Declined", "Blog update Declined", "warning");
             return;
           }
-        });
-        form.addEventListener("submit", (e) => {
-          e.preventDefault();
-          const data = {};
+
           const formData = new FormData(form);
-          for (const [key, value] of formData.entries()) {
-            data[key] = value;
-          }
+          const data = Object.fromEntries(formData.entries());
           console.log(data);
+
+          const res = await fetch(`${window.location.origin}/admin/${adminId}/blogs/${blogId}/edit`, {
+                method: 'PATCH',
+                headers: {"content-type":"application/json"},
+                body: JSON.stringify(data),
+          });
+          if(res.ok){
+            window.location.href = `${window.location.origin}/admin/${adminId}/blogs/manage`;
+            swal("Updated", "Updated medicine Successfully","success");
+            
+          } else{
+        const err = await res.json().catch(() => ({}));
+        swal("Failed", "Medicine Update Failed","fail");
+        
+      }
         });
+        
+        
       } catch (error) {
         console.log("error in updating blog : ", error);
       }
@@ -159,11 +175,25 @@
       }
     </script>
 
+
     <script>
-      try{
-        const res = await fetch(`${window.location.origin}`)
+      const websiteUrlInput = document.getElementById("websiteUrl");
+      const urlError = document.getElementById("urlError");
+
+      function validateWebsiteUrl() {
+        const value = websiteUrlInput.value.trim();
+        console.log(value);
+        const urlPattern =
+          /^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,}(:\d+)?(\/.*)?$/i;
+
+        const isValid = urlPattern.test(value);
+        urlError.style.display = isValid ? "none" : "block";
+        return isValid;
       }
+
+      websiteUrlInput.addEventListener("input", validateWebsiteUrl);
     </script>
+
 
     <!-- <script>
       const form = document.getElementById("createBlog");

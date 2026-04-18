@@ -27,7 +27,10 @@ exports.renderPharmacyStaffLeave = async (req, res) => {
 };
 
 exports.createLeaveRequest = apiCatchAsync(async (req, res) => {
-  const staffId = req.staffId;
+  const data = await getMultipartData(req);
+  const staffId = data.staffId;
+
+
   if (!staffId) throw new Error("staffId is required");
 
   // Get userId from staffId
@@ -38,7 +41,6 @@ exports.createLeaveRequest = apiCatchAsync(async (req, res) => {
   const [user] = await Users.getById(userId);
   if(!user) throw new Error("User not found");
 
-  const data = await getMultipartData(req);
 
   if (!data.leaveType || !data.startDate || !data.endDate) {
     throw new Error("leaveType, startDate and endDate are required");
@@ -80,19 +82,29 @@ exports.createLeaveRequest = apiCatchAsync(async (req, res) => {
 });
 
 exports.getLeaveRequests = apiCatchAsync(async (req, res) => {
-  const staffId = req.staffId;
-  if (!staffId) throw new Error("staffId is required");
+  const pharmacyID = req.pharmacyId;
+  if (!pharmacyID) throw new Error("staffId is required");
 
   // Get userId from staffId
-  const [staff] = await PharmacyStaff.getById(staffId);
-  if (!staff) throw new Error("Staff member not found");
-  const userId = staff.userId;
+  const staff = await PharmacyStaff.get({
+    pharmacyId : pharmacyID,
+  });
+  if (!staff.length) throw new Error("Staff member not found");
+
+  let leavesOfAllMembers = await Promise.all(staff.map(async s=>{
+    const staffId = s.id;
+    const leaves = await Leaves.get({ user: staffId });
+    return leaves;
+
+  }))
+
+
+  leavesOfAllMembers = leavesOfAllMembers.flat();
 
   // Get leaves for this user
-  const leaves = await Leaves.get({ user: userId });
 
   // Return leaves with firstName, lastName, role from database
-  const results = leaves.map(leave => ({
+  const results = leavesOfAllMembers.map(leave => ({
     ...leave,
     firstName: leave.firstName,
     lastName: leave.lastName,

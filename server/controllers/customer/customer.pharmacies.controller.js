@@ -258,6 +258,10 @@ exports.createPharmacy = apiCatchAsync(async (req, res) => {
       field: "contactNumber",
     });
   }
+
+
+
+
   if (!/^\d{10}$/.test(contactNumber)) {
     await Pharmacies.query("rollback");
     return responseJson(res, 400, {

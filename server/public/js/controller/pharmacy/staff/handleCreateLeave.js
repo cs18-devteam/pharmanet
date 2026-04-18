@@ -1,3 +1,4 @@
+import Application from "../../../model/application/Application.js";
 import { createLeaveRequest } from "../../../model/pharmacy/fetchLeaveData.js";
 import { swal } from "../../../view/swal.js";
 
@@ -76,6 +77,7 @@ function handleLeaveFormSubmit() {
 
         // Create FormData with proper field names
         const leaveData = new FormData();
+        leaveData.append('staffId' , Application.currentSelectedStaffMember.staffId);
         leaveData.append('leaveType', leaveType);
         leaveData.append('startDate', startDate);
         leaveData.append('endDate', endDate);

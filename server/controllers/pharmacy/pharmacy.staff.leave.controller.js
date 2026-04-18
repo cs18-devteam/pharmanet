@@ -117,3 +117,4 @@ exports.getLeaveRequests = apiCatchAsync(async (req, res) => {
     count: results.length,
   });
 });
+

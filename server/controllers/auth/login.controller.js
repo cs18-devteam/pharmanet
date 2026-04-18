@@ -33,6 +33,7 @@ exports.login = async (req, res) => {
             });
         }
 
+
         const user = await Users.get({
             email : email,
         });
@@ -43,6 +44,18 @@ exports.login = async (req, res) => {
                 message :"invalid email address",
             })
         }
+
+        const status = user.status;
+
+        
+        if(status == "Inactive"){
+            return responseJson(res , 400 , {
+                status:"error",
+                message:"you're account has been disabled",
+            })
+        }
+
+
         const isVerified = verifyPassword(password , user[0].password);
 
         if(!isVerified){

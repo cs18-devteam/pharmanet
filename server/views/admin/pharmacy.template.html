@@ -85,6 +85,7 @@
       const html = pharmacies.map(p =>{
       const isActive = Number(p.status) === 1;
       return`
+      
       <a href = "/admin/${adminId}/pharmacies/${p.id}/viewPharmacy">
        <div class = "pharmacy-card">
         <div class="header">
@@ -100,9 +101,9 @@
         <hr>
         <div class= "pharmacyCardFooter">
           <!-- <p>Inventory: <strong>N/A</strong></p> -->
-          <button class="details-btn" data-img="${p.ownerDoc}" data-name="${p.name || ''}" data-id="${p.id}" }">View Owner Document</button>
-          <button class="details-btn" data-img="${p.addressDoc}" data-name="${p.name || ''}" data-id="${p.id}" data-status="${isActive ? '1' : '0'}">View Address Document</button>
-          <button class="details-btn" data-img="${p.img}" data-name="${p.name || ''}" data-id="${p.id}" data-status="${isActive ? '1' : '0'}">View License</button>
+          <button class="details-btn" data-img="${p.ownerDoc}" data-name="${p.name || ''}" data-id="${p.id}" }">Owner Docs</button>
+          <button class="details-btn" data-img="${p.addressDoc}" data-name="${p.name || ''}" data-id="${p.id}" data-status="${isActive ? '1' : '0'}">Address Docs</button>
+          <button class="details-btn" data-img="${p.registrationDoc}" data-name="${p.name || ''}" data-id="${p.id}" data-status="${isActive ? '1' : '0'}">License</button>
 
            ${isActive 
             ? `<button class="deactivate-Btn" data-id="${p.id}">Deactivate</button>` 

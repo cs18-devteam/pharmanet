@@ -55,6 +55,8 @@ body {
   .card {
     background: $card-bg;
     padding: 20px;
+    margin: 0 !important;
+    width: 39rem !important;
     
     &:not(&:last-child){
     border-right: 1px solid var(--color-green-01);

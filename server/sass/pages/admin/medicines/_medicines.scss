@@ -338,11 +338,15 @@
     width: 100%;
     border-collapse: collapse;
 
+    tr{
+      border-bottom: 1px solid black;
+
+    }
+
     th,
     td {
       text-align: left;
       padding: 0.9rem 1rem;
-      border-bottom: 1px solid black;
     }
 
     th {

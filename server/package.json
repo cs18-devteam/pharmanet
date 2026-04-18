@@ -23,7 +23,8 @@
     "test": "test"
   },
   "scripts": {
-    "compile-sass": "sass ./sass/main.scss ./public/css/style.css --watch",
+    "compile-sass": "sass  ./sass/main.scss ./public/css/style.css  --watch",
+    "compress-sass": "sass --style=compressed ./sass/main.scss ./public/css/style.css",
     "serve": "nodemon",
     "dev": "npm-run-all --parallel compile-sass serve",
     "test": "jest"

@@ -42,8 +42,6 @@ function handleLeaveFormSubmit() {
         const document = documentInput ? documentInput.files[0] : null;
         const coveredBy = leaveForm.querySelector('input[name="coveredBy"]').value;
 
-        console.log("Form data:", { leaveType, startDate, endDate, leaveCategory, reason, coveredBy });
-
         // Validate required fields
         if (!leaveType || leaveType === "") {
             newSubmitButton.disabled = false;

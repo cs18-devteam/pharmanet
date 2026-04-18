@@ -59,16 +59,16 @@ function printTransactions() {
   );
   if (!printSection) {
     swal({
-      title:"print section not found",
-      icon:"warning",
+      title: "print section not found",
+      icon: "warning",
     })
     return;
   }
 
   if (!tableBody || tableBody.children.length === 0) {
     swal({
-      title:"No transactions",
-      icon:"warning",
+      title: "No transactions",
+      icon: "warning",
     })
     return;
   }
@@ -102,8 +102,8 @@ function printTransactions() {
 
   if (!printWindow) {
     swal({
-      title:"print window closed with out printing",
-      icon:"warning",
+      title: "print window closed with out printing",
+      icon: "warning",
     })
     return;
   }
@@ -209,8 +209,12 @@ export function filterTransactionByDateRange({ results: data }) {
     const mapFilterData = filteredDate
       .map((tr) => {
         const dateObj = new Date(tr.transactionDateTime);
-        const date = dateObj.toISOString().split("T")[0];
-        const time = dateObj.toISOString().split("T")[1].slice(0, 5);
+        const date = dateObj.toLocaleDateString('si-LK', {
+          timeZone: 'Asia/Colombo'
+        });
+        const time = dateObj.toLocaleTimeString('si-LK', {
+          timeZone: 'Asia/Colombo'
+        });
 
         return `
         <tr>

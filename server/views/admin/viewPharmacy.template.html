@@ -141,6 +141,7 @@
         const res = await fetch(API_URL);
         const payload = await res.json();
 
+        console.log(payload);
         const users = payload.results;
         const totalStaff = document.getElementById("totalStaff");
         totalStaff.textContent = users.length;
@@ -180,7 +181,7 @@
               </td>
               <td><span class="role">${user.role || "N/A"}</span></td>
               <td>${user.name || "N/A"}</td>
-              <td> ${status ? `<span class="status active">Active</span>` : `<span class="status inactive">Inactive</span>`}</td>
+              <td> ${!(status == "Inactive") ? `<span class="status active">Active</span>` : `<span class="status inactive">Inactive</span>`}</td>
               <!-- <td>2 hours ago</td> -->
 
             `;

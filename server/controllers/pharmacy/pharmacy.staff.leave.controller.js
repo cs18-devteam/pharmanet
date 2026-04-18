@@ -92,8 +92,8 @@ exports.getLeaveRequests = apiCatchAsync(async (req, res) => {
   if (!staff.length) throw new Error("Staff member not found");
 
   let leavesOfAllMembers = await Promise.all(staff.map(async s=>{
-    const staffId = s.id;
-    const leaves = await Leaves.get({ user: staffId });
+    const userId = s.userId;
+    const leaves = await Leaves.get({ user: userId });
     return leaves;
 
   }))

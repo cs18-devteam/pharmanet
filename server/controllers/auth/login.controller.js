@@ -45,8 +45,7 @@ exports.login = async (req, res) => {
             })
         }
 
-        const status = user.status;
-
+        const status = user[0].status;
         
         if(status == "Inactive"){
             return responseJson(res , 400 , {

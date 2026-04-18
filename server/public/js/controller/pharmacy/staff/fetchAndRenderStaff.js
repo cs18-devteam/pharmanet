@@ -35,15 +35,13 @@ export async function fetchAndRenderStaff() {
     }
 
     Application.allStaffMembers = results; // Store for later use
-    console.log("Found", results.length, "staff members");
 
-    console.log(Application.staffData);
 
     const allStaffCards = results
       .map((member) =>
         template
           .replace("{you}" , member.staffId == Application.staffId ? "(You)" : "")
-          .replace("{userId}", member.userId || "")
+          .replace("{userId}", member.staffId || "")
           .replace("{staffId}", member.staffId || member.id || "")
           .replace("{profile}", member.profile || "/users/profile-general.jpg")
           .replace("{role}", member.role || "Staff")
@@ -75,8 +73,9 @@ export async function fetchAndRenderStaff() {
         
         // Find the full staff member data
         const selectedStaff = Application.allStaffMembers.find(m => 
-          m.userId == userId && m.staffId == staffId
+          m.staffId == staffId
         );
+
 
         if (selectedStaff) {
           Application.currentSelectedStaffMember = Application.allStaffMembers.find(m=>{

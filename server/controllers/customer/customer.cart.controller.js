@@ -74,17 +74,18 @@ exports.getCart = async (req, res)=>{
         let results = carts.map(async cart=>{
             if(cart.productId){
                 const [product] = await Products.getById(cart.productId);
-                if(!product) throw new Error("can not find product")
+                if(!product) return undefined;
                 return { productId: product.id , ...product , ...cart}
             }else{
                 const [medicine] = await await Medicines.getById(cart.medicineId);
-                if(!medicine) throw new Error("can not find product")
+                if(!medicine) return undefined;
                 return {medicineId : medicine.id , ...medicine , ...cart};
             }
         })
 
 
         results = await Promise.all(results);
+        results = results.filter(r=>r!=undefined);
 
 
 

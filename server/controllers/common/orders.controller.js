@@ -120,7 +120,7 @@ exports.createOrder = apiCatchAsync(async (req, res) => {
     let staff;
     if (reqData.staffId) {
         const [staff] = await PharmacyStaff.getById(reqData.staffId);
-
+        console.log(staff , reqData.staffId);
         if (!staff) throw new Error("staff member not found");
     }
 
@@ -670,7 +670,14 @@ exports.getOrderSummeryStatusWise = apiCatchAsync(async (req, res) => {
     const pharmacyId = req.params.get("pharmacy");
     if (!pharmacyId) throw new Error("pharmacy id not found");
 
-    const orders = await PharmacyOrders.query(`select status ,count(id) as count from this.table where pharmacyId = ${pharmacyId} group by status`)
+    let orders = await PharmacyOrders.query(`select status ,count(id) as count from this.table where pharmacyId = ${pharmacyId} group by status`);
+
+    orders = orders?.map(o=>{
+        return {
+            ...o , 
+            status : o.status || "pending"
+        }
+    })
 
     return responseJson(res, 200, {
         status: "success",

@@ -66,8 +66,9 @@ async function updateView() {
         let changeWindowTo = s.type == "medicine" ? "medicines" : "products";
         let value = s.name;
 
+
         if (s.status) {
-            if(s.status == "pending" &&  0 < s.count ){
+            if((s.status == "pending" || s.status == null) &&  0 < s.count ){
                 return notifications.push(new QuickNotify({
                     topic :`(${s.count}) Pending Orders`,
                     value : `${s.count} remain`,

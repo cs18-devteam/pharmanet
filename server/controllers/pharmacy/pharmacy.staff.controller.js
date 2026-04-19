@@ -142,6 +142,7 @@ exports.changePermissions = apiCatchAsync(async (req, res) => {
   const {staffId} = readCookies(req);
 
   const [member] = await PharmacyStaff.getById(staffId);
+
   const [pharmacy] = await Pharmacies.getById(member.pharmacyId);
 
   if(!member) throw new Error("staff member not found");
@@ -149,7 +150,7 @@ exports.changePermissions = apiCatchAsync(async (req, res) => {
 
 
   const permissionObj = {
-    id: member.id,
+    id: data.staffId,
     createOrder: data.createOrder == "on" ? "1" : "0",
     deleteOrder: data.deleteOrder == "on" ? "1" : "0",
     readOrder: data.readOrder == "on" ? "1" : "0",

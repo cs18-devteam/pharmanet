@@ -188,7 +188,7 @@ export async function handleEditPermission() {
             content = content.replace(`{${key}}`, value ? "checked" : " ");
         })
 
-        setSidebarContent(content.replace("{staffId}", Application.currentSelectedStaffMember.id));
+        setSidebarContent(content.replace("{staffId}", Application.currentSelectedStaffMember.staffId));
         openSidebar();
 
 
@@ -205,6 +205,7 @@ export async function handleEditPermission() {
                 if (!slider) return;
 
                 const formData = new FormData(form);
+                formData.append('staffId' , Application.currentSelectedStaffMember.staffId);
                 const { status, results } = await updateStaffPermissions(formData);
 
                 Application.allStaffMembers = Application.allStaffMembers.map(m => {

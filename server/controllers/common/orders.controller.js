@@ -280,9 +280,23 @@ exports.getOrders = apiCatchAsync(async (req, res) => {
         items = await Promise.all(items.map(async i => {
             if (i.itemType == "medicine") {
                 const [medicine] = await Medicines.getById(i.itemId);
+                let stock = {
+                    price : 0,
+                };
+                if(!i.price){
+                    [stock] = await PharmacyMedicines.get({
+                        pharmacyId , 
+                        medicineId : i.itemId
+                    })
+                }else{
+                    stock.price = i.price;
+                }
+
                 return {
                     ...i,
                     name: medicine.geneticName,
+                    price : stock.price,
+                    
                 }
             } else {
                 const [product] = await Products.getById(i.itemId);
@@ -341,6 +355,11 @@ exports.addOrderItem = apiCatchAsync(async (req, res) => {
     let product;
     if (reqData.medicineId) {
         medicine = (await Medicines.getById(reqData.medicineId))[0];
+        medicine.stock = await PharmacyMedicines.get({
+            pharmacyId,
+            medicineId : reqData.medicineId,
+        })
+        
 
 
         if(!medicine) throw new Error("no medicine found")
@@ -387,8 +406,8 @@ exports.addOrderItem = apiCatchAsync(async (req, res) => {
         itemId: +reqData.medicineId || +reqData.productId,
         itemType: reqData.medicineId ? "medicine" : "product",
         price: medicine?.stock[0]?.price || product?.price,
-        discount: reqData.discount,
-        quantity: reqData.quantity,
+        discount: reqData.discount || 0,
+        quantity: reqData.quantity || 0,
     }
 
 

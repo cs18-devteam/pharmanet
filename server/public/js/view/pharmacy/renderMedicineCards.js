@@ -103,6 +103,9 @@ export function createMedicineCards (data = []){
         console.log(data);
 
         return data.map(medicine=>{
+
+            console.log(medicine);
+
             let status = "not_available";
             let fullStockCount = medicine.stock.stock;
             if(fullStockCount){
@@ -121,7 +124,7 @@ export function createMedicineCards (data = []){
 
             let price = 'not available';
             if(status != 'not_available'){
-                price = medicine.stock.price;
+                price = medicine.stock?.price;
             }
 
             const total = price * medicine.units - medicine.discounts;
@@ -133,7 +136,7 @@ export function createMedicineCards (data = []){
             .replace('{geneticName}' , medicine.geneticName)
             .replaceAll('{price}' , price )
             .replaceAll('{status}' , status || " ")
-            .replace('{count}' , medicine.stock.publicStock || 0)
+            .replace('{count}' , medicine.stock?.publicStock || 0)
             .replaceAll('{units}' , medicine.units || 1)
             .replaceAll('{discounts}' , medicine.discounts || 0)
             .replaceAll('{days}' , medicine.days || 1)

@@ -13,13 +13,13 @@ const cartList = document.querySelector('.orders .cart_list');
 
 
 
-export default function orders__searchAndRenderMedicineCard(search="" , limit=6){
-    fetchStocksData(search , limit , Application.pharmacyId).then(({results})=>{
-        if(!results) return;
+export default function orders__searchAndRenderMedicineCard(search = "", limit = 6) {
+    fetchStocksData(search, limit, Application.pharmacyId).then(({ results }) => {
+        if (!results) return;
         Application.setOrderMedicineResultsStack(results);
-        const medicineCards = createMedicineCards(results.filter(p=>p.type != "product"));
-        const productCard = createProductCards(results.filter(p=>p.type == "product"))
-        renderMedicineCards(medicineCardContainer , [...medicineCards, ...productCard  ]);
+        const medicineCards = createMedicineCards(results.filter(p => p.type != "product"));
+        const productCard = createProductCards(results.filter(p => p.type == "product"))
+        renderMedicineCards(medicineCardContainer, [...medicineCards, ...productCard]);
     })
 }
 
@@ -27,29 +27,29 @@ export default function orders__searchAndRenderMedicineCard(search="" , limit=6)
  * 
  * @returns {number}
  */
-function calcCartPrice(){
+function calcCartPrice() {
 
 
-    return Application.getOrderItems().reduce((acc , OItems)=>{
-        
+    return Application.getOrderItems().reduce((acc, OItems) => {
+
         let product = OItems.getProduct();
-        if(product){
+        if (product) {
             return acc + product.price * OItems.units - OItems.discounts;
         }
-        
-        return acc + OItems.getMedicine()?.stock.price *  OItems.units - OItems.discounts;
-    } , 0)
+
+        return acc + OItems.getMedicine()?.stock.price * OItems.units - OItems.discounts;
+    }, 0)
 }
 
 
 
 
-export function updateCardList(cartList , orders ){
-    setTextContent(numberOfItemsInCart , Application.getOrderItems().length);
-    setTextContent(priceOfCartItems , calcCartPrice().toLocaleString('En-us'));
-    const orderCards = [ ... createMedicineCards(orders.filter(o=>o.medicineId)) , ...createProductCards(orders.filter(p=>p.productId))];
-    
-    renderMedicineCards(cartList , orderCards);
+export function updateCardList(cartList, orders) {
+    setTextContent(numberOfItemsInCart, Application.getOrderItems().length);
+    setTextContent(priceOfCartItems, calcCartPrice().toLocaleString('En-us'));
+    const orderCards = [...createMedicineCards(orders.filter(o => o.medicineId)), ...createProductCards(orders.filter(p => p.productId))];
+
+    renderMedicineCards(cartList, orderCards);
 }
 
 
@@ -58,22 +58,22 @@ export function updateCardList(cartList , orders ){
  * @param {Application.OrderItem} orderItem 
  * @param {Application.OrderItem[]} orderItem 
  */
-function onPushOrderItem (orderItem , orderItemsCollection){
-    setTextContent(numberOfItemsInCart , orderItemsCollection.length);
-    setTextContent(priceOfCartItems , calcCartPrice().toLocaleString('En-us'));
+function onPushOrderItem(orderItem, orderItemsCollection) {
+    setTextContent(numberOfItemsInCart, orderItemsCollection.length);
+    setTextContent(priceOfCartItems, calcCartPrice().toLocaleString('En-us'));
 
     // re structure order collection
-    const orders = orderItemsCollection.map(item=>{
-        const order ={...item , ...item.getMedicine() , ...item.getProduct()};
+    const orders = orderItemsCollection.map(item => {
+        const order = { ...item, ...item.getMedicine(), ...item.getProduct() };
         return order;
     });
 
-    updateCardList(cartList , orders);
+    updateCardList(cartList, orders);
 }
 
 
 
-medicineCardContainer?.addEventListener('click' , e=>{
+medicineCardContainer?.addEventListener('click', e => {
     /**
      * @type {HTMLElement}
      */
@@ -84,59 +84,68 @@ medicineCardContainer?.addEventListener('click' , e=>{
     const card = target.closest('.medicine_card');
     const addBtn = target.closest('.add');
     const form = target.closest('.order-add-form');
-    if(card && !form){
-        if(card.classList.contains('show-order-add-form')){
+    if (card && !form) {
+        if (card.classList.contains('show-order-add-form')) {
             card.classList.remove('show-order-add-form');
-        }else{
+        } else {
             card.classList.add('show-order-add-form');
         }
 
-    }else if(addBtn){
+    } else if (addBtn) {
         //add button clicked
         const inputs = form.querySelectorAll("input");
-        
+
         const formData = {}
 
-        Array.from(inputs).forEach(i=>{
+        Array.from(inputs).forEach(i => {
             formData[i.name] = +i.value;
         })
 
         const type = card.dataset.type;
-        if(type == "medicine"){
+        if (type == "medicine") {
             formData.medicineId = card.dataset.id;
-        }else if(type == "product"){
+        } else if (type == "product") {
             formData.productId = card.dataset.id;
         }
 
 
-        const orderItem = new Application.OrderItem(formData.units , formData.days , formData.discounts , formData.medicineId , formData.productId);
+        const orderItem = new Application.OrderItem(formData.units, formData.days, formData.discounts, formData.medicineId, formData.productId);
 
 
         Application.onPushOrderItems(onPushOrderItem);
         Application.addToOrders(orderItem);
+        console.log(Application.getOrderItems());
 
 
-        
+
     }
 
 
-    
+
 })
 
 
-cartList?.addEventListener('click' , (e)=>{
+cartList?.addEventListener('click', (e) => {
     const target = e.target;
     const removeBtn = target.closest(".close-btn");
 
-    if(removeBtn){
+    if (removeBtn) {
         const id = target.closest('.medicine_card').dataset.id;
         const type = target.closest(".medicine_card").dataset.type;
 
-        if(type == "product"){
-            Application.removeOrderItem({productId : id});
-        }else{
-            Application.removeOrderItem({medicineId : id});
+        if (type == "product") {
+            Application.removeOrderItem({ productId: id });
+        } else {
+            Application.removeOrderItem({ medicineId: id });
         }
-        updateCardList(cartList , Application.getOrderItems());
+
+        // re structure order collection
+        const orders = Application.getOrderItems().map(item => {
+            const order = { ...item, ...item.getMedicine(), ...item.getProduct() };
+            return order;
+        });
+
+
+        updateCardList(cartList, orders);
     }
 })

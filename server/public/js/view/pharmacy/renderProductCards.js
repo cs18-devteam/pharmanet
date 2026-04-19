@@ -123,6 +123,6 @@ export function createProductCards (data = []){
         });
     }catch(e){
         console.log(e);
-        return undefined;
+        return [];
     }
 }

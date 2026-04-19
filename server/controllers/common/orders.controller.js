@@ -280,6 +280,8 @@ exports.getOrders = apiCatchAsync(async (req, res) => {
         items = await Promise.all(items.map(async i => {
             if (i.itemType == "medicine") {
                 const [medicine] = await Medicines.getById(i.itemId);
+
+                if(!medicine) return {...i};
                 let stock = {
                     price : 0,
                 };
@@ -300,6 +302,7 @@ exports.getOrders = apiCatchAsync(async (req, res) => {
                 }
             } else {
                 const [product] = await Products.getById(i.itemId);
+                if(!product) return {...i};
                 return {
                     ...i,
                     name: product.name,

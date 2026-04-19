@@ -209,12 +209,8 @@ export function filterTransactionByDateRange({ results: data }) {
     const mapFilterData = filteredDate
       .map((tr) => {
         const dateObj = new Date(tr.transactionDateTime);
-        const date = dateObj.toLocaleDateString('si-LK', {
-          timeZone: 'Asia/Colombo'
-        });
-        const time = dateObj.toLocaleTimeString('si-LK', {
-          timeZone: 'Asia/Colombo'
-        });
+        const date = dateObj.toLocaleDateString();
+        const time = dateObj.toLocaleTimeString();
 
         return `
         <tr>

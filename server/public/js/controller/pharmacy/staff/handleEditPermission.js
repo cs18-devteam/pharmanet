@@ -212,7 +212,6 @@ export async function handleEditPermission() {
                     return { ...m, ...results };
                 });
 
-                console.log(status, results);
 
                 if (status == "success") {
                     renderToast('staff permission updated', 'success');

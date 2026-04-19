@@ -1,3 +1,16 @@
+function formatDate(date) {
+  const pad = (n) => String(n).padStart(2, '0');
+
+  return `${pad(date.getDate())}/${pad(date.getMonth() + 1)}/${date.getFullYear()}`;
+}
+
+function formatTime(date) {
+  const pad = (n) => String(n).padStart(2, '0');
+  return `${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;
+}
+
+
+
 
 export function updateTable({results : data}){
 
@@ -7,11 +20,25 @@ export function updateTable({results : data}){
     //const currendate = new Date().toISOString().split("T")[0];
     //console.log("current date : ", currendate);
 
+    const options = {
+            timeZone: 'Asia/Colombo',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: false
+        };
+
     const html = data.map(tr=>{
         const dateobj = new Date (tr.transactionDateTime);
+        
 
-        const thedate = dateobj.toISOString().split("T")[0];
-        const time = dateobj.toISOString().split("T")[1].slice(0,5);
+        const thedate = formatDate(dateobj);
+        const time = formatTime(dateobj);
+
+        console.log(dateobj , thedate , time);
 
         return `
             <tr>

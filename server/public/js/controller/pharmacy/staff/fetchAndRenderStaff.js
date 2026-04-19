@@ -22,9 +22,12 @@ export async function fetchAndRenderStaff() {
     const response = await getStaffData();
     console.log("Staff response:", response);
 
+
     
-    const { results } = response;
+    const results  = response.members;
     Application.staffData = results;
+
+    console.log("Staff Data : " , Application.staffData);
 
     if (!results || results.length === 0) {
       console.log("No staff members found");

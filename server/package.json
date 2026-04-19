@@ -24,9 +24,9 @@
   },
   "scripts": {
     "compile-sass": "sass  ./sass/main.scss ./public/css/style.css  --watch",
-    "compress-sass": "sass --style=compressed ./sass/main.scss ./public/css/style.css",
-    "serve": "nodemon",
-    "dev": "npm-run-all --parallel compile-sass serve",
+    "build": "sass --style=compressed ./sass/main.scss ./public/css/style.css",
+    "prod": "nodemon",
+    "dev": "npm-run-all --parallel compile-sass prod",
     "test": "jest"
   },
   "dependencies": {

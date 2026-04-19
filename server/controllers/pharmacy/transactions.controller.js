@@ -22,8 +22,8 @@ exports.getTransactions = catchAsync(async (req, res) => {
 
     const filter = {};
 
-    const userId = req.userId;     
-    const staffID = req.staffId;    
+    const userId = req.userId;
+    const staffID = req.staffId;
     const orderId = req.orderId;
 
 
@@ -35,8 +35,8 @@ exports.getTransactions = catchAsync(async (req, res) => {
 
     //let transactions;
 
-    const transactions = await Transactions.get({
-        pharmacyId :pharmacyId,
+    let transactions = await Transactions.get({
+        pharmacyId: pharmacyId,
     })
 
     // exports.getByStaffId = async (pharmacyId) => {
@@ -44,6 +44,13 @@ exports.getTransactions = catchAsync(async (req, res) => {
     //         `SELECT staffID FROM transactions_table 
     //         `,)
     // }
+    transactions = transactions.map(tr=>{
+        return {
+            ...tr,
+            transactionDateTime : toSqlDate(tr.transactionDateTime),
+        }
+    })
+    
 
 
     return responseJson(res, 200, {
@@ -69,7 +76,7 @@ exports.createTransaction = apiCatchAsync(async (req, res) => {
         type: reqData.type,
         staffID: reqData.staffID,
         method: reqData.method,
-        transactionDateTime: toSqlDate(new Date().toLocaleDateString('si-LK')),
+        transactionDateTime: toSqlDate(new Date()),
     };
 
     const newTransaction = await Transactions.save(transactionObj);
@@ -82,13 +89,13 @@ exports.createTransaction = apiCatchAsync(async (req, res) => {
 
 
 exports.getStaffWiseSummary = catchAsync(async (req, res) => {
-  const pharmacyId = Number(req.pharmacyId);
+    const pharmacyId = Number(req.pharmacyId);
 
-  if (!pharmacyId) {
-    return responseJson(res, 400, { status: "fail", message: "Invalid pharmacyId" });
-  }
+    if (!pharmacyId) {
+        return responseJson(res, 400, { status: "fail", message: "Invalid pharmacyId" });
+    }
 
-  const sql=`
+    const sql = `
     SELECT 
         ps.id AS staffID,
         u.firstName AS staffName,
@@ -104,11 +111,11 @@ exports.getStaffWiseSummary = catchAsync(async (req, res) => {
   `;
 
 
-  const summary = await Transactions.query(sql);
+    const summary = await Transactions.query(sql);
 
 
-  return responseJson(res, 200, {
-    status: "success",
-    results: summary
-  });
+    return responseJson(res, 200, {
+        status: "success",
+        results: summary
+    });
 });

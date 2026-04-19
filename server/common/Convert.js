@@ -1,5 +1,5 @@
-class Convert{
-    constructor(){
+class Convert {
+    constructor() {
 
     }
 
@@ -8,10 +8,22 @@ class Convert{
      * @param {Date} date 
      * @returns {string}
      */
-    static toSqlDate(date = Date.now()){
-        return new Date(date).toISOString('si-LK').replace("T" , " ").split(".")[0]
+    static toSqlDate(date = Date.now()) {
+        const options = {
+            timeZone: 'Asia/Colombo',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: false
+        };
+
+
+        return new Date(date).toLocaleString('en-CA', options).replace(',' , '')
     }
 }
 
 
-module.exports  = Convert;
+module.exports = Convert;

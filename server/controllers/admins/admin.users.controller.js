@@ -151,6 +151,8 @@ exports.renderViewProfilePage = async (req, res) => {
         return vpIdx >= 0 && parts[vpIdx + 1] ? parts[vpIdx + 1] : null;
       })();
 
+      console.log(userId);
+    
     if (!userId) return response(res, "User ID is required", 400);
 
     if (!adminId) {
@@ -160,8 +162,7 @@ exports.renderViewProfilePage = async (req, res) => {
 
     // Fetch user details
     const [user] = await Users.getById(userId);
-    
-
+     
     if (!user) {
       return response(res, "User not found", 404);
     }
@@ -170,10 +171,41 @@ exports.renderViewProfilePage = async (req, res) => {
     const [admin] = await Users.getById(adminId);
 
     const [staffRow] = await PharmacyStaff.getByVarId("userId",userId);
+    if(!staffRow){
+
+      // LOG THE ACTIVITY
+  await ActivityLogService.logActivity(
+    req.adminId, // WHO (the admin)
+    "Viewed", // ACTION
+    "user", // CATEGORY
+    "Viewed user Profile", // DESCRIPTION
+     user.firstName,// ENTITY NAME
+    user.id // ENTITY ID
+  );
+      
+      return response(
+      res,
+      view("admin/viewProfile", {
+        user: JSON.stringify(user), // ← Stringify here
+        pharmacy: JSON.stringify({}),
+      }),
+      200
+    );
+    }
     const [pharmacy] = await Pharmacies.getById(staffRow.pharmacyId);
     
     
 
+    
+      // LOG THE ACTIVITY
+  await ActivityLogService.logActivity(
+    req.adminId, // WHO (the admin)
+    "Viewed", // ACTION
+    "user", // CATEGORY
+    "Viewed user Profile", // DESCRIPTION
+     // ENTITY NAME
+    user.id // ENTITY ID
+  );
     return response(
       res,
       view("admin/viewProfile", {

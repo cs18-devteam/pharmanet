@@ -112,6 +112,9 @@
       const pharmacyData = JSON.parse(
         document.getElementById("pharmacyDataJson").textContent,
       );
+
+      const pharmacyName = pharmacyData.name || "N/A";
+      const pharmacyLocation = pharmacyData.province || "N/A";
       console.log("pharmacyData: ", pharmacyData);
 
       if (userData) {
@@ -149,7 +152,9 @@
         document.getElementById("detailEmail").textContent =
           userData.email || "N/A";
         document.getElementById("detailPharmacy").textContent =
-          pharmacyData.name.toUpperCase() || "N/A";
+          pharmacyName.toUpperCase() || "N/A";
+        document.getElementById("detailDistrict").textContent =
+          pharmacyLocation.toUpperCase() || "N/A";
         document.getElementById("detailContact").textContent =
           userData.contact || "N/A";
         document.getElementById("detailJoined").textContent =

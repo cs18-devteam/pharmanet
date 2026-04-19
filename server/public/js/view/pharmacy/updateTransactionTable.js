@@ -20,16 +20,7 @@ export function updateTable({results : data}){
     //const currendate = new Date().toISOString().split("T")[0];
     //console.log("current date : ", currendate);
 
-    const options = {
-            timeZone: 'Asia/Colombo',
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit',
-            hour12: false
-        };
+  
 
     const html = data.map(tr=>{
         const dateobj = new Date (tr.transactionDateTime);

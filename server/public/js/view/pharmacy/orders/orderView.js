@@ -9,9 +9,24 @@ export function orderView(order) {
   if(!order) return;
   
   let staffMember = undefined;
-  if(order.staffId && Application.staffData.length){
+  if(order.staffId && Application.staffData?.length){
     staffMember = Application.staffData.find(s=>s.id == order.staffId)
   }
+    const options = {
+            timeZone: 'Asia/Colombo',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: true,
+        };
+
+
+
+  let orderDateTime ;
+  if(order.createdAt) orderDateTime =  new Date(order.createdAt)?.toLocaleDateString('en-CA' , options).replace(',' , '');
 
   return html`
 
@@ -50,7 +65,7 @@ export function orderView(order) {
 
       <div>
         <label>Order Date</label>
-        <p>${order.createdAt?.replace('.000Z', '').split("T").join(' ') || "-"}</p>
+        <p>${orderDateTime || "-"}</p>
       </div>
 
       <div>

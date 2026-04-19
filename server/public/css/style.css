@@ -13526,7 +13526,8 @@ button.save {
   .pharmacyDashboard .dashboards .transaction_table_container {
     opacity: 0;
   }
-  .pharmacyDashboard .dashboards .orders .orderleft-side, .pharmacyDashboard .dashboards .orders .order-right-side {
+  .pharmacyDashboard .dashboards .orders .orderleft-side,
+  .pharmacyDashboard .dashboards .orders .order-right-side {
     opacity: 0;
   }
   .pharmacyDashboard .dashboards .orders .payment-section-container .receipt-wrapper {
@@ -14558,6 +14559,7 @@ button.save {
 .pharmacyDashboard .dashboards .product_container .left-side .quick-looks .tab {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .pharmacyDashboard .dashboards .product_container .left-side .quick-looks .tab span:nth-child(1) {
   text-transform: capitalize;

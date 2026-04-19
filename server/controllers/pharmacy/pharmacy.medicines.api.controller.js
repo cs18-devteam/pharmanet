@@ -268,7 +268,7 @@ exports.getMedicineStatics = apiCatchAsync(async (req, res) => {
     let globalStat = await PharmacyOrdersItems.query(`SELECT itemId AS medicineId,SUM(quantity) AS quantity FROM this.table WHERE itemType = 'medicine' GROUP BY itemId Limit 10`);
 
     globalStat = await Promise.all(globalStat.map(async stat=>{
-        const name  = (await Medicines.getById(stat.medicineId))?.[0].geneticName
+        const name  = (await Medicines.getById(stat.medicineId))?.[0]?.geneticName
         const [available] = await PharmacyMedicines.get({
             medicineId : stat.medicineId,
             pharmacyId : req.pharmacyId,

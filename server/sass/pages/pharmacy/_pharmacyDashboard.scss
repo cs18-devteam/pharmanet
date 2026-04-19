@@ -83,22 +83,24 @@ $containers : 'orders',
 
     }
 
-    .dashboards .transaction_table_container{
+    .dashboards .transaction_table_container {
         opacity: 0;
     }
 
-    .dashboards .orders{
-        .orderleft-side , .order-right-side{
+    .dashboards .orders {
+
+        .orderleft-side,
+        .order-right-side {
             opacity: 0;
         }
 
-        .payment-section-container .receipt-wrapper{
+        .payment-section-container .receipt-wrapper {
             background-color: #fff !important;
         }
     }
 
 
-    .drawer{
+    .drawer {
         display: none;
     }
 
@@ -203,7 +205,7 @@ $list_len : list.length($containers);
 
 }
 
-.not-verified{
+.not-verified {
     position: fixed;
     top: 0;
     left: 0;
@@ -213,18 +215,18 @@ $list_len : list.length($containers);
     z-index: 100;
     display: flex;
     justify-content: space-between;
-    
-    p{
+
+    p {
         font-size: 1.8rem;
-        color : #ffff;
+        color: #ffff;
 
     }
 
-    button{
+    button {
         padding: 1.2rem 2rem;
         border-radius: 3rem;
         border: 1px solid #fff;
-        color : #fff;
+        color: #fff;
         background-color: transparent;
         cursor: pointer;
         text-transform: capitalize;
@@ -367,8 +369,10 @@ $list_len : list.length($containers);
         position: relative;
         overflow: hidden;
 
-        &.active{
-            &::after , &::before{
+        &.active {
+
+            &::after,
+            &::before {
                 display: none;
             }
 
@@ -811,6 +815,8 @@ $list_len : list.length($containers);
                 .tab {
                     display: flex;
                     justify-content: space-between;
+                    align-items: center;
+
 
                     span:nth-child(1) {
                         text-transform: capitalize;
@@ -1036,6 +1042,7 @@ $list_len : list.length($containers);
 .pharmacyDashboard {
     @include pharmacy_profile.settings;
 }
+
 .pharmacyDashboard .medicines.container {
     @include pharmacy_medicines.medicines;
 }
